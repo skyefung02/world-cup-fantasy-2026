@@ -43,28 +43,11 @@ def clean_sheet_prob(xg_conceded):
     return np.exp(-xg_conceded)
 
 
-def xpts_per_90(position, xg_scored, xg_conceded, p_clean_sheet):
-    """
-    Expected Fantasy points per 90 mins for one player.
-    Per-player goal shares (position group share / typical starters):
-      GK=1%, DEF=2.5%, MID=8.75%, FWD=27%
-    """
-    goal_share = {"GK": 0.01, "DEF": 0.025, "MID": 0.0875, "FWD": 0.27}
-    assist_share = {"GK": 0.01, "DEF": 0.025, "MID": 0.1125, "FWD": 0.22}
-
-    pos_xg      = xg_scored * goal_share[position]
-    pos_assists = xg_scored * assist_share[position]
-
-    pts_goals   = pos_xg * GOAL_PTS[position]
-    pts_assists = pos_assists * ASSIST_PTS
-    pts_cs      = p_clean_sheet * CLEAN_SHEET_PTS[position]
-
-    if position in ("GK", "DEF"):
-        pts_conceded = max(0, xg_conceded - 1) * GOALS_CONCEDED_PTS[position]
-    else:
-        pts_conceded = 0
-
-    return pts_goals + pts_assists + pts_cs + pts_conceded
+# Position group shares of team xG — calibrated to a 4-4-2 starting formation.
+# Goals:   GK 1%,  DEF 10%, MID 35%, FWD 54%  (sum = 100%)
+# Assists: GK 1%,  DEF 10%, MID 45%, FWD 44%  (sum = 100%)
+GROUP_GOAL_SHARE   = {"GK": 0.01, "DEF": 0.10, "MID": 0.5, "FWD": 0.39}
+GROUP_ASSIST_SHARE = {"GK": 0.01, "DEF": 0.10, "MID": 0.64, "FWD": 0.25}
 
 
 def appearance_pts(xmins):
@@ -98,17 +81,20 @@ def run():
     print("Loading data...")
     df = pd.read_csv(f"{PROCESSED_DIR}/player_fixtures.csv")
 
-    print("Applying Elo model...")
-    df["win_exp"]      = win_expectancy(df["elo"], df["opp_elo"])
-    df["xg_scored"]    = expected_goals(df["win_exp"].values)
-    df["xg_conceded"]  = expected_goals(1 - df["win_exp"].values)
-    df["p_clean_sheet"] = clean_sheet_prob(df["xg_conceded"].values)
+    # Merge player weights
+    weights = pd.read_csv("data/weight_table.csv")[
+        ["player", "team", "gls_p90_pct", "ast_p90_pct", "league_strength"]
+    ].drop_duplicates(subset=["player", "team"])
+    df = df.merge(weights, on=["player", "team"], how="left")
+    df["gls_p90_pct"]    = df["gls_p90_pct"].fillna(0.5)
+    df["ast_p90_pct"]    = df["ast_p90_pct"].fillna(0.5)
+    df["league_strength"] = df["league_strength"].fillna(1.0)
 
-    df["xpts_p90"] = df.apply(
-        lambda r: xpts_per_90(
-            r["position"], r["xg_scored"], r["xg_conceded"], r["p_clean_sheet"]
-        ), axis=1
-    )
+    print("Applying Elo model...")
+    df["win_exp"]       = win_expectancy(df["elo"], df["opp_elo"])
+    df["xg_scored"]     = expected_goals(df["win_exp"].values)
+    df["xg_conceded"]   = expected_goals(1 - df["win_exp"].values)
+    df["p_clean_sheet"] = clean_sheet_prob(df["xg_conceded"].values)
 
     print("Computing xMins...")
     players = df[['id', 'squadId', 'position', 'price']].drop_duplicates('id')
@@ -122,9 +108,35 @@ def run():
     merged_xmins['xmins'] = merged_xmins['xmins_manual'].combine_first(merged_xmins['xmins_default'])
     df = df.merge(merged_xmins[['id', 'xmins']], on='id', how='left')
     df["xmins"] = df["xmins"].fillna(60)
-    df["app_pts"] = df["xmins"].apply(appearance_pts)
 
-    df["xpts_game"] = (df["xpts_p90"] / 90) * df["xmins"] + df["app_pts"]
+    # Weighted share within (team, position, fixture).
+    # Weight = quality × league_strength × xmins so that a player with more
+    # minutes gets a proportionally larger slice of the position's xG budget.
+    df["goal_w"]   = df["gls_p90_pct"] * df["league_strength"] * df["xmins"]
+    df["assist_w"] = df["ast_p90_pct"] * df["league_strength"] * df["xmins"]
+    df["goal_w_sum"]   = df.groupby(["team", "position", "round_id"])["goal_w"].transform("sum")
+    df["assist_w_sum"] = df.groupby(["team", "position", "round_id"])["assist_w"].transform("sum")
+
+    # Player's absolute expected goals/assists for the game
+    df["player_xg"] = (
+        df["xg_scored"] * df["position"].map(GROUP_GOAL_SHARE)
+        * df["goal_w"] / df["goal_w_sum"]
+    )
+    df["player_xa"] = (
+        df["xg_scored"] * df["position"].map(GROUP_ASSIST_SHARE)
+        * df["assist_w"] / df["assist_w_sum"]
+    )
+
+    # Points — computed directly, no /90 × xmins scaling needed
+    conceded_rate = df["position"].map(GOALS_CONCEDED_PTS).fillna(0)
+    df["app_pts"]  = df["xmins"].apply(appearance_pts)
+    df["xpts_game"] = (
+        df["player_xg"] * df["position"].map(GOAL_PTS)
+        + df["player_xa"] * ASSIST_PTS
+        + df["p_clean_sheet"] * df["position"].map(CLEAN_SHEET_PTS).fillna(0)
+        + np.maximum(0, df["xg_conceded"] - 1) * conceded_rate
+        + df["app_pts"]
+    )
 
     print("Building export...")
     rounds_pivot = df.pivot_table(
