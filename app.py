@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import pandas as pd
 import os
 
+import build_projections
 from build_projections import assign_xmins
 
 app = Flask(__name__)
@@ -113,6 +114,7 @@ def save():
         else:
             overrides[pid] = val
     save_xmins(overrides)
+    build_projections.run()
     return jsonify({"status": "ok"})
 
 if __name__ == "__main__":
