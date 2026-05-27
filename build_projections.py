@@ -76,12 +76,27 @@ def appearance_pts(xmins):
         return 2
 
 
+def assign_xmins(squad_group):
+    mins_map = {
+        'GK':  [90, 5, 5, 5],
+        'DEF': [80, 80, 80, 80, 25, 25, 5, 5, 5],
+        'MID': [75, 75, 75, 75, 35, 35, 10, 10, 5],
+        'FWD': [70, 70, 35, 10, 10, 5, 5],
+    }
+    parts = []
+    for pos, pos_group in squad_group.groupby('position'):
+        pos_group = pos_group.sort_values('price', ascending=False).reset_index(drop=True)
+        schedule = mins_map.get(pos, [60])
+        pos_group['xmins'] = [schedule[i] if i < len(schedule) else 5 for i in range(len(pos_group))]
+        parts.append(pos_group)
+    return pd.concat(parts)
+
+
 # --- Main build function ---
 
 def run():
     print("Loading data...")
     df = pd.read_csv(f"{PROCESSED_DIR}/player_fixtures.csv")
-    df_xmins = pd.read_csv("data/xmins.csv")
 
     print("Applying Elo model...")
     df["win_exp"]      = win_expectancy(df["elo"], df["opp_elo"])
@@ -95,8 +110,17 @@ def run():
         ), axis=1
     )
 
-    print("Merging xMins...")
-    df = df.merge(df_xmins, on="id", how="left")
+    print("Computing xMins...")
+    players = df[['id', 'squadId', 'position', 'price']].drop_duplicates('id')
+    default_xmins = (
+        players
+        .groupby('squadId', group_keys=False)
+        .apply(assign_xmins)[['id', 'xmins']]
+    )
+    df_xmins = pd.read_csv("data/xmins.csv")
+    merged_xmins = default_xmins.merge(df_xmins, on='id', how='left', suffixes=('_default', '_manual'))
+    merged_xmins['xmins'] = merged_xmins['xmins_manual'].combine_first(merged_xmins['xmins_default'])
+    df = df.merge(merged_xmins[['id', 'xmins']], on='id', how='left')
     df["xmins"] = df["xmins"].fillna(60)
     df["app_pts"] = df["xmins"].apply(appearance_pts)
 

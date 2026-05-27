@@ -118,6 +118,15 @@ def prep_wc_data(options: dict) -> dict:
                     f"(next_round={next_round}, horizon={horizon})."
                 )
 
+    # Apply manual xmins overrides from xmins.csv on top of projections.csv defaults
+    xmins_path = Path(options.get("xmins_file", "data/xmins.csv"))
+    if xmins_path.exists():
+        xmins_overrides = pd.read_csv(xmins_path).set_index("id")["xmins"]
+        for pid in xmins_overrides.index:
+            if pid in df.index:
+                for r in rounds:
+                    df.loc[pid, f"{r}_xMins"] = float(xmins_overrides[pid])
+
     df["total_ev"]   = df[[f"{r}_Pts"   for r in rounds]].sum(axis=1)
     df["total_mins"] = df[[f"{r}_xMins" for r in rounds]].sum(axis=1)
 

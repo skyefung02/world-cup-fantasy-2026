@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, jsonify
 import pandas as pd
 import os
 
+from build_projections import assign_xmins
+
 app = Flask(__name__)
 
 XMINS_PATH = "data/xmins.csv"
@@ -36,12 +38,16 @@ def save_xmins(xmins_dict):
     df = pd.DataFrame(list(xmins_dict.items()), columns=["id", "xmins"])
     df.to_csv(XMINS_PATH, index=False)
 
-def init_xmins(players, xmins):
-    """Default to 60 for any player not yet assigned."""
-    for pid in players["id"]:
-        if pid not in xmins:
-            xmins[pid] = 60
-    return xmins
+def init_xmins(players, xmins_manual):
+    """Compute defaults via assign_xmins, then apply manual overrides from xmins.csv."""
+    default_df = (
+        players
+        .groupby('squadId', group_keys=False)
+        .apply(assign_xmins)[['id', 'xmins']]
+    )
+    result = dict(zip(default_df['id'], default_df['xmins']))
+    result.update(xmins_manual)
+    return result
 
 @app.route("/")
 def index():
@@ -92,10 +98,21 @@ def team(abbr):
 @app.route("/save", methods=["POST"])
 def save():
     data = request.json  # {player_id: xmins, ...}
-    xmins = load_xmins()
+    players = load_players()
+    default_df = (
+        players
+        .groupby('squadId', group_keys=False)
+        .apply(assign_xmins)[['id', 'xmins']]
+    )
+    defaults = dict(zip(default_df['id'], default_df['xmins']))
+    overrides = load_xmins()
     for pid, val in data.items():
-        xmins[int(pid)] = int(val)
-    save_xmins(xmins)
+        pid, val = int(pid), int(val)
+        if val == defaults.get(pid):
+            overrides.pop(pid, None)
+        else:
+            overrides[pid] = val
+    save_xmins(overrides)
     return jsonify({"status": "ok"})
 
 if __name__ == "__main__":
