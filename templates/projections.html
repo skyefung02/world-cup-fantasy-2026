@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WC Fantasy 2026 — Projections</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f0f2f5;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1e3a5f 0%, #16213e 100%);
+      color: white;
+      padding: 24px 32px 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .trophy { font-size: 2rem; }
+    header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.3px; }
+    header p  { font-size: 0.85rem; color: #a8c0d6; margin-top: 4px; }
+
+    /* ── Nav ── */
+    .main-nav {
+      max-width: 1100px;
+      margin: 16px auto 0;
+      display: flex;
+      gap: 4px;
+    }
+    .nav-tab {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px 8px 0 0;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-tab:hover  { background: rgba(255,255,255,0.1); color: white; }
+    .nav-tab.active { background: #f0f2f5; color: #1e3a5f; }
+
+    /* ── Main ── */
+    main {
+      max-width: 1100px;
+      margin: 28px auto;
+      padding: 0 20px;
+    }
+
+    /* ── Controls ── */
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 200px;
+    }
+    .search-wrap input {
+      width: 100%;
+      padding: 10px 14px 10px 40px;
+      font-size: 0.9rem;
+      border: 2px solid #e0e4ea;
+      border-radius: 10px;
+      background: white;
+      outline: none;
+      transition: border-color 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .search-wrap input:focus { border-color: #1e3a5f; }
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: #bbb;
+    }
+    .pos-pills {
+      display: flex;
+      gap: 6px;
+    }
+    .pos-pill {
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      background: white;
+      color: #888;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: all 0.15s;
+    }
+    .pos-pill:hover { border-color: #1e3a5f; color: #1e3a5f; }
+    .pos-pill.active { background: #1e3a5f; color: white; border-color: #1e3a5f; }
+
+    /* ── Table ── */
+    .table-wrap {
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      overflow: hidden;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      padding: 11px 16px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #999;
+      background: #fafbfc;
+      border-bottom: 1px solid #f0f2f5;
+      white-space: nowrap;
+      user-select: none;
+    }
+    th.sortable {
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+    th.sortable:hover { color: #1e3a5f; }
+    th.sorted { color: #1e3a5f; }
+    th.num, td.num { text-align: right; }
+
+    tbody tr { transition: background 0.1s; }
+    tbody tr:hover { background: #f8f9ff; }
+    tbody tr:not(:last-child) td { border-bottom: 1px solid #f0f2f5; }
+    td {
+      padding: 10px 16px;
+      font-size: 0.875rem;
+      vertical-align: middle;
+    }
+    td.player-name { font-weight: 500; }
+    td.team-cell { color: #555; white-space: nowrap; }
+    td.price-cell { font-variant-numeric: tabular-nums; color: #444; }
+    td.pts-cell {
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+    }
+    td.avg-cell {
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+      color: #1e3a5f;
+    }
+
+    /* ── Position badge ── */
+    .pos-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 20px;
+      letter-spacing: 0.4px;
+    }
+    .pos-badge.GK  { background: #fff3cd; color: #856404; }
+    .pos-badge.DEF { background: #d1f0e0; color: #1a6b3a; }
+    .pos-badge.MID { background: #cfe2ff; color: #0a3678; }
+    .pos-badge.FWD { background: #fde0e0; color: #7a1a1a; }
+
+    /* ── No results ── */
+    .no-results {
+      text-align: center;
+      color: #aaa;
+      padding: 48px 0;
+      font-size: 0.95rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <span class="trophy">🏆</span>
+      <div>
+        <h1>WC Fantasy 2026</h1>
+        <p>Projections — expected points per gameweek</p>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <a href="/" class="nav-tab">xMins Editor</a>
+      <a href="/projections" class="nav-tab active">Projections</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="controls">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search" placeholder="Search player or team…" oninput="onSearch()" autocomplete="off">
+      </div>
+      <div class="pos-pills">
+        <button class="pos-pill active" data-pos="all"  onclick="onPosFilter('all')">All</button>
+        <button class="pos-pill"        data-pos="GK"   onclick="onPosFilter('GK')">GK</button>
+        <button class="pos-pill"        data-pos="DEF"  onclick="onPosFilter('DEF')">DEF</button>
+        <button class="pos-pill"        data-pos="MID"  onclick="onPosFilter('MID')">MID</button>
+        <button class="pos-pill"        data-pos="FWD"  onclick="onPosFilter('FWD')">FWD</button>
+      </div>
+    </div>
+
+    {% if players %}
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="sortable" data-col="player" onclick="onSort('player')">Player <span class="sort-ind">⇅</span></th>
+            <th>Pos</th>
+            <th class="sortable" data-col="team" onclick="onSort('team')">Team <span class="sort-ind">⇅</span></th>
+            <th class="sortable num" data-col="price" onclick="onSort('price')">Price <span class="sort-ind">⇅</span></th>
+            <th class="sortable num" data-col="r1" onclick="onSort('r1')">R1 xP <span class="sort-ind">⇅</span></th>
+            <th class="sortable num" data-col="r2" onclick="onSort('r2')">R2 xP <span class="sort-ind">⇅</span></th>
+            <th class="sortable num" data-col="r3" onclick="onSort('r3')">R3 xP <span class="sort-ind">⇅</span></th>
+            <th class="sortable num sorted" data-col="avg" onclick="onSort('avg')">Avg xP <span class="sort-ind">↓</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in players %}
+          <tr
+            data-player="{{ p.player | lower }}"
+            data-pos="{{ p.position }}"
+            data-team="{{ p.team | lower }}"
+            data-price="{{ p.price }}"
+            data-r1="{{ p['1_Pts'] }}"
+            data-r2="{{ p['2_Pts'] }}"
+            data-r3="{{ p['3_Pts'] }}"
+            data-avg="{{ p.avg_pts }}"
+          >
+            <td class="player-name">{{ p.player }}</td>
+            <td><span class="pos-badge {{ p.position }}">{{ p.position }}</span></td>
+            <td class="team-cell">{{ p.flag }} {{ p.abbr }}</td>
+            <td class="price-cell num">£{{ p.price }}m</td>
+            <td class="pts-cell num">{{ p['1_Pts'] }}</td>
+            <td class="pts-cell num">{{ p['2_Pts'] }}</td>
+            <td class="pts-cell num">{{ p['3_Pts'] }}</td>
+            <td class="avg-cell num">{{ p.avg_pts }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <p class="no-results" id="no-results">No players found.</p>
+    </div>
+    {% else %}
+    <p class="no-results" style="display:block">No projections found — run <code>python main.py</code> first.</p>
+    {% endif %}
+  </main>
+
+  <script>
+    const allRows = Array.from(document.querySelectorAll("tbody tr"));
+    let sortCol = "avg", sortDir = -1;
+    let filterPos = "all", filterSearch = "";
+
+    function onSort(col) {
+      if (sortCol === col) {
+        sortDir *= -1;
+      } else {
+        sortCol = col;
+        sortDir = (col === "player" || col === "team") ? 1 : -1;
+      }
+      sortTable();
+      updateHeaders();
+    }
+
+    function onPosFilter(pos) {
+      filterPos = pos;
+      document.querySelectorAll(".pos-pill").forEach(p =>
+        p.classList.toggle("active", p.dataset.pos === pos)
+      );
+      filterRows();
+    }
+
+    function onSearch() {
+      filterSearch = document.getElementById("search").value.toLowerCase();
+      filterRows();
+    }
+
+    function sortTable() {
+      const tbody = document.querySelector("tbody");
+      allRows.sort((a, b) => {
+        const av = a.dataset[sortCol], bv = b.dataset[sortCol];
+        const an = parseFloat(av), bn = parseFloat(bv);
+        if (!isNaN(an) && !isNaN(bn)) return (an - bn) * sortDir;
+        return av.localeCompare(bv) * sortDir;
+      });
+      allRows.forEach(r => tbody.appendChild(r));
+    }
+
+    function filterRows() {
+      let visible = 0;
+      allRows.forEach(row => {
+        const posMatch = filterPos === "all" || row.dataset.pos === filterPos;
+        const searchMatch = !filterSearch ||
+          row.dataset.player.includes(filterSearch) ||
+          row.dataset.team.includes(filterSearch);
+        const show = posMatch && searchMatch;
+        row.style.display = show ? "" : "none";
+        if (show) visible++;
+      });
+      document.getElementById("no-results").style.display = visible === 0 ? "block" : "none";
+    }
+
+    function updateHeaders() {
+      document.querySelectorAll("th[data-col]").forEach(th => {
+        const col = th.dataset.col;
+        const ind = th.querySelector(".sort-ind");
+        const active = col === sortCol;
+        th.classList.toggle("sorted", active);
+        ind.textContent = active ? (sortDir === 1 ? " ↑" : " ↓") : " ⇅";
+      });
+    }
+  </script>
+</body>
+</html>

@@ -141,5 +141,23 @@ def save():
             }
     return jsonify({"status": "ok", "xp": xp_updates})
 
+@app.route("/projections")
+def projections_page():
+    proj_path = "data/projections.csv"
+    if not os.path.exists(proj_path):
+        return render_template("projections.html", players=[])
+    proj = pd.read_csv(proj_path)
+    proj["avg_pts"] = ((proj["1_Pts"] + proj["2_Pts"] + proj["3_Pts"]) / 3).round(2)
+    proj["flag"] = proj["abbr"].map(FLAGS).fillna("")
+    for col in ["1_Pts", "2_Pts", "3_Pts"]:
+        proj[col] = proj[col].round(2)
+    players = (
+        proj[["id", "player", "position", "price", "team", "abbr", "flag", "1_Pts", "2_Pts", "3_Pts", "avg_pts"]]
+        .sort_values("avg_pts", ascending=False)
+        .to_dict(orient="records")
+    )
+    return render_template("projections.html", players=players)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
