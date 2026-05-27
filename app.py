@@ -6,6 +6,21 @@ app = Flask(__name__)
 
 XMINS_PATH = "data/xmins.csv"
 
+FLAGS = {
+    "ALG": "🇩🇿", "ARG": "🇦🇷", "AUS": "🇦🇺", "AUT": "🇦🇹",
+    "BEL": "🇧🇪", "BIH": "🇧🇦", "BRA": "🇧🇷", "CPV": "🇨🇻",
+    "CAN": "🇨🇦", "COL": "🇨🇴", "COD": "🇨🇩", "CRO": "🇭🇷",
+    "CUW": "🇨🇼", "CZE": "🇨🇿", "CIV": "🇨🇮", "ECU": "🇪🇨",
+    "EGY": "🇪🇬", "ENG": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "FRA": "🇫🇷", "GER": "🇩🇪",
+    "GHA": "🇬🇭", "HAI": "🇭🇹", "IRN": "🇮🇷", "IRQ": "🇮🇶",
+    "JPN": "🇯🇵", "JOR": "🇯🇴", "KOR": "🇰🇷", "MEX": "🇲🇽",
+    "MAR": "🇲🇦", "NED": "🇳🇱", "NZL": "🇳🇿", "NOR": "🇳🇴",
+    "PAN": "🇵🇦", "PAR": "🇵🇾", "POR": "🇵🇹", "QAT": "🇶🇦",
+    "KSA": "🇸🇦", "SCO": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "SEN": "🇸🇳", "RSA": "🇿🇦",
+    "ESP": "🇪🇸", "SWE": "🇸🇪", "SUI": "🇨🇭", "TUN": "🇹🇳",
+    "TUR": "🇹🇷", "USA": "🇺🇸", "URU": "🇺🇾", "UZB": "🇺🇿",
+}
+
 def load_players():
     players = pd.read_csv("data/processed/player_fixtures.csv")
     # Get unique players (drop fixture rows)
@@ -36,9 +51,9 @@ def index():
 
     # Get sorted team list
     teams = players[["abbr", "team", "group"]].drop_duplicates().sort_values("team")
-    teams = teams.to_dict(orient="records")
+    teams = teams.sort_values(["group", "team"]).to_dict(orient="records")
 
-    return render_template("index.html", teams=teams)
+    return render_template("index.html", teams=teams, flags=FLAGS)
 
 @app.route("/team/<abbr>")
 def team(abbr):
@@ -57,6 +72,7 @@ def team(abbr):
         grouped[pos] = group.to_dict(orient="records")
 
     team_info = team_players[["team", "abbr", "group"]].iloc[0].to_dict()
+    team_info["flag"] = FLAGS.get(abbr, "")
 
     # Get prev/next team for navigation
     all_teams = players[["abbr", "team"]].drop_duplicates().sort_values("team").reset_index(drop=True)

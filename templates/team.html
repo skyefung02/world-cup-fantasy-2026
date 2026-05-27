@@ -1,76 +1,278 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ team.team }} — xMins Editor</title>
   <style>
-    body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
-    h1 { font-size: 1.4rem; margin-bottom: 4px; }
-    h2 { font-size: 1rem; color: #555; margin: 20px 0 8px; }
-    .nav { display: flex; justify-content: space-between; margin-bottom: 20px; }
-    .nav a { text-decoration: none; color: #1a73e8; font-size: 0.9rem; }
-    .nav a:hover { text-decoration: underline; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
-    th { text-align: left; padding: 6px 8px; background: #f5f5f5; font-size: 0.85rem; }
-    td { padding: 6px 8px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
-    input.xmins { width: 60px; padding: 4px; border: 1px solid #ccc; border-radius: 4px; text-align: center; }
-    input.xmins:focus { outline: none; border-color: #1a73e8; }
-    .save-btn {
-      margin-top: 20px; padding: 10px 24px; background: #1a73e8;
-      color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.95rem;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f0f2f5;
+      color: #1a1a2e;
+      min-height: 100vh;
     }
-    .save-btn:hover { background: #1558b0; }
-    .status { margin-top: 10px; font-size: 0.85rem; color: #888; }
-    .home-link { font-size: 0.85rem; }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1e3a5f 0%, #16213e 100%);
+      color: white;
+      padding: 20px 32px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    }
+    .header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+    .back-link {
+      color: #a8c0d6;
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: white; }
+    .header-title h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .header-title .group-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: rgba(255,255,255,0.15);
+      padding: 3px 9px;
+      border-radius: 20px;
+      margin-left: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── Nav arrows ── */
+    .team-nav {
+      display: flex;
+      gap: 8px;
+    }
+    .nav-btn {
+      color: #a8c0d6;
+      text-decoration: none;
+      font-size: 0.82rem;
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+
+    /* ── Main ── */
+    main {
+      max-width: 860px;
+      margin: 32px auto;
+      padding: 0 20px;
+    }
+
+    /* ── Position blocks ── */
+    .pos-block {
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .pos-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-bottom: 1px solid #f0f2f5;
+    }
+    .pos-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+    .pos-badge.GK  { background: #fff3cd; color: #856404; }
+    .pos-badge.DEF { background: #d1f0e0; color: #1a6b3a; }
+    .pos-badge.MID { background: #cfe2ff; color: #0a3678; }
+    .pos-badge.FWD { background: #fde0e0; color: #7a1a1a; }
+    .pos-count { font-size: 0.8rem; color: #aaa; }
+
+    /* ── Player table ── */
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      text-align: left;
+      padding: 8px 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #999;
+      background: #fafbfc;
+      border-bottom: 1px solid #f0f2f5;
+    }
+    tbody tr { transition: background 0.1s; }
+    tbody tr:hover { background: #f8f9ff; }
+    tbody tr:not(:last-child) td { border-bottom: 1px solid #f0f2f5; }
+    td {
+      padding: 11px 20px;
+      font-size: 0.88rem;
+      vertical-align: middle;
+    }
+    td.player-name { font-weight: 500; color: #1a1a2e; }
+    td.price { color: #555; }
+    td.xmins-cell { width: 110px; }
+
+    /* ── xMins input ── */
+    .xmins-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    input.xmins {
+      width: 64px;
+      padding: 6px 8px;
+      border: 2px solid #e0e4ea;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      outline: none;
+      transition: border-color 0.18s;
+    }
+    input.xmins:focus { border-color: #1e3a5f; }
+    input.xmins.dirty { border-color: #e8b84b; background: #fffdf0; }
+    .xmins-label { font-size: 0.75rem; color: #bbb; }
+
+    /* ── Footer bar ── */
+    .footer-bar {
+      position: sticky;
+      bottom: 0;
+      background: white;
+      border-top: 1px solid #e0e4ea;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+    }
+    .footer-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .status {
+      font-size: 0.85rem;
+      color: #2ecc71;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .status.visible { opacity: 1; }
+    .save-btn {
+      padding: 10px 28px;
+      background: #1e3a5f;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.18s, transform 0.12s;
+    }
+    .save-btn:hover { background: #16304f; transform: translateY(-1px); }
+    .save-btn:active { transform: translateY(0); }
   </style>
 </head>
 <body>
-  <a class="home-link" href="/">← All Teams</a>
-  <h1>{{ team.team }} <span style="color:#888;font-size:0.8rem;">Group {{ team.group | upper }}</span></h1>
+  <header>
+    <div class="header-inner">
+      <div class="header-left">
+        <a class="back-link" href="/">← All Teams</a>
+        <div class="header-title">
+          <h1>
+            {{ team.flag }} {{ team.team }}
+            <span class="group-badge">Group {{ team.group | upper }}</span>
+          </h1>
+        </div>
+      </div>
+      <div class="team-nav">
+        {% if prev_team %}
+          <a class="nav-btn" href="/team/{{ prev_team }}">← Prev</a>
+        {% endif %}
+        {% if next_team %}
+          <a class="nav-btn" href="/team/{{ next_team }}">Next →</a>
+        {% endif %}
+      </div>
+    </div>
+  </header>
 
-  <div class="nav">
-    {% if prev_team %}
-      <a href="/team/{{ prev_team }}">← Previous Team</a>
-    {% else %}
-      <span></span>
-    {% endif %}
-    {% if next_team %}
-      <a href="/team/{{ next_team }}">Next Team →</a>
-    {% endif %}
+  <main>
+    {% for pos in pos_order %}
+      {% if grouped[pos] %}
+      <div class="pos-block">
+        <div class="pos-header">
+          <span class="pos-badge {{ pos }}">{{ pos }}</span>
+          <span class="pos-count">{{ grouped[pos] | length }} player{{ 's' if grouped[pos] | length != 1 else '' }}</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Player</th>
+              <th>Price</th>
+              <th>xMins</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for p in grouped[pos] %}
+            <tr>
+              <td class="player-name">{{ p.player }}</td>
+              <td class="price">${{ p.price }}m</td>
+              <td class="xmins-cell">
+                <div class="xmins-wrap">
+                  <input class="xmins" type="number" min="0" max="90" value="{{ p.xmins }}" data-id="{{ p.id }}">
+                  <span class="xmins-label">min</span>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </main>
+
+  <div class="footer-bar">
+    <div class="footer-inner">
+      <span class="status" id="status">✓ Saved</span>
+      <button class="save-btn" onclick="saveAll()">Save Changes</button>
+    </div>
   </div>
 
-  {% for pos in pos_order %}
-    {% if grouped[pos] %}
-    <h2>{{ pos }}</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Player</th>
-          <th>Price</th>
-          <th>xMins</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for p in grouped[pos] %}
-        <tr>
-          <td>{{ p.player }}</td>
-          <td>${{ p.price }}m</td>
-          <td><input class="xmins" type="number" min="0" max="90" value="{{ p.xmins }}" data-id="{{ p.id }}"></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    {% endif %}
-  {% endfor %}
-
-  <button class="save-btn" onclick="saveAll()">Save</button>
-  <div class="status" id="status"></div>
-
   <script>
+    // Mark inputs dirty on change
+    document.querySelectorAll("input.xmins").forEach(inp => {
+      inp.addEventListener("input", () => inp.classList.add("dirty"));
+      inp.addEventListener("change", saveAll);
+    });
+
     function saveAll() {
       const inputs = document.querySelectorAll("input.xmins");
       const data = {};
       inputs.forEach(inp => {
         data[inp.dataset.id] = inp.value;
+        inp.classList.remove("dirty");
       });
       fetch("/save", {
         method: "POST",
@@ -79,15 +281,11 @@
       })
       .then(r => r.json())
       .then(() => {
-        document.getElementById("status").textContent = "Saved ✓";
-        setTimeout(() => document.getElementById("status").textContent = "", 2000);
+        const el = document.getElementById("status");
+        el.classList.add("visible");
+        setTimeout(() => el.classList.remove("visible"), 2000);
       });
     }
-
-    // Auto-save on input change
-    document.querySelectorAll("input.xmins").forEach(inp => {
-      inp.addEventListener("change", saveAll);
-    });
   </script>
 </body>
 </html>
