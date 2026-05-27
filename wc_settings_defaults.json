@@ -1,5 +1,5 @@
 {
-    "projection_file": "data/wc_projections.csv",
+    "projection_file": "data/projections.csv",
 
     "next_round": 1,
     "horizon": 3,

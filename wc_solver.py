@@ -15,6 +15,7 @@ Settings priority (lowest → highest):
 import argparse
 import datetime
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -37,8 +38,8 @@ POSITIONS    = list(SQUAD_QUOTA.keys())
 BENCH_ORDER  = [0, 1, 2, 3]   # slot 0 = GK bench slot
 BINARY_THRESHOLD = 0.5
 
-SETTINGS_DEFAULTS_PATH = Path("data/wc_settings_defaults.json")
-SETTINGS_USER_PATH     = Path("data/wc_settings.json")
+SETTINGS_DEFAULTS_PATH = Path("wc_settings_defaults.json")
+SETTINGS_USER_PATH     = Path("wc_settings.json")
 
 
 # ── Settings loading ──────────────────────────────────────────────────────────
@@ -77,13 +78,19 @@ def load_projection_data(filepath: str | Path) -> pd.DataFrame:
     """
     Load the per-round projection CSV.
 
-    Required columns : id, name, position, price, team
+    Required columns : id, player (or name), position, price, team
     Optional columns : abbr, status, qual_prob
     Per-round columns: {round_id}_Pts, {round_id}_xMins  (one pair per round)
 
     Returns a DataFrame indexed by integer player id.
+    The 'player' column is normalised to 'name' internally.
     """
     df = pd.read_csv(filepath)
+
+    # Normalise player name column: build_projections.py outputs 'player'
+    if "player" in df.columns and "name" not in df.columns:
+        df = df.rename(columns={"player": "name"})
+
     required = {"id", "name", "position", "price", "team"}
     missing = required - set(df.columns)
     if missing:
@@ -96,7 +103,7 @@ def prep_wc_data(options: dict) -> dict:
     """
     Load and validate projection data; build the data dict consumed by solve_wc().
     """
-    projection_path = options.get("projection_file", "data/wc_projections.csv")
+    projection_path = options.get("projection_file", "data/projections.csv")
     df = load_projection_data(projection_path)
 
     next_round = int(options.get("next_round", 1))
@@ -345,12 +352,14 @@ def solve_wc(data: dict, options: dict) -> list[dict]:
         )
 
     # ── Country limits (stage-dependent) ─────────────────────────────────────
+    # Sanitise team names for MPS constraint names — spaces/accents break parsers
     for t in teams:
+        t_key = re.sub(r"[^A-Za-z0-9_]", "_", t)
         for r in all_rounds:
             lim = country_limit(r)
             model.add_constraint(
                 so.expr_sum(squad[p, r] for p in players if player_team[p] == t) <= lim,
-                name=f"country_lim_{t}_{r}",
+                name=f"country_lim_{t_key}_{r}",
             )
 
     # ── Transfer continuity ───────────────────────────────────────────────────
@@ -500,6 +509,33 @@ def solve_wc(data: dict, options: dict) -> list[dict]:
             name="forced_transfer_count",
         )
 
+    # ── Qual Booster linearisation ────────────────────────────────────────────
+    # use_qb[r] * lineup[p,r] is bilinear — MPS format doesn't support it.
+    # Introduce qb_lineup[p,r] = use_qb[r] AND lineup[p,r] via standard
+    # binary linearisation. Skipped entirely when qual_prob data isn't present
+    # (i.e. all group-stage runs), keeping the model small.
+    has_qual_prob = bool(qual_prob)
+    if has_qual_prob:
+        qb_lineup = model.add_variables(players, rounds, name="qb_lu", vartype=so.binary)
+        model.add_constraints(
+            (qb_lineup[p, r] <= use_qb[r]    for p in players for r in rounds),
+            name="qbl_ub_wc",
+        )
+        model.add_constraints(
+            (qb_lineup[p, r] <= lineup[p, r] for p in players for r in rounds),
+            name="qbl_ub_lu",
+        )
+        model.add_constraints(
+            (qb_lineup[p, r] >= use_qb[r] + lineup[p, r] - 1 for p in players for r in rounds),
+            name="qbl_lb",
+        )
+        qb_xp = {
+            r: 2 * so.expr_sum(qual_prob.get(p, 0) * qb_lineup[p, r] for p in players)
+            for r in rounds
+        }
+    else:
+        qb_xp = {r: 0 for r in rounds}
+
     # ── Objective ─────────────────────────────────────────────────────────────
     #
     # Scoring:
@@ -508,7 +544,7 @@ def solve_wc(data: dict, options: dict) -> list[dict]:
     #   vicecap        →  vcap_weight× (expected VC coverage value)
     #   bench slot o   →  bench_weights[o]× (sub probability)
     #   12th Man       →  1× (no captain multiplier, no bench weight)
-    #   Qual Booster   →  +2 pts × qual_prob for each starting XI player
+    #   Qual Booster   →  +2 pts × qual_prob for each starting XI player (linearised)
     #
     gw_xp = {
         r: so.expr_sum(
@@ -522,10 +558,8 @@ def solve_wc(data: dict, options: dict) -> list[dict]:
         )
         # 12th Man contribution
         + so.expr_sum(points_pw[p, r] * tm_player[p, r] for p in players)
-        # Qualification Booster: +2 pts × P(qualify) for each starting XI player
-        + 2 * use_qb[r] * so.expr_sum(
-            qual_prob.get(p, 0) * lineup[p, r] for p in players
-        )
+        # Qualification Booster (linearised; 0 during group stage)
+        + qb_xp[r]
         for r in rounds
     }
 
@@ -591,8 +625,9 @@ def solve_wc(data: dict, options: dict) -> list[dict]:
                     if bench[p, r, o].get_value() > BINARY_THRESHOLD:
                         bench_slot = o
 
-                booster = ("WC" if is_wc else "TM" if is_tm_rnd else
-                           "MC" if is_mc else "QB" if is_qb else "")
+                # TM tag is reserved for the tm_player row added below;
+                # regular squad players only carry WC/MC/QB round markers
+                booster = ("WC" if is_wc else "MC" if is_mc else "QB" if is_qb else "")
                 multiplier = is_lineup + is_cap
                 row = df.loc[p]
 
