@@ -128,6 +128,14 @@
     td.player-name { font-weight: 500; color: #1a1a2e; }
     td.price { color: #555; }
     td.xmins-cell { width: 110px; }
+    th.xp-col { text-align: right; }
+    td.xp-cell {
+      text-align: right;
+      font-size: 0.82rem;
+      color: #555;
+      width: 64px;
+      font-variant-numeric: tabular-nums;
+    }
 
     /* ── xMins input ── */
     .xmins-wrap {
@@ -231,6 +239,9 @@
               <th>Player</th>
               <th>Price</th>
               <th>xMins</th>
+              <th class="xp-col">R1 xP</th>
+              <th class="xp-col">R2 xP</th>
+              <th class="xp-col">R3 xP</th>
             </tr>
           </thead>
           <tbody>
@@ -244,6 +255,9 @@
                   <span class="xmins-label">min</span>
                 </div>
               </td>
+              <td class="xp-cell" data-id="{{ p.id }}" data-round="1">{{ p.r1_pts }}</td>
+              <td class="xp-cell" data-id="{{ p.id }}" data-round="2">{{ p.r2_pts }}</td>
+              <td class="xp-cell" data-id="{{ p.id }}" data-round="3">{{ p.r3_pts }}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -274,16 +288,33 @@
         data[inp.dataset.id] = inp.value;
         inp.classList.remove("dirty");
       });
+
+      const statusEl = document.getElementById("status");
+      const saveBtn = document.querySelector(".save-btn");
+      statusEl.textContent = "Saving…";
+      statusEl.classList.add("visible");
+      statusEl.style.color = "#aaa";
+      saveBtn.disabled = true;
+
       fetch("/save", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
       })
       .then(r => r.json())
-      .then(() => {
-        const el = document.getElementById("status");
-        el.classList.add("visible");
-        setTimeout(() => el.classList.remove("visible"), 2000);
+      .then(resp => {
+        if (resp.xp) {
+          Object.entries(resp.xp).forEach(([pid, rounds]) => {
+            Object.entries(rounds).forEach(([r, pts]) => {
+              const cell = document.querySelector(`.xp-cell[data-id="${pid}"][data-round="${r}"]`);
+              if (cell) cell.textContent = pts;
+            });
+          });
+        }
+        statusEl.textContent = "✓ Saved";
+        statusEl.style.color = "#2ecc71";
+        setTimeout(() => statusEl.classList.remove("visible"), 2000);
+        saveBtn.disabled = false;
       });
     }
   </script>

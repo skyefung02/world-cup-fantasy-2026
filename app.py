@@ -71,11 +71,25 @@ def team(abbr):
     team_players = players[players["abbr"] == abbr].copy()
     team_players["xmins"] = team_players["id"].map(xmins)
 
+    # Load per-round xP from projections.csv
+    proj_path = "data/projections.csv"
+    if os.path.exists(proj_path):
+        proj = pd.read_csv(proj_path)[["id", "1_Pts", "2_Pts", "3_Pts"]].rename(
+            columns={"1_Pts": "r1_pts", "2_Pts": "r2_pts", "3_Pts": "r3_pts"}
+        )
+        team_players = team_players.merge(proj, on="id", how="left")
+    else:
+        team_players[["r1_pts", "r2_pts", "r3_pts"]] = 0.0
+    for col in ["r1_pts", "r2_pts", "r3_pts"]:
+        team_players[col] = team_players[col].fillna(0).round(2)
+
     # Group by position in order
     pos_order = ["GK", "DEF", "MID", "FWD"]
     grouped = {}
     for pos in pos_order:
-        group = team_players[team_players["position"] == pos][["id", "player", "price", "xmins"]]
+        group = team_players[team_players["position"] == pos][
+            ["id", "player", "price", "xmins", "r1_pts", "r2_pts", "r3_pts"]
+        ]
         grouped[pos] = group.to_dict(orient="records")
 
     team_info = team_players[["team", "abbr", "group"]].iloc[0].to_dict()
@@ -115,7 +129,17 @@ def save():
             overrides[pid] = val
     save_xmins(overrides)
     build_projections.run()
-    return jsonify({"status": "ok"})
+    proj = pd.read_csv("data/projections.csv").set_index("id")
+    xp_updates = {}
+    for pid in data.keys():
+        pid_int = int(pid)
+        if pid_int in proj.index:
+            xp_updates[pid] = {
+                "1": round(float(proj.loc[pid_int, "1_Pts"]), 2),
+                "2": round(float(proj.loc[pid_int, "2_Pts"]), 2),
+                "3": round(float(proj.loc[pid_int, "3_Pts"]), 2),
+            }
+    return jsonify({"status": "ok", "xp": xp_updates})
 
 if __name__ == "__main__":
     app.run(debug=True)
