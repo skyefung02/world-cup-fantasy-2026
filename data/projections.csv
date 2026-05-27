@@ -1,0 +1,1411 @@
+id,player,position,price,team,abbr,1_Pts,1_xMins,2_Pts,2_xMins,3_Pts,3_xMins
+1,Rayan Aït-Nouri,DEF,4.9,Algeria,ALG,1.53,60.0,3.46,60.0,2.75,60.0
+2,Ramy Bensebaini,DEF,4.4,Algeria,ALG,1.53,60.0,3.46,60.0,2.75,60.0
+3,Aïssa Mandi,DEF,3.9,Algeria,ALG,1.53,60.0,3.46,60.0,2.75,60.0
+4,Mehdi Dorval,DEF,3.7,Algeria,ALG,1.53,60.0,3.46,60.0,2.75,60.0
+5,Zinéddine Belaïd,DEF,3.7,Algeria,ALG,1.53,60.0,3.46,60.0,2.75,60.0
+6,Sohaib Nair,DEF,3.5,Algeria,ALG,1.53,60.0,3.46,60.0,2.75,60.0
+7,Rafik Belghali,DEF,3.5,Algeria,ALG,1.53,60.0,3.46,60.0,2.75,60.0
+8,Achref Abada,DEF,3.5,Algeria,ALG,1.53,60.0,3.46,60.0,2.75,60.0
+9,Mohammed Amoura,FWD,6.2,Algeria,ALG,3.06,60.0,4.37,60.0,3.67,60.0
+10,Amine Gouiri,FWD,6.2,Algeria,ALG,3.06,60.0,4.37,60.0,3.67,60.0
+11,Riyad Mahrez,MID,6.5,Algeria,ALG,2.52,60.0,3.25,60.0,2.88,60.0
+12,Ibrahim Maza,FWD,5.4,Algeria,ALG,3.06,60.0,4.37,60.0,3.67,60.0
+13,Anis Hadj Moussa,FWD,5.3,Algeria,ALG,3.06,60.0,4.37,60.0,3.67,60.0
+14,Farès Ghedjemis,FWD,4.4,Algeria,ALG,3.06,60.0,4.37,60.0,3.67,60.0
+15,Ahmed Benbouali,FWD,4.2,Algeria,ALG,3.06,60.0,4.37,60.0,3.67,60.0
+16,Amin Chiakha,FWD,4.0,Algeria,ALG,3.06,60.0,4.37,60.0,3.67,60.0
+17,Anthony Mandréa,GK,3.9,Algeria,ALG,1.46,60.0,3.31,60.0,2.65,60.0
+18,Luca Zidane,GK,3.8,Algeria,ALG,1.46,60.0,3.31,60.0,2.65,60.0
+19,Melvin Mastil,GK,3.5,Algeria,ALG,1.46,60.0,3.31,60.0,2.65,60.0
+20,Kilian Belazzoug,GK,3.5,Algeria,ALG,1.46,60.0,3.31,60.0,2.65,60.0
+21,Adil Boulbina,MID,4.0,Algeria,ALG,2.52,60.0,3.25,60.0,2.88,60.0
+22,Yacine Titraoui,MID,4.7,Algeria,ALG,2.52,60.0,3.25,60.0,2.88,60.0
+23,Ramiz Zerrouki,MID,5.3,Algeria,ALG,2.52,60.0,3.25,60.0,2.88,60.0
+24,Hicham Boudaoui,MID,5.5,Algeria,ALG,2.52,60.0,3.25,60.0,2.88,60.0
+25,Adil Aouchiche,MID,5.6,Algeria,ALG,2.52,60.0,3.25,60.0,2.88,60.0
+26,Houssem Aouar,MID,6.0,Algeria,ALG,2.52,60.0,3.25,60.0,2.88,60.0
+27,Farès Chaïbi,MID,6.2,Algeria,ALG,2.52,60.0,3.25,60.0,2.88,60.0
+28,Cristian Romero,DEF,4.9,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+29,Marcos Senesi,DEF,4.7,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+30,Nahuel Molina,DEF,4.4,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+31,Nicolás Otamendi,DEF,4.4,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+32,Marcos Acuña,DEF,4.3,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+33,Lucas Martínez Quarta,DEF,4.3,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+34,Nicolás Tagliafico,DEF,4.3,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+35,Gabriel Rojas,DEF,4.0,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+36,Agustín Giay,DEF,3.7,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+38,Lionel Messi,FWD,10.0,Argentina,ARG,5.17,60.0,4.96,60.0,6.06,60.0
+39,Julián Alvarez,FWD,8.6,Argentina,ARG,5.17,60.0,4.96,60.0,6.06,60.0
+40,Gianluca Prestianni,MID,5.6,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+41,Giuliano Simeone,MID,5.6,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+42,Nico González,MID,5.6,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+43,José Manuel López,FWD,5.3,Argentina,ARG,5.17,60.0,4.96,60.0,6.06,60.0
+44,Franco Mastantuono,MID,5.8,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+45,Emiliano Martínez,GK,5.0,Argentina,ARG,3.7,60.0,3.6,60.0,4.11,60.0
+46,Gerónimo Rulli,GK,4.5,Argentina,ARG,3.7,60.0,3.6,60.0,4.11,60.0
+47,Juan Musso,GK,4.3,Argentina,ARG,3.7,60.0,3.6,60.0,4.11,60.0
+48,Leandro Paredes,MID,5.6,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+49,Máximo Perrone,MID,5.6,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+50,Rodrigo De Paul,MID,5.9,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+51,Nico Paz,MID,5.9,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+52,Alejandro Garnacho,MID,5.5,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+53,Valentín Barco,MID,6.2,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+54,Exequiel Palacios,MID,6.0,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+55,Thiago Almada,MID,6.5,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+56,Alexis Mac Allister,MID,6.6,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+57,Enzo Fernández,MID,7.5,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+58,Jordan Bos,DEF,4.0,Australia,AUS,2.31,60.0,2.73,60.0,2.52,60.0
+59,Kye Rowles,DEF,3.9,Australia,AUS,2.31,60.0,2.73,60.0,2.52,60.0
+60,Alessandro Circati,DEF,3.9,Australia,AUS,2.31,60.0,2.73,60.0,2.52,60.0
+61,Cameron Burgess,DEF,3.8,Australia,AUS,2.31,60.0,2.73,60.0,2.52,60.0
+62,Milos Degenek,DEF,3.8,Australia,AUS,2.31,60.0,2.73,60.0,2.52,60.0
+63,Aziz Behich,DEF,3.8,Australia,AUS,2.31,60.0,2.73,60.0,2.52,60.0
+64,Jason Geria,DEF,3.7,Australia,AUS,2.31,60.0,2.73,60.0,2.52,60.0
+65,Fran Karacic,DEF,3.6,Australia,AUS,2.31,60.0,2.73,60.0,2.52,60.0
+66,Kai Trewin,DEF,3.5,Australia,AUS,2.31,60.0,2.73,60.0,2.52,60.0
+67,Lucas Herrington,DEF,3.5,Australia,AUS,2.31,60.0,2.73,60.0,2.52,60.0
+68,Nestory Irankunda,FWD,5.1,Australia,AUS,3.42,60.0,3.65,60.0,3.53,60.0
+69,Martin Boyle,FWD,5.1,Australia,AUS,3.42,60.0,3.65,60.0,3.53,60.0
+70,Nishan Velupillay,FWD,4.4,Australia,AUS,3.42,60.0,3.65,60.0,3.53,60.0
+71,Deni Juric,FWD,4.2,Australia,AUS,3.42,60.0,3.65,60.0,3.53,60.0
+72,Jacob Italiano,DEF,4.2,Australia,AUS,2.31,60.0,2.73,60.0,2.52,60.0
+73,Ante Suto,FWD,4.0,Australia,AUS,3.42,60.0,3.65,60.0,3.53,60.0
+74,Mathew Ryan,GK,4.1,Australia,AUS,2.22,60.0,2.62,60.0,2.42,60.0
+75,Paul Izzo,GK,3.6,Australia,AUS,2.22,60.0,2.62,60.0,2.42,60.0
+76,Patrick Beach,GK,3.5,Australia,AUS,2.22,60.0,2.62,60.0,2.42,60.0
+77,Paul Okon,MID,4.7,Australia,AUS,2.73,60.0,2.87,60.0,2.8,60.0
+78,Patrick Yazbek,MID,4.9,Australia,AUS,2.73,60.0,2.87,60.0,2.8,60.0
+79,Alex Robertson,MID,5.1,Australia,AUS,2.73,60.0,2.87,60.0,2.8,60.0
+80,Connor Metcalfe,MID,5.3,Australia,AUS,2.73,60.0,2.87,60.0,2.8,60.0
+81,Aiden O'Neill,MID,5.4,Australia,AUS,2.73,60.0,2.87,60.0,2.8,60.0
+82,Awer Mabil,MID,5.6,Australia,AUS,2.73,60.0,2.87,60.0,2.8,60.0
+83,Ajdin Hrustic,MID,5.7,Australia,AUS,2.73,60.0,2.87,60.0,2.8,60.0
+84,Riley McGree,MID,5.9,Australia,AUS,2.73,60.0,2.87,60.0,2.8,60.0
+85,David Alaba,DEF,4.6,Austria,AUT,3.58,60.0,1.7,60.0,3.03,60.0
+86,Philipp Lienhart,DEF,4.3,Austria,AUT,3.58,60.0,1.7,60.0,3.03,60.0
+87,Alexander Prass,DEF,4.3,Austria,AUT,3.58,60.0,1.7,60.0,3.03,60.0
+88,Kevin Danso,DEF,4.3,Austria,AUT,3.58,60.0,1.7,60.0,3.03,60.0
+90,Stefan Posch,DEF,4.3,Austria,AUT,3.58,60.0,1.7,60.0,3.03,60.0
+91,Phillipp Mwene,DEF,3.9,Austria,AUT,3.58,60.0,1.7,60.0,3.03,60.0
+92,Marco Friedl,DEF,4.3,Austria,AUT,3.58,60.0,1.7,60.0,3.03,60.0
+93,David Affengruber,DEF,3.9,Austria,AUT,3.58,60.0,1.7,60.0,3.03,60.0
+94,Michael Svoboda,DEF,3.8,Austria,AUT,3.58,60.0,1.7,60.0,3.03,60.0
+95,Marko Arnautovic,FWD,6.0,Austria,AUT,4.56,60.0,3.14,60.0,3.89,60.0
+96,Michael Gregoritsch,FWD,6.0,Austria,AUT,4.56,60.0,3.14,60.0,3.89,60.0
+97,Sasa Kalajdzic,FWD,6.0,Austria,AUT,4.56,60.0,3.14,60.0,3.89,60.0
+98,Alexander Schlager,GK,4.6,Austria,AUT,3.42,60.0,1.63,60.0,2.9,60.0
+99,Patrick Pentz,GK,4.6,Austria,AUT,3.42,60.0,1.63,60.0,2.9,60.0
+101,Florian Wiegele,GK,3.5,Austria,AUT,3.42,60.0,1.63,60.0,2.9,60.0
+102,Carney Chukwuemeka,MID,5.0,Austria,AUT,3.35,60.0,2.56,60.0,3.0,60.0
+103,Konrad Laimer,MID,5.8,Austria,AUT,3.35,60.0,2.56,60.0,3.0,60.0
+104,Alessandro Schöpf,MID,5.3,Austria,AUT,3.35,60.0,2.56,60.0,3.0,60.0
+105,Florian Grillitsch,MID,5.5,Austria,AUT,3.35,60.0,2.56,60.0,3.0,60.0
+106,Nicolas Seiwald,MID,5.6,Austria,AUT,3.35,60.0,2.56,60.0,3.0,60.0
+107,Marcel Sabitzer,MID,6.8,Austria,AUT,3.35,60.0,2.56,60.0,3.0,60.0
+108,Romano Schmid,MID,6.0,Austria,AUT,3.35,60.0,2.56,60.0,3.0,60.0
+109,Patrick Wimmer,MID,6.0,Austria,AUT,3.35,60.0,2.56,60.0,3.0,60.0
+110,Paul Wanner,MID,5.6,Austria,AUT,3.35,60.0,2.56,60.0,3.0,60.0
+111,Xaver Schlager,MID,5.5,Austria,AUT,3.35,60.0,2.56,60.0,3.0,60.0
+112,Christoph Baumgartner,MID,6.7,Austria,AUT,3.35,60.0,2.56,60.0,3.0,60.0
+114,Maxim De Cuyper,DEF,4.7,Belgium,BEL,3.41,60.0,3.57,60.0,3.88,60.0
+115,Timothy Castagne,DEF,4.7,Belgium,BEL,3.41,60.0,3.57,60.0,3.88,60.0
+116,Arthur Theate,DEF,4.5,Belgium,BEL,3.41,60.0,3.57,60.0,3.88,60.0
+117,Thomas Meunier,DEF,4.8,Belgium,BEL,3.41,60.0,3.57,60.0,3.88,60.0
+118,Zeno Debast,DEF,4.3,Belgium,BEL,3.41,60.0,3.57,60.0,3.88,60.0
+119,Axel Witsel,MID,5.0,Belgium,BEL,3.22,60.0,3.34,60.0,3.63,60.0
+120,Koni De Winter,DEF,4.2,Belgium,BEL,3.41,60.0,3.57,60.0,3.88,60.0
+121,Brandon Mechele,DEF,3.9,Belgium,BEL,3.41,60.0,3.57,60.0,3.88,60.0
+122,Joaquin Seys,DEF,3.9,Belgium,BEL,3.41,60.0,3.57,60.0,3.88,60.0
+123,Nathan Ngoy,DEF,3.7,Belgium,BEL,3.41,60.0,3.57,60.0,3.88,60.0
+124,Romelu Lukaku,FWD,7.4,Belgium,BEL,4.3,60.0,4.54,60.0,5.11,60.0
+125,Jérémy Doku,MID,7.5,Belgium,BEL,3.22,60.0,3.34,60.0,3.63,60.0
+127,Dodi Lukébakio,FWD,5.9,Belgium,BEL,4.3,60.0,4.54,60.0,5.11,60.0
+128,Alexis Saelemaekers,MID,5.7,Belgium,BEL,3.22,60.0,3.34,60.0,3.63,60.0
+129,Charles De Ketelaere,MID,5.6,Belgium,BEL,3.22,60.0,3.34,60.0,3.63,60.0
+132,Senne Lammens,GK,4.6,Belgium,BEL,3.26,60.0,3.41,60.0,3.67,60.0
+135,Nicolas Raskin,MID,5.3,Belgium,BEL,3.22,60.0,3.34,60.0,3.63,60.0
+136,Amadou Onana,MID,5.9,Belgium,BEL,3.22,60.0,3.34,60.0,3.63,60.0
+137,Youri Tielemans,MID,6.1,Belgium,BEL,3.22,60.0,3.34,60.0,3.63,60.0
+138,Kevin De Bruyne,MID,7.5,Belgium,BEL,3.22,60.0,3.34,60.0,3.63,60.0
+139,Sead Kolasinac,DEF,4.3,Bosnia and Herzegovina,BIH,2.35,60.0,1.98,60.0,3.53,60.0
+140,Amar Dedic,DEF,4.3,Bosnia and Herzegovina,BIH,2.35,60.0,1.98,60.0,3.53,60.0
+141,Tarik Muharemovic,DEF,3.9,Bosnia and Herzegovina,BIH,2.35,60.0,1.98,60.0,3.53,60.0
+142,Nikola Katic,DEF,3.8,Bosnia and Herzegovina,BIH,2.35,60.0,1.98,60.0,3.53,60.0
+143,Stjepan Radeljic,DEF,3.7,Bosnia and Herzegovina,BIH,2.35,60.0,1.98,60.0,3.53,60.0
+144,Nihad Mujakic,DEF,3.6,Bosnia and Herzegovina,BIH,2.35,60.0,1.98,60.0,3.53,60.0
+145,Nidal Celik,DEF,3.5,Bosnia and Herzegovina,BIH,2.35,60.0,1.98,60.0,3.53,60.0
+146,Ermedin Demirovic,FWD,6.2,Bosnia and Herzegovina,BIH,3.44,60.0,3.26,60.0,4.46,60.0
+147,Edin Dzeko,FWD,6.1,Bosnia and Herzegovina,BIH,3.44,60.0,3.26,60.0,4.46,60.0
+148,Jovo Lukic,FWD,5.6,Bosnia and Herzegovina,BIH,3.44,60.0,3.26,60.0,4.46,60.0
+149,Haris Tabakovic,FWD,5.1,Bosnia and Herzegovina,BIH,3.44,60.0,3.26,60.0,4.46,60.0
+150,Esmir Bajraktarevic,FWD,4.7,Bosnia and Herzegovina,BIH,3.44,60.0,3.26,60.0,4.46,60.0
+151,Samed Bazdar,FWD,4.5,Bosnia and Herzegovina,BIH,3.44,60.0,3.26,60.0,4.46,60.0
+152,Kerim Alajbegovic,FWD,4.2,Bosnia and Herzegovina,BIH,3.44,60.0,3.26,60.0,4.46,60.0
+153,Nikola Vasilj,GK,4.0,Bosnia and Herzegovina,BIH,2.25,60.0,1.9,60.0,3.37,60.0
+154,Osman Hadzikic,GK,3.6,Bosnia and Herzegovina,BIH,2.25,60.0,1.9,60.0,3.37,60.0
+155,Martin Zlomislic,GK,3.5,Bosnia and Herzegovina,BIH,2.25,60.0,1.9,60.0,3.37,60.0
+156,Amar Memic,MID,4.7,Bosnia and Herzegovina,BIH,2.74,60.0,2.64,60.0,3.3,60.0
+157,Dzenis Burnic,MID,4.9,Bosnia and Herzegovina,BIH,2.74,60.0,2.64,60.0,3.3,60.0
+158,Ivan Sunjic,MID,5.1,Bosnia and Herzegovina,BIH,2.74,60.0,2.64,60.0,3.3,60.0
+159,Armin Gigovic,MID,5.1,Bosnia and Herzegovina,BIH,2.74,60.0,2.64,60.0,3.3,60.0
+160,Ivan Basic,MID,5.1,Bosnia and Herzegovina,BIH,2.74,60.0,2.64,60.0,3.3,60.0
+161,Benjamin Tahirovic,MID,5.3,Bosnia and Herzegovina,BIH,2.74,60.0,2.64,60.0,3.3,60.0
+162,Amir Hadziahmetovic,MID,5.5,Bosnia and Herzegovina,BIH,2.74,60.0,2.64,60.0,3.3,60.0
+164,Gabriel Magalhães,DEF,5.5,Brazil,BRA,3.48,60.0,4.24,60.0,3.66,60.0
+165,Marquinhos,DEF,5.2,Brazil,BRA,3.48,60.0,4.24,60.0,3.66,60.0
+166,Ibañez,DEF,4.4,Brazil,BRA,3.48,60.0,4.24,60.0,3.66,60.0
+167,Danilo,DEF,4.3,Brazil,BRA,3.48,60.0,4.24,60.0,3.66,60.0
+168,Douglas Santos,DEF,4.3,Brazil,BRA,3.48,60.0,4.24,60.0,3.66,60.0
+169,Bremer,DEF,4.3,Brazil,BRA,3.48,60.0,4.24,60.0,3.66,60.0
+170,Léo Pereira,DEF,4.2,Brazil,BRA,3.48,60.0,4.24,60.0,3.66,60.0
+173,Vinícius Júnior,MID,10.0,Brazil,BRA,3.27,60.0,3.98,60.0,3.42,60.0
+174,Matheus Cunha,FWD,7.3,Brazil,BRA,4.4,60.0,5.78,60.0,4.7,60.0
+176,Gabriel Martinelli,MID,6.5,Brazil,BRA,3.27,60.0,3.98,60.0,3.42,60.0
+177,Luiz Henrique,FWD,6.1,Brazil,BRA,4.4,60.0,5.78,60.0,4.7,60.0
+178,Igor Thiago,FWD,5.9,Brazil,BRA,4.4,60.0,5.78,60.0,4.7,60.0
+179,Rayan,FWD,5.6,Brazil,BRA,4.4,60.0,5.78,60.0,4.7,60.0
+181,Endrick,FWD,5.5,Brazil,BRA,4.4,60.0,5.78,60.0,4.7,60.0
+182,Ederson,GK,5.0,Brazil,BRA,3.33,60.0,4.0,60.0,3.48,60.0
+183,Alisson Becker,GK,5.0,Brazil,BRA,3.33,60.0,4.0,60.0,3.48,60.0
+186,Fabinho,MID,5.2,Brazil,BRA,3.27,60.0,3.98,60.0,3.42,60.0
+187,Danilo,MID,5.6,Brazil,BRA,3.27,60.0,3.98,60.0,3.42,60.0
+188,Casemiro,MID,6.3,Brazil,BRA,3.27,60.0,3.98,60.0,3.42,60.0
+190,Lucas Paquetá,MID,6.5,Brazil,BRA,3.27,60.0,3.98,60.0,3.42,60.0
+195,João Paulo,MID,4.6,Cabo Verde,CPV,2.31,60.0,2.47,60.0,2.92,60.0
+196,Yannick Semedo,MID,4.7,Cabo Verde,CPV,2.31,60.0,2.47,60.0,2.92,60.0
+198,Kevin Pina,MID,4.7,Cabo Verde,CPV,2.31,60.0,2.47,60.0,2.92,60.0
+199,Steven Moreira,DEF,3.9,Cabo Verde,CPV,0.32,60.0,1.37,60.0,2.86,60.0
+200,Wagner Pina,DEF,3.8,Cabo Verde,CPV,0.32,60.0,1.37,60.0,2.86,60.0
+201,Pico,DEF,3.7,Cabo Verde,CPV,0.32,60.0,1.37,60.0,2.86,60.0
+202,Kelvin Pires,DEF,3.6,Cabo Verde,CPV,0.32,60.0,1.37,60.0,2.86,60.0
+203,Sidny Cabral,DEF,3.5,Cabo Verde,CPV,0.32,60.0,1.37,60.0,2.86,60.0
+205,Diney,DEF,3.5,Cabo Verde,CPV,0.32,60.0,1.37,60.0,2.86,60.0
+206,Ryan Mendes,FWD,4.9,Cabo Verde,CPV,2.7,60.0,2.98,60.0,3.74,60.0
+207,Jovane Cabral,FWD,4.9,Cabo Verde,CPV,2.7,60.0,2.98,60.0,3.74,60.0
+208,Dailon Livramento,FWD,4.9,Cabo Verde,CPV,2.7,60.0,2.98,60.0,3.74,60.0
+209,Nuno da Costa,FWD,4.7,Cabo Verde,CPV,2.7,60.0,2.98,60.0,3.74,60.0
+210,Garry Rodrigues,FWD,4.7,Cabo Verde,CPV,2.7,60.0,2.98,60.0,3.74,60.0
+211,Willy Semedo,FWD,4.5,Cabo Verde,CPV,2.7,60.0,2.98,60.0,3.74,60.0
+214,Vozinha,GK,3.9,Cabo Verde,CPV,0.27,60.0,1.31,60.0,2.74,60.0
+215,CJ dos Santos,GK,3.6,Cabo Verde,CPV,0.27,60.0,1.31,60.0,2.74,60.0
+216,Márcio da Rosa,GK,3.5,Cabo Verde,CPV,0.27,60.0,1.31,60.0,2.74,60.0
+217,Telmo Arcanjo,MID,4.9,Cabo Verde,CPV,2.31,60.0,2.47,60.0,2.92,60.0
+218,Deroy Duarte,MID,4.9,Cabo Verde,CPV,2.31,60.0,2.47,60.0,2.92,60.0
+219,Laros Duarte,MID,5.1,Cabo Verde,CPV,2.31,60.0,2.47,60.0,2.92,60.0
+220,Richie Laryea,DEF,3.9,Canada,CAN,3.37,60.0,3.92,60.0,2.59,60.0
+221,Derek Cornelius,DEF,4.0,Canada,CAN,3.37,60.0,3.92,60.0,2.59,60.0
+223,Joel Waterman,DEF,3.7,Canada,CAN,3.37,60.0,3.92,60.0,2.59,60.0
+225,Luc De Fougerolles,DEF,3.5,Canada,CAN,3.37,60.0,3.92,60.0,2.59,60.0
+226,Jonathan David,FWD,7.0,Canada,CAN,4.25,60.0,5.2,60.0,3.57,60.0
+227,Cyle Larin,FWD,6.2,Canada,CAN,4.25,60.0,5.2,60.0,3.57,60.0
+228,Tajon Buchanan,FWD,5.5,Canada,CAN,4.25,60.0,5.2,60.0,3.57,60.0
+229,Liam Millar,FWD,5.1,Canada,CAN,4.25,60.0,5.2,60.0,3.57,60.0
+230,Tani Oluwaseyi,FWD,4.9,Canada,CAN,4.25,60.0,5.2,60.0,3.57,60.0
+232,Jacen Russell-Rowe,FWD,4.5,Canada,CAN,4.25,60.0,5.2,60.0,3.57,60.0
+233,Daniel Jebbison,FWD,4.2,Canada,CAN,4.25,60.0,5.2,60.0,3.57,60.0
+235,Maxime Crépeau,GK,4.0,Canada,CAN,3.22,60.0,3.72,60.0,2.49,60.0
+236,Dayne St. Clair,GK,3.8,Canada,CAN,3.22,60.0,3.72,60.0,2.49,60.0
+237,Owen Goodman,GK,3.5,Canada,CAN,3.22,60.0,3.72,60.0,2.49,60.0
+238,Ali Ahmed,MID,4.9,Canada,CAN,3.19,60.0,3.68,60.0,2.82,60.0
+239,Ralph Priso,MID,4.9,Canada,CAN,3.19,60.0,3.68,60.0,2.82,60.0
+240,Niko Sigur,MID,4.9,Canada,CAN,3.19,60.0,3.68,60.0,2.82,60.0
+241,Nathan Saliba,MID,5.1,Canada,CAN,3.19,60.0,3.68,60.0,2.82,60.0
+242,Mathieu Choinière,MID,5.3,Canada,CAN,3.19,60.0,3.68,60.0,2.82,60.0
+243,Jonathan Osorio,MID,5.6,Canada,CAN,3.19,60.0,3.68,60.0,2.82,60.0
+244,Marcelo Flores,MID,5.7,Canada,CAN,3.19,60.0,3.68,60.0,2.82,60.0
+245,Ismaël Koné,MID,6.0,Canada,CAN,3.19,60.0,3.68,60.0,2.82,60.0
+246,Kevin Castaño,MID,4.3,Colombia,COL,3.55,60.0,3.44,60.0,2.9,60.0
+247,Richard Ríos,MID,4.7,Colombia,COL,3.55,60.0,3.44,60.0,2.9,60.0
+248,Daniel Muñoz,DEF,4.6,Colombia,COL,3.79,60.0,3.68,60.0,2.79,60.0
+249,Jhon Lucumí,DEF,4.3,Colombia,COL,3.79,60.0,3.68,60.0,2.79,60.0
+250,Dávinson Sánchez,DEF,4.3,Colombia,COL,3.79,60.0,3.68,60.0,2.79,60.0
+251,Déiver Machado,DEF,3.9,Colombia,COL,3.79,60.0,3.68,60.0,2.79,60.0
+252,Johan Mojica,DEF,3.9,Colombia,COL,3.79,60.0,3.68,60.0,2.79,60.0
+253,Santiago Arias,DEF,3.9,Colombia,COL,3.79,60.0,3.68,60.0,2.79,60.0
+256,Luis Díaz,MID,8.1,Colombia,COL,3.55,60.0,3.44,60.0,2.9,60.0
+257,Jhon Córdoba,FWD,6.1,Colombia,COL,4.96,60.0,4.73,60.0,3.7,60.0
+259,Luis Suárez,FWD,5.7,Colombia,COL,4.96,60.0,4.73,60.0,3.7,60.0
+261,Andrés Gómez,FWD,4.9,Colombia,COL,4.96,60.0,4.73,60.0,3.7,60.0
+262,Camilo Vargas,GK,4.3,Colombia,COL,3.6,60.0,3.5,60.0,2.68,60.0
+263,David Ospina,GK,4.0,Colombia,COL,3.6,60.0,3.5,60.0,2.68,60.0
+264,Álvaro Montero,GK,3.8,Colombia,COL,3.6,60.0,3.5,60.0,2.68,60.0
+265,Jefferson Lerma,MID,4.9,Colombia,COL,3.55,60.0,3.44,60.0,2.9,60.0
+266,Gustavo Puerta,MID,5.3,Colombia,COL,3.55,60.0,3.44,60.0,2.9,60.0
+267,Juan Fernando Quintero,MID,5.6,Colombia,COL,3.55,60.0,3.44,60.0,2.9,60.0
+268,Jaminton Campaz,MID,5.5,Colombia,COL,3.55,60.0,3.44,60.0,2.9,60.0
+269,Jhon Arias,MID,6.3,Colombia,COL,3.55,60.0,3.44,60.0,2.9,60.0
+270,James Rodríguez,MID,6.5,Colombia,COL,3.55,60.0,3.44,60.0,2.9,60.0
+271,Jorge Carrascal,MID,6.1,Colombia,COL,3.55,60.0,3.44,60.0,2.9,60.0
+272,Aaron Wan-Bissaka,DEF,4.3,Congo DR,COD,1.77,60.0,1.89,60.0,3.03,60.0
+273,Arthur Masuaku,DEF,4.2,Congo DR,COD,1.77,60.0,1.89,60.0,3.03,60.0
+274,Chancel Mbemba,DEF,4.2,Congo DR,COD,1.77,60.0,1.89,60.0,3.03,60.0
+275,Axel Tuanzebe,DEF,4.0,Congo DR,COD,1.77,60.0,1.89,60.0,3.03,60.0
+276,Joris Kayembe,DEF,3.9,Congo DR,COD,1.77,60.0,1.89,60.0,3.03,60.0
+277,Dylan Batubinsika,DEF,3.8,Congo DR,COD,1.77,60.0,1.89,60.0,3.03,60.0
+278,Steve Kapuadi,DEF,3.7,Congo DR,COD,1.77,60.0,1.89,60.0,3.03,60.0
+281,Yoane Wissa,FWD,6.2,Congo DR,COD,3.17,60.0,3.23,60.0,3.89,60.0
+282,Simon Banza,FWD,5.6,Congo DR,COD,3.17,60.0,3.23,60.0,3.89,60.0
+283,Cédric Bakambu,FWD,6.5,Congo DR,COD,3.17,60.0,3.23,60.0,3.89,60.0
+284,Meschack Elia,FWD,4.9,Congo DR,COD,3.17,60.0,3.23,60.0,3.89,60.0
+285,Fiston Mayele,FWD,4.9,Congo DR,COD,3.17,60.0,3.23,60.0,3.89,60.0
+287,Nathanaël Mbuku,FWD,4.5,Congo DR,COD,3.17,60.0,3.23,60.0,3.89,60.0
+288,Brian Cipenga,FWD,4.2,Congo DR,COD,3.17,60.0,3.23,60.0,3.89,60.0
+289,Lionel Mpasi,GK,4.0,Congo DR,COD,1.69,60.0,1.81,60.0,2.91,60.0
+290,Matthieu Epolo,GK,3.7,Congo DR,COD,1.69,60.0,1.81,60.0,2.91,60.0
+291,Timothy Fayulu,GK,3.6,Congo DR,COD,1.69,60.0,1.81,60.0,2.91,60.0
+292,Ngal'ayel Mukau,MID,4.9,Congo DR,COD,2.58,60.0,2.61,60.0,3.0,60.0
+293,Samuel Moutoussamy,MID,5.1,Congo DR,COD,2.58,60.0,2.61,60.0,3.0,60.0
+294,Noah Sadiki,MID,5.3,Congo DR,COD,2.58,60.0,2.61,60.0,3.0,60.0
+295,Charles Pickel,MID,5.3,Congo DR,COD,2.58,60.0,2.61,60.0,3.0,60.0
+296,Edo Kayembe,MID,5.6,Congo DR,COD,2.58,60.0,2.61,60.0,3.0,60.0
+297,Théo Bongonda,MID,6.2,Congo DR,COD,2.58,60.0,2.61,60.0,3.0,60.0
+298,Christ Inao Oulaï,MID,4.6,Côte d'Ivoire,CIV,2.71,60.0,2.64,60.0,3.46,60.0
+299,Evan Ndicka,DEF,4.4,Côte d'Ivoire,CIV,2.22,60.0,1.97,60.0,3.69,60.0
+300,Wilfried Singo,DEF,4.4,Côte d'Ivoire,CIV,2.22,60.0,1.97,60.0,3.69,60.0
+301,Ousmane Diomande,DEF,4.3,Côte d'Ivoire,CIV,2.22,60.0,1.97,60.0,3.69,60.0
+302,Odilon Kossounou,DEF,4.3,Côte d'Ivoire,CIV,2.22,60.0,1.97,60.0,3.69,60.0
+303,Guéla Doué,DEF,3.9,Côte d'Ivoire,CIV,2.22,60.0,1.97,60.0,3.69,60.0
+304,Emmanuel Agbadou,DEF,3.9,Côte d'Ivoire,CIV,2.22,60.0,1.97,60.0,3.69,60.0
+305,Ghislain Konan,DEF,4.0,Côte d'Ivoire,CIV,2.22,60.0,1.97,60.0,3.69,60.0
+306,Clément Akpa,DEF,3.6,Côte d'Ivoire,CIV,2.22,60.0,1.97,60.0,3.69,60.0
+307,Yan Diomande,FWD,5.9,Côte d'Ivoire,CIV,3.38,60.0,3.26,60.0,4.76,60.0
+308,Nicolas Pépé,FWD,5.9,Côte d'Ivoire,CIV,3.38,60.0,3.26,60.0,4.76,60.0
+309,Elye Wahi,FWD,5.9,Côte d'Ivoire,CIV,3.38,60.0,3.26,60.0,4.76,60.0
+310,Amad Diallo,FWD,5.9,Côte d'Ivoire,CIV,3.38,60.0,3.26,60.0,4.76,60.0
+311,Simon Adingra,FWD,5.6,Côte d'Ivoire,CIV,3.38,60.0,3.26,60.0,4.76,60.0
+312,Evann Guessand,FWD,5.3,Côte d'Ivoire,CIV,3.38,60.0,3.26,60.0,4.76,60.0
+314,Bazoumana Touré,FWD,4.5,Côte d'Ivoire,CIV,3.38,60.0,3.26,60.0,4.76,60.0
+316,Alban Lafont,GK,4.1,Côte d'Ivoire,CIV,2.13,60.0,1.89,60.0,3.51,60.0
+317,Yahia Fofana,GK,4.2,Côte d'Ivoire,CIV,2.13,60.0,1.89,60.0,3.51,60.0
+318,Mohamed Koné,GK,3.7,Côte d'Ivoire,CIV,2.13,60.0,1.89,60.0,3.51,60.0
+319,Parfait Guiagon,MID,4.9,Côte d'Ivoire,CIV,2.71,60.0,2.64,60.0,3.46,60.0
+320,Jean Michaël Seri,MID,5.5,Côte d'Ivoire,CIV,2.71,60.0,2.64,60.0,3.46,60.0
+321,Ibrahim Sangaré,MID,5.8,Côte d'Ivoire,CIV,2.71,60.0,2.64,60.0,3.46,60.0
+322,Franck Kessie,MID,5.9,Côte d'Ivoire,CIV,2.71,60.0,2.64,60.0,3.46,60.0
+323,Seko Fofana,MID,6.8,Côte d'Ivoire,CIV,2.71,60.0,2.64,60.0,3.46,60.0
+324,Petar Sucic,MID,4.2,Croatia,CRO,2.69,60.0,3.25,60.0,3.43,60.0
+325,Josip Stanisic,DEF,4.3,Croatia,CRO,2.15,60.0,3.45,60.0,3.66,60.0
+326,Josip Sutalo,DEF,4.3,Croatia,CRO,2.15,60.0,3.45,60.0,3.66,60.0
+327,Duje Caleta-Car,DEF,4.0,Croatia,CRO,2.15,60.0,3.45,60.0,3.66,60.0
+328,Marin Pongracic,DEF,4.0,Croatia,CRO,2.15,60.0,3.45,60.0,3.66,60.0
+329,Martin Erlic,DEF,3.9,Croatia,CRO,2.15,60.0,3.45,60.0,3.66,60.0
+330,Luka Vuskovic,DEF,3.7,Croatia,CRO,2.15,60.0,3.45,60.0,3.66,60.0
+332,Ante Budimir,FWD,6.8,Croatia,CRO,3.35,60.0,4.35,60.0,4.71,60.0
+333,Andrej Kramaric,FWD,6.2,Croatia,CRO,3.35,60.0,4.35,60.0,4.71,60.0
+334,Ivan Perisic,FWD,5.4,Croatia,CRO,3.35,60.0,4.35,60.0,4.71,60.0
+335,Marco Pasalic,FWD,5.3,Croatia,CRO,3.35,60.0,4.35,60.0,4.71,60.0
+336,Petar Musa,FWD,5.1,Croatia,CRO,3.35,60.0,4.35,60.0,4.71,60.0
+337,Igor Matanovic,FWD,4.9,Croatia,CRO,3.35,60.0,4.35,60.0,4.71,60.0
+338,Dominik Livakovic,GK,4.5,Croatia,CRO,2.07,60.0,3.29,60.0,3.49,60.0
+339,Ivor Pandur,GK,3.9,Croatia,CRO,2.07,60.0,3.29,60.0,3.49,60.0
+341,Luka Sucic,MID,4.9,Croatia,CRO,2.69,60.0,3.25,60.0,3.43,60.0
+342,Toni Fruk,MID,4.9,Croatia,CRO,2.69,60.0,3.25,60.0,3.43,60.0
+343,Nikola Moro,MID,5.6,Croatia,CRO,2.69,60.0,3.25,60.0,3.43,60.0
+344,Kristijan Jakic,MID,5.6,Croatia,CRO,2.69,60.0,3.25,60.0,3.43,60.0
+345,Nikola Vlasic,MID,6.1,Croatia,CRO,2.69,60.0,3.25,60.0,3.43,60.0
+346,Luka Modric,MID,6.2,Croatia,CRO,2.69,60.0,3.25,60.0,3.43,60.0
+347,Mario Pasalic,MID,6.4,Croatia,CRO,2.69,60.0,3.25,60.0,3.43,60.0
+348,Martin Baturina,MID,6.5,Croatia,CRO,2.69,60.0,3.25,60.0,3.43,60.0
+350,Tahith Chong,MID,4.2,Curaçao,CUW,2.38,60.0,2.43,60.0,2.61,60.0
+351,Godfried Roemeratoe,MID,4.7,Curaçao,CUW,2.38,60.0,2.43,60.0,2.61,60.0
+352,Leandro Bacuna,DEF,4.0,Curaçao,CUW,1.04,60.0,1.18,60.0,1.87,60.0
+353,Riechedly Bazoer,DEF,3.8,Curaçao,CUW,1.04,60.0,1.18,60.0,1.87,60.0
+354,Joshua Brenet,DEF,3.7,Curaçao,CUW,1.04,60.0,1.18,60.0,1.87,60.0
+355,Shurandy Sambo,DEF,3.6,Curaçao,CUW,1.04,60.0,1.18,60.0,1.87,60.0
+356,Sherel Floranus,DEF,3.6,Curaçao,CUW,1.04,60.0,1.18,60.0,1.87,60.0
+357,Roshon van Eijma,DEF,3.5,Curaçao,CUW,1.04,60.0,1.18,60.0,1.87,60.0
+358,Ar'Jany Martha,DEF,3.5,Curaçao,CUW,1.04,60.0,1.18,60.0,1.87,60.0
+359,Juriën Gaari,DEF,3.5,Curaçao,CUW,1.04,60.0,1.18,60.0,1.87,60.0
+360,Livano Comenencia,DEF,4.5,Curaçao,CUW,1.04,60.0,1.18,60.0,1.87,60.0
+361,Tyrese Noslin,DEF,3.5,Curaçao,CUW,1.04,60.0,1.18,60.0,1.87,60.0
+362,Brandley Kuwas,FWD,4.4,Curaçao,CUW,2.81,60.0,2.89,60.0,3.21,60.0
+363,Sontje Hansen,FWD,4.4,Curaçao,CUW,2.81,60.0,2.89,60.0,3.21,60.0
+364,Kenji Gorré,FWD,4.2,Curaçao,CUW,2.81,60.0,2.89,60.0,3.21,60.0
+365,Jearl Margaritha,FWD,4.2,Curaçao,CUW,2.81,60.0,2.89,60.0,3.21,60.0
+366,Gervane Kastaneer,FWD,4.0,Curaçao,CUW,2.81,60.0,2.89,60.0,3.21,60.0
+367,Jeremy Antonisse,FWD,4.0,Curaçao,CUW,2.81,60.0,2.89,60.0,3.21,60.0
+368,Eloy Room,GK,3.9,Curaçao,CUW,0.99,60.0,1.12,60.0,1.79,60.0
+369,Trevor Doornbusch,GK,3.6,Curaçao,CUW,0.99,60.0,1.12,60.0,1.79,60.0
+370,Tyrick Bodak,GK,3.5,Curaçao,CUW,0.99,60.0,1.12,60.0,1.79,60.0
+371,Kevin Felida,MID,4.5,Curaçao,CUW,2.38,60.0,2.43,60.0,2.61,60.0
+372,Juninho Bacuna,MID,5.1,Curaçao,CUW,2.38,60.0,2.43,60.0,2.61,60.0
+373,Denis Visinsky,MID,4.9,Czechia,CZE,2.96,60.0,3.12,60.0,2.8,60.0
+374,Ladislav Krejcí,DEF,4.4,Czechia,CZE,2.94,60.0,3.24,60.0,2.54,60.0
+375,Tomás Holes,DEF,3.9,Czechia,CZE,2.94,60.0,3.24,60.0,2.54,60.0
+376,David Jurásek,DEF,3.9,Czechia,CZE,2.94,60.0,3.24,60.0,2.54,60.0
+378,Robin Hranác,DEF,3.9,Czechia,CZE,2.94,60.0,3.24,60.0,2.54,60.0
+379,Jaroslav Zeleny,DEF,3.9,Czechia,CZE,2.94,60.0,3.24,60.0,2.54,60.0
+380,Vladimír Coufal,DEF,3.6,Czechia,CZE,2.94,60.0,3.24,60.0,2.54,60.0
+381,Stepán Chaloupek,DEF,3.5,Czechia,CZE,2.94,60.0,3.24,60.0,2.54,60.0
+382,Patrik Schick,FWD,7.3,Czechia,CZE,3.81,60.0,4.11,60.0,3.54,60.0
+383,Tomás Chory,FWD,5.3,Czechia,CZE,3.81,60.0,4.11,60.0,3.54,60.0
+384,Mojmír Chytil,FWD,4.9,Czechia,CZE,3.81,60.0,4.11,60.0,3.54,60.0
+386,Tomás Ladra,FWD,4.4,Czechia,CZE,3.81,60.0,4.11,60.0,3.54,60.0
+387,Matej Kovár,GK,4.1,Czechia,CZE,2.82,60.0,3.11,60.0,2.44,60.0
+388,Lukás Hornícek,GK,3.8,Czechia,CZE,2.82,60.0,3.11,60.0,2.44,60.0
+390,Lukás Cerv,MID,5.3,Czechia,CZE,2.96,60.0,3.12,60.0,2.8,60.0
+391,Vladimír Darida,MID,5.3,Czechia,CZE,2.96,60.0,3.12,60.0,2.8,60.0
+392,Pavel Bucha,MID,5.5,Czechia,CZE,2.96,60.0,3.12,60.0,2.8,60.0
+393,Tomás Soucek,MID,5.6,Czechia,CZE,2.96,60.0,3.12,60.0,2.8,60.0
+395,Michal Sadílek,MID,5.6,Czechia,CZE,2.96,60.0,3.12,60.0,2.8,60.0
+396,Lukás Provod,MID,5.9,Czechia,CZE,2.96,60.0,3.12,60.0,2.8,60.0
+397,Pavel Sulc,MID,5.9,Czechia,CZE,2.96,60.0,3.12,60.0,2.8,60.0
+398,Denil Castillo,MID,4.9,Ecuador,ECU,3.26,60.0,3.91,60.0,2.86,60.0
+399,Jordy Alcívar,MID,4.9,Ecuador,ECU,3.26,60.0,3.91,60.0,2.86,60.0
+400,Pervis Estupiñán,DEF,4.8,Ecuador,ECU,3.46,60.0,4.17,60.0,2.7,60.0
+403,Ángelo Preciado,DEF,4.3,Ecuador,ECU,3.46,60.0,4.17,60.0,2.7,60.0
+404,Joel Ordóñez,DEF,3.9,Ecuador,ECU,3.46,60.0,4.17,60.0,2.7,60.0
+405,Félix Torres,DEF,3.9,Ecuador,ECU,3.46,60.0,4.17,60.0,2.7,60.0
+406,José Hurtado,DEF,3.9,Ecuador,ECU,3.46,60.0,4.17,60.0,2.7,60.0
+407,Jackson Porozo,DEF,3.8,Ecuador,ECU,3.46,60.0,4.17,60.0,2.7,60.0
+411,Yaimar Medina,DEF,3.5,Ecuador,ECU,3.46,60.0,4.17,60.0,2.7,60.0
+412,Enner Valencia,FWD,5.9,Ecuador,ECU,4.37,60.0,5.65,60.0,3.64,60.0
+413,Gonzalo Plata,FWD,5.6,Ecuador,ECU,4.37,60.0,5.65,60.0,3.64,60.0
+414,John Yeboah,MID,5.1,Ecuador,ECU,3.26,60.0,3.91,60.0,2.86,60.0
+415,Kevin Rodríguez,FWD,4.9,Ecuador,ECU,4.37,60.0,5.65,60.0,3.64,60.0
+416,Alan Minda,FWD,4.9,Ecuador,ECU,4.37,60.0,5.65,60.0,3.64,60.0
+417,Jordy Caicedo,FWD,4.9,Ecuador,ECU,4.37,60.0,5.65,60.0,3.64,60.0
+419,John Mercado,FWD,4.4,Ecuador,ECU,4.37,60.0,5.65,60.0,3.64,60.0
+420,Anthony Valencia,MID,4.2,Ecuador,ECU,3.26,60.0,3.91,60.0,2.86,60.0
+421,Jeremy Arévalo,FWD,4.0,Ecuador,ECU,4.37,60.0,5.65,60.0,3.64,60.0
+423,Hernán Galíndez,GK,4.2,Ecuador,ECU,3.31,60.0,3.93,60.0,2.59,60.0
+424,Moisés Ramírez,GK,3.9,Ecuador,ECU,3.31,60.0,3.93,60.0,2.59,60.0
+425,Gonzalo Valle,GK,3.6,Ecuador,ECU,3.31,60.0,3.93,60.0,2.59,60.0
+427,Kendry Páez,MID,5.2,Ecuador,ECU,3.26,60.0,3.91,60.0,2.86,60.0
+428,Alan Franco,MID,5.6,Ecuador,ECU,3.26,60.0,3.91,60.0,2.86,60.0
+429,Pedro Vite,MID,5.2,Ecuador,ECU,3.26,60.0,3.91,60.0,2.86,60.0
+430,Moisés Caicedo,MID,6.8,Ecuador,ECU,3.26,60.0,3.91,60.0,2.86,60.0
+432,Marwan Attia,MID,4.3,Egypt,EGY,2.73,60.0,3.23,60.0,3.02,60.0
+433,Zizo,MID,4.3,Egypt,EGY,2.73,60.0,3.23,60.0,3.02,60.0
+434,Hamdi Fathy,MID,4.4,Egypt,EGY,2.73,60.0,3.23,60.0,3.02,60.0
+435,Emam Ashour,MID,4.6,Egypt,EGY,2.73,60.0,3.23,60.0,3.02,60.0
+436,Mahmoud Saber,MID,4.9,Egypt,EGY,2.73,60.0,3.23,60.0,3.02,60.0
+437,Mohamed Abdelmonem,DEF,4.0,Egypt,EGY,2.3,60.0,3.43,60.0,3.07,60.0
+438,Ahmed Fatouh,DEF,3.9,Egypt,EGY,2.3,60.0,3.43,60.0,3.07,60.0
+439,Mohamed Hany,DEF,3.6,Egypt,EGY,2.3,60.0,3.43,60.0,3.07,60.0
+440,Ramy Rabia,DEF,3.6,Egypt,EGY,2.3,60.0,3.43,60.0,3.07,60.0
+441,Hossam Abdelmaguid,DEF,3.6,Egypt,EGY,2.3,60.0,3.43,60.0,3.07,60.0
+442,Tarek Alaa,DEF,3.5,Egypt,EGY,2.3,60.0,3.43,60.0,3.07,60.0
+444,Yasser Ibrahim,DEF,3.5,Egypt,EGY,2.3,60.0,3.43,60.0,3.07,60.0
+445,Omar Marmoush,FWD,7.8,Egypt,EGY,3.42,60.0,4.33,60.0,3.92,60.0
+447,Trezeguet,FWD,5.6,Egypt,EGY,3.42,60.0,4.33,60.0,3.92,60.0
+448,Haissem Hassan,FWD,4.6,Egypt,EGY,3.42,60.0,4.33,60.0,3.92,60.0
+451,Mohamed El Shenawy,GK,3.6,Egypt,EGY,2.2,60.0,3.28,60.0,2.94,60.0
+452,El Mahdy Soliman,GK,3.6,Egypt,EGY,2.2,60.0,3.28,60.0,2.94,60.0
+453,Mostafa Shobeir,GK,3.5,Egypt,EGY,2.2,60.0,3.28,60.0,2.94,60.0
+454,Mohamed Alaa,GK,3.5,Egypt,EGY,2.2,60.0,3.28,60.0,2.94,60.0
+455,Mohanad Lasheen,MID,5.3,Egypt,EGY,2.73,60.0,3.23,60.0,3.02,60.0
+456,Ibrahim Adel,MID,5.9,Egypt,EGY,2.73,60.0,3.23,60.0,3.02,60.0
+457,Nico O'Reilly,DEF,4.7,England,ENG,4.03,80.0,4.91,80.0,4.64,80.0
+459,Tino Livramento,DEF,4.6,England,ENG,1.51,20.0,1.73,20.0,1.66,20.0
+461,Marc Guéhi,DEF,5.1,England,ENG,4.23,88.0,5.2,88.0,4.91,88.0
+462,Dan Burn,DEF,4.5,England,ENG,1.25,10.0,1.36,10.0,1.33,10.0
+463,Ezri Konsa,DEF,4.8,England,ENG,4.15,85.0,5.1,85.0,4.81,85.0
+466,John Stones,DEF,4.6,England,ENG,1.25,10.0,1.36,10.0,1.33,10.0
+467,Djed Spence,DEF,4.5,England,ENG,1.13,5.0,1.18,5.0,1.17,5.0
+468,Harry Kane,FWD,10.5,England,ENG,5.59,88.0,7.39,88.0,6.85,88.0
+469,Bukayo Saka,MID,9.5,England,ENG,3.73,80.0,4.56,80.0,4.31,80.0
+471,Marcus Rashford,MID,7.5,England,ENG,3.66,77.0,4.47,77.0,4.22,77.0
+474,Anthony Gordon,MID,7.0,England,ENG,1.65,30.0,1.96,30.0,1.87,30.0
+475,Morgan Rogers,MID,7.2,England,ENG,3.29,60.0,3.92,60.0,3.73,60.0
+476,Noni Madueke,FWD,6.1,England,ENG,1.41,10.0,1.61,10.0,1.55,10.0
+477,Jordan Pickford,GK,4.8,England,ENG,4.04,90.0,4.92,90.0,4.65,90.0
+478,Dean Henderson,GK,4.2,England,ENG,0.0,0.0,0.0,0.0,0.0,0.0
+479,James Trafford,GK,4.0,England,ENG,0.0,0.0,0.0,0.0,0.0,0.0
+482,Jordan Henderson,MID,5.1,England,ENG,1.22,10.0,1.32,10.0,1.29,10.0
+485,Kobbie Mainoo,MID,6.1,England,ENG,1.19,9.0,1.29,9.0,1.26,9.0
+486,Elliot Anderson,MID,6.5,England,ENG,3.83,85.0,4.72,85.0,4.45,85.0
+488,Declan Rice,MID,7.0,England,ENG,3.83,85.0,4.72,85.0,4.45,85.0
+491,Jude Bellingham,MID,8.3,England,ENG,3.83,85.0,4.72,85.0,4.45,85.0
+492,Theo Hernández,DEF,5.0,France,FRA,3.39,60.0,4.27,60.0,3.26,60.0
+493,Maxence Lacroix,DEF,4.5,France,FRA,3.39,60.0,4.27,60.0,3.26,60.0
+494,Dayot Upamecano,DEF,5.3,France,FRA,3.39,60.0,4.27,60.0,3.26,60.0
+495,Ibrahima Konaté,DEF,4.9,France,FRA,3.39,60.0,4.27,60.0,3.26,60.0
+496,Lucas Hernández,DEF,5.2,France,FRA,3.39,60.0,4.27,60.0,3.26,60.0
+498,Lucas Digne,DEF,5.0,France,FRA,3.39,60.0,4.27,60.0,3.26,60.0
+499,Malo Gusto,DEF,5.1,France,FRA,3.39,60.0,4.27,60.0,3.26,60.0
+500,Kylian Mbappé,FWD,10.5,France,FRA,4.29,60.0,5.83,60.0,4.13,60.0
+501,Ousmane Dembélé,MID,10.0,France,FRA,3.21,60.0,4.0,60.0,3.13,60.0
+502,Marcus Thuram,FWD,7.5,France,FRA,4.29,60.0,5.83,60.0,4.13,60.0
+505,Désiré Doué,MID,7.5,France,FRA,3.21,60.0,4.0,60.0,3.13,60.0
+506,Mike Maignan,GK,5.0,France,FRA,3.25,60.0,4.03,60.0,3.13,60.0
+508,Brice Samba,GK,4.5,France,FRA,3.25,60.0,4.03,60.0,3.13,60.0
+509,N'Golo Kanté,MID,5.1,France,FRA,3.21,60.0,4.0,60.0,3.13,60.0
+510,Adrien Rabiot,MID,6.4,France,FRA,3.21,60.0,4.0,60.0,3.13,60.0
+511,Warren Zaïre-Emery,MID,6.1,France,FRA,3.21,60.0,4.0,60.0,3.13,60.0
+512,Manu Koné,MID,6.1,France,FRA,3.21,60.0,4.0,60.0,3.13,60.0
+514,Maghnes Akliouche,MID,6.4,France,FRA,3.21,60.0,4.0,60.0,3.13,60.0
+515,Aurélien Tchouaméni,MID,6.5,France,FRA,3.21,60.0,4.0,60.0,3.13,60.0
+516,Rayan Cherki,MID,8.0,France,FRA,3.21,60.0,4.0,60.0,3.13,60.0
+517,Michael Olise,MID,9.5,France,FRA,3.21,60.0,4.0,60.0,3.13,60.0
+518,Lennart Karl,MID,4.8,Germany,GER,4.02,60.0,3.39,60.0,3.03,60.0
+519,Angelo Stiller,MID,5.8,Germany,GER,4.02,60.0,3.39,60.0,3.03,60.0
+520,Antonio Rüdiger,DEF,5.5,Germany,GER,4.31,60.0,3.63,60.0,3.08,60.0
+521,David Raum,DEF,4.9,Germany,GER,4.31,60.0,3.63,60.0,3.08,60.0
+522,Malick Thiaw,DEF,4.7,Germany,GER,4.31,60.0,3.63,60.0,3.08,60.0
+523,Jonathan Tah,DEF,5.3,Germany,GER,4.31,60.0,3.63,60.0,3.08,60.0
+525,Nathaniel Brown,DEF,4.7,Germany,GER,4.31,60.0,3.63,60.0,3.08,60.0
+526,Nico Schlotterbeck,DEF,5.3,Germany,GER,4.31,60.0,3.63,60.0,3.08,60.0
+527,Waldemar Anton,DEF,3.9,Germany,GER,4.31,60.0,3.63,60.0,3.08,60.0
+528,Kai Havertz,FWD,7.8,Germany,GER,5.85,60.0,4.64,60.0,3.93,60.0
+529,Leroy Sané,MID,7.4,Germany,GER,4.02,60.0,3.39,60.0,3.03,60.0
+531,Deniz Undav,FWD,6.6,Germany,GER,5.85,60.0,4.64,60.0,3.93,60.0
+532,Nick Woltemade,FWD,7.2,Germany,GER,5.85,60.0,4.64,60.0,3.93,60.0
+533,Alexander Nübel,GK,4.7,Germany,GER,4.06,60.0,3.46,60.0,2.95,60.0
+534,Oliver Baumann,GK,4.3,Germany,GER,4.06,60.0,3.46,60.0,2.95,60.0
+538,Pascal Groß,MID,5.6,Germany,GER,4.02,60.0,3.39,60.0,3.03,60.0
+540,Leon Goretzka,MID,6.1,Germany,GER,4.02,60.0,3.39,60.0,3.03,60.0
+542,Joshua Kimmich,DEF,5.5,Germany,GER,4.31,60.0,3.63,60.0,3.08,60.0
+543,Florian Wirtz,MID,7.5,Germany,GER,4.02,60.0,3.39,60.0,3.03,60.0
+565,Benjamin Asare,GK,3.8,Ghana,GHA,2.53,60.0,1.11,60.0,1.83,60.0
+569,Woodensky Pierre,MID,4.2,Haiti,HAI,2.65,60.0,2.4,60.0,2.58,60.0
+570,Leverton Pierre,MID,4.2,Haiti,HAI,2.65,60.0,2.4,60.0,2.58,60.0
+571,Jean-Ricner Bellegarde,MID,4.7,Haiti,HAI,2.65,60.0,2.4,60.0,2.58,60.0
+572,Carl Sainté,MID,4.7,Haiti,HAI,2.65,60.0,2.4,60.0,2.58,60.0
+573,Danley Jean Jacques,MID,4.7,Haiti,HAI,2.65,60.0,2.4,60.0,2.58,60.0
+574,Jean-Kévin Duverne,DEF,3.8,Haiti,HAI,2.04,60.0,1.09,60.0,1.77,60.0
+575,Carlens Arcus,DEF,3.8,Haiti,HAI,2.04,60.0,1.09,60.0,1.77,60.0
+576,Hannes Delcroix,DEF,3.7,Haiti,HAI,2.04,60.0,1.09,60.0,1.77,60.0
+577,Ricardo Adé,DEF,3.5,Haiti,HAI,2.04,60.0,1.09,60.0,1.77,60.0
+578,Martin Expérience,DEF,3.5,Haiti,HAI,2.04,60.0,1.09,60.0,1.77,60.0
+580,Wilguens Paugain,DEF,3.5,Haiti,HAI,2.04,60.0,1.09,60.0,1.77,60.0
+581,Duke Lacroix,DEF,3.5,Haiti,HAI,2.04,60.0,1.09,60.0,1.77,60.0
+582,Wilson Isidor,FWD,5.0,Haiti,HAI,3.3,60.0,2.85,60.0,3.17,60.0
+583,Duckens Nazon,FWD,6.0,Haiti,HAI,3.3,60.0,2.85,60.0,3.17,60.0
+584,Frantzdy Pierrot,FWD,4.7,Haiti,HAI,3.3,60.0,2.85,60.0,3.17,60.0
+585,Derrick Etienne,FWD,4.4,Haiti,HAI,3.3,60.0,2.85,60.0,3.17,60.0
+586,Louicius Deedson,FWD,4.2,Haiti,HAI,3.3,60.0,2.85,60.0,3.17,60.0
+588,Yassin Fortuné,FWD,4.2,Haiti,HAI,3.3,60.0,2.85,60.0,3.17,60.0
+589,Josué Casimir,FWD,4.2,Haiti,HAI,3.3,60.0,2.85,60.0,3.17,60.0
+590,Ruben Providence,FWD,4.0,Haiti,HAI,3.3,60.0,2.85,60.0,3.17,60.0
+591,Johny Placide,GK,3.9,Haiti,HAI,1.96,60.0,1.04,60.0,1.69,60.0
+592,Alexandre Pierre,GK,3.6,Haiti,HAI,1.96,60.0,1.04,60.0,1.69,60.0
+593,Josué Duverger,GK,3.5,Haiti,HAI,1.96,60.0,1.04,60.0,1.69,60.0
+594,Amir Mohammad Razzaghinia,MID,4.2,IR Iran,IRN,3.12,60.0,2.66,60.0,2.86,60.0
+595,Hadi Habibinejad,MID,4.7,IR Iran,IRN,3.12,60.0,2.66,60.0,2.86,60.0
+596,Mohammad Ghorbani,MID,5.1,IR Iran,IRN,3.12,60.0,2.66,60.0,2.86,60.0
+597,Ramin Rezaeian,DEF,4.0,IR Iran,IRN,3.25,60.0,2.06,60.0,2.71,60.0
+598,Hossein Kanani,DEF,3.9,IR Iran,IRN,3.25,60.0,2.06,60.0,2.71,60.0
+599,Milad Mohammadi,DEF,3.8,IR Iran,IRN,3.25,60.0,2.06,60.0,2.71,60.0
+600,Shoja Khalilzadeh,DEF,3.8,IR Iran,IRN,3.25,60.0,2.06,60.0,2.71,60.0
+601,Ehsan Hajisafi,DEF,3.7,IR Iran,IRN,3.25,60.0,2.06,60.0,2.71,60.0
+603,Saleh Hardani,DEF,3.7,IR Iran,IRN,3.25,60.0,2.06,60.0,2.71,60.0
+606,Ali Nemati,DEF,3.5,IR Iran,IRN,3.25,60.0,2.06,60.0,2.71,60.0
+608,Aria Yousefi,DEF,3.5,IR Iran,IRN,3.25,60.0,2.06,60.0,2.71,60.0
+609,Danial Eiri,DEF,3.5,IR Iran,IRN,3.25,60.0,2.06,60.0,2.71,60.0
+610,Mehdi Taremi,FWD,6.1,IR Iran,IRN,4.12,60.0,3.31,60.0,3.64,60.0
+611,Alireza Jahanbakhsh,FWD,5.3,IR Iran,IRN,4.12,60.0,3.31,60.0,3.64,60.0
+612,Saman Ghoddos,FWD,4.9,IR Iran,IRN,4.12,60.0,3.31,60.0,3.64,60.0
+614,Ali Alipour,FWD,4.6,IR Iran,IRN,4.12,60.0,3.31,60.0,3.64,60.0
+615,Dennis Dargahi,FWD,4.6,IR Iran,IRN,4.12,60.0,3.31,60.0,3.64,60.0
+616,Amirhossein Hosseinzadeh,FWD,4.5,IR Iran,IRN,4.12,60.0,3.31,60.0,3.64,60.0
+618,Amirhossein Mahmoudi,FWD,4.0,IR Iran,IRN,4.12,60.0,3.31,60.0,3.64,60.0
+620,Alireza Beiranvand,GK,4.2,IR Iran,IRN,3.12,60.0,1.98,60.0,2.6,60.0
+621,Payam Niazmand,GK,3.9,IR Iran,IRN,3.12,60.0,1.98,60.0,2.6,60.0
+622,Hossein Hosseini,GK,3.8,IR Iran,IRN,3.12,60.0,1.98,60.0,2.6,60.0
+623,Mohammad Khalifeh,GK,3.5,IR Iran,IRN,3.12,60.0,1.98,60.0,2.6,60.0
+624,Omid Noorafkan,MID,5.3,IR Iran,IRN,3.12,60.0,2.66,60.0,2.86,60.0
+625,Mehdi Torabi,MID,5.6,IR Iran,IRN,3.12,60.0,2.66,60.0,2.86,60.0
+626,Saeid Ezatolahi,MID,5.6,IR Iran,IRN,3.12,60.0,2.66,60.0,2.86,60.0
+627,Mohammad Mohebi,MID,5.9,IR Iran,IRN,3.12,60.0,2.66,60.0,2.86,60.0
+629,Mehdi Ghayedi,MID,5.9,IR Iran,IRN,3.12,60.0,2.66,60.0,2.86,60.0
+630,Zaid Ismael,MID,4.4,Iraq,IRQ,2.49,60.0,2.39,60.0,2.54,60.0
+631,Marko Farji,MID,4.4,Iraq,IRQ,2.49,60.0,2.39,60.0,2.54,60.0
+632,Hasan Abdulkareem,MID,4.7,Iraq,IRQ,2.49,60.0,2.39,60.0,2.54,60.0
+633,Peter Gwargis,MID,5.1,Iraq,IRQ,2.49,60.0,2.39,60.0,2.54,60.0
+634,Kevin Yakob,MID,5.1,Iraq,IRQ,2.49,60.0,2.39,60.0,2.54,60.0
+635,Amir Al Ammari,MID,5.3,Iraq,IRQ,2.49,60.0,2.39,60.0,2.54,60.0
+636,Aimar Sher,MID,5.3,Iraq,IRQ,2.49,60.0,2.39,60.0,2.54,60.0
+637,Merchas Doski,DEF,3.8,Iraq,IRQ,1.45,60.0,1.05,60.0,1.61,60.0
+638,Frans Putros,DEF,3.7,Iraq,IRQ,1.45,60.0,1.05,60.0,1.61,60.0
+639,Rebin Sulaka,DEF,3.7,Iraq,IRQ,1.45,60.0,1.05,60.0,1.61,60.0
+640,Maytham Jabbar,DEF,3.6,Iraq,IRQ,1.45,60.0,1.05,60.0,1.61,60.0
+641,Hussein Ali,DEF,3.6,Iraq,IRQ,1.45,60.0,1.05,60.0,1.61,60.0
+642,Zaid Tahseen,DEF,3.6,Iraq,IRQ,1.45,60.0,1.05,60.0,1.61,60.0
+643,Munaf Younus,DEF,3.5,Iraq,IRQ,1.45,60.0,1.05,60.0,1.61,60.0
+644,Akam Hashim,DEF,3.5,Iraq,IRQ,1.45,60.0,1.05,60.0,1.61,60.0
+645,Ahmed Maknzi,DEF,3.5,Iraq,IRQ,1.45,60.0,1.05,60.0,1.61,60.0
+646,Aymen Hussein,FWD,5.3,Iraq,IRQ,3.02,60.0,2.83,60.0,3.09,60.0
+647,Mohanad Ali,FWD,4.9,Iraq,IRQ,3.02,60.0,2.83,60.0,3.09,60.0
+648,Ali Jasim,FWD,4.9,Iraq,IRQ,3.02,60.0,2.83,60.0,3.09,60.0
+649,Ali Al Hamadi,FWD,4.7,Iraq,IRQ,3.02,60.0,2.83,60.0,3.09,60.0
+650,Youssef Amyn,FWD,4.4,Iraq,IRQ,3.02,60.0,2.83,60.0,3.09,60.0
+651,Ali Yousif,FWD,4.2,Iraq,IRQ,3.02,60.0,2.83,60.0,3.09,60.0
+652,Karar Nabeel,MID,4.0,Iraq,IRQ,2.49,60.0,2.39,60.0,2.54,60.0
+653,Ahmed Basil,GK,3.8,Iraq,IRQ,1.38,60.0,1.0,60.0,1.54,60.0
+654,Fahad Talib,GK,3.7,Iraq,IRQ,1.38,60.0,1.0,60.0,1.54,60.0
+655,Kumel Saadi,GK,3.5,Iraq,IRQ,1.38,60.0,1.0,60.0,1.54,60.0
+656,Zidane Iqbal,MID,5.6,Iraq,IRQ,2.49,60.0,2.39,60.0,2.54,60.0
+657,Ibrahim Bayesh,MID,5.6,Iraq,IRQ,2.49,60.0,2.39,60.0,2.54,60.0
+659,Kaishu Sano,MID,4.9,Japan,JPN,2.8,60.0,3.34,60.0,3.11,60.0
+662,Yukinari Sugawara,DEF,4.4,Japan,JPN,2.54,60.0,3.57,60.0,3.23,60.0
+663,Tsuyoshi Watanabe,DEF,4.3,Japan,JPN,2.54,60.0,3.57,60.0,3.23,60.0
+665,Hiroki Ito,DEF,3.9,Japan,JPN,2.54,60.0,3.57,60.0,3.23,60.0
+666,Shogo Taniguchi,DEF,3.9,Japan,JPN,2.54,60.0,3.57,60.0,3.23,60.0
+667,Ayumu Seko,DEF,3.8,Japan,JPN,2.54,60.0,3.57,60.0,3.23,60.0
+668,Junnosuke Suzuki,DEF,3.5,Japan,JPN,2.54,60.0,3.57,60.0,3.23,60.0
+669,Junya Ito,MID,5.0,Japan,JPN,2.8,60.0,3.34,60.0,3.11,60.0
+670,Daizen Maeda,MID,5.0,Japan,JPN,2.8,60.0,3.34,60.0,3.11,60.0
+671,Keito Nakamura,MID,5.5,Japan,JPN,2.8,60.0,3.34,60.0,3.11,60.0
+672,Ayase Ueda,FWD,7.0,Japan,JPN,3.54,60.0,4.53,60.0,4.09,60.0
+673,Koki Ogawa,FWD,4.9,Japan,JPN,3.54,60.0,4.53,60.0,4.09,60.0
+675,Keisuke Goto,FWD,4.2,Japan,JPN,3.54,60.0,4.53,60.0,4.09,60.0
+676,Kento Shiogai,FWD,4.0,Japan,JPN,3.54,60.0,4.53,60.0,4.09,60.0
+677,Zion Suzuki,GK,4.3,Japan,JPN,2.44,60.0,3.4,60.0,3.09,60.0
+678,Keisuke Osako,GK,4.0,Japan,JPN,2.44,60.0,3.4,60.0,3.09,60.0
+679,Tomoki Hayakawa,GK,3.8,Japan,JPN,2.44,60.0,3.4,60.0,3.09,60.0
+680,Yuito Suzuki,MID,5.0,Japan,JPN,2.8,60.0,3.34,60.0,3.11,60.0
+681,Ao Tanaka,MID,5.0,Japan,JPN,2.8,60.0,3.34,60.0,3.11,60.0
+682,Daichi Kamada,MID,5.8,Japan,JPN,2.8,60.0,3.34,60.0,3.11,60.0
+684,Ritsu Doan,DEF,5.1,Japan,JPN,2.54,60.0,3.57,60.0,3.23,60.0
+685,Yousef Qashi,MID,4.2,Jordan,JOR,2.66,60.0,2.71,60.0,2.37,60.0
+686,Ibrahim Sadeh,MID,4.4,Jordan,JOR,2.66,60.0,2.71,60.0,2.37,60.0
+687,Mohammad Al Daoud,MID,4.7,Jordan,JOR,2.66,60.0,2.71,60.0,2.37,60.0
+688,Noor Al Rawabdeh,MID,4.7,Jordan,JOR,2.66,60.0,2.71,60.0,2.37,60.0
+689,Nizar Al Rashdan,MID,4.9,Jordan,JOR,2.66,60.0,2.71,60.0,2.37,60.0
+690,Yazan Al Arab,DEF,3.7,Jordan,JOR,2.05,60.0,2.23,60.0,0.9,60.0
+691,Abdallah Nasib,DEF,3.6,Jordan,JOR,2.05,60.0,2.23,60.0,0.9,60.0
+692,Mohannad Abu Taha,DEF,3.5,Jordan,JOR,2.05,60.0,2.23,60.0,0.9,60.0
+693,Mohammad Abu Hasheesh,DEF,3.5,Jordan,JOR,2.05,60.0,2.23,60.0,0.9,60.0
+695,Husam Abu Al Dahab,DEF,3.5,Jordan,JOR,2.05,60.0,2.23,60.0,0.9,60.0
+696,Mohammad Taha,DEF,3.5,Jordan,JOR,2.05,60.0,2.23,60.0,0.9,60.0
+697,Ahmad Assaf,DEF,3.5,Jordan,JOR,2.05,60.0,2.23,60.0,0.9,60.0
+698,Saleem Obaid,DEF,3.5,Jordan,JOR,2.05,60.0,2.23,60.0,0.9,60.0
+699,Mohammad Abu Al Nadi,DEF,3.5,Jordan,JOR,2.05,60.0,2.23,60.0,0.9,60.0
+700,Amer Jamous,DEF,3.5,Jordan,JOR,2.05,60.0,2.23,60.0,0.9,60.0
+701,Mousa Al Tamari,FWD,5.6,Jordan,JOR,3.3,60.0,3.38,60.0,2.78,60.0
+702,Mohammad Abu Zraiq,FWD,4.2,Jordan,JOR,3.3,60.0,3.38,60.0,2.78,60.0
+703,Mahmoud Al Mardi,FWD,4.2,Jordan,JOR,3.3,60.0,3.38,60.0,2.78,60.0
+705,Ibrahim Sabra,FWD,4.0,Jordan,JOR,3.3,60.0,3.38,60.0,2.78,60.0
+707,Ali Azaizeh,FWD,4.0,Jordan,JOR,3.3,60.0,3.38,60.0,2.78,60.0
+708,Odeh Fakhoury,FWD,4.0,Jordan,JOR,3.3,60.0,3.38,60.0,2.78,60.0
+709,Yazeed  Abulaila,GK,3.9,Jordan,JOR,1.97,60.0,2.14,60.0,0.85,60.0
+710,Abdallah Al Fakhouri,GK,3.6,Jordan,JOR,1.97,60.0,2.14,60.0,0.85,60.0
+713,Park Jin-Seob,MID,4.9,Korea Republic,KOR,2.92,60.0,2.79,60.0,3.09,60.0
+714,Kim Jin-Gyu,MID,4.9,Korea Republic,KOR,2.92,60.0,2.79,60.0,3.09,60.0
+715,Kim Min-Jae,DEF,5.0,Korea Republic,KOR,2.85,60.0,2.48,60.0,3.2,60.0
+716,Seol Young-Woo,DEF,4.2,Korea Republic,KOR,2.85,60.0,2.48,60.0,3.2,60.0
+717,Cho Yu-Min,DEF,3.9,Korea Republic,KOR,2.85,60.0,2.48,60.0,3.2,60.0
+718,Kim Moon-Hwan,DEF,3.9,Korea Republic,KOR,2.85,60.0,2.48,60.0,3.2,60.0
+719,Lee Han-Beom,DEF,3.7,Korea Republic,KOR,2.85,60.0,2.48,60.0,3.2,60.0
+720,Lee Tae-Seok,DEF,3.7,Korea Republic,KOR,2.85,60.0,2.48,60.0,3.2,60.0
+722,Kim Tae-Hyeon,DEF,3.6,Korea Republic,KOR,2.85,60.0,2.48,60.0,3.2,60.0
+723,Son Heung-Min,FWD,7.4,Korea Republic,KOR,3.74,60.0,3.51,60.0,4.06,60.0
+724,Hwang Hee-Chan,FWD,6.1,Korea Republic,KOR,3.74,60.0,3.51,60.0,4.06,60.0
+725,Cho Gue-Sung,FWD,5.3,Korea Republic,KOR,3.74,60.0,3.51,60.0,4.06,60.0
+726,Oh Hyeon-Gyu,FWD,4.9,Korea Republic,KOR,3.74,60.0,3.51,60.0,4.06,60.0
+727,Yang Hyun-Jun,FWD,4.7,Korea Republic,KOR,3.74,60.0,3.51,60.0,4.06,60.0
+728,Eom Ji-Sung,FWD,4.6,Korea Republic,KOR,3.74,60.0,3.51,60.0,4.06,60.0
+729,Jo Hyeon-Woo,GK,4.6,Korea Republic,KOR,2.74,60.0,2.38,60.0,3.06,60.0
+730,Kim Seung-Gyu,GK,4.1,Korea Republic,KOR,2.74,60.0,2.38,60.0,3.06,60.0
+731,Song Bum-Keun,GK,3.9,Korea Republic,KOR,2.74,60.0,2.38,60.0,3.06,60.0
+732,Paik Seung-Ho,MID,5.6,Korea Republic,KOR,2.92,60.0,2.79,60.0,3.09,60.0
+733,Jens Castrop,MID,5.6,Korea Republic,KOR,2.92,60.0,2.79,60.0,3.09,60.0
+735,Bae Jun-Ho,MID,5.9,Korea Republic,KOR,2.92,60.0,2.79,60.0,3.09,60.0
+736,Lee Kang-In,MID,6.1,Korea Republic,KOR,2.92,60.0,2.79,60.0,3.09,60.0
+737,Lee Jae-Sung,MID,6.2,Korea Republic,KOR,2.92,60.0,2.79,60.0,3.09,60.0
+738,Obed Vargas,MID,4.7,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+740,Johan Vásquez,DEF,4.7,Mexico,MEX,3.57,60.0,3.26,60.0,3.21,60.0
+741,César Montes,DEF,4.7,Mexico,MEX,3.57,60.0,3.26,60.0,3.21,60.0
+742,Jesús Gallardo,DEF,4.7,Mexico,MEX,3.57,60.0,3.26,60.0,3.21,60.0
+743,Jorge Sánchez,DEF,4.0,Mexico,MEX,3.57,60.0,3.26,60.0,3.21,60.0
+744,Israel Reyes,DEF,4.0,Mexico,MEX,3.57,60.0,3.26,60.0,3.21,60.0
+745,Jesús Angulo,DEF,3.9,Mexico,MEX,3.57,60.0,3.26,60.0,3.21,60.0
+746,Richard Ledezma,DEF,3.9,Mexico,MEX,3.57,60.0,3.26,60.0,3.21,60.0
+747,Everardo López,DEF,3.5,Mexico,MEX,3.57,60.0,3.26,60.0,3.21,60.0
+748,Raúl Jiménez,FWD,7.0,Mexico,MEX,4.53,60.0,4.12,60.0,4.07,60.0
+749,Germán Berterame,FWD,5.6,Mexico,MEX,4.53,60.0,4.12,60.0,4.07,60.0
+750,Julián Quiñones,FWD,5.6,Mexico,MEX,4.53,60.0,4.12,60.0,4.07,60.0
+751,Alexis Vega,FWD,5.3,Mexico,MEX,4.53,60.0,4.12,60.0,4.07,60.0
+752,Roberto Alvarado,FWD,5.3,Mexico,MEX,4.53,60.0,4.12,60.0,4.07,60.0
+753,Guillermo Martínez,FWD,4.7,Mexico,MEX,4.53,60.0,4.12,60.0,4.07,60.0
+754,Armando González,FWD,4.4,Mexico,MEX,4.53,60.0,4.12,60.0,4.07,60.0
+755,Guillermo Ochoa,GK,4.2,Mexico,MEX,3.4,60.0,3.12,60.0,3.08,60.0
+756,Carlos Acevedo,GK,4.0,Mexico,MEX,3.4,60.0,3.12,60.0,3.08,60.0
+757,Raúl Rangel,GK,3.9,Mexico,MEX,3.4,60.0,3.12,60.0,3.08,60.0
+758,Brian Gutiérrez,MID,5.0,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+759,Érik Lira,MID,5.6,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+760,Carlos Rodríguez,MID,5.9,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+761,Érick Sánchez,MID,4.5,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+762,Orbelín Pineda,MID,6.2,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+763,Álvaro Fidalgo,MID,6.4,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+765,Samir El Mourabet,MID,4.7,Morocco,MAR,2.7,60.0,3.04,60.0,3.51,60.0
+766,Oussama Targhalline,MID,5.3,Morocco,MAR,2.7,60.0,3.04,60.0,3.51,60.0
+770,Souffian El Karouani,DEF,4.0,Morocco,MAR,2.2,60.0,3.09,60.0,3.75,60.0
+773,Anass Salah-Eddine,DEF,3.9,Morocco,MAR,2.2,60.0,3.09,60.0,3.75,60.0
+774,Ismaël Baouf,DEF,3.5,Morocco,MAR,2.2,60.0,3.09,60.0,3.75,60.0
+775,Abdelhamid Aït Boudlal,DEF,3.5,Morocco,MAR,2.2,60.0,3.09,60.0,3.75,60.0
+777,Ayoub El Kaabi,FWD,5.9,Morocco,MAR,3.37,60.0,3.95,60.0,4.88,60.0
+782,Gessime Yassine,FWD,4.0,Morocco,MAR,3.37,60.0,3.95,60.0,4.88,60.0
+783,Rayane Bounida,FWD,4.0,Morocco,MAR,3.37,60.0,3.95,60.0,4.88,60.0
+784,Yassir Zabiri,FWD,4.0,Morocco,MAR,3.37,60.0,3.95,60.0,4.88,60.0
+787,El Mehdi Al Harrar,GK,3.5,Morocco,MAR,2.11,60.0,2.97,60.0,3.57,60.0
+792,Ismael Saibari,MID,6.8,Morocco,MAR,2.7,60.0,3.04,60.0,3.51,60.0
+793,Kees Smit,MID,4.7,Netherlands,NED,3.1,60.0,3.32,60.0,3.59,60.0
+794,Luciano Valente,MID,4.9,Netherlands,NED,3.1,60.0,3.32,60.0,3.59,60.0
+795,Denzel Dumfries,DEF,5.7,Netherlands,NED,3.21,60.0,3.55,60.0,3.83,60.0
+796,Virgil van Dijk,DEF,5.5,Netherlands,NED,3.21,60.0,3.55,60.0,3.83,60.0
+797,Micky van de Ven,DEF,5.1,Netherlands,NED,3.21,60.0,3.55,60.0,3.83,60.0
+798,Nathan Aké,DEF,5.0,Netherlands,NED,3.21,60.0,3.55,60.0,3.83,60.0
+799,Jeremie Frimpong,DEF,5.0,Netherlands,NED,3.21,60.0,3.55,60.0,3.83,60.0
+800,Lutsharel Geertruida,DEF,4.8,Netherlands,NED,3.21,60.0,3.55,60.0,3.83,60.0
+801,Stefan de Vrij,DEF,4.5,Netherlands,NED,3.21,60.0,3.55,60.0,3.83,60.0
+802,Jan Paul van Hecke,DEF,4.3,Netherlands,NED,3.21,60.0,3.55,60.0,3.83,60.0
+803,Jorrel Hato,DEF,4.3,Netherlands,NED,3.21,60.0,3.55,60.0,3.83,60.0
+804,Cody Gakpo,FWD,7.7,Netherlands,NED,4.07,60.0,4.51,60.0,5.03,60.0
+805,Donyell Malen,FWD,6.1,Netherlands,NED,4.07,60.0,4.51,60.0,5.03,60.0
+806,Noa Lang,FWD,5.9,Netherlands,NED,4.07,60.0,4.51,60.0,5.03,60.0
+807,Brian Brobbey,FWD,5.7,Netherlands,NED,4.07,60.0,4.51,60.0,5.03,60.0
+808,Wout Weghorst,FWD,5.5,Netherlands,NED,4.07,60.0,4.51,60.0,5.03,60.0
+809,Bart Verbruggen,GK,4.7,Netherlands,NED,3.08,60.0,3.39,60.0,3.64,60.0
+810,Mark Flekken,GK,4.7,Netherlands,NED,3.08,60.0,3.39,60.0,3.64,60.0
+811,Justin Bijlow,GK,4.3,Netherlands,NED,3.08,60.0,3.39,60.0,3.64,60.0
+812,Ryan Gravenberch,MID,6.1,Netherlands,NED,3.1,60.0,3.32,60.0,3.59,60.0
+813,Jerdy Schouten,MID,6.1,Netherlands,NED,3.1,60.0,3.32,60.0,3.59,60.0
+814,Teun Koopmeiners,MID,6.2,Netherlands,NED,3.1,60.0,3.32,60.0,3.59,60.0
+815,Xavi Simons,MID,6.5,Netherlands,NED,3.1,60.0,3.32,60.0,3.59,60.0
+816,Tijjani Reijnders,MID,6.5,Netherlands,NED,3.1,60.0,3.32,60.0,3.59,60.0
+817,Quinten Timber,MID,6.8,Netherlands,NED,3.1,60.0,3.32,60.0,3.59,60.0
+818,Callum McCowatt,MID,4.7,New Zealand,NZL,2.79,60.0,2.72,60.0,2.53,60.0
+820,Alex Rufer,MID,4.9,New Zealand,NZL,2.79,60.0,2.72,60.0,2.53,60.0
+821,Joe Bell,MID,5.1,New Zealand,NZL,2.79,60.0,2.72,60.0,2.53,60.0
+822,Ryan Thomas,MID,5.3,New Zealand,NZL,2.79,60.0,2.72,60.0,2.53,60.0
+823,Marko Stamenic,MID,5.6,New Zealand,NZL,2.79,60.0,2.72,60.0,2.53,60.0
+825,Tyler Bindon,DEF,3.6,New Zealand,NZL,2.49,60.0,2.27,60.0,1.58,60.0
+826,Francis de Vries,DEF,3.6,New Zealand,NZL,2.49,60.0,2.27,60.0,1.58,60.0
+827,Tim Payne,DEF,3.6,New Zealand,NZL,2.49,60.0,2.27,60.0,1.58,60.0
+829,Callan Elliot,DEF,3.5,New Zealand,NZL,2.49,60.0,2.27,60.0,1.58,60.0
+830,Finn Surman,DEF,3.5,New Zealand,NZL,2.49,60.0,2.27,60.0,1.58,60.0
+831,Kosta Barbarouses,FWD,4.4,New Zealand,NZL,3.52,60.0,3.4,60.0,3.08,60.0
+832,Elijah Just,MID,4.2,New Zealand,NZL,2.79,60.0,2.72,60.0,2.53,60.0
+833,Ben Waine,FWD,4.2,New Zealand,NZL,3.52,60.0,3.4,60.0,3.08,60.0
+834,Ben Old,FWD,4.2,New Zealand,NZL,3.52,60.0,3.4,60.0,3.08,60.0
+835,Jesse Randall,FWD,4.0,New Zealand,NZL,3.52,60.0,3.4,60.0,3.08,60.0
+836,Lachlan Bayliss,MID,4.0,New Zealand,NZL,2.79,60.0,2.72,60.0,2.53,60.0
+838,Max Crocombe,GK,3.9,New Zealand,NZL,2.39,60.0,2.18,60.0,1.51,60.0
+839,Alex Paulsen,GK,3.8,New Zealand,NZL,2.39,60.0,2.18,60.0,1.51,60.0
+840,Michael Woud,GK,3.7,New Zealand,NZL,2.39,60.0,2.18,60.0,1.51,60.0
+841,Sander Berge,MID,4.7,Norway,NOR,3.72,60.0,3.0,60.0,2.78,60.0
+843,Oscar Bobb,MID,5.1,Norway,NOR,3.72,60.0,3.0,60.0,2.78,60.0
+844,Morten Thorsby,MID,5.6,Norway,NOR,3.72,60.0,3.0,60.0,2.78,60.0
+845,Patrick Berg,MID,5.6,Norway,NOR,3.72,60.0,3.0,60.0,2.78,60.0
+846,Kristoffer Ajer,DEF,4.3,Norway,NOR,3.97,60.0,3.02,60.0,2.47,60.0
+847,Julian Ryerson,DEF,4.2,Norway,NOR,3.97,60.0,3.02,60.0,2.47,60.0
+848,Marcus Pedersen,DEF,4.1,Norway,NOR,3.97,60.0,3.02,60.0,2.47,60.0
+849,Leo Østigård,DEF,4.1,Norway,NOR,3.97,60.0,3.02,60.0,2.47,60.0
+850,David Møller Wolfe,DEF,4.0,Norway,NOR,3.97,60.0,3.02,60.0,2.47,60.0
+851,Fredrik Bjørkan,DEF,4.0,Norway,NOR,3.97,60.0,3.02,60.0,2.47,60.0
+852,Torbjørn Heggem,DEF,3.7,Norway,NOR,3.97,60.0,3.02,60.0,2.47,60.0
+854,Henrik Falchener,DEF,3.5,Norway,NOR,3.97,60.0,3.02,60.0,2.47,60.0
+855,Erling Haaland,FWD,10.5,Norway,NOR,5.28,60.0,3.88,60.0,3.51,60.0
+856,Alexander Sørloth,FWD,6.8,Norway,NOR,5.28,60.0,3.88,60.0,3.51,60.0
+857,Andreas Schjelderup,FWD,6.2,Norway,NOR,5.28,60.0,3.88,60.0,3.51,60.0
+858,Jørgen Strand Larsen,FWD,5.6,Norway,NOR,5.28,60.0,3.88,60.0,3.51,60.0
+859,Ørjan Nyland,GK,4.2,Norway,NOR,3.76,60.0,2.9,60.0,2.37,60.0
+860,Egil Selvik,GK,3.8,Norway,NOR,3.76,60.0,2.9,60.0,2.37,60.0
+862,Jens Petter Hauge,MID,5.9,Norway,NOR,3.72,60.0,3.0,60.0,2.78,60.0
+863,Antonio Nusa,MID,6.1,Norway,NOR,3.72,60.0,3.0,60.0,2.78,60.0
+864,Kristian Thorstvedt,MID,6.2,Norway,NOR,3.72,60.0,3.0,60.0,2.78,60.0
+865,Carlos Harvey,MID,4.9,Panama,PAN,3.06,60.0,2.71,60.0,2.49,60.0
+866,Cristian Martínez,MID,5.3,Panama,PAN,3.06,60.0,2.71,60.0,2.49,60.0
+867,Yoel Bárcenas,MID,5.6,Panama,PAN,3.06,60.0,2.71,60.0,2.49,60.0
+868,José Luis Rodríguez,MID,5.6,Panama,PAN,3.06,60.0,2.71,60.0,2.49,60.0
+869,Aníbal Godoy,MID,5.6,Panama,PAN,3.06,60.0,2.71,60.0,2.49,60.0
+870,Amir Murillo,DEF,5.0,Panama,PAN,3.14,60.0,2.24,60.0,1.43,60.0
+871,José Córdoba,DEF,4.0,Panama,PAN,3.14,60.0,2.24,60.0,1.43,60.0
+872,Éric Davis,DEF,3.9,Panama,PAN,3.14,60.0,2.24,60.0,1.43,60.0
+873,César Blackman,DEF,3.7,Panama,PAN,3.14,60.0,2.24,60.0,1.43,60.0
+874,Andrés Andrade,DEF,3.7,Panama,PAN,3.14,60.0,2.24,60.0,1.43,60.0
+875,Roderick Miller,DEF,3.5,Panama,PAN,3.14,60.0,2.24,60.0,1.43,60.0
+876,Jiovany Ramos,DEF,3.5,Panama,PAN,3.14,60.0,2.24,60.0,1.43,60.0
+877,Martín Krug,DEF,3.5,Panama,PAN,3.14,60.0,2.24,60.0,1.43,60.0
+878,Jorge Gutiérrez,DEF,3.5,Panama,PAN,3.14,60.0,2.24,60.0,1.43,60.0
+879,Ismael Díaz,FWD,4.9,Panama,PAN,3.99,60.0,3.39,60.0,3.01,60.0
+880,José Fajardo,FWD,4.7,Panama,PAN,3.99,60.0,3.39,60.0,3.01,60.0
+881,Cecilio Waterman,FWD,5.0,Panama,PAN,3.99,60.0,3.39,60.0,3.01,60.0
+882,César Yanis,FWD,4.4,Panama,PAN,3.99,60.0,3.39,60.0,3.01,60.0
+883,Kadir Barría,FWD,4.0,Panama,PAN,3.99,60.0,3.39,60.0,3.01,60.0
+884,Luis Mejía,GK,4.0,Panama,PAN,3.01,60.0,2.15,60.0,1.36,60.0
+885,Orlando Mosquera,GK,3.9,Panama,PAN,3.01,60.0,2.15,60.0,1.36,60.0
+886,César Samudio,GK,3.6,Panama,PAN,3.01,60.0,2.15,60.0,1.36,60.0
+887,Adalberto Carrasquilla,MID,6.5,Panama,PAN,3.06,60.0,2.71,60.0,2.49,60.0
+888,Maurício Magalhães Prado,MID,4.6,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+889,Alejandro Romero,MID,4.7,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+890,Matías Galarza,MID,4.8,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+891,Lucas Romero,MID,5.6,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+892,Braian Ojeda,MID,5.6,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+893,Gustavo Gómez,DEF,4.6,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+894,Júnior Alonso,DEF,4.1,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+895,Omar Alderete,DEF,4.1,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+896,Fabián Balbuena,DEF,4.0,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+897,Alan Benítez,DEF,3.8,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+898,Gustavo Velázquez,DEF,3.8,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+899,Juan José Cáceres,DEF,3.8,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+900,José Canale,DEF,3.6,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+901,Miguel Almirón,MID,6.0,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+902,Antonio Sanabria,FWD,6.5,Paraguay,PAR,3.93,60.0,3.65,60.0,4.09,60.0
+903,Ramón Sosa,FWD,5.3,Paraguay,PAR,3.93,60.0,3.65,60.0,4.09,60.0
+904,Álex Arce,FWD,4.9,Paraguay,PAR,3.93,60.0,3.65,60.0,4.09,60.0
+905,Gabriel Ávalos,FWD,4.9,Paraguay,PAR,3.93,60.0,3.65,60.0,4.09,60.0
+906,Gustavo Caballero,FWD,4.2,Paraguay,PAR,3.93,60.0,3.65,60.0,4.09,60.0
+907,Alexandro Maidana,FWD,4.0,Paraguay,PAR,3.93,60.0,3.65,60.0,4.09,60.0
+908,Roberto Fernández,GK,4.0,Paraguay,PAR,2.95,60.0,2.61,60.0,3.09,60.0
+909,Gastón Olveira,GK,3.8,Paraguay,PAR,2.95,60.0,2.61,60.0,3.09,60.0
+910,Orlando Gill,GK,3.5,Paraguay,PAR,2.95,60.0,2.61,60.0,3.09,60.0
+911,Damián Bobadilla,MID,5.5,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+912,Julio Enciso,MID,6.6,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+913,Diego Gómez,MID,6.8,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+915,Samú Costa,MID,5.6,Portugal,POR,3.52,60.0,3.63,60.0,2.98,60.0
+916,Nuno Mendes,DEF,5.8,Portugal,POR,3.76,60.0,3.88,60.0,2.99,60.0
+917,João Cancelo,DEF,5.3,Portugal,POR,3.76,60.0,3.88,60.0,2.99,60.0
+918,Diogo Dalot,DEF,5.0,Portugal,POR,3.76,60.0,3.88,60.0,2.99,60.0
+919,Gonçalo Inácio,DEF,4.6,Portugal,POR,3.76,60.0,3.88,60.0,2.99,60.0
+921,Renato Veiga,DEF,4.3,Portugal,POR,3.76,60.0,3.88,60.0,2.99,60.0
+922,Tomás Araújo,DEF,4.1,Portugal,POR,3.76,60.0,3.88,60.0,2.99,60.0
+923,Gonçalo Ramos,FWD,7.5,Portugal,POR,4.88,60.0,5.11,60.0,3.85,60.0
+924,João Félix,FWD,6.5,Portugal,POR,4.88,60.0,5.11,60.0,3.85,60.0
+925,Pedro Neto,MID,6.4,Portugal,POR,3.52,60.0,3.63,60.0,2.98,60.0
+926,Trincão,FWD,5.9,Portugal,POR,4.88,60.0,5.11,60.0,3.85,60.0
+927,Gonçalo Guedes,FWD,5.8,Portugal,POR,4.88,60.0,5.11,60.0,3.85,60.0
+928,Francisco Conceição,MID,5.7,Portugal,POR,3.52,60.0,3.63,60.0,2.98,60.0
+931,Rui Silva,GK,4.7,Portugal,POR,3.57,60.0,3.67,60.0,2.87,60.0
+932,José Sá,GK,4.7,Portugal,POR,3.57,60.0,3.67,60.0,2.87,60.0
+933,Ricardo Velho,GK,4.0,Portugal,POR,3.57,60.0,3.67,60.0,2.87,60.0
+934,Rúben Neves,MID,5.9,Portugal,POR,3.52,60.0,3.63,60.0,2.98,60.0
+935,Matheus Nunes,MID,6.1,Portugal,POR,3.52,60.0,3.63,60.0,2.98,60.0
+936,Vitinha,MID,6.4,Portugal,POR,3.52,60.0,3.63,60.0,2.98,60.0
+937,João Neves,MID,6.5,Portugal,POR,3.52,60.0,3.63,60.0,2.98,60.0
+939,Bruno Fernandes,MID,8.5,Portugal,POR,3.52,60.0,3.63,60.0,2.98,60.0
+942,Mohammad Al Mannai,MID,4.2,Qatar,QAT,2.43,60.0,2.51,60.0,2.68,60.0
+943,Ayoub Al Oui,MID,4.4,Qatar,QAT,2.43,60.0,2.51,60.0,2.68,60.0
+944,Ahmed Fathy,MID,4.7,Qatar,QAT,2.43,60.0,2.51,60.0,2.68,60.0
+946,Karim Boudiaf,MID,4.9,Qatar,QAT,2.43,60.0,2.51,60.0,2.68,60.0
+947,Assim Madibo,MID,5.1,Qatar,QAT,2.43,60.0,2.51,60.0,2.68,60.0
+948,Mohammed Waad,MID,5.3,Qatar,QAT,2.43,60.0,2.51,60.0,2.68,60.0
+949,Pedro Miguel,DEF,3.9,Qatar,QAT,1.2,60.0,1.51,60.0,2.14,60.0
+950,Bassam Al Rawi,DEF,3.8,Qatar,QAT,1.2,60.0,1.51,60.0,2.14,60.0
+951,Lucas Mendes,DEF,3.8,Qatar,QAT,1.2,60.0,1.51,60.0,2.14,60.0
+952,Boualem Khoukhi,DEF,3.8,Qatar,QAT,1.2,60.0,1.51,60.0,2.14,60.0
+954,Niall Mason,DEF,3.5,Qatar,QAT,1.2,60.0,1.51,60.0,2.14,60.0
+955,Hashmi Al Hussain,DEF,3.5,Qatar,QAT,1.2,60.0,1.51,60.0,2.14,60.0
+957,Issa Laye,DEF,3.5,Qatar,QAT,1.2,60.0,1.51,60.0,2.14,60.0
+958,Akram Afif,FWD,5.9,Qatar,QAT,2.9,60.0,3.05,60.0,3.34,60.0
+959,Almoez Ali,FWD,5.3,Qatar,QAT,2.9,60.0,3.05,60.0,3.34,60.0
+960,Edmílson Junior,FWD,4.9,Qatar,QAT,2.9,60.0,3.05,60.0,3.34,60.0
+961,Hassan Al Haydos,FWD,4.6,Qatar,QAT,2.9,60.0,3.05,60.0,3.34,60.0
+962,Yusuf Abdurisag,FWD,4.4,Qatar,QAT,2.9,60.0,3.05,60.0,3.34,60.0
+963,Ahmed Al Ganehi,FWD,4.2,Qatar,QAT,2.9,60.0,3.05,60.0,3.34,60.0
+966,Mubarak Shanan,FWD,4.0,Qatar,QAT,2.9,60.0,3.05,60.0,3.34,60.0
+968,Meshaal Barsham,GK,4.1,Qatar,QAT,1.14,60.0,1.45,60.0,2.06,60.0
+969,Salah Zakaria,GK,3.7,Qatar,QAT,1.14,60.0,1.45,60.0,2.06,60.0
+970,Shehab Ellethy,GK,3.6,Qatar,QAT,1.14,60.0,1.45,60.0,2.06,60.0
+971,Mahmud Abunada,GK,3.5,Qatar,QAT,1.14,60.0,1.45,60.0,2.06,60.0
+972,Musab Al Juwayr,MID,4.1,Saudi Arabia,KSA,2.48,60.0,2.32,60.0,2.95,60.0
+977,Ziyad Al Johani,MID,4.9,Saudi Arabia,KSA,2.48,60.0,2.32,60.0,2.95,60.0
+978,Mohamed Kanno,MID,5.1,Saudi Arabia,KSA,2.48,60.0,2.32,60.0,2.95,60.0
+980,Abdullah Al Khaibari,MID,5.1,Saudi Arabia,KSA,2.48,60.0,2.32,60.0,2.95,60.0
+982,Aiman Yahya,MID,5.6,Saudi Arabia,KSA,2.48,60.0,2.32,60.0,2.95,60.0
+983,Saud Abdulhamid,DEF,4.1,Saudi Arabia,KSA,1.41,60.0,0.4,60.0,2.93,60.0
+984,Abdulelah Al Amri,DEF,3.7,Saudi Arabia,KSA,1.41,60.0,0.4,60.0,2.93,60.0
+985,Hassan Kadish,DEF,3.7,Saudi Arabia,KSA,1.41,60.0,0.4,60.0,2.93,60.0
+986,Ali Majrashi,DEF,3.6,Saudi Arabia,KSA,1.41,60.0,0.4,60.0,2.93,60.0
+987,Nawaf Bu Washl,DEF,3.5,Saudi Arabia,KSA,1.41,60.0,0.4,60.0,2.93,60.0
+991,Ali Lajami,DEF,3.5,Saudi Arabia,KSA,1.41,60.0,0.4,60.0,2.93,60.0
+992,Feras Al Brikan,FWD,5.3,Saudi Arabia,KSA,3.0,60.0,2.71,60.0,3.8,60.0
+993,Abdullah Al Hamddan,FWD,4.9,Saudi Arabia,KSA,3.0,60.0,2.71,60.0,3.8,60.0
+994,Khalid Al Ghannam,FWD,4.9,Saudi Arabia,KSA,3.0,60.0,2.71,60.0,3.8,60.0
+995,Saleh Al Shehri,FWD,4.9,Saudi Arabia,KSA,3.0,60.0,2.71,60.0,3.8,60.0
+997,Sultan Mandash,FWD,4.5,Saudi Arabia,KSA,3.0,60.0,2.71,60.0,3.8,60.0
+999,Nawaf Al Aqidi,GK,4.0,Saudi Arabia,KSA,1.35,60.0,0.35,60.0,2.81,60.0
+1000,Ahmed Al Kassar,GK,3.9,Saudi Arabia,KSA,1.35,60.0,0.35,60.0,2.81,60.0
+1001,Mohammed Al Owais,GK,3.5,Saudi Arabia,KSA,1.35,60.0,0.35,60.0,2.81,60.0
+1003,John McGinn,MID,6.0,Scotland,SCO,3.36,60.0,2.85,60.0,2.62,60.0
+1005,Billy Gilmour,MID,5.1,Scotland,SCO,3.36,60.0,2.85,60.0,2.62,60.0
+1007,Ryan Christie,MID,5.6,Scotland,SCO,3.36,60.0,2.85,60.0,2.62,60.0
+1008,Kenny McLean,MID,4.8,Scotland,SCO,3.36,60.0,2.85,60.0,2.62,60.0
+1009,Andy Robertson,DEF,5.0,Scotland,SCO,3.59,60.0,2.68,60.0,1.92,60.0
+1010,Kieran Tierney,DEF,4.3,Scotland,SCO,3.59,60.0,2.68,60.0,1.92,60.0
+1011,Nathan Patterson,DEF,4.0,Scotland,SCO,3.59,60.0,2.68,60.0,1.92,60.0
+1012,Jack Hendry,DEF,3.9,Scotland,SCO,3.59,60.0,2.68,60.0,1.92,60.0
+1013,John Souttar,DEF,3.8,Scotland,SCO,3.59,60.0,2.68,60.0,1.92,60.0
+1014,Scott McKenna,DEF,3.8,Scotland,SCO,3.59,60.0,2.68,60.0,1.92,60.0
+1015,Anthony Ralston,DEF,3.8,Scotland,SCO,3.59,60.0,2.68,60.0,1.92,60.0
+1016,Dominic Hyam,DEF,3.6,Scotland,SCO,3.59,60.0,2.68,60.0,1.92,60.0
+1018,Grant Hanley,DEF,3.5,Scotland,SCO,3.59,60.0,2.68,60.0,1.92,60.0
+1019,Ché Adams,FWD,5.4,Scotland,SCO,4.57,60.0,3.62,60.0,3.24,60.0
+1021,George Hirst,FWD,4.6,Scotland,SCO,4.57,60.0,3.62,60.0,3.24,60.0
+1022,Lyndon Dykes,FWD,4.6,Scotland,SCO,4.57,60.0,3.62,60.0,3.24,60.0
+1023,Findlay Curtis,FWD,4.0,Scotland,SCO,4.57,60.0,3.62,60.0,3.24,60.0
+1024,Liam Kelly,GK,3.7,Scotland,SCO,3.42,60.0,2.57,60.0,1.84,60.0
+1025,Angus Gunn,GK,3.6,Scotland,SCO,3.42,60.0,2.57,60.0,1.84,60.0
+1027,Scott McTominay,MID,6.5,Scotland,SCO,3.36,60.0,2.85,60.0,2.62,60.0
+1028,Lewis Ferguson,MID,4.8,Scotland,SCO,3.36,60.0,2.85,60.0,2.62,60.0
+1029,Idrissa Gueye,MID,4.9,Senegal,SEN,2.73,60.0,2.88,60.0,3.62,60.0
+1030,Pape Matar Sarr,MID,5.6,Senegal,SEN,2.73,60.0,2.88,60.0,3.62,60.0
+1031,Pathé Ciss,MID,5.6,Senegal,SEN,2.73,60.0,2.88,60.0,3.62,60.0
+1032,Pape Gueye,MID,5.9,Senegal,SEN,2.73,60.0,2.88,60.0,3.62,60.0
+1033,Mamadou Sarr,DEF,4.7,Senegal,SEN,2.31,60.0,2.76,60.0,3.86,60.0
+1034,Moussa Niakhaté,DEF,4.3,Senegal,SEN,2.31,60.0,2.76,60.0,3.86,60.0
+1035,El Hadji Malick Diouf,DEF,4.1,Senegal,SEN,2.31,60.0,2.76,60.0,3.86,60.0
+1036,Ismail Jakobs,DEF,4.1,Senegal,SEN,2.31,60.0,2.76,60.0,3.86,60.0
+1037,Kalidou Koulibaly,DEF,4.9,Senegal,SEN,2.31,60.0,2.76,60.0,3.86,60.0
+1038,Abdoulaye Seck,DEF,3.8,Senegal,SEN,2.31,60.0,2.76,60.0,3.86,60.0
+1039,Antoine Mendy,DEF,3.7,Senegal,SEN,2.31,60.0,2.76,60.0,3.86,60.0
+1041,Nicolas Jackson,FWD,6.7,Senegal,SEN,3.42,60.0,3.68,60.0,5.08,60.0
+1042,Iliman Ndiaye,FWD,6.5,Senegal,SEN,3.42,60.0,3.68,60.0,5.08,60.0
+1043,Ismaïla Sarr,FWD,6.2,Senegal,SEN,3.42,60.0,3.68,60.0,5.08,60.0
+1046,Assane Diao,FWD,4.9,Senegal,SEN,3.42,60.0,3.68,60.0,5.08,60.0
+1047,Cherif Ndiaye,FWD,4.9,Senegal,SEN,3.42,60.0,3.68,60.0,5.08,60.0
+1048,Bamba Dieng,FWD,4.9,Senegal,SEN,3.42,60.0,3.68,60.0,5.08,60.0
+1049,Ibrahim Mbaye,FWD,4.4,Senegal,SEN,3.42,60.0,3.68,60.0,5.08,60.0
+1051,Édouard Mendy,GK,4.5,Senegal,SEN,2.22,60.0,2.65,60.0,3.66,60.0
+1052,Yehvann Diouf,GK,3.9,Senegal,SEN,2.22,60.0,2.65,60.0,3.66,60.0
+1053,Mory Diaw,GK,3.8,Senegal,SEN,2.22,60.0,2.65,60.0,3.66,60.0
+1054,Krépin Diatta,MID,6.1,Senegal,SEN,2.73,60.0,2.88,60.0,3.62,60.0
+1055,Lamine Camara,MID,6.2,Senegal,SEN,2.73,60.0,2.88,60.0,3.62,60.0
+1056,Habib Diarra,MID,6.2,Senegal,SEN,2.73,60.0,2.88,60.0,3.62,60.0
+1057,Jayden Adams,MID,4.0,South Africa,RSA,2.66,60.0,2.79,60.0,2.81,60.0
+1058,Teboho Mokoena,MID,4.3,South Africa,RSA,2.66,60.0,2.79,60.0,2.81,60.0
+1059,Themba Zwane,MID,4.3,South Africa,RSA,2.66,60.0,2.79,60.0,2.81,60.0
+1060,Thalente Mbatha,MID,4.9,South Africa,RSA,2.66,60.0,2.79,60.0,2.81,60.0
+1061,Tshepang Moremi,MID,4.9,South Africa,RSA,2.66,60.0,2.79,60.0,2.81,60.0
+1062,Yaya Sithole,MID,5.1,South Africa,RSA,2.66,60.0,2.79,60.0,2.81,60.0
+1063,Aubrey Modiba,DEF,3.7,South Africa,RSA,2.08,60.0,2.5,60.0,2.55,60.0
+1064,Thabang Matuludi,DEF,3.7,South Africa,RSA,2.08,60.0,2.5,60.0,2.55,60.0
+1065,Khuliso Mudau,DEF,3.6,South Africa,RSA,2.08,60.0,2.5,60.0,2.55,60.0
+1066,Nkosinathi Sibisi,DEF,3.6,South Africa,RSA,2.08,60.0,2.5,60.0,2.55,60.0
+1067,Mbekezeli Mbokazi,DEF,3.5,South Africa,RSA,2.08,60.0,2.5,60.0,2.55,60.0
+1068,Khulumani Ndamane,DEF,3.5,South Africa,RSA,2.08,60.0,2.5,60.0,2.55,60.0
+1069,Ime Okon,DEF,3.5,South Africa,RSA,2.08,60.0,2.5,60.0,2.55,60.0
+1070,Samukele Kabini,DEF,3.5,South Africa,RSA,2.08,60.0,2.5,60.0,2.55,60.0
+1071,Lyle Foster,FWD,5.4,South Africa,RSA,3.31,60.0,3.52,60.0,3.55,60.0
+1072,Relebohile Mofokeng,FWD,4.9,South Africa,RSA,3.31,60.0,3.52,60.0,3.55,60.0
+1073,Oswin Appollis,FWD,4.9,South Africa,RSA,3.31,60.0,3.52,60.0,3.55,60.0
+1075,Evidence Makgopa,FWD,4.5,South Africa,RSA,3.31,60.0,3.52,60.0,3.55,60.0
+1076,Thapelo Maseko,FWD,4.2,South Africa,RSA,3.31,60.0,3.52,60.0,3.55,60.0
+1077,Ronwen Williams,GK,4.5,South Africa,RSA,1.99,60.0,2.4,60.0,2.45,60.0
+1078,Ricardo Goss,GK,3.7,South Africa,RSA,1.99,60.0,2.4,60.0,2.45,60.0
+1081,Yéremy Pino,MID,5.9,Spain,ESP,4.57,60.0,4.5,60.0,3.32,60.0
+1082,Álex Baena,MID,6.0,Spain,ESP,4.57,60.0,4.5,60.0,3.32,60.0
+1084,Martín Zubimendi,MID,6.1,Spain,ESP,4.57,60.0,4.5,60.0,3.32,60.0
+1085,Pedro Porro,DEF,5.5,Spain,ESP,4.61,60.0,4.57,60.0,3.55,60.0
+1086,Aymeric Laporte,DEF,5.5,Spain,ESP,4.61,60.0,4.57,60.0,3.55,60.0
+1087,Alejandro Grimaldo,DEF,4.9,Spain,ESP,4.61,60.0,4.57,60.0,3.55,60.0
+1088,Marc Cucurella,DEF,5.1,Spain,ESP,4.61,60.0,4.57,60.0,3.55,60.0
+1089,Pau Cubarsí,DEF,5.0,Spain,ESP,4.61,60.0,4.57,60.0,3.55,60.0
+1092,Lamine Yamal,MID,10.0,Spain,ESP,4.57,60.0,4.5,60.0,3.32,60.0
+1093,Ferran Torres,FWD,7.8,Spain,ESP,7.06,60.0,6.91,60.0,4.49,60.0
+1094,Mikel Oyarzabal,FWD,8.1,Spain,ESP,7.06,60.0,6.91,60.0,4.49,60.0
+1095,Borja Iglesias,FWD,6.8,Spain,ESP,7.06,60.0,6.91,60.0,4.49,60.0
+1097,Víctor Muñoz,FWD,4.0,Spain,ESP,7.06,60.0,6.91,60.0,4.49,60.0
+1098,David Raya,GK,5.0,Spain,ESP,4.28,60.0,4.26,60.0,3.39,60.0
+1099,Unai Simón,GK,5.0,Spain,ESP,4.28,60.0,4.26,60.0,3.39,60.0
+1101,Joan García,GK,4.0,Spain,ESP,4.28,60.0,4.26,60.0,3.39,60.0
+1102,Marcos Llorente,DEF,5.5,Spain,ESP,4.61,60.0,4.57,60.0,3.55,60.0
+1104,Rodri,MID,7.5,Spain,ESP,4.57,60.0,4.5,60.0,3.32,60.0
+1105,Dani Olmo,MID,7.7,Spain,ESP,4.57,60.0,4.5,60.0,3.32,60.0
+1106,Pedri,MID,8.1,Spain,ESP,4.57,60.0,4.5,60.0,3.32,60.0
+1109,Besfort Zeneli,MID,4.7,Sweden,SWE,3.11,60.0,2.67,60.0,2.8,60.0
+1110,Elliot Stroud,MID,4.7,Sweden,SWE,3.11,60.0,2.67,60.0,2.8,60.0
+1111,Taha Ali,MID,4.9,Sweden,SWE,3.11,60.0,2.67,60.0,2.8,60.0
+1112,Eric Smith,MID,4.9,Sweden,SWE,3.11,60.0,2.67,60.0,2.8,60.0
+1113,Lucas Bergvall,MID,5.1,Sweden,SWE,3.11,60.0,2.67,60.0,2.8,60.0
+1114,Yasin Ayari,MID,5.3,Sweden,SWE,3.11,60.0,2.67,60.0,2.8,60.0
+1116,Jesper Karlström,MID,5.6,Sweden,SWE,3.11,60.0,2.67,60.0,2.8,60.0
+1117,Mattias Svanberg,MID,6.1,Sweden,SWE,3.11,60.0,2.67,60.0,2.8,60.0
+1118,Daniel Svensson,DEF,4.5,Sweden,SWE,3.23,60.0,2.1,60.0,2.52,60.0
+1119,Gabriel Gudmundsson,DEF,4.2,Sweden,SWE,3.23,60.0,2.1,60.0,2.52,60.0
+1120,Carl Starfelt,DEF,4.1,Sweden,SWE,3.23,60.0,2.1,60.0,2.52,60.0
+1121,Victor Lindelöf,DEF,4.0,Sweden,SWE,3.23,60.0,2.1,60.0,2.52,60.0
+1122,Gustaf Lagerbielke,DEF,3.7,Sweden,SWE,3.23,60.0,2.1,60.0,2.52,60.0
+1124,Viktor Gyökeres,FWD,7.8,Sweden,SWE,4.09,60.0,3.32,60.0,3.53,60.0
+1125,Anthony Elanga,FWD,5.8,Sweden,SWE,4.09,60.0,3.32,60.0,3.53,60.0
+1126,Benjamin Nygren,FWD,4.9,Sweden,SWE,4.09,60.0,3.32,60.0,3.53,60.0
+1127,Gustaf Nilsson,FWD,4.9,Sweden,SWE,4.09,60.0,3.32,60.0,3.53,60.0
+1129,Kristoffer Nordfeldt,GK,3.9,Sweden,SWE,3.09,60.0,2.01,60.0,2.42,60.0
+1133,Johan Manzambi,MID,5.6,Switzerland,SUI,3.89,60.0,3.39,60.0,3.07,60.0
+1135,Granit Xhaka,MID,6.2,Switzerland,SUI,3.89,60.0,3.39,60.0,3.07,60.0
+1137,Michel Aebischer,MID,5.9,Switzerland,SUI,3.89,60.0,3.39,60.0,3.07,60.0
+1138,Remo Freuler,MID,5.9,Switzerland,SUI,3.89,60.0,3.39,60.0,3.07,60.0
+1139,Ardon Jashari,MID,5.2,Switzerland,SUI,3.89,60.0,3.39,60.0,3.07,60.0
+1140,Fabian Rieder,MID,6.2,Switzerland,SUI,3.89,60.0,3.39,60.0,3.07,60.0
+1141,Manuel Akanji,DEF,5.0,Switzerland,SUI,4.15,60.0,3.62,60.0,3.17,60.0
+1142,Ricardo Rodríguez,DEF,4.5,Switzerland,SUI,4.15,60.0,3.62,60.0,3.17,60.0
+1143,Nico Elvedi,DEF,4.3,Switzerland,SUI,4.15,60.0,3.62,60.0,3.17,60.0
+1144,Silvan Widmer,DEF,4.2,Switzerland,SUI,4.15,60.0,3.62,60.0,3.17,60.0
+1145,Miro Muheim,DEF,4.0,Switzerland,SUI,4.15,60.0,3.62,60.0,3.17,60.0
+1146,Eray Cömert,DEF,3.9,Switzerland,SUI,4.15,60.0,3.62,60.0,3.17,60.0
+1147,Aurèle Amenda,DEF,3.7,Switzerland,SUI,4.15,60.0,3.62,60.0,3.17,60.0
+1148,Luca Jaquez,DEF,3.5,Switzerland,SUI,4.15,60.0,3.62,60.0,3.17,60.0
+1149,Breel Embolo,FWD,7.5,Switzerland,SUI,5.62,60.0,4.64,60.0,4.02,60.0
+1150,Noah Okafor,FWD,5.9,Switzerland,SUI,5.62,60.0,4.64,60.0,4.02,60.0
+1151,Dan Ndoye,FWD,6.8,Switzerland,SUI,5.62,60.0,4.64,60.0,4.02,60.0
+1153,Gregor Kobel,GK,4.7,Switzerland,SUI,3.92,60.0,3.45,60.0,3.03,60.0
+1154,Yvon Mvogo,GK,4.2,Switzerland,SUI,3.92,60.0,3.45,60.0,3.03,60.0
+1155,Marvin Keller,GK,3.7,Switzerland,SUI,3.92,60.0,3.45,60.0,3.03,60.0
+1156,Djibril Sow,MID,6.1,Switzerland,SUI,3.89,60.0,3.39,60.0,3.07,60.0
+1157,Denis Zakaria,MID,6.1,Switzerland,SUI,3.89,60.0,3.39,60.0,3.07,60.0
+1158,Rubén Vargas,MID,6.8,Switzerland,SUI,3.89,60.0,3.39,60.0,3.07,60.0
+1160,Ellyes Skhiri,MID,4.7,Tunisia,TUN,2.8,60.0,2.66,60.0,2.55,60.0
+1161,Rani Khedira,MID,4.7,Tunisia,TUN,2.8,60.0,2.66,60.0,2.55,60.0
+1162,Hadj Mahmoud,MID,4.9,Tunisia,TUN,2.8,60.0,2.66,60.0,2.55,60.0
+1163,Mortadha Ben Ouanes,MID,5.0,Tunisia,TUN,2.8,60.0,2.66,60.0,2.55,60.0
+1164,Anis Ben Slimane,MID,5.3,Tunisia,TUN,2.8,60.0,2.66,60.0,2.55,60.0
+1165,Moutaz Neffati,DEF,4.1,Tunisia,TUN,2.52,60.0,2.08,60.0,1.64,60.0
+1166,Ali Abdi,DEF,4.1,Tunisia,TUN,2.52,60.0,2.08,60.0,1.64,60.0
+1167,Omar Rekik,DEF,3.8,Tunisia,TUN,2.52,60.0,2.08,60.0,1.64,60.0
+1169,Adem Arous,DEF,3.6,Tunisia,TUN,2.52,60.0,2.08,60.0,1.64,60.0
+1170,Mohamed Amine Ben Hmida,DEF,3.6,Tunisia,TUN,2.52,60.0,2.08,60.0,1.64,60.0
+1172,Raed Chikhaoui,DEF,3.5,Tunisia,TUN,2.52,60.0,2.08,60.0,1.64,60.0
+1174,Ismaël Gharbi,FWD,4.6,Tunisia,TUN,3.53,60.0,3.31,60.0,3.11,60.0
+1175,Elias Saad,FWD,4.5,Tunisia,TUN,3.53,60.0,3.31,60.0,3.11,60.0
+1176,Firas Chaouat,FWD,4.4,Tunisia,TUN,3.53,60.0,3.31,60.0,3.11,60.0
+1177,Sebastian Tounekti,FWD,4.4,Tunisia,TUN,3.53,60.0,3.31,60.0,3.11,60.0
+1178,Hazem Mastouri,FWD,4.2,Tunisia,TUN,3.53,60.0,3.31,60.0,3.11,60.0
+1181,Rayan Elloumi,FWD,4.0,Tunisia,TUN,3.53,60.0,3.31,60.0,3.11,60.0
+1183,Khalil Ayari,FWD,4.0,Tunisia,TUN,3.53,60.0,3.31,60.0,3.11,60.0
+1184,Abdelmouhib Chamakh,GK,4.1,Tunisia,TUN,2.42,60.0,1.99,60.0,1.57,60.0
+1185,Aymen Dahmen,GK,3.9,Tunisia,TUN,2.42,60.0,1.99,60.0,1.57,60.0
+1187,Sabri Ben Hessen,GK,3.5,Tunisia,TUN,2.42,60.0,1.99,60.0,1.57,60.0
+1188,Ismail Yüksek,MID,4.6,Türkiye,TUR,3.21,60.0,3.02,60.0,3.11,60.0
+1189,Salih Özcan,MID,4.7,Türkiye,TUR,3.21,60.0,3.02,60.0,3.11,60.0
+1190,Atakan Karazor,MID,4.7,Türkiye,TUR,3.21,60.0,3.02,60.0,3.11,60.0
+1191,Irfan Can Kahveci,MID,5.9,Türkiye,TUR,3.21,60.0,3.02,60.0,3.11,60.0
+1192,Orkun Kökçü,MID,6.0,Türkiye,TUR,3.21,60.0,3.02,60.0,3.11,60.0
+1193,Kaan Ayhan,DEF,4.5,Türkiye,TUR,3.4,60.0,3.06,60.0,3.24,60.0
+1194,Zeki Çelik,DEF,4.3,Türkiye,TUR,3.4,60.0,3.06,60.0,3.24,60.0
+1195,Ferdi Kadioglu,DEF,4.3,Türkiye,TUR,3.4,60.0,3.06,60.0,3.24,60.0
+1196,Samet Akaydin,DEF,4.1,Türkiye,TUR,3.4,60.0,3.06,60.0,3.24,60.0
+1197,Mert Müldür,DEF,4.1,Türkiye,TUR,3.4,60.0,3.06,60.0,3.24,60.0
+1198,Ozan Kabak,DEF,4.0,Türkiye,TUR,3.4,60.0,3.06,60.0,3.24,60.0
+1199,Eren Elmali,DEF,4.0,Türkiye,TUR,3.4,60.0,3.06,60.0,3.24,60.0
+1200,Abdülkerim Bardakci,DEF,4.0,Türkiye,TUR,3.4,60.0,3.06,60.0,3.24,60.0
+1201,Merih Demiral,DEF,4.0,Türkiye,TUR,3.4,60.0,3.06,60.0,3.24,60.0
+1202,Mustafa Eskihellaç,DEF,3.9,Türkiye,TUR,3.4,60.0,3.06,60.0,3.24,60.0
+1203,Ahmetcan Kaplan,DEF,3.5,Türkiye,TUR,3.4,60.0,3.06,60.0,3.24,60.0
+1204,Kenan Yildiz,MID,7.0,Türkiye,TUR,3.21,60.0,3.02,60.0,3.11,60.0
+1205,Kerem Aktürkoglu,FWD,6.2,Türkiye,TUR,4.29,60.0,3.91,60.0,4.1,60.0
+1206,Baris Alper Yilmaz,FWD,6.1,Türkiye,TUR,4.29,60.0,3.91,60.0,4.1,60.0
+1208,Oguz Aydin,FWD,5.0,Türkiye,TUR,4.29,60.0,3.91,60.0,4.1,60.0
+1209,Yunus Akgün,FWD,4.9,Türkiye,TUR,4.29,60.0,3.91,60.0,4.1,60.0
+1210,Deniz Gül,FWD,4.4,Türkiye,TUR,4.29,60.0,3.91,60.0,4.1,60.0
+1211,Ugurcan Çakir,GK,4.2,Türkiye,TUR,3.25,60.0,2.93,60.0,3.1,60.0
+1212,Altay Bayindir,GK,4.0,Türkiye,TUR,3.25,60.0,2.93,60.0,3.1,60.0
+1213,Mert Günok,GK,4.0,Türkiye,TUR,3.25,60.0,2.93,60.0,3.1,60.0
+1214,Muhammed Sengezer,GK,3.9,Türkiye,TUR,3.25,60.0,2.93,60.0,3.1,60.0
+1215,Arda Güler,MID,7.0,Türkiye,TUR,3.21,60.0,3.02,60.0,3.11,60.0
+1216,Hakan Çalhanoglu,MID,7.1,Türkiye,TUR,3.21,60.0,3.02,60.0,3.11,60.0
+1217,Pablo Alcoba,MID,4.3,Uruguay,URU,3.74,60.0,3.77,60.0,2.67,60.0
+1218,Juan Manuel Sanabria,MID,4.5,Uruguay,URU,3.74,60.0,3.77,60.0,2.67,60.0
+1219,Emiliano Martínez,MID,4.7,Uruguay,URU,3.74,60.0,3.77,60.0,2.67,60.0
+1220,Luciano González,MID,4.7,Uruguay,URU,3.74,60.0,3.77,60.0,2.67,60.0
+1221,Nicolás Fonseca,MID,5.0,Uruguay,URU,3.74,60.0,3.77,60.0,2.67,60.0
+1222,Facundo Pellistri,MID,5.2,Uruguay,URU,3.74,60.0,3.77,60.0,2.67,60.0
+1223,Maxi Araújo,MID,6.4,Uruguay,URU,3.74,60.0,3.77,60.0,2.67,60.0
+1224,Manuel Ugarte,MID,5.9,Uruguay,URU,3.74,60.0,3.77,60.0,2.67,60.0
+1225,Nicolás de la Cruz,MID,5.9,Uruguay,URU,3.74,60.0,3.77,60.0,2.67,60.0
+1226,Ronald Araujo,DEF,5.0,Uruguay,URU,3.99,60.0,4.02,60.0,2.11,60.0
+1227,José María Giménez,DEF,4.4,Uruguay,URU,3.99,60.0,4.02,60.0,2.11,60.0
+1228,Matías Viña,DEF,4.3,Uruguay,URU,3.99,60.0,4.02,60.0,2.11,60.0
+1229,Mathías Olivera,DEF,4.3,Uruguay,URU,3.99,60.0,4.02,60.0,2.11,60.0
+1230,Guillermo Varela,DEF,4.2,Uruguay,URU,3.99,60.0,4.02,60.0,2.11,60.0
+1231,Sebastián Cáceres,DEF,4.2,Uruguay,URU,3.99,60.0,4.02,60.0,2.11,60.0
+1232,Santiago Bueno,DEF,4.1,Uruguay,URU,3.99,60.0,4.02,60.0,2.11,60.0
+1233,José Rodríguez,DEF,3.9,Uruguay,URU,3.99,60.0,4.02,60.0,2.11,60.0
+1234,Brian Barboza,DEF,3.7,Uruguay,URU,3.99,60.0,4.02,60.0,2.11,60.0
+1235,Benjamín García,DEF,3.5,Uruguay,URU,3.99,60.0,4.02,60.0,2.11,60.0
+1236,Darwin Núñez,FWD,7.5,Uruguay,URU,5.33,60.0,5.38,60.0,3.33,60.0
+1237,Federico Viñas,FWD,5.9,Uruguay,URU,5.33,60.0,5.38,60.0,3.33,60.0
+1238,Brian Rodríguez,FWD,6.2,Uruguay,URU,5.33,60.0,5.38,60.0,3.33,60.0
+1239,Rodrigo Aguirre,FWD,5.6,Uruguay,URU,5.33,60.0,5.38,60.0,3.33,60.0
+1240,Facundo Torres,FWD,5.4,Uruguay,URU,5.33,60.0,5.38,60.0,3.33,60.0
+1241,Agustín Canobbio,FWD,5.3,Uruguay,URU,5.33,60.0,5.38,60.0,3.33,60.0
+1242,Facundo Martínez,FWD,5.3,Uruguay,URU,5.33,60.0,5.38,60.0,3.33,60.0
+1243,Agustín Álvarez,FWD,5.2,Uruguay,URU,5.33,60.0,5.38,60.0,3.33,60.0
+1244,Sergio Rochet,GK,4.1,Uruguay,URU,3.78,60.0,3.81,60.0,2.02,60.0
+1245,Fernando Muslera,GK,4.1,Uruguay,URU,3.78,60.0,3.81,60.0,2.02,60.0
+1246,Santiago Mele,GK,3.5,Uruguay,URU,3.78,60.0,3.81,60.0,2.02,60.0
+1247,Giorgian de Arrascaeta,MID,6.5,Uruguay,URU,3.74,60.0,3.77,60.0,2.67,60.0
+1248,Federico Valverde,MID,7.5,Uruguay,URU,3.74,60.0,3.77,60.0,2.67,60.0
+1249,Cristian Roldan,MID,4.7,USA,USA,2.86,60.0,3.01,60.0,2.79,60.0
+1250,Sebastian Berhalter,MID,4.7,USA,USA,2.86,60.0,3.01,60.0,2.79,60.0
+1251,Tanner Tessmann,MID,5.6,USA,USA,2.86,60.0,3.01,60.0,2.79,60.0
+1252,Aidan Morris,MID,5.6,USA,USA,2.86,60.0,3.01,60.0,2.79,60.0
+1253,Brenden Aaronson,MID,5.7,USA,USA,2.86,60.0,3.01,60.0,2.79,60.0
+1254,Malik Tillman,MID,6.1,USA,USA,2.86,60.0,3.01,60.0,2.79,60.0
+1255,Weston McKennie,MID,6.1,USA,USA,2.86,60.0,3.01,60.0,2.79,60.0
+1256,Giovanni Reyna,MID,5.5,USA,USA,2.86,60.0,3.01,60.0,2.79,60.0
+1257,Johnny Cardoso,MID,6.2,USA,USA,2.86,60.0,3.01,60.0,2.79,60.0
+1258,Antonee Robinson,DEF,5.0,USA,USA,2.7,60.0,3.05,60.0,2.51,60.0
+1259,Chris Richards,DEF,4.1,USA,USA,2.7,60.0,3.05,60.0,2.51,60.0
+1260,Joe Scally,DEF,4.1,USA,USA,2.7,60.0,3.05,60.0,2.51,60.0
+1261,Tim Ream,DEF,3.9,USA,USA,2.7,60.0,3.05,60.0,2.51,60.0
+1262,Mark McKenzie,DEF,3.9,USA,USA,2.7,60.0,3.05,60.0,2.51,60.0
+1263,Auston Trusty,DEF,3.9,USA,USA,2.7,60.0,3.05,60.0,2.51,60.0
+1264,Alexander Freeman,DEF,4.0,USA,USA,2.7,60.0,3.05,60.0,2.51,60.0
+1265,Timothy Weah,MID,5.8,USA,USA,2.86,60.0,3.01,60.0,2.79,60.0
+1266,Ricardo Pepi,FWD,5.9,USA,USA,3.64,60.0,3.91,60.0,3.53,60.0
+1267,Folarin Balogun,FWD,6.0,USA,USA,3.64,60.0,3.91,60.0,3.53,60.0
+1268,Patrick Agyemang,FWD,4.9,USA,USA,3.64,60.0,3.91,60.0,3.53,60.0
+1269,Max Arfsten,FWD,4.4,USA,USA,3.64,60.0,3.91,60.0,3.53,60.0
+1270,Matt Turner,GK,4.0,USA,USA,2.59,60.0,2.93,60.0,2.41,60.0
+1271,Matt Freese,GK,4.2,USA,USA,2.59,60.0,2.93,60.0,2.41,60.0
+1272,Patrick Schulte,GK,3.5,USA,USA,2.59,60.0,2.93,60.0,2.41,60.0
+1273,Chris Brady,GK,3.5,USA,USA,2.59,60.0,2.93,60.0,2.41,60.0
+1274,Christian Pulisic,MID,7.0,USA,USA,2.86,60.0,3.01,60.0,2.79,60.0
+1275,Abdulla Abdullaev,MID,4.2,Uzbekistan,UZB,2.56,60.0,2.53,60.0,2.88,60.0
+1278,Sherzod Esanov,MID,4.7,Uzbekistan,UZB,2.56,60.0,2.53,60.0,2.88,60.0
+1279,Jasurbek Jaloliddinov,MID,4.7,Uzbekistan,UZB,2.56,60.0,2.53,60.0,2.88,60.0
+1280,Ruslanbek Jiyanov,MID,4.7,Uzbekistan,UZB,2.56,60.0,2.53,60.0,2.88,60.0
+1282,Akmal Mozgovoy,MID,4.7,Uzbekistan,UZB,2.56,60.0,2.53,60.0,2.88,60.0
+1284,Otabek Shukurov,MID,5.0,Uzbekistan,UZB,2.56,60.0,2.53,60.0,2.88,60.0
+1285,Umarali Rakhmonaliev,MID,5.1,Uzbekistan,UZB,2.56,60.0,2.53,60.0,2.88,60.0
+1286,Dostonbek Khamdamov,MID,5.1,Uzbekistan,UZB,2.56,60.0,2.53,60.0,2.88,60.0
+1287,Aziz G'aniev,MID,5.3,Uzbekistan,UZB,2.56,60.0,2.53,60.0,2.88,60.0
+1288,Odiljon Hamrobekov,MID,5.3,Uzbekistan,UZB,2.56,60.0,2.53,60.0,2.88,60.0
+1289,Oston Urunov,MID,5.6,Uzbekistan,UZB,2.56,60.0,2.53,60.0,2.88,60.0
+1290,Jamshid Iskanderov,MID,5.7,Uzbekistan,UZB,2.56,60.0,2.53,60.0,2.88,60.0
+1291,Jaloliddin Masharipov,MID,6.1,Uzbekistan,UZB,2.56,60.0,2.53,60.0,2.88,60.0
+1292,Abbosbek Fayzullaev,MID,6.2,Uzbekistan,UZB,2.56,60.0,2.53,60.0,2.88,60.0
+1293,Abdukodir Khusanov,DEF,4.3,Uzbekistan,UZB,1.71,60.0,1.58,60.0,2.74,60.0
+1294,Rustam Ashurmatov,DEF,3.7,Uzbekistan,UZB,1.71,60.0,1.58,60.0,2.74,60.0
+1295,Sherzod Nasrullaev,DEF,3.7,Uzbekistan,UZB,1.71,60.0,1.58,60.0,2.74,60.0
+1296,Farrukh Sayfiev,DEF,3.6,Uzbekistan,UZB,1.71,60.0,1.58,60.0,2.74,60.0
+1297,Khojiakbar Alijonov,DEF,3.6,Uzbekistan,UZB,1.71,60.0,1.58,60.0,2.74,60.0
+1300,Umar Eshmurodov,DEF,3.5,Uzbekistan,UZB,1.71,60.0,1.58,60.0,2.74,60.0
+1302,Avazbek O'lmasaliev,DEF,3.5,Uzbekistan,UZB,1.71,60.0,1.58,60.0,2.74,60.0
+1303,Bekhruz Karimov,DEF,3.5,Uzbekistan,UZB,1.71,60.0,1.58,60.0,2.74,60.0
+1305,Jakhongir Urozov,DEF,3.5,Uzbekistan,UZB,1.71,60.0,1.58,60.0,2.74,60.0
+1306,Eldor Shomurodov,FWD,6.5,Uzbekistan,UZB,3.14,60.0,3.08,60.0,3.67,60.0
+1307,Igor Sergeev,FWD,6.1,Uzbekistan,UZB,3.14,60.0,3.08,60.0,3.67,60.0
+1308,Sherzod Temirov,FWD,5.1,Uzbekistan,UZB,3.14,60.0,3.08,60.0,3.67,60.0
+1310,Azizbek Amanov,FWD,4.9,Uzbekistan,UZB,3.14,60.0,3.08,60.0,3.67,60.0
+1311,Abduvokhid Ne'matov,GK,4.0,Uzbekistan,UZB,1.63,60.0,1.51,60.0,2.64,60.0
+1312,Utkir Yusupov,GK,3.9,Uzbekistan,UZB,1.63,60.0,1.51,60.0,2.64,60.0
+1314,Botirali Ergashev,GK,3.5,Uzbekistan,UZB,1.63,60.0,1.51,60.0,2.64,60.0
+1315,Facundo Cambeses,GK,4.0,Argentina,ARG,3.7,60.0,3.6,60.0,4.11,60.0
+1316,Walter Benítez,GK,4.5,Argentina,ARG,3.7,60.0,3.6,60.0,4.11,60.0
+1317,Santiago Beltrán,GK,4.0,Argentina,ARG,3.7,60.0,3.6,60.0,4.11,60.0
+1318,Lisandro Martínez,DEF,4.6,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+1319,Germán Pezzella,DEF,4.2,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+1320,Facundo Medina,DEF,4.0,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+1321,Zaid Romero,DEF,3.5,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+1322,Lautaro Di Lollo,DEF,3.5,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+1323,Gonzalo Montiel,DEF,4.3,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+1324,Kevin Mac Allister,DEF,3.8,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+1325,Leonardo Balerdi,DEF,4.0,Argentina,ARG,3.91,60.0,3.8,60.0,4.37,60.0
+1326,Giovani Lo Celso,MID,6.2,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+1327,Emiliano Buendía,MID,6.5,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+1328,Aníbal Moreno,MID,5.0,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+1329,Equi Fernández,MID,5.0,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+1330,Guido Rodríguez,MID,5.6,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+1331,Alan Varela,MID,5.0,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+1332,Tomás Aranda,MID,4.3,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+1333,Nicolás Domínguez,MID,5.0,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+1334,Claudio Echeverri,MID,5.5,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+1335,Matías Soulé,MID,6.2,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+1336,Nicolás Capaldo,MID,5.0,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+1337,Milton Delgado,MID,4.2,Argentina,ARG,3.66,60.0,3.56,60.0,4.12,60.0
+1338,Lautaro Martínez,FWD,8.8,Argentina,ARG,5.17,60.0,4.96,60.0,6.06,60.0
+1339,Mateo Pellegrino,FWD,5.0,Argentina,ARG,5.17,60.0,4.96,60.0,6.06,60.0
+1340,Santiago Castro,FWD,6.0,Argentina,ARG,5.17,60.0,4.96,60.0,6.06,60.0
+1341,Dennis Hadzikadunic,DEF,3.7,Bosnia and Herzegovina,BIH,2.35,60.0,1.98,60.0,3.53,60.0
+1342,Ermin Mahmic,MID,4.2,Bosnia and Herzegovina,BIH,2.74,60.0,2.64,60.0,3.3,60.0
+1343,Weverton,GK,4.5,Brazil,BRA,3.33,60.0,4.0,60.0,3.48,60.0
+1345,Alex Sandro,DEF,4.5,Brazil,BRA,3.48,60.0,4.24,60.0,3.66,60.0
+1346,Wesley,DEF,4.5,Brazil,BRA,3.48,60.0,4.24,60.0,3.66,60.0
+1361,Bruno Guimarães,MID,6.8,Brazil,BRA,3.27,60.0,3.98,60.0,3.42,60.0
+1366,Raphinha,MID,8.2,Brazil,BRA,3.27,60.0,3.98,60.0,3.42,60.0
+1369,Neymar,MID,7.2,Brazil,BRA,3.27,60.0,3.98,60.0,3.42,60.0
+1374,Yerry Mina,DEF,4.2,Colombia,COL,3.79,60.0,3.68,60.0,2.79,60.0
+1379,Willer Ditta,DEF,3.7,Colombia,COL,3.79,60.0,3.68,60.0,2.79,60.0
+1385,Juan Portilla,MID,4.7,Colombia,COL,3.55,60.0,3.44,60.0,2.9,60.0
+1396,Cucho Hernández,FWD,6.3,Colombia,COL,4.96,60.0,4.73,60.0,3.7,60.0
+1400,Jindrich Stanek,GK,4.0,Czechia,CZE,2.82,60.0,3.11,60.0,2.44,60.0
+1405,David Zima,DEF,3.9,Czechia,CZE,2.94,60.0,3.24,60.0,2.54,60.0
+1411,Alexandr Sojka,MID,4.5,Czechia,CZE,2.96,60.0,3.12,60.0,2.8,60.0
+1413,David Doudera,MID,5.1,Czechia,CZE,2.96,60.0,3.12,60.0,2.8,60.0
+1417,Hugo Sochurek,MID,4.3,Czechia,CZE,2.96,60.0,3.12,60.0,2.8,60.0
+1423,Christophe Kabongo,FWD,4.5,Czechia,CZE,3.81,60.0,4.11,60.0,3.54,60.0
+1425,Jan Kuchta,FWD,5.5,Czechia,CZE,3.81,60.0,4.11,60.0,3.54,60.0
+1427,Adam Hlozek,FWD,6.5,Czechia,CZE,3.81,60.0,4.11,60.0,3.54,60.0
+1428,Robin Risser,GK,3.5,France,FRA,3.25,60.0,4.03,60.0,3.13,60.0
+1429,William Saliba,DEF,5.3,France,FRA,3.39,60.0,4.27,60.0,3.26,60.0
+1430,Jules Koundé,DEF,5.4,France,FRA,3.39,60.0,4.27,60.0,3.26,60.0
+1431,Bradley Barcola,MID,8.0,France,FRA,3.21,60.0,4.0,60.0,3.13,60.0
+1432,Jean-Philippe Mateta,FWD,6.5,France,FRA,4.29,60.0,5.83,60.0,4.13,60.0
+1433,Paul Reverson,GK,3.5,Ghana,GHA,2.53,60.0,1.11,60.0,1.83,60.0
+1434,Solomon Agbasi,GK,3.5,Ghana,GHA,2.53,60.0,1.11,60.0,1.83,60.0
+1445,Augustine Boakye,MID,4.9,Ghana,GHA,2.84,60.0,2.42,60.0,2.62,60.0
+1454,Ko Itakura,DEF,4.5,Japan,JPN,2.54,60.0,3.57,60.0,3.23,60.0
+1455,Takehiro Tomiyasu,DEF,4.9,Japan,JPN,2.54,60.0,3.57,60.0,3.23,60.0
+1456,Yuto Nagatomo,DEF,3.7,Japan,JPN,2.54,60.0,3.57,60.0,3.23,60.0
+1457,Wataru Endo,MID,6.0,Japan,JPN,2.8,60.0,3.34,60.0,3.11,60.0
+1458,Takefusa Kubo,MID,7.0,Japan,JPN,2.8,60.0,3.34,60.0,3.11,60.0
+1459,Antonio Rodríguez,GK,3.7,Mexico,MEX,3.4,60.0,3.12,60.0,3.08,60.0
+1460,Carlos Moreno,GK,3.6,Mexico,MEX,3.4,60.0,3.12,60.0,3.08,60.0
+1461,Álex Padilla,GK,3.5,Mexico,MEX,3.4,60.0,3.12,60.0,3.08,60.0
+1462,Julián Araujo,DEF,4.0,Mexico,MEX,3.57,60.0,3.26,60.0,3.21,60.0
+1463,Alejandro Gómez,DEF,3.5,Mexico,MEX,3.57,60.0,3.26,60.0,3.21,60.0
+1464,Ramón Juárez,DEF,3.6,Mexico,MEX,3.57,60.0,3.26,60.0,3.21,60.0
+1465,Mateo Chávez,DEF,3.5,Mexico,MEX,3.57,60.0,3.26,60.0,3.21,60.0
+1467,Bryan González,DEF,3.5,Mexico,MEX,3.57,60.0,3.26,60.0,3.21,60.0
+1468,Víctor Guzmán,DEF,3.6,Mexico,MEX,3.57,60.0,3.26,60.0,3.21,60.0
+1470,Marcel Ruiz,MID,5.9,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+1471,Jordán Carrillo,MID,5.1,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+1472,Diego Lainez,MID,5.9,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+1473,César Huerta,MID,6.3,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+1474,Edson Álvarez,MID,6.0,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+1475,Jesús Angulo,MID,5.3,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+1476,Gilberto Mora,MID,4.5,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+1477,Luis Chávez,MID,6.3,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+1478,Luis Romo,MID,5.5,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+1479,Elías Montiel,MID,4.5,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+1480,Kevin Castañeda,MID,4.9,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+1481,Alexis Gutiérrez,MID,4.9,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+1482,Jeremy Márquez,MID,4.7,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+1483,Alexéi Domínguez,FWD,4.5,Mexico,MEX,4.53,60.0,4.12,60.0,4.07,60.0
+1484,Efraín Álvarez,MID,5.5,Mexico,MEX,3.33,60.0,3.13,60.0,3.1,60.0
+1485,Santiago Giménez,FWD,6.8,Mexico,MEX,4.53,60.0,4.12,60.0,4.07,60.0
+1486,Jorge Ruvalcaba,FWD,4.9,Mexico,MEX,4.53,60.0,4.12,60.0,4.07,60.0
+1488,Michael Boxall,DEF,3.7,New Zealand,NZL,2.49,60.0,2.27,60.0,1.58,60.0
+1489,Liberato Cacace,DEF,4.1,New Zealand,NZL,2.49,60.0,2.27,60.0,1.58,60.0
+1490,Nando Pijnaker,DEF,3.7,New Zealand,NZL,2.49,60.0,2.27,60.0,1.58,60.0
+1491,Tommy Smith,DEF,3.6,New Zealand,NZL,2.49,60.0,2.27,60.0,1.58,60.0
+1492,Matthew Garbett,FWD,5.0,New Zealand,NZL,3.52,60.0,3.4,60.0,3.08,60.0
+1493,Chris Wood,FWD,6.5,New Zealand,NZL,3.52,60.0,3.4,60.0,3.08,60.0
+1494,Sarpreet Singh,MID,5.3,New Zealand,NZL,2.79,60.0,2.72,60.0,2.53,60.0
+1495,Juan Espínola,GK,3.5,Paraguay,PAR,2.95,60.0,2.61,60.0,3.09,60.0
+1496,Carlos Coronel,GK,4.1,Paraguay,PAR,2.95,60.0,2.61,60.0,3.09,60.0
+1497,Santiago Rojas,GK,3.5,Paraguay,PAR,2.95,60.0,2.61,60.0,3.09,60.0
+1498,Blás Riveros,DEF,3.9,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+1499,Alcides Benítez,DEF,3.5,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+1500,Agustín Sández,DEF,3.7,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+1501,Alan Núñez,DEF,3.5,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+1502,Saúl Salcedo,DEF,3.7,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+1503,Diego León,DEF,3.5,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+1504,Tarek Salman,DEF,3.7,Qatar,QAT,1.2,60.0,1.51,60.0,2.14,60.0
+1505,Rayyan Al Ali,DEF,3.5,Qatar,QAT,1.2,60.0,1.51,60.0,2.14,60.0
+1506,Homam El Amin,DEF,3.6,Qatar,QAT,1.2,60.0,1.51,60.0,2.14,60.0
+1507,Sultan Al Brake,DEF,3.7,Qatar,QAT,1.2,60.0,1.51,60.0,2.14,60.0
+1508,Abdulaziz Hatem,MID,5.3,Qatar,QAT,2.43,60.0,2.51,60.0,2.68,60.0
+1509,Jassem Gaber,MID,5.0,Qatar,QAT,2.43,60.0,2.51,60.0,2.68,60.0
+1510,Ahmed Alaa,FWD,5.5,Qatar,QAT,2.9,60.0,3.05,60.0,3.34,60.0
+1511,Mohammed Muntari,FWD,5.3,Qatar,QAT,2.9,60.0,3.05,60.0,3.34,60.0
+1512,Sebastián Soria,FWD,5.1,Qatar,QAT,2.9,60.0,3.05,60.0,3.34,60.0
+1513,Tahsin Jamshid,FWD,4.5,Qatar,QAT,2.9,60.0,3.05,60.0,3.34,60.0
+1514,Viktor Johansson,GK,3.9,Sweden,SWE,3.09,60.0,2.01,60.0,2.42,60.0
+1515,Jacob Widell Zetterström,GK,3.7,Sweden,SWE,3.09,60.0,2.01,60.0,2.42,60.0
+1516,Hjalmar Ekdal,DEF,3.7,Sweden,SWE,3.23,60.0,2.1,60.0,2.52,60.0
+1517,Emil Holm,DEF,4.1,Sweden,SWE,3.23,60.0,2.1,60.0,2.52,60.0
+1518,Isak Hien,DEF,4.1,Sweden,SWE,3.23,60.0,2.1,60.0,2.52,60.0
+1519,Ken Sema,MID,6.0,Sweden,SWE,3.11,60.0,2.67,60.0,2.8,60.0
+1520,Alexander Isak,FWD,8.0,Sweden,SWE,4.09,60.0,3.32,60.0,3.53,60.0
+1521,Alexander Bernhardsson,FWD,4.9,Sweden,SWE,4.09,60.0,3.32,60.0,3.53,60.0
+1522,Thibaut Courtois,GK,4.9,Belgium,BEL,3.26,60.0,3.41,60.0,3.67,60.0
+1523,Mike Penders,GK,3.5,Belgium,BEL,3.26,60.0,3.41,60.0,3.67,60.0
+1524,Hans Vanaken,MID,5.5,Belgium,BEL,3.22,60.0,3.34,60.0,3.63,60.0
+1525,Matias Fernandez-Pardo,FWD,5.6,Belgium,BEL,4.3,60.0,4.54,60.0,5.11,60.0
+1526,Leandro Trossard,MID,6.6,Belgium,BEL,3.22,60.0,3.34,60.0,3.63,60.0
+1527,Diego Moreira,MID,4.7,Belgium,BEL,3.22,60.0,3.34,60.0,3.63,60.0
+1528,Stopira,DEF,3.5,Cabo Verde,CPV,0.32,60.0,1.37,60.0,2.86,60.0
+1529,Logan Costa,DEF,3.5,Cabo Verde,CPV,0.32,60.0,1.37,60.0,2.86,60.0
+1530,Jamiro Monteiro,MID,4.6,Cabo Verde,CPV,2.31,60.0,2.47,60.0,2.92,60.0
+1531,Hélio Varela,MID,4.9,Cabo Verde,CPV,2.31,60.0,2.47,60.0,2.92,60.0
+1532,Gilson Benchimol,MID,5.0,Cabo Verde,CPV,2.31,60.0,2.47,60.0,2.92,60.0
+1533,Oumar Diakité,FWD,5.3,Côte d'Ivoire,CIV,3.38,60.0,3.26,60.0,4.76,60.0
+1534,Ange-Yoan Bonny,FWD,4.9,Côte d'Ivoire,CIV,3.38,60.0,3.26,60.0,4.76,60.0
+1535,Dominik Kotarski,GK,4.4,Croatia,CRO,2.07,60.0,3.29,60.0,3.49,60.0
+1536,Josko Gvardiol,DEF,5.0,Croatia,CRO,2.15,60.0,3.45,60.0,3.66,60.0
+1537,Mateo Kovacic,MID,6.0,Croatia,CRO,2.69,60.0,3.25,60.0,3.43,60.0
+1538,Keeto Thermoncy,DEF,3.5,Haiti,HAI,2.04,60.0,1.09,60.0,1.77,60.0
+1539,Dominique Simon,MID,4.3,Haiti,HAI,2.65,60.0,2.4,60.0,2.58,60.0
+1540,Lenny Joseph,FWD,4.2,Haiti,HAI,3.3,60.0,2.85,60.0,3.17,60.0
+1541,Nour Bani Ateyah,GK,3.6,Jordan,JOR,1.97,60.0,2.14,60.0,0.85,60.0
+1542,Ahmad Al Juaidi,GK,3.6,Jordan,JOR,1.97,60.0,2.14,60.0,0.85,60.0
+1543,Ehsan Haddad,DEF,3.5,Jordan,JOR,2.05,60.0,2.23,60.0,0.9,60.0
+1544,Saed Al Rosan,DEF,3.5,Jordan,JOR,2.05,60.0,2.23,60.0,0.9,60.0
+1545,Anas Badawi,DEF,3.5,Jordan,JOR,2.05,60.0,2.23,60.0,0.9,60.0
+1546,Raja'ei Ayed,MID,4.5,Jordan,JOR,2.66,60.0,2.71,60.0,2.37,60.0
+1547,Ali Olwan,FWD,4.2,Jordan,JOR,3.3,60.0,3.38,60.0,2.78,60.0
+1548,Lee Gi-Hyuk,DEF,4.5,Korea Republic,KOR,2.85,60.0,2.48,60.0,3.2,60.0
+1549,Hwang In-Beom,MID,5.8,Korea Republic,KOR,2.92,60.0,2.79,60.0,3.09,60.0
+1550,Lee Dong-Gyeong,MID,4.9,Korea Republic,KOR,2.92,60.0,2.79,60.0,3.09,60.0
+1551,Montassar Talbi,DEF,3.9,Tunisia,TUN,2.52,60.0,2.08,60.0,1.64,60.0
+1552,Dylan Bronn,DEF,3.6,Tunisia,TUN,2.52,60.0,2.08,60.0,1.64,60.0
+1553,Yan Valery,DEF,3.9,Tunisia,TUN,2.52,60.0,2.08,60.0,1.64,60.0
+1554,Elias Achouri,MID,4.8,Tunisia,TUN,2.8,60.0,2.66,60.0,2.55,60.0
+1555,Hannibal Mejbri,MID,4.8,Tunisia,TUN,2.8,60.0,2.66,60.0,2.55,60.0
+1556,Gédéon Kalulu,DEF,3.9,Congo DR,COD,1.77,60.0,1.89,60.0,3.03,60.0
+1557,Gaël Kakuta,MID,4.6,Congo DR,COD,2.58,60.0,2.61,60.0,3.0,60.0
+1558,Armando Obispo,DEF,3.7,Curaçao,CUW,1.04,60.0,1.18,60.0,1.87,60.0
+1559,Deveron Fonville,DEF,3.7,Curaçao,CUW,1.04,60.0,1.18,60.0,1.87,60.0
+1560,Jürgen Locadia,FWD,4.1,Curaçao,CUW,2.81,60.0,2.89,60.0,3.21,60.0
+1561,Roozbeh Cheshmi,MID,4.8,IR Iran,IRN,3.12,60.0,2.66,60.0,2.86,60.0
+1562,Kasra Taheri,FWD,4.7,IR Iran,IRN,4.12,60.0,3.31,60.0,3.64,60.0
+1563,Jalal Hassan,GK,3.9,Iraq,IRQ,1.38,60.0,1.0,60.0,1.54,60.0
+1564,Mustafa Saadoon,DEF,3.6,Iraq,IRQ,1.45,60.0,1.05,60.0,1.61,60.0
+1565,Ahmed Yahya,DEF,3.6,Iraq,IRQ,1.45,60.0,1.05,60.0,1.61,60.0
+1566,Dario Naamo,DEF,3.5,Iraq,IRQ,1.45,60.0,1.05,60.0,1.61,60.0
+1567,Jussef Nasrawe,MID,4.4,Iraq,IRQ,2.49,60.0,2.39,60.0,2.54,60.0
+1568,Ahmed Qasem,MID,4.4,Iraq,IRQ,2.49,60.0,2.39,60.0,2.54,60.0
+1569,Diogo Costa,GK,4.9,Portugal,POR,3.57,60.0,3.67,60.0,2.87,60.0
+1570,Rúben Dias,DEF,5.0,Portugal,POR,3.76,60.0,3.88,60.0,2.99,60.0
+1571,Nélson Semedo,DEF,4.3,Portugal,POR,3.76,60.0,3.88,60.0,2.99,60.0
+1572,Bernardo Silva,MID,7.8,Portugal,POR,3.52,60.0,3.63,60.0,2.98,60.0
+1573,Cristiano Ronaldo,FWD,10.0,Portugal,POR,4.88,60.0,5.11,60.0,3.85,60.0
+1574,Rafael Leão,MID,7.8,Portugal,POR,3.52,60.0,3.63,60.0,2.98,60.0
+1575,Fahad Younis,GK,3.7,Qatar,QAT,1.14,60.0,1.45,60.0,2.06,60.0
+1576,Craig Gordon,GK,3.5,Scotland,SCO,3.42,60.0,2.57,60.0,1.84,60.0
+1577,Aaron Hickey,DEF,4.3,Scotland,SCO,3.59,60.0,2.68,60.0,1.92,60.0
+1578,Ben Gannon-Doak,MID,4.9,Scotland,SCO,3.36,60.0,2.85,60.0,2.62,60.0
+1579,Ross Stewart,FWD,5.4,Scotland,SCO,4.57,60.0,3.62,60.0,3.24,60.0
+1580,Lawrence Shankland,FWD,5.5,Scotland,SCO,4.57,60.0,3.62,60.0,3.24,60.0
+1581,Christian Fassnacht,MID,6.1,Switzerland,SUI,3.89,60.0,3.39,60.0,3.07,60.0
+1582,Zeki Amdouni,FWD,4.9,Switzerland,SUI,5.62,60.0,4.64,60.0,4.02,60.0
+1583,Cedric Itten,FWD,5.4,Switzerland,SUI,5.62,60.0,4.64,60.0,4.02,60.0
+1584,Ersin Destanoglu,GK,4.0,Türkiye,TUR,3.25,60.0,2.93,60.0,3.1,60.0
+1585,Yusuf Akçiçek,DEF,4.0,Türkiye,TUR,3.4,60.0,3.06,60.0,3.24,60.0
+1586,Çaglar Söyüncü,DEF,4.4,Türkiye,TUR,3.4,60.0,3.06,60.0,3.24,60.0
+1587,Aral Simsir,MID,4.7,Türkiye,TUR,3.21,60.0,3.02,60.0,3.11,60.0
+1588,Demir Ege Tiknaz,MID,4.4,Türkiye,TUR,3.21,60.0,3.02,60.0,3.11,60.0
+1589,Can Uzun,MID,5.3,Türkiye,TUR,3.21,60.0,3.02,60.0,3.11,60.0
+1590,Yusuf Sari,MID,5.0,Türkiye,TUR,3.21,60.0,3.02,60.0,3.11,60.0
+1591,Aaron Tshibola,MID,4.9,Congo DR,COD,2.58,60.0,2.61,60.0,3.0,60.0
+1592,Karim Hafez,DEF,3.9,Egypt,EGY,2.3,60.0,3.43,60.0,3.07,60.0
+1593,Nabil Emad Dunga,MID,4.3,Egypt,EGY,2.73,60.0,3.23,60.0,3.02,60.0
+1594,Mostafa Zico,MID,4.2,Egypt,EGY,2.73,60.0,3.23,60.0,3.02,60.0
+1595,Aqtay Abdallah,FWD,4.3,Egypt,EGY,3.42,60.0,4.33,60.0,3.92,60.0
+1596,Hamza Abdelkarim,FWD,4.3,Egypt,EGY,3.42,60.0,4.33,60.0,3.92,60.0
+1597,Mohamed Salah,MID,10.0,Egypt,EGY,2.73,60.0,3.23,60.0,3.02,60.0
+1598,Manuel Neuer,GK,5.0,Germany,GER,4.06,60.0,3.46,60.0,2.95,60.0
+1599,Nadiem Amiri,MID,6.3,Germany,GER,4.02,60.0,3.39,60.0,3.03,60.0
+1600,Jamal Musiala,MID,8.0,Germany,GER,4.02,60.0,3.39,60.0,3.03,60.0
+1601,Felix Nmecha,MID,5.6,Germany,GER,4.02,60.0,3.39,60.0,3.03,60.0
+1602,Aleksandar Pavlovic,MID,5.5,Germany,GER,4.02,60.0,3.39,60.0,3.03,60.0
+1603,Jamie Leweling,MID,6.4,Germany,GER,4.02,60.0,3.39,60.0,3.03,60.0
+1604,Maximilian Beier,FWD,6.5,Germany,GER,5.85,60.0,4.64,60.0,3.93,60.0
+1609,Maya Yoshida,DEF,3.7,Japan,JPN,2.54,60.0,3.57,60.0,3.23,60.0
+1610,Ronaldo Dejesús,DEF,3.8,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+1611,Mateo Gamarra,DEF,3.9,Paraguay,PAR,3.07,60.0,2.72,60.0,3.23,60.0
+1612,Robert Piris Da Motta,MID,4.7,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+1613,Óscar Romero,MID,4.6,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+1614,Mathías Villasanti,MID,4.6,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+1615,Hugo Cuenca,MID,4.8,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+1616,Andrés Cubas,MID,4.7,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+1617,Álvaro Campuzano,MID,4.6,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+1618,Ángel Romero,MID,4.9,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+1619,Rodney Redes,MID,4.8,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+1620,Enso González,MID,5.0,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+1621,Diego González,MID,5.0,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+1665,Munir El Kajoui,GK,4.0,Morocco,MAR,2.11,60.0,2.97,60.0,3.57,60.0
+1666,Ibrahim Gomis,GK,3.5,Morocco,MAR,2.11,60.0,2.97,60.0,3.57,60.0
+1667,Yanis Benchaouch,GK,3.5,Morocco,MAR,2.11,60.0,2.97,60.0,3.57,60.0
+1668,Youssef Belammari,DEF,3.6,Morocco,MAR,2.2,60.0,3.09,60.0,3.75,60.0
+1669,Soufiane Bouftini,DEF,4.0,Morocco,MAR,2.2,60.0,3.09,60.0,3.75,60.0
+1670,Mohamed Chibi,DEF,3.8,Morocco,MAR,2.2,60.0,3.09,60.0,3.75,60.0
+1671,Sofiane Boufal,MID,6.3,Morocco,MAR,2.7,60.0,3.04,60.0,3.51,60.0
+1672,Imrân Louza,MID,5.7,Morocco,MAR,2.7,60.0,3.04,60.0,3.51,60.0
+1673,Soufiane El-Faouzi,MID,4.9,Morocco,MAR,2.7,60.0,3.04,60.0,3.51,60.0
+1674,Ayyoub Bouaddi,MID,5.5,Morocco,MAR,2.7,60.0,3.04,60.0,3.51,60.0
+1675,Marwane Saadane,MID,4.7,Morocco,MAR,2.7,60.0,3.04,60.0,3.51,60.0
+1676,Ayoube Amaimouni-Echghouyab,FWD,4.3,Morocco,MAR,3.37,60.0,3.95,60.0,4.88,60.0
+1677,Soufiane Benjdida,FWD,4.7,Morocco,MAR,3.37,60.0,3.95,60.0,4.88,60.0
+1678,Othmane Maamma,MID,4.7,Morocco,MAR,2.7,60.0,3.04,60.0,3.51,60.0
+1679,Tawfik Bentayeb,FWD,4.7,Morocco,MAR,3.37,60.0,3.95,60.0,4.88,60.0
+1680,Yanis Begraoui,MID,5.0,Morocco,MAR,2.7,60.0,3.04,60.0,3.51,60.0
+1681,Sander Tangvik,GK,3.5,Norway,NOR,3.76,60.0,2.9,60.0,2.37,60.0
+1682,Thelo Aasgaard,MID,5.5,Norway,NOR,3.72,60.0,3.0,60.0,2.78,60.0
+1683,Fredrik Aursnes,MID,6.5,Norway,NOR,3.72,60.0,3.0,60.0,2.78,60.0
+1684,Martin Ødegaard,MID,7.7,Norway,NOR,3.72,60.0,3.0,60.0,2.78,60.0
+1685,Lorenzo Melgarejo,MID,5.5,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+1686,Rubén Lezcano,MID,5.0,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+1687,Carlos González,FWD,5.7,Paraguay,PAR,3.93,60.0,3.65,60.0,4.09,60.0
+1688,Isidro Pitta,FWD,5.9,Paraguay,PAR,3.93,60.0,3.65,60.0,4.09,60.0
+1689,Adrián Alcaraz,FWD,4.5,Paraguay,PAR,3.93,60.0,3.65,60.0,4.09,60.0
+1690,Adam Bareiro,FWD,5.7,Paraguay,PAR,3.93,60.0,3.65,60.0,4.09,60.0
+1691,Ronaldo Martínez,MID,5.0,Paraguay,PAR,3.02,60.0,2.87,60.0,3.11,60.0
+1692,Robert Morales,FWD,5.3,Paraguay,PAR,3.93,60.0,3.65,60.0,4.09,60.0
+1693,Ilay Camara,DEF,3.8,Senegal,SEN,2.31,60.0,2.76,60.0,3.86,60.0
+1694,Moustapha Mbow,DEF,3.7,Senegal,SEN,2.31,60.0,2.76,60.0,3.86,60.0
+1695,Bara Sapoko Ndiaye,MID,4.5,Senegal,SEN,2.73,60.0,2.88,60.0,3.62,60.0
+1696,Sadio Mané,MID,7.6,Senegal,SEN,2.73,60.0,2.88,60.0,3.62,60.0
+1697,Brandon Petersen,GK,3.6,South Africa,RSA,1.99,60.0,2.4,60.0,2.45,60.0
+1698,Sipho Chaine,GK,3.7,South Africa,RSA,1.99,60.0,2.4,60.0,2.45,60.0
+1699,Thabiso Monyane,DEF,3.6,South Africa,RSA,2.08,60.0,2.5,60.0,2.55,60.0
+1700,Olwethu Makhanya,DEF,3.5,South Africa,RSA,2.08,60.0,2.5,60.0,2.55,60.0
+1701,Bradley Cross,DEF,3.6,South Africa,RSA,2.08,60.0,2.5,60.0,2.55,60.0
+1702,Thapelo Morena,DEF,3.8,South Africa,RSA,2.08,60.0,2.5,60.0,2.55,60.0
+1703,Lebohang Maboe,MID,5.1,South Africa,RSA,2.66,60.0,2.79,60.0,2.81,60.0
+1704,Kamogelo Sebelebele,MID,4.5,South Africa,RSA,2.66,60.0,2.79,60.0,2.81,60.0
+1705,Patrick Maswanganyi,MID,5.9,South Africa,RSA,2.66,60.0,2.79,60.0,2.81,60.0
+1706,Brooklyn Poggenpoel,MID,4.3,South Africa,RSA,2.66,60.0,2.79,60.0,2.81,60.0
+1707,Iqraam Rayners,MID,5.3,South Africa,RSA,2.66,60.0,2.79,60.0,2.81,60.0
+1708,Jarell Quansah,DEF,4.4,England,ENG,1.25,10.0,1.36,10.0,1.33,10.0
+1709,Reece James,DEF,5.2,England,ENG,3.9,75.0,4.73,75.0,4.48,75.0
+1710,Eberechi Eze,MID,8.0,England,ENG,1.32,15.0,1.48,15.0,1.43,15.0
+1711,Ollie Watkins,FWD,7.9,England,ENG,1.41,10.0,1.61,10.0,1.55,10.0
+1712,Ivan Toney,FWD,7.5,England,ENG,1.41,10.0,1.61,10.0,1.55,10.0
+1713,Amine Sbaï,FWD,4.8,Morocco,MAR,3.37,60.0,3.95,60.0,4.88,60.0
+1714,Sondre Langås,DEF,4.0,Norway,NOR,3.97,60.0,3.02,60.0,2.47,60.0
+1939,Cristhian Loor,GK,4.0,Ecuador,ECU,3.31,60.0,3.93,60.0,2.59,60.0
+1940,Deinner Ordóñez,DEF,4.1,Ecuador,ECU,3.46,60.0,4.17,60.0,2.7,60.0
+1941,Fricio Caicedo,DEF,4.0,Ecuador,ECU,3.46,60.0,4.17,60.0,2.7,60.0
+1942,Ederson Castillo,MID,4.2,Ecuador,ECU,3.26,60.0,3.91,60.0,2.86,60.0
+1943,Darwin Guagua,MID,4.8,Ecuador,ECU,3.26,60.0,3.91,60.0,2.86,60.0
+1944,Malcom DaCosta,MID,3.8,Ecuador,ECU,3.26,60.0,3.91,60.0,2.86,60.0
+1945,Bruno Caicedo,MID,5.2,Ecuador,ECU,3.26,60.0,3.91,60.0,2.86,60.0
+1946,Luis Fragozo,MID,5.0,Ecuador,ECU,3.26,60.0,3.91,60.0,2.86,60.0
+1947,Nilson Angulo,MID,6.0,Ecuador,ECU,3.26,60.0,3.91,60.0,2.86,60.0
+1950,Abdulquddus Atiah,GK,4.0,Saudi Arabia,KSA,1.35,60.0,0.35,60.0,2.81,60.0
+1951,Hassan Al Tambakti,DEF,4.5,Saudi Arabia,KSA,1.41,60.0,0.4,60.0,2.93,60.0
+1952,Zakaria Hawsawi,DEF,4.0,Saudi Arabia,KSA,1.41,60.0,0.4,60.0,2.93,60.0
+1953,Jehad Thikri,DEF,4.0,Saudi Arabia,KSA,1.41,60.0,0.4,60.0,2.93,60.0
+1954,Moteb Al Harbi,DEF,4.1,Saudi Arabia,KSA,1.41,60.0,0.4,60.0,2.93,60.0
+1955,Salem Al Dawsari,MID,7.2,Saudi Arabia,KSA,2.48,60.0,2.32,60.0,2.95,60.0
+1956,Alaa Al Hejji,MID,5.0,Saudi Arabia,KSA,2.48,60.0,2.32,60.0,2.95,60.0
+1957,Nasser Al Dawsari,MID,5.2,Saudi Arabia,KSA,2.48,60.0,2.32,60.0,2.95,60.0
+1958,Mohammed Abu Al Shamat,MID,5.5,Saudi Arabia,KSA,2.48,60.0,2.32,60.0,2.95,60.0
+1959,Saleh Abu Al Shamat,FWD,5.3,Saudi Arabia,KSA,3.0,60.0,2.71,60.0,3.8,60.0
+1960,Abdullah Al Salem,FWD,5.0,Saudi Arabia,KSA,3.0,60.0,2.71,60.0,3.8,60.0
+1961,Alphonso Davies,DEF,4.9,Canada,CAN,3.37,60.0,3.92,60.0,2.59,60.0
+1962,Zorhan Bassong,DEF,3.7,Canada,CAN,3.37,60.0,3.92,60.0,2.59,60.0
+1963,Alistair Johnston,DEF,4.0,Canada,CAN,3.37,60.0,3.92,60.0,2.59,60.0
+1964,Moïse Bombito,DEF,4.1,Canada,CAN,3.37,60.0,3.92,60.0,2.59,60.0
+1965,Jamie Knight-Lebel,DEF,3.7,Canada,CAN,3.37,60.0,3.92,60.0,2.59,60.0
+1966,Alfie Jones,DEF,3.8,Canada,CAN,3.37,60.0,3.92,60.0,2.59,60.0
+1967,Stephen Eustaquio,MID,5.0,Canada,CAN,3.19,60.0,3.68,60.0,2.82,60.0
+1968,Jacob Shaffelburg,MID,5.2,Canada,CAN,3.19,60.0,3.68,60.0,2.82,60.0
+1969,Jayden Nelson,MID,5.0,Canada,CAN,3.19,60.0,3.68,60.0,2.82,60.0
+1970,Promise David,FWD,5.4,Canada,CAN,4.25,60.0,5.2,60.0,3.57,60.0
+1971,Lawrence Ati Zigi,GK,4.0,Ghana,GHA,2.53,60.0,1.11,60.0,1.83,60.0
+1972,Joseph Anang,GK,3.6,Ghana,GHA,2.53,60.0,1.11,60.0,1.83,60.0
+1973,Abdul Baba,DEF,3.9,Ghana,GHA,2.63,60.0,1.16,60.0,1.91,60.0
+1974,Alidu Seidu,DEF,3.9,Ghana,GHA,2.63,60.0,1.16,60.0,1.91,60.0
+1975,Kojo Peprah Oppong,DEF,3.5,Ghana,GHA,2.63,60.0,1.16,60.0,1.91,60.0
+1976,Jonas Adjetey,DEF,3.5,Ghana,GHA,2.63,60.0,1.16,60.0,1.91,60.0
+1977,Abdul Mumin,DEF,3.7,Ghana,GHA,2.63,60.0,1.16,60.0,1.91,60.0
+1978,Alexander Djiku,DEF,4.0,Ghana,GHA,2.63,60.0,1.16,60.0,1.91,60.0
+1979,Marvin Senaya,DEF,3.5,Ghana,GHA,2.63,60.0,1.16,60.0,1.91,60.0
+1980,Jerome Opoku,DEF,3.8,Ghana,GHA,2.63,60.0,1.16,60.0,1.91,60.0
+1981,Gideon Mensah,DEF,3.9,Ghana,GHA,2.63,60.0,1.16,60.0,1.91,60.0
+1982,Caleb Yirenkyi,MID,4.7,Ghana,GHA,2.84,60.0,2.42,60.0,2.62,60.0
+1983,Thomas Partey,MID,6.2,Ghana,GHA,2.84,60.0,2.42,60.0,2.62,60.0
+1984,Elisha Owusu,MID,5.3,Ghana,GHA,2.84,60.0,2.42,60.0,2.62,60.0
+1985,Kwasi Sibo,MID,4.7,Ghana,GHA,2.84,60.0,2.42,60.0,2.62,60.0
+1986,Jordan Ayew,FWD,5.3,Ghana,GHA,3.59,60.0,2.88,60.0,3.24,60.0
+1987,Iñaki Williams,FWD,5.9,Ghana,GHA,3.59,60.0,2.88,60.0,3.24,60.0
+1988,Ernest Nuamah,MID,5.0,Ghana,GHA,2.84,60.0,2.42,60.0,2.62,60.0
+1989,Prince Adu,FWD,4.0,Ghana,GHA,3.59,60.0,2.88,60.0,3.24,60.0
+1990,Abdul Fatawu,FWD,6.4,Ghana,GHA,3.59,60.0,2.88,60.0,3.24,60.0
+1991,Christopher Bonsu Baah,FWD,4.5,Ghana,GHA,3.59,60.0,2.88,60.0,3.24,60.0
+1992,Antoine Semenyo,FWD,7.2,Ghana,GHA,3.59,60.0,2.88,60.0,3.24,60.0
+1993,Brandon Thomas-Asante,FWD,5.1,Ghana,GHA,3.59,60.0,2.88,60.0,3.24,60.0
+1994,Kamaldeen Sulemana,FWD,5.1,Ghana,GHA,3.59,60.0,2.88,60.0,3.24,60.0
+1995,Eric García,DEF,4.5,Spain,ESP,4.61,60.0,4.57,60.0,3.55,60.0
+1996,Marc Pubill,DEF,4.2,Spain,ESP,4.61,60.0,4.57,60.0,3.55,60.0
+1997,Mikel Merino,MID,6.2,Spain,ESP,4.57,60.0,4.5,60.0,3.32,60.0
+1998,Fabián Ruiz,MID,6.8,Spain,ESP,4.57,60.0,4.5,60.0,3.32,60.0
+1999,Gavi,MID,6.5,Spain,ESP,4.57,60.0,4.5,60.0,3.32,60.0
+2000,Nico Williams,MID,7.8,Spain,ESP,4.57,60.0,4.5,60.0,3.32,60.0
