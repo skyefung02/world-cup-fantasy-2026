@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WC Fantasy 2026 — xMins Editor</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+    h1 { font-size: 1.4rem; margin-bottom: 8px; }
+    input[type="text"] { padding: 6px; width: 200px; border: 1px solid #ccc; border-radius: 4px; }
+    ul { list-style: none; padding: 0; }
+    li { padding: 6px 0; border-bottom: 1px solid #eee; }
+    a { text-decoration: none; color: #1a73e8; }
+    a:hover { text-decoration: underline; }
+    .group-tag { font-size: 0.8rem; color: #888; margin-left: 8px; }
+  </style>
+</head>
+<body>
+  <h1>WC Fantasy 2026 — xMins Editor</h1>
+  <p>Select a team to edit player xMins:</p>
+  <input type="text" id="search" placeholder="Search team..." onkeyup="filterTeams()">
+  <ul id="team-list">
+    {% for t in teams %}
+    <li data-name="{{ t.team.lower() }}">
+      <a href="/team/{{ t.abbr }}">{{ t.team }}</a>
+      <span class="group-tag">Group {{ t.group | upper }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+  <script>
+    function filterTeams() {
+      const q = document.getElementById("search").value.toLowerCase();
+      document.querySelectorAll("#team-list li").forEach(li => {
+        li.style.display = li.dataset.name.includes(q) ? "" : "none";
+      });
+    }
+  </script>
+</body>
+</html>
