@@ -103,3 +103,4 @@ Silver Bulletin PELE/Tilt CSVs should be saved to `data/`.
 - [Silver Bulletin / Nate Silver](https://www.natesilver.net) — PELE Elo ratings
 - [football-rankings.info](http://www.football-rankings.info) — Elo → xG polynomial
 - [FIFA Fantasy](https://play.fifa.com/fantasy) — player/squad/fixture data
+- [open-fpl-solver](https://github.com/solioanalytics/open-fpl-solver) (Solio Analytics, Apache 2.0) — `wc_solver.py` is adapted from this FPL optimisation solver. The ILP model structure, sasoptpy/HiGHS backend, and multi-period solve pattern are all derived from that work. The data pipeline, transfer rules, booster system, and country limit logic have been rewritten for the WC 2026 fantasy format.
