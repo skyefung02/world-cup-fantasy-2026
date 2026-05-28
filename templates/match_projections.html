@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WC Fantasy 2026 — Match Projections</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f0f2f5;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1e3a5f 0%, #16213e 100%);
+      color: white;
+      padding: 24px 32px 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .trophy { font-size: 2rem; }
+    header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.3px; }
+    header p  { font-size: 0.85rem; color: #a8c0d6; margin-top: 4px; }
+
+    /* ── Nav ── */
+    .main-nav {
+      max-width: 1100px;
+      margin: 16px auto 0;
+      display: flex;
+      gap: 4px;
+    }
+    .nav-tab {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px 8px 0 0;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-tab:hover  { background: rgba(255,255,255,0.1); color: white; }
+    .nav-tab.active { background: #f0f2f5; color: #1e3a5f; }
+
+    /* ── Main ── */
+    main {
+      max-width: 1100px;
+      margin: 28px auto;
+      padding: 0 20px;
+    }
+
+    /* ── Round tabs ── */
+    .round-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .round-btn {
+      padding: 8px 22px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      border: 2px solid #e0e4ea;
+      background: white;
+      color: #888;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: all 0.15s;
+    }
+    .round-btn:hover { border-color: #1e3a5f; color: #1e3a5f; }
+    .round-btn.active { background: #1e3a5f; color: white; border-color: #1e3a5f; }
+
+    /* ── Round section ── */
+    .round-section { display: none; }
+    .round-section.visible { display: flex; gap: 40px; align-items: flex-start; }
+
+    /* ── Left: match cards ── */
+    .matches-col { flex: 1; min-width: 0; }
+
+    /* ── Right: sortable table panel ── */
+    .table-panel {
+      width: 400px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 24px;
+      max-height: calc(100vh - 80px);
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      overflow: hidden;
+    }
+    .table-panel-head {
+      padding: 12px 16px 10px;
+      border-bottom: 1px solid #f0f2f5;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #888;
+      flex-shrink: 0;
+    }
+    .table-scroll { overflow-y: auto; flex: 1; }
+    .rank-table { width: 100%; border-collapse: collapse; }
+    .rank-table thead th {
+      position: sticky;
+      top: 0;
+      background: #fafbfc;
+      padding: 8px 10px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #999;
+      border-bottom: 1px solid #f0f2f5;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.15s;
+    }
+    .rank-table thead th:hover { color: #1e3a5f; }
+    .rank-table thead th.sorted-asc::after  { content: " ↑"; color: #1e3a5f; }
+    .rank-table thead th.sorted-desc::after { content: " ↓"; color: #1e3a5f; }
+    .rank-table thead th { text-align: left; }
+    .rank-table thead th.num { text-align: right; }
+    .rank-table tbody tr { transition: background 0.1s; }
+    .rank-table tbody tr:hover { background: #f8f9ff; }
+    .rank-table tbody tr:not(:last-child) td { border-bottom: 1px solid #f6f7f9; }
+    .rank-table td {
+      padding: 7px 10px;
+      font-size: 0.8rem;
+      vertical-align: middle;
+    }
+    .rank-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    .rank-table .grp-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: #e8f0fb;
+      color: #1e3a5f;
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+    .rank-table .xg-hi { color: #1e3a5f; font-weight: 700; }
+    .rank-table .cs-val { color: #2d6a4f; font-weight: 600; }
+
+    /* ── Match grid ── */
+    .match-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 14px;
+    }
+
+    /* ── Match card ── */
+    .match-card {
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      overflow: hidden;
+    }
+
+    .match-body {
+      display: flex;
+      align-items: stretch;
+      padding: 16px 14px 12px;
+      gap: 8px;
+    }
+
+    .team-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .team-col.right { text-align: right; align-items: flex-end; }
+
+    .team-name-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+    .team-col.right .team-name-row { flex-direction: row-reverse; }
+
+    .xg-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #1e3a5f;
+      line-height: 1.1;
+    }
+
+    .cs-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .cs-value {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #2d6a4f;
+    }
+
+    .vs-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+      gap: 2px;
+    }
+    .vs-text {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #ccc;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* ── xG bar ── */
+    .xg-bar-wrap {
+      padding: 0 14px 14px;
+    }
+    .xg-bar {
+      height: 5px;
+      border-radius: 4px;
+      background: #e0e4ea;
+      overflow: hidden;
+      display: flex;
+    }
+    .xg-bar-a {
+      height: 100%;
+      background: linear-gradient(90deg, #1e3a5f, #2d6a9f);
+      border-radius: 4px 0 0 4px;
+      transition: width 0.3s;
+    }
+
+    .bar-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+    }
+    .bar-label {
+      font-size: 0.68rem;
+      color: #aaa;
+      font-weight: 600;
+    }
+
+    /* ── Group header ── */
+    .group-header {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #888;
+      margin: 24px 0 10px;
+    }
+    .group-header:first-child { margin-top: 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <span class="trophy">🏆</span>
+      <div>
+        <h1>WC Fantasy 2026</h1>
+        <p>Match Projections — model xG and clean sheet probabilities</p>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <a href="/" class="nav-tab">xMins Editor</a>
+      <a href="/projections" class="nav-tab">Projections</a>
+      <a href="/match-projections" class="nav-tab active">Match Projections</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="round-tabs">
+      {% for rd in rounds %}
+      <button class="round-btn {% if loop.first %}active{% endif %}" onclick="showRound({{ rd.round }}, this)">Round {{ rd.round }}</button>
+      {% endfor %}
+    </div>
+
+    {% for rd in rounds %}
+    <div class="round-section {% if loop.first %}visible{% endif %}" id="round-{{ rd.round }}">
+
+      <!-- Left: match cards by group -->
+      <div class="matches-col">
+        {% if rd.groups %}
+          {% for grp in rd.groups %}
+          <p class="group-header">Group {{ grp.group | upper }}</p>
+          <div class="match-grid">
+            {% for m in grp.matches %}
+            <div class="match-card">
+              <div class="match-body">
+                <div class="team-col">
+                  <div class="team-name-row">
+                    <span>{{ m.a_flag }}</span>
+                    <span>{{ m.a_team }}</span>
+                  </div>
+                  <div class="xg-num">{{ "%.2f"|format(m.a_xg) }}</div>
+                  <div class="cs-label">Clean sheet</div>
+                  <div class="cs-value">{{ m.a_cs }}%</div>
+                </div>
+                <div class="vs-col">
+                  <span class="vs-text">xG</span>
+                  <span class="vs-text">vs</span>
+                </div>
+                <div class="team-col right">
+                  <div class="team-name-row">
+                    <span>{{ m.b_flag }}</span>
+                    <span>{{ m.b_team }}</span>
+                  </div>
+                  <div class="xg-num">{{ "%.2f"|format(m.b_xg) }}</div>
+                  <div class="cs-label">Clean sheet</div>
+                  <div class="cs-value">{{ m.b_cs }}%</div>
+                </div>
+              </div>
+              <div class="xg-bar-wrap">
+                <div class="xg-bar">
+                  <div class="xg-bar-a" style="width: {{ m.a_share }}%"></div>
+                </div>
+                <div class="bar-labels">
+                  <span class="bar-label">{{ m.a_share }}%</span>
+                  <span class="bar-label">{{ "%.1f"|format(100 - m.a_share) }}%</span>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% endfor %}
+        {% else %}
+        <p style="color:#aaa;text-align:center;padding:40px 0">No projections found — run <code>python main.py</code> first.</p>
+        {% endif %}
+      </div>
+
+      <!-- Right: sortable team table -->
+      <div class="table-panel">
+        <div class="table-panel-head">All teams — Round {{ rd.round }}</div>
+        <div class="table-scroll">
+          <table class="rank-table" id="rank-table-{{ rd.round }}">
+            <thead>
+              <tr>
+                <th data-col="team">Team</th>
+                <th data-col="opp">vs</th>
+                <th data-col="xg"  class="num sorted-desc">xG</th>
+                <th data-col="xga" class="num">xGA</th>
+                <th data-col="cs"  class="num">CS%</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for t in rd.team_rows %}
+              <tr
+                data-team="{{ t.team }}"
+                data-group="{{ t.group }}"
+                data-opp="{{ t.opp_abbr }}"
+                data-xg="{{ t.xg }}"
+                data-xga="{{ t.xga }}"
+                data-cs="{{ t.cs }}"
+              >
+                <td>{{ t.flag }} {{ t.team }}</td>
+                <td>{{ t.opp_flag }} {{ t.opp_abbr }}</td>
+                <td class="num xg-hi">{{ "%.2f"|format(t.xg) }}</td>
+                <td class="num">{{ "%.2f"|format(t.xga) }}</td>
+                <td class="num cs-val">{{ t.cs }}%</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    {% endfor %}
+  </main>
+
+  <script>
+    function showRound(r, btn) {
+      document.querySelectorAll(".round-section").forEach(s => s.classList.remove("visible"));
+      document.querySelectorAll(".round-btn").forEach(b => b.classList.remove("active"));
+      document.getElementById("round-" + r).classList.add("visible");
+      btn.classList.add("active");
+    }
+
+    // ── Sortable tables ──
+    const sortState = {};  // tableId → { col, dir }
+
+    document.querySelectorAll(".rank-table").forEach(table => {
+      const id = table.id;
+      // default: xg descending
+      sortState[id] = { col: "xg", dir: "desc" };
+
+      table.querySelectorAll("thead th[data-col]").forEach(th => {
+        th.addEventListener("click", () => {
+          const col = th.dataset.col;
+          const prev = sortState[id];
+          const dir = (prev.col === col && prev.dir === "desc") ? "asc" : "desc";
+          sortState[id] = { col, dir };
+
+          // Update header classes
+          table.querySelectorAll("thead th").forEach(h => {
+            h.classList.remove("sorted-asc", "sorted-desc");
+          });
+          th.classList.add(dir === "asc" ? "sorted-asc" : "sorted-desc");
+
+          sortTable(table, col, dir);
+        });
+      });
+    });
+
+    function sortTable(table, col, dir) {
+      const tbody = table.querySelector("tbody");
+      const rows  = Array.from(tbody.querySelectorAll("tr"));
+      const numCols = new Set(["xg", "xga", "cs"]);
+
+      rows.sort((a, b) => {
+        const av = a.dataset[col] ?? "";
+        const bv = b.dataset[col] ?? "";
+        const cmp = numCols.has(col)
+          ? parseFloat(av) - parseFloat(bv)
+          : av.localeCompare(bv);
+        return dir === "asc" ? cmp : -cmp;
+      });
+
+      rows.forEach(r => tbody.appendChild(r));
+    }
+  </script>
+</body>
+</html>

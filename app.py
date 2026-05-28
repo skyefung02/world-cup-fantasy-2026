@@ -216,5 +216,94 @@ def reset_xg_override():
     return jsonify({"status": "ok", "xp": xp, "overridden_ids": overridden_ids})
 
 
+@app.route("/match-projections")
+def match_projections():
+    import numpy as np
+    proj_path = "data/projections.csv"
+    if not os.path.exists(proj_path):
+        return render_template("match_projections.html", rounds=[])
+
+    df = pd.read_csv(proj_path)
+    teams_df = (
+        df[["abbr", "team", "1_OppAbbr", "1_TeamXG", "2_OppAbbr", "2_TeamXG", "3_OppAbbr", "3_TeamXG"]]
+        .drop_duplicates("abbr")
+    )
+    team_lookup = teams_df.set_index("abbr").to_dict("index")
+
+    # Pull team → group mapping from fixtures
+    fixtures = pd.read_csv("data/processed/player_fixtures.csv")
+    team_group = fixtures[["abbr", "group"]].drop_duplicates().set_index("abbr")["group"].to_dict()
+
+    rounds = []
+    for r in [1, 2, 3]:
+        seen = set()
+        round_matches = []
+        for abbr, row in team_lookup.items():
+            opp = row[f"{r}_OppAbbr"]
+            if pd.isna(opp) or opp not in team_lookup:
+                continue
+            key = tuple(sorted([abbr, opp]))
+            if key in seen:
+                continue
+            seen.add(key)
+
+            xg_a = row[f"{r}_TeamXG"]
+            xg_b = team_lookup[opp][f"{r}_TeamXG"]
+            cs_a = round(float(np.exp(-xg_b)) * 100, 1)
+            cs_b = round(float(np.exp(-xg_a)) * 100, 1)
+            total = xg_a + xg_b
+            a_share = round(xg_a / total * 100, 1) if total > 0 else 50.0
+            group = team_group.get(abbr, "")
+
+            round_matches.append({
+                "group": group,
+                "a_abbr": abbr,
+                "a_team": row["team"],
+                "a_flag": FLAGS.get(abbr, ""),
+                "b_abbr": opp,
+                "b_team": team_lookup[opp]["team"],
+                "b_flag": FLAGS.get(opp, ""),
+                "a_xg": round(float(xg_a), 2),
+                "b_xg": round(float(xg_b), 2),
+                "a_cs": cs_a,
+                "b_cs": cs_b,
+                "a_share": a_share,
+            })
+
+        round_matches.sort(key=lambda m: (m["group"], m["a_team"]))
+
+        # Nest into groups
+        groups = []
+        for m in round_matches:
+            if not groups or groups[-1]["group"] != m["group"]:
+                groups.append({"group": m["group"], "matches": []})
+            groups[-1]["matches"].append(m)
+
+        # Flat per-team rows for the sortable table (default: xG desc)
+        team_rows = []
+        for abbr, row in team_lookup.items():
+            opp = row[f"{r}_OppAbbr"]
+            if pd.isna(opp) or opp not in team_lookup:
+                continue
+            xg  = row[f"{r}_TeamXG"]
+            xga = team_lookup[opp][f"{r}_TeamXG"]
+            team_rows.append({
+                "flag":     FLAGS.get(abbr, ""),
+                "team":     row["team"],
+                "abbr":     abbr,
+                "group":    team_group.get(abbr, "").upper(),
+                "opp_flag": FLAGS.get(opp, ""),
+                "opp_abbr": opp,
+                "xg":       round(float(xg),  2),
+                "xga":      round(float(xga), 2),
+                "cs":       round(float(np.exp(-xga)) * 100, 1),
+            })
+        team_rows.sort(key=lambda t: t["xg"], reverse=True)
+
+        rounds.append({"round": r, "groups": groups, "team_rows": team_rows})
+
+    return render_template("match_projections.html", rounds=rounds)
+
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
