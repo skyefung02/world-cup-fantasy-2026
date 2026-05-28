@@ -139,7 +139,7 @@
     th.sorted { color: #1e3a5f; }
     th.num, td.num { text-align: right; }
 
-    tbody tr { transition: background 0.1s; }
+    tbody tr { transition: background 0.1s; cursor: pointer; }
     tbody tr:hover { background: #f8f9ff; }
     tbody tr:not(:last-child) td { border-bottom: 1px solid #f0f2f5; }
     td {
@@ -174,6 +174,17 @@
     .pos-badge.MID { background: #cfe2ff; color: #0a3678; }
     .pos-badge.FWD { background: #fde0e0; color: #7a1a1a; }
 
+    /* ── Override indicator ── */
+    .override-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #f4a261;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
     /* ── No results ── */
     .no-results {
       text-align: center;
@@ -182,6 +193,113 @@
       font-size: 0.95rem;
       display: none;
     }
+
+    /* ── Modal ── */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      width: 480px;
+      max-width: calc(100vw - 32px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: #aaa;
+      line-height: 1;
+    }
+    .modal-close:hover { color: #333; }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .modal-player-name { font-size: 1.1rem; font-weight: 700; }
+    .modal-meta { font-size: 0.82rem; color: #777; margin-top: 2px; }
+    .modal-xmins {
+      display: flex;
+      gap: 20px;
+      background: #f8f9fc;
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 22px;
+      font-size: 0.82rem;
+      color: #666;
+    }
+    .modal-xmins strong { color: #1e3a5f; }
+    .slider-section { margin-bottom: 20px; }
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+    .slider-label strong { font-size: 0.85rem; color: #444; }
+    .slider-pct { font-size: 1rem; font-weight: 700; color: #1e3a5f; }
+    input[type=range] {
+      width: 100%;
+      accent-color: #1e3a5f;
+      cursor: pointer;
+    }
+    .slider-gross {
+      display: flex;
+      gap: 20px;
+      margin-top: 6px;
+      font-size: 0.78rem;
+      color: #888;
+    }
+    .slider-gross strong { color: #333; }
+    .modal-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      gap: 10px;
+    }
+    .btn-reset {
+      background: none;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      color: #888;
+      transition: all 0.15s;
+    }
+    .btn-reset:hover:not(:disabled) { border-color: #aaa; color: #555; }
+    .btn-reset:disabled { opacity: 0.35; cursor: default; }
+    .btn-save {
+      background: #1e3a5f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-save:hover:not(:disabled) { background: #16213e; }
+    .btn-save:disabled { opacity: 0.5; cursor: default; }
+    .saving-indicator { font-size: 0.78rem; color: #aaa; }
   </style>
 </head>
 <body>
@@ -232,23 +350,42 @@
         <tbody>
           {% for p in players %}
           <tr
+            class="player-row{% if p.has_override %} overridden{% endif %}"
+            onclick="openModal(this)"
+            data-id="{{ p.id }}"
+            data-name="{{ p.player }}"
             data-player="{{ p.player | lower }}"
             data-pos="{{ p.position }}"
+            data-flag="{{ p.flag }}"
+            data-abbr="{{ p.abbr }}"
             data-team="{{ p.team | lower }}"
             data-price="{{ p.price }}"
             data-r1="{{ p['1_Pts'] }}"
             data-r2="{{ p['2_Pts'] }}"
             data-r3="{{ p['3_Pts'] }}"
             data-avg="{{ p.avg_pts }}"
+            data-r1-xmins="{{ p['1_xMins'] | int }}"
+            data-r2-xmins="{{ p['2_xMins'] | int }}"
+            data-r3-xmins="{{ p['3_xMins'] | int }}"
+            data-r1-goal-share="{{ '%.4f' | format(p['1_GoalShare']) }}"
+            data-r2-goal-share="{{ '%.4f' | format(p['2_GoalShare']) }}"
+            data-r3-goal-share="{{ '%.4f' | format(p['3_GoalShare']) }}"
+            data-r1-assist-share="{{ '%.4f' | format(p['1_AssistShare']) }}"
+            data-r2-assist-share="{{ '%.4f' | format(p['2_AssistShare']) }}"
+            data-r3-assist-share="{{ '%.4f' | format(p['3_AssistShare']) }}"
+            data-r1-team-xg="{{ '%.4f' | format(p['1_TeamXG']) }}"
+            data-r2-team-xg="{{ '%.4f' | format(p['2_TeamXG']) }}"
+            data-r3-team-xg="{{ '%.4f' | format(p['3_TeamXG']) }}"
+            data-has-override="{{ 'true' if p.has_override else 'false' }}"
           >
-            <td class="player-name">{{ p.player }}</td>
+            <td class="player-name">{{ p.player }}{% if p.has_override %}<span class="override-dot" title="Manually adjusted"></span>{% endif %}</td>
             <td><span class="pos-badge {{ p.position }}">{{ p.position }}</span></td>
             <td class="team-cell">{{ p.flag }} {{ p.abbr }}</td>
             <td class="price-cell num">£{{ p.price }}m</td>
-            <td class="pts-cell num">{{ p['1_Pts'] }}</td>
-            <td class="pts-cell num">{{ p['2_Pts'] }}</td>
-            <td class="pts-cell num">{{ p['3_Pts'] }}</td>
-            <td class="avg-cell num">{{ p.avg_pts }}</td>
+            <td class="pts-cell num r1-pts">{{ p['1_Pts'] }}</td>
+            <td class="pts-cell num r2-pts">{{ p['2_Pts'] }}</td>
+            <td class="pts-cell num r3-pts">{{ p['3_Pts'] }}</td>
+            <td class="avg-cell num avg-pts">{{ p.avg_pts }}</td>
           </tr>
           {% endfor %}
         </tbody>
@@ -259,6 +396,59 @@
     <p class="no-results" style="display:block">No projections found — run <code>python main.py</code> first.</p>
     {% endif %}
   </main>
+
+  <!-- Player modal -->
+  <div class="modal-backdrop" id="modal-backdrop" onclick="closeModalOnBackdrop(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-header">
+        <span class="pos-badge" id="modal-pos"></span>
+        <div>
+          <div class="modal-player-name" id="modal-name"></div>
+          <div class="modal-meta" id="modal-meta"></div>
+        </div>
+      </div>
+
+      <div class="modal-xmins">
+        <div>xMins</div>
+        <div>R1: <strong id="m-xmins-r1">—</strong></div>
+        <div>R2: <strong id="m-xmins-r2">—</strong></div>
+        <div>R3: <strong id="m-xmins-r3">—</strong></div>
+      </div>
+
+      <div class="slider-section">
+        <div class="slider-label">
+          <strong>Goal Share</strong>
+          <span class="slider-pct" id="goal-pct-label">0.0%</span>
+        </div>
+        <input type="range" id="goal-slider" min="0" max="60" step="0.1" oninput="onSliderInput()">
+        <div class="slider-gross">
+          <div>Proj. goals &nbsp; R1: <strong id="goal-r1">—</strong></div>
+          <div>R2: <strong id="goal-r2">—</strong></div>
+          <div>R3: <strong id="goal-r3">—</strong></div>
+        </div>
+      </div>
+
+      <div class="slider-section">
+        <div class="slider-label">
+          <strong>Assist Share</strong>
+          <span class="slider-pct" id="assist-pct-label">0.0%</span>
+        </div>
+        <input type="range" id="assist-slider" min="0" max="60" step="0.1" oninput="onSliderInput()">
+        <div class="slider-gross">
+          <div>Proj. assists &nbsp; R1: <strong id="assist-r1">—</strong></div>
+          <div>R2: <strong id="assist-r2">—</strong></div>
+          <div>R3: <strong id="assist-r3">—</strong></div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-reset" id="btn-reset" onclick="resetOverride()">Reset to model</button>
+        <span class="saving-indicator" id="saving-indicator"></span>
+        <button class="btn-save" id="btn-save" onclick="saveOverride()">Save</button>
+      </div>
+    </div>
+  </div>
 
   <script>
     const allRows = Array.from(document.querySelectorAll("tbody tr"));
@@ -322,6 +512,139 @@
         th.classList.toggle("sorted", active);
         ind.textContent = active ? (sortDir === 1 ? " ↑" : " ↓") : " ⇅";
       });
+    }
+
+    // ── Modal ──
+    let currentRow = null;
+
+    function openModal(row) {
+      currentRow = row;
+      const d = row.dataset;
+
+      document.getElementById("modal-pos").textContent  = d.pos;
+      document.getElementById("modal-pos").className    = `pos-badge ${d.pos}`;
+      document.getElementById("modal-name").textContent = d.name;
+      document.getElementById("modal-meta").textContent = `${d.flag} ${d.abbr}  ·  £${d.price}m`;
+
+      document.getElementById("m-xmins-r1").textContent = d.r1Xmins;
+      document.getElementById("m-xmins-r2").textContent = d.r2Xmins;
+      document.getElementById("m-xmins-r3").textContent = d.r3Xmins;
+
+      document.getElementById("goal-slider").value   = (parseFloat(d.r1GoalShare)   * 100).toFixed(1);
+      document.getElementById("assist-slider").value = (parseFloat(d.r1AssistShare) * 100).toFixed(1);
+
+      document.getElementById("btn-reset").disabled = d.hasOverride !== "true";
+      document.getElementById("saving-indicator").textContent = "";
+
+      onSliderInput();
+      document.getElementById("modal-backdrop").classList.add("open");
+    }
+
+    function closeModal() {
+      document.getElementById("modal-backdrop").classList.remove("open");
+      currentRow = null;
+    }
+
+    function closeModalOnBackdrop(e) {
+      if (e.target === document.getElementById("modal-backdrop")) closeModal();
+    }
+
+    function onSliderInput() {
+      const goalShare   = parseFloat(document.getElementById("goal-slider").value)   / 100;
+      const assistShare = parseFloat(document.getElementById("assist-slider").value) / 100;
+
+      document.getElementById("goal-pct-label").textContent   = (goalShare   * 100).toFixed(1) + "%";
+      document.getElementById("assist-pct-label").textContent = (assistShare * 100).toFixed(1) + "%";
+
+      const d = currentRow.dataset;
+      for (const r of [1, 2, 3]) {
+        const teamXG = parseFloat(d[`r${r}TeamXg`]);
+        document.getElementById(`goal-r${r}`).textContent   = (teamXG * goalShare).toFixed(2);
+        document.getElementById(`assist-r${r}`).textContent = (teamXG * 0.75 * assistShare).toFixed(2);
+      }
+    }
+
+    async function saveOverride() {
+      if (!currentRow) return;
+      const goalShare   = parseFloat(document.getElementById("goal-slider").value)   / 100;
+      const assistShare = parseFloat(document.getElementById("assist-slider").value) / 100;
+      const playerId    = parseInt(currentRow.dataset.id);
+
+      setSaving(true);
+      const res  = await fetch("/save_xg_override", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({player_id: playerId, goal_share: goalShare, assist_share: assistShare}),
+      });
+      const json = await res.json();
+      setSaving(false);
+
+      if (json.status === "ok") {
+        applyXpUpdates(json.xp, json.overridden_ids);
+        currentRow.dataset.r1GoalShare   = goalShare;
+        currentRow.dataset.r2GoalShare   = goalShare;
+        currentRow.dataset.r3GoalShare   = goalShare;
+        currentRow.dataset.r1AssistShare = assistShare;
+        currentRow.dataset.r2AssistShare = assistShare;
+        currentRow.dataset.r3AssistShare = assistShare;
+        currentRow.dataset.hasOverride   = "true";
+        document.getElementById("btn-reset").disabled = false;
+      }
+    }
+
+    async function resetOverride() {
+      if (!currentRow) return;
+      const playerId = parseInt(currentRow.dataset.id);
+
+      setSaving(true);
+      const res  = await fetch("/reset_xg_override", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({player_id: playerId}),
+      });
+      const json = await res.json();
+      setSaving(false);
+
+      if (json.status === "ok") {
+        applyXpUpdates(json.xp, json.overridden_ids);
+        closeModal();
+      }
+    }
+
+    function setSaving(isSaving) {
+      document.getElementById("saving-indicator").textContent = isSaving ? "Saving…" : "";
+      document.getElementById("btn-save").disabled  = isSaving;
+      document.getElementById("btn-reset").disabled = isSaving;
+    }
+
+    function applyXpUpdates(xp, overriddenIds) {
+      const overriddenSet = new Set(overriddenIds.map(String));
+      for (const [pidStr, pts] of Object.entries(xp)) {
+        const row = document.querySelector(`tr[data-id="${pidStr}"]`);
+        if (!row) continue;
+        const avg = ((pts["1"] + pts["2"] + pts["3"]) / 3).toFixed(2);
+        row.dataset.r1  = pts["1"];
+        row.dataset.r2  = pts["2"];
+        row.dataset.r3  = pts["3"];
+        row.dataset.avg = avg;
+        row.querySelector(".r1-pts").textContent  = pts["1"];
+        row.querySelector(".r2-pts").textContent  = pts["2"];
+        row.querySelector(".r3-pts").textContent  = pts["3"];
+        row.querySelector(".avg-pts").textContent = avg;
+        const hasOverride = overriddenSet.has(pidStr);
+        row.dataset.hasOverride = hasOverride ? "true" : "false";
+        row.classList.toggle("overridden", hasOverride);
+        const nameCell = row.querySelector(".player-name");
+        const dot      = nameCell.querySelector(".override-dot");
+        if (hasOverride && !dot) {
+          const newDot = document.createElement("span");
+          newDot.className = "override-dot";
+          newDot.title = "Manually adjusted";
+          nameCell.appendChild(newDot);
+        } else if (!hasOverride && dot) {
+          dot.remove();
+        }
+      }
     }
   </script>
 </body>

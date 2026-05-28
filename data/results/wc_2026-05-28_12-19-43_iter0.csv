@@ -1,0 +1,59 @@
+id,round,name,position,team,abbr,price,xP,xMins,squad,lineup,bench,captain,vicecaptain,transfer_in,transfer_out,multiplier,xp_contrib,booster,ft,iter
+521,1,David Raum,DEF,Germany,GER,4.9,6.34,75.0,1,1,-1,0,0,1,0,1,6.34,,1,0
+526,1,Nico Schlotterbeck,DEF,Germany,GER,5.3,6.25,80.0,1,1,-1,0,0,1,0,1,6.25,,1,0
+542,1,Joshua Kimmich,DEF,Germany,GER,5.5,6.6,85.0,1,1,-1,0,0,1,0,1,6.6,,1,0
+916,1,Nuno Mendes,DEF,Portugal,POR,5.8,6.03,80.0,1,1,-1,0,0,1,0,1,6.03,,1,0
+38,1,Lionel Messi,FWD,Argentina,ARG,10.0,7.18,85.0,1,1,-1,0,0,1,0,1,7.18,,1,0
+468,1,Harry Kane,FWD,England,ENG,10.5,6.35,88.0,1,1,-1,0,0,1,0,1,6.35,,1,0
+1099,1,Unai Simón,GK,Spain,ESP,5.0,4.85,90.0,1,1,-1,0,0,1,0,1,4.85,,1,0
+256,1,Luis Díaz,MID,Colombia,COL,8.1,8.36,85.0,1,1,-1,0,1,1,0,1,8.36,,1,0
+1092,1,Lamine Yamal,MID,Spain,ESP,10.0,10.11,80.0,1,1,-1,1,0,1,0,2,20.22,,1,0
+1247,1,Giorgian de Arrascaeta,MID,Uruguay,URU,6.5,7.5,75.0,1,1,-1,0,0,1,0,1,7.5,,1,0
+2000,1,Nico Williams,MID,Spain,ESP,7.8,5.91,75.0,1,1,-1,0,0,1,0,1,5.91,,1,0
+451,1,Mohamed El Shenawy,GK,Egypt,EGY,3.6,2.0,90.0,1,0,0,0,0,1,0,0,0.0,,1,0
+1366,1,Raphinha,MID,Brazil,BRA,8.2,5.84,80.0,1,0,1,0,0,1,0,0,0.0,,1,0
+1941,1,Fricio Caicedo,DEF,Ecuador,ECU,4.0,4.06,80.0,1,0,2,0,0,1,0,0,0.0,,1,0
+702,1,Mohammad Abu Zraiq,FWD,Jordan,JOR,4.2,3.12,70.0,1,0,3,0,0,1,0,0,0.0,,1,0
+457,2,Nico O'Reilly,DEF,England,ENG,4.7,5.76,80.0,1,1,-1,0,0,1,0,1,5.76,,3,0
+916,2,Nuno Mendes,DEF,Portugal,POR,5.8,6.38,80.0,1,1,-1,0,0,0,0,1,6.38,,3,0
+1226,2,Ronald Araujo,DEF,Uruguay,URU,5.0,5.89,80.0,1,1,-1,0,0,1,0,1,5.89,,3,0
+38,2,Lionel Messi,FWD,Argentina,ARG,10.0,6.83,85.0,1,1,-1,0,0,0,0,1,6.83,,3,0
+468,2,Harry Kane,FWD,England,ENG,10.5,8.53,88.0,1,1,-1,0,1,0,0,1,8.53,,3,0
+1099,2,Unai Simón,GK,Spain,ESP,5.0,4.83,90.0,1,1,-1,0,0,0,0,1,4.83,,3,0
+256,2,Luis Díaz,MID,Colombia,COL,8.1,7.89,85.0,1,1,-1,0,0,0,0,1,7.89,,3,0
+517,2,Michael Olise,MID,France,FRA,9.5,7.35,80.0,1,1,-1,0,0,1,0,1,7.35,,3,0
+1092,2,Lamine Yamal,MID,Spain,ESP,10.0,9.89,80.0,1,1,-1,1,0,0,0,2,19.78,,3,0
+1247,2,Giorgian de Arrascaeta,MID,Uruguay,URU,6.5,7.6,75.0,1,1,-1,0,0,0,0,1,7.6,,3,0
+1366,2,Raphinha,MID,Brazil,BRA,8.2,8.01,80.0,1,1,-1,0,0,0,0,1,8.01,,3,0
+451,2,Mohamed El Shenawy,GK,Egypt,EGY,3.6,3.36,90.0,1,0,0,0,0,0,0,0,0.0,,3,0
+1941,2,Fricio Caicedo,DEF,Ecuador,ECU,4.0,5.42,80.0,1,0,1,0,0,0,0,0,0.0,,3,0
+521,2,David Raum,DEF,Germany,GER,4.9,4.82,75.0,1,0,2,0,0,0,0,0,0.0,,3,0
+702,2,Mohammad Abu Zraiq,FWD,Jordan,JOR,4.2,3.19,70.0,1,0,3,0,0,0,0,0,0.0,,3,0
+501,2,Ousmane Dembélé,MID,France,FRA,10.0,7.88,75.0,0,1,-1,0,0,0,0,1,7.88,TM,3,0
+526,2,Nico Schlotterbeck,DEF,Germany,GER,5.3,4.75,80.0,0,0,-1,0,0,0,1,0,0.0,,3,0
+542,2,Joshua Kimmich,DEF,Germany,GER,5.5,4.99,85.0,0,0,-1,0,0,0,1,0,0.0,,3,0
+2000,2,Nico Williams,MID,Spain,ESP,7.8,5.81,75.0,0,0,-1,0,0,0,1,0,0.0,,3,0
+28,3,Cristian Romero,DEF,Argentina,ARG,4.9,6.26,85.0,1,1,-1,0,0,1,0,1,6.26,WC,2,0
+114,3,Maxim De Cuyper,DEF,Belgium,BEL,4.7,5.8,80.0,1,1,-1,0,0,1,0,1,5.8,WC,2,0
+795,3,Denzel Dumfries,DEF,Netherlands,NED,5.7,5.54,80.0,1,1,-1,0,0,1,0,1,5.54,WC,2,0
+38,3,Lionel Messi,FWD,Argentina,ARG,10.0,8.63,85.0,1,1,-1,1,0,0,0,2,17.26,WC,2,0
+468,3,Harry Kane,FWD,England,ENG,10.5,7.88,88.0,1,1,-1,0,1,0,0,1,7.88,WC,2,0
+805,3,Donyell Malen,FWD,Netherlands,NED,6.1,6.0,70.0,1,1,-1,0,0,1,0,1,6.0,WC,2,0
+45,3,Emiliano Martínez,GK,Argentina,ARG,5.0,4.66,90.0,1,1,-1,0,0,1,0,1,4.66,WC,2,0
+138,3,Kevin De Bruyne,MID,Belgium,BEL,7.5,5.7,80.0,1,1,-1,0,0,1,0,1,5.7,WC,2,0
+792,3,Ismael Saibari,MID,Morocco,MAR,6.8,5.68,75.0,1,1,-1,0,0,1,0,1,5.68,WC,2,0
+1092,3,Lamine Yamal,MID,Spain,ESP,10.0,6.08,80.0,1,1,-1,0,0,0,0,1,6.08,WC,2,0
+1366,3,Raphinha,MID,Brazil,BRA,8.2,6.3,80.0,1,1,-1,0,0,0,0,1,6.3,WC,2,0
+1665,3,Munir El Kajoui,GK,Morocco,MAR,4.0,3.8,90.0,1,0,0,0,0,1,0,0,0.0,WC,2,0
+256,3,Luis Díaz,MID,Colombia,COL,8.1,5.67,85.0,1,0,1,0,0,0,0,0,0.0,WC,2,0
+457,3,Nico O'Reilly,DEF,England,ENG,4.7,5.34,80.0,1,0,2,0,0,0,0,0,0.0,WC,2,0
+1670,3,Mohamed Chibi,DEF,Morocco,MAR,3.8,4.34,80.0,1,0,3,0,0,1,0,0,0.0,WC,2,0
+521,3,David Raum,DEF,Germany,GER,4.9,3.84,75.0,0,0,-1,0,0,0,1,0,0.0,WC,2,0
+916,3,Nuno Mendes,DEF,Portugal,POR,5.8,4.29,80.0,0,0,-1,0,0,0,1,0,0.0,WC,2,0
+1226,3,Ronald Araujo,DEF,Uruguay,URU,5.0,2.43,80.0,0,0,-1,0,0,0,1,0,0.0,WC,2,0
+1941,3,Fricio Caicedo,DEF,Ecuador,ECU,4.0,2.96,80.0,0,0,-1,0,0,0,1,0,0.0,WC,2,0
+702,3,Mohammad Abu Zraiq,FWD,Jordan,JOR,4.2,2.67,70.0,0,0,-1,0,0,0,1,0,0.0,WC,2,0
+451,3,Mohamed El Shenawy,GK,Egypt,EGY,3.6,2.95,90.0,0,0,-1,0,0,0,1,0,0.0,WC,2,0
+1099,3,Unai Simón,GK,Spain,ESP,5.0,3.5,90.0,0,0,-1,0,0,0,1,0,0.0,WC,2,0
+517,3,Michael Olise,MID,France,FRA,9.5,5.0,80.0,0,0,-1,0,0,0,1,0,0.0,WC,2,0
+1247,3,Giorgian de Arrascaeta,MID,Uruguay,URU,6.5,4.16,75.0,0,0,-1,0,0,0,1,0,0.0,WC,2,0

@@ -8,6 +8,7 @@ from build_projections import assign_xmins
 app = Flask(__name__)
 
 XMINS_PATH = "data/xmins.csv"
+XG_OVERRIDES_PATH = "data/xg_overrides.csv"
 
 FLAGS = {
     "ALG": "🇩🇿", "ARG": "🇦🇷", "AUS": "🇦🇺", "AUT": "🇦🇹",
@@ -151,12 +152,61 @@ def projections_page():
     proj["flag"] = proj["abbr"].map(FLAGS).fillna("")
     for col in ["1_Pts", "2_Pts", "3_Pts"]:
         proj[col] = proj[col].round(2)
+    overridden_ids = set()
+    if os.path.exists(XG_OVERRIDES_PATH):
+        overridden_ids = set(pd.read_csv(XG_OVERRIDES_PATH)["id"].tolist())
+    proj["has_override"] = proj["id"].isin(overridden_ids)
+    component_cols = [
+        "1_xMins", "2_xMins", "3_xMins",
+        "1_GoalShare", "2_GoalShare", "3_GoalShare",
+        "1_AssistShare", "2_AssistShare", "3_AssistShare",
+        "1_TeamXG", "2_TeamXG", "3_TeamXG",
+    ]
     players = (
-        proj[["id", "player", "position", "price", "team", "abbr", "flag", "1_Pts", "2_Pts", "3_Pts", "avg_pts"]]
+        proj[["id", "player", "position", "price", "team", "abbr", "flag",
+              "1_Pts", "2_Pts", "3_Pts", "avg_pts", "has_override"] + component_cols]
         .sort_values("avg_pts", ascending=False)
         .to_dict(orient="records")
     )
     return render_template("projections.html", players=players)
+
+
+@app.route("/save_xg_override", methods=["POST"])
+def save_xg_override():
+    data = request.json
+    player_id   = int(data["player_id"])
+    goal_share   = float(data["goal_share"])
+    assist_share = float(data["assist_share"])
+    overrides = pd.read_csv(XG_OVERRIDES_PATH) if os.path.exists(XG_OVERRIDES_PATH) else pd.DataFrame(columns=["id", "goal_share", "assist_share"])
+    overrides = overrides[overrides["id"] != player_id]
+    overrides = pd.concat([overrides, pd.DataFrame([{"id": player_id, "goal_share": goal_share, "assist_share": assist_share}])], ignore_index=True)
+    overrides.to_csv(XG_OVERRIDES_PATH, index=False)
+    build_projections.run()
+    proj = pd.read_csv("data/projections.csv")
+    players = load_players()
+    team_abbr = players.loc[players["id"] == player_id, "abbr"].iloc[0]
+    team_proj = proj[proj["abbr"] == team_abbr][["id", "1_Pts", "2_Pts", "3_Pts"]]
+    overridden_ids = list(pd.read_csv(XG_OVERRIDES_PATH)["id"].astype(int))
+    xp = {str(int(r["id"])): {"1": round(r["1_Pts"], 2), "2": round(r["2_Pts"], 2), "3": round(r["3_Pts"], 2)} for _, r in team_proj.iterrows()}
+    return jsonify({"status": "ok", "xp": xp, "overridden_ids": overridden_ids})
+
+
+@app.route("/reset_xg_override", methods=["POST"])
+def reset_xg_override():
+    data = request.json
+    player_id = int(data["player_id"])
+    if os.path.exists(XG_OVERRIDES_PATH):
+        overrides = pd.read_csv(XG_OVERRIDES_PATH)
+        overrides = overrides[overrides["id"] != player_id]
+        overrides.to_csv(XG_OVERRIDES_PATH, index=False)
+    build_projections.run()
+    proj = pd.read_csv("data/projections.csv")
+    players = load_players()
+    team_abbr = players.loc[players["id"] == player_id, "abbr"].iloc[0]
+    team_proj = proj[proj["abbr"] == team_abbr][["id", "1_Pts", "2_Pts", "3_Pts"]]
+    overridden_ids = list(pd.read_csv(XG_OVERRIDES_PATH)["id"].astype(int)) if os.path.exists(XG_OVERRIDES_PATH) else []
+    xp = {str(int(r["id"])): {"1": round(r["1_Pts"], 2), "2": round(r["2_Pts"], 2), "3": round(r["3_Pts"], 2)} for _, r in team_proj.iterrows()}
+    return jsonify({"status": "ok", "xp": xp, "overridden_ids": overridden_ids})
 
 
 if __name__ == "__main__":

@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 import pandas as pd
 
@@ -6,6 +8,7 @@ from scoring import (
 )
 
 PROCESSED_DIR = "data/processed"
+XG_OVERRIDES_PATH = "data/xg_overrides.csv"
 
 
 # --- Model functions ---
@@ -115,6 +118,40 @@ def run():
     df["player_xg"] = df["xg_scored"] * df["goal_w"] / df["goal_w_sum"]
     df["player_xa"] = df["xg_scored"] * 0.75 * df["assist_w"] / df["assist_w_sum"]
 
+    # Apply xG/xA overrides: lock specified shares, redistribute remainder proportionally
+    if os.path.exists(XG_OVERRIDES_PATH):
+        xg_ov = pd.read_csv(XG_OVERRIDES_PATH)
+        xg_ov_dict = xg_ov.set_index("id").to_dict("index")
+        xg_ov_ids  = set(xg_ov_dict.keys())
+        for (team, round_id), group_idx in df.groupby(["team", "round_id"]).groups.items():
+            group = df.loc[group_idx]
+            overridden = group[group["id"].isin(xg_ov_ids)]
+            if overridden.empty:
+                continue
+            team_xg = group["xg_scored"].iloc[0]
+            team_xa = team_xg * 0.75
+            total_locked_xg = total_locked_xa = 0.0
+            for idx in overridden.index:
+                ov = xg_ov_dict[int(df.loc[idx, "id"])]
+                df.loc[idx, "player_xg"] = team_xg * ov["goal_share"]
+                df.loc[idx, "player_xa"] = team_xa * ov["assist_share"]
+                total_locked_xg += team_xg * ov["goal_share"]
+                total_locked_xa += team_xa * ov["assist_share"]
+            non_ov = group[~group["id"].isin(xg_ov_ids) & (group["position"] != "GK")]
+            if non_ov.empty:
+                continue
+            gw_sum = df.loc[non_ov.index, "goal_w"].sum()
+            aw_sum = df.loc[non_ov.index, "assist_w"].sum()
+            remaining_xg = max(0.0, team_xg - total_locked_xg)
+            remaining_xa = max(0.0, team_xa - total_locked_xa)
+            if gw_sum > 0:
+                df.loc[non_ov.index, "player_xg"] = remaining_xg * df.loc[non_ov.index, "goal_w"] / gw_sum
+            if aw_sum > 0:
+                df.loc[non_ov.index, "player_xa"] = remaining_xa * df.loc[non_ov.index, "assist_w"] / aw_sum
+
+    df["goal_share"]   = df["player_xg"] / df["xg_scored"]
+    df["assist_share"] = df["player_xa"] / (df["xg_scored"] * 0.75)
+
     # Points — computed directly, no /90 × xmins scaling needed
     conceded_rate = df["position"].map(GOALS_CONCEDED_PTS).fillna(0)
     df["app_pts"]      = df["xmins"].apply(appearance_pts)
@@ -135,6 +172,9 @@ def run():
         "cs_pts":       "CSPts",
         "conceded_pts": "ConcededPts",
         "app_pts":      "AppPts",
+        "xg_scored":    "TeamXG",
+        "goal_share":   "GoalShare",
+        "assist_share": "AssistShare",
     }
 
     metadata = df[["id", "player", "position", "price", "team", "abbr"]].drop_duplicates("id")
