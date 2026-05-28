@@ -1,179 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WC Fantasy 2026 — Match Projections</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+{% extends "base.html" %}
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f0f2f5;
-      color: #1a1a2e;
-      min-height: 100vh;
-    }
+{% block title %}Match Projections — WC Fantasy 2026{% endblock %}
 
-    /* ── Header ── */
-    header {
-      background: linear-gradient(135deg, #1e3a5f 0%, #16213e 100%);
-      color: white;
-      padding: 24px 32px 0;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-    }
-    .header-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .trophy { font-size: 2rem; }
-    header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.3px; }
-    header p  { font-size: 0.85rem; color: #a8c0d6; margin-top: 4px; }
-
-    /* ── Nav ── */
-    .main-nav {
-      max-width: 1100px;
-      margin: 16px auto 0;
-      display: flex;
-      gap: 4px;
-    }
-    .nav-tab {
-      color: rgba(255,255,255,0.6);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 8px 16px;
-      border-radius: 8px 8px 0 0;
-      transition: background 0.15s, color 0.15s;
-    }
-    .nav-tab:hover  { background: rgba(255,255,255,0.1); color: white; }
-    .nav-tab.active { background: #f0f2f5; color: #1e3a5f; }
-
-    /* ── Main ── */
-    main {
-      max-width: 1100px;
-      margin: 28px auto;
-      padding: 0 20px;
-    }
-
+{% block extra_styles %}
     /* ── Round tabs ── */
     .round-tabs {
       display: flex;
-      gap: 8px;
+      gap: 4px;
       margin-bottom: 24px;
+      padding: 3px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      width: fit-content;
     }
     .round-btn {
-      padding: 8px 22px;
-      border-radius: 20px;
-      font-size: 0.82rem;
-      font-weight: 700;
+      padding: 7px 18px;
+      border-radius: 7px;
+      font-size: 0.78rem;
+      font-weight: 600;
       letter-spacing: 0.3px;
       cursor: pointer;
-      border: 2px solid #e0e4ea;
-      background: white;
-      color: #888;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      transition: all 0.15s;
+      border: none;
+      background: transparent;
+      color: var(--text-subtle);
+      transition: background 0.15s, color 0.15s;
+      font-family: var(--mono);
     }
-    .round-btn:hover { border-color: #1e3a5f; color: #1e3a5f; }
-    .round-btn.active { background: #1e3a5f; color: white; border-color: #1e3a5f; }
+    .round-btn:hover { color: var(--text); }
+    .round-btn.active {
+      background: var(--surface-2);
+      color: var(--text);
+      box-shadow: 0 0 0 1px var(--border);
+    }
 
     /* ── Round section ── */
     .round-section { display: none; }
-    .round-section.visible { display: flex; gap: 40px; align-items: flex-start; }
+    .round-section.visible { display: grid; grid-template-columns: 1fr 380px; gap: 28px; align-items: flex-start; }
+    @media (max-width: 1000px) {
+      .round-section.visible { grid-template-columns: 1fr; }
+      .table-panel { position: static !important; max-height: none !important; }
+    }
 
-    /* ── Left: match cards ── */
-    .matches-col { flex: 1; min-width: 0; }
-
-    /* ── Right: sortable table panel ── */
+    /* ── Right: sortable team panel ── */
     .table-panel {
-      width: 400px;
-      flex-shrink: 0;
       position: sticky;
-      top: 24px;
-      max-height: calc(100vh - 80px);
+      top: 84px;
+      max-height: calc(100vh - 110px);
       display: flex;
       flex-direction: column;
-      background: white;
-      border-radius: 14px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
       overflow: hidden;
     }
     .table-panel-head {
-      padding: 12px 16px 10px;
-      border-bottom: 1px solid #f0f2f5;
-      font-size: 0.72rem;
-      font-weight: 700;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.68rem;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: #888;
+      letter-spacing: 0.8px;
+      color: var(--text-subtle);
+      font-family: var(--mono);
+      background: var(--surface-2);
       flex-shrink: 0;
     }
     .table-scroll { overflow-y: auto; flex: 1; }
-    .rank-table { width: 100%; border-collapse: collapse; }
+
     .rank-table thead th {
       position: sticky;
       top: 0;
-      background: #fafbfc;
-      padding: 8px 10px;
-      font-size: 0.68rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #999;
-      border-bottom: 1px solid #f0f2f5;
-      white-space: nowrap;
+      background: var(--surface-2);
+      padding: 9px 12px;
+      font-size: 0.64rem;
       cursor: pointer;
-      user-select: none;
-      transition: color 0.15s;
     }
-    .rank-table thead th:hover { color: #1e3a5f; }
-    .rank-table thead th.sorted-asc::after  { content: " ↑"; color: #1e3a5f; }
-    .rank-table thead th.sorted-desc::after { content: " ↓"; color: #1e3a5f; }
-    .rank-table thead th { text-align: left; }
-    .rank-table thead th.num { text-align: right; }
-    .rank-table tbody tr { transition: background 0.1s; }
-    .rank-table tbody tr:hover { background: #f8f9ff; }
-    .rank-table tbody tr:not(:last-child) td { border-bottom: 1px solid #f6f7f9; }
+    .rank-table thead th.sorted-asc::after,
+    .rank-table thead th.sorted-desc::after {
+      color: var(--accent);
+      margin-left: 3px;
+    }
+    .rank-table thead th.sorted-asc::after  { content: "↑"; }
+    .rank-table thead th.sorted-desc::after { content: "↓"; }
     .rank-table td {
-      padding: 7px 10px;
-      font-size: 0.8rem;
+      padding: 9px 12px;
+      font-size: 0.78rem;
       vertical-align: middle;
     }
-    .rank-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
-    .rank-table .grp-badge {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 700;
-      background: #e8f0fb;
-      color: #1e3a5f;
-      padding: 2px 6px;
-      border-radius: 10px;
-    }
-    .rank-table .xg-hi { color: #1e3a5f; font-weight: 700; }
-    .rank-table .cs-val { color: #2d6a4f; font-weight: 600; }
+    .rank-table td.num { font-family: var(--mono); }
+    .rank-table .xg-hi { color: var(--accent); font-weight: 600; }
+    .rank-table .cs-val { color: var(--success); font-weight: 600; }
 
     /* ── Match grid ── */
+    .matches-col { min-width: 0; }
     .match-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
     }
 
     /* ── Match card ── */
     .match-card {
-      background: white;
-      border-radius: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
       overflow: hidden;
+      transition: border-color 0.15s, background 0.15s;
     }
+    .match-card:hover { border-color: var(--border-strong); }
 
     .match-body {
       display: flex;
       align-items: stretch;
-      padding: 16px 14px 12px;
+      padding: 16px 16px 12px;
       gap: 8px;
     }
 
@@ -181,7 +121,8 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
+      min-width: 0;
     }
     .team-col.right { text-align: right; align-items: flex-end; }
 
@@ -189,107 +130,124 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      color: #1a1a2e;
+      color: var(--text);
+      min-width: 0;
     }
     .team-col.right .team-name-row { flex-direction: row-reverse; }
+    .team-name-row .name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
 
     .xg-num {
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: #1e3a5f;
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: var(--text);
       line-height: 1.1;
+      font-family: var(--mono);
+      font-variant-numeric: tabular-nums;
     }
 
     .cs-label {
-      font-size: 0.72rem;
+      font-size: 0.62rem;
       font-weight: 600;
-      color: #888;
+      color: var(--text-faint);
       text-transform: uppercase;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.6px;
+      font-family: var(--mono);
     }
     .cs-value {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #2d6a4f;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--success);
+      font-variant-numeric: tabular-nums;
+      font-family: var(--mono);
     }
 
     .vs-col {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 0 4px;
-      gap: 2px;
+      justify-content: flex-start;
+      padding: 4px 4px 0;
+      gap: 4px;
     }
     .vs-text {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       font-weight: 700;
-      color: #ccc;
-      letter-spacing: 0.5px;
+      color: var(--text-faint);
+      letter-spacing: 0.6px;
       text-transform: uppercase;
+      font-family: var(--mono);
     }
 
     /* ── xG bar ── */
-    .xg-bar-wrap {
-      padding: 0 14px 14px;
-    }
+    .xg-bar-wrap { padding: 0 16px 14px; }
     .xg-bar {
-      height: 5px;
+      height: 4px;
       border-radius: 4px;
-      background: #e0e4ea;
+      background: var(--surface-2);
       overflow: hidden;
       display: flex;
     }
     .xg-bar-a {
       height: 100%;
-      background: linear-gradient(90deg, #1e3a5f, #2d6a9f);
+      background: linear-gradient(90deg, var(--accent-strong), var(--accent));
       border-radius: 4px 0 0 4px;
       transition: width 0.3s;
     }
-
     .bar-labels {
       display: flex;
       justify-content: space-between;
-      margin-top: 5px;
+      margin-top: 6px;
     }
     .bar-label {
-      font-size: 0.68rem;
-      color: #aaa;
+      font-size: 0.66rem;
+      color: var(--text-faint);
       font-weight: 600;
+      font-family: var(--mono);
+      font-variant-numeric: tabular-nums;
     }
 
     /* ── Group header ── */
     .group-header {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: #888;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       margin: 24px 0 10px;
     }
     .group-header:first-child { margin-top: 0; }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="header-inner">
-      <span class="trophy">🏆</span>
+    .group-header .label {
+      font-size: 0.66rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-subtle);
+      font-family: var(--mono);
+    }
+    .group-header .letter {
+      color: var(--text);
+      font-weight: 700;
+    }
+    .group-header .divider {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+{% endblock %}
+
+{% block content %}
+    <div class="page-head">
       <div>
-        <h1>WC Fantasy 2026</h1>
-        <p>Match Projections — model xG and clean sheet probabilities</p>
+        <h1 class="page-title">Match Projections</h1>
+        <p class="page-sub">Model xG and clean-sheet probabilities per fixture.</p>
       </div>
     </div>
-    <nav class="main-nav">
-      <a href="/" class="nav-tab">xMins Editor</a>
-      <a href="/projections" class="nav-tab">Projections</a>
-      <a href="/match-projections" class="nav-tab active">Match Projections</a>
-    </nav>
-  </header>
 
-  <main>
     <div class="round-tabs">
       {% for rd in rounds %}
       <button class="round-btn {% if loop.first %}active{% endif %}" onclick="showRound({{ rd.round }}, this)">Round {{ rd.round }}</button>
@@ -303,7 +261,10 @@
       <div class="matches-col">
         {% if rd.groups %}
           {% for grp in rd.groups %}
-          <p class="group-header">Group {{ grp.group | upper }}</p>
+          <div class="group-header">
+            <span class="label">Group <span class="letter">{{ grp.group | upper }}</span></span>
+            <span class="divider"></span>
+          </div>
           <div class="match-grid">
             {% for m in grp.matches %}
             <div class="match-card">
@@ -311,7 +272,7 @@
                 <div class="team-col">
                   <div class="team-name-row">
                     <span>{{ m.a_flag }}</span>
-                    <span>{{ m.a_team }}</span>
+                    <span class="name">{{ m.a_team }}</span>
                   </div>
                   <div class="xg-num">{{ "%.2f"|format(m.a_xg) }}</div>
                   <div class="cs-label">Clean sheet</div>
@@ -324,7 +285,7 @@
                 <div class="team-col right">
                   <div class="team-name-row">
                     <span>{{ m.b_flag }}</span>
-                    <span>{{ m.b_team }}</span>
+                    <span class="name">{{ m.b_team }}</span>
                   </div>
                   <div class="xg-num">{{ "%.2f"|format(m.b_xg) }}</div>
                   <div class="cs-label">Clean sheet</div>
@@ -345,13 +306,13 @@
           </div>
           {% endfor %}
         {% else %}
-        <p style="color:#aaa;text-align:center;padding:40px 0">No projections found — run <code>python main.py</code> first.</p>
+        <p class="no-results">No projections found — run <code>python main.py</code> first.</p>
         {% endif %}
       </div>
 
       <!-- Right: sortable team table -->
       <div class="table-panel">
-        <div class="table-panel-head">All teams — Round {{ rd.round }}</div>
+        <div class="table-panel-head">All teams · Round {{ rd.round }}</div>
         <div class="table-scroll">
           <table class="rank-table" id="rank-table-{{ rd.round }}">
             <thead>
@@ -387,8 +348,9 @@
 
     </div>
     {% endfor %}
-  </main>
+{% endblock %}
 
+{% block scripts %}
   <script>
     function showRound(r, btn) {
       document.querySelectorAll(".round-section").forEach(s => s.classList.remove("visible"));
@@ -398,11 +360,10 @@
     }
 
     // ── Sortable tables ──
-    const sortState = {};  // tableId → { col, dir }
+    const sortState = {};
 
     document.querySelectorAll(".rank-table").forEach(table => {
       const id = table.id;
-      // default: xg descending
       sortState[id] = { col: "xg", dir: "desc" };
 
       table.querySelectorAll("thead th[data-col]").forEach(th => {
@@ -412,7 +373,6 @@
           const dir = (prev.col === col && prev.dir === "desc") ? "asc" : "desc";
           sortState[id] = { col, dir };
 
-          // Update header classes
           table.querySelectorAll("thead th").forEach(h => {
             h.classList.remove("sorted-asc", "sorted-desc");
           });
@@ -440,5 +400,4 @@
       rows.forEach(r => tbody.appendChild(r));
     }
   </script>
-</body>
-</html>
+{% endblock %}

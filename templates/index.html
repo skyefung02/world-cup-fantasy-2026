@@ -1,188 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WC Fantasy 2026 — xMins Editor</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+{% extends "base.html" %}
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f0f2f5;
-      color: #1a1a2e;
-      min-height: 100vh;
-    }
+{% block title %}xMins Editor — WC Fantasy 2026{% endblock %}
 
-    /* ── Header ── */
-    header {
-      background: linear-gradient(135deg, #1e3a5f 0%, #16213e 100%);
-      color: white;
-      padding: 24px 32px 0;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-    }
-    header h1 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-    }
-    header p {
-      font-size: 0.85rem;
-      color: #a8c0d6;
-      margin-top: 4px;
-    }
-    .header-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .trophy { font-size: 2rem; }
-    .main-nav {
-      max-width: 1000px;
-      margin: 16px auto 0;
-      display: flex;
-      gap: 4px;
-    }
-    .nav-tab {
-      color: rgba(255,255,255,0.6);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 8px 16px;
-      border-radius: 8px 8px 0 0;
-      transition: background 0.15s, color 0.15s;
-    }
-    .nav-tab:hover { background: rgba(255,255,255,0.1); color: white; }
-    .nav-tab.active { background: #f0f2f5; color: #1e3a5f; }
-
-    /* ── Main ── */
-    main {
-      max-width: 1000px;
-      margin: 32px auto;
-      padding: 0 20px;
-    }
-
-    /* ── Search ── */
-    .search-wrap {
-      position: relative;
-      margin-bottom: 28px;
-    }
-    .search-wrap input {
-      width: 100%;
-      padding: 12px 16px 12px 44px;
-      font-size: 0.95rem;
-      border: 2px solid #e0e4ea;
-      border-radius: 12px;
-      background: white;
-      outline: none;
-      transition: border-color 0.2s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-    .search-wrap input:focus { border-color: #1e3a5f; }
-    .search-icon {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1.1rem;
-      color: #aaa;
-    }
-
-    /* ── Section label ── */
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: #888;
-      margin-bottom: 14px;
-    }
-
-    /* ── Team grid ── */
+{% block extra_styles %}
+    /* ── Page-specific: team grid ── */
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
     }
-
     .team-card {
-      background: white;
-      border-radius: 12px;
-      padding: 16px 18px;
-      text-decoration: none;
-      color: inherit;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      border: 2px solid transparent;
-      transition: border-color 0.18s, box-shadow 0.18s, transform 0.15s;
       display: flex;
       align-items: center;
       gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      transition: background 0.15s, border-color 0.15s, transform 0.15s;
+      position: relative;
     }
     .team-card:hover {
-      border-color: #1e3a5f;
-      box-shadow: 0 6px 20px rgba(30,58,95,0.15);
-      transform: translateY(-2px);
+      background: var(--surface-2);
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
     }
-    .team-flag { font-size: 1.4rem; line-height: 1; flex-shrink: 0; }
-    .team-name {
+    .team-card:hover .team-arrow { opacity: 1; transform: translateX(0); }
+    .team-flag { font-size: 1.35rem; line-height: 1; flex-shrink: 0; }
+    .team-name { font-size: 0.9rem; font-weight: 500; color: var(--text); }
+    .team-arrow {
+      margin-left: auto;
+      color: var(--text-faint);
       font-size: 0.9rem;
-      font-weight: 600;
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity 0.15s, transform 0.15s;
     }
-    .group-badge {
-      font-size: 0.7rem;
+
+    .group-section { margin-bottom: 28px; }
+    .group-section:last-child { margin-bottom: 0; }
+
+    .group-section-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .group-section-head .section-label { margin-bottom: 0; }
+    .group-section-head .group-letter {
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.68rem;
       font-weight: 700;
-      background: #e8f0fb;
-      color: #1e3a5f;
-      padding: 3px 8px;
-      border-radius: 20px;
-      letter-spacing: 0.3px;
+    }
+    .group-section-head .divider {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .group-section-head .count {
+      font-size: 0.7rem;
+      color: var(--text-faint);
+      font-family: var(--mono);
     }
 
-    /* ── Group sections ── */
-    .group-section { margin-bottom: 32px; }
-
-    /* ── No results ── */
-    .no-results {
-      text-align: center;
-      color: #aaa;
-      padding: 40px 0;
-      font-size: 0.95rem;
-      display: none;
+    .toolbar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
     }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="header-inner">
-      <span class="trophy">🏆</span>
+    .toolbar .search-wrap { flex: 1; max-width: 420px; }
+{% endblock %}
+
+{% block content %}
+    <div class="page-head">
       <div>
-        <h1>WC Fantasy 2026</h1>
-        <p>xMins Editor — set expected minutes per player</p>
+        <h1 class="page-title">Squad Manager</h1>
+        <p class="page-sub">Set expected minutes per player to drive projections.</p>
       </div>
     </div>
-    <nav class="main-nav">
-      <a href="/" class="nav-tab active">xMins Editor</a>
-      <a href="/projections" class="nav-tab">Projections</a>
-      <a href="/match-projections" class="nav-tab">Match Projections</a>
-    </nav>
-  </header>
 
-  <main>
-    <div class="search-wrap">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="search" placeholder="Search team…" onkeyup="filterTeams()" autocomplete="off">
+    <div class="toolbar">
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="search" placeholder="Search team…" onkeyup="filterTeams()" autocomplete="off">
+      </div>
     </div>
 
     {% for group_letter, group_teams in teams | groupby("group") %}
     <div class="group-section" data-group="{{ group_letter }}">
-      <p class="section-label">Group {{ group_letter | upper }}</p>
+      <div class="group-section-head">
+        <span class="section-label">Group <span class="group-letter">{{ group_letter | upper }}</span></span>
+        <span class="divider"></span>
+        <span class="count">{{ group_teams | list | length }} teams</span>
+      </div>
       <div class="team-grid">
         {% for t in group_teams %}
         <a class="team-card" href="/team/{{ t.abbr }}" data-name="{{ t.team.lower() }}">
           <span class="team-flag">{{ flags[t.abbr] }}</span>
           <span class="team-name">{{ t.team }}</span>
+          <span class="team-arrow">→</span>
         </a>
         {% endfor %}
       </div>
@@ -190,8 +107,9 @@
     {% endfor %}
 
     <p class="no-results" id="no-results">No teams found.</p>
-  </main>
+{% endblock %}
 
+{% block scripts %}
   <script>
     function filterTeams() {
       const q = document.getElementById("search").value.toLowerCase();
@@ -209,5 +127,4 @@
       document.getElementById("no-results").style.display = totalVisible === 0 ? "block" : "none";
     }
   </script>
-</body>
-</html>
+{% endblock %}

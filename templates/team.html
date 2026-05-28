@@ -1,303 +1,204 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ team.team }} — xMins Editor</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+{% extends "base.html" %}
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f0f2f5;
-      color: #1a1a2e;
-      min-height: 100vh;
-    }
+{% block title %}{{ team.team }} — WC Fantasy 2026{% endblock %}
 
-    /* ── Header ── */
-    header {
-      background: linear-gradient(135deg, #1e3a5f 0%, #16213e 100%);
-      color: white;
-      padding: 20px 32px 0;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-    }
-    .main-nav {
-      max-width: 860px;
-      margin: 14px auto 0;
-      display: flex;
-      gap: 4px;
-    }
-    .nav-tab {
-      color: rgba(255,255,255,0.6);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 8px 16px;
-      border-radius: 8px 8px 0 0;
-      transition: background 0.15s, color 0.15s;
-    }
-    .nav-tab:hover { background: rgba(255,255,255,0.1); color: white; }
-    .nav-tab.active { background: #f0f2f5; color: #1e3a5f; }
-    .header-inner {
-      max-width: 860px;
-      margin: 0 auto;
+{% block extra_styles %}
+    /* ── Team page head ── */
+    .team-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
     }
-    .header-left { display: flex; align-items: center; gap: 12px; }
-    .back-link {
-      color: #a8c0d6;
-      text-decoration: none;
-      font-size: 0.85rem;
+    .team-head-left { display: flex; align-items: center; gap: 16px; }
+    .team-flag-big {
+      font-size: 2.2rem;
+      line-height: 1;
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .team-head-title { display: flex; flex-direction: column; gap: 6px; }
+    .team-name-row {
       display: flex;
       align-items: center;
-      gap: 4px;
-      transition: color 0.15s;
+      gap: 10px;
     }
-    .back-link:hover { color: white; }
-    .header-title h1 {
+    .team-name-row h1 {
       font-size: 1.4rem;
       font-weight: 700;
+      letter-spacing: -0.5px;
     }
-    .header-title .group-badge {
-      font-size: 0.72rem;
-      font-weight: 700;
-      background: rgba(255,255,255,0.15);
-      padding: 3px 9px;
-      border-radius: 20px;
-      margin-left: 8px;
-      letter-spacing: 0.3px;
+    .breadcrumb {
+      font-size: 0.78rem;
+      color: var(--text-muted);
     }
+    .breadcrumb a { color: var(--text-muted); transition: color 0.15s; }
+    .breadcrumb a:hover { color: var(--text); }
+    .breadcrumb .sep { color: var(--text-faint); margin: 0 6px; }
 
-    /* ── Nav arrows ── */
-    .team-nav {
-      display: flex;
-      gap: 8px;
-    }
-    .nav-btn {
-      color: #a8c0d6;
-      text-decoration: none;
-      font-size: 0.82rem;
-      padding: 6px 12px;
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      transition: background 0.15s, color 0.15s;
-    }
-    .nav-btn:hover { background: rgba(255,255,255,0.1); color: white; }
-
-    /* ── Main ── */
-    main {
-      max-width: 860px;
-      margin: 32px auto;
-      padding: 0 20px;
-    }
+    .team-nav { display: flex; gap: 6px; }
 
     /* ── Position blocks ── */
-    .pos-block {
-      background: white;
-      border-radius: 14px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-      margin-bottom: 20px;
-      overflow: hidden;
-    }
+    .pos-block { margin-bottom: 18px; }
+    .pos-block:last-child { margin-bottom: 0; }
+
+    .pos-block .card { overflow: hidden; }
+
     .pos-header {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 14px 20px;
-      border-bottom: 1px solid #f0f2f5;
+      padding: 12px 18px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
     }
-    .pos-badge {
+    .pos-count {
       font-size: 0.72rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-      letter-spacing: 0.5px;
-    }
-    .pos-badge.GK  { background: #fff3cd; color: #856404; }
-    .pos-badge.DEF { background: #d1f0e0; color: #1a6b3a; }
-    .pos-badge.MID { background: #cfe2ff; color: #0a3678; }
-    .pos-badge.FWD { background: #fde0e0; color: #7a1a1a; }
-    .pos-count { font-size: 0.8rem; color: #aaa; }
-
-    /* ── Player table ── */
-    table { width: 100%; border-collapse: collapse; }
-    thead th {
-      text-align: left;
-      padding: 8px 20px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #999;
-      background: #fafbfc;
-      border-bottom: 1px solid #f0f2f5;
-    }
-    tbody tr { transition: background 0.1s; }
-    tbody tr:hover { background: #f8f9ff; }
-    tbody tr:not(:last-child) td { border-bottom: 1px solid #f0f2f5; }
-    td {
-      padding: 11px 20px;
-      font-size: 0.88rem;
-      vertical-align: middle;
-    }
-    td.player-name { font-weight: 500; color: #1a1a2e; }
-    td.price { color: #555; }
-    td.xmins-cell { width: 110px; }
-    th.xp-col { text-align: right; }
-    td.xp-cell {
-      text-align: right;
-      font-size: 0.82rem;
-      color: #555;
-      width: 64px;
-      font-variant-numeric: tabular-nums;
+      color: var(--text-faint);
+      font-family: var(--mono);
     }
 
-    /* ── xMins input ── */
-    .xmins-wrap {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    /* ── Player table tweaks ── */
+    td.player-name { font-weight: 500; }
+    td.price { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+    td.xmins-cell { width: 130px; }
+    th.xp-col, td.xp-cell { text-align: right; font-variant-numeric: tabular-nums; width: 76px; }
+    td.xp-cell { color: var(--text-muted); }
+
+    .xmins-wrap { display: flex; align-items: center; gap: 8px; }
     input.xmins {
-      width: 64px;
-      padding: 6px 8px;
-      border: 2px solid #e0e4ea;
-      border-radius: 8px;
+      width: 70px;
+      padding: 6px 10px;
       text-align: center;
-      font-size: 0.88rem;
+      font-variant-numeric: tabular-nums;
       font-weight: 600;
-      color: #1a1a2e;
-      outline: none;
-      transition: border-color 0.18s;
+      font-size: 0.85rem;
     }
-    input.xmins:focus { border-color: #1e3a5f; }
-    input.xmins.dirty { border-color: #e8b84b; background: #fffdf0; }
-    .xmins-label { font-size: 0.75rem; color: #bbb; }
+    input.xmins.dirty {
+      border-color: var(--warn);
+      background: rgba(251, 191, 36, 0.06);
+    }
+    .xmins-label { font-size: 0.72rem; color: var(--text-faint); font-family: var(--mono); }
 
-    /* ── Footer bar ── */
+    /* ── Footer save bar ── */
     .footer-bar {
       position: sticky;
       bottom: 0;
-      background: white;
-      border-top: 1px solid #e0e4ea;
-      padding: 14px 20px;
+      margin: 32px -28px -64px;
+      padding: 14px 28px;
+      background: rgba(10, 10, 11, 0.78);
+      backdrop-filter: saturate(180%) blur(14px);
+      -webkit-backdrop-filter: saturate(180%) blur(14px);
+      border-top: 1px solid var(--border);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
-    }
-    .footer-inner {
-      max-width: 860px;
-      margin: 0 auto;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
+      gap: 14px;
     }
     .status {
-      font-size: 0.85rem;
-      color: #2ecc71;
+      font-size: 0.82rem;
+      color: var(--success);
       font-weight: 500;
       opacity: 0;
       transition: opacity 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
     .status.visible { opacity: 1; }
-    .save-btn {
-      padding: 10px 28px;
-      background: #1e3a5f;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: background 0.18s, transform 0.12s;
+    .status::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
     }
-    .save-btn:hover { background: #16304f; transform: translateY(-1px); }
-    .save-btn:active { transform: translateY(0); }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="header-inner">
-      <div class="header-left">
-        <a class="back-link" href="/">← All Teams</a>
-        <div class="header-title">
-          <h1>
-            {{ team.flag }} {{ team.team }}
+{% endblock %}
+
+{% block content %}
+    <div class="breadcrumb">
+      <a href="/">Squad Manager</a><span class="sep">/</span>
+      <span>{{ team.team }}</span>
+    </div>
+
+    <div class="team-head">
+      <div class="team-head-left">
+        <div class="team-flag-big">{{ team.flag }}</div>
+        <div class="team-head-title">
+          <div class="team-name-row">
+            <h1>{{ team.team }}</h1>
             <span class="group-badge">Group {{ team.group | upper }}</span>
-          </h1>
+          </div>
+          <p class="page-sub" style="margin-top: 0;">Adjust expected minutes by player.</p>
         </div>
       </div>
       <div class="team-nav">
         {% if prev_team %}
-          <a class="nav-btn" href="/team/{{ prev_team }}">← Prev</a>
+          <a class="btn" href="/team/{{ prev_team }}">← Prev</a>
         {% endif %}
         {% if next_team %}
-          <a class="nav-btn" href="/team/{{ next_team }}">Next →</a>
+          <a class="btn" href="/team/{{ next_team }}">Next →</a>
         {% endif %}
       </div>
     </div>
-    <nav class="main-nav">
-      <a href="/" class="nav-tab active">xMins Editor</a>
-      <a href="/projections" class="nav-tab">Projections</a>
-      <a href="/match-projections" class="nav-tab">Match Projections</a>
-    </nav>
-  </header>
 
-  <main>
     {% for pos in pos_order %}
       {% if grouped[pos] %}
       <div class="pos-block">
-        <div class="pos-header">
-          <span class="pos-badge {{ pos }}">{{ pos }}</span>
-          <span class="pos-count">{{ grouped[pos] | length }} player{{ 's' if grouped[pos] | length != 1 else '' }}</span>
+        <div class="card">
+          <div class="pos-header">
+            <span class="pos-badge {{ pos }}">{{ pos }}</span>
+            <span class="pos-count">{{ grouped[pos] | length }} player{{ 's' if grouped[pos] | length != 1 else '' }}</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Player</th>
+                <th>Price</th>
+                <th>xMins</th>
+                <th class="xp-col">R1 xP</th>
+                <th class="xp-col">R2 xP</th>
+                <th class="xp-col">R3 xP</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for p in grouped[pos] %}
+              <tr>
+                <td class="player-name">{{ p.player }}</td>
+                <td class="price">£{{ p.price }}m</td>
+                <td class="xmins-cell">
+                  <div class="xmins-wrap">
+                    <input class="xmins" type="number" min="0" max="90" value="{{ p.xmins }}" data-id="{{ p.id }}">
+                    <span class="xmins-label">min</span>
+                  </div>
+                </td>
+                <td class="xp-cell" data-id="{{ p.id }}" data-round="1">{{ p.r1_pts }}</td>
+                <td class="xp-cell" data-id="{{ p.id }}" data-round="2">{{ p.r2_pts }}</td>
+                <td class="xp-cell" data-id="{{ p.id }}" data-round="3">{{ p.r3_pts }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Player</th>
-              <th>Price</th>
-              <th>xMins</th>
-              <th class="xp-col">R1 xP</th>
-              <th class="xp-col">R2 xP</th>
-              <th class="xp-col">R3 xP</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for p in grouped[pos] %}
-            <tr>
-              <td class="player-name">{{ p.player }}</td>
-              <td class="price">${{ p.price }}m</td>
-              <td class="xmins-cell">
-                <div class="xmins-wrap">
-                  <input class="xmins" type="number" min="0" max="90" value="{{ p.xmins }}" data-id="{{ p.id }}">
-                  <span class="xmins-label">min</span>
-                </div>
-              </td>
-              <td class="xp-cell" data-id="{{ p.id }}" data-round="1">{{ p.r1_pts }}</td>
-              <td class="xp-cell" data-id="{{ p.id }}" data-round="2">{{ p.r2_pts }}</td>
-              <td class="xp-cell" data-id="{{ p.id }}" data-round="3">{{ p.r3_pts }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
       </div>
       {% endif %}
     {% endfor %}
-  </main>
 
-  <div class="footer-bar">
-    <div class="footer-inner">
-      <span class="status" id="status">✓ Saved</span>
-      <button class="save-btn" onclick="saveAll()">Save Changes</button>
+    <div class="footer-bar">
+      <span class="status" id="status">Saved</span>
+      <button class="btn-primary btn" onclick="saveAll()">Save Changes</button>
     </div>
-  </div>
+{% endblock %}
 
+{% block scripts %}
   <script>
-    // Mark inputs dirty on change
     document.querySelectorAll("input.xmins").forEach(inp => {
       inp.addEventListener("input", () => inp.classList.add("dirty"));
       inp.addEventListener("change", saveAll);
@@ -312,10 +213,10 @@
       });
 
       const statusEl = document.getElementById("status");
-      const saveBtn = document.querySelector(".save-btn");
+      const saveBtn = document.querySelector(".footer-bar .btn-primary");
       statusEl.textContent = "Saving…";
+      statusEl.style.color = "var(--text-muted)";
       statusEl.classList.add("visible");
-      statusEl.style.color = "#aaa";
       saveBtn.disabled = true;
 
       fetch("/save", {
@@ -333,12 +234,11 @@
             });
           });
         }
-        statusEl.textContent = "✓ Saved";
-        statusEl.style.color = "#2ecc71";
+        statusEl.textContent = "Saved";
+        statusEl.style.color = "var(--success)";
         setTimeout(() => statusEl.classList.remove("visible"), 2000);
         saveBtn.disabled = false;
       });
     }
   </script>
-</body>
-</html>
+{% endblock %}
