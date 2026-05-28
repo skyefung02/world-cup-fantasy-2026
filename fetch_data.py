@@ -81,19 +81,21 @@ def build_squads_rated(df_squads, df_elo, df_tilt):
 
 
 def build_player_fixtures(df_players, df_squads_rated, df_team_fixtures):
-    elo_lookup = df_squads_rated.set_index("abbr")["elo"].to_dict()
+    elo_lookup           = df_squads_rated.set_index("abbr")["elo"].to_dict()
+    tactical_tilt_lookup = df_squads_rated.set_index("abbr")["Tactical"].to_dict()
 
     df = df_players.merge(
-        df_squads_rated[["id", "elo", "total_tilt", "tilt_cat"]],
+        df_squads_rated[["id", "elo", "Tactical", "total_tilt", "tilt_cat"]],
         left_on="squadId", right_on="id", suffixes=("", "_squad")
-    ).drop(columns=["id_squad"])
+    ).drop(columns=["id_squad"]).rename(columns={"Tactical": "tactical_tilt"})
 
     df = df.merge(
         df_team_fixtures[["team_abbr", "round_id", "opp_abbr"]],
         left_on="abbr", right_on="team_abbr"
     ).drop(columns=["team_abbr"])
 
-    df["opp_elo"] = df["opp_abbr"].map(elo_lookup)
+    df["opp_elo"]           = df["opp_abbr"].map(elo_lookup)
+    df["opp_tactical_tilt"] = df["opp_abbr"].map(tactical_tilt_lookup)
     return df
 
 

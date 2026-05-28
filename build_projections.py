@@ -102,9 +102,14 @@ def run():
         df.loc[mask, "ast_p90"] = (1 - lams["ast"]) * df.loc[mask, "ast_p90"] + lams["ast"] * pos_mean.loc[mask, "ast_p90"]
 
     print("Applying Elo model...")
-    df["win_exp"]       = win_expectancy(df["elo"], df["opp_elo"])
-    df["xg_scored"]     = expected_goals(df["win_exp"].values)
-    df["xg_conceded"]   = expected_goals(1 - df["win_exp"].values)
+    df["win_exp"]     = win_expectancy(df["elo"], df["opp_elo"])
+    df["xg_scored"]   = expected_goals(df["win_exp"].values)
+    df["xg_conceded"] = expected_goals(1 - df["win_exp"].values)
+
+    TILT_K = 0.25
+    df["match_tilt"]    = df["tactical_tilt"] + df["opp_tactical_tilt"]
+    df["xg_scored"]    *= (1 + TILT_K * df["match_tilt"])
+    df["xg_conceded"]  *= (1 + TILT_K * df["match_tilt"])
     df["p_clean_sheet"] = clean_sheet_prob(df["xg_conceded"].values)
 
     print("Computing xMins...")

@@ -380,7 +380,7 @@
             <th class="sortable num sorted" data-col="avg" onclick="onSort('avg')">Avg xP <span class="sort-ind">↓</span></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="players-tbody">
           {% for p in players %}
           <tr
             class="player-row{% if p.has_override %} overridden{% endif %}"
@@ -505,7 +505,8 @@
   </div>
 
   <script>
-    const allRows = Array.from(document.querySelectorAll("tbody tr"));
+    const playersTbody = document.getElementById("players-tbody");
+    const allRows = Array.from(playersTbody.querySelectorAll("tr"));
     let sortCol = "avg", sortDir = -1;
     let filterPos = "all", filterSearch = "";
 
@@ -534,7 +535,7 @@
     }
 
     function sortTable() {
-      const tbody = document.querySelector("tbody");
+      const tbody = playersTbody;
       allRows.sort((a, b) => {
         const av = a.dataset[sortCol], bv = b.dataset[sortCol];
         const an = parseFloat(av), bn = parseFloat(bv);

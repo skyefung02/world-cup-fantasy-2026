@@ -12,8 +12,8 @@
     "ft": 1,
 
     "hit_cost": 3,
-    "bench_weights": {"0": 0.03, "1": 0.21, "2": 0.06, "3": 0.002},
-    "vcap_weight": 0.1,
+    "bench_weights": {"0": 1, "1": 1, "2": 1, "3": 1},
+    "vcap_weight": 0.0,
     "itb_value": 0.0,
 
     "ft_schedule": {

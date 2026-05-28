@@ -12,3 +12,5 @@ data/processed/
 
 # Environment
 .env
+
+data/results/
