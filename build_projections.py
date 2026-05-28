@@ -118,6 +118,9 @@ def run():
     df["player_xg"] = df["xg_scored"] * df["goal_w"] / df["goal_w_sum"]
     df["player_xa"] = df["xg_scored"] * 0.75 * df["assist_w"] / df["assist_w_sum"]
 
+    df["model_goal_share"]   = df["player_xg"] / df["xg_scored"]
+    df["model_assist_share"] = df["player_xa"] / (df["xg_scored"] * 0.75)
+
     # Apply xG/xA overrides: lock specified shares, redistribute remainder proportionally
     if os.path.exists(XG_OVERRIDES_PATH):
         xg_ov = pd.read_csv(XG_OVERRIDES_PATH)
@@ -172,9 +175,12 @@ def run():
         "cs_pts":       "CSPts",
         "conceded_pts": "ConcededPts",
         "app_pts":      "AppPts",
-        "xg_scored":    "TeamXG",
-        "goal_share":   "GoalShare",
-        "assist_share": "AssistShare",
+        "opp_abbr":           "OppAbbr",
+        "xg_scored":          "TeamXG",
+        "goal_share":         "GoalShare",
+        "assist_share":       "AssistShare",
+        "model_goal_share":   "ModelGoalShare",
+        "model_assist_share": "ModelAssistShare",
     }
 
     metadata = df[["id", "player", "position", "price", "team", "abbr"]].drop_duplicates("id")

@@ -267,6 +267,39 @@
       color: #888;
     }
     .slider-gross strong { color: #333; }
+    .model-default {
+      font-size: 0.75rem;
+      color: #aaa;
+      margin-top: 4px;
+    }
+    .modal-stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 22px;
+      font-size: 0.83rem;
+    }
+    .modal-stats-table thead th {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #888;
+      padding: 0 8px 8px;
+    }
+    .modal-stats-table thead th:first-child { text-align: left; }
+    .modal-stats-table thead th .round-num { display: block; font-size: 0.72rem; color: #aaa; font-weight: 600; }
+    .modal-stats-table thead th .opp { display: block; font-weight: 700; color: #1e3a5f; margin-top: 2px; font-size: 0.82rem; }
+    .modal-stats-table tbody td {
+      padding: 7px 8px;
+      text-align: center;
+      border-top: 1px solid #f0f2f5;
+      font-variant-numeric: tabular-nums;
+    }
+    .modal-stats-table tbody td:first-child {
+      text-align: left;
+      color: #666;
+      font-weight: 500;
+    }
+    .modal-stats-table tbody tr:first-child td { border-top: none; }
     .modal-actions {
       display: flex;
       justify-content: space-between;
@@ -373,6 +406,11 @@
             data-r1-assist-share="{{ '%.4f' | format(p['1_AssistShare']) }}"
             data-r2-assist-share="{{ '%.4f' | format(p['2_AssistShare']) }}"
             data-r3-assist-share="{{ '%.4f' | format(p['3_AssistShare']) }}"
+            data-model-goal-share="{{ '%.4f' | format(p['1_ModelGoalShare']) }}"
+            data-model-assist-share="{{ '%.4f' | format(p['1_ModelAssistShare']) }}"
+            data-r1-opp="{{ p['1_OppDisplay'] }}"
+            data-r2-opp="{{ p['2_OppDisplay'] }}"
+            data-r3-opp="{{ p['3_OppDisplay'] }}"
             data-r1-team-xg="{{ '%.4f' | format(p['1_TeamXG']) }}"
             data-r2-team-xg="{{ '%.4f' | format(p['2_TeamXG']) }}"
             data-r3-team-xg="{{ '%.4f' | format(p['3_TeamXG']) }}"
@@ -409,12 +447,36 @@
         </div>
       </div>
 
-      <div class="modal-xmins">
-        <div>xMins</div>
-        <div>R1: <strong id="m-xmins-r1">—</strong></div>
-        <div>R2: <strong id="m-xmins-r2">—</strong></div>
-        <div>R3: <strong id="m-xmins-r3">—</strong></div>
-      </div>
+      <table class="modal-stats-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th><span class="round-num">R1</span><span class="opp" id="m-opp-r1"></span></th>
+            <th><span class="round-num">R2</span><span class="opp" id="m-opp-r2"></span></th>
+            <th><span class="round-num">R3</span><span class="opp" id="m-opp-r3"></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>xMins</td>
+            <td id="m-xmins-r1">—</td>
+            <td id="m-xmins-r2">—</td>
+            <td id="m-xmins-r3">—</td>
+          </tr>
+          <tr>
+            <td>Proj. Goals</td>
+            <td id="goal-r1">—</td>
+            <td id="goal-r2">—</td>
+            <td id="goal-r3">—</td>
+          </tr>
+          <tr>
+            <td>Proj. Assists</td>
+            <td id="assist-r1">—</td>
+            <td id="assist-r2">—</td>
+            <td id="assist-r3">—</td>
+          </tr>
+        </tbody>
+      </table>
 
       <div class="slider-section">
         <div class="slider-label">
@@ -422,11 +484,7 @@
           <span class="slider-pct" id="goal-pct-label">0.0%</span>
         </div>
         <input type="range" id="goal-slider" min="0" max="60" step="0.1" oninput="onSliderInput()">
-        <div class="slider-gross">
-          <div>Proj. goals &nbsp; R1: <strong id="goal-r1">—</strong></div>
-          <div>R2: <strong id="goal-r2">—</strong></div>
-          <div>R3: <strong id="goal-r3">—</strong></div>
-        </div>
+        <div class="model-default" id="goal-model-label"></div>
       </div>
 
       <div class="slider-section">
@@ -435,11 +493,7 @@
           <span class="slider-pct" id="assist-pct-label">0.0%</span>
         </div>
         <input type="range" id="assist-slider" min="0" max="60" step="0.1" oninput="onSliderInput()">
-        <div class="slider-gross">
-          <div>Proj. assists &nbsp; R1: <strong id="assist-r1">—</strong></div>
-          <div>R2: <strong id="assist-r2">—</strong></div>
-          <div>R3: <strong id="assist-r3">—</strong></div>
-        </div>
+        <div class="model-default" id="assist-model-label"></div>
       </div>
 
       <div class="modal-actions">
@@ -526,12 +580,21 @@
       document.getElementById("modal-name").textContent = d.name;
       document.getElementById("modal-meta").textContent = `${d.flag} ${d.abbr}  ·  £${d.price}m`;
 
+      document.getElementById("m-opp-r1").textContent = d.r1Opp;
+      document.getElementById("m-opp-r2").textContent = d.r2Opp;
+      document.getElementById("m-opp-r3").textContent = d.r3Opp;
+
       document.getElementById("m-xmins-r1").textContent = d.r1Xmins;
       document.getElementById("m-xmins-r2").textContent = d.r2Xmins;
       document.getElementById("m-xmins-r3").textContent = d.r3Xmins;
 
       document.getElementById("goal-slider").value   = (parseFloat(d.r1GoalShare)   * 100).toFixed(1);
       document.getElementById("assist-slider").value = (parseFloat(d.r1AssistShare) * 100).toFixed(1);
+
+      const modelGoalPct   = (parseFloat(d.modelGoalShare)   * 100).toFixed(1);
+      const modelAssistPct = (parseFloat(d.modelAssistShare) * 100).toFixed(1);
+      document.getElementById("goal-model-label").textContent   = `Model default: ${modelGoalPct}%`;
+      document.getElementById("assist-model-label").textContent = `Model default: ${modelAssistPct}%`;
 
       document.getElementById("btn-reset").disabled = d.hasOverride !== "true";
       document.getElementById("saving-indicator").textContent = "";

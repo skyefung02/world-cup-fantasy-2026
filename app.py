@@ -156,10 +156,17 @@ def projections_page():
     if os.path.exists(XG_OVERRIDES_PATH):
         overridden_ids = set(pd.read_csv(XG_OVERRIDES_PATH)["id"].tolist())
     proj["has_override"] = proj["id"].isin(overridden_ids)
+    for r in [1, 2, 3]:
+        proj[f"{r}_OppDisplay"] = proj[f"{r}_OppAbbr"].apply(
+            lambda a: f"{FLAGS.get(a, '')} {a}".strip() if pd.notna(a) else ""
+        )
     component_cols = [
+        "1_OppDisplay", "2_OppDisplay", "3_OppDisplay",
         "1_xMins", "2_xMins", "3_xMins",
         "1_GoalShare", "2_GoalShare", "3_GoalShare",
         "1_AssistShare", "2_AssistShare", "3_AssistShare",
+        "1_ModelGoalShare", "2_ModelGoalShare", "3_ModelGoalShare",
+        "1_ModelAssistShare", "2_ModelAssistShare", "3_ModelAssistShare",
         "1_TeamXG", "2_TeamXG", "3_TeamXG",
     ]
     players = (
