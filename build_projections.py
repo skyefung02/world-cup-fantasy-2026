@@ -88,6 +88,19 @@ def run():
     df["ast_p90"]        = df["ast_p90"].fillna(pos_avg["ast_p90"])
     df["league_strength"] = df["league_strength"].fillna(1.0)
 
+    # Shrink raw club rates toward positional mean — defenders' goals are high-variance noise
+    SHRINKAGE = {
+        "GK":  {"gls": 1.0, "ast": 1.0},
+        "DEF": {"gls": 0.7, "ast": 0.5},
+        "MID": {"gls": 0.4, "ast": 0.3},
+        "FWD": {"gls": 0.2, "ast": 0.2},
+    }
+    pos_mean = df.groupby("position")[["gls_p90", "ast_p90"]].transform("mean")
+    for pos, lams in SHRINKAGE.items():
+        mask = df["position"] == pos
+        df.loc[mask, "gls_p90"] = (1 - lams["gls"]) * df.loc[mask, "gls_p90"] + lams["gls"] * pos_mean.loc[mask, "gls_p90"]
+        df.loc[mask, "ast_p90"] = (1 - lams["ast"]) * df.loc[mask, "ast_p90"] + lams["ast"] * pos_mean.loc[mask, "ast_p90"]
+
     print("Applying Elo model...")
     df["win_exp"]       = win_expectancy(df["elo"], df["opp_elo"])
     df["xg_scored"]     = expected_goals(df["win_exp"].values)
