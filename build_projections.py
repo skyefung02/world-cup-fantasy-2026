@@ -43,12 +43,6 @@ def clean_sheet_prob(xg_conceded):
     return np.exp(-xg_conceded)
 
 
-# Position group shares of team xG — calibrated to a 4-4-2 starting formation.
-# Goals:   GK 1%,  DEF 10%, MID 35%, FWD 54%  (sum = 100%)
-# Assists: GK 1%,  DEF 10%, MID 45%, FWD 44%  (sum = 100%)
-GROUP_GOAL_SHARE   = {"GK": 0.01, "DEF": 0.10, "MID": 0.5, "FWD": 0.39}
-GROUP_ASSIST_SHARE = {"GK": 0.01, "DEF": 0.10, "MID": 0.64, "FWD": 0.25}
-
 
 def appearance_pts(xmins):
     if xmins == 0:
@@ -83,11 +77,12 @@ def run():
 
     # Merge player weights
     weights = pd.read_csv("data/weight_table.csv")[
-        ["player", "team", "gls_p90_pct", "ast_p90_pct", "league_strength"]
+        ["player", "team", "gls_p90", "ast_p90", "league_strength"]
     ].drop_duplicates(subset=["player", "team"])
     df = df.merge(weights, on=["player", "team"], how="left")
-    df["gls_p90_pct"]    = df["gls_p90_pct"].fillna(0.5)
-    df["ast_p90_pct"]    = df["ast_p90_pct"].fillna(0.5)
+    pos_avg = df.groupby("position")[["gls_p90", "ast_p90"]].transform("mean")
+    df["gls_p90"]        = df["gls_p90"].fillna(pos_avg["gls_p90"])
+    df["ast_p90"]        = df["ast_p90"].fillna(pos_avg["ast_p90"])
     df["league_strength"] = df["league_strength"].fillna(1.0)
 
     print("Applying Elo model...")
@@ -109,59 +104,57 @@ def run():
     df = df.merge(merged_xmins[['id', 'xmins']], on='id', how='left')
     df["xmins"] = df["xmins"].fillna(60)
 
-    # Weighted share within (team, position, fixture).
-    # Weight = quality × league_strength × xmins so that a player with more
-    # minutes gets a proportionally larger slice of the position's xG budget.
-    df["goal_w"]   = df["gls_p90_pct"] * df["league_strength"] * df["xmins"]
-    df["assist_w"] = df["ast_p90_pct"] * df["league_strength"] * df["xmins"]
-    df["goal_w_sum"]   = df.groupby(["team", "position", "round_id"])["goal_w"].transform("sum")
-    df["assist_w_sum"] = df.groupby(["team", "position", "round_id"])["assist_w"].transform("sum")
+    # Distribute team xG/xA across outfield players weighted by quality × league_strength × xmins.
+    # GKs are excluded from the pool (weight forced to 0).
+    is_outfield = df["position"] != "GK"
+    df["goal_w"]   = np.where(is_outfield, df["gls_p90"] * df["league_strength"] * df["xmins"], 0)
+    df["assist_w"] = np.where(is_outfield, df["ast_p90"] * df["league_strength"] * df["xmins"], 0)
+    df["goal_w_sum"]   = df.groupby(["team", "round_id"])["goal_w"].transform("sum")
+    df["assist_w_sum"] = df.groupby(["team", "round_id"])["assist_w"].transform("sum")
 
-    # Player's absolute expected goals/assists for the game
-    df["player_xg"] = (
-        df["xg_scored"] * df["position"].map(GROUP_GOAL_SHARE)
-        * df["goal_w"] / df["goal_w_sum"]
-    )
-    df["player_xa"] = (
-        df["xg_scored"] * df["position"].map(GROUP_ASSIST_SHARE)
-        * df["assist_w"] / df["assist_w_sum"]
-    )
+    df["player_xg"] = df["xg_scored"] * df["goal_w"] / df["goal_w_sum"]
+    df["player_xa"] = df["xg_scored"] * 0.75 * df["assist_w"] / df["assist_w_sum"]
 
     # Points — computed directly, no /90 × xmins scaling needed
     conceded_rate = df["position"].map(GOALS_CONCEDED_PTS).fillna(0)
-    df["app_pts"]  = df["xmins"].apply(appearance_pts)
-    df["xpts_game"] = (
-        df["player_xg"] * df["position"].map(GOAL_PTS)
-        + df["player_xa"] * ASSIST_PTS
-        + df["p_clean_sheet"] * df["position"].map(CLEAN_SHEET_PTS).fillna(0)
-        + np.maximum(0, df["xg_conceded"] - 1) * conceded_rate
-        + df["app_pts"]
-    )
+    df["app_pts"]      = df["xmins"].apply(appearance_pts)
+    df["goal_pts"]     = df["player_xg"] * df["position"].map(GOAL_PTS)
+    df["assist_pts"]   = df["player_xa"] * ASSIST_PTS
+    df["cs_pts"]       = df["p_clean_sheet"] * df["position"].map(CLEAN_SHEET_PTS).fillna(0) * (df["xmins"] >= 60)
+    df["conceded_pts"] = (df["xg_conceded"] - 1 + np.exp(-df["xg_conceded"])) * conceded_rate
+    df["xpts_game"]    = df["goal_pts"] + df["assist_pts"] + df["cs_pts"] + df["conceded_pts"] + df["app_pts"]
 
     print("Building export...")
-    rounds_pivot = df.pivot_table(
-        index="id", columns="round_id", values="xpts_game", aggfunc="first"
-    ).reset_index()
-    rounds_pivot.columns = ["id"] + [f"{int(c)}_Pts" for c in rounds_pivot.columns[1:]]
-
-    xmins_pivot = df.pivot_table(
-        index="id", columns="round_id", values="xmins", aggfunc="first"
-    ).reset_index()
-    xmins_pivot.columns = ["id"] + [f"{int(c)}_xMins" for c in xmins_pivot.columns[1:]]
+    EXPORT_COLS = {
+        "xpts_game":    "Pts",
+        "xmins":        "xMins",
+        "player_xg":    "xG",
+        "player_xa":    "xA",
+        "goal_pts":     "GoalPts",
+        "assist_pts":   "AssistPts",
+        "cs_pts":       "CSPts",
+        "conceded_pts": "ConcededPts",
+        "app_pts":      "AppPts",
+    }
 
     metadata = df[["id", "player", "position", "price", "team", "abbr"]].drop_duplicates("id")
+    df_export = metadata.copy()
 
-    df_export = metadata.merge(rounds_pivot, on="id").merge(xmins_pivot, on="id")
+    rounds = sorted(df["round_id"].unique())
+    for col, suffix in EXPORT_COLS.items():
+        pivot = df.pivot_table(index="id", columns="round_id", values=col, aggfunc="first").reset_index()
+        pivot.columns = ["id"] + [f"{int(r)}_{suffix}" for r in pivot.columns[1:]]
+        df_export = df_export.merge(pivot, on="id")
 
-    col_order = [
-        "id", "player", "position", "price", "team", "abbr",
-        "1_Pts", "1_xMins",
-        "2_Pts", "2_xMins",
-        "3_Pts", "3_xMins",
+    col_order = ["id", "player", "position", "price", "team", "abbr"] + [
+        f"{int(r)}_{suffix}"
+        for r in rounds
+        for suffix in EXPORT_COLS.values()
     ]
     df_export = df_export[col_order].sort_values("id").reset_index(drop=True)
 
-    for c in ["1_Pts", "2_Pts", "3_Pts"]:
+    round_pts_cols = [f"{int(r)}_Pts" for r in rounds]
+    for c in round_pts_cols:
         df_export[c] = df_export[c].round(2)
 
     df_export.to_csv("data/projections.csv", index=False)
@@ -171,9 +164,9 @@ def run():
     # Spot check
     print("\nEngland top 10:")
     eng = df_export[df_export["abbr"] == "ENG"].copy()
-    eng["xpts_total"] = eng["1_Pts"] + eng["2_Pts"] + eng["3_Pts"]
+    eng["xpts_total"] = sum(eng[c] for c in round_pts_cols)
     print(eng.sort_values("xpts_total", ascending=False).head(10)[
-        ["player", "position", "price", "1_Pts", "2_Pts", "3_Pts", "xpts_total"]
+        ["player", "position", "price"] + round_pts_cols + ["xpts_total"]
     ].to_string())
 
 
