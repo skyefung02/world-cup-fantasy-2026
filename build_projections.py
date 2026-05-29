@@ -271,6 +271,8 @@ EXPORT_COLS = {
     "app_pts":               "AppPts",
     "opp_abbr":              "OppAbbr",
     "xg_scored":             "TeamXG",
+    "xg_conceded":           "TeamXGA",
+    "p_clean_sheet":         "PCleanSheet",
     "goal_share":            "GoalShare",
     "assist_share":          "AssistShare",
     "model_goal_share":      "ModelGoalShare",

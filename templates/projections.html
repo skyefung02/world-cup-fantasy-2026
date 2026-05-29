@@ -173,6 +173,14 @@
       font-size: 0.8rem;
     }
     .modal-stats-table tbody tr:first-child td { border-top: none; }
+    .modal-stats-table tbody tr.modal-xp-row td {
+      border-top: 1px solid var(--border-strong);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .modal-stats-table tbody tr.modal-xp-row td:first-child {
+      color: var(--text);
+    }
 
     .xmins-input {
       width: 80px;
@@ -310,6 +318,12 @@
             data-r1-team-xg="{{ '%.4f' | format(p['1_TeamXG']) }}"
             data-r2-team-xg="{{ '%.4f' | format(p['2_TeamXG']) }}"
             data-r3-team-xg="{{ '%.4f' | format(p['3_TeamXG']) }}"
+            data-r1-team-xga="{{ '%.4f' | format(p['1_TeamXGA']) }}"
+            data-r2-team-xga="{{ '%.4f' | format(p['2_TeamXGA']) }}"
+            data-r3-team-xga="{{ '%.4f' | format(p['3_TeamXGA']) }}"
+            data-r1-p-clean-sheet="{{ '%.4f' | format(p['1_PCleanSheet']) }}"
+            data-r2-p-clean-sheet="{{ '%.4f' | format(p['2_PCleanSheet']) }}"
+            data-r3-p-clean-sheet="{{ '%.4f' | format(p['3_PCleanSheet']) }}"
             data-has-override="{{ 'true' if p.has_override else 'false' }}"
           >
             <td class="player-name">{{ p.player }}{% if p.has_override %}<span class="override-dot" title="Manually adjusted"></span>{% endif %}</td>
@@ -369,6 +383,12 @@
               <td id="assist-r1">—</td>
               <td id="assist-r2">—</td>
               <td id="assist-r3">—</td>
+            </tr>
+            <tr class="modal-xp-row">
+              <td>Proj. xP</td>
+              <td id="xp-r1">—</td>
+              <td id="xp-r2">—</td>
+              <td id="xp-r3">—</td>
             </tr>
           </tbody>
         </table>
@@ -466,6 +486,18 @@
       });
     }
 
+    // ── Scoring constants (mirror scoring.py) ──
+    const GOAL_PTS            = { GK: 9, DEF: 7, MID: 6, FWD: 5 };
+    const CLEAN_SHEET_PTS     = { GK: 5, DEF: 5, MID: 1, FWD: 0 };
+    const GOALS_CONCEDED_PTS  = { GK: -1, DEF: -1, MID: 0, FWD: 0 };
+    const ASSIST_PTS          = 3;
+
+    function appearancePts(xmins) {
+      if (xmins == 0) return 0;
+      if (xmins < 60) return 1;
+      return 2;
+    }
+
     // ── Client state (public mode only) ──
     // Holds the visitor's tweaks. Reset on page reload — by design.
     const clientState = { xmins: {}, overrides: {} };
@@ -528,11 +560,31 @@
       document.getElementById("assist-pct-label").textContent = (assistShare * 100).toFixed(1) + "%";
 
       const d = currentRow.dataset;
-      const xminsScale = (parseInt(document.getElementById("modal-xmins").value, 10) || 0) / 90;
+      const pos = d.pos;
+      const goalPtsRate     = GOAL_PTS[pos]            ?? 0;
+      const csPtsRate       = CLEAN_SHEET_PTS[pos]     ?? 0;
+      const concededPtsRate = GOALS_CONCEDED_PTS[pos]  ?? 0;
+
+      const xmins = parseInt(document.getElementById("modal-xmins").value, 10) || 0;
+      const xminsScale = xmins / 90;
+      const appPts = appearancePts(xmins);
+
       for (const r of [1, 2, 3]) {
-        const teamXG = parseFloat(d[`r${r}TeamXg`]);
-        document.getElementById(`goal-r${r}`).textContent   = (teamXG * goalShare * xminsScale).toFixed(2);
-        document.getElementById(`assist-r${r}`).textContent = (teamXG * 0.75 * assistShare * xminsScale).toFixed(2);
+        const teamXG      = parseFloat(d[`r${r}TeamXg`]);
+        const teamXGA     = parseFloat(d[`r${r}TeamXga`])     || 0;
+        const pCleanSheet = parseFloat(d[`r${r}PCleanSheet`]) || 0;
+
+        const playerXG = teamXG * goalShare * xminsScale;
+        const playerXA = teamXG * 0.75 * assistShare * xminsScale;
+        document.getElementById(`goal-r${r}`).textContent   = playerXG.toFixed(2);
+        document.getElementById(`assist-r${r}`).textContent = playerXA.toFixed(2);
+
+        const goalPts     = playerXG * goalPtsRate;
+        const assistPts   = playerXA * ASSIST_PTS;
+        const csPts       = pCleanSheet * csPtsRate * (xmins >= 60 ? 1 : 0);
+        const concededPts = (teamXGA - 1 + Math.exp(-teamXGA)) * concededPtsRate;
+        const totalXP     = goalPts + assistPts + csPts + concededPts + appPts;
+        document.getElementById(`xp-r${r}`).textContent = totalXP.toFixed(2);
       }
     }
 

@@ -192,7 +192,9 @@ def projections_page():
         "1_ModelGoalShare", "2_ModelGoalShare", "3_ModelGoalShare",
         "1_ModelAssistShare", "2_ModelAssistShare", "3_ModelAssistShare",
         "1_OverrideGoalShare", "1_OverrideAssistShare",
-        "1_TeamXG", "2_TeamXG", "3_TeamXG",
+        "1_TeamXG",       "2_TeamXG",       "3_TeamXG",
+        "1_TeamXGA",      "2_TeamXGA",      "3_TeamXGA",
+        "1_PCleanSheet",  "2_PCleanSheet",  "3_PCleanSheet",
     ]
     players = (
         proj[["id", "player", "position", "price", "team", "abbr", "flag",
