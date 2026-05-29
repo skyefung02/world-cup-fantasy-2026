@@ -299,6 +299,8 @@
             data-r3-assist-share="{{ '%.4f' | format(p['3_AssistShare']) }}"
             data-model-goal-share="{{ '%.4f' | format(p['1_ModelGoalShare']) }}"
             data-model-assist-share="{{ '%.4f' | format(p['1_ModelAssistShare']) }}"
+            {% if p.has_override %}data-override-goal-share="{{ '%.4f' | format(p['1_OverrideGoalShare']) }}"{% endif %}
+            {% if p.has_override %}data-override-assist-share="{{ '%.4f' | format(p['1_OverrideAssistShare']) }}"{% endif %}
             data-r1-opp="{{ p['1_OppDisplay'] }}"
             data-r2-opp="{{ p['2_OppDisplay'] }}"
             data-r3-opp="{{ p['3_OppDisplay'] }}"
@@ -350,7 +352,7 @@
             <tr>
               <td>xMins</td>
               <td colspan="3" style="text-align:center">
-                <input type="number" id="modal-xmins" class="xmins-input" min="0" max="90" step="1">
+                <input type="number" id="modal-xmins" class="xmins-input" min="0" max="90" step="1" oninput="onSliderInput(false)">
               </td>
             </tr>
             <tr>
@@ -373,7 +375,7 @@
             <strong>Goal Share</strong>
             <span class="slider-pct" id="goal-pct-label">0.0%</span>
           </div>
-          <input type="range" id="goal-slider" min="0" max="60" step="0.1" oninput="onSliderInput()">
+          <input type="range" id="goal-slider" min="0" max="60" step="0.1" oninput="onSliderInput(true)">
           <div class="model-default" id="goal-model-label"></div>
         </div>
 
@@ -382,7 +384,7 @@
             <strong>Assist Share</strong>
             <span class="slider-pct" id="assist-pct-label">0.0%</span>
           </div>
-          <input type="range" id="assist-slider" min="0" max="60" step="0.1" oninput="onSliderInput()">
+          <input type="range" id="assist-slider" min="0" max="60" step="0.1" oninput="onSliderInput(true)">
           <div class="model-default" id="assist-model-label"></div>
         </div>
 
@@ -463,10 +465,13 @@
 
     // ── Modal ──
     let currentRow = null;
+    let slidersDirty = false;
 
     function openModal(row) {
       currentRow = row;
+      slidersDirty = false;
       const d = row.dataset;
+      const hasOverride = d.hasOverride === "true";
 
       document.getElementById("modal-pos").textContent  = d.pos;
       document.getElementById("modal-pos").className    = `pos-badge ${d.pos}`;
@@ -479,18 +484,22 @@
 
       document.getElementById("modal-xmins").value = d.r1Xmins;
 
-      document.getElementById("goal-slider").value   = (parseFloat(d.r1GoalShare)   * 100).toFixed(1);
-      document.getElementById("assist-slider").value = (parseFloat(d.r1AssistShare) * 100).toFixed(1);
+      // For overridden players, slider reflects user's per-90 intent (raw override).
+      // Otherwise, slider reflects model's effective share at current xmins.
+      const goalInit   = hasOverride ? parseFloat(d.overrideGoalShare)   : parseFloat(d.r1GoalShare);
+      const assistInit = hasOverride ? parseFloat(d.overrideAssistShare) : parseFloat(d.r1AssistShare);
+      document.getElementById("goal-slider").value   = (goalInit   * 100).toFixed(1);
+      document.getElementById("assist-slider").value = (assistInit * 100).toFixed(1);
 
       const modelGoalPct   = (parseFloat(d.modelGoalShare)   * 100).toFixed(1);
       const modelAssistPct = (parseFloat(d.modelAssistShare) * 100).toFixed(1);
       document.getElementById("goal-model-label").textContent   = `Model default: ${modelGoalPct}%`;
       document.getElementById("assist-model-label").textContent = `Model default: ${modelAssistPct}%`;
 
-      document.getElementById("btn-reset").disabled = d.hasOverride !== "true";
+      document.getElementById("btn-reset").disabled = !hasOverride;
       document.getElementById("saving-indicator").textContent = "";
 
-      onSliderInput();
+      onSliderInput(false);
       document.getElementById("modal-backdrop").classList.add("open");
     }
 
@@ -503,7 +512,8 @@
       if (e.target === document.getElementById("modal-backdrop")) closeModal();
     }
 
-    function onSliderInput() {
+    function onSliderInput(fromUser) {
+      if (fromUser) slidersDirty = true;
       const goalShare   = parseFloat(document.getElementById("goal-slider").value)   / 100;
       const assistShare = parseFloat(document.getElementById("assist-slider").value) / 100;
 
@@ -511,10 +521,11 @@
       document.getElementById("assist-pct-label").textContent = (assistShare * 100).toFixed(1) + "%";
 
       const d = currentRow.dataset;
+      const xminsScale = (parseInt(document.getElementById("modal-xmins").value, 10) || 0) / 90;
       for (const r of [1, 2, 3]) {
         const teamXG = parseFloat(d[`r${r}TeamXg`]);
-        document.getElementById(`goal-r${r}`).textContent   = (teamXG * goalShare).toFixed(2);
-        document.getElementById(`assist-r${r}`).textContent = (teamXG * 0.75 * assistShare).toFixed(2);
+        document.getElementById(`goal-r${r}`).textContent   = (teamXG * goalShare * xminsScale).toFixed(2);
+        document.getElementById(`assist-r${r}`).textContent = (teamXG * 0.75 * assistShare * xminsScale).toFixed(2);
       }
     }
 
@@ -527,33 +538,35 @@
 
       setSaving(true);
 
-      await fetch("/save", {
+      const saveRes  = await fetch("/save", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({[playerId]: xmins}),
       });
+      let json = await saveRes.json();
 
-      const res  = await fetch("/save_xg_override", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({player_id: playerId, goal_share: goalShare, assist_share: assistShare}),
-      });
-      const json = await res.json();
+      if (slidersDirty) {
+        const ovRes = await fetch("/save_xg_override", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({player_id: playerId, goal_share: goalShare, assist_share: assistShare}),
+        });
+        json = await ovRes.json();
+      }
       setSaving(false);
 
       if (json.status === "ok") {
         applyXpUpdates(json.xp, json.overridden_ids);
-        currentRow.dataset.r1Xmins       = xmins;
-        currentRow.dataset.r2Xmins       = xmins;
-        currentRow.dataset.r3Xmins       = xmins;
-        currentRow.dataset.r1GoalShare   = goalShare;
-        currentRow.dataset.r2GoalShare   = goalShare;
-        currentRow.dataset.r3GoalShare   = goalShare;
-        currentRow.dataset.r1AssistShare = assistShare;
-        currentRow.dataset.r2AssistShare = assistShare;
-        currentRow.dataset.r3AssistShare = assistShare;
-        currentRow.dataset.hasOverride   = "true";
-        document.getElementById("btn-reset").disabled = false;
+        currentRow.dataset.r1Xmins = xmins;
+        currentRow.dataset.r2Xmins = xmins;
+        currentRow.dataset.r3Xmins = xmins;
+        if (slidersDirty) {
+          currentRow.dataset.overrideGoalShare   = goalShare;
+          currentRow.dataset.overrideAssistShare = assistShare;
+          currentRow.dataset.hasOverride         = "true";
+          document.getElementById("btn-reset").disabled = false;
+        }
+        slidersDirty = false;
       }
     }
 

@@ -139,7 +139,10 @@ def run():
     df["model_goal_share"]   = df["player_xg"] / df["xg_scored"]
     df["model_assist_share"] = df["player_xa"] / (df["xg_scored"] * 0.75)
 
-    # Apply xG/xA overrides: lock specified shares, redistribute remainder proportionally
+    # Apply xG/xA overrides: lock specified shares (per-90 intent), scale by xmins/90,
+    # then redistribute remainder proportionally to non-overridden teammates
+    df["override_goal_share"]   = np.nan
+    df["override_assist_share"] = np.nan
     if os.path.exists(XG_OVERRIDES_PATH):
         xg_ov = pd.read_csv(XG_OVERRIDES_PATH)
         xg_ov_dict = xg_ov.set_index("id").to_dict("index")
@@ -154,10 +157,15 @@ def run():
             total_locked_xg = total_locked_xa = 0.0
             for idx in overridden.index:
                 ov = xg_ov_dict[int(df.loc[idx, "id"])]
-                df.loc[idx, "player_xg"] = team_xg * ov["goal_share"]
-                df.loc[idx, "player_xa"] = team_xa * ov["assist_share"]
-                total_locked_xg += team_xg * ov["goal_share"]
-                total_locked_xa += team_xa * ov["assist_share"]
+                xmins_scale = df.loc[idx, "xmins"] / 90.0
+                locked_xg = team_xg * ov["goal_share"]   * xmins_scale
+                locked_xa = team_xa * ov["assist_share"] * xmins_scale
+                df.loc[idx, "player_xg"]             = locked_xg
+                df.loc[idx, "player_xa"]             = locked_xa
+                df.loc[idx, "override_goal_share"]   = ov["goal_share"]
+                df.loc[idx, "override_assist_share"] = ov["assist_share"]
+                total_locked_xg += locked_xg
+                total_locked_xa += locked_xa
             non_ov = group[~group["id"].isin(xg_ov_ids) & (group["position"] != "GK")]
             if non_ov.empty:
                 continue
@@ -197,8 +205,10 @@ def run():
         "xg_scored":          "TeamXG",
         "goal_share":         "GoalShare",
         "assist_share":       "AssistShare",
-        "model_goal_share":   "ModelGoalShare",
-        "model_assist_share": "ModelAssistShare",
+        "model_goal_share":      "ModelGoalShare",
+        "model_assist_share":    "ModelAssistShare",
+        "override_goal_share":   "OverrideGoalShare",
+        "override_assist_share": "OverrideAssistShare",
     }
 
     metadata = df[["id", "player", "position", "price", "team", "abbr"]].drop_duplicates("id")
@@ -206,9 +216,9 @@ def run():
 
     rounds = sorted(df["round_id"].unique())
     for col, suffix in EXPORT_COLS.items():
-        pivot = df.pivot_table(index="id", columns="round_id", values=col, aggfunc="first").reset_index()
+        pivot = df.pivot_table(index="id", columns="round_id", values=col, aggfunc="first", dropna=False).reset_index()
         pivot.columns = ["id"] + [f"{int(r)}_{suffix}" for r in pivot.columns[1:]]
-        df_export = df_export.merge(pivot, on="id")
+        df_export = df_export.merge(pivot, on="id", how="left")
 
     col_order = ["id", "player", "position", "price", "team", "abbr"] + [
         f"{int(r)}_{suffix}"

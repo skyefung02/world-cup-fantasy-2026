@@ -130,17 +130,23 @@ def save():
             overrides[pid] = val
     save_xmins(overrides)
     build_projections.run()
-    proj = pd.read_csv("data/projections.csv").set_index("id")
-    xp_updates = {}
-    for pid in data.keys():
-        pid_int = int(pid)
-        if pid_int in proj.index:
-            xp_updates[pid] = {
-                "1": round(float(proj.loc[pid_int, "1_Pts"]), 2),
-                "2": round(float(proj.loc[pid_int, "2_Pts"]), 2),
-                "3": round(float(proj.loc[pid_int, "3_Pts"]), 2),
-            }
-    return jsonify({"status": "ok", "xp": xp_updates})
+    proj = pd.read_csv("data/projections.csv")
+    # Return team-wide xP so teammates redistributed shares also refresh
+    changed_ids = [int(pid) for pid in data.keys()]
+    affected_teams = set(players[players["id"].isin(changed_ids)]["abbr"].unique())
+    team_proj = proj[proj["abbr"].isin(affected_teams)][["id", "1_Pts", "2_Pts", "3_Pts"]]
+    xp_updates = {
+        str(int(r["id"])): {
+            "1": round(float(r["1_Pts"]), 2),
+            "2": round(float(r["2_Pts"]), 2),
+            "3": round(float(r["3_Pts"]), 2),
+        }
+        for _, r in team_proj.iterrows()
+    }
+    overridden_ids = []
+    if os.path.exists(XG_OVERRIDES_PATH):
+        overridden_ids = list(pd.read_csv(XG_OVERRIDES_PATH)["id"].astype(int))
+    return jsonify({"status": "ok", "xp": xp_updates, "overridden_ids": overridden_ids})
 
 @app.route("/projections")
 def projections_page():
@@ -167,6 +173,7 @@ def projections_page():
         "1_AssistShare", "2_AssistShare", "3_AssistShare",
         "1_ModelGoalShare", "2_ModelGoalShare", "3_ModelGoalShare",
         "1_ModelAssistShare", "2_ModelAssistShare", "3_ModelAssistShare",
+        "1_OverrideGoalShare", "1_OverrideAssistShare",
         "1_TeamXG", "2_TeamXG", "3_TeamXG",
     ]
     players = (
