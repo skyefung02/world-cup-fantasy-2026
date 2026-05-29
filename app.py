@@ -9,6 +9,11 @@ from build_projections import assign_xmins, recompute_teams, build_full_projecti
 
 app = Flask(__name__)
 
+# "local" → write-through CSVs, all endpoints active (creator workflow).
+# "public" → no disk writes, write endpoints disabled (anonymous deploy).
+DEPLOY_MODE = os.environ.get("DEPLOY_MODE", "local")
+IS_PUBLIC = DEPLOY_MODE == "public"
+
 PROJECTIONS_CSV_PATH = "data/projections.csv"
 _projections_write_lock = threading.Lock()
 
@@ -87,7 +92,11 @@ def init_xmins(players, xmins_manual):
 
 
 def current_projections_df():
-    """Wide-format projections computed in-memory from current local CSV state."""
+    """Wide-format projections computed in-memory.
+    In public mode, ignore any local creator CSVs — render pure defaults.
+    """
+    if IS_PUBLIC:
+        return build_full_projections({}, {})
     return build_full_projections(load_xmins(), load_overrides())
 
 
@@ -270,8 +279,17 @@ def match_projections():
 # Local creator workflow — writes through to CSV, uses fast recompute_teams path
 # ─────────────────────────────────────────────────────────────────────────────
 
+def _local_only():
+    """Return a 404 response if running in public mode; else None."""
+    if IS_PUBLIC:
+        return jsonify({"error": "Endpoint disabled on public deploy"}), 404
+    return None
+
+
 @app.route("/save", methods=["POST"])
 def save():
+    guard = _local_only()
+    if guard: return guard
     data = request.json  # {player_id: xmins, ...}
     players = load_players()
     default_df = (
@@ -304,6 +322,8 @@ def save():
 
 @app.route("/save_xg_override", methods=["POST"])
 def save_xg_override():
+    guard = _local_only()
+    if guard: return guard
     data = request.json
     player_id    = int(data["player_id"])
     goal_share   = float(data["goal_share"])
@@ -331,6 +351,8 @@ def save_xg_override():
 
 @app.route("/reset_xg_override", methods=["POST"])
 def reset_xg_override():
+    guard = _local_only()
+    if guard: return guard
     data = request.json
     player_id = int(data["player_id"])
     if os.path.exists(XG_OVERRIDES_PATH):
@@ -399,6 +421,11 @@ def download_csv():
         mimetype="text/csv",
         headers={"Content-Disposition": "attachment; filename=projections.csv"},
     )
+
+
+# Pre-warm the cached base state so the first request doesn't pay the ~110ms cold cost.
+# Runs once at module load (so once per gunicorn worker on Railway, once per local restart).
+build_projections.get_base_state()
 
 
 if __name__ == "__main__":
