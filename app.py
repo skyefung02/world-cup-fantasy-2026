@@ -2,11 +2,25 @@ from flask import Flask, render_template, request, jsonify, Response
 import pandas as pd
 import os
 import io
+import threading
 
 import build_projections
 from build_projections import assign_xmins, recompute_teams, build_full_projections
 
 app = Flask(__name__)
+
+PROJECTIONS_CSV_PATH = "data/projections.csv"
+_projections_write_lock = threading.Lock()
+
+
+def _refresh_projections_csv_async():
+    """Fire-and-forget background write of data/projections.csv from current local CSV state.
+    Keeps the solver pipeline's input in sync with UI tweaks without blocking the response."""
+    def _do():
+        with _projections_write_lock:
+            df = build_full_projections(load_xmins(), load_overrides())
+            df.to_csv(PROJECTIONS_CSV_PATH, index=False)
+    threading.Thread(target=_do, daemon=True).start()
 
 XMINS_PATH = "data/xmins.csv"
 XG_OVERRIDES_PATH = "data/xg_overrides.csv"
@@ -280,6 +294,7 @@ def save():
     affected_teams = list(players[players["id"].isin(changed_ids)]["abbr"].unique())
     updates = recompute_teams(overrides, load_overrides(), teams=affected_teams)
 
+    _refresh_projections_csv_async()
     return jsonify({
         "status": "ok",
         "xp": xp_dict_from_recompute(updates),
@@ -306,6 +321,7 @@ def save_xg_override():
     team_abbr = players.loc[players["id"] == player_id, "abbr"].iloc[0]
     updates = recompute_teams(load_xmins(), load_overrides(), teams=[team_abbr])
 
+    _refresh_projections_csv_async()
     return jsonify({
         "status": "ok",
         "xp": xp_dict_from_recompute(updates),
@@ -326,6 +342,7 @@ def reset_xg_override():
     team_abbr = players.loc[players["id"] == player_id, "abbr"].iloc[0]
     updates = recompute_teams(load_xmins(), load_overrides(), teams=[team_abbr])
 
+    _refresh_projections_csv_async()
     return jsonify({
         "status": "ok",
         "xp": xp_dict_from_recompute(updates),

@@ -6,11 +6,24 @@ __pycache__/
 # Conda
 .conda/
 
-# Cache and raw data
+# Cache (raw API responses, large, never ship)
 cache/
-data/processed/
 
 # Environment
 .env
 
+# Solver outputs
 data/results/
+
+# Creator personal opinions + derived artifacts (never ship to Railway)
+data/xmins.csv
+data/xg_overrides.csv
+data/projections.csv
+
+# Junk / local debug
+data/unmatched_players.csv
+data/spain_projections.png
+data/.DS_Store
+
+# Context handoff notes for Claude sessions — not part of project
+DEPLOY.md
