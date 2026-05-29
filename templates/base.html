@@ -371,6 +371,10 @@
     {% block content %}{% endblock %}
   </main>
 
+  <script>
+    window.DEPLOY_MODE = "{{ DEPLOY_MODE }}";
+    window.IS_PUBLIC = {{ 'true' if IS_PUBLIC else 'false' }};
+  </script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

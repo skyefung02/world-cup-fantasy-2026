@@ -14,6 +14,12 @@ app = Flask(__name__)
 DEPLOY_MODE = os.environ.get("DEPLOY_MODE", "local")
 IS_PUBLIC = DEPLOY_MODE == "public"
 
+
+@app.context_processor
+def _inject_deploy_mode():
+    """Make DEPLOY_MODE + IS_PUBLIC available in every template."""
+    return {"DEPLOY_MODE": DEPLOY_MODE, "IS_PUBLIC": IS_PUBLIC}
+
 PROJECTIONS_CSV_PATH = "data/projections.csv"
 _projections_write_lock = threading.Lock()
 

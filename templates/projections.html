@@ -254,6 +254,9 @@
         <button class="pill"        data-pos="MID"  onclick="onPosFilter('MID')">MID</button>
         <button class="pill"        data-pos="FWD"  onclick="onPosFilter('FWD')">FWD</button>
       </div>
+      {% if IS_PUBLIC %}
+      <button class="btn" id="btn-download" onclick="downloadCsv()">↓ Download CSV</button>
+      {% endif %}
     </div>
 
     {% if players %}
@@ -463,6 +466,10 @@
       });
     }
 
+    // ── Client state (public mode only) ──
+    // Holds the visitor's tweaks. Reset on page reload — by design.
+    const clientState = { xmins: {}, overrides: {} };
+
     // ── Modal ──
     let currentRow = null;
     let slidersDirty = false;
@@ -538,6 +545,32 @@
 
       setSaving(true);
 
+      if (window.IS_PUBLIC) {
+        // Public mode: mutate clientState, /recompute, never write to server CSVs.
+        clientState.xmins[playerId] = xmins;
+        if (slidersDirty) {
+          clientState.overrides[playerId] = { goal_share: goalShare, assist_share: assistShare };
+        }
+        const team = currentRow.dataset.abbr;
+        const res = await fetch("/recompute", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({ teams: [team], xmins: clientState.xmins, overrides: clientState.overrides }),
+        });
+        const json = await res.json();
+        setSaving(false);
+        if (json.status === "ok") {
+          applyRecomputeResponse(json.players);
+          if (slidersDirty) {
+            updateOverrideIndicator(playerId, true, goalShare, assistShare);
+            document.getElementById("btn-reset").disabled = false;
+          }
+          slidersDirty = false;
+        }
+        return;
+      }
+
+      // Local mode: write-through to creator CSVs.
       const saveRes  = await fetch("/save", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -575,6 +608,27 @@
       const playerId = parseInt(currentRow.dataset.id);
 
       setSaving(true);
+
+      if (window.IS_PUBLIC) {
+        // Public mode: drop from clientState, recompute team.
+        delete clientState.overrides[playerId];
+        const team = currentRow.dataset.abbr;
+        const res = await fetch("/recompute", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({ teams: [team], xmins: clientState.xmins, overrides: clientState.overrides }),
+        });
+        const json = await res.json();
+        setSaving(false);
+        if (json.status === "ok") {
+          applyRecomputeResponse(json.players);
+          updateOverrideIndicator(playerId, false);
+          closeModal();
+        }
+        return;
+      }
+
+      // Local mode
       const res  = await fetch("/reset_xg_override", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -623,6 +677,79 @@
           dot.remove();
         }
       }
+    }
+
+    // ── Public-mode helpers ──
+
+    // Apply the rich /recompute response to the DOM.
+    // Shape: { "<pid>": { "<round>": { Pts, xMins, xG, xA, GoalShare, AssistShare, ModelGoalShare, ... } } }
+    function applyRecomputeResponse(players) {
+      for (const [pidStr, rounds] of Object.entries(players)) {
+        const row = document.querySelector(`tr[data-id="${pidStr}"]`);
+        if (!row) continue;
+        const r1 = +rounds["1"].Pts.toFixed(2);
+        const r2 = +rounds["2"].Pts.toFixed(2);
+        const r3 = +rounds["3"].Pts.toFixed(2);
+        const avg = ((r1 + r2 + r3) / 3).toFixed(2);
+
+        row.dataset.r1  = r1;
+        row.dataset.r2  = r2;
+        row.dataset.r3  = r3;
+        row.dataset.avg = avg;
+        row.querySelector(".r1-pts").textContent  = r1.toFixed(2);
+        row.querySelector(".r2-pts").textContent  = r2.toFixed(2);
+        row.querySelector(".r3-pts").textContent  = r3.toFixed(2);
+        row.querySelector(".avg-pts").textContent = avg;
+
+        row.dataset.r1Xmins = Math.round(rounds["1"].xMins);
+        row.dataset.r2Xmins = Math.round(rounds["2"].xMins);
+        row.dataset.r3Xmins = Math.round(rounds["3"].xMins);
+        row.dataset.r1GoalShare      = rounds["1"].GoalShare.toFixed(4);
+        row.dataset.r1AssistShare    = rounds["1"].AssistShare.toFixed(4);
+        row.dataset.modelGoalShare   = rounds["1"].ModelGoalShare.toFixed(4);
+        row.dataset.modelAssistShare = rounds["1"].ModelAssistShare.toFixed(4);
+      }
+    }
+
+    function updateOverrideIndicator(playerId, isOverridden, goalShare, assistShare) {
+      const row = document.querySelector(`tr[data-id="${playerId}"]`);
+      if (!row) return;
+      row.dataset.hasOverride = isOverridden ? "true" : "false";
+      row.classList.toggle("overridden", isOverridden);
+
+      if (isOverridden) {
+        row.dataset.overrideGoalShare   = goalShare.toFixed(4);
+        row.dataset.overrideAssistShare = assistShare.toFixed(4);
+      }
+
+      const nameCell = row.querySelector(".player-name");
+      let dot = nameCell.querySelector(".override-dot");
+      if (isOverridden && !dot) {
+        const newDot = document.createElement("span");
+        newDot.className = "override-dot";
+        newDot.title = "Manually adjusted";
+        nameCell.appendChild(newDot);
+      } else if (!isOverridden && dot) {
+        dot.remove();
+      }
+    }
+
+    async function downloadCsv() {
+      const res = await fetch("/download.csv", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(clientState),
+      });
+      if (!res.ok) return;
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "projections.csv";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 0);
     }
   </script>
 {% endblock %}

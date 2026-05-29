@@ -205,11 +205,11 @@
       inp.addEventListener("change", saveAll);
     });
 
-    function saveAll() {
+    async function saveAll() {
       const inputs = document.querySelectorAll("input.xmins");
-      const data = {};
+      const xminsMap = {};
       inputs.forEach(inp => {
-        data[inp.dataset.id] = inp.value;
+        xminsMap[inp.dataset.id] = parseInt(inp.value, 10) || 0;
         inp.classList.remove("dirty");
       });
 
@@ -220,26 +220,46 @@
       statusEl.classList.add("visible");
       saveBtn.disabled = true;
 
-      fetch("/save", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      })
-      .then(r => r.json())
-      .then(resp => {
-        if (resp.xp) {
-          Object.entries(resp.xp).forEach(([pid, rounds]) => {
-            Object.entries(rounds).forEach(([r, pts]) => {
-              const cell = document.querySelector(`.xp-cell[data-id="${pid}"][data-round="${r}"]`);
-              if (cell) cell.textContent = pts;
-            });
+      try {
+        if (window.IS_PUBLIC) {
+          // Public mode: stateless /recompute, returns rich shape.
+          const res = await fetch("/recompute", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ teams: ["{{ team.abbr }}"], xmins: xminsMap, overrides: {} }),
           });
+          const resp = await res.json();
+          if (resp.status === "ok") {
+            Object.entries(resp.players).forEach(([pid, rounds]) => {
+              Object.entries(rounds).forEach(([r, vals]) => {
+                const cell = document.querySelector(`.xp-cell[data-id="${pid}"][data-round="${r}"]`);
+                if (cell) cell.textContent = vals.Pts.toFixed(2);
+              });
+            });
+          }
+        } else {
+          // Local mode: today's write-through /save returns {xp: {pid: {round: pts}}}
+          const res = await fetch("/save", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(xminsMap),
+          });
+          const resp = await res.json();
+          if (resp.xp) {
+            Object.entries(resp.xp).forEach(([pid, rounds]) => {
+              Object.entries(rounds).forEach(([r, pts]) => {
+                const cell = document.querySelector(`.xp-cell[data-id="${pid}"][data-round="${r}"]`);
+                if (cell) cell.textContent = pts;
+              });
+            });
+          }
         }
         statusEl.textContent = "Saved";
         statusEl.style.color = "var(--success)";
+      } finally {
         setTimeout(() => statusEl.classList.remove("visible"), 2000);
         saveBtn.disabled = false;
-      });
+      }
     }
   </script>
 {% endblock %}
