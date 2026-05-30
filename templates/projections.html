@@ -18,6 +18,12 @@
     .table-wrap { padding: 0; }
     tbody tr { cursor: pointer; }
 
+    @keyframes rowFlash {
+      0%   { background-color: var(--accent-bg); }
+      100% { background-color: transparent; }
+    }
+    tbody tr.row-flash > td { animation: rowFlash 1.2s ease-out; }
+
     td.player-name { font-weight: 500; }
     td.team-cell {
       color: var(--text-muted);
@@ -225,6 +231,20 @@
       font-family: var(--mono);
     }
 
+    .modal-note {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      padding: 9px 12px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-left: 2px solid var(--accent);
+      border-radius: 6px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+    .modal-note strong { color: var(--text); font-weight: 600; }
+
     .modal-actions {
       display: flex;
       justify-content: space-between;
@@ -411,6 +431,10 @@
           <div class="model-default" id="assist-model-label"></div>
         </div>
 
+        <div class="modal-note">
+          Sliders show goal/assist share <strong>per 90 minutes</strong> — what the player would contribute over a full match. Actual xG / xA / xP scales with their xMins (visible in the Proj. rows above).
+        </div>
+
         <div class="modal-actions">
           <button class="btn btn-ghost" id="btn-reset" onclick="resetOverride()">Reset to model</button>
           <span class="saving-indicator" id="saving-indicator"></span>
@@ -460,6 +484,20 @@
         return av.localeCompare(bv) * sortDir;
       });
       allRows.forEach(r => tbody.appendChild(r));
+    }
+
+    function flashRow(row) {
+      if (!row) return;
+      row.classList.remove("row-flash");
+      void row.offsetWidth;          // force reflow so the animation restarts cleanly on repeat saves
+      row.classList.add("row-flash");
+      setTimeout(() => row.classList.remove("row-flash"), 1300);
+    }
+
+    function finishEdit(row) {
+      sortTable();
+      flashRow(row);
+      closeModal();
     }
 
     function filterRows() {
@@ -523,15 +561,19 @@
 
       document.getElementById("modal-xmins").value = d.r1Xmins;
 
-      // For overridden players, slider reflects user's per-90 intent (raw override).
-      // Otherwise, slider reflects model's effective share at current xmins.
-      const goalInit   = hasOverride ? parseFloat(d.overrideGoalShare)   : parseFloat(d.r1GoalShare);
-      const assistInit = hasOverride ? parseFloat(d.overrideAssistShare) : parseFloat(d.r1AssistShare);
+      // Sliders are per-90: the override semantic on the server is
+      // player_xg = team_xg * share * (xmins/90). For non-overridden players, the row's
+      // r1GoalShare / modelGoalShare are *effective* (xmins already baked in), so divide
+      // by xmins/90 to get the equivalent per-90 value.
+      const r1Xmins = parseInt(d.r1Xmins, 10) || 0;
+      const xminsScaleInit = r1Xmins > 0 ? r1Xmins / 90 : 1;
+      const goalInit   = hasOverride ? parseFloat(d.overrideGoalShare)   : parseFloat(d.r1GoalShare)   / xminsScaleInit;
+      const assistInit = hasOverride ? parseFloat(d.overrideAssistShare) : parseFloat(d.r1AssistShare) / xminsScaleInit;
       document.getElementById("goal-slider").value   = (goalInit   * 100).toFixed(1);
       document.getElementById("assist-slider").value = (assistInit * 100).toFixed(1);
 
-      const modelGoalPct   = (parseFloat(d.modelGoalShare)   * 100).toFixed(1);
-      const modelAssistPct = (parseFloat(d.modelAssistShare) * 100).toFixed(1);
+      const modelGoalPct   = (parseFloat(d.modelGoalShare)   / xminsScaleInit * 100).toFixed(1);
+      const modelAssistPct = (parseFloat(d.modelAssistShare) / xminsScaleInit * 100).toFixed(1);
       document.getElementById("goal-model-label").textContent   = `Model default: ${modelGoalPct}%`;
       document.getElementById("assist-model-label").textContent = `Model default: ${modelAssistPct}%`;
 
@@ -590,10 +632,11 @@
 
     async function saveOverride() {
       if (!currentRow) return;
+      const savedRow    = currentRow;
       const xmins       = parseInt(document.getElementById("modal-xmins").value, 10) || 0;
       const goalShare   = parseFloat(document.getElementById("goal-slider").value)   / 100;
       const assistShare = parseFloat(document.getElementById("assist-slider").value) / 100;
-      const playerId    = parseInt(currentRow.dataset.id);
+      const playerId    = parseInt(savedRow.dataset.id);
 
       setSaving(true);
 
@@ -603,7 +646,7 @@
         if (slidersDirty) {
           clientState.overrides[playerId] = { goal_share: goalShare, assist_share: assistShare };
         }
-        const team = currentRow.dataset.abbr;
+        const team = savedRow.dataset.abbr;
         const res = await fetch("/recompute", {
           method: "POST",
           headers: {"Content-Type": "application/json"},
@@ -615,9 +658,9 @@
           applyRecomputeResponse(json.players);
           if (slidersDirty) {
             updateOverrideIndicator(playerId, true, goalShare, assistShare);
-            document.getElementById("btn-reset").disabled = false;
           }
           slidersDirty = false;
+          finishEdit(savedRow);
         }
         return;
       }
@@ -642,29 +685,30 @@
 
       if (json.status === "ok") {
         applyXpUpdates(json.xp, json.overridden_ids);
-        currentRow.dataset.r1Xmins = xmins;
-        currentRow.dataset.r2Xmins = xmins;
-        currentRow.dataset.r3Xmins = xmins;
+        savedRow.dataset.r1Xmins = xmins;
+        savedRow.dataset.r2Xmins = xmins;
+        savedRow.dataset.r3Xmins = xmins;
         if (slidersDirty) {
-          currentRow.dataset.overrideGoalShare   = goalShare;
-          currentRow.dataset.overrideAssistShare = assistShare;
-          currentRow.dataset.hasOverride         = "true";
-          document.getElementById("btn-reset").disabled = false;
+          savedRow.dataset.overrideGoalShare   = goalShare;
+          savedRow.dataset.overrideAssistShare = assistShare;
+          savedRow.dataset.hasOverride         = "true";
         }
         slidersDirty = false;
+        finishEdit(savedRow);
       }
     }
 
     async function resetOverride() {
       if (!currentRow) return;
-      const playerId = parseInt(currentRow.dataset.id);
+      const savedRow = currentRow;
+      const playerId = parseInt(savedRow.dataset.id);
 
       setSaving(true);
 
       if (window.IS_PUBLIC) {
         // Public mode: drop from clientState, recompute team.
         delete clientState.overrides[playerId];
-        const team = currentRow.dataset.abbr;
+        const team = savedRow.dataset.abbr;
         const res = await fetch("/recompute", {
           method: "POST",
           headers: {"Content-Type": "application/json"},
@@ -675,7 +719,7 @@
         if (json.status === "ok") {
           applyRecomputeResponse(json.players);
           updateOverrideIndicator(playerId, false);
-          closeModal();
+          finishEdit(savedRow);
         }
         return;
       }
@@ -691,7 +735,7 @@
 
       if (json.status === "ok") {
         applyXpUpdates(json.xp, json.overridden_ids);
-        closeModal();
+        finishEdit(savedRow);
       }
     }
 
