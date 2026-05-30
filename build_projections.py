@@ -10,6 +10,7 @@ from scoring import (
 
 PROCESSED_DIR = "data/processed"
 XMINS_PATH = "data/xmins.csv"
+DEFAULT_XMINS_PATH = "data/default_xmins.csv"
 XG_OVERRIDES_PATH = "data/xg_overrides.csv"
 SET_PIECE_TAKERS_PATH = "data/set_piece_takers.csv"
 
@@ -59,22 +60,6 @@ def _appearance_pts_vec(xmins_arr):
     return np.where(xmins_arr == 0, 0.0, np.where(xmins_arr < 60, 1.0, 2.0))
 
 
-def assign_xmins(squad_group):
-    mins_map = {
-        'GK':  [90, 5, 5, 5],
-        'DEF': [80, 80, 80, 80, 25, 25, 5, 5, 5],
-        'MID': [75, 75, 75, 75, 35, 35, 10, 10, 5],
-        'FWD': [70, 70, 35, 10, 10, 5, 5],
-    }
-    parts = []
-    for pos, pos_group in squad_group.groupby('position'):
-        pos_group = pos_group.sort_values('price', ascending=False).reset_index(drop=True)
-        schedule = mins_map.get(pos, [60])
-        pos_group['xmins'] = [schedule[i] if i < len(schedule) else 5 for i in range(len(pos_group))]
-        parts.append(pos_group)
-    return pd.concat(parts)
-
-
 # ─────────────────────────────────────────────────────────────────────────────
 # Cached base state
 #
@@ -96,6 +81,13 @@ def get_base_state(force=False):
 def invalidate_base_state():
     global _base_state
     _base_state = None
+
+
+def get_default_xmins_map():
+    """Return {player_id: int(default_xmins)} from the cached base state."""
+    df = get_base_state()
+    unique = df.drop_duplicates("id")
+    return {int(pid): int(round(x)) for pid, x in zip(unique["id"], unique["default_xmins"])}
 
 
 def _precompute_base_state():
@@ -141,15 +133,10 @@ def _precompute_base_state():
     df["goal_w_per_min"]   = np.where(is_outfield, df["gls_p90"] * df["league_strength"], 0.0)
     df["assist_w_per_min"] = np.where(is_outfield, df["ast_p90"] * df["league_strength"], 0.0)
 
-    # Default xmins schedule per player (used when no user override)
-    players_meta = df[['id', 'squadId', 'position', 'price']].drop_duplicates('id')
-    default_xmins_df = (
-        players_meta
-        .groupby('squadId', group_keys=False)
-        .apply(assign_xmins)[['id', 'xmins']]
-        .rename(columns={'xmins': 'default_xmins'})
-    )
-    df = df.merge(default_xmins_df, on='id', how='left')
+    # Default xmins from data-driven model (international stats — see notebook 05)
+    default_xmins_df = pd.read_csv(DEFAULT_XMINS_PATH)[["player", "team", "default_xmins"]]
+    df = df.merge(default_xmins_df, on=["player", "team"], how="left")
+    df["default_xmins"] = df["default_xmins"].fillna(0)
 
     # Set-piece / penalty taker flags (immutable per-player metadata)
     df["is_pen_taker"] = False

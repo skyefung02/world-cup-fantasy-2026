@@ -144,4 +144,6 @@ MANUAL_OVERRIDES = {
     # "Giovanni Reyna" = "Gio Reyna" (MF, Nottm Forest) — Gio is his universally used name
     "Giovanni Reyna": "Gio Reyna",
 
+    # ── Misc ────────────────────────────────────────────────────────────────────
+    "Andy Robertson": "Andrew Robertson",
 }

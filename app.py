@@ -5,7 +5,7 @@ import io
 import threading
 
 import build_projections
-from build_projections import assign_xmins, recompute_teams, build_full_projections
+from build_projections import get_default_xmins_map, recompute_teams, build_full_projections
 
 app = Flask(__name__)
 
@@ -86,13 +86,8 @@ def overridden_ids_list():
 
 
 def init_xmins(players, xmins_manual):
-    """Compute defaults via assign_xmins, then apply manual overrides from xmins.csv."""
-    default_df = (
-        players
-        .groupby('squadId', group_keys=False)
-        .apply(assign_xmins)[['id', 'xmins']]
-    )
-    result = dict(zip(default_df['id'], default_df['xmins']))
+    """Compute defaults from cached default_xmins, then apply manual overrides from xmins.csv."""
+    result = get_default_xmins_map()
     result.update(xmins_manual)
     return result
 
@@ -302,12 +297,7 @@ def save():
     if guard: return guard
     data = request.json  # {player_id: xmins, ...}
     players = load_players()
-    default_df = (
-        players
-        .groupby('squadId', group_keys=False)
-        .apply(assign_xmins)[['id', 'xmins']]
-    )
-    defaults = dict(zip(default_df['id'], default_df['xmins']))
+    defaults = get_default_xmins_map()
     overrides = load_xmins()
     for pid, val in data.items():
         pid, val = int(pid), int(val)
