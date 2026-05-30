@@ -321,6 +321,7 @@
         <button class="pill"        data-pos="MID"  onclick="onPosFilter('MID')">MID</button>
         <button class="pill"        data-pos="FWD"  onclick="onPosFilter('FWD')">FWD</button>
       </div>
+      <a class="btn btn-ghost" href="/squad" title="Bulk edit xMins by team">Edit by team →</a>
       {% if IS_PUBLIC %}
       <button class="btn" id="btn-download" onclick="downloadCsv()">↓ Download CSV</button>
       {% endif %}
@@ -588,8 +589,9 @@
     }
 
     // ── Client state (public mode only) ──
-    // Holds the visitor's tweaks. Reset on page reload — by design.
-    const clientState = { xmins: {}, overrides: {} };
+    // Bound to the shared window.clientState (defined in base.html) so edits
+    // here are visible to the squad/team pages too within the same session.
+    const clientState = window.clientState;
 
     // ── Modal ──
     let currentRow = null;
@@ -910,6 +912,22 @@
       } else if (!isOverridden && dot) {
         dot.remove();
       }
+    }
+
+    // Hydrate the table from shared clientState — covers the case where the
+    // user tweaked xMins on /squad or /team/<abbr> and then navigated here.
+    if (window.IS_PUBLIC && window.hasClientStateEdits()) {
+      fetch("/recompute", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ xmins: clientState.xmins, overrides: clientState.overrides }),
+      }).then(r => r.json()).then(json => {
+        if (json.status !== "ok") return;
+        applyRecomputeResponse(json.players);
+        for (const [pidStr, ov] of Object.entries(clientState.overrides)) {
+          updateOverrideIndicator(parseInt(pidStr), true, ov.goal_share, ov.assist_share);
+        }
+      });
     }
 
     async function downloadCsv() {

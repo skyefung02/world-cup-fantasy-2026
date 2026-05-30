@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+
+{% block title %}WC Fantasy 2026{% endblock %}
+
+{% block extra_styles %}
+    /* ── Hero ── */
+    .home-hero {
+      padding: 24px 0 56px;
+      max-width: 800px;
+    }
+    .home-title {
+      font-family: var(--display);
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      line-height: 0.9;
+      background: linear-gradient(135deg, #ffb300 0%, #dc2626 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+    }
+    .home-pitch {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.1px;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .home-credibility {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── Section heading ── */
+    .section-head {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2.2px;
+      color: var(--text-subtle);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-head::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Workflow steps ── */
+    .workflow {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 56px;
+    }
+    .step-card {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 32px;
+    }
+    .step-num {
+      font-family: var(--display);
+      font-size: 6rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 0.9;
+      letter-spacing: -3px;
+    }
+    .step-title {
+      font-family: var(--display);
+      font-size: 1.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .step-body {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 68ch;
+      margin-bottom: 18px;
+    }
+    .step-body strong { color: var(--text); font-weight: 600; }
+    .step-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+    .step-footnote {
+      font-size: 0.8rem;
+      color: var(--text-faint);
+      margin-top: 14px;
+      line-height: 1.55;
+    }
+    .step-footnote code {
+      font-family: var(--mono);
+      background: var(--surface-2);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+
+    /* ── Code block ── */
+    .code-block {
+      font-family: var(--mono);
+      font-size: 0.84rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      overflow-x: auto;
+      line-height: 1.7;
+      color: var(--text);
+      white-space: pre;
+      margin: 0;
+    }
+    .code-block .cmt { color: var(--text-faint); font-style: italic; }
+    .code-block .cmd { color: var(--accent); }
+
+    /* ── About details ── */
+    .about {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .about summary {
+      padding: 18px 24px;
+      font-family: var(--display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      cursor: pointer;
+      list-style: none;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .about summary::-webkit-details-marker { display: none; }
+    .about summary::after {
+      content: "+";
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      font-family: var(--mono);
+      line-height: 1;
+    }
+    .about[open] summary::after { content: "−"; }
+    .about[open] summary { border-bottom: 1px solid var(--border); }
+    .about-body {
+      padding: 22px 24px 24px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .about-body p { margin-bottom: 14px; max-width: 78ch; }
+    .about-body p:last-child { margin-bottom: 0; }
+    .about-body strong { color: var(--text); font-weight: 600; }
+
+    @media (max-width: 720px) {
+      .step-card {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 22px 20px;
+      }
+      .step-num { font-size: 4rem; }
+    }
+{% endblock %}
+
+{% block content %}
+    <section class="home-hero">
+      <h1 class="home-title">World Cup<br>Fantasy 2026</h1>
+      <p class="home-pitch">Adjustable xP projections built for solvers, not picks.</p>
+      <p class="home-credibility">An Elo-derived xG model allocates expected fantasy points per player per round. Tweak the inputs, export the projections, run the solver.</p>
+    </section>
+
+    <div class="section-head">How to use this tool</div>
+
+    <div class="workflow">
+
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Adjust</div>
+          <p class="step-body">
+            Make the projections yours. Edit <strong>xMins</strong> per player to reflect your read on rotations and injuries; override <strong>goal/assist shares</strong> where you think the model is wrong about who's taking the chances. Every change recomputes live.
+          </p>
+          <div class="step-ctas">
+            <a class="btn btn-primary" href="/projections">Browse Projections →</a>
+            <a class="btn" href="/squad">Or edit by team →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">Download</div>
+          <p class="step-body">
+            On the Projections page, hit <strong>Download CSV</strong> to save a snapshot of your tweaked projections. The schema matches what the solver expects out of the box — no reformatting needed.
+          </p>
+          <div class="step-ctas">
+            <a class="btn btn-primary" href="/projections">Open Projections →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Solve</div>
+          <p class="step-body">
+            The website and the ILP solver live in the <strong>same repo</strong>. Clone it, drop your CSV into <code style="font-family:var(--mono);background:var(--surface-2);padding:1px 6px;border-radius:4px;color:var(--text-muted);font-size:0.85em;">data/</code>, and run the solver to optimise your 15-player squad and starting XI under WC 2026 budget, position, and country constraints.
+          </p>
+<pre class="code-block"><span class="cmt"># Clone (website + solver share this repo)</span>
+git clone https://github.com/skyefung02/world-cup-fantasy-2026.git
+cd world-cup-fantasy-2026
+
+<span class="cmt"># Install (Python 3.10+)</span>
+pip install -r requirements.txt
+
+<span class="cmt"># Drop your downloaded CSV in</span>
+mv ~/Downloads/projections.csv data/projections.csv
+
+<span class="cmt"># Solve — picks land in data/results/wc_&lt;timestamp&gt;_iter*.csv</span>
+python wc_solver.py</pre>
+          <p class="step-footnote">
+            Tune <code>wc_settings.json</code> for horizon, captaincy preferences, booster usage, and number of solution iterations. CLI flags override the file (e.g. <code>python wc_solver.py --horizon 3 --num_iterations 5</code>).
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <details class="about">
+      <summary>How the projections work</summary>
+      <div class="about-body">
+        <p><strong>Team xG</strong> for each fixture starts from the Elo ratings of both sides: an Elo win-expectancy is converted to expected goals via a fitted polynomial, then bent by a per-team tactical tilt factor (both teams' tilts apply symmetrically).</p>
+        <p><strong>Player allocation</strong> within a team's xG: each player's per-90 goal and assist rates are first shrunk toward the positional mean (lightly for forwards, heavily for goalkeepers and defenders, where individual rate stats are less predictive), then multiplied by their league strength to form a per-minute weight. Weight × xMins gives each player's slice of the team's open-play pool. Two pre-allocations happen before that distribution: designated penalty takers are locked into ~16% of team xG (PEN_PROB × PEN_CONVERSION), and set-piece-assist takers into ~20% of team xA. Manual overrides on the Projections page lock a per-90 goal or assist share for a specific player; the model renormalises the remaining team xG across non-overridden teammates.</p>
+        <p><strong>Fantasy points</strong> apply WC 2026 position-aware multipliers: goals are worth 5 (FWD) / 6 (MID) / 7 (DEF) / 9 (GK); assists are a flat 3. Add appearance points (2 for ≥60 minutes, 1 if subbed on under 60), clean-sheet probability × position rate for players with ≥60 minutes (Poisson on opponent xG; rates: GK/DEF 5, MID 1, FWD 0), and a Poisson-derived conceded-goal penalty (−1 per goal conceded beyond the first) for GK and DEF.</p>
+      </div>
+    </details>
+{% endblock %}

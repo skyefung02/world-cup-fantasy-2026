@@ -5,7 +5,7 @@ id,name,group,abbr,isEliminated,elo,Tactical,Personnel,total_tilt,tilt_cat
 4,Austria,j,AUT,False,1830.4,0.29,-0.07,0.22,Attacking
 5,Belgium,g,BEL,False,1890.0,0.21,0.01,0.21,Attacking
 6,Bosnia and Herzegovina,b,BIH,False,1697.4,0.18,-0.04,0.14,Attacking
-7,Brazil,c,BRA,False,2001.2,-0.07,0.09,0.01,Balanced
+7,Brazil,c,BRA,False,2001.2,0.12,0.09,0.21,Balanced
 8,Cabo Verde,h,CPV,False,1619.1,-0.2,-0.08,-0.28,Defensive
 9,Canada,b,CAN,False,1815.2,-0.1,0.03,-0.07,Balanced
 10,Colombia,k,COL,False,1945.1,-0.31,0.06,-0.25,Defensive

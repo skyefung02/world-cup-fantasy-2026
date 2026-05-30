@@ -366,8 +366,8 @@
         <span class="brand-meta">v1</span>
       </div>
       <nav class="main-nav">
-        <a href="/" class="nav-tab {% if request.path == '/' or request.path.startswith('/team') %}active{% endif %}">xMins Editor</a>
-        <a href="/projections" class="nav-tab {% if request.path == '/projections' %}active{% endif %}">Projections</a>
+        <a href="/" class="nav-tab {% if request.path == '/' %}active{% endif %}">Home</a>
+        <a href="/projections" class="nav-tab {% if request.path == '/projections' or request.path == '/squad' or request.path.startswith('/team') %}active{% endif %}">Projections</a>
         <a href="/match-projections" class="nav-tab {% if request.path == '/match-projections' %}active{% endif %}">Match Projections</a>
       </nav>
     </div>
@@ -380,6 +380,15 @@
   <script>
     window.DEPLOY_MODE = "{{ DEPLOY_MODE }}";
     window.IS_PUBLIC = {{ 'true' if IS_PUBLIC else 'false' }};
+
+    // Shared client-side edit state for public mode. Lives in memory only;
+    // every page (projections, squad, team/*) reads and writes the same object,
+    // so an xMins tweak on the team page reaches the projections table on next
+    // visit within the same session.
+    window.clientState = { xmins: {}, overrides: {} };
+    window.hasClientStateEdits = () =>
+      Object.keys(window.clientState.xmins).length > 0 ||
+      Object.keys(window.clientState.overrides).length > 0;
 
     // Primary kit colour per nation. Black-kit nations (GER/JOR/NZL) use a
     // secondary identity colour so they're visible against the dark surface.

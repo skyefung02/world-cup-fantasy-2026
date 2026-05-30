@@ -114,14 +114,19 @@ def xp_dict_from_recompute(updates):
 # ─────────────────────────────────────────────────────────────────────────────
 
 @app.route("/")
-def index():
+def home():
+    return render_template("home.html")
+
+
+@app.route("/squad")
+def squad():
     players = load_players()
     xmins = init_xmins(players, load_xmins())
 
     teams = players[["abbr", "team", "group"]].drop_duplicates().sort_values("team")
     teams = teams.sort_values(["group", "team"]).to_dict(orient="records")
 
-    return render_template("index.html", teams=teams, flags=FLAGS)
+    return render_template("squad.html", teams=teams, flags=FLAGS)
 
 
 @app.route("/team/<abbr>")

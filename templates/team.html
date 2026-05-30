@@ -138,7 +138,7 @@
 
 {% block content %}
     <div class="breadcrumb">
-      <a href="/">Squad Manager</a><span class="sep">/</span>
+      <a href="/squad">Squad Manager</a><span class="sep">/</span>
       <span>{{ team.team }}</span>
     </div>
 
@@ -219,6 +219,41 @@
       if (c) document.documentElement.style.setProperty("--team-color", c);
     }
 
+    // Public-mode hydration: if this team's players have edits in shared clientState
+    // (from a prior visit to /projections or another team page this session), reflect
+    // them in the inputs and re-pull xP cells from /recompute.
+    if (window.IS_PUBLIC && window.hasClientStateEdits()) {
+      let touched = false;
+      document.querySelectorAll("input.xmins").forEach(inp => {
+        const pid = inp.dataset.id;
+        if (pid in window.clientState.xmins) {
+          inp.value = window.clientState.xmins[pid];
+          touched = true;
+        }
+      });
+      // Always refresh xP cells if any overrides exist (could affect this team's players
+      // even if xmins themselves weren't edited here).
+      if (touched || Object.keys(window.clientState.overrides).length > 0) {
+        fetch("/recompute", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            teams: ["{{ team.abbr }}"],
+            xmins: window.clientState.xmins,
+            overrides: window.clientState.overrides,
+          }),
+        }).then(r => r.json()).then(resp => {
+          if (resp.status !== "ok") return;
+          Object.entries(resp.players).forEach(([pid, rounds]) => {
+            Object.entries(rounds).forEach(([r, vals]) => {
+              const cell = document.querySelector(`.xp-cell[data-id="${pid}"][data-round="${r}"]`);
+              if (cell) cell.textContent = vals.Pts.toFixed(2);
+            });
+          });
+        });
+      }
+    }
+
     document.querySelectorAll("input.xmins").forEach(inp => {
       inp.addEventListener("input", () => inp.classList.add("dirty"));
       inp.addEventListener("change", saveAll);
@@ -241,11 +276,17 @@
 
       try {
         if (window.IS_PUBLIC) {
-          // Public mode: stateless /recompute, returns rich shape.
+          // Public mode: merge into shared clientState so /projections sees these edits,
+          // and include existing overrides so they survive a team-page recompute.
+          Object.assign(window.clientState.xmins, xminsMap);
           const res = await fetch("/recompute", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ teams: ["{{ team.abbr }}"], xmins: xminsMap, overrides: {} }),
+            body: JSON.stringify({
+              teams: ["{{ team.abbr }}"],
+              xmins: window.clientState.xmins,
+              overrides: window.clientState.overrides,
+            }),
           });
           const resp = await res.json();
           if (resp.status === "ok") {

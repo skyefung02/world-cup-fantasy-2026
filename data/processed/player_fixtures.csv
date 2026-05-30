@@ -458,66 +458,66 @@ id,player,position,price,status,squadId,team,abbr,group,elo,tactical_tilt,total_
 162,Amir Hadziahmetovic,MID,5.5,playing,6,Bosnia and Herzegovina,BIH,b,1697.4,0.18,0.14,Attacking,1,CAN,1815.2,-0.1
 162,Amir Hadziahmetovic,MID,5.5,playing,6,Bosnia and Herzegovina,BIH,b,1697.4,0.18,0.14,Attacking,2,SUI,1883.3,0.13
 162,Amir Hadziahmetovic,MID,5.5,playing,6,Bosnia and Herzegovina,BIH,b,1697.4,0.18,0.14,Attacking,3,QAT,1541.8,0.05
-164,Gabriel Magalhães,DEF,5.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-164,Gabriel Magalhães,DEF,5.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-164,Gabriel Magalhães,DEF,5.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-165,Marquinhos,DEF,5.2,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-165,Marquinhos,DEF,5.2,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-165,Marquinhos,DEF,5.2,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-166,Ibañez,DEF,4.4,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-166,Ibañez,DEF,4.4,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-166,Ibañez,DEF,4.4,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-167,Danilo,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-167,Danilo,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-167,Danilo,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-168,Douglas Santos,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-168,Douglas Santos,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-168,Douglas Santos,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-169,Bremer,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-169,Bremer,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-169,Bremer,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-170,Léo Pereira,DEF,4.2,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-170,Léo Pereira,DEF,4.2,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-170,Léo Pereira,DEF,4.2,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-173,Vinícius Júnior,MID,10.0,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-173,Vinícius Júnior,MID,10.0,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-173,Vinícius Júnior,MID,10.0,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-174,Matheus Cunha,FWD,7.3,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-174,Matheus Cunha,FWD,7.3,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-174,Matheus Cunha,FWD,7.3,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-176,Gabriel Martinelli,MID,6.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-176,Gabriel Martinelli,MID,6.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-176,Gabriel Martinelli,MID,6.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-177,Luiz Henrique,FWD,6.1,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-177,Luiz Henrique,FWD,6.1,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-177,Luiz Henrique,FWD,6.1,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-178,Igor Thiago,FWD,5.9,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-178,Igor Thiago,FWD,5.9,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-178,Igor Thiago,FWD,5.9,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-179,Rayan,FWD,5.6,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-179,Rayan,FWD,5.6,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-179,Rayan,FWD,5.6,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-181,Endrick,FWD,5.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-181,Endrick,FWD,5.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-181,Endrick,FWD,5.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-182,Ederson,GK,5.0,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-182,Ederson,GK,5.0,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-182,Ederson,GK,5.0,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-183,Alisson Becker,GK,5.0,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-183,Alisson Becker,GK,5.0,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-183,Alisson Becker,GK,5.0,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-186,Fabinho,MID,5.2,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-186,Fabinho,MID,5.2,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-186,Fabinho,MID,5.2,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-187,Danilo,MID,5.6,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-187,Danilo,MID,5.6,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-187,Danilo,MID,5.6,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-188,Casemiro,MID,6.3,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-188,Casemiro,MID,6.3,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-188,Casemiro,MID,6.3,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-190,Lucas Paquetá,MID,6.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-190,Lucas Paquetá,MID,6.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-190,Lucas Paquetá,MID,6.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
+164,Gabriel Magalhães,DEF,5.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+164,Gabriel Magalhães,DEF,5.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+164,Gabriel Magalhães,DEF,5.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+165,Marquinhos,DEF,5.2,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+165,Marquinhos,DEF,5.2,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+165,Marquinhos,DEF,5.2,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+166,Ibañez,DEF,4.4,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+166,Ibañez,DEF,4.4,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+166,Ibañez,DEF,4.4,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+167,Danilo,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+167,Danilo,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+167,Danilo,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+168,Douglas Santos,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+168,Douglas Santos,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+168,Douglas Santos,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+169,Bremer,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+169,Bremer,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+169,Bremer,DEF,4.3,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+170,Léo Pereira,DEF,4.2,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+170,Léo Pereira,DEF,4.2,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+170,Léo Pereira,DEF,4.2,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+173,Vinícius Júnior,MID,10.0,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+173,Vinícius Júnior,MID,10.0,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+173,Vinícius Júnior,MID,10.0,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+174,Matheus Cunha,FWD,7.3,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+174,Matheus Cunha,FWD,7.3,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+174,Matheus Cunha,FWD,7.3,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+176,Gabriel Martinelli,MID,6.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+176,Gabriel Martinelli,MID,6.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+176,Gabriel Martinelli,MID,6.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+177,Luiz Henrique,FWD,6.1,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+177,Luiz Henrique,FWD,6.1,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+177,Luiz Henrique,FWD,6.1,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+178,Igor Thiago,FWD,5.9,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+178,Igor Thiago,FWD,5.9,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+178,Igor Thiago,FWD,5.9,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+179,Rayan,FWD,5.6,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+179,Rayan,FWD,5.6,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+179,Rayan,FWD,5.6,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+181,Endrick,FWD,5.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+181,Endrick,FWD,5.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+181,Endrick,FWD,5.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+182,Ederson,GK,5.0,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+182,Ederson,GK,5.0,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+182,Ederson,GK,5.0,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+183,Alisson Becker,GK,5.0,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+183,Alisson Becker,GK,5.0,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+183,Alisson Becker,GK,5.0,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+186,Fabinho,MID,5.2,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+186,Fabinho,MID,5.2,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+186,Fabinho,MID,5.2,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+187,Danilo,MID,5.6,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+187,Danilo,MID,5.6,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+187,Danilo,MID,5.6,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+188,Casemiro,MID,6.3,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+188,Casemiro,MID,6.3,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+188,Casemiro,MID,6.3,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+190,Lucas Paquetá,MID,6.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+190,Lucas Paquetá,MID,6.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+190,Lucas Paquetá,MID,6.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
 195,João Paulo,MID,4.6,playing,8,Cabo Verde,CPV,h,1619.1,-0.2,-0.28,Defensive,1,ESP,2084.0,0.08
 195,João Paulo,MID,4.6,playing,8,Cabo Verde,CPV,h,1619.1,-0.2,-0.28,Defensive,2,URU,1922.2,-0.13
 195,João Paulo,MID,4.6,playing,8,Cabo Verde,CPV,h,1619.1,-0.2,-0.28,Defensive,3,KSA,1628.0,-0.19
@@ -1380,73 +1380,73 @@ id,player,position,price,status,squadId,team,abbr,group,elo,tactical_tilt,total_
 565,Benjamin Asare,GK,3.8,playing,21,Ghana,GHA,l,1678.6,-0.24,-0.1,Defensive,2,ENG,2029.8,-0.16
 565,Benjamin Asare,GK,3.8,playing,21,Ghana,GHA,l,1678.6,-0.24,-0.1,Defensive,3,CRO,1876.1,0.09
 569,Woodensky Pierre,MID,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-569,Woodensky Pierre,MID,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+569,Woodensky Pierre,MID,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 569,Woodensky Pierre,MID,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 570,Leverton Pierre,MID,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-570,Leverton Pierre,MID,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+570,Leverton Pierre,MID,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 570,Leverton Pierre,MID,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 571,Jean-Ricner Bellegarde,MID,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-571,Jean-Ricner Bellegarde,MID,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+571,Jean-Ricner Bellegarde,MID,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 571,Jean-Ricner Bellegarde,MID,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 572,Carl Sainté,MID,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-572,Carl Sainté,MID,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+572,Carl Sainté,MID,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 572,Carl Sainté,MID,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 573,Danley Jean Jacques,MID,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-573,Danley Jean Jacques,MID,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+573,Danley Jean Jacques,MID,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 573,Danley Jean Jacques,MID,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 574,Jean-Kévin Duverne,DEF,3.8,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-574,Jean-Kévin Duverne,DEF,3.8,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+574,Jean-Kévin Duverne,DEF,3.8,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 574,Jean-Kévin Duverne,DEF,3.8,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 575,Carlens Arcus,DEF,3.8,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-575,Carlens Arcus,DEF,3.8,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+575,Carlens Arcus,DEF,3.8,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 575,Carlens Arcus,DEF,3.8,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 576,Hannes Delcroix,DEF,3.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-576,Hannes Delcroix,DEF,3.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+576,Hannes Delcroix,DEF,3.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 576,Hannes Delcroix,DEF,3.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 577,Ricardo Adé,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-577,Ricardo Adé,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+577,Ricardo Adé,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 577,Ricardo Adé,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 578,Martin Expérience,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-578,Martin Expérience,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+578,Martin Expérience,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 578,Martin Expérience,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 580,Wilguens Paugain,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-580,Wilguens Paugain,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+580,Wilguens Paugain,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 580,Wilguens Paugain,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 581,Duke Lacroix,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-581,Duke Lacroix,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+581,Duke Lacroix,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 581,Duke Lacroix,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 582,Wilson Isidor,FWD,5.0,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-582,Wilson Isidor,FWD,5.0,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+582,Wilson Isidor,FWD,5.0,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 582,Wilson Isidor,FWD,5.0,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 583,Duckens Nazon,FWD,6.0,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-583,Duckens Nazon,FWD,6.0,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+583,Duckens Nazon,FWD,6.0,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 583,Duckens Nazon,FWD,6.0,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 584,Frantzdy Pierrot,FWD,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-584,Frantzdy Pierrot,FWD,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+584,Frantzdy Pierrot,FWD,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 584,Frantzdy Pierrot,FWD,4.7,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 585,Derrick Etienne,FWD,4.4,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-585,Derrick Etienne,FWD,4.4,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+585,Derrick Etienne,FWD,4.4,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 585,Derrick Etienne,FWD,4.4,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 586,Louicius Deedson,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-586,Louicius Deedson,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+586,Louicius Deedson,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 586,Louicius Deedson,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 588,Yassin Fortuné,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-588,Yassin Fortuné,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+588,Yassin Fortuné,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 588,Yassin Fortuné,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 589,Josué Casimir,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-589,Josué Casimir,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+589,Josué Casimir,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 589,Josué Casimir,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 590,Ruben Providence,FWD,4.0,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-590,Ruben Providence,FWD,4.0,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+590,Ruben Providence,FWD,4.0,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 590,Ruben Providence,FWD,4.0,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 591,Johny Placide,GK,3.9,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-591,Johny Placide,GK,3.9,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+591,Johny Placide,GK,3.9,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 591,Johny Placide,GK,3.9,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 592,Alexandre Pierre,GK,3.6,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-592,Alexandre Pierre,GK,3.6,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+592,Alexandre Pierre,GK,3.6,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 592,Alexandre Pierre,GK,3.6,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 593,Josué Duverger,GK,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-593,Josué Duverger,GK,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+593,Josué Duverger,GK,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 593,Josué Duverger,GK,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 594,Amir Mohammad Razzaghinia,MID,4.2,playing,23,IR Iran,IRN,g,1720.1,-0.27,-0.16,Defensive,1,NZL,1630.1,-0.01
 594,Amir Mohammad Razzaghinia,MID,4.2,playing,23,IR Iran,IRN,g,1720.1,-0.27,-0.16,Defensive,2,BEL,1890.0,0.21
@@ -1892,40 +1892,40 @@ id,player,position,price,status,squadId,team,abbr,group,elo,tactical_tilt,total_
 763,Álvaro Fidalgo,MID,6.4,playing,28,Mexico,MEX,a,1844.8,-0.21,-0.2,Defensive,1,RSA,1677.3,-0.26
 763,Álvaro Fidalgo,MID,6.4,playing,28,Mexico,MEX,a,1844.8,-0.21,-0.2,Defensive,2,KOR,1753.6,-0.23
 763,Álvaro Fidalgo,MID,6.4,playing,28,Mexico,MEX,a,1844.8,-0.21,-0.2,Defensive,3,CZE,1764.6,0.12
-765,Samir El Mourabet,MID,4.7,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+765,Samir El Mourabet,MID,4.7,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 765,Samir El Mourabet,MID,4.7,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 765,Samir El Mourabet,MID,4.7,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-766,Oussama Targhalline,MID,5.3,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+766,Oussama Targhalline,MID,5.3,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 766,Oussama Targhalline,MID,5.3,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 766,Oussama Targhalline,MID,5.3,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-770,Souffian El Karouani,DEF,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+770,Souffian El Karouani,DEF,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 770,Souffian El Karouani,DEF,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 770,Souffian El Karouani,DEF,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-773,Anass Salah-Eddine,DEF,3.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+773,Anass Salah-Eddine,DEF,3.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 773,Anass Salah-Eddine,DEF,3.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 773,Anass Salah-Eddine,DEF,3.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-774,Ismaël Baouf,DEF,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+774,Ismaël Baouf,DEF,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 774,Ismaël Baouf,DEF,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 774,Ismaël Baouf,DEF,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-775,Abdelhamid Aït Boudlal,DEF,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+775,Abdelhamid Aït Boudlal,DEF,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 775,Abdelhamid Aït Boudlal,DEF,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 775,Abdelhamid Aït Boudlal,DEF,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-777,Ayoub El Kaabi,FWD,5.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+777,Ayoub El Kaabi,FWD,5.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 777,Ayoub El Kaabi,FWD,5.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 777,Ayoub El Kaabi,FWD,5.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-782,Gessime Yassine,FWD,4.0,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+782,Gessime Yassine,FWD,4.0,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 782,Gessime Yassine,FWD,4.0,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 782,Gessime Yassine,FWD,4.0,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-783,Rayane Bounida,FWD,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+783,Rayane Bounida,FWD,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 783,Rayane Bounida,FWD,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 783,Rayane Bounida,FWD,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-784,Yassir Zabiri,FWD,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+784,Yassir Zabiri,FWD,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 784,Yassir Zabiri,FWD,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 784,Yassir Zabiri,FWD,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-787,El Mehdi Al Harrar,GK,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+787,El Mehdi Al Harrar,GK,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 787,El Mehdi Al Harrar,GK,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 787,El Mehdi Al Harrar,GK,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-792,Ismael Saibari,MID,6.8,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+792,Ismael Saibari,MID,6.8,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 792,Ismael Saibari,MID,6.8,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 792,Ismael Saibari,MID,6.8,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
 793,Kees Smit,MID,4.7,transferred,30,Netherlands,NED,f,1952.3,0.25,0.17,Attacking,1,JPN,1872.2,0.04
@@ -2464,67 +2464,67 @@ id,player,position,price,status,squadId,team,abbr,group,elo,tactical_tilt,total_
 1001,Mohammed Al Owais,GK,3.5,playing,37,Saudi Arabia,KSA,h,1628.0,-0.19,-0.24,Defensive,3,CPV,1619.1,-0.2
 1003,John McGinn,MID,6.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1003,John McGinn,MID,6.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1003,John McGinn,MID,6.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1003,John McGinn,MID,6.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1005,Billy Gilmour,MID,5.1,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1005,Billy Gilmour,MID,5.1,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1005,Billy Gilmour,MID,5.1,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1005,Billy Gilmour,MID,5.1,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1007,Ryan Christie,MID,5.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1007,Ryan Christie,MID,5.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1007,Ryan Christie,MID,5.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1007,Ryan Christie,MID,5.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1008,Kenny McLean,MID,4.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1008,Kenny McLean,MID,4.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1008,Kenny McLean,MID,4.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1008,Kenny McLean,MID,4.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1009,Andy Robertson,DEF,5.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1009,Andy Robertson,DEF,5.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1009,Andy Robertson,DEF,5.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1009,Andy Robertson,DEF,5.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1010,Kieran Tierney,DEF,4.3,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1010,Kieran Tierney,DEF,4.3,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1010,Kieran Tierney,DEF,4.3,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1010,Kieran Tierney,DEF,4.3,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1011,Nathan Patterson,DEF,4.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1011,Nathan Patterson,DEF,4.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1011,Nathan Patterson,DEF,4.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1011,Nathan Patterson,DEF,4.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1012,Jack Hendry,DEF,3.9,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1012,Jack Hendry,DEF,3.9,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1012,Jack Hendry,DEF,3.9,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1012,Jack Hendry,DEF,3.9,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1013,John Souttar,DEF,3.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1013,John Souttar,DEF,3.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1013,John Souttar,DEF,3.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1013,John Souttar,DEF,3.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1014,Scott McKenna,DEF,3.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1014,Scott McKenna,DEF,3.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1014,Scott McKenna,DEF,3.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1014,Scott McKenna,DEF,3.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1015,Anthony Ralston,DEF,3.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1015,Anthony Ralston,DEF,3.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1015,Anthony Ralston,DEF,3.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1015,Anthony Ralston,DEF,3.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1016,Dominic Hyam,DEF,3.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1016,Dominic Hyam,DEF,3.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1016,Dominic Hyam,DEF,3.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1016,Dominic Hyam,DEF,3.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1018,Grant Hanley,DEF,3.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1018,Grant Hanley,DEF,3.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1018,Grant Hanley,DEF,3.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1018,Grant Hanley,DEF,3.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1019,Ché Adams,FWD,5.4,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1019,Ché Adams,FWD,5.4,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1019,Ché Adams,FWD,5.4,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1019,Ché Adams,FWD,5.4,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1021,George Hirst,FWD,4.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1021,George Hirst,FWD,4.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1021,George Hirst,FWD,4.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1021,George Hirst,FWD,4.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1022,Lyndon Dykes,FWD,4.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1022,Lyndon Dykes,FWD,4.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1022,Lyndon Dykes,FWD,4.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1022,Lyndon Dykes,FWD,4.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1023,Findlay Curtis,FWD,4.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1023,Findlay Curtis,FWD,4.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1023,Findlay Curtis,FWD,4.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1023,Findlay Curtis,FWD,4.0,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1024,Liam Kelly,GK,3.7,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1024,Liam Kelly,GK,3.7,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1024,Liam Kelly,GK,3.7,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1024,Liam Kelly,GK,3.7,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1025,Angus Gunn,GK,3.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1025,Angus Gunn,GK,3.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1025,Angus Gunn,GK,3.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1025,Angus Gunn,GK,3.6,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1027,Scott McTominay,MID,6.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1027,Scott McTominay,MID,6.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1027,Scott McTominay,MID,6.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1027,Scott McTominay,MID,6.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1028,Lewis Ferguson,MID,4.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1028,Lewis Ferguson,MID,4.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1028,Lewis Ferguson,MID,4.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1028,Lewis Ferguson,MID,4.8,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1029,Idrissa Gueye,MID,4.9,playing,39,Senegal,SEN,i,1901.3,-0.37,-0.32,Defensive,1,FRA,2025.8,-0.09
 1029,Idrissa Gueye,MID,4.9,playing,39,Senegal,SEN,i,1901.3,-0.37,-0.32,Defensive,2,NOR,1932.8,0.09
 1029,Idrissa Gueye,MID,4.9,playing,39,Senegal,SEN,i,1901.3,-0.37,-0.32,Defensive,3,IRQ,1646.3,-0.26
@@ -3338,24 +3338,24 @@ id,player,position,price,status,squadId,team,abbr,group,elo,tactical_tilt,total_
 1342,Ermin Mahmic,MID,4.2,playing,6,Bosnia and Herzegovina,BIH,b,1697.4,0.18,0.14,Attacking,1,CAN,1815.2,-0.1
 1342,Ermin Mahmic,MID,4.2,playing,6,Bosnia and Herzegovina,BIH,b,1697.4,0.18,0.14,Attacking,2,SUI,1883.3,0.13
 1342,Ermin Mahmic,MID,4.2,playing,6,Bosnia and Herzegovina,BIH,b,1697.4,0.18,0.14,Attacking,3,QAT,1541.8,0.05
-1343,Weverton,GK,4.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-1343,Weverton,GK,4.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-1343,Weverton,GK,4.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-1345,Alex Sandro,DEF,4.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-1345,Alex Sandro,DEF,4.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-1345,Alex Sandro,DEF,4.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-1346,Wesley,DEF,4.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-1346,Wesley,DEF,4.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-1346,Wesley,DEF,4.5,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-1361,Bruno Guimarães,MID,6.8,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-1361,Bruno Guimarães,MID,6.8,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-1361,Bruno Guimarães,MID,6.8,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-1366,Raphinha,MID,8.2,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-1366,Raphinha,MID,8.2,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-1366,Raphinha,MID,8.2,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
-1369,Neymar,MID,7.2,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,1,MAR,1855.8,-0.48
-1369,Neymar,MID,7.2,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,2,HAI,1631.4,0.14
-1369,Neymar,MID,7.2,playing,7,Brazil,BRA,c,2001.2,-0.07,0.01,Balanced,3,SCO,1805.6,-0.05
+1343,Weverton,GK,4.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+1343,Weverton,GK,4.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+1343,Weverton,GK,4.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+1345,Alex Sandro,DEF,4.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+1345,Alex Sandro,DEF,4.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+1345,Alex Sandro,DEF,4.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+1346,Wesley,DEF,4.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+1346,Wesley,DEF,4.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+1346,Wesley,DEF,4.5,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+1361,Bruno Guimarães,MID,6.8,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+1361,Bruno Guimarães,MID,6.8,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+1361,Bruno Guimarães,MID,6.8,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+1366,Raphinha,MID,8.2,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+1366,Raphinha,MID,8.2,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+1366,Raphinha,MID,8.2,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
+1369,Neymar,MID,7.2,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,1,MAR,1855.8,-0.48
+1369,Neymar,MID,7.2,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,2,HAI,1631.4,0.14
+1369,Neymar,MID,7.2,playing,7,Brazil,BRA,c,2001.2,0.12,0.21,Balanced,3,SCO,1805.6,-0.05
 1374,Yerry Mina,DEF,4.2,playing,10,Colombia,COL,k,1945.1,-0.31,-0.25,Defensive,1,UZB,1708.9,0.05
 1374,Yerry Mina,DEF,4.2,playing,10,Colombia,COL,k,1945.1,-0.31,-0.25,Defensive,2,COD,1743.9,-0.1
 1374,Yerry Mina,DEF,4.2,playing,10,Colombia,COL,k,1945.1,-0.31,-0.25,Defensive,3,POR,1968.8,0.03
@@ -3660,13 +3660,13 @@ id,player,position,price,status,squadId,team,abbr,group,elo,tactical_tilt,total_
 1537,Mateo Kovacic,MID,6.0,playing,13,Croatia,CRO,l,1876.1,0.09,0.0,Balanced,2,PAN,1739.1,0.01
 1537,Mateo Kovacic,MID,6.0,playing,13,Croatia,CRO,l,1876.1,0.09,0.0,Balanced,3,GHA,1678.6,-0.24
 1538,Keeto Thermoncy,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-1538,Keeto Thermoncy,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+1538,Keeto Thermoncy,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 1538,Keeto Thermoncy,DEF,3.5,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 1539,Dominique Simon,MID,4.3,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-1539,Dominique Simon,MID,4.3,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+1539,Dominique Simon,MID,4.3,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 1539,Dominique Simon,MID,4.3,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 1540,Lenny Joseph,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,1,SCO,1805.6,-0.05
-1540,Lenny Joseph,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,-0.07
+1540,Lenny Joseph,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,2,BRA,2001.2,0.12
 1540,Lenny Joseph,FWD,4.2,playing,22,Haiti,HAI,c,1631.4,0.14,0.23,Attacking,3,MAR,1855.8,-0.48
 1541,Nour Bani Ateyah,GK,3.6,playing,26,Jordan,JOR,j,1657.7,-0.16,-0.05,Balanced,1,AUT,1830.4,0.29
 1541,Nour Bani Ateyah,GK,3.6,playing,26,Jordan,JOR,j,1657.7,-0.16,-0.05,Balanced,2,ALG,1797.4,-0.01
@@ -3775,19 +3775,19 @@ id,player,position,price,status,squadId,team,abbr,group,elo,tactical_tilt,total_
 1575,Fahad Younis,GK,3.7,playing,36,Qatar,QAT,b,1541.8,0.05,0.15,Attacking,3,BIH,1697.4,0.18
 1576,Craig Gordon,GK,3.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1576,Craig Gordon,GK,3.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1576,Craig Gordon,GK,3.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1576,Craig Gordon,GK,3.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1577,Aaron Hickey,DEF,4.3,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1577,Aaron Hickey,DEF,4.3,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1577,Aaron Hickey,DEF,4.3,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1577,Aaron Hickey,DEF,4.3,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1578,Ben Gannon-Doak,MID,4.9,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1578,Ben Gannon-Doak,MID,4.9,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1578,Ben Gannon-Doak,MID,4.9,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1578,Ben Gannon-Doak,MID,4.9,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1579,Ross Stewart,FWD,5.4,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1579,Ross Stewart,FWD,5.4,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1579,Ross Stewart,FWD,5.4,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1579,Ross Stewart,FWD,5.4,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1580,Lawrence Shankland,FWD,5.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,1,HAI,1631.4,0.14
 1580,Lawrence Shankland,FWD,5.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,2,MAR,1855.8,-0.48
-1580,Lawrence Shankland,FWD,5.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,-0.07
+1580,Lawrence Shankland,FWD,5.5,playing,38,Scotland,SCO,c,1805.6,-0.05,-0.06,Balanced,3,BRA,2001.2,0.12
 1581,Christian Fassnacht,MID,6.1,playing,43,Switzerland,SUI,b,1883.3,0.13,0.09,Balanced,1,QAT,1541.8,0.05
 1581,Christian Fassnacht,MID,6.1,playing,43,Switzerland,SUI,b,1883.3,0.13,0.09,Balanced,2,BIH,1697.4,0.18
 1581,Christian Fassnacht,MID,6.1,playing,43,Switzerland,SUI,b,1883.3,0.13,0.09,Balanced,3,CAN,1815.2,-0.1
@@ -3899,52 +3899,52 @@ id,player,position,price,status,squadId,team,abbr,group,elo,tactical_tilt,total_
 1621,Diego González,MID,5.0,playing,34,Paraguay,PAR,d,1849.6,-0.24,-0.2,Defensive,1,USA,1804.7,0.07
 1621,Diego González,MID,5.0,playing,34,Paraguay,PAR,d,1849.6,-0.24,-0.2,Defensive,2,TUR,1890.4,0.19
 1621,Diego González,MID,5.0,playing,34,Paraguay,PAR,d,1849.6,-0.24,-0.2,Defensive,3,AUS,1765.7,-0.04
-1665,Munir El Kajoui,GK,4.0,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1665,Munir El Kajoui,GK,4.0,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1665,Munir El Kajoui,GK,4.0,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1665,Munir El Kajoui,GK,4.0,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-1666,Ibrahim Gomis,GK,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1666,Ibrahim Gomis,GK,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1666,Ibrahim Gomis,GK,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1666,Ibrahim Gomis,GK,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-1667,Yanis Benchaouch,GK,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1667,Yanis Benchaouch,GK,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1667,Yanis Benchaouch,GK,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1667,Yanis Benchaouch,GK,3.5,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-1668,Youssef Belammari,DEF,3.6,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1668,Youssef Belammari,DEF,3.6,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1668,Youssef Belammari,DEF,3.6,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1668,Youssef Belammari,DEF,3.6,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-1669,Soufiane Bouftini,DEF,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1669,Soufiane Bouftini,DEF,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1669,Soufiane Bouftini,DEF,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1669,Soufiane Bouftini,DEF,4.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-1670,Mohamed Chibi,DEF,3.8,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1670,Mohamed Chibi,DEF,3.8,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1670,Mohamed Chibi,DEF,3.8,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1670,Mohamed Chibi,DEF,3.8,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-1671,Sofiane Boufal,MID,6.3,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1671,Sofiane Boufal,MID,6.3,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1671,Sofiane Boufal,MID,6.3,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1671,Sofiane Boufal,MID,6.3,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-1672,Imrân Louza,MID,5.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1672,Imrân Louza,MID,5.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1672,Imrân Louza,MID,5.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1672,Imrân Louza,MID,5.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-1673,Soufiane El-Faouzi,MID,4.9,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1673,Soufiane El-Faouzi,MID,4.9,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1673,Soufiane El-Faouzi,MID,4.9,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1673,Soufiane El-Faouzi,MID,4.9,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-1674,Ayyoub Bouaddi,MID,5.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1674,Ayyoub Bouaddi,MID,5.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1674,Ayyoub Bouaddi,MID,5.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1674,Ayyoub Bouaddi,MID,5.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-1675,Marwane Saadane,MID,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1675,Marwane Saadane,MID,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1675,Marwane Saadane,MID,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1675,Marwane Saadane,MID,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-1676,Ayoube Amaimouni-Echghouyab,FWD,4.3,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1676,Ayoube Amaimouni-Echghouyab,FWD,4.3,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1676,Ayoube Amaimouni-Echghouyab,FWD,4.3,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1676,Ayoube Amaimouni-Echghouyab,FWD,4.3,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-1677,Soufiane Benjdida,FWD,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1677,Soufiane Benjdida,FWD,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1677,Soufiane Benjdida,FWD,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1677,Soufiane Benjdida,FWD,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-1678,Othmane Maamma,MID,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1678,Othmane Maamma,MID,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1678,Othmane Maamma,MID,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1678,Othmane Maamma,MID,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-1679,Tawfik Bentayeb,FWD,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1679,Tawfik Bentayeb,FWD,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1679,Tawfik Bentayeb,FWD,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1679,Tawfik Bentayeb,FWD,4.7,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-1680,Yanis Begraoui,MID,5.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1680,Yanis Begraoui,MID,5.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1680,Yanis Begraoui,MID,5.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1680,Yanis Begraoui,MID,5.0,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
 1681,Sander Tangvik,GK,3.5,playing,32,Norway,NOR,i,1932.8,0.09,0.23,Attacking,1,IRQ,1646.3,-0.26
@@ -4043,7 +4043,7 @@ id,player,position,price,status,squadId,team,abbr,group,elo,tactical_tilt,total_
 1712,Ivan Toney,FWD,7.5,playing,18,England,ENG,l,2029.8,-0.16,-0.11,Defensive,1,CRO,1876.1,0.09
 1712,Ivan Toney,FWD,7.5,playing,18,England,ENG,l,2029.8,-0.16,-0.11,Defensive,2,GHA,1678.6,-0.24
 1712,Ivan Toney,FWD,7.5,playing,18,England,ENG,l,2029.8,-0.16,-0.11,Defensive,3,PAN,1739.1,0.01
-1713,Amine Sbaï,FWD,4.8,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+1713,Amine Sbaï,FWD,4.8,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 1713,Amine Sbaï,FWD,4.8,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 1713,Amine Sbaï,FWD,4.8,transferred,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
 1714,Sondre Langås,DEF,4.0,playing,32,Norway,NOR,i,1932.8,0.09,0.23,Attacking,1,IRQ,1646.3,-0.26
@@ -4253,55 +4253,55 @@ id,player,position,price,status,squadId,team,abbr,group,elo,tactical_tilt,total_
 2008,Brandon Borrello,FWD,4.4,playing,3,Australia,AUS,d,1765.7,-0.04,-0.12,Defensive,1,TUR,1890.4,0.19
 2008,Brandon Borrello,FWD,4.4,playing,3,Australia,AUS,d,1765.7,-0.04,-0.12,Defensive,2,USA,1804.7,0.07
 2008,Brandon Borrello,FWD,4.4,playing,3,Australia,AUS,d,1765.7,-0.04,-0.12,Defensive,3,PAR,1849.6,-0.24
-2009,Ahmed Tagnaouti,GK,3.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2009,Ahmed Tagnaouti,GK,3.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2009,Ahmed Tagnaouti,GK,3.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2009,Ahmed Tagnaouti,GK,3.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2010,Yassine Bounou,GK,4.7,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2010,Yassine Bounou,GK,4.7,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2010,Yassine Bounou,GK,4.7,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2010,Yassine Bounou,GK,4.7,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2011,Nayef Aguerd,DEF,4.3,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2011,Nayef Aguerd,DEF,4.3,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2011,Nayef Aguerd,DEF,4.3,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2011,Nayef Aguerd,DEF,4.3,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2012,Achraf Hakimi,DEF,6.0,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2012,Achraf Hakimi,DEF,6.0,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2012,Achraf Hakimi,DEF,6.0,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2012,Achraf Hakimi,DEF,6.0,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2013,Chadi Riad,DEF,3.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2013,Chadi Riad,DEF,3.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2013,Chadi Riad,DEF,3.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2013,Chadi Riad,DEF,3.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2014,Noussair Mazraoui,DEF,4.4,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2014,Noussair Mazraoui,DEF,4.4,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2014,Noussair Mazraoui,DEF,4.4,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2014,Noussair Mazraoui,DEF,4.4,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2015,Redouane Halhal,DEF,3.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2015,Redouane Halhal,DEF,3.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2015,Redouane Halhal,DEF,3.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2015,Redouane Halhal,DEF,3.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2016,Issa Diop,DEF,4.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2016,Issa Diop,DEF,4.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2016,Issa Diop,DEF,4.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2016,Issa Diop,DEF,4.5,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2017,Zakaria El Ouahdi,DEF,4.1,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2017,Zakaria El Ouahdi,DEF,4.1,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2017,Zakaria El Ouahdi,DEF,4.1,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2017,Zakaria El Ouahdi,DEF,4.1,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2018,Sofyan Amrabat,MID,5.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2018,Sofyan Amrabat,MID,5.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2018,Sofyan Amrabat,MID,5.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2018,Sofyan Amrabat,MID,5.9,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2019,Neil El Aynaoui,MID,5.6,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2019,Neil El Aynaoui,MID,5.6,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2019,Neil El Aynaoui,MID,5.6,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2019,Neil El Aynaoui,MID,5.6,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2020,Brahim Díaz,MID,6.4,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2020,Brahim Díaz,MID,6.4,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2020,Brahim Díaz,MID,6.4,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2020,Brahim Díaz,MID,6.4,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2021,Azzedine Ounahi,MID,6.2,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2021,Azzedine Ounahi,MID,6.2,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2021,Azzedine Ounahi,MID,6.2,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2021,Azzedine Ounahi,MID,6.2,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2022,Bilal El Khannouss,MID,6.2,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2022,Bilal El Khannouss,MID,6.2,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2022,Bilal El Khannouss,MID,6.2,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2022,Bilal El Khannouss,MID,6.2,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2023,Soufiane Rahimi,FWD,5.6,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2023,Soufiane Rahimi,FWD,5.6,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2023,Soufiane Rahimi,FWD,5.6,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2023,Soufiane Rahimi,FWD,5.6,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2024,Abde Ezzalzouli,FWD,5.3,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2024,Abde Ezzalzouli,FWD,5.3,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2024,Abde Ezzalzouli,FWD,5.3,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2024,Abde Ezzalzouli,FWD,5.3,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
-2025,Chemsdine Talbi,FWD,4.4,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,-0.07
+2025,Chemsdine Talbi,FWD,4.4,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,1,BRA,2001.2,0.12
 2025,Chemsdine Talbi,FWD,4.4,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,2,SCO,1805.6,-0.05
 2025,Chemsdine Talbi,FWD,4.4,playing,29,Morocco,MAR,c,1855.8,-0.48,-0.44,Very defensive,3,HAI,1631.4,0.14
 2026,Fidel Escobar,DEF,3.8,playing,33,Panama,PAN,l,1739.1,0.01,-0.04,Balanced,1,GHA,1678.6,-0.24
