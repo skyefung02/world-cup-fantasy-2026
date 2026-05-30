@@ -6,7 +6,7 @@
   <title>{% block title %}WC Fantasy 2026{% endblock %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg:            #0a0a0b;
@@ -20,14 +20,15 @@
       --text-muted:    #a1a1aa;
       --text-subtle:   #71717a;
       --text-faint:    #52525b;
-      --accent:        #60a5fa;
-      --accent-strong: #3b82f6;
-      --accent-bg:     rgba(96, 165, 250, 0.12);
-      --accent-border: rgba(96, 165, 250, 0.28);
+      --accent:        #ffb300;
+      --accent-strong: #ff9500;
+      --accent-bg:     rgba(255, 179, 0, 0.13);
+      --accent-border: rgba(255, 179, 0, 0.32);
       --success:       #34d399;
       --warn:          #fbbf24;
       --danger:        #fb7185;
       --mono:          'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+      --display:       'Barlow Condensed', 'Inter', sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -80,10 +81,10 @@
       width: 22px;
       height: 22px;
       border-radius: 6px;
-      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      background: linear-gradient(135deg, #ffb300 0%, #dc2626 100%);
       display: grid;
       place-items: center;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.06) inset, 0 4px 16px -4px rgba(59,130,246,0.5);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.06) inset, 0 4px 16px -4px rgba(220, 38, 38, 0.55);
       font-size: 0.7rem;
       font-weight: 800;
       color: white;
@@ -140,16 +141,21 @@
       flex-wrap: wrap;
     }
     .page-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.6px;
-      line-height: 1.15;
+      font-family: var(--display);
+      font-size: 2.25rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      line-height: 0.95;
     }
     .page-sub {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-      margin-top: 6px;
-      letter-spacing: -0.1px;
+      font-family: var(--display);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      margin-top: 8px;
     }
 
     /* ── Section label ── */
@@ -174,18 +180,18 @@
     /* ── Tables ── */
     table { width: 100%; border-collapse: collapse; }
     thead th {
-      padding: 11px 18px;
-      font-size: 0.68rem;
-      font-weight: 600;
+      padding: 13px 18px;
+      font-size: 0.82rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.7px;
+      letter-spacing: 1.3px;
       color: var(--text-subtle);
       background: var(--surface-2);
       border-bottom: 1px solid var(--border);
       text-align: left;
       white-space: nowrap;
       user-select: none;
-      font-family: var(--mono);
+      font-family: var(--display);
     }
     th.sortable { cursor: pointer; transition: color 0.15s; }
     th.sortable:hover { color: var(--text); }
@@ -338,7 +344,7 @@
     *::-webkit-scrollbar-thumb:hover { background: #52525b; }
 
     /* ── Selection ── */
-    ::selection { background: rgba(96, 165, 250, 0.28); color: var(--text); }
+    ::selection { background: rgba(255, 179, 0, 0.32); color: var(--text); }
 
     @media (max-width: 720px) {
       .topbar-inner { padding: 12px 18px; gap: 12px; }
@@ -374,6 +380,33 @@
   <script>
     window.DEPLOY_MODE = "{{ DEPLOY_MODE }}";
     window.IS_PUBLIC = {{ 'true' if IS_PUBLIC else 'false' }};
+
+    // Primary kit colour per nation. Black-kit nations (GER/JOR/NZL) use a
+    // secondary identity colour so they're visible against the dark surface.
+    window.TEAM_COLORS = {
+      USA: '#bf0a30', MEX: '#006847', CAN: '#d52b1e',
+      ENG: '#ffffff', FRA: '#0055a4', GER: '#dd0000', ESP: '#c60b1e',
+      POR: '#7a0019', NED: '#f36c21', ITA: '#0066b3', BEL: '#ed2939',
+      CRO: '#ff0000', POL: '#dc143c', SUI: '#d52b1e', AUT: '#ed2939',
+      DEN: '#c8102e', SWE: '#fecc00', NOR: '#ba0c2f', SCO: '#0065bd',
+      WAL: '#d30731', CZE: '#11457e', HUN: '#436f4d', SRB: '#c6363c',
+      TUR: '#e30a17', UKR: '#005bbb',
+      BRA: '#fee100', ARG: '#75aadb', URU: '#5cbfeb', COL: '#fcd116',
+      ECU: '#fdde00', PAR: '#dd2e2c', PER: '#d91023', CHI: '#d52b1e',
+      BOL: '#007934', VEN: '#a30e2e',
+      CRC: '#002b7f', JAM: '#009b3a', HON: '#0073cf', PAN: '#dc1f26',
+      SLV: '#0047ab',
+      JPN: '#bc002d', KOR: '#cd2e3a', AUS: '#fecb00', IRN: '#239f40',
+      IRQ: '#ce1126', SAU: '#006c35', UAE: '#00732f', QAT: '#8a1538',
+      JOR: '#ce1126', UZB: '#1eb53a',
+      MAR: '#c1272d', SEN: '#00853f', NGA: '#008751', EGY: '#ce1126',
+      GHA: '#fcd116', CIV: '#ff7900', TUN: '#e70013', CMR: '#007a5e',
+      ALG: '#006233', RSA: '#007749', MLI: '#fcd116', COD: '#007fff',
+      NZL: '#c0c0c0',
+    };
+    window.teamColor = function(abbr) {
+      return window.TEAM_COLORS[(abbr || '').toUpperCase()] || null;
+    };
   </script>
   {% block scripts %}{% endblock %}
 </body>

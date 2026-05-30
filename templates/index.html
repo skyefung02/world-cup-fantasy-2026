@@ -15,19 +15,29 @@
       gap: 12px;
       background: var(--surface);
       border: 1px solid var(--border);
+      border-top: 4px solid var(--team-color, var(--border-strong));
       border-radius: 10px;
-      padding: 14px 16px;
+      padding: 13px 16px;
       transition: background 0.15s, border-color 0.15s, transform 0.15s;
       position: relative;
     }
     .team-card:hover {
       background: var(--surface-2);
-      border-color: var(--border-strong);
+      border-bottom-color: var(--border-strong);
+      border-left-color: var(--border-strong);
+      border-right-color: var(--border-strong);
       transform: translateY(-1px);
     }
     .team-card:hover .team-arrow { opacity: 1; transform: translateX(0); }
     .team-flag { font-size: 1.35rem; line-height: 1; flex-shrink: 0; }
-    .team-name { font-size: 0.9rem; font-weight: 500; color: var(--text); }
+    .team-name {
+      font-family: var(--display);
+      font-size: 1.02rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      color: var(--text);
+    }
     .team-arrow {
       margin-left: auto;
       color: var(--text-faint);
@@ -46,12 +56,18 @@
       gap: 10px;
       margin-bottom: 12px;
     }
-    .group-section-head .section-label { margin-bottom: 0; }
+    .group-section-head .section-label {
+      margin-bottom: 0;
+      font-family: var(--display);
+      font-size: 0.82rem;
+      letter-spacing: 1.4px;
+    }
     .group-section-head .group-letter {
       color: var(--text);
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      font-weight: 700;
+      font-family: var(--display);
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
     }
     .group-section-head .divider {
       flex: 1;
@@ -96,7 +112,7 @@
       </div>
       <div class="team-grid">
         {% for t in group_teams %}
-        <a class="team-card" href="/team/{{ t.abbr }}" data-name="{{ t.team.lower() }}">
+        <a class="team-card" href="/team/{{ t.abbr }}" data-name="{{ t.team.lower() }}" data-abbr="{{ t.abbr }}">
           <span class="team-flag">{{ flags[t.abbr] }}</span>
           <span class="team-name">{{ t.team }}</span>
           <span class="team-arrow">→</span>
@@ -111,6 +127,12 @@
 
 {% block scripts %}
   <script>
+    // Apply team-colour stripe to each card.
+    document.querySelectorAll(".team-card[data-abbr]").forEach(card => {
+      const c = window.teamColor(card.dataset.abbr);
+      if (c) card.style.setProperty("--team-color", c);
+    });
+
     function filterTeams() {
       const q = document.getElementById("search").value.toLowerCase();
       let totalVisible = 0;

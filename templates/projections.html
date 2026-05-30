@@ -3,6 +3,45 @@
 {% block title %}Projections — WC Fantasy 2026{% endblock %}
 
 {% block extra_styles %}
+    /* ── Page-specific: hero the table identity ── */
+    /* 4px team-colour stripe on each player row (set via JS as --team-color) */
+    tbody tr.player-row > td:first-child {
+      border-left: 4px solid var(--team-color, var(--border-strong));
+      padding-left: 14px;
+    }
+    td.player-name {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+    td.team-cell {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 0.98rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    td.pts-cell { font-size: 0.95rem; }
+    td.avg-cell {
+      font-family: var(--display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+    .override-dot {
+      background: var(--success);
+      box-shadow: 0 0 8px rgba(52, 211, 153, 0.55);
+    }
+    .modal-player-name {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
     /* ── Controls bar ── */
     .controls {
       display: flex;
@@ -456,6 +495,12 @@
     const allRows = playersTbody ? Array.from(playersTbody.querySelectorAll("tr")) : [];
     let sortCol = "avg", sortDir = -1;
     let filterPos = "all", filterSearch = "";
+
+    // Apply team-colour stripe via shared window.TEAM_COLORS (defined in base.html).
+    allRows.forEach(row => {
+      const c = window.teamColor(row.dataset.abbr);
+      if (c) row.style.setProperty('--team-color', c);
+    });
 
     function onSort(col) {
       if (sortCol === col) {

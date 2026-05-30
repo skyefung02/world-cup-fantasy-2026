@@ -21,19 +21,23 @@
       display: grid;
       place-items: center;
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 2px solid var(--team-color, var(--border-strong));
       border-radius: 12px;
+      box-shadow: 0 0 24px -8px var(--team-color, transparent);
     }
     .team-head-title { display: flex; flex-direction: column; gap: 6px; }
     .team-name-row {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
     .team-name-row h1 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
+      font-family: var(--display);
+      font-size: 2.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1;
     }
     .breadcrumb {
       font-size: 0.78rem;
@@ -67,7 +71,16 @@
     }
 
     /* ── Player table tweaks ── */
-    td.player-name { font-weight: 500; }
+    tbody tr > td:first-child {
+      border-left: 4px solid var(--team-color, var(--border-strong));
+      padding-left: 14px;
+    }
+    td.player-name {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
     td.price { color: var(--text-muted); font-variant-numeric: tabular-nums; }
     td.xmins-cell { width: 130px; }
     th.xp-col, td.xp-cell { text-align: center; font-variant-numeric: tabular-nums; width: 76px; }
@@ -200,6 +213,12 @@
 
 {% block scripts %}
   <script>
+    // Set --team-color for the entire team page (cascades to flag-big and table stripes).
+    {
+      const c = window.teamColor("{{ team.abbr }}");
+      if (c) document.documentElement.style.setProperty("--team-color", c);
+    }
+
     document.querySelectorAll("input.xmins").forEach(inp => {
       inp.addEventListener("input", () => inp.classList.add("dirty"));
       inp.addEventListener("change", saveAll);
