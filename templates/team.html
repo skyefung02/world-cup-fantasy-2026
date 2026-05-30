@@ -276,9 +276,10 @@
 
       try {
         if (window.IS_PUBLIC) {
-          // Public mode: merge into shared clientState so /projections sees these edits,
-          // and include existing overrides so they survive a team-page recompute.
+          // Public mode: merge into shared clientState, persist to localStorage,
+          // then /recompute (including existing overrides so they survive the round-trip).
           Object.assign(window.clientState.xmins, xminsMap);
+          window.saveClientState();
           const res = await fetch("/recompute", {
             method: "POST",
             headers: { "Content-Type": "application/json" },

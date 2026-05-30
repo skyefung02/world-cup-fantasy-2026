@@ -53,6 +53,23 @@
     .controls .search-wrap { flex: 1; min-width: 220px; max-width: 420px; }
     .pos-pills { display: flex; gap: 6px; }
 
+    .saved-chip {
+      font-family: var(--display);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--success);
+      padding: 5px 10px;
+      border: 1px solid rgba(52, 211, 153, 0.28);
+      background: rgba(52, 211, 153, 0.08);
+      border-radius: 6px;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+    .saved-chip.visible { opacity: 1; }
+
     /* ── Table tweaks ── */
     .table-wrap { padding: 0; }
     tbody tr { cursor: pointer; }
@@ -323,7 +340,12 @@
       </div>
       <a class="btn btn-ghost" href="/squad" title="Bulk edit xMins by team">Edit by team →</a>
       {% if IS_PUBLIC %}
+      <button class="btn" id="btn-save-session" onclick="saveSession()" title="Download a JSON file of your current edits (xMins + overrides) for backup or to share">Save session</button>
+      <button class="btn" id="btn-load-session" onclick="loadSession()" title="Restore edits from a previously saved session file">Load session</button>
+      <input type="file" id="session-file-input" accept="application/json,.json" style="display:none" onchange="onSessionFileSelected(event)">
+      <span class="saved-chip" id="saved-chip">✓ Saved locally</span>
       <button class="btn" id="btn-download" onclick="downloadCsv()">↓ Download CSV</button>
+      <button class="btn btn-ghost" id="btn-reset-edits" onclick="resetAllEdits()" title="Clear all local edits and reload">↻ Reset edits</button>
       {% endif %}
     </div>
 
@@ -721,11 +743,12 @@
       setSaving(true);
 
       if (window.IS_PUBLIC) {
-        // Public mode: mutate clientState, /recompute, never write to server CSVs.
+        // Public mode: mutate clientState, persist to localStorage, /recompute, never write to server CSVs.
         clientState.xmins[playerId] = xmins;
         if (slidersDirty) {
           clientState.overrides[playerId] = { goal_share: goalShare, assist_share: assistShare };
         }
+        window.saveClientState();
         const team = savedRow.dataset.abbr;
         const res = await fetch("/recompute", {
           method: "POST",
@@ -786,8 +809,9 @@
       setSaving(true);
 
       if (window.IS_PUBLIC) {
-        // Public mode: drop from clientState, recompute team.
+        // Public mode: drop from clientState, persist, recompute team.
         delete clientState.overrides[playerId];
+        window.saveClientState();
         const team = savedRow.dataset.abbr;
         const res = await fetch("/recompute", {
           method: "POST",
@@ -912,6 +936,95 @@
       } else if (!isOverridden && dot) {
         dot.remove();
       }
+    }
+
+    // "Saved locally" chip — flashes briefly after every persisted edit.
+    if (window.IS_PUBLIC) {
+      const chip = document.getElementById("saved-chip");
+      let chipTimer = null;
+      window.addEventListener("clientstate:saved", () => {
+        if (!chip) return;
+        chip.classList.add("visible");
+        clearTimeout(chipTimer);
+        chipTimer = setTimeout(() => chip.classList.remove("visible"), 1500);
+      });
+    }
+
+    function resetAllEdits() {
+      if (!window.hasClientStateEdits()) {
+        // Nothing to reset — reload anyway so the user sees a clean default state.
+        location.reload();
+        return;
+      }
+      if (!confirm("Clear all your local edits and reload to model defaults?")) return;
+      window.clearClientState();
+      location.reload();
+    }
+
+    // ── Session export / import ──
+    const SESSION_FILE_VERSION = 1;
+
+    function saveSession() {
+      const payload = {
+        version: SESSION_FILE_VERSION,
+        exported_at: new Date().toISOString(),
+        xmins: window.clientState.xmins,
+        overrides: window.clientState.overrides,
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      const date = new Date().toISOString().slice(0, 10);
+      a.href = url;
+      a.download = `wcfantasy-session-${date}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 0);
+    }
+
+    function loadSession() {
+      document.getElementById("session-file-input").click();
+    }
+
+    function onSessionFileSelected(event) {
+      const file = event.target.files[0];
+      event.target.value = "";   // reset so picking the same file again still fires change
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onerror = () => alert("Couldn't read the session file.");
+      reader.onload = (e) => {
+        let parsed;
+        try {
+          parsed = JSON.parse(e.target.result);
+        } catch (err) {
+          alert("Invalid session file — not valid JSON.");
+          return;
+        }
+
+        if (!parsed || typeof parsed !== "object") {
+          alert("Invalid session file — wrong shape.");
+          return;
+        }
+        if (parsed.version !== SESSION_FILE_VERSION) {
+          alert(`Session file is from a different version (got ${parsed.version}, expected ${SESSION_FILE_VERSION}). Can't import safely.`);
+          return;
+        }
+        const xmins = (parsed.xmins && typeof parsed.xmins === "object") ? parsed.xmins : {};
+        const overrides = (parsed.overrides && typeof parsed.overrides === "object") ? parsed.overrides : {};
+
+        if (window.hasClientStateEdits()) {
+          const stamp = parsed.exported_at ? new Date(parsed.exported_at).toLocaleString() : "the file";
+          if (!confirm(`This will replace your current edits with the session from ${stamp}. Continue?`)) return;
+        }
+
+        window.clientState.xmins = xmins;
+        window.clientState.overrides = overrides;
+        window.saveClientState();
+        location.reload();
+      };
+      reader.readAsText(file);
     }
 
     // Hydrate the table from shared clientState — covers the case where the
