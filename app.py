@@ -195,6 +195,8 @@ def projections_page():
         "1_TeamXG",       "2_TeamXG",       "3_TeamXG",
         "1_TeamXGA",      "2_TeamXGA",      "3_TeamXGA",
         "1_PCleanSheet",  "2_PCleanSheet",  "3_PCleanSheet",
+        "1_LockedPenXg",  "2_LockedPenXg",  "3_LockedPenXg",
+        "1_LockedSpXa",   "2_LockedSpXa",   "3_LockedSpXa",
     ]
     players = (
         proj[["id", "player", "position", "price", "team", "abbr", "flag",

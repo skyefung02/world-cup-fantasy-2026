@@ -4,12 +4,16 @@ import numpy as np
 import pandas as pd
 
 from scoring import (
-    GOAL_PTS, CLEAN_SHEET_PTS, GOALS_CONCEDED_PTS, ASSIST_PTS
+    GOAL_PTS, CLEAN_SHEET_PTS, GOALS_CONCEDED_PTS, ASSIST_PTS,
+    PEN_PROB, PEN_CONVERSION, SET_PIECE_ASSIST_PROB,
 )
 
 PROCESSED_DIR = "data/processed"
 XMINS_PATH = "data/xmins.csv"
 XG_OVERRIDES_PATH = "data/xg_overrides.csv"
+SET_PIECE_TAKERS_PATH = "data/set_piece_takers.csv"
+
+PEN_LOCK_FRACTION = PEN_PROB * PEN_CONVERSION
 
 
 # --- Model functions ---
@@ -147,6 +151,18 @@ def _precompute_base_state():
     )
     df = df.merge(default_xmins_df, on='id', how='left')
 
+    # Set-piece / penalty taker flags (immutable per-player metadata)
+    df["is_pen_taker"] = False
+    df["is_sp_assist_taker"] = False
+    if os.path.exists(SET_PIECE_TAKERS_PATH):
+        takers = pd.read_csv(SET_PIECE_TAKERS_PATH)
+        pen_ids = set(takers.loc[takers["role"] == "penalty", "id"].astype(int))
+        sp_ids  = set(takers.loc[takers["role"] == "set_piece_assist", "id"].astype(int))
+        # GK pen takers disallowed — silently drop them
+        outfield_mask = df["position"] != "GK"
+        df.loc[outfield_mask & df["id"].isin(pen_ids), "is_pen_taker"] = True
+        df.loc[df["id"].isin(sp_ids), "is_sp_assist_taker"] = True
+
     return df
 
 
@@ -159,56 +175,100 @@ def _precompute_base_state():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _apply_allocations_and_points(df, xmins_map, override_map):
-    """In-place: compute per-row player_xg/xa, model/override/effective shares, and all pts columns."""
+    """In-place: compute per-row player_xg/xa across three slices (pen + SP-assist + open-play),
+    apply overrides to the open-play slice only, then derive all pts columns.
+    """
     df["xmins"] = df["id"].map(xmins_map).fillna(df["default_xmins"]).astype(float)
     df["goal_w"]   = df["goal_w_per_min"]   * df["xmins"]
     df["assist_w"] = df["assist_w_per_min"] * df["xmins"]
+
+    # Per-team locked slices (penalty goals, set-piece assists)
+    df["locked_pen_xg"]         = 0.0
+    df["locked_sp_xa"]          = 0.0
+    df["open_play_goal_pool"]   = df["xg_scored"].astype(float)
+    df["open_play_assist_pool"] = df["xg_scored"].astype(float) * 0.75
+
+    for (_team, _round_id), group_idx in df.groupby(["team", "round_id"]).groups.items():
+        group = df.loc[group_idx]
+        team_xg = float(group["xg_scored"].iloc[0])
+        team_xa = team_xg * 0.75
+
+        pen_eligible = group[group["is_pen_taker"] & (group["xmins"] > 0)]
+        if not pen_eligible.empty:
+            pen_target = team_xg * PEN_LOCK_FRACTION
+            weights = pen_eligible["xmins"] / 90.0
+            df.loc[pen_eligible.index, "locked_pen_xg"] = pen_target * weights / weights.sum()
+            df.loc[group_idx, "open_play_goal_pool"] = team_xg - pen_target
+
+        sp_eligible = group[group["is_sp_assist_taker"] & (group["xmins"] > 0)]
+        if not sp_eligible.empty:
+            sp_target = team_xa * SET_PIECE_ASSIST_PROB
+            weights = sp_eligible["xmins"] / 90.0
+            df.loc[sp_eligible.index, "locked_sp_xa"] = sp_target * weights / weights.sum()
+            df.loc[group_idx, "open_play_assist_pool"] = team_xa - sp_target
+
+    # Open-play allocation against the remaining pools
     df["goal_w_sum"]   = df.groupby(["team", "round_id"])["goal_w"].transform("sum")
     df["assist_w_sum"] = df.groupby(["team", "round_id"])["assist_w"].transform("sum")
-
     safe_gws = df["goal_w_sum"].replace(0, np.nan)
     safe_aws = df["assist_w_sum"].replace(0, np.nan)
-    df["player_xg"] = (df["xg_scored"] * df["goal_w"] / safe_gws).fillna(0.0)
-    df["player_xa"] = (df["xg_scored"] * 0.75 * df["assist_w"] / safe_aws).fillna(0.0)
+    df["open_play_xg"] = (df["open_play_goal_pool"]   * df["goal_w"]   / safe_gws).fillna(0.0)
+    df["open_play_xa"] = (df["open_play_assist_pool"] * df["assist_w"] / safe_aws).fillna(0.0)
 
+    df["player_xg"] = df["open_play_xg"] + df["locked_pen_xg"]
+    df["player_xa"] = df["open_play_xa"] + df["locked_sp_xa"]
+
+    # Model defaults (full-pool share, includes any locked slices)
     df["model_goal_share"]   = (df["player_xg"] / df["xg_scored"]).fillna(0.0)
     df["model_assist_share"] = (df["player_xa"] / (df["xg_scored"] * 0.75)).fillna(0.0)
 
     df["override_goal_share"]   = np.nan
     df["override_assist_share"] = np.nan
 
+    # Overrides operate on the open-play slice only. The user's slider value is a
+    # full-pool per-90 share; we convert it to an open-play target by subtracting
+    # the locked amount (clamped at 0 if the override is below the lock).
     if override_map:
         ov_ids = set(override_map.keys())
-        for (team, round_id), group_idx in df.groupby(["team", "round_id"]).groups.items():
+        for (_team, _round_id), group_idx in df.groupby(["team", "round_id"]).groups.items():
             group = df.loc[group_idx]
             overridden = group[group["id"].isin(ov_ids)]
             if overridden.empty:
                 continue
-            team_xg = group["xg_scored"].iloc[0]
+            team_xg = float(group["xg_scored"].iloc[0])
             team_xa = team_xg * 0.75
-            total_locked_xg = total_locked_xa = 0.0
+            op_goal_pool   = float(group["open_play_goal_pool"].iloc[0])
+            op_assist_pool = float(group["open_play_assist_pool"].iloc[0])
+
+            total_op_xg_locked = total_op_xa_locked = 0.0
             for idx in overridden.index:
                 ov = override_map[int(df.loc[idx, "id"])]
                 xmins_scale = df.loc[idx, "xmins"] / 90.0
-                locked_xg = team_xg * ov["goal_share"]   * xmins_scale
-                locked_xa = team_xa * ov["assist_share"] * xmins_scale
-                df.loc[idx, "player_xg"]             = locked_xg
-                df.loc[idx, "player_xa"]             = locked_xa
+                target_full_xg = team_xg * ov["goal_share"]   * xmins_scale
+                target_full_xa = team_xa * ov["assist_share"] * xmins_scale
+                op_target_xg = max(0.0, target_full_xg - df.loc[idx, "locked_pen_xg"])
+                op_target_xa = max(0.0, target_full_xa - df.loc[idx, "locked_sp_xa"])
+                df.loc[idx, "open_play_xg"]          = op_target_xg
+                df.loc[idx, "open_play_xa"]          = op_target_xa
                 df.loc[idx, "override_goal_share"]   = ov["goal_share"]
                 df.loc[idx, "override_assist_share"] = ov["assist_share"]
-                total_locked_xg += locked_xg
-                total_locked_xa += locked_xa
+                total_op_xg_locked += op_target_xg
+                total_op_xa_locked += op_target_xa
+
             non_ov = group[~group["id"].isin(ov_ids) & (group["position"] != "GK")]
             if non_ov.empty:
                 continue
             gw_sum = df.loc[non_ov.index, "goal_w"].sum()
             aw_sum = df.loc[non_ov.index, "assist_w"].sum()
-            remaining_xg = max(0.0, team_xg - total_locked_xg)
-            remaining_xa = max(0.0, team_xa - total_locked_xa)
+            remaining_op_xg = max(0.0, op_goal_pool   - total_op_xg_locked)
+            remaining_op_xa = max(0.0, op_assist_pool - total_op_xa_locked)
             if gw_sum > 0:
-                df.loc[non_ov.index, "player_xg"] = remaining_xg * df.loc[non_ov.index, "goal_w"] / gw_sum
+                df.loc[non_ov.index, "open_play_xg"] = remaining_op_xg * df.loc[non_ov.index, "goal_w"] / gw_sum
             if aw_sum > 0:
-                df.loc[non_ov.index, "player_xa"] = remaining_xa * df.loc[non_ov.index, "assist_w"] / aw_sum
+                df.loc[non_ov.index, "open_play_xa"] = remaining_op_xa * df.loc[non_ov.index, "assist_w"] / aw_sum
+
+        df["player_xg"] = df["open_play_xg"] + df["locked_pen_xg"]
+        df["player_xa"] = df["open_play_xa"] + df["locked_sp_xa"]
 
     df["goal_share"]   = (df["player_xg"] / df["xg_scored"]).fillna(0.0)
     df["assist_share"] = (df["player_xa"] / (df["xg_scored"] * 0.75)).fillna(0.0)
@@ -251,6 +311,8 @@ def recompute_teams(xmins_map=None, override_map=None, teams=None):
             "OverrideAssistShare": (None if pd.isna(r["override_assist_share"]) else float(r["override_assist_share"])),
             "OppAbbr":             r["opp_abbr"],
             "TeamXG":              float(r["xg_scored"]),
+            "LockedPenXg":         float(r["locked_pen_xg"]),
+            "LockedSpXa":          float(r["locked_sp_xa"]),
         }
     return out
 
@@ -279,6 +341,8 @@ EXPORT_COLS = {
     "model_assist_share":    "ModelAssistShare",
     "override_goal_share":   "OverrideGoalShare",
     "override_assist_share": "OverrideAssistShare",
+    "locked_pen_xg":         "LockedPenXg",
+    "locked_sp_xa":          "LockedSpXa",
 }
 
 

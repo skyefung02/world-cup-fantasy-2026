@@ -344,6 +344,12 @@
             data-r1-p-clean-sheet="{{ '%.4f' | format(p['1_PCleanSheet']) }}"
             data-r2-p-clean-sheet="{{ '%.4f' | format(p['2_PCleanSheet']) }}"
             data-r3-p-clean-sheet="{{ '%.4f' | format(p['3_PCleanSheet']) }}"
+            data-r1-locked-pen-xg="{{ '%.4f' | format(p['1_LockedPenXg']) }}"
+            data-r2-locked-pen-xg="{{ '%.4f' | format(p['2_LockedPenXg']) }}"
+            data-r3-locked-pen-xg="{{ '%.4f' | format(p['3_LockedPenXg']) }}"
+            data-r1-locked-sp-xa="{{ '%.4f' | format(p['1_LockedSpXa']) }}"
+            data-r2-locked-sp-xa="{{ '%.4f' | format(p['2_LockedSpXa']) }}"
+            data-r3-locked-sp-xa="{{ '%.4f' | format(p['3_LockedSpXa']) }}"
             data-has-override="{{ 'true' if p.has_override else 'false' }}"
           >
             <td class="player-name">{{ p.player }}{% if p.has_override %}<span class="override-dot" title="Manually adjusted"></span>{% endif %}</td>
@@ -432,7 +438,7 @@
         </div>
 
         <div class="modal-note">
-          Sliders show goal/assist share <strong>per 90 minutes</strong> — what the player would contribute over a full match. Actual xG / xA / xP scales with their xMins (visible in the Proj. rows above).
+          Sliders show goal/assist share <strong>per 90 minutes</strong> — what the player would contribute over a full match. Actual xG / xA / xP scales with their xMins (visible in the Proj. rows above). Designated penalty / set-piece takers have a slider floor reflecting their locked contribution; adjustments only move their open-play share.
         </div>
 
         <div class="modal-actions">
@@ -577,6 +583,8 @@
       document.getElementById("goal-model-label").textContent   = `Model default: ${modelGoalPct}%`;
       document.getElementById("assist-model-label").textContent = `Model default: ${modelAssistPct}%`;
 
+      applySliderFloors(d, r1Xmins);
+
       document.getElementById("btn-reset").disabled = !hasOverride;
       document.getElementById("saving-indicator").textContent = "";
 
@@ -593,21 +601,46 @@
       if (e.target === document.getElementById("modal-backdrop")) closeModal();
     }
 
+    // Slider floor for designated takers: locked SP/pen contribution sets a per-90
+    // minimum the player cannot drop below. Approximate when xmins is mid-edit —
+    // uses server's locked amounts (frozen at last sync). Saving triggers re-sync.
+    function applySliderFloors(d, xmins) {
+      const goalSlider   = document.getElementById("goal-slider");
+      const assistSlider = document.getElementById("assist-slider");
+      const teamXg = parseFloat(d.r1TeamXg) || 0;
+      const teamXa = teamXg * 0.75;
+      const lockedPenXg = parseFloat(d.r1LockedPenXg) || 0;
+      const lockedSpXa  = parseFloat(d.r1LockedSpXa)  || 0;
+      const denomG = teamXg * (xmins / 90);
+      const denomA = teamXa * (xmins / 90);
+      const goalMax   = parseFloat(goalSlider.max);
+      const assistMax = parseFloat(assistSlider.max);
+      const goalFloorPct   = denomG > 0 ? Math.min(goalMax,   (lockedPenXg / denomG) * 100) : 0;
+      const assistFloorPct = denomA > 0 ? Math.min(assistMax, (lockedSpXa  / denomA) * 100) : 0;
+      goalSlider.min   = goalFloorPct.toFixed(2);
+      assistSlider.min = assistFloorPct.toFixed(2);
+      if (parseFloat(goalSlider.value)   < goalFloorPct)   goalSlider.value   = goalFloorPct.toFixed(1);
+      if (parseFloat(assistSlider.value) < assistFloorPct) assistSlider.value = assistFloorPct.toFixed(1);
+    }
+
     function onSliderInput(fromUser) {
       if (fromUser) slidersDirty = true;
+      const d = currentRow.dataset;
+      const xminsLive = parseInt(document.getElementById("modal-xmins").value, 10) || 0;
+      applySliderFloors(d, xminsLive);
+
       const goalShare   = parseFloat(document.getElementById("goal-slider").value)   / 100;
       const assistShare = parseFloat(document.getElementById("assist-slider").value) / 100;
 
       document.getElementById("goal-pct-label").textContent   = (goalShare   * 100).toFixed(1) + "%";
       document.getElementById("assist-pct-label").textContent = (assistShare * 100).toFixed(1) + "%";
 
-      const d = currentRow.dataset;
       const pos = d.pos;
       const goalPtsRate     = GOAL_PTS[pos]            ?? 0;
       const csPtsRate       = CLEAN_SHEET_PTS[pos]     ?? 0;
       const concededPtsRate = GOALS_CONCEDED_PTS[pos]  ?? 0;
 
-      const xmins = parseInt(document.getElementById("modal-xmins").value, 10) || 0;
+      const xmins = xminsLive;
       const xminsScale = xmins / 90;
       const appPts = appearancePts(xmins);
 
@@ -804,6 +837,10 @@
         row.dataset.r1AssistShare    = rounds["1"].AssistShare.toFixed(4);
         row.dataset.modelGoalShare   = rounds["1"].ModelGoalShare.toFixed(4);
         row.dataset.modelAssistShare = rounds["1"].ModelAssistShare.toFixed(4);
+        for (const r of [1, 2, 3]) {
+          row.dataset[`r${r}LockedPenXg`] = rounds[r].LockedPenXg.toFixed(4);
+          row.dataset[`r${r}LockedSpXa`]  = rounds[r].LockedSpXa.toFixed(4);
+        }
       }
     }
 
