@@ -146,4 +146,7 @@ MANUAL_OVERRIDES = {
 
     # ── Misc ────────────────────────────────────────────────────────────────────
     "Andy Robertson": "Andrew Robertson",
+    "Juan Fernando Quintero": "Juan Quintero", 
+    "Memphis Depay": "Memphis", 
+    "Álex Zendejas": "Alejandro Zendejas",
 }
