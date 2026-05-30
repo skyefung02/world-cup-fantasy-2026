@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}WC Fantasy 2026{% endblock %}</title>
+  <title>{% block title %}World Cup Fantasy Projections{% endblock %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -72,21 +72,24 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 0.92rem;
+      font-family: var(--display);
+      font-size: 0.95rem;
       font-weight: 700;
-      letter-spacing: -0.2px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
       color: var(--text);
     }
     .brand-mark {
-      width: 22px;
+      width: 26px;
       height: 22px;
       border-radius: 6px;
       background: linear-gradient(135deg, #ffb300 0%, #dc2626 100%);
       display: grid;
       place-items: center;
       box-shadow: 0 0 0 1px rgba(255,255,255,0.06) inset, 0 4px 16px -4px rgba(220, 38, 38, 0.55);
-      font-size: 0.7rem;
-      font-weight: 800;
+      font-family: var(--display);
+      font-size: 0.82rem;
+      font-weight: 900;
       color: white;
       letter-spacing: -0.5px;
     }
@@ -361,9 +364,9 @@
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">
-        <span class="brand-mark">W</span>
-        <span>WC Fantasy 2026</span>
-        <span class="brand-meta">v1</span>
+        <span class="brand-mark">26</span>
+        <span>World Cup Fantasy Projections</span>
+        <span class="brand-meta">BETA</span>
       </div>
       <nav class="main-nav">
         <a href="/" class="nav-tab {% if request.path == '/' %}active{% endif %}">Home</a>

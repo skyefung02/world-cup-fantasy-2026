@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}WC Fantasy 2026{% endblock %}
+{% block title %}World Cup Fantasy Projections{% endblock %}
 
 {% block extra_styles %}
     /* ── Hero ── */
@@ -170,6 +170,42 @@
     .about-body p:last-child { margin-bottom: 0; }
     .about-body strong { color: var(--text); font-weight: 600; }
 
+    /* ── Credits ── */
+    .credits {
+      margin-top: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 28px 26px;
+    }
+    .credits .section-head { margin-bottom: 16px; }
+    .credit {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .credit + .credit { margin-top: 14px; }
+    .credit a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--accent-border);
+      transition: color 0.15s, border-color 0.15s;
+      font-weight: 600;
+    }
+    .credit a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .credit code {
+      font-family: var(--mono);
+      background: var(--surface-2);
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 0.82em;
+      color: var(--text-muted);
+    }
+
     @media (max-width: 720px) {
       .step-card {
         grid-template-columns: 1fr;
@@ -182,8 +218,8 @@
 
 {% block content %}
     <section class="home-hero">
-      <h1 class="home-title">World Cup<br>Fantasy 2026</h1>
-      <p class="home-pitch">Adjustable xP projections built for solvers, not picks.</p>
+      <h1 class="home-title">World Cup Fantasy<br>Projections</h1>
+      <p class="home-pitch">Adjustable. Exportable. Built for solvers, not picks.</p>
       <p class="home-credibility">An Elo-derived xG model allocates expected fantasy points per player per round. Tweak the inputs, export the projections, run the solver.</p>
     </section>
 
@@ -256,4 +292,23 @@ python wc_solver.py</pre>
         <p><strong>Fantasy points</strong> apply WC 2026 position-aware multipliers: goals are worth 5 (FWD) / 6 (MID) / 7 (DEF) / 9 (GK); assists are a flat 3. Add appearance points (2 for ≥60 minutes, 1 if subbed on under 60), clean-sheet probability × position rate for players with ≥60 minutes (Poisson on opponent xG; rates: GK/DEF 5, MID 1, FWD 0), and a Poisson-derived conceded-goal penalty (−1 per goal conceded beyond the first) for GK and DEF.</p>
       </div>
     </details>
+
+    <section class="credits">
+      <div class="section-head">Credits</div>
+      <p class="credit">
+        <a href="https://www.natesilver.net/p/pele-international-football-rankings-soccer-ratings-projections" target="_blank" rel="noopener">Silver Bulletin (Nate Silver)</a> — PELE international Elo ratings and tactical tilt ratings, the foundation of the team-level xG model.
+      </p>
+      <p class="credit">
+        <a href="http://www.football-rankings.info/2020/12/simulation-of-scheduled-football-matches.html" target="_blank" rel="noopener">football-rankings.info</a> — empirically fitted quartic polynomial mapping Elo win expectancy to expected goals, derived from ~40,000 international matches.
+      </p>
+      <p class="credit">
+        <a href="https://github.com/probberechts/soccerdata" target="_blank" rel="noopener">soccerdata</a> + <a href="https://fbref.com" target="_blank" rel="noopener">FBref</a> — per-player club-level rate stats (goals and assists per 90) used for within-team player allocation.
+      </p>
+      <p class="credit">
+        <a href="https://play.fifa.com/fantasy" target="_blank" rel="noopener">FIFA Fantasy</a> — player, squad, and fixture data from the official game's open JSON endpoints.
+      </p>
+      <p class="credit">
+        <a href="https://github.com/solioanalytics/open-fpl-solver" target="_blank" rel="noopener">open-fpl-solver (Solio Analytics)</a> — the ILP solver architecture (sasoptpy + HiGHS) adapted into <code>wc_solver.py</code>. Apache 2.0 licensed. Data pipeline, transfer rules, booster system, and country limits rewritten for the WC 2026 format.
+      </p>
+    </section>
 {% endblock %}
