@@ -218,6 +218,12 @@ def audit():
           f"{(~audit_df['matched_club']).sum() if not audit_df.empty else 0}")
     print(f"  Players unmatched in INTL data: "
           f"{(~audit_df['matched_intl']).sum() if not audit_df.empty else 0}")
+    # Actionable = missing in BOTH. FBref uses canonical names across competitions, so a player
+    # matched in either source has a working name. Missing-only-one is a data gap, not a naming
+    # issue, and can't be fixed via manual_overrides.py.
+    actionable_df = (audit_df[~audit_df["matched_club"] & ~audit_df["matched_intl"]]
+                     if not audit_df.empty else audit_df)
+    print(f"  Actionable (missing in BOTH — likely name override needed): {len(actionable_df)}")
     print(f"  Rows in audit CSV: {len(audit_df)}")
     print(f"  Wrote → {OUT_PATH}")
 
@@ -225,19 +231,21 @@ def audit():
         print("\n  All players matched. Nothing to do.")
         return
 
-    # Per-team breakdown — focus on teams with overrideable candidates
+    if actionable_df.empty:
+        print("\n  No actionable cases — every roster player matches FBref in at least one source.")
+        print("  (Players missing only in one source are still in the CSV for reference.)")
+        return
+
+    # Per-team breakdown — only teams with actionable cases (missing in BOTH sources)
     print(f"\n{'═' * 96}")
-    print(f"  Unmatched players by team (with fuzzy suggestions)")
+    print(f"  Actionable cases by team (missing in BOTH club and intl)")
     print(f"{'═' * 96}")
 
-    for team in sorted(audit_df["team"].unique()):
-        team_rows = audit_df[audit_df["team"] == team]
-        print(f"\n  ── {team} ({len(team_rows)} unmatched) ──")
+    for team in sorted(actionable_df["team"].unique()):
+        team_rows = actionable_df[actionable_df["team"] == team]
+        print(f"\n  ── {team} ({len(team_rows)} actionable) ──")
         for _, r in team_rows.iterrows():
-            flags = []
-            if not r["matched_club"]: flags.append("CLUB")
-            if not r["matched_intl"]: flags.append("INTL")
-            print(f"    {r['player']:30s} [{r['position']:3s}]  missing: {', '.join(flags)}")
+            print(f"    {r['player']:30s} [{r['position']:3s}]  missing: CLUB, INTL")
             if r["club_suggestion"]:
                 strong = " ★" if r["club_score"] and r["club_score"] >= 75 else ""
                 print(f"        club  → '{r['club_suggestion']}' (score {r['club_score']:.0f}){strong}")
