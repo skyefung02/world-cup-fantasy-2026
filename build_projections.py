@@ -6,6 +6,7 @@ import pandas as pd
 from scoring import (
     GOAL_PTS, CLEAN_SHEET_PTS, GOALS_CONCEDED_PTS, ASSIST_PTS,
     PEN_PROB, PEN_CONVERSION, SET_PIECE_ASSIST_PROB,
+    SCOUTING_BONUS_PTS, SCOUTING_BONUS_OWNERSHIP_PCT,
 )
 
 PROCESSED_DIR = "data/processed"
@@ -93,6 +94,12 @@ def get_default_xmins_map():
 def _precompute_base_state():
     """Build the immutable per-fixture × per-player table."""
     df = pd.read_csv(f"{PROCESSED_DIR}/player_fixtures.csv")
+
+    # percentSelected may be missing on pre-scouting-bonus snapshots; default to 0
+    # (treat as low-owned → conservative, lets bonus still compute)
+    if "percentSelected" not in df.columns:
+        df["percentSelected"] = 0.0
+    df["percentSelected"] = df["percentSelected"].fillna(0.0)
 
     weights = pd.read_csv("data/weight_table.csv")[
         ["player", "team", "gls_p90", "ast_p90", "league_strength"]
@@ -266,7 +273,33 @@ def _apply_allocations_and_points(df, xmins_map, override_map):
     df["assist_pts"]   = df["player_xa"] * ASSIST_PTS
     df["cs_pts"]       = df["p_clean_sheet"] * df["position"].map(CLEAN_SHEET_PTS).fillna(0) * (df["xmins"] >= 60).astype(float)
     df["conceded_pts"] = (df["xg_conceded"] - 1 + np.exp(-df["xg_conceded"])) * conceded_rate
-    df["xpts_game"]    = df["goal_pts"] + df["assist_pts"] + df["cs_pts"] + df["conceded_pts"] + df["app_pts"]
+
+    # Scouting bonus: +2 pts if player scores >4 in a match AND ownership <5%.
+    # Closed-form P(pts>4) under independence of G/A/CS:
+    #   Starter (xmins≥60), FWD/MID: 1 − exp(−(xg+xa))      (CS alone ≤3 pts, doesn't qualify)
+    #   Starter, DEF/GK:             1 − exp(−(xg+xa))·(1−p_cs)
+    #   Sub (0<xmins<60), all pos:   1 − exp(−xg)            (assist alone = 4, doesn't qualify)
+    #   xmins=0:                     0
+    xmins_arr = df["xmins"].values
+    xg_arr    = df["player_xg"].values
+    xa_arr    = df["player_xa"].values
+    p_cs_arr  = df["p_clean_sheet"].values
+    cs_helps  = df["position"].isin(["DEF", "GK"]).values
+
+    p_no_ga = np.exp(-(xg_arr + xa_arr))
+    p_starter = np.where(cs_helps, 1.0 - p_no_ga * (1.0 - p_cs_arr), 1.0 - p_no_ga)
+    p_sub     = 1.0 - np.exp(-xg_arr)
+    p_pts_gt_4 = np.where(
+        xmins_arr == 0, 0.0,
+        np.where(xmins_arr >= 60, p_starter, p_sub),
+    )
+
+    low_owned = (df["percentSelected"].values < SCOUTING_BONUS_OWNERSHIP_PCT).astype(float)
+    df["p_scouting_bonus"]   = p_pts_gt_4
+    df["scouting_bonus_pts"] = p_pts_gt_4 * low_owned * SCOUTING_BONUS_PTS
+
+    df["xpts_game"]    = (df["goal_pts"] + df["assist_pts"] + df["cs_pts"]
+                          + df["conceded_pts"] + df["app_pts"] + df["scouting_bonus_pts"])
     return df
 
 
@@ -300,6 +333,9 @@ def recompute_teams(xmins_map=None, override_map=None, teams=None):
             "TeamXG":              float(r["xg_scored"]),
             "LockedPenXg":         float(r["locked_pen_xg"]),
             "LockedSpXa":          float(r["locked_sp_xa"]),
+            "ScoutingBonusPts":    float(r["scouting_bonus_pts"]),
+            "PScoutingBonus":      float(r["p_scouting_bonus"]),
+            "PercentSelected":     float(r["percentSelected"]),
         }
     return out
 
@@ -318,6 +354,9 @@ EXPORT_COLS = {
     "cs_pts":                "CSPts",
     "conceded_pts":          "ConcededPts",
     "app_pts":               "AppPts",
+    "scouting_bonus_pts":    "ScoutingBonusPts",
+    "p_scouting_bonus":      "PScoutingBonus",
+    "percentSelected":       "PercentSelected",
     "opp_abbr":              "OppAbbr",
     "xg_scored":             "TeamXG",
     "xg_conceded":           "TeamXGA",

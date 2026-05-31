@@ -1,332 +1,332 @@
-id,team,role
-748,Mexico,penalty
-762,Mexico,penalty
-751,Mexico,set_piece_assist
-752,Mexico,set_piece_assist
-758,Mexico,set_piece_assist
-1476,Mexico,set_piece_assist
-1484,Mexico,set_piece_assist
-1481,Mexico,set_piece_assist
-1073,South Africa,penalty
-1071,South Africa,penalty
-1073,South Africa,set_piece_assist
-1058,South Africa,set_piece_assist
-1072,South Africa,set_piece_assist
-1063,South Africa,set_piece_assist
-1061,South Africa,set_piece_assist
-723,Korea Republic,penalty
-724,Korea Republic,penalty
-723,Korea Republic,set_piece_assist
-736,Korea Republic,set_piece_assist
-1549,Korea Republic,set_piece_assist
-720,Korea Republic,set_piece_assist
-714,Korea Republic,set_piece_assist
-382,Czechia,penalty
-393,Czechia,penalty
-383,Czechia,penalty
-380,Czechia,set_piece_assist
-376,Czechia,set_piece_assist
-396,Czechia,set_piece_assist
-226,Canada,penalty
-242,Canada,set_piece_assist
-243,Canada,set_piece_assist
-1967,Canada,set_piece_assist
-238,Canada,set_piece_assist
-244,Canada,set_piece_assist
-1968,Canada,set_piece_assist
-958,Qatar,penalty
-959,Qatar,penalty
-958,Qatar,set_piece_assist
-960,Qatar,set_piece_assist
-948,Qatar,set_piece_assist
-1135,Switzerland,penalty
-1149,Switzerland,penalty
-1582,Switzerland,penalty
-1158,Switzerland,set_piece_assist
-1140,Switzerland,set_piece_assist
-1137,Switzerland,set_piece_assist
-1156,Switzerland,set_piece_assist
-152,Bosnia and Herzegovina,penalty
-162,Bosnia and Herzegovina,penalty
-152,Bosnia and Herzegovina,set_piece_assist
-150,Bosnia and Herzegovina,set_piece_assist
-160,Bosnia and Herzegovina,set_piece_assist
-140,Bosnia and Herzegovina,set_piece_assist
-1366,Brazil,penalty
-178,Brazil,penalty
-190,Brazil,penalty
-1366,Brazil,set_piece_assist
-1361,Brazil,set_piece_assist
-173,Brazil,set_piece_assist
-174,Brazil,set_piece_assist
-190,Brazil,set_piece_assist
-2020,Morocco,penalty
-2012,Morocco,penalty
-2023,Morocco,penalty
-2012,Morocco,set_piece_assist
-2020,Morocco,set_piece_assist
-583,Haiti,penalty
-582,Haiti,penalty
-571,Haiti,set_piece_assist
-586,Haiti,set_piece_assist
-589,Haiti,set_piece_assist
-590,Haiti,set_piece_assist
-570,Haiti,set_piece_assist
-1027,Scotland,penalty
-1003,Scotland,penalty
-1003,Scotland,set_piece_assist
-1028,Scotland,set_piece_assist
-1009,Scotland,set_piece_assist
-1007,Scotland,set_piece_assist
-1005,Scotland,set_piece_assist
-1274,USA,penalty
-1267,USA,penalty
-1274,USA,set_piece_assist
-1250,USA,set_piece_assist
-1254,USA,set_piece_assist
-1258,USA,set_piece_assist
-1256,USA,set_piece_assist
-912,Paraguay,penalty
-913,Paraguay,penalty
-901,Paraguay,penalty
-913,Paraguay,set_piece_assist
-912,Paraguay,set_piece_assist
-901,Paraguay,set_piece_assist
-903,Paraguay,set_piece_assist
-69,Australia,penalty
-83,Australia,penalty
-68,Australia,penalty
-69,Australia,set_piece_assist
-68,Australia,set_piece_assist
-83,Australia,set_piece_assist
-82,Australia,set_piece_assist
-80,Australia,set_piece_assist
-1216,Türkiye,penalty
-1205,Türkiye,penalty
-1216,Türkiye,set_piece_assist
-1215,Türkiye,set_piece_assist
-1192,Türkiye,set_piece_assist
-528,Germany,penalty
-542,Germany,penalty
-542,Germany,set_piece_assist
-521,Germany,set_piece_assist
-543,Germany,set_piece_assist
-528,Germany,set_piece_assist
-519,Germany,set_piece_assist
-538,Germany,set_piece_assist
-352,Curaçao,penalty
-352,Curaçao,set_piece_assist
-367,Curaçao,set_piece_assist
-372,Curaçao,set_piece_assist
-362,Curaçao,set_piece_assist
-366,Curaçao,set_piece_assist
-322,Côte d'Ivoire,penalty
-321,Côte d'Ivoire,penalty
-312,Côte d'Ivoire,penalty
-310,Côte d'Ivoire,set_piece_assist
-322,Côte d'Ivoire,set_piece_assist
-307,Côte d'Ivoire,set_piece_assist
-311,Côte d'Ivoire,set_piece_assist
-308,Côte d'Ivoire,set_piece_assist
-412,Ecuador,penalty
-417,Ecuador,penalty
-427,Ecuador,penalty
-430,Ecuador,set_piece_assist
-399,Ecuador,set_piece_assist
-429,Ecuador,set_piece_assist
-1947,Ecuador,set_piece_assist
-427,Ecuador,set_piece_assist
-400,Ecuador,set_piece_assist
-413,Ecuador,set_piece_assist
-414,Ecuador,set_piece_assist
-2043,Netherlands,penalty
-804,Netherlands,penalty
-808,Netherlands,penalty
-2043,Netherlands,set_piece_assist
-804,Netherlands,set_piece_assist
-814,Netherlands,set_piece_assist
-816,Netherlands,set_piece_assist
-2042,Netherlands,set_piece_assist
-672,Japan,penalty
-684,Japan,penalty
-669,Japan,penalty
-1458,Japan,set_piece_assist
-669,Japan,set_piece_assist
-659,Japan,set_piece_assist
-680,Japan,set_piece_assist
-1166,Tunisia,penalty
-1174,Tunisia,penalty
-1555,Tunisia,set_piece_assist
-1166,Tunisia,set_piece_assist
-1174,Tunisia,set_piece_assist
-1175,Tunisia,set_piece_assist
-1124,Sweden,penalty
-1520,Sweden,penalty
-1126,Sweden,set_piece_assist
-1114,Sweden,set_piece_assist
-1125,Sweden,set_piece_assist
-138,Belgium,penalty
-124,Belgium,penalty
-137,Belgium,penalty
-138,Belgium,set_piece_assist
-137,Belgium,set_piece_assist
-1526,Belgium,set_piece_assist
-114,Belgium,set_piece_assist
-1597,Egypt,penalty
-445,Egypt,penalty
-1597,Egypt,set_piece_assist
-445,Egypt,set_piece_assist
-433,Egypt,set_piece_assist
-441,Egypt,set_piece_assist
-610,IR Iran,penalty
-616,IR Iran,penalty
-612,IR Iran,set_piece_assist
-616,IR Iran,set_piece_assist
-624,IR Iran,set_piece_assist
-629,IR Iran,set_piece_assist
-1493,New Zealand,penalty
-833,New Zealand,penalty
-827,New Zealand,set_piece_assist
-835,New Zealand,set_piece_assist
-832,New Zealand,set_piece_assist
-1494,New Zealand,set_piece_assist
-826,New Zealand,set_piece_assist
-818,New Zealand,set_piece_assist
-823,New Zealand,set_piece_assist
-1094,Spain,penalty
-1092,Spain,penalty
-1104,Spain,penalty
-1092,Spain,set_piece_assist
-1106,Spain,set_piece_assist
-2000,Spain,set_piece_assist
-1082,Spain,set_piece_assist
-1087,Spain,set_piece_assist
-1085,Spain,set_piece_assist
-1081,Spain,set_piece_assist
-1105,Spain,set_piece_assist
-208,Cabo Verde,penalty
-206,Cabo Verde,penalty
-210,Cabo Verde,penalty
-1530,Cabo Verde,set_piece_assist
-219,Cabo Verde,set_piece_assist
-206,Cabo Verde,set_piece_assist
-1531,Cabo Verde,set_piece_assist
-1955,Saudi Arabia,penalty
-992,Saudi Arabia,penalty
-972,Saudi Arabia,penalty
-1955,Saudi Arabia,set_piece_assist
-972,Saudi Arabia,set_piece_assist
-1248,Uruguay,penalty
-1236,Uruguay,penalty
-1247,Uruguay,set_piece_assist
-1248,Uruguay,set_piece_assist
-1238,Uruguay,set_piece_assist
-500,France,penalty
-501,France,penalty
-517,France,set_piece_assist
-516,France,set_piece_assist
-501,France,set_piece_assist
-505,France,set_piece_assist
-514,France,set_piece_assist
-500,France,set_piece_assist
-1696,Senegal,penalty
-1041,Senegal,penalty
-1043,Senegal,penalty
-1036,Senegal,set_piece_assist
-1054,Senegal,set_piece_assist
-1035,Senegal,set_piece_assist
-1055,Senegal,set_piece_assist
-855,Norway,penalty
-1684,Norway,set_piece_assist
-847,Norway,set_piece_assist
-864,Norway,set_piece_assist
-843,Norway,set_piece_assist
-646,Iraq,penalty
-648,Iraq,set_piece_assist
-632,Iraq,set_piece_assist
-38,Argentina,penalty
-1338,Argentina,penalty
-39,Argentina,penalty
-38,Argentina,set_piece_assist
-39,Argentina,set_piece_assist
-50,Argentina,set_piece_assist
-56,Argentina,set_piece_assist
-55,Argentina,set_piece_assist
-30,Argentina,set_piece_assist
-51,Argentina,set_piece_assist
-11,Algeria,penalty
-9,Algeria,penalty
-11,Algeria,set_piece_assist
-26,Algeria,set_piece_assist
-27,Algeria,set_piece_assist
-10,Algeria,set_piece_assist
-95,Austria,penalty
-107,Austria,penalty
-112,Austria,penalty
-107,Austria,set_piece_assist
-85,Austria,set_piece_assist
-108,Austria,set_piece_assist
-110,Austria,set_piece_assist
-109,Austria,set_piece_assist
-105,Austria,set_piece_assist
-1547,Jordan,penalty
-701,Jordan,penalty
-701,Jordan,set_piece_assist
-703,Jordan,set_piece_assist
-692,Jordan,set_piece_assist
-702,Jordan,set_piece_assist
-939,Portugal,penalty
-1573,Portugal,penalty
-939,Portugal,set_piece_assist
-1572,Portugal,set_piece_assist
-916,Portugal,set_piece_assist
-925,Portugal,set_piece_assist
-928,Portugal,set_piece_assist
-1284,Uzbekistan,penalty
-1306,Uzbekistan,penalty
-1292,Uzbekistan,set_piece_assist
-1284,Uzbekistan,set_piece_assist
-1290,Uzbekistan,set_piece_assist
-1291,Uzbekistan,set_piece_assist
-1287,Uzbekistan,set_piece_assist
-270,Colombia,penalty
-256,Colombia,penalty
-270,Colombia,set_piece_assist
-269,Colombia,set_piece_assist
-268,Colombia,set_piece_assist
-281,Congo DR,penalty
-283,Congo DR,penalty
-1557,Congo DR,penalty
-273,Congo DR,set_piece_assist
-297,Congo DR,set_piece_assist
-287,Congo DR,set_piece_assist
-281,Congo DR,set_piece_assist
-288,Congo DR,set_piece_assist
-468,England,penalty
-471,England,penalty
-488,England,set_piece_assist
-469,England,set_piece_assist
-1710,England,set_piece_assist
-474,England,set_piece_assist
-1709,England,set_piece_assist
-346,Croatia,penalty
-332,Croatia,penalty
-334,Croatia,penalty
-333,Croatia,penalty
-346,Croatia,set_piece_assist
-334,Croatia,set_piece_assist
-348,Croatia,set_piece_assist
-347,Croatia,set_piece_assist
-343,Croatia,set_piece_assist
-1986,Ghana,penalty
-1986,Ghana,set_piece_assist
-1994,Ghana,set_piece_assist
-1988,Ghana,set_piece_assist
-872,Panama,penalty
-887,Panama,penalty
-881,Panama,penalty
-872,Panama,set_piece_assist
-887,Panama,set_piece_assist
-867,Panama,set_piece_assist
-868,Panama,set_piece_assist
-2028,Panama,set_piece_assist
+id,team,role,player
+9,Algeria,penalty,Mohammed Amoura
+11,Algeria,penalty,Riyad Mahrez
+10,Algeria,set_piece_assist,Amine Gouiri
+27,Algeria,set_piece_assist,Farès Chaïbi
+26,Algeria,set_piece_assist,Houssem Aouar
+11,Algeria,set_piece_assist,Riyad Mahrez
+39,Argentina,penalty,Julián Alvarez
+1338,Argentina,penalty,Lautaro Martínez
+38,Argentina,penalty,Lionel Messi
+56,Argentina,set_piece_assist,Alexis Mac Allister
+39,Argentina,set_piece_assist,Julián Alvarez
+38,Argentina,set_piece_assist,Lionel Messi
+30,Argentina,set_piece_assist,Nahuel Molina
+51,Argentina,set_piece_assist,Nico Paz
+50,Argentina,set_piece_assist,Rodrigo De Paul
+55,Argentina,set_piece_assist,Thiago Almada
+83,Australia,penalty,Ajdin Hrustic
+69,Australia,penalty,Martin Boyle
+68,Australia,penalty,Nestory Irankunda
+83,Australia,set_piece_assist,Ajdin Hrustic
+82,Australia,set_piece_assist,Awer Mabil
+80,Australia,set_piece_assist,Connor Metcalfe
+69,Australia,set_piece_assist,Martin Boyle
+68,Australia,set_piece_assist,Nestory Irankunda
+112,Austria,penalty,Christoph Baumgartner
+107,Austria,penalty,Marcel Sabitzer
+95,Austria,penalty,Marko Arnautovic
+85,Austria,set_piece_assist,David Alaba
+105,Austria,set_piece_assist,Florian Grillitsch
+107,Austria,set_piece_assist,Marcel Sabitzer
+109,Austria,set_piece_assist,Patrick Wimmer
+110,Austria,set_piece_assist,Paul Wanner
+108,Austria,set_piece_assist,Romano Schmid
+138,Belgium,penalty,Kevin De Bruyne
+124,Belgium,penalty,Romelu Lukaku
+137,Belgium,penalty,Youri Tielemans
+138,Belgium,set_piece_assist,Kevin De Bruyne
+1526,Belgium,set_piece_assist,Leandro Trossard
+114,Belgium,set_piece_assist,Maxim De Cuyper
+137,Belgium,set_piece_assist,Youri Tielemans
+162,Bosnia and Herzegovina,penalty,Amir Hadziahmetovic
+152,Bosnia and Herzegovina,penalty,Kerim Alajbegovic
+140,Bosnia and Herzegovina,set_piece_assist,Amar Dedic
+150,Bosnia and Herzegovina,set_piece_assist,Esmir Bajraktarevic
+160,Bosnia and Herzegovina,set_piece_assist,Ivan Basic
+152,Bosnia and Herzegovina,set_piece_assist,Kerim Alajbegovic
+178,Brazil,penalty,Igor Thiago
+190,Brazil,penalty,Lucas Paquetá
+1366,Brazil,penalty,Raphinha
+1361,Brazil,set_piece_assist,Bruno Guimarães
+190,Brazil,set_piece_assist,Lucas Paquetá
+174,Brazil,set_piece_assist,Matheus Cunha
+1366,Brazil,set_piece_assist,Raphinha
+173,Brazil,set_piece_assist,Vinícius Júnior
+208,Cabo Verde,penalty,Dailon Livramento
+210,Cabo Verde,penalty,Garry Rodrigues
+206,Cabo Verde,penalty,Ryan Mendes
+1531,Cabo Verde,set_piece_assist,Hélio Varela
+1530,Cabo Verde,set_piece_assist,Jamiro Monteiro
+219,Cabo Verde,set_piece_assist,Laros Duarte
+206,Cabo Verde,set_piece_assist,Ryan Mendes
+226,Canada,penalty,Jonathan David
+238,Canada,set_piece_assist,Ali Ahmed
+1968,Canada,set_piece_assist,Jacob Shaffelburg
+243,Canada,set_piece_assist,Jonathan Osorio
+244,Canada,set_piece_assist,Marcelo Flores
+242,Canada,set_piece_assist,Mathieu Choinière
+1967,Canada,set_piece_assist,Stephen Eustaquio
+270,Colombia,penalty,James Rodríguez
+256,Colombia,penalty,Luis Díaz
+270,Colombia,set_piece_assist,James Rodríguez
+268,Colombia,set_piece_assist,Jaminton Campaz
+269,Colombia,set_piece_assist,Jhon Arias
+283,Congo DR,penalty,Cédric Bakambu
+1557,Congo DR,penalty,Gaël Kakuta
+281,Congo DR,penalty,Yoane Wissa
+273,Congo DR,set_piece_assist,Arthur Masuaku
+288,Congo DR,set_piece_assist,Brian Cipenga
+287,Congo DR,set_piece_assist,Nathanaël Mbuku
+297,Congo DR,set_piece_assist,Théo Bongonda
+281,Congo DR,set_piece_assist,Yoane Wissa
+333,Croatia,penalty,Andrej Kramaric
+332,Croatia,penalty,Ante Budimir
+334,Croatia,penalty,Ivan Perisic
+346,Croatia,penalty,Luka Modric
+334,Croatia,set_piece_assist,Ivan Perisic
+346,Croatia,set_piece_assist,Luka Modric
+347,Croatia,set_piece_assist,Mario Pasalic
+348,Croatia,set_piece_assist,Martin Baturina
+343,Croatia,set_piece_assist,Nikola Moro
+352,Curaçao,penalty,Leandro Bacuna
+362,Curaçao,set_piece_assist,Brandley Kuwas
+366,Curaçao,set_piece_assist,Gervane Kastaneer
+367,Curaçao,set_piece_assist,Jeremy Antonisse
+372,Curaçao,set_piece_assist,Juninho Bacuna
+352,Curaçao,set_piece_assist,Leandro Bacuna
+382,Czechia,penalty,Patrik Schick
+383,Czechia,penalty,Tomás Chory
+393,Czechia,penalty,Tomás Soucek
+376,Czechia,set_piece_assist,David Jurásek
+396,Czechia,set_piece_assist,Lukás Provod
+380,Czechia,set_piece_assist,Vladimír Coufal
+312,Côte d'Ivoire,penalty,Evann Guessand
+322,Côte d'Ivoire,penalty,Franck Kessie
+321,Côte d'Ivoire,penalty,Ibrahim Sangaré
+310,Côte d'Ivoire,set_piece_assist,Amad Diallo
+322,Côte d'Ivoire,set_piece_assist,Franck Kessie
+308,Côte d'Ivoire,set_piece_assist,Nicolas Pépé
+311,Côte d'Ivoire,set_piece_assist,Simon Adingra
+307,Côte d'Ivoire,set_piece_assist,Yan Diomande
+412,Ecuador,penalty,Enner Valencia
+417,Ecuador,penalty,Jordy Caicedo
+427,Ecuador,penalty,Kendry Páez
+413,Ecuador,set_piece_assist,Gonzalo Plata
+414,Ecuador,set_piece_assist,John Yeboah
+399,Ecuador,set_piece_assist,Jordy Alcívar
+427,Ecuador,set_piece_assist,Kendry Páez
+430,Ecuador,set_piece_assist,Moisés Caicedo
+1947,Ecuador,set_piece_assist,Nilson Angulo
+429,Ecuador,set_piece_assist,Pedro Vite
+400,Ecuador,set_piece_assist,Pervis Estupiñán
+1597,Egypt,penalty,Mohamed Salah
+445,Egypt,penalty,Omar Marmoush
+441,Egypt,set_piece_assist,Hossam Abdelmaguid
+1597,Egypt,set_piece_assist,Mohamed Salah
+445,Egypt,set_piece_assist,Omar Marmoush
+433,Egypt,set_piece_assist,Zizo
+468,England,penalty,Harry Kane
+471,England,penalty,Marcus Rashford
+474,England,set_piece_assist,Anthony Gordon
+469,England,set_piece_assist,Bukayo Saka
+488,England,set_piece_assist,Declan Rice
+1710,England,set_piece_assist,Eberechi Eze
+1709,England,set_piece_assist,Reece James
+500,France,penalty,Kylian Mbappé
+501,France,penalty,Ousmane Dembélé
+505,France,set_piece_assist,Désiré Doué
+500,France,set_piece_assist,Kylian Mbappé
+514,France,set_piece_assist,Maghnes Akliouche
+517,France,set_piece_assist,Michael Olise
+501,France,set_piece_assist,Ousmane Dembélé
+516,France,set_piece_assist,Rayan Cherki
+542,Germany,penalty,Joshua Kimmich
+528,Germany,penalty,Kai Havertz
+519,Germany,set_piece_assist,Angelo Stiller
+521,Germany,set_piece_assist,David Raum
+543,Germany,set_piece_assist,Florian Wirtz
+542,Germany,set_piece_assist,Joshua Kimmich
+528,Germany,set_piece_assist,Kai Havertz
+538,Germany,set_piece_assist,Pascal Groß
+1986,Ghana,penalty,Jordan Ayew
+1988,Ghana,set_piece_assist,Ernest Nuamah
+1986,Ghana,set_piece_assist,Jordan Ayew
+1994,Ghana,set_piece_assist,Kamaldeen Sulemana
+583,Haiti,penalty,Duckens Nazon
+582,Haiti,penalty,Wilson Isidor
+571,Haiti,set_piece_assist,Jean-Ricner Bellegarde
+589,Haiti,set_piece_assist,Josué Casimir
+570,Haiti,set_piece_assist,Leverton Pierre
+586,Haiti,set_piece_assist,Louicius Deedson
+590,Haiti,set_piece_assist,Ruben Providence
+616,IR Iran,penalty,Amirhossein Hosseinzadeh
+610,IR Iran,penalty,Mehdi Taremi
+616,IR Iran,set_piece_assist,Amirhossein Hosseinzadeh
+629,IR Iran,set_piece_assist,Mehdi Ghayedi
+624,IR Iran,set_piece_assist,Omid Noorafkan
+612,IR Iran,set_piece_assist,Saman Ghoddos
+646,Iraq,penalty,Aymen Hussein
+648,Iraq,set_piece_assist,Ali Jasim
+632,Iraq,set_piece_assist,Hasan Abdulkareem
+672,Japan,penalty,Ayase Ueda
+669,Japan,penalty,Junya Ito
+684,Japan,penalty,Ritsu Doan
+669,Japan,set_piece_assist,Junya Ito
+659,Japan,set_piece_assist,Kaishu Sano
+1458,Japan,set_piece_assist,Takefusa Kubo
+680,Japan,set_piece_assist,Yuito Suzuki
+1547,Jordan,penalty,Ali Olwan
+701,Jordan,penalty,Mousa Al Tamari
+703,Jordan,set_piece_assist,Mahmoud Al Mardi
+702,Jordan,set_piece_assist,Mohammad Abu Zraiq
+692,Jordan,set_piece_assist,Mohannad Abu Taha
+701,Jordan,set_piece_assist,Mousa Al Tamari
+724,Korea Republic,penalty,Hwang Hee-Chan
+723,Korea Republic,penalty,Son Heung-Min
+1549,Korea Republic,set_piece_assist,Hwang In-Beom
+714,Korea Republic,set_piece_assist,Kim Jin-Gyu
+736,Korea Republic,set_piece_assist,Lee Kang-In
+720,Korea Republic,set_piece_assist,Lee Tae-Seok
+723,Korea Republic,set_piece_assist,Son Heung-Min
+762,Mexico,penalty,Orbelín Pineda
+748,Mexico,penalty,Raúl Jiménez
+1481,Mexico,set_piece_assist,Alexis Gutiérrez
+751,Mexico,set_piece_assist,Alexis Vega
+758,Mexico,set_piece_assist,Brian Gutiérrez
+1484,Mexico,set_piece_assist,Efraín Álvarez
+1476,Mexico,set_piece_assist,Gilberto Mora
+752,Mexico,set_piece_assist,Roberto Alvarado
+2012,Morocco,penalty,Achraf Hakimi
+2020,Morocco,penalty,Brahim Díaz
+2023,Morocco,penalty,Soufiane Rahimi
+2012,Morocco,set_piece_assist,Achraf Hakimi
+2020,Morocco,set_piece_assist,Brahim Díaz
+804,Netherlands,penalty,Cody Gakpo
+2043,Netherlands,penalty,Memphis Depay
+808,Netherlands,penalty,Wout Weghorst
+804,Netherlands,set_piece_assist,Cody Gakpo
+2042,Netherlands,set_piece_assist,Justin Kluivert
+2043,Netherlands,set_piece_assist,Memphis Depay
+814,Netherlands,set_piece_assist,Teun Koopmeiners
+816,Netherlands,set_piece_assist,Tijjani Reijnders
+833,New Zealand,penalty,Ben Waine
+1493,New Zealand,penalty,Chris Wood
+818,New Zealand,set_piece_assist,Callum McCowatt
+832,New Zealand,set_piece_assist,Elijah Just
+826,New Zealand,set_piece_assist,Francis de Vries
+835,New Zealand,set_piece_assist,Jesse Randall
+823,New Zealand,set_piece_assist,Marko Stamenic
+1494,New Zealand,set_piece_assist,Sarpreet Singh
+827,New Zealand,set_piece_assist,Tim Payne
+855,Norway,penalty,Erling Haaland
+847,Norway,set_piece_assist,Julian Ryerson
+864,Norway,set_piece_assist,Kristian Thorstvedt
+1684,Norway,set_piece_assist,Martin Ødegaard
+843,Norway,set_piece_assist,Oscar Bobb
+887,Panama,penalty,Adalberto Carrasquilla
+881,Panama,penalty,Cecilio Waterman
+872,Panama,penalty,Éric Davis
+887,Panama,set_piece_assist,Adalberto Carrasquilla
+2028,Panama,set_piece_assist,Alberto Quintero
+868,Panama,set_piece_assist,José Luis Rodríguez
+867,Panama,set_piece_assist,Yoel Bárcenas
+872,Panama,set_piece_assist,Éric Davis
+913,Paraguay,penalty,Diego Gómez
+912,Paraguay,penalty,Julio Enciso
+901,Paraguay,penalty,Miguel Almirón
+913,Paraguay,set_piece_assist,Diego Gómez
+912,Paraguay,set_piece_assist,Julio Enciso
+901,Paraguay,set_piece_assist,Miguel Almirón
+903,Paraguay,set_piece_assist,Ramón Sosa
+939,Portugal,penalty,Bruno Fernandes
+1573,Portugal,penalty,Cristiano Ronaldo
+1572,Portugal,set_piece_assist,Bernardo Silva
+939,Portugal,set_piece_assist,Bruno Fernandes
+928,Portugal,set_piece_assist,Francisco Conceição
+916,Portugal,set_piece_assist,Nuno Mendes
+925,Portugal,set_piece_assist,Pedro Neto
+958,Qatar,penalty,Akram Afif
+959,Qatar,penalty,Almoez Ali
+958,Qatar,set_piece_assist,Akram Afif
+960,Qatar,set_piece_assist,Edmílson Junior
+948,Qatar,set_piece_assist,Mohammed Waad
+992,Saudi Arabia,penalty,Feras Al Brikan
+972,Saudi Arabia,penalty,Musab Al Juwayr
+1955,Saudi Arabia,penalty,Salem Al Dawsari
+972,Saudi Arabia,set_piece_assist,Musab Al Juwayr
+1955,Saudi Arabia,set_piece_assist,Salem Al Dawsari
+1003,Scotland,penalty,John McGinn
+1027,Scotland,penalty,Scott McTominay
+1009,Scotland,set_piece_assist,Andy Robertson
+1005,Scotland,set_piece_assist,Billy Gilmour
+1003,Scotland,set_piece_assist,John McGinn
+1028,Scotland,set_piece_assist,Lewis Ferguson
+1007,Scotland,set_piece_assist,Ryan Christie
+1043,Senegal,penalty,Ismaïla Sarr
+1041,Senegal,penalty,Nicolas Jackson
+1696,Senegal,penalty,Sadio Mané
+1035,Senegal,set_piece_assist,El Hadji Malick Diouf
+1036,Senegal,set_piece_assist,Ismail Jakobs
+1054,Senegal,set_piece_assist,Krépin Diatta
+1055,Senegal,set_piece_assist,Lamine Camara
+1071,South Africa,penalty,Lyle Foster
+1073,South Africa,penalty,Oswin Appollis
+1063,South Africa,set_piece_assist,Aubrey Modiba
+1073,South Africa,set_piece_assist,Oswin Appollis
+1072,South Africa,set_piece_assist,Relebohile Mofokeng
+1058,South Africa,set_piece_assist,Teboho Mokoena
+1061,South Africa,set_piece_assist,Tshepang Moremi
+1092,Spain,penalty,Lamine Yamal
+1094,Spain,penalty,Mikel Oyarzabal
+1104,Spain,penalty,Rodri
+1087,Spain,set_piece_assist,Alejandro Grimaldo
+1105,Spain,set_piece_assist,Dani Olmo
+1092,Spain,set_piece_assist,Lamine Yamal
+2000,Spain,set_piece_assist,Nico Williams
+1106,Spain,set_piece_assist,Pedri
+1085,Spain,set_piece_assist,Pedro Porro
+1081,Spain,set_piece_assist,Yéremy Pino
+1082,Spain,set_piece_assist,Álex Baena
+1520,Sweden,penalty,Alexander Isak
+1124,Sweden,penalty,Viktor Gyökeres
+1125,Sweden,set_piece_assist,Anthony Elanga
+1126,Sweden,set_piece_assist,Benjamin Nygren
+1114,Sweden,set_piece_assist,Yasin Ayari
+1149,Switzerland,penalty,Breel Embolo
+1135,Switzerland,penalty,Granit Xhaka
+1582,Switzerland,penalty,Zeki Amdouni
+1156,Switzerland,set_piece_assist,Djibril Sow
+1140,Switzerland,set_piece_assist,Fabian Rieder
+1137,Switzerland,set_piece_assist,Michel Aebischer
+1158,Switzerland,set_piece_assist,Rubén Vargas
+1166,Tunisia,penalty,Ali Abdi
+1174,Tunisia,penalty,Ismaël Gharbi
+1166,Tunisia,set_piece_assist,Ali Abdi
+1175,Tunisia,set_piece_assist,Elias Saad
+1555,Tunisia,set_piece_assist,Hannibal Mejbri
+1174,Tunisia,set_piece_assist,Ismaël Gharbi
+1216,Türkiye,penalty,Hakan Çalhanoglu
+1205,Türkiye,penalty,Kerem Aktürkoglu
+1215,Türkiye,set_piece_assist,Arda Güler
+1216,Türkiye,set_piece_assist,Hakan Çalhanoglu
+1192,Türkiye,set_piece_assist,Orkun Kökçü
+1274,USA,penalty,Christian Pulisic
+1267,USA,penalty,Folarin Balogun
+1258,USA,set_piece_assist,Antonee Robinson
+1274,USA,set_piece_assist,Christian Pulisic
+1256,USA,set_piece_assist,Giovanni Reyna
+1254,USA,set_piece_assist,Malik Tillman
+1250,USA,set_piece_assist,Sebastian Berhalter
+1236,Uruguay,penalty,Darwin Núñez
+1248,Uruguay,penalty,Federico Valverde
+1238,Uruguay,set_piece_assist,Brian Rodríguez
+1248,Uruguay,set_piece_assist,Federico Valverde
+1247,Uruguay,set_piece_assist,Giorgian de Arrascaeta
+1306,Uzbekistan,penalty,Eldor Shomurodov
+1284,Uzbekistan,penalty,Otabek Shukurov
+1292,Uzbekistan,set_piece_assist,Abbosbek Fayzullaev
+1287,Uzbekistan,set_piece_assist,Aziz G'aniev
+1291,Uzbekistan,set_piece_assist,Jaloliddin Masharipov
+1290,Uzbekistan,set_piece_assist,Jamshid Iskanderov
+1284,Uzbekistan,set_piece_assist,Otabek Shukurov

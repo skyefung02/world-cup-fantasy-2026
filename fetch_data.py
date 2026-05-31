@@ -37,7 +37,8 @@ def build_players(players_raw, squads_raw):
     ).rename(columns={"name": "team"}).drop(columns=["id_squad"])
 
     return df_players[[
-        "id", "player", "position", "price", "status", "squadId", "team", "abbr", "group"
+        "id", "player", "position", "price", "status", "percentSelected",
+        "squadId", "team", "abbr", "group"
     ]]
 
 

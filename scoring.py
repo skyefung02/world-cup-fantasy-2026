@@ -47,6 +47,7 @@ SHOTS_ON_TARGET_PTS = 1   # FWD: every 2 shots on target
 # Bonus points
 FREE_KICK_GOAL_PTS = 1    # in addition to goal points
 SCOUTING_BONUS_PTS = 2    # >4pts in match + <5% ownership
+SCOUTING_BONUS_OWNERSHIP_PCT = 5   # eligibility cutoff (percentSelected strictly below)
 
 # Set-piece / penalty allocation (model parameters, not FIFA scoring)
 PEN_PROB = 0.20

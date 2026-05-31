@@ -1,0 +1,657 @@
+player,team,position,matched_club,matched_intl,club_suggestion,club_score,intl_suggestion,intl_score
+Mehdi Dorval,Algeria,DEF,False,True,Mehdi Léris,60.9,Mehdi Dorval,100.0
+Zinéddine Belaïd,Algeria,DEF,False,True,,,Zineddine Belaid,100.0
+Sohaib Nair,Algeria,DEF,False,False,,,,
+Achref Abada,Algeria,DEF,False,False,,,,
+Mohammed Amoura,Algeria,FWD,False,False,Mohamed Amoura,96.6,Mohamed Amoura,96.6
+Farès Ghedjemis,Algeria,FWD,False,False,,,,
+Ahmed Benbouali,Algeria,FWD,False,False,Ahmed Kendouci,75.9,Ahmed Kendouci,75.9
+Amin Chiakha,Algeria,FWD,False,True,,,Amin Chiakha,100.0
+Anthony Mandréa,Algeria,GK,False,True,,,Anthony Mandrea,100.0
+Luca Zidane,Algeria,GK,False,True,,,Luca Zidane,100.0
+Melvin Mastil,Algeria,GK,False,False,,,,
+Kilian Belazzoug,Algeria,GK,False,False,,,,
+Adil Boulbina,Algeria,MID,False,True,,,Adil Boulbina,100.0
+Yacine Titraoui,Algeria,MID,False,False,Yassine Titraoui,90.3,Yacine Brahimi,69.0
+Adil Aouchiche,Algeria,MID,True,False,Adil Aouchiche,100.0,,
+Marcos Senesi,Argentina,DEF,True,False,Marcos Senesi,100.0,Marcos Acuña,64.0
+Gabriel Rojas,Argentina,DEF,True,False,Gabriel Rojas,100.0,,
+Agustín Giay,Argentina,DEF,True,False,Agustín Giay,100.0,,
+Gianluca Prestianni,Argentina,MID,True,False,Gianluca Prestianni,100.0,,
+Nico González,Argentina,MID,False,False,Nicolás González,89.7,Nicolás González,89.7
+José Manuel López,Argentina,FWD,True,False,José Manuel López,100.0,,
+Juan Musso,Argentina,GK,True,False,Juan Musso,100.0,Juan Foyth,60.0
+Máximo Perrone,Argentina,MID,True,False,Máximo Perrone,100.0,,
+Valentín Barco,Argentina,MID,True,False,Valentín Barco,100.0,Valentin Carboni,80.0
+Milos Degenek,Australia,DEF,False,True,,,Miloš Degenek,100.0
+Aziz Behich,Australia,DEF,False,True,,,Aziz Behich,100.0
+Fran Karacic,Australia,DEF,False,True,Ryan Strain,60.9,Fran Karačić,100.0
+Kai Trewin,Australia,DEF,False,False,,,,
+Lucas Herrington,Australia,DEF,False,False,,,,
+Nishan Velupillay,Australia,FWD,False,True,,,Nishan Velupillay,100.0
+Deni Juric,Australia,FWD,False,False,,,,
+Jacob Italiano,Australia,DEF,True,False,Jacob Italiano,100.0,Marco Tilio,64.0
+Ante Suto,Australia,FWD,True,False,Ante Suto,100.0,Nestory Irankunda,64.3
+Paul Izzo,Australia,GK,False,False,,,,
+Patrick Beach,Australia,GK,False,False,Patrick Yazbek,74.1,Patrick Yazbek,74.1
+Paul Okon,Australia,MID,False,False,,,,
+Alex Robertson,Australia,MID,False,False,,,,
+Awer Mabil,Australia,MID,False,True,,,Awer Mabil,100.0
+David Affengruber,Austria,DEF,True,False,David Affengruber,100.0,David Alaba,85.5
+Michael Svoboda,Austria,DEF,False,True,Michael Sollbauer,75.0,Michael Svoboda,100.0
+Marko Arnautovic,Austria,FWD,False,True,Marko Raguž,66.7,Marko Arnautović,100.0
+Sasa Kalajdzic,Austria,FWD,True,False,Sasa Kalajdzic,100.0,,
+Patrick Pentz,Austria,GK,False,True,Patrick Greil,69.2,Patrick Pentz,100.0
+Florian Wiegele,Austria,GK,True,False,Florian Wiegele,100.0,Florian Grillitsch,60.6
+Carney Chukwuemeka,Austria,MID,True,False,Carney Chukwuemeka,100.0,,
+Paul Wanner,Austria,MID,True,False,Paul Wanner,100.0,,
+Nathan Ngoy,Belgium,DEF,True,False,Nathan Ngoy,100.0,,
+Nikola Katic,Bosnia and Herzegovina,DEF,False,True,Nikola Vasilj,72.0,Nikola Katić,100.0
+Stjepan Radeljic,Bosnia and Herzegovina,DEF,False,True,,,Stjepan Radeljić,100.0
+Nidal Celik,Bosnia and Herzegovina,DEF,True,False,Nidal Celik,100.0,,
+Jovo Lukic,Bosnia and Herzegovina,FWD,False,False,Ivan Jukić,60.0,,
+Samed Bazdar,Bosnia and Herzegovina,FWD,False,True,,,Samed Baždar,100.0
+Osman Hadzikic,Bosnia and Herzegovina,GK,False,False,,,Dennis Hadzikadunic,60.6
+Martin Zlomislic,Bosnia and Herzegovina,GK,False,True,Adrian Leon Barišić,62.9,Martin Zlomislić,100.0
+Dzenis Burnic,Bosnia and Herzegovina,MID,False,True,Denis Huseinbasic,66.7,Dženis Burnić,100.0
+Ivan Sunjic,Bosnia and Herzegovina,MID,False,True,Ivan Jukić,76.2,Ivan Šunjić,100.0
+Ivan Basic,Bosnia and Herzegovina,MID,False,True,Denis Huseinbasic,74.1,Ivan Bašić,100.0
+Benjamin Tahirovic,Bosnia and Herzegovina,MID,False,True,Armin Gigovic,64.5,Benjamin Tahirovic,100.0
+Douglas Santos,Brazil,DEF,False,True,Marcelo dos Santos Ferreira,85.5,Douglas Santos,100.0
+Bremer,Brazil,DEF,True,False,Gleison Bremer,100.0,Alisson,65.8
+Léo Pereira,Brazil,DEF,True,False,Léo Pereira,100.0,Andreas Pereira,73.9
+Luiz Henrique,Brazil,FWD,False,True,Luis Henrique,92.3,Luiz Henrique,100.0
+Igor Thiago,Brazil,FWD,True,False,Igor Thiago,100.0,,
+Rayan,Brazil,FWD,True,False,Rayan,100.0,Yan Couto,67.5
+Fabinho,Brazil,MID,True,False,Fabinho,100.0,Nino,67.5
+João Paulo,Cabo Verde,MID,True,False,,,João Paulo Fernandes,90.0
+Yannick Semedo,Cabo Verde,MID,False,False,,,Yannick,90.0
+Kevin Pina,Cabo Verde,MID,False,True,,,Kevin Pina,100.0
+Pico,Cabo Verde,DEF,False,True,Fabrício Garcia,67.5,Pico,100.0
+Kelvin Pires,Cabo Verde,DEF,False,False,,,Kevin Pina,72.7
+Diney,Cabo Verde,DEF,False,True,Sidny Cabral,64.1,Diney,100.0
+Garry Rodrigues,Cabo Verde,FWD,False,True,,,Garry Rodrigues,100.0
+Willy Semedo,Cabo Verde,FWD,False,True,,,Willy Semedo,100.0
+Vozinha,Cabo Verde,GK,False,True,,,Vozinha,100.0
+CJ dos Santos,Cabo Verde,GK,False,False,,,,
+Márcio da Rosa,Cabo Verde,GK,False,False,Fabrício Garcia,62.1,Fabrício Garcia,62.1
+Deroy Duarte,Cabo Verde,MID,False,True,,,Deroy Duarte,100.0
+Laros Duarte,Cabo Verde,MID,False,True,,,Laros Duarte,100.0
+Owen Goodman,Canada,GK,False,False,Owen Graham Roache,85.5,,
+Ralph Priso,Canada,MID,True,False,Ralph Priso-Mbongue,100.0,,
+Niko Sigur,Canada,MID,False,True,,,Niko Sigur,100.0
+Marcelo Flores,Canada,MID,True,False,Marcelo Flores,100.0,,
+Luis Suárez,Colombia,FWD,True,False,Luis Javier Suárez,85.5,Luis Javier Suárez,85.5
+David Ospina,Colombia,GK,False,False,Álvaro David Montero,85.5,Álvaro David Montero,85.5
+Álvaro Montero,Colombia,GK,False,False,Álvaro David Montero,95.0,Álvaro David Montero,95.0
+Gustavo Puerta,Colombia,MID,False,False,Gustavo Cuellar,75.9,,
+Steve Kapuadi,Congo DR,DEF,False,False,,,,
+Simon Banza,Congo DR,FWD,False,True,,,Simon Banza,100.0
+Meschack Elia,Congo DR,FWD,False,False,Meschak Elia,96.0,Meschak Elia,96.0
+Fiston Mayele,Congo DR,FWD,False,True,,,Fiston Mayele,100.0
+Nathanaël Mbuku,Congo DR,FWD,False,True,Ngal'Ayel Mukau,69.0,Nathanael Mbuku,100.0
+Brian Cipenga,Congo DR,FWD,False,True,,,Brian Cipenga,100.0
+Matthieu Epolo,Congo DR,GK,True,False,,,,
+Timothy Fayulu,Congo DR,GK,False,True,,,Timothy Fayulu,100.0
+Théo Bongonda,Congo DR,MID,False,True,,,Theo Bongonda,100.0
+Elye Wahi,Côte d'Ivoire,FWD,True,False,Elye Wahi,100.0,,
+Mohamed Koné,Côte d'Ivoire,GK,True,False,Mohamed Koné,100.0,Mohamed Diomandé,78.6
+Jean Michaël Seri,Côte d'Ivoire,MID,False,False,,,Jean Seri,85.5
+Martin Erlic,Croatia,DEF,False,True,Marin Ljubicic,69.2,Martin Erlic,100.0
+Ivor Pandur,Croatia,GK,True,False,Ivor Pandur,100.0,,
+Toni Fruk,Croatia,MID,False,True,Toni Borevkovic,85.5,Toni Fruk,100.0
+Godfried Roemeratoe,Curaçao,MID,False,True,,,Godfried Roemeratoe,100.0
+Leandro Bacuna,Curaçao,DEF,False,True,Juninho Bacuna,64.3,Leandro Bacuna,100.0
+Roshon van Eijma,Curaçao,DEF,False,True,,,Roshon van Eijma,100.0
+Ar'Jany Martha,Curaçao,DEF,False,True,,,Ar'jany Martha,100.0
+Juriën Gaari,Curaçao,DEF,False,True,,,Juriën Gaari,100.0
+Kenji Gorré,Curaçao,FWD,False,True,,,Kenji Gorré,100.0
+Jearl Margaritha,Curaçao,FWD,False,True,,,Jearl Margaritha,100.0
+Gervane Kastaneer,Curaçao,FWD,False,True,,,Gervane Kastaneer,100.0
+Eloy Room,Curaçao,GK,False,True,,,Eloy Room,100.0
+Trevor Doornbusch,Curaçao,GK,False,False,,,,
+Tyrick Bodak,Curaçao,GK,False,False,,,,
+Kevin Felida,Curaçao,MID,False,True,,,Kevin Felida,100.0
+Denis Visinsky,Czechia,MID,True,False,Denis Višinský,100.0,,
+Tomás Ladra,Czechia,FWD,True,False,Tomáš Ladra,100.0,Tomáš Čvančara,72.0
+Lukás Hornícek,Czechia,GK,True,False,Lukáš Horníček,100.0,Lukáš Červ,66.7
+Pavel Bucha,Czechia,MID,True,False,Pavel Bucha,100.0,Pavel Šulc,76.2
+Denil Castillo,Ecuador,MID,False,True,,,Denil Castillo,100.0
+Jordy Alcívar,Ecuador,MID,False,True,,,Jordy Alcivar,100.0
+Félix Torres,Ecuador,DEF,False,False,Félix Torres Caicedo,90.0,Félix Torres Caicedo,90.0
+Jackson Porozo,Ecuador,DEF,True,False,Jackson Porozo,100.0,Janner Corozo,66.7
+John Yeboah,Ecuador,MID,False,True,John Mercado,60.9,John Yeboah,100.0
+Jordy Caicedo,Ecuador,FWD,False,True,Félix Torres Caicedo,85.5,Jordy Caicedo,100.0
+Anthony Valencia,Ecuador,MID,True,False,Anthony Valencia,100.0,Enner Valencia,73.3
+Jeremy Arévalo,Ecuador,FWD,True,False,Jeremy Arévalo,100.0,Jeremy Sarmiento,73.3
+Gonzalo Valle,Ecuador,GK,False,True,Gonzalo Plata,69.2,Gonzalo Valle,100.0
+Marwan Attia,Egypt,MID,False,True,,,Marwan Attia,100.0
+Zizo,Egypt,MID,False,False,Ahmed Hegazi,60.0,,
+Hamdi Fathy,Egypt,MID,False,False,,,Hamdy Fathy,90.9
+Emam Ashour,Egypt,MID,False,True,,,Emam Ashour,100.0
+Mahmoud Saber,Egypt,MID,False,True,,,Mahmoud Saber,100.0
+Mohamed Abdelmonem,Egypt,DEF,False,True,Mohamed Salah,66.5,Mohamed Abdelmonem,100.0
+Ahmed Fatouh,Egypt,DEF,False,False,,,Ahmed Aboul-Fotouh,85.5
+Mohamed Hany,Egypt,DEF,False,True,Mohamed Salah,72.0,Mohamed Hany,100.0
+Ramy Rabia,Egypt,DEF,False,True,,,Ramy Rabia,100.0
+Hossam Abdelmaguid,Egypt,DEF,False,False,Sam Morsy,61.1,Hossam Abdelmegeed,83.3
+Tarek Alaa,Egypt,DEF,False,False,,,,
+Yasser Ibrahim,Egypt,DEF,False,True,Mohamed Yasser,61.1,Yasser Ibrahim,100.0
+Trezeguet,Egypt,FWD,False,True,,,Trézéguet,100.0
+Haissem Hassan,Egypt,FWD,True,False,Haissem Hassan,100.0,,
+Mohamed El Shenawy,Egypt,GK,False,False,Mohamed Salah,66.5,Mohamed El-Shenawy,94.4
+El Mahdy Soliman,Egypt,GK,False,False,,,,
+Mostafa Shobeir,Egypt,GK,False,False,Mostafa Mohamed,66.7,Mostafa Shoubir,93.3
+Mohamed Alaa,Egypt,GK,False,False,Mohamed Salah,88.0,Mohamed Salah,88.0
+Mohanad Lasheen,Egypt,MID,False,True,Mohamed Salah,64.3,Mohanad Lasheen,100.0
+Ibrahim Adel,Egypt,MID,False,True,,,Ibrahim Adel,100.0
+Tino Livramento,England,DEF,False,False,Valentino Livramento,85.7,Valentino Livramento,85.7
+James Trafford,England,GK,True,False,James Trafford,100.0,Marcus Rashford,62.1
+Maxence Lacroix,France,DEF,True,False,Maxence Lacroix,100.0,,
+Brice Samba,France,GK,True,False,Brice Samba,100.0,,
+Lennart Karl,Germany,MID,True,False,Lennart Karl,100.0,,
+Benjamin Asare,Ghana,GK,False,True,Benjamin Nyarko,75.9,Benjamin Asare,100.0
+Woodensky Pierre,Haiti,MID,False,False,Nelson Pierre,62.1,Woobens Pacius,60.0
+Leverton Pierre,Haiti,MID,False,True,Nelson Pierre,71.4,Leverton Pierre,100.0
+Carl Sainté,Haiti,MID,False,False,,,Carl Fred Sainté,95.0
+Ricardo Adé,Haiti,DEF,False,True,,,Ricardo Adé,100.0
+Martin Expérience,Haiti,DEF,False,True,,,Martin Expérience,100.0
+Duke Lacroix,Haiti,DEF,False,True,,,Duke Lacroix,100.0
+Wilson Isidor,Haiti,FWD,True,False,Wilson Isidor,100.0,,
+Duckens Nazon,Haiti,FWD,False,True,,,Duckens Nazon,100.0
+Yassin Fortuné,Haiti,FWD,False,True,,,Yassin Fortune,100.0
+Ruben Providence,Haiti,FWD,False,True,,,Ruben Providence,100.0
+Johny Placide,Haiti,GK,False,True,,,Johny Placide,100.0
+Alexandre Pierre,Haiti,GK,False,True,Nelson Pierre,62.1,Alexandre Pierre,100.0
+Josué Duverger,Haiti,GK,False,True,,,Josué Duverger,100.0
+Amir Mohammad Razzaghinia,IR Iran,MID,False,False,,,Amirmohammad Razaghinia,95.8
+Hadi Habibinejad,IR Iran,MID,False,False,,,,
+Mohammad Ghorbani,IR Iran,MID,False,False,,,Mohammed Ghorbani,94.1
+Ramin Rezaeian,IR Iran,DEF,False,True,,,Ramin Rezaeian,100.0
+Hossein Kanani,IR Iran,DEF,False,False,Majid Hosseini,67.9,Hossein Kanaanizadegan,85.5
+Milad Mohammadi,IR Iran,DEF,False,True,,,Milad Mohammadi,100.0
+Shoja Khalilzadeh,IR Iran,DEF,False,True,,,Shoja' Khalilzadeh,100.0
+Ehsan Hajisafi,IR Iran,DEF,False,False,,,Ehsan Hajsafi,96.3
+Saleh Hardani,IR Iran,DEF,False,True,,,Saleh Hardani,100.0
+Ali Nemati,IR Iran,DEF,False,True,Ali Karimi,60.0,Ali Nemati,100.0
+Aria Yousefi,IR Iran,DEF,False,False,,,Arya Yousefi,91.7
+Danial Eiri,IR Iran,DEF,False,False,,,,
+Saman Ghoddos,IR Iran,FWD,False,True,,,Saman Ghoddos,100.0
+Ali Alipour,IR Iran,FWD,False,True,,,Ali Alipour,100.0
+Dennis Dargahi,IR Iran,FWD,False,False,,,,
+Amirhossein Hosseinzadeh,IR Iran,FWD,False,True,Majid Hosseini,64.8,Amirhossein Hosseinzadeh,100.0
+Amirhossein Mahmoudi,IR Iran,FWD,False,False,Majid Hosseini,61.5,Amirhossein Hosseinzadeh,68.2
+Alireza Beiranvand,IR Iran,GK,False,True,,,Alireza Beiranvand,100.0
+Payam Niazmand,IR Iran,GK,False,True,,,Payam Niazmand,100.0
+Hossein Hosseini,IR Iran,GK,False,True,Majid Hosseini,69.1,Hossein Hosseini,100.0
+Mohammad Khalifeh,IR Iran,GK,False,False,,,Mohammad Karimi,75.0
+Omid Noorafkan,IR Iran,MID,False,True,,,Omid Noorafkan,100.0
+Mehdi Torabi,IR Iran,MID,False,True,Mehdi Taremi,75.0,Mehdi Torabi,100.0
+Saeid Ezatolahi,IR Iran,MID,False,True,,,Saeid Ezatolahi,100.0
+Mohammad Mohebi,IR Iran,MID,False,False,,,Mohammad Mohebbi,96.8
+Mehdi Ghayedi,IR Iran,MID,False,False,Mehdi Taremi,72.0,Mehdi Ghaedi,96.0
+Zaid Ismael,Iraq,MID,False,False,Zidane Iqbal,60.9,Zidane Iqbal,60.9
+Marko Farji,Iraq,MID,False,True,,,Marko Farji,100.0
+Hasan Abdulkareem,Iraq,MID,False,True,Hayder Abdulkareem,80.0,Hasan Abdulkareem,100.0
+Peter Gwargis,Iraq,MID,False,True,,,Peter Gwargis,100.0
+Kevin Yakob,Iraq,MID,False,True,,,Kevin Yakob,100.0
+Amir Al Ammari,Iraq,MID,False,True,Ali Al Hamadi,74.1,Amir Al Ammari,100.0
+Aimar Sher,Iraq,MID,False,True,,,Aimar Sher,100.0
+Frans Putros,Iraq,DEF,False,False,,,Frans Dhia Putros,95.0
+Rebin Sulaka,Iraq,DEF,False,True,,,Rebin Sulaka,100.0
+Maytham Jabbar,Iraq,DEF,False,False,,,,
+Hussein Ali,Iraq,DEF,False,True,,,Hussein Ali,100.0
+Zaid Tahseen,Iraq,DEF,False,True,,,Zaid Tahseen,100.0
+Munaf Younus,Iraq,DEF,False,False,,,Munaf Yunus,95.7
+Akam Hashim,Iraq,DEF,False,True,Ali Jasim,60.0,Akam Hashim,100.0
+Ahmed Maknzi,Iraq,DEF,False,False,,,Ahmed Basil,69.6
+Aymen Hussein,Iraq,FWD,False,False,,,Ayman Hussein,92.3
+Mohanad Ali,Iraq,FWD,False,False,Ali Al Hamadi,63.3,Mohammed Qasim,64.0
+Youssef Amyn,Iraq,FWD,False,True,,,Youssef Amyn,100.0
+Ali Yousif,Iraq,FWD,False,True,Ali Jasim,63.2,Ali Yousif,100.0
+Karar Nabeel,Iraq,MID,False,False,,,,
+Ahmed Basil,Iraq,GK,False,True,,,Ahmed Basil,100.0
+Fahad Talib,Iraq,GK,False,False,,,,
+Kumel Saadi,Iraq,GK,False,False,,,,
+Keito Nakamura,Japan,MID,False,True,Takumi Nakamura,75.9,Keito Nakamura,100.0
+Keisuke Goto,Japan,FWD,True,False,Keisuke Goto,100.0,Keisuke Ōsako,80.0
+Kento Shiogai,Japan,FWD,True,False,Kento Shiogai,100.0,,
+Tomoki Hayakawa,Japan,GK,True,False,Tomoki Hayakawa,100.0,,
+Yousef Qashi,Jordan,MID,False,False,,,Yousef Abu Al Jazar,85.5
+Ibrahim Sadeh,Jordan,MID,False,True,Ibrahim Sabra,76.9,Ibrahim Sa'deh,100.0
+Mohammad Al Daoud,Jordan,MID,False,False,,,Mohammad Al-Dawud,88.2
+Noor Al Rawabdeh,Jordan,MID,False,True,,,Noor Al Rawabdeh,100.0
+Nizar Al Rashdan,Jordan,MID,False,True,,,Nizar Al Rashdan,100.0
+Yazan Al Arab,Jordan,DEF,False,False,Yazan Al-Arab,92.3,Yazan Al-Arab,92.3
+Abdallah Nasib,Jordan,DEF,False,True,,,Abdallah Nasib,100.0
+Mohannad Abu Taha,Jordan,DEF,False,True,,,Mohannad Abu Taha,100.0
+Mohammad Abu Hasheesh,Jordan,DEF,False,True,,,Mohammad Abu Hasheesh,100.0
+Husam Abu Al Dahab,Jordan,DEF,False,False,,,Husam Abu Dahab,95.0
+Mohammad Taha,Jordan,DEF,False,False,,,Mohammad Abu Hasheesh,85.5
+Ahmad Assaf,Jordan,DEF,False,False,,,Ahmad Ersan,72.7
+Saleem Obaid,Jordan,DEF,False,True,,,Saleem Obaid,100.0
+Mohammad Abu Al Nadi,Jordan,DEF,False,True,,,Mohammad Abu Al Nadi,100.0
+Amer Jamous,Jordan,DEF,False,True,,,Amer Jamous,100.0
+Mohammad Abu Zraiq,Jordan,FWD,False,False,,,Mohammad Aburiziq,85.7
+Mahmoud Al Mardi,Jordan,FWD,False,False,,,Mahmoud Al-Mardi,93.8
+Ali Azaizeh,Jordan,FWD,True,False,Ali Azaizeh,100.0,,
+Odeh Fakhoury,Jordan,FWD,False,False,,,,
+Yazeed  Abulaila,Jordan,GK,False,False,,,Yazeed Abulaila,96.8
+Abdallah Al Fakhouri,Jordan,GK,False,False,,,Abdallah Al Fakhori,97.4
+Park Jin-Seob,Korea Republic,MID,False,False,Park Jinseob,96.0,Park Jinseob,96.0
+Kim Jin-Gyu,Korea Republic,MID,False,False,Kim Jin-kyu,90.9,Kim Jin-kyu,90.9
+Seol Young-Woo,Korea Republic,DEF,False,True,Cho Youngwook,74.1,Seol Young-woo,100.0
+Cho Yu-Min,Korea Republic,DEF,False,False,Choi Jun,66.7,Cho Yumin,94.7
+Kim Moon-Hwan,Korea Republic,DEF,False,False,Kim Moonhwan,96.0,Kim Moonhwan,96.0
+Lee Han-Beom,Korea Republic,DEF,False,False,Rim Lee,85.5,Lee Hanbeom,95.7
+Lee Tae-Seok,Korea Republic,DEF,False,False,Lee Taeseok,95.7,Lee Taeseok,95.7
+Kim Tae-Hyeon,Korea Republic,DEF,False,False,Kim Taehyeon,96.0,Kim Tae-hwan,80.0
+Cho Gue-Sung,Korea Republic,FWD,False,True,Choi Sungbum,66.7,Cho Gue-sung,100.0
+Yang Hyun-Jun,Korea Republic,FWD,False,False,Yang Hyunjun,96.0,Yang Hyunjun,96.0
+Eom Ji-Sung,Korea Republic,FWD,False,False,Eom Jisung,95.2,Eom Jisung,95.2
+Song Bum-Keun,Korea Republic,GK,False,False,Song Bumkeun,96.0,Song Minkyu,66.7
+Jens Castrop,Korea Republic,MID,False,False,Castrop Jens,95.0,,
+Bae Jun-Ho,Korea Republic,MID,False,False,Bae Junho,94.7,Bae Junho,94.7
+Obed Vargas,Mexico,MID,True,False,Obed Vargas,100.0,,
+César Montes,Mexico,DEF,False,True,Cesar Ramos,78.3,César Montes,100.0
+Jesús Angulo,Mexico,DEF,True,False,Jesús Angulo,100.0,Jesús Gallardo,69.2
+Richard Ledezma,Mexico,DEF,False,False,Richy Ledezma,85.7,,
+Everardo López,Mexico,DEF,False,False,Carlos Villanueva López,85.5,,
+Germán Berterame,Mexico,FWD,True,False,Germán Berterame,100.0,,
+Guillermo Martínez,Mexico,FWD,False,False,Guillermo Martínez Ayala,95.0,Guillermo Martínez Ayala,95.0
+Armando González,Mexico,FWD,True,False,Armando González,100.0,Julio José González,63.3
+Guillermo Ochoa,Mexico,GK,False,False,Guillermo Martínez Ayala,85.5,Guillermo Martínez Ayala,85.5
+Carlos Acevedo,Mexico,GK,True,False,Carlos Acevedo,100.0,,
+Raúl Rangel,Mexico,GK,False,False,José Rangel Aguilar,85.5,Luis Ángel Malagón,66.5
+Brian Gutiérrez,Mexico,MID,True,False,Brian Gutiérrez,100.0,,
+Carlos Rodríguez,Mexico,MID,False,False,Charly Rodríguez,87.5,Charly Rodríguez,87.5
+Álvaro Fidalgo,Mexico,MID,True,False,Álvaro Fidalgo,100.0,,
+Samir El Mourabet,Morocco,MID,True,False,Samir El Mourabet,100.0,,
+Ismaël Baouf,Morocco,DEF,False,False,Ismael Bekhoucha,71.4,Ismael Saibari,69.2
+Abdelhamid Aït Boudlal,Morocco,DEF,True,False,Abdelhamid Ait Boudlal,100.0,,
+Gessime Yassine,Morocco,FWD,True,False,Gessime Yassine,100.0,Yassine Bounou,63.3
+Rayane Bounida,Morocco,FWD,True,False,Yassine Bounou,64.3,Yassine Bounou,64.3
+Yassir Zabiri,Morocco,FWD,True,False,Yassir Zabiri,100.0,,
+El Mehdi Al Harrar,Morocco,GK,False,False,Aschraf El Mahdioui,61.6,,
+Kees Smit,Netherlands,MID,True,False,Kees Smit,100.0,,
+Justin Bijlow,Netherlands,GK,True,False,Justin Bijlow,100.0,,
+Callum McCowatt,New Zealand,MID,False,True,,,Callum McCowatt,100.0
+Alex Rufer,New Zealand,MID,False,True,,,Alex Rufer,100.0
+Joe Bell,New Zealand,MID,False,True,,,Joe Bell,100.0
+Ryan Thomas,New Zealand,MID,True,False,Ryan Thomas,100.0,,
+Francis de Vries,New Zealand,DEF,False,True,,,Francis de Vries,100.0
+Tim Payne,New Zealand,DEF,False,True,,,Tim Payne,100.0
+Callan Elliot,New Zealand,DEF,False,False,,,,
+Kosta Barbarouses,New Zealand,FWD,False,True,,,Kosta Barbarouses,100.0
+Ben Waine,New Zealand,FWD,False,True,,,Ben Waine,100.0
+Ben Old,New Zealand,FWD,False,True,,,Ben Old,100.0
+Jesse Randall,New Zealand,FWD,False,False,,,,
+Lachlan Bayliss,New Zealand,MID,False,False,,,,
+Alex Paulsen,New Zealand,GK,False,True,,,Alex Paulsen,100.0
+Michael Woud,New Zealand,GK,False,False,Michael Fitzgerald,85.5,Michael Boxall,70.0
+Patrick Berg,Norway,MID,False,True,,,Patrick Berg,100.0
+Fredrik Bjørkan,Norway,DEF,False,False,Fredrik Oldrup Jensen,85.5,Fredrik André Bjørkan,95.0
+Henrik Falchener,Norway,DEF,False,False,,,,
+Jens Petter Hauge,Norway,MID,False,True,Petter Nosa Dahl,63.3,Jens Petter Hauge,100.0
+Cristian Martínez,Panama,MID,False,True,,,Cristian Martínez,100.0
+Éric Davis,Panama,DEF,False,False,,,Erick Davis,95.2
+César Blackman,Panama,DEF,False,True,,,César Blackman,100.0
+Roderick Miller,Panama,DEF,False,True,,,Roderick Miller,100.0
+Jiovany Ramos,Panama,DEF,False,True,,,Jiovany Ramos,100.0
+Martín Krug,Panama,DEF,False,False,,,,
+Jorge Gutiérrez,Panama,DEF,False,True,,,Jorge Gutiérrez,100.0
+José Fajardo,Panama,FWD,False,True,José Luis Rodríguez,85.5,José Fajardo,100.0
+Cecilio Waterman,Panama,FWD,False,True,,,Cecilio Waterman,100.0
+César Yanis,Panama,FWD,False,True,,,César Yanis,100.0
+Kadir Barría,Panama,FWD,True,False,Kadir Barría,100.0,,
+Luis Mejía,Panama,GK,False,True,José Luis Rodríguez,85.5,Luis Mejía,100.0
+César Samudio,Panama,GK,False,False,,,César Yanis,66.7
+Maurício Magalhães Prado,Paraguay,MID,False,False,Mauricio,90.0,,
+Alejandro Romero,Paraguay,MID,False,False,Juan Romero,74.1,Ángel Romero,64.3
+Lucas Romero,Paraguay,MID,True,False,Juan Romero,78.3,Blas Riveros,66.7
+Alan Benítez,Paraguay,DEF,True,False,Alan Benítez,100.0,,
+Gustavo Velázquez,Paraguay,DEF,False,False,Gustavo Gómez,66.7,Gustavo Velásquez,94.1
+Juan José Cáceres,Paraguay,DEF,False,False,Juan Cáceres,95.0,Juan Cáceres,95.0
+José Canale,Paraguay,DEF,True,False,José Canale,100.0,,
+Gustavo Caballero,Paraguay,FWD,True,False,Gustavo Caballero,100.0,Hernesto Caballero,74.3
+Alexandro Maidana,Paraguay,FWD,False,False,Alex Arce,64.3,Alex Arce,64.3
+Roberto Fernández,Paraguay,GK,True,False,Robert Morales,64.5,Gatito Fernández,72.7
+Gastón Olveira,Paraguay,GK,False,False,,,,
+Gonçalo Guedes,Portugal,FWD,True,False,Gonçalo Guedes,100.0,Gonçalo Ramos,66.7
+Rui Silva,Portugal,GK,True,False,Rui Silva,100.0,Bernardo Silva,85.5
+Ricardo Velho,Portugal,GK,True,False,Ricardo Velho,100.0,,
+Mohammad Al Mannai,Qatar,MID,False,False,,,Mohamed Manai,77.4
+Ayoub Al Oui,Qatar,MID,False,False,,,Al Hashmi Al Hussein,85.5
+Ahmed Fathy,Qatar,MID,False,True,,,Ahmed Fathy,100.0
+Karim Boudiaf,Qatar,MID,False,True,,,Karim Boudiaf,100.0
+Assim Madibo,Qatar,MID,False,True,,,Assim Madibo,100.0
+Mohammed Waad,Qatar,MID,False,True,,,Mohammed Waad,100.0
+Pedro Miguel,Qatar,DEF,False,False,,,,
+Bassam Al Rawi,Qatar,DEF,False,False,,,Bassam Al-Rawi,92.9
+Lucas Mendes,Qatar,DEF,False,True,,,Lucas Mendes,100.0
+Boualem Khoukhi,Qatar,DEF,False,True,,,Boualem Khoukhi,100.0
+Niall Mason,Qatar,DEF,False,False,,,,
+Hashmi Al Hussain,Qatar,DEF,False,False,,,Al Hashmi Al Hussein,89.4
+Issa Laye,Qatar,DEF,False,False,,,,
+Akram Afif,Qatar,FWD,False,True,,,Akram Afif,100.0
+Almoez Ali,Qatar,FWD,False,True,,,Almoez Ali,100.0
+Edmílson Junior,Qatar,FWD,False,True,,,Edmilson Junior,100.0
+Hassan Al Haydos,Qatar,FWD,False,False,,,Hassan Al-Haydos,93.8
+Yusuf Abdurisag,Qatar,FWD,False,True,,,Yusuf Abdurisag,100.0
+Ahmed Al Ganehi,Qatar,FWD,False,True,,,Ahmed Al Ganehi,100.0
+Mubarak Shanan,Qatar,FWD,False,False,,,Tarek Salman,61.5
+Meshaal Barsham,Qatar,GK,False,True,,,Meshaal Barsham,100.0
+Salah Zakaria,Qatar,GK,False,True,,,Salah Zakaria,100.0
+Shehab Ellethy,Qatar,GK,False,False,,,,
+Mahmud Abunada,Qatar,GK,False,False,,,Mahmoud Abunada,96.6
+Abdullah Al Khaibari,Saudi Arabia,MID,False,False,Abdulelah Al Khaibari,97.6,Abdullah Al-Khaibari,95.0
+Abdulelah Al Amri,Saudi Arabia,DEF,False,False,Abdulelah Al-Amri,94.1,Abdulelah Al-Amri,94.1
+Hassan Kadish,Saudi Arabia,DEF,False,False,Hassan Kadesh,92.3,Hassan Kadesh,92.3
+Abdullah Al Hamddan,Saudi Arabia,FWD,False,False,Abdullah Al Hamdan,97.3,Abdullah Al Hamdan,97.3
+Khalid Al Ghannam,Saudi Arabia,FWD,True,False,Khalid Al Ghannam,100.0,Ali Al Hassan,66.7
+Saleh Al Shehri,Saudi Arabia,FWD,False,False,Saleh Al-Shehri,93.3,Saleh Al-Shehri,93.3
+Sultan Mandash,Saudi Arabia,FWD,False,False,Sultan Mendash,92.9,Sultan Al-Ghanam,66.7
+Ahmed Al Kassar,Saudi Arabia,GK,False,False,Ahmed Al-Kassar,93.3,Ahmed Al-Kassar,93.3
+Mohammed Al Owais,Saudi Arabia,GK,False,False,Mohammed Al Yami,84.8,Mohammed Al-Owais,94.1
+Nathan Patterson,Scotland,DEF,True,False,Nathan Patterson,100.0,,
+Scott McKenna,Scotland,DEF,False,True,Scott McTominay,71.4,Scott McKenna,100.0
+Dominic Hyam,Scotland,DEF,True,False,Dominic Hyam,100.0,,
+Findlay Curtis,Scotland,FWD,True,False,Findlay Curtis,100.0,,
+Liam Kelly,Scotland,GK,False,False,Daniel Kelly,63.6,,
+Idrissa Gueye,Senegal,MID,True,False,Idrissa Guèye,100.0,Idrissa Gana Gueye,95.0
+Abdoulaye Seck,Senegal,DEF,False,True,Abdoulaye Faye,78.6,Abdoulaye Seck,100.0
+Bamba Dieng,Senegal,FWD,True,False,Bamba Dieng,100.0,,
+Yehvann Diouf,Senegal,GK,True,False,Yehvann Diouf,100.0,El Hadji Malick Diouf,85.5
+Jayden Adams,South Africa,MID,False,True,,,Jayden Adams,100.0
+Teboho Mokoena,South Africa,MID,False,True,,,Teboho Mokoena,100.0
+Themba Zwane,South Africa,MID,False,True,,,Themba Zwane,100.0
+Thalente Mbatha,South Africa,MID,False,True,,,Thalente Mbatha,100.0
+Tshepang Moremi,South Africa,MID,False,True,,,Tshepang Moremi,100.0
+Yaya Sithole,South Africa,MID,False,False,Sphephelo Sithole,70.0,Sphephelo Sithole,70.0
+Aubrey Modiba,South Africa,DEF,False,True,,,Aubrey Modiba,100.0
+Thabang Matuludi,South Africa,DEF,False,False,,,,
+Khuliso Mudau,South Africa,DEF,False,True,,,Khuliso Mudau,100.0
+Nkosinathi Sibisi,South Africa,DEF,False,True,,,Nkosinathi Sibisi,100.0
+Mbekezeli Mbokazi,South Africa,DEF,False,True,,,Mbekezeli Mbokazi,100.0
+Khulumani Ndamane,South Africa,DEF,False,True,,,Khulumani Ndamane,100.0
+Ime Okon,South Africa,DEF,False,False,,,Teboho Mokoena,61.1
+Samukele Kabini,South Africa,DEF,False,True,,,Samukele Kabini,100.0
+Relebohile Mofokeng,South Africa,FWD,False,True,,,Relebohile Mofokeng,100.0
+Oswin Appollis,South Africa,FWD,False,True,,,Oswin Appollis,100.0
+Evidence Makgopa,South Africa,FWD,False,True,,,Evidence Makgopa,100.0
+Thapelo Maseko,South Africa,FWD,False,False,,,Thapelo Morena,71.4
+Ronwen Williams,South Africa,GK,False,True,,,Ronwen Williams,100.0
+Ricardo Goss,South Africa,GK,False,False,,,,
+Yéremy Pino,Spain,MID,False,False,Yeremi Pino,90.9,Yeremi Pino,90.9
+Víctor Muñoz,Spain,FWD,True,False,Víctor Muñoz,100.0,Isco,67.5
+Joan García,Spain,GK,True,False,Joan García,100.0,Aleix García,69.6
+Elliot Stroud,Sweden,MID,False,False,,,,
+Taha Ali,Sweden,MID,False,False,Seif Ali Hindi,85.5,,
+Eric Smith,Sweden,MID,True,False,Eric Smith,100.0,,
+Kristoffer Nordfeldt,Sweden,GK,False,True,Kristoffer Peterson,66.7,Kristoffer Nordfeldt,100.0
+Ardon Jashari,Switzerland,MID,True,False,Ardon Jashari,100.0,Xherdan Shaqiri,64.3
+Marvin Keller,Switzerland,GK,True,False,Marvin Keller,100.0,,
+Rani Khedira,Tunisia,MID,True,False,Rani Khedira,100.0,,
+Moutaz Neffati,Tunisia,DEF,False,True,,,Moutaz Neffati,100.0
+Omar Rekik,Tunisia,DEF,False,False,,,,
+Adem Arous,Tunisia,DEF,False,False,Adam Arous,90.0,,
+Mohamed Amine Ben Hmida,Tunisia,DEF,False,False,Amine Cherni,85.5,Firas Ben Arbi,85.5
+Raed Chikhaoui,Tunisia,DEF,False,False,,,,
+Firas Chaouat,Tunisia,FWD,False,True,,,Firas Chaouat,100.0
+Hazem Mastouri,Tunisia,FWD,False,True,,,Hazem Mastouri,100.0
+Rayan Elloumi,Tunisia,FWD,True,False,Rayan Elloumi,100.0,,
+Khalil Ayari,Tunisia,FWD,False,False,Ali Abdi,60.0,Ali Abdi,60.0
+Abdelmouhib Chamakh,Tunisia,GK,False,False,,,,
+Aymen Dahmen,Tunisia,GK,False,True,,,Aymen Dahmen,100.0
+Sabri Ben Hessen,Tunisia,GK,False,False,,,Mohamed Ali Ben Romdhane,85.5
+Irfan Can Kahveci,Türkiye,MID,False,False,İrfan Kahveci,95.0,İrfan Kahveci,95.0
+Ahmetcan Kaplan,Türkiye,DEF,True,False,Ahmetcan Kaplan,100.0,Kaan Ayhan,63.0
+Muhammed Sengezer,Türkiye,GK,True,False,Muhammed Şengezer,100.0,,
+Pablo Alcoba,Uruguay,MID,False,False,Pablo Javier García,85.5,,
+Juan Manuel Sanabria,Uruguay,MID,True,False,Juan Manuel Sanabria,100.0,Manuel Ugarte,85.5
+Luciano González,Uruguay,MID,False,False,Juan González,82.8,Luciano Rodríguez,66.7
+José Rodríguez,Uruguay,DEF,False,False,José Luis Rodríguez Bebanz,85.5,José Luis Rodríguez Bebanz,85.5
+Brian Barboza,Uruguay,DEF,False,False,Adrián Balboa,76.9,Brian Rodríguez,64.3
+Benjamín García,Uruguay,DEF,False,False,Pablo Javier García,64.7,,
+Facundo Martínez,Uruguay,FWD,False,False,Enzo Martínez,75.9,Emiliano Martínez,72.7
+Agustín Álvarez,Uruguay,FWD,False,True,Gastón Álvarez,82.8,Agustín Álvarez,100.0
+Fernando Muslera,Uruguay,GK,True,False,Fernando Muslera,100.0,,
+Cristian Roldan,USA,MID,True,False,Cristian Roldan,100.0,Christian Pulisic,62.5
+Tanner Tessmann,USA,MID,True,False,Tanner Tessmann,100.0,,
+Aidan Morris,USA,MID,True,False,Aidan Morris,100.0,,
+Auston Trusty,USA,DEF,True,False,Auston Trusty,100.0,,
+Patrick Schulte,USA,GK,True,False,Patrick Schulte,100.0,Patrick Agyemang,60.5
+Chris Brady,USA,GK,True,False,Chris Brady,100.0,Chris Richards,72.0
+Abdulla Abdullaev,Uzbekistan,MID,False,False,,,Abdulla Abdullayev,97.1
+Sherzod Esanov,Uzbekistan,MID,False,False,,,Sherzod Nasrullayev,66.7
+Jasurbek Jaloliddinov,Uzbekistan,MID,False,False,,,Jaloliddin Masharipov,63.3
+Ruslanbek Jiyanov,Uzbekistan,MID,False,True,,,Ruslanbek Jiyanov,100.0
+Akmal Mozgovoy,Uzbekistan,MID,False,True,,,Akmal Mozgovoy,100.0
+Otabek Shukurov,Uzbekistan,MID,False,True,,,Otabek Shukurov,100.0
+Umarali Rakhmonaliev,Uzbekistan,MID,False,False,,,,
+Dostonbek Khamdamov,Uzbekistan,MID,False,False,,,,
+Aziz G'aniev,Uzbekistan,MID,False,False,,,Aziz Gʻaniyev,95.7
+Odiljon Hamrobekov,Uzbekistan,MID,False,False,,,Odiljon Xamrobekov,94.4
+Oston Urunov,Uzbekistan,MID,False,True,,,Oston Urunov,100.0
+Jamshid Iskanderov,Uzbekistan,MID,False,True,,,Jamshid Iskanderov,100.0
+Jaloliddin Masharipov,Uzbekistan,MID,False,True,,,Jaloliddin Masharipov,100.0
+Abbosbek Fayzullaev,Uzbekistan,MID,False,False,Abbosbek Fayzullayev,97.4,Abbosbek Fayzullayev,97.4
+Rustam Ashurmatov,Uzbekistan,DEF,False,True,,,Rustam Ashurmatov,100.0
+Sherzod Nasrullaev,Uzbekistan,DEF,False,False,,,Sherzod Nasrullayev,97.3
+Farrukh Sayfiev,Uzbekistan,DEF,False,True,,,Farrukh Sayfiev,100.0
+Khojiakbar Alijonov,Uzbekistan,DEF,False,False,,,Xojiakbar Alijonov,91.9
+Umar Eshmurodov,Uzbekistan,DEF,False,True,Eldor Shomurodov,71.0,Umar Eshmurodov,100.0
+Avazbek O'lmasaliev,Uzbekistan,DEF,False,False,,,,
+Bekhruz Karimov,Uzbekistan,DEF,False,False,,,Otabek Shukurov,60.0
+Jakhongir Urozov,Uzbekistan,DEF,False,False,,,,
+Igor Sergeev,Uzbekistan,FWD,False,True,,,Igor Sergeev,100.0
+Sherzod Temirov,Uzbekistan,FWD,False,False,,,Sherzod Nasrullayev,60.5
+Azizbek Amanov,Uzbekistan,FWD,False,False,,,Azizbek Amonov,92.9
+Abduvokhid Ne'matov,Uzbekistan,GK,False,False,,,,
+Utkir Yusupov,Uzbekistan,GK,False,True,,,Utkir Yusupov,100.0
+Botirali Ergashev,Uzbekistan,GK,False,False,,,,
+Facundo Cambeses,Argentina,GK,True,False,Facundo Cambeses,100.0,Facundo Medina,66.7
+Walter Benítez,Argentina,GK,True,False,Walter Benítez,100.0,,
+Santiago Beltrán,Argentina,GK,False,False,Santiago Vera,82.8,,
+Zaid Romero,Argentina,DEF,True,False,Zaid Romero,100.0,Cristian Romero,67.1
+Lautaro Di Lollo,Argentina,DEF,True,False,Lautaro Di Lollo,100.0,,
+Kevin Mac Allister,Argentina,DEF,True,False,Kevin Mac Allister,100.0,Alexis Mac Allister,81.1
+Emiliano Buendía,Argentina,MID,True,False,Emi Buendía,100.0,,
+Aníbal Moreno,Argentina,MID,True,False,Aníbal Moreno,100.0,,
+Equi Fernández,Argentina,MID,False,False,Ezequiél Fernández,87.5,Enzo Fernández,78.6
+Alan Varela,Argentina,MID,True,False,Alan Varela,100.0,Julián Álvarez,64.0
+Tomás Aranda,Argentina,MID,False,False,Tomás Lecanda,80.0,,
+Nicolás Domínguez,Argentina,MID,True,False,Nicolás Domínguez,100.0,Nicolás Paz,85.5
+Claudio Echeverri,Argentina,MID,True,False,Claudio Echeverri,100.0,,
+Matías Soulé,Argentina,MID,True,False,Matìas Soulé,100.0,,
+Nicolás Capaldo,Argentina,MID,True,False,Nicolás Capaldo,100.0,Nicolás Paz,76.9
+Milton Delgado,Argentina,MID,True,False,Milton Delgado,100.0,,
+Mateo Pellegrino,Argentina,FWD,True,False,Mateo Pellegrino,100.0,,
+Santiago Castro,Argentina,FWD,True,False,Santiago Castro,100.0,,
+Dennis Hadzikadunic,Bosnia and Herzegovina,DEF,False,True,Denis Huseinbasic,61.1,Dennis Hadzikadunic,100.0
+Ermin Mahmic,Bosnia and Herzegovina,MID,True,False,Din Ramić,66.7,Ermin Bičakčić,69.2
+Weverton,Brazil,GK,True,False,Wéverton,100.0,Éderson,66.7
+Juan Portilla,Colombia,MID,False,False,Juan Camilo Portilla,85.5,Juan Camilo Portilla,85.5
+Alexandr Sojka,Czechia,MID,True,False,Alexandr Sojka,100.0,Alex Král,64.3
+Hugo Sochurek,Czechia,MID,True,False,Hugo Sochůrek,100.0,,
+Christophe Kabongo,Czechia,FWD,True,False,Christophe Kabongo,100.0,,
+Robin Risser,France,GK,True,False,Robin Risser,100.0,,
+Paul Reverson,Ghana,GK,False,False,,,,
+Solomon Agbasi,Ghana,GK,False,False,,,,
+Augustine Boakye,Ghana,MID,False,False,,,,
+Yuto Nagatomo,Japan,DEF,True,False,Yuto Nagatomo,100.0,Yuta Nakayama,61.5
+Antonio Rodríguez,Mexico,GK,False,False,José Antonio Rodríguez,95.0,Charly Rodríguez,68.4
+Carlos Moreno,Mexico,GK,True,False,Carlos Moreno,100.0,,
+Álex Padilla,Mexico,GK,True,False,Yael Padilla,83.3,,
+Alejandro Gómez,Mexico,DEF,True,False,Alejandro Gómez,100.0,,
+Ramón Juárez,Mexico,DEF,True,False,Ramón Juárez,100.0,Guillermo Martínez Ayala,60.0
+Bryan González,Mexico,DEF,True,False,Bryan González,100.0,Julio José González,69.1
+Víctor Guzmán,Mexico,DEF,True,False,Víctor Guzmán,100.0,,
+Jordán Carrillo,Mexico,MID,True,False,Jordan Carrillo,100.0,Jordi Cortizo,64.3
+Diego Lainez,Mexico,MID,True,False,Diego Lainez,100.0,,
+Jesús Angulo,Mexico,MID,True,False,Jesús Angulo,100.0,Jesús Gallardo,69.2
+Luis Chávez,Mexico,MID,False,True,Luis Ángel Malagón,85.5,Luis Chávez,100.0
+Elías Montiel,Mexico,MID,True,False,Elias Montiel,100.0,César Montes,64.0
+Kevin Castañeda,Mexico,MID,True,False,Kevin Castañeda,100.0,,
+Alexis Gutiérrez,Mexico,MID,True,False,Alexis Gutiérrez,100.0,Alexis Vega,67.1
+Jeremy Márquez,Mexico,MID,True,False,Jeremy Márquez,100.0,,
+Alexéi Domínguez,Mexico,FWD,True,False,Alexei Dominguez,100.0,,
+Efraín Álvarez,Mexico,MID,True,False,Efrain Alvarez,100.0,Edson Álvarez,74.1
+Jorge Ruvalcaba,Mexico,FWD,True,False,Jorge Ruvalcaba,100.0,,
+Nando Pijnaker,New Zealand,DEF,False,True,,,Nando Pijnaker,100.0
+Tommy Smith,New Zealand,DEF,False,False,,,,
+Matthew Garbett,New Zealand,FWD,False,False,,,Matt Garbett,88.9
+Sarpreet Singh,New Zealand,MID,False,True,,,Sarpreet Singh,100.0
+Juan Espínola,Paraguay,GK,True,False,Juan Espínola,100.0,Carlos González Espínola,85.5
+Santiago Rojas,Paraguay,GK,False,False,Matías Rojas,76.9,Matías Rojas,76.9
+Alcides Benítez,Paraguay,DEF,False,False,Alan Benítez,74.1,,
+Alan Núñez,Paraguay,DEF,True,False,Alan Núñez,100.0,,
+Saúl Salcedo,Paraguay,DEF,True,False,Saúl Salcedo,100.0,,
+Diego León,Paraguay,DEF,False,False,Diego Gómez,66.7,Diego Gómez,66.7
+Tarek Salman,Qatar,DEF,False,True,,,Tarek Salman,100.0
+Rayyan Al Ali,Qatar,DEF,False,False,,,Al-Mahdi Ali Mukhtar,85.5
+Homam El Amin,Qatar,DEF,False,False,,,Homam Ahmed,71.2
+Sultan Al Brake,Qatar,DEF,False,False,,,Sultan Al-Brake,93.3
+Abdulaziz Hatem,Qatar,MID,False,True,,,Abdulaziz Hatem,100.0
+Jassem Gaber,Qatar,MID,False,True,,,Jassem Gaber,100.0
+Ahmed Alaa,Qatar,FWD,False,False,,,Ahmed Alaaeldin,90.0
+Mohammed Muntari,Qatar,FWD,False,True,,,Mohammed Muntari,100.0
+Sebastián Soria,Qatar,FWD,False,True,,,Sebastián Soria,100.0
+Tahsin Jamshid,Qatar,FWD,False,False,,,Tahsin Mohammed,69.0
+Ken Sema,Sweden,MID,False,True,Kenan Bilalovic,60.0,Ken Sema,100.0
+Alexander Bernhardsson,Sweden,FWD,False,True,Alexander Isak,85.5,Alexander Bernhardsson,100.0
+Mike Penders,Belgium,GK,True,False,Mike Penders,100.0,,
+Matias Fernandez-Pardo,Belgium,FWD,True,False,Matias Fernandez-Pardo,100.0,,
+Stopira,Cabo Verde,DEF,False,True,,,Stopira,100.0
+Gilson Benchimol,Cabo Verde,MID,False,False,,,,
+Ange-Yoan Bonny,Côte d'Ivoire,FWD,True,False,Yohan Boli,63.0,,
+Dominik Kotarski,Croatia,GK,False,True,Dominik Prpić,69.0,Dominik Kotarski,100.0
+Keeto Thermoncy,Haiti,DEF,False,True,,,Keeto Thermoncy,100.0
+Dominique Simon,Haiti,MID,True,False,Dominique Simon,100.0,,
+Lenny Joseph,Haiti,FWD,False,False,,,Belmar Joseph,64.0
+Nour Bani Ateyah,Jordan,GK,False,False,,,,
+Ahmad Al Juaidi,Jordan,GK,False,False,,,Adham Al Quraishi,68.8
+Ehsan Haddad,Jordan,DEF,False,False,,,Ihsan Haddad,91.7
+Saed Al Rosan,Jordan,DEF,False,True,,,Saed Al Rosan,100.0
+Anas Badawi,Jordan,DEF,False,False,,,,
+Raja'ei Ayed,Jordan,MID,False,True,,,Rajaei Ayed,100.0
+Ali Olwan,Jordan,FWD,False,True,,,Ali Olwan,100.0
+Lee Gi-Hyuk,Korea Republic,DEF,False,False,Lee Gihyuk,95.2,Lee Hyunju,66.7
+Elias Achouri,Tunisia,MID,False,True,Elias Saad,63.3,Elias Achouri,100.0
+Gédéon Kalulu,Congo DR,DEF,False,True,,,Gedeon Kalulu,100.0
+Deveron Fonville,Curaçao,DEF,True,False,Deveron Fonville,100.0,,
+Jürgen Locadia,Curaçao,FWD,False,True,,,Jürgen Locadia,100.0
+Roozbeh Cheshmi,IR Iran,MID,False,True,,,Roozbeh Cheshmi,100.0
+Kasra Taheri,IR Iran,FWD,False,False,,,,
+Jalal Hassan,Iraq,GK,False,True,Ali Al Hamadi,64.0,Jalal Hassan,100.0
+Mustafa Saadoon,Iraq,DEF,False,True,,,Mustafa Saadoon,100.0
+Ahmed Yahya,Iraq,DEF,False,True,,,Ahmed Yahya,100.0
+Dario Naamo,Iraq,DEF,True,False,,,,
+Jussef Nasrawe,Iraq,MID,True,False,,,,
+Ahmed Qasem,Iraq,MID,True,False,,,Ahmed Yasin Ghani,85.5
+Fahad Younis,Qatar,GK,False,False,,,,
+Ross Stewart,Scotland,FWD,True,False,Ross Stewart,100.0,,
+Cedric Itten,Switzerland,FWD,False,True,Cedric Zesiger,69.2,Cedric Itten,100.0
+Ersin Destanoglu,Türkiye,GK,True,False,Ersin Destanoğlu,100.0,Ferdi Kadioglu,60.0
+Aral Simsir,Türkiye,MID,False,False,,,,
+Demir Ege Tiknaz,Türkiye,MID,True,False,Demir Ege Tıknaz,100.0,,
+Karim Hafez,Egypt,DEF,False,False,Koka,60.0,,
+Mostafa Zico,Egypt,MID,False,False,Mostafa Mohamed,70.0,Mostafa Fathi,72.0
+Aqtay Abdallah,Egypt,FWD,False,False,,,,
+Hamza Abdelkarim,Egypt,FWD,False,False,,,,
+Maya Yoshida,Japan,DEF,True,False,Maya Yoshida,100.0,,
+Ronaldo Dejesús,Paraguay,DEF,True,False,Ronaldo Dejesús,100.0,Ronaldo Martínez,60.5
+Mateo Gamarra,Paraguay,DEF,True,False,Mateo Gamarra,100.0,Matías Galarza,66.7
+Robert Piris Da Motta,Paraguay,MID,False,False,Robert Morales,85.5,Iván Piris,85.5
+Óscar Romero,Paraguay,MID,True,False,Óscar Romero,100.0,Óscar Cardozo,72.0
+Hugo Cuenca,Paraguay,MID,False,True,,,Hugo Cuenca,100.0
+Álvaro Campuzano,Paraguay,MID,False,True,,,Álvaro Campuzano,100.0
+Rodney Redes,Paraguay,MID,False,False,,,,
+Enso González,Paraguay,MID,False,False,Carlos González Espínola,85.5,Carlos González Espínola,85.5
+Diego González,Paraguay,MID,True,False,Diego González,100.0,Carlos González Espínola,85.5
+Munir El Kajoui,Morocco,GK,False,False,Neil El Aynaoui,66.7,Neil El Aynaoui,66.7
+Ibrahim Gomis,Morocco,GK,False,False,Ibrahim Salah,69.2,Brahim Díaz,66.7
+Yanis Benchaouch,Morocco,GK,False,False,Yanis Begraoui,73.3,,
+Youssef Belammari,Morocco,DEF,False,True,Youssef El-Arabi,78.8,Youssef Belammari,100.0
+Soufiane Bouftini,Morocco,DEF,False,False,Sofiane Boufal,77.4,Souffian El Karouani,70.3
+Mohamed Chibi,Morocco,DEF,False,True,Mohamed El Hankouri,66.5,Mohamed Chibi,100.0
+Sofiane Boufal,Morocco,MID,True,False,Sofiane Boufal,100.0,Souffian El Karouani,64.7
+Imrân Louza,Morocco,MID,True,False,Imran Louza,100.0,,
+Soufiane El-Faouzi,Morocco,MID,False,False,Souffian El Karouani,73.7,Souffian El Karouani,73.7
+Ayyoub Bouaddi,Morocco,MID,True,False,Ayoub Jabbari,66.7,,
+Marwane Saadane,Morocco,MID,True,False,Marwane Saâdane,100.0,Maroan Sannadi,69.0
+Ayoube Amaimouni-Echghouyab,Morocco,FWD,True,False,Ayoube Amaimouni Echghouyab,100.0,Ayoub El Kaabi,72.0
+Soufiane Benjdida,Morocco,FWD,False,False,Sofiane Diop,69.0,Soufiane Rahimi,66.1
+Othmane Maamma,Morocco,MID,True,False,Othmane Maamma,100.0,,
+Tawfik Bentayeb,Morocco,FWD,False,False,,,,
+Yanis Begraoui,Morocco,MID,True,False,Yanis Begraoui,100.0,,
+Sander Tangvik,Norway,GK,True,False,Sander Tangvik,100.0,Sander Berge,63.3
+Fredrik Aursnes,Norway,MID,True,False,Fredrik Aursnes,100.0,Fredrik André Bjørkan,62.9
+Lorenzo Melgarejo,Paraguay,MID,False,False,,,,
+Rubén Lezcano,Paraguay,MID,True,False,Rubén Lezcano,100.0,,
+Carlos González,Paraguay,FWD,False,False,Carlos González Espínola,90.0,Carlos González Espínola,90.0
+Adrián Alcaraz,Paraguay,FWD,False,False,Matías Galarza,64.3,Matías Galarza,64.3
+Robert Morales,Paraguay,FWD,True,False,Robert Morales,100.0,Robert Rojas,76.9
+Moustapha Mbow,Senegal,DEF,True,False,Moustapha Mbow,100.0,,
+Bara Sapoko Ndiaye,Senegal,MID,True,False,Bara Ndiaye,100.0,Cherif Ndiaye,67.1
+Brandon Petersen,South Africa,GK,False,False,,,,
+Sipho Chaine,South Africa,GK,False,False,,,Sipho Mbule,60.9
+Thabiso Monyane,South Africa,DEF,False,True,,,Thabiso Monyane,100.0
+Olwethu Makhanya,South Africa,DEF,True,False,Olwethu Makhanya,100.0,,
+Bradley Cross,South Africa,DEF,False,False,,,,
+Thapelo Morena,South Africa,DEF,False,True,,,Thapelo Morena,100.0
+Lebohang Maboe,South Africa,MID,False,False,,,,
+Kamogelo Sebelebele,South Africa,MID,False,True,,,Kamogelo Sebelebele,100.0
+Patrick Maswanganyi,South Africa,MID,False,False,,,,
+Brooklyn Poggenpoel,South Africa,MID,False,False,,,,
+Iqraam Rayners,South Africa,MID,False,True,,,Iqraam Rayners,100.0
+Amine Sbaï,Morocco,FWD,False,False,Amine El Ouazzani,85.5,Amine Adli,80.0
+Cristhian Loor,Ecuador,GK,False,False,,,Cristian Ramírez,66.7
+Deinner Ordóñez,Ecuador,DEF,False,False,Joel Ordóñez,70.0,Joel Ordóñez,70.0
+Fricio Caicedo,Ecuador,DEF,False,False,Félix Torres Caicedo,64.7,Beder Caicedo,66.7
+Ederson Castillo,Ecuador,MID,False,False,Anderson Julio,60.0,Denil Castillo,80.0
+Darwin Guagua,Ecuador,MID,False,True,,,Darwin Guagua,100.0
+Malcom DaCosta,Ecuador,MID,False,False,,,,
+Bruno Caicedo,Ecuador,MID,False,False,Félix Torres Caicedo,85.5,Félix Torres Caicedo,85.5
+Luis Fragozo,Ecuador,MID,False,False,,,,
+Abdulquddus Atiah,Saudi Arabia,GK,True,False,Abdulquddus Atiah,100.0,,
+Zakaria Hawsawi,Saudi Arabia,DEF,True,False,Zakaria Al Hosawi,100.0,Ali Al Asmari,63.3
+Jehad Thikri,Saudi Arabia,DEF,False,False,Jehad Thakri,91.7,Jehad Thakri,91.7
+Moteb Al Harbi,Saudi Arabia,DEF,False,False,Moteb Al-Harbi,92.9,Moteb Al-Harbi,92.9
+Salem Al Dawsari,Saudi Arabia,MID,False,False,Salem Al-Dawsari,93.8,Salem Al-Dawsari,93.8
+Alaa Al Hejji,Saudi Arabia,MID,True,False,Alaa Al Hejji,100.0,,
+Nasser Al Dawsari,Saudi Arabia,MID,False,False,Nasser Al-Dawsari,94.1,Nasser Al-Dawsari,94.1
+Mohammed Abu Al Shamat,Saudi Arabia,MID,False,False,Saleh Al Abbas,85.5,Turki Al Ammar,85.5
+Saleh Abu Al Shamat,Saudi Arabia,FWD,False,False,Saleh Waheeb,85.5,Saad Al Mosa,85.5
+Abdullah Al Salem,Saudi Arabia,FWD,False,False,Abdulla Al Salem,97.0,Abdulla Al Salem,97.0
+Jamie Knight-Lebel,Canada,DEF,False,True,,,Jamie Knight-Lebel,100.0
+Alfie Jones,Canada,DEF,True,False,Alfie Jones,100.0,,
+Joseph Anang,Ghana,GK,False,False,Joseph Aidoo,66.7,Joseph Paintsil,66.7
+Abdul Baba,Ghana,DEF,False,False,Salis Abdul Samed,85.5,Salis Abdul Samed,85.5
+Marvin Senaya,Ghana,DEF,True,False,Marvin Senaya,100.0,,
+Caleb Yirenkyi,Ghana,MID,False,True,Caleb Ekuban,61.5,Caleb Yirenkyi,100.0
+Prince Adu,Ghana,FWD,True,False,Prince Adu Kwabena,100.0,Prince Owusu,85.5
+Abdul Fatawu,Ghana,FWD,False,False,Abdul Fatawu Issahaku,90.0,Abdul Fatawu Issahaku,90.0
+Eric García,Spain,DEF,True,False,Eric García,100.0,Aleix García,78.3
+Marc Pubill,Spain,DEF,True,False,Marc Pubill,100.0,Marc Cucurella,64.0
+Joe Gauci,Australia,GK,False,True,,,Joe Gauci,100.0
+Cameron Devlin,Australia,MID,False,False,Cammy Devlin,76.9,Cammy Devlin,76.9
+Mathew Leckie,Australia,MID,False,True,Mathew Ryan,67.1,Mathew Leckie,100.0
+Mohamed Touré,Australia,FWD,True,False,Mo Touré,85.5,Mo Touré,85.5
+Tete Yengi,Australia,FWD,True,False,Tete Yengi,100.0,Kusini Yengi,63.3
+Brandon Borrello,Australia,FWD,False,True,,,Brandon Borrello,100.0
+Ahmed Tagnaouti,Morocco,GK,False,False,Osame Sahraoui,62.1,,
+Redouane Halhal,Morocco,DEF,True,False,Redouane Halhal,100.0,,
+Issa Diop,Morocco,DEF,True,False,Issa Diop,100.0,,
+Zakaria El Ouahdi,Morocco,DEF,True,False,Zakaria El Ouahdi,100.0,,
+Soufiane Rahimi,Morocco,FWD,False,True,Souffian El Karouani,68.6,Soufiane Rahimi,100.0
+Fidel Escobar,Panama,DEF,False,True,,,Fidel Escobar,100.0
+Edgardo Fariña,Panama,DEF,False,True,Édgar Yoel Bárcenas,66.7,Edgardo Fariña,100.0
+Alberto Quintero,Panama,FWD,False,True,,,Alberto Quintero,100.0
+Azarías Londoño,Panama,FWD,False,True,,,Azarias Londoño,100.0
+Tomás Rodríguez,Panama,FWD,False,True,José Luis Rodríguez,71.2,Tomas Rodriguez,100.0
+Sergiño Dest,USA,DEF,True,False,Sergiño Dest,100.0,,
+Álex Zendejas,USA,MID,True,False,Alejandro Zendejas,100.0,,
+Robin Roefs,Netherlands,GK,True,False,Robin Roefs,100.0,,
+Marten de Roon,Netherlands,MID,True,False,Marten de Roon,100.0,Frenkie de Jong,62.1
+Crysencio Summerville,Netherlands,MID,True,False,Crysencio Summerville,100.0,,
