@@ -126,6 +126,44 @@
       box-shadow: 0 0 8px rgba(251, 191, 36, 0.55);
     }
 
+    /* ── Scouting bonus (player <5% owned, +2pt potential baked into Pts) ── */
+    tbody tr.player-row.scouting-bonus {
+      background: rgba(167, 139, 250, 0.05);
+    }
+    tbody tr.player-row.scouting-bonus:hover {
+      background: rgba(167, 139, 250, 0.10);
+    }
+    .scouting-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #a78bfa;
+      margin-left: 7px;
+      vertical-align: middle;
+      box-shadow: 0 0 8px rgba(167, 139, 250, 0.55);
+    }
+
+    /* ── Legend ── */
+    .legend {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0 0 12px 4px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .legend-item .override-dot,
+    .legend-item .scouting-dot {
+      margin-left: 0;
+    }
+
     /* ── Modal ── */
     .modal-backdrop {
       display: none;
@@ -350,6 +388,10 @@
     </div>
 
     {% if players %}
+    <div class="legend">
+      <span class="legend-item"><span class="scouting-dot"></span> Scouting bonus activated (&lt;5% owned, +2pts if &gt;4pts in match)</span>
+      <span class="legend-item"><span class="override-dot"></span> Manually adjusted goal/assist share</span>
+    </div>
     <div class="card table-wrap">
       <table>
         <thead>
@@ -367,7 +409,7 @@
         <tbody id="players-tbody">
           {% for p in players %}
           <tr
-            class="player-row{% if p.has_override %} overridden{% endif %}"
+            class="player-row{% if p.has_override %} overridden{% endif %}{% if p.has_scouting_bonus %} scouting-bonus{% endif %}"
             onclick="openModal(this)"
             data-id="{{ p.id }}"
             data-name="{{ p.player }}"
@@ -414,7 +456,7 @@
             data-r3-locked-sp-xa="{{ '%.4f' | format(p['3_LockedSpXa']) }}"
             data-has-override="{{ 'true' if p.has_override else 'false' }}"
           >
-            <td class="player-name">{{ p.player }}{% if p.has_override %}<span class="override-dot" title="Manually adjusted"></span>{% endif %}</td>
+            <td class="player-name">{{ p.player }}{% if p.has_override %}<span class="override-dot" title="Manually adjusted"></span>{% endif %}{% if p.has_scouting_bonus %}<span class="scouting-dot" title="Scouting bonus eligible ({{ '%.1f' | format(p['1_PercentSelected']) }}% owned). +2pts factored into projections if player scores >4 in a match."></span>{% endif %}</td>
             <td><span class="pos-badge {{ p.position }}">{{ p.position }}</span></td>
             <td class="team-cell">{{ p.flag }} {{ p.abbr }}</td>
             <td class="price-cell num">£{{ p.price }}m</td>

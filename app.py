@@ -10,6 +10,7 @@ load_dotenv()  # local-only convenience; Railway injects env vars directly
 import build_projections
 import refresh_ownership
 from build_projections import get_default_xmins_map, recompute_teams, build_full_projections
+from scoring import SCOUTING_BONUS_OWNERSHIP_PCT
 
 app = Flask(__name__)
 
@@ -187,6 +188,8 @@ def projections_page():
         proj[col] = proj[col].round(2)
     ov_set = set(overridden_ids_list())
     proj["has_override"] = proj["id"].isin(ov_set)
+    # Scouting bonus eligibility: ownership stays put across rounds, so R1 is representative.
+    proj["has_scouting_bonus"] = proj["1_PercentSelected"].fillna(0) < SCOUTING_BONUS_OWNERSHIP_PCT
     for r in [1, 2, 3]:
         proj[f"{r}_OppDisplay"] = proj[f"{r}_OppAbbr"].apply(
             lambda a: f"{FLAGS.get(a, '')} {a}".strip() if pd.notna(a) else ""
@@ -204,10 +207,12 @@ def projections_page():
         "1_PCleanSheet",  "2_PCleanSheet",  "3_PCleanSheet",
         "1_LockedPenXg",  "2_LockedPenXg",  "3_LockedPenXg",
         "1_LockedSpXa",   "2_LockedSpXa",   "3_LockedSpXa",
+        "1_PercentSelected",
     ]
     players = (
         proj[["id", "player", "position", "price", "team", "abbr", "flag",
-              "1_Pts", "2_Pts", "3_Pts", "avg_pts", "has_override"] + component_cols]
+              "1_Pts", "2_Pts", "3_Pts", "avg_pts", "has_override",
+              "has_scouting_bonus"] + component_cols]
         .sort_values("avg_pts", ascending=False)
         .to_dict(orient="records")
     )
