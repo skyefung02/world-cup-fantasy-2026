@@ -4,7 +4,11 @@ import os
 import io
 import threading
 
+from dotenv import load_dotenv
+load_dotenv()  # local-only convenience; Railway injects env vars directly
+
 import build_projections
+import refresh_ownership
 from build_projections import get_default_xmins_map, recompute_teams, build_full_projections
 
 app = Flask(__name__)
@@ -13,6 +17,9 @@ app = Flask(__name__)
 # "public" → no disk writes, write endpoints disabled (anonymous deploy).
 DEPLOY_MODE = os.environ.get("DEPLOY_MODE", "local")
 IS_PUBLIC = DEPLOY_MODE == "public"
+
+# Token gating the /admin/refresh endpoint. If unset, the endpoint returns 503.
+REFRESH_ADMIN_TOKEN = os.environ.get("REFRESH_ADMIN_TOKEN")
 
 
 @app.context_processor
@@ -431,6 +438,41 @@ def download_csv():
 # Pre-warm the cached base state so the first request doesn't pay the ~110ms cold cost.
 # Runs once at module load (so once per gunicorn worker on Railway, once per local restart).
 build_projections.get_base_state()
+
+
+# ── Hourly ownership refresh (public deploy only) ──
+# Assumes Procfile uses `--workers 1`. With multiple workers each one would
+# start its own scheduler and stomp on the cache file. Revisit if scaling out.
+if IS_PUBLIC:
+    from apscheduler.schedulers.background import BackgroundScheduler
+    from datetime import datetime
+    import atexit
+
+    _scheduler = BackgroundScheduler(daemon=True)
+    _scheduler.add_job(
+        refresh_ownership.refresh_all,
+        trigger="interval",
+        hours=1,
+        id="hourly_refresh",
+        coalesce=True,
+        max_instances=1,
+        next_run_time=datetime.now(),  # fire once at boot, then hourly
+    )
+    _scheduler.start()
+    atexit.register(lambda: _scheduler.shutdown(wait=False))
+
+
+@app.route("/admin/refresh", methods=["POST"])
+def admin_refresh():
+    """Manual trigger for the ownership refresh. Token-gated via REFRESH_ADMIN_TOKEN."""
+    if not REFRESH_ADMIN_TOKEN:
+        return jsonify({"error": "REFRESH_ADMIN_TOKEN not configured on server"}), 503
+    token = request.headers.get("Authorization", "").removeprefix("Bearer ").strip()
+    if token != REFRESH_ADMIN_TOKEN:
+        return jsonify({"error": "unauthorized"}), 401
+    result = refresh_ownership.refresh_all()
+    status = 200 if result.get("status") == "ok" else 500
+    return jsonify(result), status
 
 
 if __name__ == "__main__":
