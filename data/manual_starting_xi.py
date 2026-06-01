@@ -82,7 +82,7 @@ MANUAL_STARTING_XI = {
         "Matheus Cunha",       # CM
         "Raphinha",            # RW
         "Vinicius Júnior",     # ST
-        "Endrick",             # LW
+        "Luiz Henrique",             # LW
     ],
 
     "Morocco": [
@@ -334,7 +334,7 @@ MANUAL_STARTING_XI = {
         "Emiliano Martinez",   # GK
         "Nahuel Molina",       # RB
         "Cristian Romero",     # CB
-        "Nicolas Otamendi",    # CB
+        "Nicolas Otamendi",    # CB  
         "Nicolas Tagliafico",  # LB
         "Enzo Fernandez",      # CM
         "Alexis Mac Allister", # CM
