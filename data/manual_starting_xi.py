@@ -271,7 +271,50 @@ MANUAL_STARTING_XI = {
         "Maximiliano Araújo",  # ST
         "Darwin Nunez",        # LW
     ],
-
+    
+    # ── Group I ────────────────────────────────────────────────────────────────
+    "France": [
+        "Mike Maignan",  # GK
+        "Jules Kounde",       # RB
+        "William Saliba",         # CB
+        "Dayot Upamecano",         # CB
+        "Theo Hernandez",      # LB
+        "Aurélien Tchouaméni",     # CDM
+        "Adrien Rabiot",      # CM
+        "Desire Doue",      # CM
+        "Michael Olise", # RW
+        "Kylian Mbappe",     # ST
+        "Ousmane Dembele",    # LW
+    ],
+    
+    "Senegal": [
+        "Edouard Mendy",  # GK
+        "Krepin Diatta",       # RB
+        "Mamadou Sarr",         # CB
+        "Moussa Niakhate",         # CB
+        "El Hadji Malick Diouf",      # LB
+        "Idrissa Gana Gueye",     # CDM
+        "Lamine Camara",      # CM
+        "Iliman Ndiaye",      # CM
+        "Habib Diarra", # RW
+        "Sadio Mane",     # ST
+        "Nicolas Jackson",    # LW]               
+    ],
+    
+    "Norway": [
+        "Ørjan Nyland",  # GK
+        "Julian Ryerson",       # RB
+        "Kristoffer Ajer",         # CB
+        "Torbjørn Heggem",         # CB
+        "David Møller Wolfe",      # LB
+        "Sander Berge",     # CDM
+        "Morten Thorsby",      # CM
+        "Martin Ødegaard",      # CM
+        "Alexander Sørloth", # RW
+        "Erling Haaland",     # ST
+        "Antonio Nusa",    # LW]               
+    ],
+    
     # ── Group J ────────────────────────────────────────────────────────────────
     "Austria": [
         "Alexander Schlager",  # GK
