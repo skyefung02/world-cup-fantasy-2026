@@ -3,34 +3,22 @@ id,team,role,player
 11,Algeria,penalty,Riyad Mahrez
 10,Algeria,set_piece_assist,Amine Gouiri
 27,Algeria,set_piece_assist,Farès Chaïbi
-26,Algeria,set_piece_assist,Houssem Aouar
 11,Algeria,set_piece_assist,Riyad Mahrez
-39,Argentina,penalty,Julián Alvarez
 1338,Argentina,penalty,Lautaro Martínez
 38,Argentina,penalty,Lionel Messi
-56,Argentina,set_piece_assist,Alexis Mac Allister
 39,Argentina,set_piece_assist,Julián Alvarez
 38,Argentina,set_piece_assist,Lionel Messi
-30,Argentina,set_piece_assist,Nahuel Molina
-51,Argentina,set_piece_assist,Nico Paz
 50,Argentina,set_piece_assist,Rodrigo De Paul
 55,Argentina,set_piece_assist,Thiago Almada
 83,Australia,penalty,Ajdin Hrustic
-69,Australia,penalty,Martin Boyle
 68,Australia,penalty,Nestory Irankunda
-83,Australia,set_piece_assist,Ajdin Hrustic
 82,Australia,set_piece_assist,Awer Mabil
 80,Australia,set_piece_assist,Connor Metcalfe
-69,Australia,set_piece_assist,Martin Boyle
 68,Australia,set_piece_assist,Nestory Irankunda
-112,Austria,penalty,Christoph Baumgartner
 107,Austria,penalty,Marcel Sabitzer
 95,Austria,penalty,Marko Arnautovic
 85,Austria,set_piece_assist,David Alaba
-105,Austria,set_piece_assist,Florian Grillitsch
 107,Austria,set_piece_assist,Marcel Sabitzer
-109,Austria,set_piece_assist,Patrick Wimmer
-110,Austria,set_piece_assist,Paul Wanner
 108,Austria,set_piece_assist,Romano Schmid
 138,Belgium,penalty,Kevin De Bruyne
 124,Belgium,penalty,Romelu Lukaku
@@ -41,7 +29,9 @@ id,team,role,player
 137,Belgium,set_piece_assist,Youri Tielemans
 162,Bosnia and Herzegovina,penalty,Amir Hadziahmetovic
 152,Bosnia and Herzegovina,penalty,Kerim Alajbegovic
-140,Bosnia and Herzegovina,set_piece_assist,Amar Dedic
+147,Bosnia and Herzegovina,penalty, Edin Dzeko
+149,Bosnia and Herzegovina,penalty, Haris Tabakovic
+161,Bosnia and Herzegovina,set_piece_assist,Benjamin Tahirovic
 150,Bosnia and Herzegovina,set_piece_assist,Esmir Bajraktarevic
 160,Bosnia and Herzegovina,set_piece_assist,Ivan Basic
 152,Bosnia and Herzegovina,set_piece_assist,Kerim Alajbegovic
@@ -53,7 +43,6 @@ id,team,role,player
 174,Brazil,set_piece_assist,Matheus Cunha
 1366,Brazil,set_piece_assist,Raphinha
 173,Brazil,set_piece_assist,Vinícius Júnior
-208,Cabo Verde,penalty,Dailon Livramento
 210,Cabo Verde,penalty,Garry Rodrigues
 206,Cabo Verde,penalty,Ryan Mendes
 1531,Cabo Verde,set_piece_assist,Hélio Varela
@@ -61,25 +50,22 @@ id,team,role,player
 219,Cabo Verde,set_piece_assist,Laros Duarte
 206,Cabo Verde,set_piece_assist,Ryan Mendes
 226,Canada,penalty,Jonathan David
-238,Canada,set_piece_assist,Ali Ahmed
-1968,Canada,set_piece_assist,Jacob Shaffelburg
-243,Canada,set_piece_assist,Jonathan Osorio
+227,Canada,penalty,Cyle Larin
 244,Canada,set_piece_assist,Marcelo Flores
 242,Canada,set_piece_assist,Mathieu Choinière
 1967,Canada,set_piece_assist,Stephen Eustaquio
+1961,Canada,set_piece_assist,Alphonso Davies
 270,Colombia,penalty,James Rodríguez
 256,Colombia,penalty,Luis Díaz
 270,Colombia,set_piece_assist,James Rodríguez
 268,Colombia,set_piece_assist,Jaminton Campaz
-269,Colombia,set_piece_assist,Jhon Arias
+267,Colombia,set_piece_assist,Juan Quintero
 283,Congo DR,penalty,Cédric Bakambu
 1557,Congo DR,penalty,Gaël Kakuta
 281,Congo DR,penalty,Yoane Wissa
 273,Congo DR,set_piece_assist,Arthur Masuaku
-288,Congo DR,set_piece_assist,Brian Cipenga
 287,Congo DR,set_piece_assist,Nathanaël Mbuku
 297,Congo DR,set_piece_assist,Théo Bongonda
-281,Congo DR,set_piece_assist,Yoane Wissa
 333,Croatia,penalty,Andrej Kramaric
 332,Croatia,penalty,Ante Budimir
 334,Croatia,penalty,Ivan Perisic
@@ -88,10 +74,8 @@ id,team,role,player
 346,Croatia,set_piece_assist,Luka Modric
 347,Croatia,set_piece_assist,Mario Pasalic
 348,Croatia,set_piece_assist,Martin Baturina
-343,Croatia,set_piece_assist,Nikola Moro
 352,Curaçao,penalty,Leandro Bacuna
-362,Curaçao,set_piece_assist,Brandley Kuwas
-366,Curaçao,set_piece_assist,Gervane Kastaneer
+372,Curaçao,penalty,Juninho Bacuna
 367,Curaçao,set_piece_assist,Jeremy Antonisse
 372,Curaçao,set_piece_assist,Juninho Bacuna
 352,Curaçao,set_piece_assist,Leandro Bacuna
@@ -101,11 +85,10 @@ id,team,role,player
 376,Czechia,set_piece_assist,David Jurásek
 396,Czechia,set_piece_assist,Lukás Provod
 380,Czechia,set_piece_assist,Vladimír Coufal
-312,Côte d'Ivoire,penalty,Evann Guessand
+1533,Côte d'Ivoire,penalty,Oumar Diakite
 322,Côte d'Ivoire,penalty,Franck Kessie
 321,Côte d'Ivoire,penalty,Ibrahim Sangaré
 310,Côte d'Ivoire,set_piece_assist,Amad Diallo
-322,Côte d'Ivoire,set_piece_assist,Franck Kessie
 308,Côte d'Ivoire,set_piece_assist,Nicolas Pépé
 311,Côte d'Ivoire,set_piece_assist,Simon Adingra
 307,Côte d'Ivoire,set_piece_assist,Yan Diomande
@@ -113,21 +96,18 @@ id,team,role,player
 417,Ecuador,penalty,Jordy Caicedo
 427,Ecuador,penalty,Kendry Páez
 413,Ecuador,set_piece_assist,Gonzalo Plata
-414,Ecuador,set_piece_assist,John Yeboah
 399,Ecuador,set_piece_assist,Jordy Alcívar
 427,Ecuador,set_piece_assist,Kendry Páez
 430,Ecuador,set_piece_assist,Moisés Caicedo
-1947,Ecuador,set_piece_assist,Nilson Angulo
-429,Ecuador,set_piece_assist,Pedro Vite
-400,Ecuador,set_piece_assist,Pervis Estupiñán
 1597,Egypt,penalty,Mohamed Salah
 445,Egypt,penalty,Omar Marmoush
-441,Egypt,set_piece_assist,Hossam Abdelmaguid
+447,Egypt,set_piece_assist,Trezeguet
 1597,Egypt,set_piece_assist,Mohamed Salah
 445,Egypt,set_piece_assist,Omar Marmoush
 433,Egypt,set_piece_assist,Zizo
 468,England,penalty,Harry Kane
 471,England,penalty,Marcus Rashford
+1712,England,penalty,Ivan Toney
 474,England,set_piece_assist,Anthony Gordon
 469,England,set_piece_assist,Bukayo Saka
 488,England,set_piece_assist,Declan Rice
@@ -135,11 +115,9 @@ id,team,role,player
 1709,England,set_piece_assist,Reece James
 500,France,penalty,Kylian Mbappé
 501,France,penalty,Ousmane Dembélé
-505,France,set_piece_assist,Désiré Doué
 500,France,set_piece_assist,Kylian Mbappé
 514,France,set_piece_assist,Maghnes Akliouche
 517,France,set_piece_assist,Michael Olise
-501,France,set_piece_assist,Ousmane Dembélé
 516,France,set_piece_assist,Rayan Cherki
 542,Germany,penalty,Joshua Kimmich
 528,Germany,penalty,Kai Havertz
@@ -147,35 +125,32 @@ id,team,role,player
 521,Germany,set_piece_assist,David Raum
 543,Germany,set_piece_assist,Florian Wirtz
 542,Germany,set_piece_assist,Joshua Kimmich
-528,Germany,set_piece_assist,Kai Havertz
 538,Germany,set_piece_assist,Pascal Groß
 1986,Ghana,penalty,Jordan Ayew
-1988,Ghana,set_piece_assist,Ernest Nuamah
+1991,Ghana,set_piece_assist,Christopher Bonsu Baah
 1986,Ghana,set_piece_assist,Jordan Ayew
 1994,Ghana,set_piece_assist,Kamaldeen Sulemana
 583,Haiti,penalty,Duckens Nazon
 582,Haiti,penalty,Wilson Isidor
 571,Haiti,set_piece_assist,Jean-Ricner Bellegarde
-589,Haiti,set_piece_assist,Josué Casimir
-570,Haiti,set_piece_assist,Leverton Pierre
 586,Haiti,set_piece_assist,Louicius Deedson
 590,Haiti,set_piece_assist,Ruben Providence
 616,IR Iran,penalty,Amirhossein Hosseinzadeh
 610,IR Iran,penalty,Mehdi Taremi
-616,IR Iran,set_piece_assist,Amirhossein Hosseinzadeh
 629,IR Iran,set_piece_assist,Mehdi Ghayedi
 624,IR Iran,set_piece_assist,Omid Noorafkan
 612,IR Iran,set_piece_assist,Saman Ghoddos
 646,Iraq,penalty,Aymen Hussein
+635,Iraq,penalty,Amir Al Ammari
+649,Iraq,set_piece_assist,Ali Al Hamadi
 648,Iraq,set_piece_assist,Ali Jasim
-632,Iraq,set_piece_assist,Hasan Abdulkareem
+635,Iraq,set_piece_assist,Amir Al Ammari
 672,Japan,penalty,Ayase Ueda
 669,Japan,penalty,Junya Ito
 684,Japan,penalty,Ritsu Doan
 669,Japan,set_piece_assist,Junya Ito
-659,Japan,set_piece_assist,Kaishu Sano
+662,Japan,set_piece_assist,Yukinari Sugawara
 1458,Japan,set_piece_assist,Takefusa Kubo
-680,Japan,set_piece_assist,Yuito Suzuki
 1547,Jordan,penalty,Ali Olwan
 701,Jordan,penalty,Mousa Al Tamari
 703,Jordan,set_piece_assist,Mahmoud Al Mardi
@@ -185,81 +160,70 @@ id,team,role,player
 724,Korea Republic,penalty,Hwang Hee-Chan
 723,Korea Republic,penalty,Son Heung-Min
 1549,Korea Republic,set_piece_assist,Hwang In-Beom
-714,Korea Republic,set_piece_assist,Kim Jin-Gyu
 736,Korea Republic,set_piece_assist,Lee Kang-In
-720,Korea Republic,set_piece_assist,Lee Tae-Seok
 723,Korea Republic,set_piece_assist,Son Heung-Min
 762,Mexico,penalty,Orbelín Pineda
 748,Mexico,penalty,Raúl Jiménez
-1481,Mexico,set_piece_assist,Alexis Gutiérrez
+1485,Mexico,penalty,Santiago Gimenez
 751,Mexico,set_piece_assist,Alexis Vega
 758,Mexico,set_piece_assist,Brian Gutiérrez
-1484,Mexico,set_piece_assist,Efraín Álvarez
-1476,Mexico,set_piece_assist,Gilberto Mora
 752,Mexico,set_piece_assist,Roberto Alvarado
-2012,Morocco,penalty,Achraf Hakimi
 2020,Morocco,penalty,Brahim Díaz
 2023,Morocco,penalty,Soufiane Rahimi
+639,Morocco,penalty,Ayoub Al Kaabi
+019,Morocco,penalty,Neil El Aynaoui
 2012,Morocco,set_piece_assist,Achraf Hakimi
 2020,Morocco,set_piece_assist,Brahim Díaz
+2022,Morocco,set_piece_assist,Bilal El Khannouss
+021,Morocco,set_piece_assist,Azzedine Ounahi
+2024,Morocco,set_piece_assist,Abde Ezzalzouli
 804,Netherlands,penalty,Cody Gakpo
 2043,Netherlands,penalty,Memphis Depay
 808,Netherlands,penalty,Wout Weghorst
 804,Netherlands,set_piece_assist,Cody Gakpo
-2042,Netherlands,set_piece_assist,Justin Kluivert
 2043,Netherlands,set_piece_assist,Memphis Depay
 814,Netherlands,set_piece_assist,Teun Koopmeiners
-816,Netherlands,set_piece_assist,Tijjani Reijnders
 833,New Zealand,penalty,Ben Waine
 1493,New Zealand,penalty,Chris Wood
-818,New Zealand,set_piece_assist,Callum McCowatt
-832,New Zealand,set_piece_assist,Elijah Just
 826,New Zealand,set_piece_assist,Francis de Vries
-835,New Zealand,set_piece_assist,Jesse Randall
-823,New Zealand,set_piece_assist,Marko Stamenic
-1494,New Zealand,set_piece_assist,Sarpreet Singh
 827,New Zealand,set_piece_assist,Tim Payne
+1489,New Zealand,set_piece_assist, Liberato Cacace
 855,Norway,penalty,Erling Haaland
+1682,Norway,penalty,Thelo Aasgaard
 847,Norway,set_piece_assist,Julian Ryerson
-864,Norway,set_piece_assist,Kristian Thorstvedt
 1684,Norway,set_piece_assist,Martin Ødegaard
 843,Norway,set_piece_assist,Oscar Bobb
-887,Panama,penalty,Adalberto Carrasquilla
 881,Panama,penalty,Cecilio Waterman
 872,Panama,penalty,Éric Davis
 887,Panama,set_piece_assist,Adalberto Carrasquilla
-2028,Panama,set_piece_assist,Alberto Quintero
 868,Panama,set_piece_assist,José Luis Rodríguez
-867,Panama,set_piece_assist,Yoel Bárcenas
 872,Panama,set_piece_assist,Éric Davis
-913,Paraguay,penalty,Diego Gómez
+902,Paraguay,penalty,Antonio Sanabria
 912,Paraguay,penalty,Julio Enciso
 901,Paraguay,penalty,Miguel Almirón
 913,Paraguay,set_piece_assist,Diego Gómez
 912,Paraguay,set_piece_assist,Julio Enciso
 901,Paraguay,set_piece_assist,Miguel Almirón
-903,Paraguay,set_piece_assist,Ramón Sosa
 939,Portugal,penalty,Bruno Fernandes
 1573,Portugal,penalty,Cristiano Ronaldo
 1572,Portugal,set_piece_assist,Bernardo Silva
 939,Portugal,set_piece_assist,Bruno Fernandes
-928,Portugal,set_piece_assist,Francisco Conceição
 916,Portugal,set_piece_assist,Nuno Mendes
 925,Portugal,set_piece_assist,Pedro Neto
 958,Qatar,penalty,Akram Afif
 959,Qatar,penalty,Almoez Ali
 958,Qatar,set_piece_assist,Akram Afif
 960,Qatar,set_piece_assist,Edmílson Junior
-948,Qatar,set_piece_assist,Mohammed Waad
 992,Saudi Arabia,penalty,Feras Al Brikan
 972,Saudi Arabia,penalty,Musab Al Juwayr
+995,Saudi Arabia,penalty,Saleh Al Shehri
 1955,Saudi Arabia,penalty,Salem Al Dawsari
 972,Saudi Arabia,set_piece_assist,Musab Al Juwayr
 1955,Saudi Arabia,set_piece_assist,Salem Al Dawsari
 1003,Scotland,penalty,John McGinn
 1027,Scotland,penalty,Scott McTominay
+1007,Scotland,penalty,Ryan Christie
 1009,Scotland,set_piece_assist,Andy Robertson
-1005,Scotland,set_piece_assist,Billy Gilmour
 1003,Scotland,set_piece_assist,John McGinn
 1028,Scotland,set_piece_assist,Lewis Ferguson
 1007,Scotland,set_piece_assist,Ryan Christie
@@ -275,58 +239,54 @@ id,team,role,player
 1063,South Africa,set_piece_assist,Aubrey Modiba
 1073,South Africa,set_piece_assist,Oswin Appollis
 1072,South Africa,set_piece_assist,Relebohile Mofokeng
-1058,South Africa,set_piece_assist,Teboho Mokoena
 1061,South Africa,set_piece_assist,Tshepang Moremi
 1092,Spain,penalty,Lamine Yamal
 1094,Spain,penalty,Mikel Oyarzabal
 1104,Spain,penalty,Rodri
+1093,Spain,penalty,Ferran Torres
 1087,Spain,set_piece_assist,Alejandro Grimaldo
-1105,Spain,set_piece_assist,Dani Olmo
 1092,Spain,set_piece_assist,Lamine Yamal
-2000,Spain,set_piece_assist,Nico Williams
 1106,Spain,set_piece_assist,Pedri
 1085,Spain,set_piece_assist,Pedro Porro
-1081,Spain,set_piece_assist,Yéremy Pino
 1082,Spain,set_piece_assist,Álex Baena
 1520,Sweden,penalty,Alexander Isak
 1124,Sweden,penalty,Viktor Gyökeres
+1519,Sweden,penalty,Ken Sema
 1125,Sweden,set_piece_assist,Anthony Elanga
-1126,Sweden,set_piece_assist,Benjamin Nygren
+1118,Sweden,set_piece_assist,Daniel Svensson
 1114,Sweden,set_piece_assist,Yasin Ayari
 1149,Switzerland,penalty,Breel Embolo
 1135,Switzerland,penalty,Granit Xhaka
-1582,Switzerland,penalty,Zeki Amdouni
-1156,Switzerland,set_piece_assist,Djibril Sow
 1140,Switzerland,set_piece_assist,Fabian Rieder
 1137,Switzerland,set_piece_assist,Michel Aebischer
 1158,Switzerland,set_piece_assist,Rubén Vargas
 1166,Tunisia,penalty,Ali Abdi
 1174,Tunisia,penalty,Ismaël Gharbi
 1166,Tunisia,set_piece_assist,Ali Abdi
-1175,Tunisia,set_piece_assist,Elias Saad
 1555,Tunisia,set_piece_assist,Hannibal Mejbri
 1174,Tunisia,set_piece_assist,Ismaël Gharbi
 1216,Türkiye,penalty,Hakan Çalhanoglu
 1205,Türkiye,penalty,Kerem Aktürkoglu
+1590,Türkiye,penalty,Yusuf Sari
 1215,Türkiye,set_piece_assist,Arda Güler
 1216,Türkiye,set_piece_assist,Hakan Çalhanoglu
 1192,Türkiye,set_piece_assist,Orkun Kökçü
 1274,USA,penalty,Christian Pulisic
-1267,USA,penalty,Folarin Balogun
-1258,USA,set_piece_assist,Antonee Robinson
+1254,USA,penalty,Malik Tillman
+2034,USA,penalty,Haji Wright
 1274,USA,set_piece_assist,Christian Pulisic
-1256,USA,set_piece_assist,Giovanni Reyna
 1254,USA,set_piece_assist,Malik Tillman
 1250,USA,set_piece_assist,Sebastian Berhalter
 1236,Uruguay,penalty,Darwin Núñez
 1248,Uruguay,penalty,Federico Valverde
+1240,Uruguay,penalty,Facundo Torres
 1238,Uruguay,set_piece_assist,Brian Rodríguez
 1248,Uruguay,set_piece_assist,Federico Valverde
 1247,Uruguay,set_piece_assist,Giorgian de Arrascaeta
+1225,Uruguay,set_piece_assist,Nicolas De La Cruz
 1306,Uzbekistan,penalty,Eldor Shomurodov
 1284,Uzbekistan,penalty,Otabek Shukurov
 1292,Uzbekistan,set_piece_assist,Abbosbek Fayzullaev
 1287,Uzbekistan,set_piece_assist,Aziz G'aniev
 1291,Uzbekistan,set_piece_assist,Jaloliddin Masharipov
-1290,Uzbekistan,set_piece_assist,Jamshid Iskanderov
 1284,Uzbekistan,set_piece_assist,Otabek Shukurov

@@ -1,0 +1,147 @@
+NATION
+PENALTY TAKERS
+CORNER/INDIRECT FREE-KICK TAKERS
+Algeria
+Mahrez, Bentaleb, Amoura
+Mahrez, Bennacer, Chaibi, Gouiri
+Argentina
+Messi, La Martinez
+Messi, de Paul, Almada, Alvarez
+Australia
+Irankunda, Hrustic
+Irankunda, Metcalfe, Mabil
+Austria
+Arnautovic, Sabitzer, Gregoritsch
+Sabitzer, Alaba, Schmid
+Belgium
+Lukaku, De Bruyne, Tielemans, De Ketelaere
+De Bruyne, Tielemans, De Cuyper, Trossard
+Bosnia and Herzegovina
+Dzeko, Tabakovic, Alajbegovic
+Tahirovic, Basic, Bajraktarevic, Alajbegovic
+Brazil
+Raphinha, Neymar, Paqueta, Thiago
+Raphinha, Neymar, Danilo Santos
+Canada
+David, Hoilett, Larin
+Eustaquio, Davies, Choiniere, Flores
+Cape Verde
+Mendes, Rodrigues
+Montero, Rodrigues, S Cabral, L Duarte, Y Semedo
+Colombia
+Rodriguez, Diaz
+Rodriguez, Quintero, J Arias
+Cote d’Ivoire
+Kessie, Sangare, Diakite
+Amad, Y Diomande, Adingra, Pepe
+Croatia
+Modric, Kramaric, Budimir, Perisic
+Modric, Baturina, Pasalic, Perisic
+Curaçao
+J Bacuna, L Bacuna
+Antonisse, L Bacuna, J Bacuna
+Czechia
+Schick, Soucek, Chory
+Provod, Coufal, Jurasek
+DR Congo
+Wissa, Bakambu, Kakuta
+Masuaku, Mbuku, Bongonda, Kakuta
+Ecuador
+E Valencia, J Caicedo, Alcivar, Paez
+M Caicedo, Plata, Alcivar, Paez
+Egypt
+Salah, Marmoush
+Salah, Zizo, Marmoush, Trezeguet
+England
+Kane, Toney, Rashford
+Rice, Saka, Gordon, Eze
+France
+Mbappe, Dembele
+Olise, Akliouche, Cherki, Mbappe
+Germany
+Havertz, Kimmich
+Raum, Wirtz, Kimmich, Stiller
+Ghana
+J Ayew
+J Ayew, Sulemana, Kohn, Bonsu Baah
+Haiti
+Nazon, Isidor
+Bellegarde, Providence, Deedson
+Iran
+Taremi, Hosseinzadeh, Jahanbakhsh
+Ghoddos, Ghayedi, Narafkan
+Iraq
+Hussein, Al-Ammari, Al-Hamadi
+Al-Ammari, Jasim
+Japan
+Ueda, Doan, J Ito
+Kubo, J Ito, Sugawara
+Jordan
+Olwan, Al-Tamaari
+Al-Tamaari, Al-Mardi, Azaizeh, Zrayq
+Mexico
+Jimenez, Pineda, Gimenez
+L Chavez, Vega, Alvarado, Castaneda
+Morocco
+Rahimi, Diaz, El Kaabi, El Aynaoui
+Hakimi, Diaz, Ounahi, Ezzalzouli, El Khannouss
+Netherlands
+Gakpo, Depay, Weghorst
+Depay, Gakpo, Koopmeiners
+New Zealand
+Wood, Waine
+de Vries, Payne, Cacace
+Norway
+Haaland, Aasgaard
+Odegaard, Ryerson, Bobb
+Panama
+Davis, Diaz, Waterman
+Davis, Murillo, J Rodriguez, Carrasquilla
+Paraguay
+Enciso, Almiron, Sanabria
+D Gomez, Almiron, Mauricio
+Portugal
+Ronaldo, Fernandes
+Fernandes, Mendes, Neto, Bernardo
+Qatar
+Afif, Ali
+Afif, Abdurisag, Edmilson
+Saudi Arabia
+Al-Buraikan, S Al-Dawsari, Al-Shehri
+Al-Juwayr, Al-Shamat, S Al-Dawsari
+Scotland
+Christie, McTominay, McGinn
+McGinn, Ferguson, Robertson, Christie
+Senegal
+Mane, Jackson, I Sarr, C Ndiaye
+Diatta, Diouf, Jakobs, Camara
+South Africa
+Appollis, Mokoena, Foster
+Appollis, Mofokeng, Moremi, Modiba
+South Korea
+Son Heung-min, Hwang Hee-chan
+Son Heung-min, Lee Kang-in, Hwang In-beom, Lee Dong-gyeong
+Spain
+Oyarzabal, Yamal, Torres, Rodri
+Yamal, Baena, Porro, Grimaldo, Pedri
+Sweden
+Gyokeres, Isak, Sema
+Svensson, Elanga, Ayari
+Switzerland
+Xhaka, Embolo, Amdouni
+Vargas, Rieder, Aebischer
+Tunisia
+Gharbi, Abdi, Achouri
+Mejbri, Gharbi, Abdi
+Türkiye
+Calhanoglu, Akturktoglu, Sari
+Calhanoglu, Guler, Kokcu
+United States
+Pulisic, Tillman, Wright
+Berhalter, Pulisic, Tillman
+Uruguay
+Valverde, Nunez, Torres
+de Arrascaeta, de la Cruz, Valverde, B Rodriguez
+Uzbekistan
+Shomurodov, Shukurov, Sergeev
+Masharipov, Fayzullaev, Ganiev, Shukurov
