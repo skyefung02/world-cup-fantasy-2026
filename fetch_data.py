@@ -20,6 +20,9 @@ def load_cache(endpoint):
 
 def build_players(players_raw, squads_raw):
     df_players = pd.DataFrame(players_raw)
+    # Drop players FIFA has flagged as no longer in the squad. The raw cache keeps
+    # them; we only exclude them from processed/projection data.
+    df_players = df_players[df_players["status"] == "playing"].copy()
     df_squads = pd.DataFrame(squads_raw)
 
     # Resolve display name
