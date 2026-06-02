@@ -226,12 +226,17 @@ def solve_wc(data: dict, options: dict) -> list[dict]:
     def country_limit(r: int) -> int:
         return int(country_limit_by_round.get(str(r), country_limit_by_round.get(r, 3)))
 
-    # Which group-stage round pairs allow FT carryover
+    # Which group-stage round pairs allow FT carryover.
+    # Excludes the preseason build round (base_ft sentinel 99 = unlimited): you
+    # build your squad for free there, so there is no spare FT to bank into the
+    # next round. Without this, MD1 (0 transfers out) banks a phantom FT and
+    # MD2 shows 3 free transfers instead of the actual 2.
     group_consecutive_pairs = [
         (r, r + 1) for r in rounds
         if r + 1 in rounds
         and r in group_stage_rounds
         and r + 1 in group_stage_rounds
+        and base_ft[r] < 99
     ]
 
     # ── Model ─────────────────────────────────────────────────────────────────

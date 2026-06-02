@@ -3,8 +3,10 @@
     "next_round": 1,
     "horizon": 3,
     "initial_squad": [],
+    "decay_base": 0.9,
     "itb": 100.0,
     "ft": 1, 
     "xmin_lb": 45, 
-    "use_wildcard": [3]
+    "use_wildcard": [3], 
+    "use_twelfth_man": []
 }
