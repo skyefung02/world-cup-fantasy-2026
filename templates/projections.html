@@ -53,6 +53,23 @@
     .controls .search-wrap { flex: 1; min-width: 220px; max-width: 420px; }
     .pos-pills { display: flex; gap: 6px; }
 
+    /* ── Round filter row ── */
+    .round-filter {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .round-filter-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-subtle);
+    }
+    .round-pills { display: flex; gap: 6px; }
+
     .saved-chip {
       font-family: var(--display);
       font-size: 0.74rem;
@@ -421,6 +438,15 @@
       {% endif %}
     </div>
 
+    <div class="round-filter">
+      <span class="round-filter-label">Rounds</span>
+      <div class="round-pills">
+        <button class="pill active" data-round="1" onclick="onRoundFilter(1)">R1</button>
+        <button class="pill active" data-round="2" onclick="onRoundFilter(2)">R2</button>
+        <button class="pill active" data-round="3" onclick="onRoundFilter(3)">R3</button>
+      </div>
+    </div>
+
     {% if players %}
     <div class="legend">
       <span class="legend-item"><span class="scouting-dot"></span> Scouting bonus activated (&lt;5% owned, +2pts if &gt;4pts in match)</span>
@@ -594,6 +620,51 @@
     const allRows = playersTbody ? Array.from(playersTbody.querySelectorAll("tr")) : [];
     let sortCol = "avg", sortDir = -1;
     let filterPos = "all", filterSearch = "";
+    const selectedRounds = new Set([1, 2, 3]);
+
+    // Mean of a row's xP over the currently-selected rounds. Reads the per-round
+    // data-r1/r2/r3 attrs, so it stays correct after edits/recomputes too.
+    function computeAvg(row) {
+      let sum = 0;
+      for (const r of selectedRounds) sum += parseFloat(row.dataset["r" + r]) || 0;
+      return sum / selectedRounds.size;
+    }
+
+    // Recompute every row's Avg (data + cell) from the current round selection.
+    function refreshAverages() {
+      allRows.forEach(row => {
+        const avg = computeAvg(row).toFixed(2);
+        row.dataset.avg = avg;
+        row.querySelector(".avg-pts").textContent = avg;
+      });
+    }
+
+    function onRoundFilter(round) {
+      const btn = document.querySelector(`.round-pills .pill[data-round="${round}"]`);
+      // Keep at least one round active.
+      if (selectedRounds.has(round) && selectedRounds.size === 1) return;
+
+      if (selectedRounds.has(round)) selectedRounds.delete(round);
+      else selectedRounds.add(round);
+      btn.classList.toggle("active", selectedRounds.has(round));
+
+      // Show/hide that round's xP column (header + every body cell).
+      const show = selectedRounds.has(round);
+      document.querySelector(`th[data-col="r${round}"]`).style.display = show ? "" : "none";
+      document.querySelectorAll(`td.r${round}-pts`).forEach(td => {
+        td.style.display = show ? "" : "none";
+      });
+
+      // If we're sorting by a now-hidden round, fall back to Avg.
+      if (!show && sortCol === `r${round}`) {
+        sortCol = "avg";
+        sortDir = -1;
+      }
+
+      refreshAverages();
+      sortTable();
+      updateHeaders();
+    }
 
     // Apply team-colour stripe via shared window.TEAM_COLORS (defined in base.html).
     allRows.forEach(row => {
@@ -930,14 +1001,14 @@
       for (const [pidStr, pts] of Object.entries(xp)) {
         const row = document.querySelector(`tr[data-id="${pidStr}"]`);
         if (!row) continue;
-        const avg = ((pts["1"] + pts["2"] + pts["3"]) / 3).toFixed(2);
         row.dataset.r1  = pts["1"];
         row.dataset.r2  = pts["2"];
         row.dataset.r3  = pts["3"];
-        row.dataset.avg = avg;
         row.querySelector(".r1-pts").textContent  = pts["1"];
         row.querySelector(".r2-pts").textContent  = pts["2"];
         row.querySelector(".r3-pts").textContent  = pts["3"];
+        const avg = computeAvg(row).toFixed(2);
+        row.dataset.avg = avg;
         row.querySelector(".avg-pts").textContent = avg;
         const hasOverride = overriddenSet.has(pidStr);
         row.dataset.hasOverride = hasOverride ? "true" : "false";
@@ -966,15 +1037,15 @@
         const r1 = +rounds["1"].Pts.toFixed(2);
         const r2 = +rounds["2"].Pts.toFixed(2);
         const r3 = +rounds["3"].Pts.toFixed(2);
-        const avg = ((r1 + r2 + r3) / 3).toFixed(2);
 
         row.dataset.r1  = r1;
         row.dataset.r2  = r2;
         row.dataset.r3  = r3;
-        row.dataset.avg = avg;
         row.querySelector(".r1-pts").textContent  = r1.toFixed(2);
         row.querySelector(".r2-pts").textContent  = r2.toFixed(2);
         row.querySelector(".r3-pts").textContent  = r3.toFixed(2);
+        const avg = computeAvg(row).toFixed(2);
+        row.dataset.avg = avg;
         row.querySelector(".avg-pts").textContent = avg;
 
         row.dataset.r1Xmins = Math.round(rounds["1"].xMins);

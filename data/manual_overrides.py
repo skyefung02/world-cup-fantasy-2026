@@ -235,7 +235,9 @@ MANUAL_OVERRIDES = {
     "Aziz G'aniev": "Aziz G'aniyev",
     "Odiljon Hamrobekov": "Odiljon Xamrobekov",
     "Abbosbek Fayzullaev": "Abbosbek Fayzulllayev",
-    "Azizbek Amanov": "Azizbek Amonov"
+    "Azizbek Amanov": "Azizbek Amonov",
+    "Abbosbek Fayzullaev": "Abbosbek Fayzullayev",
+    
 }
 
 
