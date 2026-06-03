@@ -34,7 +34,6 @@ Stjepan Radeljic,Bosnia and Herzegovina,DEF,False,True,,,Stjepan Radeljić,100.0
 Nidal Celik,Bosnia and Herzegovina,DEF,True,False,Nidal Celik,100.0,,
 Jovo Lukic,Bosnia and Herzegovina,FWD,False,False,Ivan Jukić,60.0,,
 Samed Bazdar,Bosnia and Herzegovina,FWD,False,True,,,Samed Baždar,100.0
-Osman Hadzikic,Bosnia and Herzegovina,GK,False,False,,,Dennis Hadzikadunic,60.6
 Martin Zlomislic,Bosnia and Herzegovina,GK,False,True,Adrian Leon Barišić,62.9,Martin Zlomislić,100.0
 Dzenis Burnic,Bosnia and Herzegovina,MID,False,True,Denis Huseinbasic,66.7,Dženis Burnić,100.0
 Ivan Sunjic,Bosnia and Herzegovina,MID,False,True,Ivan Jukić,76.2,Ivan Šunjić,100.0
@@ -141,7 +140,6 @@ Johny Placide,Haiti,GK,False,True,,,Johny Placide,100.0
 Alexandre Pierre,Haiti,GK,False,True,Nelson Pierre,62.1,Alexandre Pierre,100.0
 Josué Duverger,Haiti,GK,False,True,,,Josué Duverger,100.0
 Amir Mohammad Razzaghinia,IR Iran,MID,False,False,,,Amirmohammad Razaghinia,95.8
-Hadi Habibinejad,IR Iran,MID,False,False,,,,
 Mohammad Ghorbani,IR Iran,MID,False,True,,,Mohammed Ghorbani,100.0
 Ramin Rezaeian,IR Iran,DEF,False,True,,,Ramin Rezaeian,100.0
 Hossein Kanani,IR Iran,DEF,False,True,Majid Hosseini,64.1,Hossein Kanaanizadegan,100.0
@@ -156,44 +154,34 @@ Saman Ghoddos,IR Iran,FWD,False,True,,,Saman Ghoddos,100.0
 Ali Alipour,IR Iran,FWD,False,True,,,Ali Alipour,100.0
 Dennis Dargahi,IR Iran,FWD,False,False,,,,
 Amirhossein Hosseinzadeh,IR Iran,FWD,False,True,Majid Hosseini,64.8,Amirhossein Hosseinzadeh,100.0
-Amirhossein Mahmoudi,IR Iran,FWD,False,False,Majid Hosseini,61.5,Amirhossein Hosseinzadeh,68.2
 Alireza Beiranvand,IR Iran,GK,False,True,,,Alireza Beiranvand,100.0
 Payam Niazmand,IR Iran,GK,False,True,,,Payam Niazmand,100.0
 Hossein Hosseini,IR Iran,GK,False,True,Majid Hosseini,69.1,Hossein Hosseini,100.0
-Mohammad Khalifeh,IR Iran,GK,False,False,,,Mohammad Karimi,75.0
-Omid Noorafkan,IR Iran,MID,False,True,,,Omid Noorafkan,100.0
 Mehdi Torabi,IR Iran,MID,False,True,Mehdi Taremi,75.0,Mehdi Torabi,100.0
 Saeid Ezatolahi,IR Iran,MID,False,True,,,Saeid Ezatolahi,100.0
 Mohammad Mohebi,IR Iran,MID,False,True,,,Mohammad Mohebbi,100.0
 Mehdi Ghayedi,IR Iran,MID,False,True,Mehdi Taremi,75.0,Mehdi Ghaedi,100.0
 Zaid Ismael,Iraq,MID,False,False,Zidane Iqbal,60.9,Zidane Iqbal,60.9
 Marko Farji,Iraq,MID,False,True,,,Marko Farji,100.0
-Hasan Abdulkareem,Iraq,MID,False,True,Hayder Abdulkareem,80.0,Hasan Abdulkareem,100.0
-Peter Gwargis,Iraq,MID,False,True,,,Peter Gwargis,100.0
 Kevin Yakob,Iraq,MID,False,True,,,Kevin Yakob,100.0
 Amir Al Ammari,Iraq,MID,False,True,Ali Al Hamadi,74.1,Amir Al Ammari,100.0
 Aimar Sher,Iraq,MID,False,True,,,Aimar Sher,100.0
 Frans Putros,Iraq,DEF,False,True,,,Frans Dhia Putros,100.0
 Rebin Sulaka,Iraq,DEF,False,True,,,Rebin Sulaka,100.0
-Maytham Jabbar,Iraq,DEF,False,False,,,,
 Hussein Ali,Iraq,DEF,False,True,,,Hussein Ali,100.0
 Zaid Tahseen,Iraq,DEF,False,True,,,Zaid Tahseen,100.0
 Munaf Younus,Iraq,DEF,False,True,,,Munaf Yunus,100.0
 Akam Hashim,Iraq,DEF,False,True,Ali Jasim,60.0,Akam Hashim,100.0
-Ahmed Maknzi,Iraq,DEF,False,False,,,Ahmed Basil,69.6
 Aymen Hussein,Iraq,FWD,False,True,,,Ayman Hussein,100.0
 Mohanad Ali,Iraq,FWD,False,False,Ali Al Hamadi,63.3,Mohammed Qasim,64.0
 Youssef Amyn,Iraq,FWD,False,True,,,Youssef Amyn,100.0
 Ali Yousif,Iraq,FWD,False,True,Ali Jasim,63.2,Ali Yousif,100.0
-Karar Nabeel,Iraq,MID,False,False,,,,
 Ahmed Basil,Iraq,GK,False,True,,,Ahmed Basil,100.0
 Fahad Talib,Iraq,GK,False,False,,,,
-Kumel Saadi,Iraq,GK,False,False,,,,
 Keito Nakamura,Japan,MID,False,True,Takumi Nakamura,75.9,Keito Nakamura,100.0
 Keisuke Goto,Japan,FWD,True,False,Keisuke Goto,100.0,Keisuke Ōsako,80.0
 Kento Shiogai,Japan,FWD,True,False,Kento Shiogai,100.0,,
 Tomoki Hayakawa,Japan,GK,True,False,Tomoki Hayakawa,100.0,,
-Yousef Qashi,Jordan,MID,False,False,,,Yousef Abu Al Jazar,85.5
 Ibrahim Sadeh,Jordan,MID,False,True,Ibrahim Sabra,76.9,Ibrahim Sa'deh,100.0
 Mohammad Al Daoud,Jordan,MID,False,False,,,Mohammad Al-Dawud,88.2
 Noor Al Rawabdeh,Jordan,MID,False,True,,,Noor Al Rawabdeh,100.0
@@ -202,8 +190,6 @@ Abdallah Nasib,Jordan,DEF,False,True,,,Abdallah Nasib,100.0
 Mohannad Abu Taha,Jordan,DEF,False,True,,,Mohannad Abu Taha,100.0
 Mohammad Abu Hasheesh,Jordan,DEF,False,True,,,Mohammad Abu Hasheesh,100.0
 Husam Abu Al Dahab,Jordan,DEF,False,True,,,Husam Abu Dahab,100.0
-Mohammad Taha,Jordan,DEF,False,False,,,Mohammad Abu Hasheesh,85.5
-Ahmad Assaf,Jordan,DEF,False,False,,,Ahmad Ersan,72.7
 Saleem Obaid,Jordan,DEF,False,True,,,Saleem Obaid,100.0
 Mohammad Abu Al Nadi,Jordan,DEF,False,True,,,Mohammad Abu Al Nadi,100.0
 Amer Jamous,Jordan,DEF,False,True,,,Amer Jamous,100.0
@@ -214,7 +200,6 @@ Odeh Fakhoury,Jordan,FWD,False,False,,,,
 Yazeed  Abulaila,Jordan,GK,False,True,,,Yazeed Abulaila,100.0
 Abdallah Al Fakhouri,Jordan,GK,False,True,,,Abdallah Al Fakhori,100.0
 Seol Young-Woo,Korea Republic,DEF,False,True,Cho Youngwook,74.1,Seol Young-woo,100.0
-Cho Yu-Min,Korea Republic,DEF,False,True,Choi Jun,70.6,Cho Yumin,100.0
 Lee Han-Beom,Korea Republic,DEF,False,True,Rim Lee,85.5,Lee Hanbeom,100.0
 Kim Tae-Hyeon,Korea Republic,DEF,True,False,Kim Taehyeon,100.0,Kim Tae-hwan,75.0
 Cho Gue-Sung,Korea Republic,FWD,False,True,Choi Sungbum,66.7,Cho Gue-sung,100.0
@@ -262,8 +247,6 @@ Luis Mejía,Panama,GK,False,True,José Luis Rodríguez,85.5,Luis Mejía,100.0
 César Samudio,Panama,GK,False,False,,,César Yanis,66.7
 Maurício Magalhães Prado,Paraguay,MID,False,False,Mauricio,90.0,,
 Alejandro Romero,Paraguay,MID,False,False,Juan Romero,74.1,Ángel Romero,64.3
-Lucas Romero,Paraguay,MID,True,False,Juan Romero,78.3,Blas Riveros,66.7
-Alan Benítez,Paraguay,DEF,True,False,Alan Benítez,100.0,,
 Gustavo Velázquez,Paraguay,DEF,False,True,Gustavo Gómez,66.7,Gustavo Velásquez,100.0
 José Canale,Paraguay,DEF,True,False,José Canale,100.0,,
 Gustavo Caballero,Paraguay,FWD,True,False,Gustavo Caballero,100.0,Hernesto Caballero,74.3
@@ -278,12 +261,9 @@ Ayoub Al Oui,Qatar,MID,False,False,,,Al Hashmi Al Hussein,85.5
 Ahmed Fathy,Qatar,MID,False,True,,,Ahmed Fathy,100.0
 Karim Boudiaf,Qatar,MID,False,True,,,Karim Boudiaf,100.0
 Assim Madibo,Qatar,MID,False,True,,,Assim Madibo,100.0
-Mohammed Waad,Qatar,MID,False,True,,,Mohammed Waad,100.0
 Pedro Miguel,Qatar,DEF,False,False,,,,
-Bassam Al Rawi,Qatar,DEF,False,True,,,Bassam Al-Rawi,100.0
 Lucas Mendes,Qatar,DEF,False,True,,,Lucas Mendes,100.0
 Boualem Khoukhi,Qatar,DEF,False,True,,,Boualem Khoukhi,100.0
-Niall Mason,Qatar,DEF,False,False,,,,
 Hashmi Al Hussain,Qatar,DEF,False,True,,,Al Hashmi Al Hussein,100.0
 Issa Laye,Qatar,DEF,False,False,,,,
 Akram Afif,Qatar,FWD,False,True,,,Akram Afif,100.0
@@ -292,10 +272,8 @@ Edmílson Junior,Qatar,FWD,False,True,,,Edmilson Junior,100.0
 Hassan Al Haydos,Qatar,FWD,False,False,,,Hassan Al-Haydos,93.8
 Yusuf Abdurisag,Qatar,FWD,False,True,,,Yusuf Abdurisag,100.0
 Ahmed Al Ganehi,Qatar,FWD,False,True,,,Ahmed Al Ganehi,100.0
-Mubarak Shanan,Qatar,FWD,False,False,,,Tarek Salman,61.5
 Meshaal Barsham,Qatar,GK,False,True,,,Meshaal Barsham,100.0
 Salah Zakaria,Qatar,GK,False,True,,,Salah Zakaria,100.0
-Shehab Ellethy,Qatar,GK,False,False,,,,
 Mahmud Abunada,Qatar,GK,False,True,,,Mahmoud Abunada,100.0
 Khalid Al Ghannam,Saudi Arabia,FWD,True,False,Khalid Al Ghannam,100.0,Ali Al Hassan,66.7
 Sultan Mandash,Saudi Arabia,FWD,True,False,Sultan Mendash,100.0,Sultan Al-Ghanam,60.0
@@ -349,8 +327,6 @@ Khalil Ayari,Tunisia,FWD,False,False,Ali Abdi,60.0,Ali Abdi,60.0
 Abdelmouhib Chamakh,Tunisia,GK,False,False,,,,
 Aymen Dahmen,Tunisia,GK,False,True,,,Aymen Dahmen,100.0
 Sabri Ben Hessen,Tunisia,GK,False,False,,,Mohamed Ali Ben Romdhane,85.5
-Ahmetcan Kaplan,Türkiye,DEF,True,False,Ahmetcan Kaplan,100.0,Kaan Ayhan,63.0
-Muhammed Sengezer,Türkiye,GK,True,False,Muhammed Şengezer,100.0,,
 Juan Manuel Sanabria,Uruguay,MID,True,False,Juan Manuel Sanabria,100.0,Manuel Ugarte,85.5
 Fernando Muslera,Uruguay,GK,True,False,Fernando Muslera,100.0,,
 Cristian Roldan,USA,MID,True,False,Cristian Roldan,100.0,Christian Pulisic,62.5
@@ -390,8 +366,6 @@ Weverton,Brazil,GK,True,False,Wéverton,100.0,Éderson,66.7
 Alexandr Sojka,Czechia,MID,True,False,Alexandr Sojka,100.0,Alex Král,64.3
 Hugo Sochurek,Czechia,MID,True,False,Hugo Sochůrek,100.0,,
 Robin Risser,France,GK,True,False,Robin Risser,100.0,,
-Paul Reverson,Ghana,GK,False,False,,,,
-Solomon Agbasi,Ghana,GK,False,False,,,,
 Augustine Boakye,Ghana,MID,False,False,,,,
 Yuto Nagatomo,Japan,DEF,True,False,Yuto Nagatomo,100.0,Yuta Nakayama,61.5
 Luis Chávez,Mexico,MID,False,True,Luis Ángel Malagón,85.5,Luis Chávez,100.0
@@ -399,21 +373,12 @@ Nando Pijnaker,New Zealand,DEF,False,True,,,Nando Pijnaker,100.0
 Tommy Smith,New Zealand,DEF,False,False,,,,
 Matthew Garbett,New Zealand,FWD,False,True,,,Matt Garbett,100.0
 Sarpreet Singh,New Zealand,MID,False,True,,,Sarpreet Singh,100.0
-Juan Espínola,Paraguay,GK,True,False,Juan Espínola,100.0,Carlos González Espínola,85.5
-Santiago Rojas,Paraguay,GK,False,False,Matías Rojas,76.9,Matías Rojas,76.9
-Alcides Benítez,Paraguay,DEF,False,False,Alan Benítez,74.1,,
-Alan Núñez,Paraguay,DEF,True,False,Alan Núñez,100.0,,
-Saúl Salcedo,Paraguay,DEF,True,False,Saúl Salcedo,100.0,,
-Diego León,Paraguay,DEF,False,False,Diego Gómez,66.7,Diego Gómez,66.7
-Tarek Salman,Qatar,DEF,False,True,,,Tarek Salman,100.0
-Rayyan Al Ali,Qatar,DEF,False,False,,,Al-Mahdi Ali Mukhtar,85.5
 Homam El Amin,Qatar,DEF,False,False,,,Homam Ahmed,71.2
 Sultan Al Brake,Qatar,DEF,False,True,,,Sultan Al-Brake,100.0
 Abdulaziz Hatem,Qatar,MID,False,True,,,Abdulaziz Hatem,100.0
 Jassem Gaber,Qatar,MID,False,True,,,Jassem Gaber,100.0
 Ahmed Alaa,Qatar,FWD,False,False,,,Ahmed Alaaeldin,90.0
 Mohammed Muntari,Qatar,FWD,False,True,,,Mohammed Muntari,100.0
-Sebastián Soria,Qatar,FWD,False,True,,,Sebastián Soria,100.0
 Tahsin Jamshid,Qatar,FWD,False,False,,,Tahsin Mohammed,69.0
 Ken Sema,Sweden,MID,False,True,Kenan Bilalovic,60.0,Ken Sema,100.0
 Alexander Bernhardsson,Sweden,FWD,False,True,Alexander Isak,85.5,Alexander Bernhardsson,100.0
@@ -427,7 +392,6 @@ Keeto Thermoncy,Haiti,DEF,False,True,,,Keeto Thermoncy,100.0
 Dominique Simon,Haiti,MID,True,False,Dominique Simon,100.0,,
 Lenny Joseph,Haiti,FWD,False,False,,,Belmar Joseph,64.0
 Nour Bani Ateyah,Jordan,GK,False,False,,,,
-Ahmad Al Juaidi,Jordan,GK,False,False,,,Adham Al Quraishi,68.8
 Ehsan Haddad,Jordan,DEF,False,True,,,Ihsan Haddad,100.0
 Saed Al Rosan,Jordan,DEF,False,True,,,Saed Al Rosan,100.0
 Anas Badawi,Jordan,DEF,False,False,,,,
@@ -439,51 +403,27 @@ Gédéon Kalulu,Congo DR,DEF,False,True,,,Gedeon Kalulu,100.0
 Deveron Fonville,Curaçao,DEF,True,False,Deveron Fonville,100.0,,
 Jürgen Locadia,Curaçao,FWD,False,True,,,Jürgen Locadia,100.0
 Roozbeh Cheshmi,IR Iran,MID,False,True,,,Roozbeh Cheshmi,100.0
-Kasra Taheri,IR Iran,FWD,False,False,,,,
 Jalal Hassan,Iraq,GK,False,True,Ali Al Hamadi,64.0,Jalal Hassan,100.0
 Mustafa Saadoon,Iraq,DEF,False,True,,,Mustafa Saadoon,100.0
 Ahmed Yahya,Iraq,DEF,False,True,,,Ahmed Yahya,100.0
-Dario Naamo,Iraq,DEF,True,False,,,,
-Jussef Nasrawe,Iraq,MID,True,False,,,,
 Ahmed Qasem,Iraq,MID,True,False,,,Ahmed Yasin Ghani,85.5
-Fahad Younis,Qatar,GK,False,False,,,,
 Ross Stewart,Scotland,FWD,True,False,Ross Stewart,100.0,,
 Cedric Itten,Switzerland,FWD,False,True,Cedric Zesiger,69.2,Cedric Itten,100.0
-Ersin Destanoglu,Türkiye,GK,True,False,Ersin Destanoğlu,100.0,Ferdi Kadioglu,60.0
-Aral Simsir,Türkiye,MID,False,False,,,,
-Demir Ege Tiknaz,Türkiye,MID,True,False,Demir Ege Tıknaz,100.0,,
 Karim Hafez,Egypt,DEF,False,False,Koka,60.0,,
 Mostafa Zico,Egypt,MID,False,False,Mostafa Mohamed,70.0,Mostafa Fathi,72.0
 Hamza Abdelkarim,Egypt,FWD,False,False,,,,
-Ronaldo Dejesús,Paraguay,DEF,True,False,Ronaldo Dejesús,100.0,Ronaldo Martínez,60.5
-Mateo Gamarra,Paraguay,DEF,True,False,Mateo Gamarra,100.0,Matías Galarza,66.7
-Robert Piris Da Motta,Paraguay,MID,False,False,Robert Morales,85.5,Iván Piris,85.5
-Óscar Romero,Paraguay,MID,True,False,Óscar Romero,100.0,Óscar Cardozo,72.0
-Hugo Cuenca,Paraguay,MID,False,True,,,Hugo Cuenca,100.0
-Álvaro Campuzano,Paraguay,MID,False,True,,,Álvaro Campuzano,100.0
-Rodney Redes,Paraguay,MID,False,False,,,,
-Enso González,Paraguay,MID,False,False,Carlos González Espínola,85.5,Carlos González Espínola,85.5
-Diego González,Paraguay,MID,True,False,Diego González,100.0,Carlos González Espínola,85.5
 Munir El Kajoui,Morocco,GK,False,False,Ayoube Amaimouni Echghouyab,72.0,Souffian El Karouani,60.0
 Youssef Belammari,Morocco,DEF,False,True,Youssef El-Arabi,78.8,Youssef Belammari,100.0
 Ayyoub Bouaddi,Morocco,MID,True,False,Ayoub Jabbari,66.7,,
 Ayoube Amaimouni-Echghouyab,Morocco,FWD,True,False,Ayoube Amaimouni Echghouyab,100.0,Ayoub El Kaabi,72.0
 Sander Tangvik,Norway,GK,True,False,Sander Tangvik,100.0,Sander Berge,63.3
 Fredrik Aursnes,Norway,MID,True,False,Fredrik Aursnes,100.0,Fredrik André Bjørkan,62.9
-Lorenzo Melgarejo,Paraguay,MID,False,False,,,,
-Rubén Lezcano,Paraguay,MID,True,False,Rubén Lezcano,100.0,,
-Carlos González,Paraguay,FWD,False,False,Carlos González Espínola,90.0,Carlos González Espínola,90.0
-Adrián Alcaraz,Paraguay,FWD,False,False,Matías Galarza,64.3,Matías Galarza,64.3
-Robert Morales,Paraguay,FWD,True,False,Robert Morales,100.0,Robert Rojas,76.9
-Moustapha Mbow,Senegal,DEF,True,False,Moustapha Mbow,100.0,,
 Bara Sapoko Ndiaye,Senegal,MID,True,False,Bara Ndiaye,100.0,Cherif Ndiaye,67.1
 Sipho Chaine,South Africa,GK,False,False,,,Sipho Mbule,60.9
 Olwethu Makhanya,South Africa,DEF,True,False,Olwethu Makhanya,100.0,,
 Bradley Cross,South Africa,DEF,False,False,,,,
 Kamogelo Sebelebele,South Africa,MID,False,True,,,Kamogelo Sebelebele,100.0
 Iqraam Rayners,South Africa,MID,False,True,,,Iqraam Rayners,100.0
-Abdulquddus Atiah,Saudi Arabia,GK,True,False,Abdulquddus Atiah,100.0,,
-Zakaria Hawsawi,Saudi Arabia,DEF,True,False,Zakaria Al Hosawi,100.0,Ali Al Asmari,63.3
 Alaa Al Hejji,Saudi Arabia,MID,True,False,Alaa Al Hejji,100.0,,
 Mohammed Abu Al Shamat,Saudi Arabia,MID,True,False,Mohammed Waheeb,100.0,Mohammed Al-Breik,68.8
 Alfie Jones,Canada,DEF,True,False,Alfie Jones,100.0,,
@@ -516,12 +456,10 @@ Abdelatif Ramdane,Algeria,GK,False,False,Abdelkader Bedrane,62.9,,
 Oussama Benbot,Algeria,GK,False,False,,,,
 Mohamed Tougaï,Algeria,DEF,False,False,Mohamed Amoura,78.6,Mohamed Amine Tougai,95.0
 Cristian Volpato,Australia,MID,True,False,,,,
-Jonas Urbig,Germany,GK,True,False,Jonas Urbig,100.0,,
-JD Gunn,Panama,GK,False,False,,,,
-Iván Anderson,Panama,DEF,False,False,,,Eduardo Anderson,72.4
 José Murillo,Panama,DEF,False,False,Michael Amir Murillo,85.5,Michael Amir Murillo,85.5
-Víctor Griffith,Panama,MID,False,True,,,Victor Griffith,100.0
-Abdulrahman Al Sanbi,Saudi Arabia,GK,True,False,Abdulrahman Al Sanbi,100.0,Ali Al Asmari,85.5
 Tyler Fletcher,Scotland,MID,True,False,Tyler Fletcher,100.0,,
-Pape Sy,Senegal,GK,False,False,Pape Matar Sarr,85.5,Pape Matar Sarr,85.5
 Herman Johansson,Sweden,MID,False,True,Emil Hansson,71.4,Herman Johansson,100.0
+Mladen Jurkas,Bosnia and Herzegovina,GK,False,False,Milan Đurić,60.9,,
+Derrick Luckassen,Ghana,DEF,False,False,Derrick Köhn,70.0,,
+Shahriyar Moghanlou,IR Iran,FWD,False,False,,,Shahriar Moghanlou,97.3
+Cho Wi-Je,Korea Republic,DEF,False,False,Cho Jaehun,63.2,,

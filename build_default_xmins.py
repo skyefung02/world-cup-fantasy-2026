@@ -105,6 +105,8 @@ FBREF_TO_ELO = {
 K_COND_SHRINK        = 5     # phantom appearances toward prior in conditional_min
 PRIOR_COND           = 75    # typical starter min/appearance prior
 MIN_STARTER_MP_SHARE = 0.4   # eligibility threshold for algorithmic starter selection
+POS_TO_FBREF = {"GK": "GK", "DEF": "DF", "MID": "MF", "FWD": "FW"}  # roster pos → FBref Pos code
+POS_MAP = {"GK": "GK", "DF": "DEF", "MF": "MID", "FW": "FWD"}        # FBref Pos code → roster pos
 FUZZY_SCORERS = [
     ("token_sort_ratio", 80),
     ("WRatio",           85),
@@ -347,7 +349,7 @@ def step_4_roster_match(player_agg):
     return wc_roster, player_agg[player_agg["in_roster"]].copy()
 
 
-def step_5_starter_selection(squad_agg):
+def step_5_starter_selection(squad_agg, wc_roster):
     """Algorithmic starter selection + manual XI overrides."""
     section("Step 5: Starter selection (algorithmic + manual XI overrides)")
 
@@ -379,6 +381,48 @@ def step_5_starter_selection(squad_agg):
         return row["is_starter"]
 
     squad_agg["is_starter"] = squad_agg.apply(_apply_manual_xi, axis=1)
+
+    # Inject manual-XI starters that have no international data (uncapped backups,
+    # fresh call-ups). They're absent from squad_agg because player_agg is built
+    # purely from intl stats. Fall back to the mean conditional_min of *actual*
+    # starters at the same position (a missing keeper inherits the typical
+    # starting-GK minutes, an outfielder the typical starter at his position) so
+    # the locked XI is honored instead of dropping to the ~4-min leftover floor.
+    starters = squad_agg[squad_agg["is_starter"]]
+    pos_norm = starters["Pos"].str.split(",").str[0].map(POS_MAP)
+    pos_avg_cond = starters["conditional_min"].groupby(pos_norm).mean().to_dict()
+    overall_avg_cond = starters["conditional_min"].mean()
+    print("  Starter conditional_min by position (fallback for no-intl-data starters):")
+    for p in ("GK", "DEF", "MID", "FWD"):
+        print(f"    {p:4s} {pos_avg_cond.get(p, overall_avg_cond):.1f}")
+
+    existing = set(zip(squad_agg["wc_team"], squad_agg["name_ascii"]))
+    inj = []
+    for team, xi_ascii in MANUAL_XI_ASCII.items():
+        for a in xi_ascii:
+            if (team, a) in existing:
+                continue
+            rr = wc_roster[(wc_roster["team"] == team) & (wc_roster["name_ascii"] == a)]
+            if rr.empty:
+                continue  # genuine name mismatch — leave it for the <11 audit below
+            r = rr.iloc[0]
+            inj.append({
+                "Player": r["player"],
+                "Squad": r["fbref_squad"],
+                "name_ascii": a,
+                "Pos": POS_TO_FBREF.get(r["position"], "MF"),
+                "is_gk": r["position"] == "GK",
+                "conditional_min": pos_avg_cond.get(r["position"], overall_avg_cond),
+                "per_team_match": 0.0,
+                "mp_share": 1.0,
+                "wc_team": team,
+                "is_starter": True,
+            })
+    if inj:
+        squad_agg = pd.concat([squad_agg, pd.DataFrame(inj)], ignore_index=True)
+        details = ", ".join(f"{d['Player']} ({d['Pos']}→{d['conditional_min']:.0f})" for d in inj)
+        print(f"  Injected {len(inj)} manual-XI starter(s) with no intl data, "
+              f"using position-average conditional_min: {details}")
 
     # Audit: manual XI coverage per team
     print(f"  Algorithmic teams (no manual XI): "
@@ -432,7 +476,6 @@ def step_6_normalize_and_export(wc_roster, squad_agg):
     )
 
     # Hybrid merge: name-only for unique names, position-aware for duplicates (Danilo case)
-    POS_MAP = {"GK": "GK", "DF": "DEF", "MF": "MID", "FW": "FWD"}
     te = squad_agg.assign(pos_tokens=squad_agg["Pos"].str.split(",")).explode("pos_tokens")
     te["pos_primary"] = te["pos_tokens"].map(POS_MAP)
     te = te.drop_duplicates(subset=["Player", "Squad", "pos_primary"])
@@ -497,7 +540,7 @@ def main():
     step_2_comp_strength(intl_full)
     player_agg  = step_3_player_aggregates(intl_full)
     wc_roster, squad_agg = step_4_roster_match(player_agg)
-    squad_agg   = step_5_starter_selection(squad_agg)
+    squad_agg   = step_5_starter_selection(squad_agg, wc_roster)
     step_6_normalize_and_export(wc_roster, squad_agg)
 
     print(f"\n{'═' * 78}\n  DONE.\n{'═' * 78}")

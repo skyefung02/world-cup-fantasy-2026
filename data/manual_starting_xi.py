@@ -24,7 +24,7 @@ MANUAL_STARTING_XI = {
         "Álvaro Fidalgo",      # CM
         "Roberto Alvarado",    # RW
         "Raul Jimenez",        # ST
-        "Julian Quinones",     # LW
+        "Alexis Vega",         # LW
     ],
 
     "Czechia": [
@@ -35,7 +35,7 @@ MANUAL_STARTING_XI = {
         "Vladimir Coufal",     # LB
         "Tomas Soucek",        # CDM
         "Vladimír Darida",     # CM
-        "Jaroslav Zelený",     # CM
+        "David Jurásek",       # CM
         "Lukáš Provod",        # RW
         "Pavel Šulc",          # ST
         "Patrik Schick",       # LW
@@ -43,7 +43,7 @@ MANUAL_STARTING_XI = {
 
     # ── Group B ────────────────────────────────────────────────────────────────
     "Canada": [
-        "Dayne St. Clair",     # GK
+        "Maxime Crépeau",      # GK
         "Alistair Johnston",   # RB
         "Moïse Bombito",       # CB
         "Derek Cornelius",     # CB
@@ -51,9 +51,23 @@ MANUAL_STARTING_XI = {
         "Tajon Buchanan",      # CDM
         "Ismael Kone",         # CM
         "Stephen Eustaquio",   # CM
-        "Ali Ahmed",           # RW
+        "Liam Millar",         # RW
         "Jonathan David",      # ST
         "Cyle Larin",          # LW
+    ],
+
+    "Bosnia and Herzegovina": [
+        "Nikola Vasilj",       # GK
+        "Amar Dedic",          # RB
+        "Nikola Katic",        # CB
+        "Tarik Muharemovic",   # CB
+        "Sead Kolasinac",      # LB
+        "Ivan Bašić",          # CDM
+        "Benjamin Tahirovic",  # CM
+        "Kerim Alajbegović'",  # CM
+        "Amar Memić",          # RW
+        "Ermedin Demirović",   # ST
+        "Edin Dzeko",          # LW
     ],
 
     "Switzerland": [
@@ -64,7 +78,7 @@ MANUAL_STARTING_XI = {
         "Ricardo Rodriguez",   # LB
         "Granit Xhaka",        # CDM
         "Remo Freuler",        # CM
-        "Denis Zakaria",       # CM
+        "Michel Aebischer",    # CM
         "Dan Ndoye",           # RW
         "Breel Embolo",        # ST
         "Ruben Vargas",        # LW
@@ -82,32 +96,32 @@ MANUAL_STARTING_XI = {
         "Matheus Cunha",       # CM
         "Raphinha",            # RW
         "Vinicius Júnior",     # ST
-        "Luiz Henrique",             # LW
+        "Luiz Henrique",       # LW
     ],
 
     "Morocco": [
         "Yassine Bounou",      # GK
         "Achraf Hakimi",       # RB
         "Nayef Aguerd",        # CB
-        "Chadi Riad",          # CB
+        "Issa Diop",           # CB
         "Noussair Mazraoui",   # LB
         "Sofyan Amrabat",      # CDM
         "Neil El Aynaoui",     # CM
         "Azzedine Ounahi",     # CM
         "Brahim Diaz",         # RW
-        "Ayoub El Kaabi",      # ST
+        "Ismael Saibari",      # ST
         "Abde Ezzalzouli",     # LW
     ],
 
     "Scotland": [
         "Angus Gunn",          # GK
-        "Grant Hanley",        # RB
-        "Jack Hendry",         # CB
-        "Kieran Tierney",      # CB
-        "Aaron Hickey",        # LB
-        "Billy Gilmour",       # CDM
+        "Aaron Hickey",        # RB
+        "Scott McKenna",       # CB
+        "John Souttar",        # CB
+        "Andrew Robertson",    # LB
+        "Lewis Ferguson",      # CDM
         "Scott McTominay",     # CM
-        "Andrew Robertson",    # CM
+        "Ben Gannon-Doak",     # CM
         "John McGinn",         # RW
         "Ryan Christie",       # ST
         "Che Adams",           # LW
@@ -128,6 +142,20 @@ MANUAL_STARTING_XI = {
         "Christian Pulisic",   # LW
     ],
 
+    "Australia": [
+        "Mathew Ryan",         # GK
+        "Jordy Bos",           # RB
+        "Harry Souttar",       # CB
+        "Alessandro Circati",  # CB
+        "Lucas Herrington",    # LB
+        "Jacob Italiano",      # CDM
+        "Jackson Irvine",      # CM
+        "Aiden O'Neill",       # CM
+        "Ajdin Hrustic",       # RW
+        "Mo Toure",            # ST
+        "Nestory Irankunda",   # LW
+    ],
+
     "Türkiye": [
         "Uğurcan Çakır",       # GK
         "Zeki Çelik",          # RB
@@ -135,7 +163,7 @@ MANUAL_STARTING_XI = {
         "Abdülkerim Bardakcı", # CB
         "Ferdi Kadioglu",      # LB
         "Hakan Çalhanoglu",    # CDM
-        "İsmail Yüksek",       # CM
+        "Orkun Kokcu",         # CM
         "Barış Alper Yılmaz",  # CM
         "Arda Güler",          # RW
         "Kenan Yıldız",        # ST
@@ -144,13 +172,13 @@ MANUAL_STARTING_XI = {
 
     # ── Group E ────────────────────────────────────────────────────────────────
     "Germany": [
-        "Oliver Baumann",      # GK
+        "Manuel Neuer",        # GK
         "Joshua Kimmich",      # RB
         "Jonathan Tah",        # CB
         "Nico Schlotterbeck",  # CB
         "David Raum",          # LB
         "Aleksandar Pavlovic", # CDM
-        "Leon Goretzka",       # CM
+        "Felix Nmecha",        # CM
         "Florian Wirtz",       # CM
         "Leroy Sane",          # RW
         "Jamal Musiala",       # ST
@@ -168,7 +196,7 @@ MANUAL_STARTING_XI = {
         "Seko Fofana",         # CM
         "Amad Diallo",         # RW
         "Yan Diomande",        # ST
-        "Evann Guessand",      # LW
+        "Ange-Yoan Bonny",     # LW
     ],
 
     "Ecuador": [
@@ -189,7 +217,7 @@ MANUAL_STARTING_XI = {
     "Netherlands": [
         "Bart Verbruggen",     # GK
         "Denzel Dumfries",     # RB
-        "Jan Paul Van Hecke",  # CB
+        "Jurrien Timber",      # CB
         "Virgil Van Dijk",     # CB
         "Micky Van de Ven",    # LB
         "Ryan Gravenberch",    # CDM
@@ -206,8 +234,8 @@ MANUAL_STARTING_XI = {
         "Hiroki Ito",          # CB
         "Ko Itakura",          # CB
         "Ritsu Doan",          # LB
-        "Wataru Endo",         # CDM
-        "Ao Tanaka",           # CM
+        "Kaishu Sano",         # CDM
+        "Wataru Endo",         # CM
         "Keito Nakamura",      # CM
         "Takefusa Kubo",       # RW
         "Daichi Kamada",       # ST
@@ -219,7 +247,7 @@ MANUAL_STARTING_XI = {
         "Isak Hien",           # RB
         "Carl Starfelt",       # CB
         "Victor Lindelof",     # CB
-        "Daniel Svensson",     # LB
+        "Gustaf Lagerbielke",  # LB
         "Yasin Ayari",         # CDM
         "Jesper Karlstrom",    # CM
         "Gabriel Gudmundsson", # CM
@@ -231,7 +259,7 @@ MANUAL_STARTING_XI = {
     # ── Group G ────────────────────────────────────────────────────────────────
     "Belgium": [
         "Thibaut Courtois",    # GK
-        "Timothy Castagne",    # RB
+        "Thomas Meunier",      # RB
         "Zeno Debast",         # CB
         "Arthur Theate",       # CB
         "Maxim De Cuyper",     # LB
@@ -239,7 +267,7 @@ MANUAL_STARTING_XI = {
         "Youri Tielemans",     # CM
         "Kevin de Bruyne",     # CM
         "Charles de Ketelaere", # RW
-        "Romelu Lukaku",       # ST
+        "Leandro Trossard",    # ST
         "Jeremy Doku",         # LW
     ],
 
@@ -253,7 +281,7 @@ MANUAL_STARTING_XI = {
         "Rodri",               # CDM
         "Pedri",               # CM
         "Fabián Ruiz",         # CM
-        "Ferran Torres",       # RW
+        "Lamine Yamal",        # RW
         "Mikel Oyarzabal",     # ST
         "Nico Williams",       # LW
     ],
@@ -262,11 +290,11 @@ MANUAL_STARTING_XI = {
         "Sergio Rochet",       # GK
         "Guillermo Varela",    # RB
         "Ronald Araujo",       # CB
-        "Jose Maria Gimenez",  # CB
+        "Sebastian Caceres",   # CB
         "Mathias Olivera",     # LB
         "Manuel Ugarte",       # CDM
         "Federico Valverde",   # CM
-        "Nicolás de la Cruz",  # CM
+        "Rodrigo Bentancur",   # CM
         "Agustin Canobbio",    # RW
         "Maximiliano Araújo",  # ST
         "Darwin Nunez",        # LW
@@ -274,58 +302,58 @@ MANUAL_STARTING_XI = {
     
     # ── Group I ────────────────────────────────────────────────────────────────
     "France": [
-        "Mike Maignan",  # GK
-        "Jules Kounde",       # RB
-        "William Saliba",         # CB
-        "Dayot Upamecano",         # CB
+        "Mike Maignan",        # GK
+        "Jules Kounde",        # RB
+        "William Saliba",      # CB
+        "Dayot Upamecano",     # CB
         "Theo Hernandez",      # LB
-        "Aurélien Tchouaméni",     # CDM
-        "Adrien Rabiot",      # CM
-        "Desire Doue",      # CM
-        "Michael Olise", # RW
-        "Kylian Mbappe",     # ST
-        "Ousmane Dembele",    # LW
+        "Aurélien Tchouaméni", # CDM
+        "Adrien Rabiot",       # CM
+        "Desire Doue",         # CM
+        "Michael Olise",       # RW
+        "Kylian Mbappe",       # ST
+        "Ousmane Dembele",     # LW
     ],
     
     "Senegal": [
-        "Edouard Mendy",  # GK
+        "Edouard Mendy",       # GK
         "Krepin Diatta",       # RB
-        "Mamadou Sarr",         # CB
-        "Moussa Niakhate",         # CB
-        "El Hadji Malick Diouf",      # LB
-        "Idrissa Gana Gueye",     # CDM
-        "Lamine Camara",      # CM
-        "Iliman Ndiaye",      # CM
-        "Habib Diarra", # RW
-        "Sadio Mane",     # ST
-        "Nicolas Jackson",    # LW]               
+        "Kalidou Koulibaly",   # CB
+        "Moussa Niakhate",     # CB
+        "El Hadji Malick Diouf", # LB
+        "Idrissa Gana Gueye",  # CDM
+        "Pape Gueye",          # CM
+        "Iliman Ndiaye",       # CM
+        "Habib Diarra",        # RW
+        "Sadio Mane",          # ST
+        "Nicolas Jackson",     # LW
     ],
     
     "Norway": [
-        "Ørjan Nyland",  # GK
-        "Julian Ryerson",       # RB
-        "Kristoffer Ajer",         # CB
-        "Torbjørn Heggem",         # CB
-        "David Møller Wolfe",      # LB
-        "Sander Berge",     # CDM
-        "Morten Thorsby",      # CM
-        "Martin Ødegaard",      # CM
-        "Alexander Sørloth", # RW
-        "Erling Haaland",     # ST
-        "Antonio Nusa",    # LW]               
+        "Ørjan Nyland",        # GK
+        "Julian Ryerson",      # RB
+        "Kristoffer Ajer",     # CB
+        "Torbjørn Heggem",     # CB
+        "David Møller Wolfe",  # LB
+        "Sander Berge",        # CDM
+        "Fredrik Aursnes",     # CM
+        "Martin Ødegaard",     # CM
+        "Alexander Sørloth",   # RW
+        "Erling Haaland",      # ST
+        "Antonio Nusa",        # LW
     ],
     
     # ── Group J ────────────────────────────────────────────────────────────────
     "Austria": [
         "Alexander Schlager",  # GK
         "Konrad Laimer",       # RB
-        "Kevin Danso",         # CB
+        "Philipp Lienhart",    # CB
         "David Alaba",         # CB
-        "Phillipp Mwene",      # LB
+        "Stefan Posch",        # LB
         "Nicolas Seiwald",     # CDM
         "Xaver Schlager",      # CM
         "Patrick Wimmer",      # CM
-        "Christoph Baumgartner", # RW
+        "Michael Gregoritsch", # RW
         "Marcel Sabitzer",     # ST
         "Marko Arnautovic",    # LW
     ],
@@ -334,13 +362,13 @@ MANUAL_STARTING_XI = {
         "Emiliano Martinez",   # GK
         "Nahuel Molina",       # RB
         "Cristian Romero",     # CB
-        "Nicolas Otamendi",    # CB  
+        "Nicolas Otamendi",    # CB
         "Nicolas Tagliafico",  # LB
         "Enzo Fernandez",      # CM
         "Alexis Mac Allister", # CM
         "Rodrigo de Paul",     # RW
-        "Lautaro Martinez",    # ST
-        "Lionel Messi",        # CAM
+        "Thiago Almada",
+        "Lionel Messi",        # ST
         "Julian Alvarez",      # LW
     ],
 
@@ -355,7 +383,7 @@ MANUAL_STARTING_XI = {
         "Joao Neves",          # CM
         "Bruno Fernandes",     # CM
         "Bernardo Silva",      # RW
-        "Rafael Leao",         # ST
+        "Pedro Neto",          # ST
         "Cristiano Ronaldo",   # LW
     ],
 
@@ -370,7 +398,7 @@ MANUAL_STARTING_XI = {
         "Jhon Arias",          # CM
         "James Rodriguez",     # RW
         "Luis Diaz",           # ST
-        "Jhon Cordoba",        # LW
+        "Luis Suarez",         # LW
     ],
 
     # ── Group L ────────────────────────────────────────────────────────────────
@@ -385,18 +413,18 @@ MANUAL_STARTING_XI = {
         "Jude Bellingham",     # CM
         "Bukayo Saka",         # RW
         "Harry Kane",          # ST
-        "Marcus Rashford",     # LW
+        "Anthony Gordon",      # LW
     ],
 
     "Croatia": [
         "Dominik Livakovic",   # GK
         "Josip Stanisic",      # RB
         "Josip Sutalo",        # CB
-        "Duje Caleta-Car",     # CB
+        "Luka Vuskovic",       # CB
         "Josko Gvardiol",      # LB
         "Luka Modric",         # CDM
         "Mateo Kovacic",       # CM
-        "Mario Pasalic",       # CM
+        "Petar Sucic",         # CM
         "Andrej Kramaric",     # RW
         "Ante Budimir",        # ST
         "Ivan Perisic",        # LW
