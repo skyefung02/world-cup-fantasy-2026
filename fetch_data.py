@@ -78,7 +78,11 @@ def build_team_fixtures(df_fixtures):
 
 
 def build_squads_rated(df_squads, df_elo, df_tilt):
-    df_elo_clean  = df_elo[["Code", "PELE"]].rename(columns={"Code": "abbr", "PELE": "elo"})
+    # `elo` is the tournament-adjusted WC PELE (Base PELE + roster + perf adjustments);
+    # `home_field` is the host advantage bonus (non-zero only for USA/MEX/CAN).
+    df_elo_clean  = df_elo[["Code", "WC PELE", "Home field"]].rename(
+        columns={"Code": "abbr", "WC PELE": "elo", "Home field": "home_field"})
+    df_elo_clean["home_field"] = df_elo_clean["home_field"].fillna(0.0)
     df_tilt_clean = df_tilt[["Code", "Tactical", "Personnel", "total_tilt", "tilt_cat"]].rename(columns={"Code": "abbr"})
     df_ratings = df_elo_clean.merge(df_tilt_clean, on="abbr")
     return df_squads.merge(df_ratings, on="abbr", how="left")
@@ -86,10 +90,11 @@ def build_squads_rated(df_squads, df_elo, df_tilt):
 
 def build_player_fixtures(df_players, df_squads_rated, df_team_fixtures):
     elo_lookup           = df_squads_rated.set_index("abbr")["elo"].to_dict()
+    home_field_lookup    = df_squads_rated.set_index("abbr")["home_field"].to_dict()
     tactical_tilt_lookup = df_squads_rated.set_index("abbr")["Tactical"].to_dict()
 
     df = df_players.merge(
-        df_squads_rated[["id", "elo", "Tactical", "total_tilt", "tilt_cat"]],
+        df_squads_rated[["id", "elo", "home_field", "Tactical", "total_tilt", "tilt_cat"]],
         left_on="squadId", right_on="id", suffixes=("", "_squad")
     ).drop(columns=["id_squad"]).rename(columns={"Tactical": "tactical_tilt"})
 
@@ -99,6 +104,7 @@ def build_player_fixtures(df_players, df_squads_rated, df_team_fixtures):
     ).drop(columns=["team_abbr"])
 
     df["opp_elo"]           = df["opp_abbr"].map(elo_lookup)
+    df["opp_home_field"]    = df["opp_abbr"].map(home_field_lookup)
     df["opp_tactical_tilt"] = df["opp_abbr"].map(tactical_tilt_lookup)
     return df
 
@@ -112,7 +118,7 @@ def run():
     rounds_raw  = load_cache("rounds")
 
     print("Loading Elo/Tilt ratings...")
-    df_elo  = pd.read_csv("data/elo_ratings.csv")
+    df_elo  = pd.read_csv("data/elo_wc_adjusted.csv")
     df_tilt = pd.read_csv("data/tilt_ratings.csv")
 
     print("Building DataFrames...")

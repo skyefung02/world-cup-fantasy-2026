@@ -15,7 +15,7 @@ MANUAL_STARTING_XI = {
     # ── Group A ────────────────────────────────────────────────────────────────
     "Mexico": [
         "Raúl Rangel",         # GK
-        "Israel Reyes",        # RB
+        "Jorge Sanchez",        # RB
         "Cesar Montes",        # CB
         "Johan Vasquez",       # CB
         "Jesus Gallardo",      # LB
@@ -24,7 +24,7 @@ MANUAL_STARTING_XI = {
         "Álvaro Fidalgo",      # CM
         "Roberto Alvarado",    # RW
         "Raul Jimenez",        # ST
-        "Alexis Vega",         # LW
+        "Brian Gutierrez",         # LW
     ],
 
     "Czechia": [
@@ -45,7 +45,7 @@ MANUAL_STARTING_XI = {
     "Canada": [
         "Maxime Crépeau",      # GK
         "Alistair Johnston",   # RB
-        "Moïse Bombito",       # CB
+        "Luc De Fougerolles",       # CB
         "Derek Cornelius",     # CB
         "Richie Laryea",       # LB
         "Tajon Buchanan",      # CDM

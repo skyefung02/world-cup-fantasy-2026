@@ -124,8 +124,13 @@ def _precompute_base_state():
         df.loc[mask, "gls_p90"] = (1 - lams["gls"]) * df.loc[mask, "gls_p90"] + lams["gls"] * pos_mean.loc[mask, "gls_p90"]
         df.loc[mask, "ast_p90"] = (1 - lams["ast"]) * df.loc[mask, "ast_p90"] + lams["ast"] * pos_mean.loc[mask, "ast_p90"]
 
-    # Elo → team xG (per fixture)
-    df["win_exp"]     = win_expectancy(df["elo"], df["opp_elo"])
+    # Elo → team xG (per fixture). Home-field advantage is added match-by-match to
+    # the host's rating: all 2026 group games for a host are played in-country, and
+    # the three hosts are drawn into separate groups so they never face each other,
+    # so applying each side's own bonus is correct (it's 0 for non-hosts).
+    home_adv     = df["home_field"].fillna(0.0)
+    opp_home_adv = df["opp_home_field"].fillna(0.0)
+    df["win_exp"]     = win_expectancy(df["elo"] + home_adv, df["opp_elo"] + opp_home_adv)
     df["xg_scored"]   = expected_goals(df["win_exp"].values)
     df["xg_conceded"] = expected_goals(1 - df["win_exp"].values)
 
