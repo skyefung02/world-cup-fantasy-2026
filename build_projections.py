@@ -17,12 +17,24 @@ SET_PIECE_TAKERS_PATH = "data/set_piece_takers.csv"
 
 PEN_LOCK_FRACTION = PEN_PROB * PEN_CONVERSION
 
+# Elo->goals calibration (fit against SilverBulletin 48-team group-stage projections,
+# measured on the full pipeline incl. the tactical-tilt multiplier below).
+# ELO_DIVISOR widens the strength spread; GOALS_SCALE corrects a uniform level offset
+# on both xG scored and conceded. See win_expectancy / expected_goals.
+ELO_DIVISOR = 348
+GOALS_SCALE = 0.935
+
 
 # --- Model functions ---
 
 def win_expectancy(elo_team, elo_opp):
-    """Standard Elo win expectancy formula. Neutral ground."""
-    return 1 / (1 + 10 ** ((elo_opp - elo_team) / 400))
+    """Standard Elo win expectancy formula. Neutral ground.
+
+    Divisor calibrated to 348 (vs the textbook 400) so the strength->goals
+    spread matches the SilverBulletin reference; the wider scale stops the
+    model from compressing the gap between elite and minnow sides.
+    """
+    return 1 / (1 + 10 ** ((elo_opp - elo_team) / ELO_DIVISOR))
 
 
 def expected_goals(we):
@@ -131,8 +143,8 @@ def _precompute_base_state():
     home_adv     = df["home_field"].fillna(0.0)
     opp_home_adv = df["opp_home_field"].fillna(0.0)
     df["win_exp"]     = win_expectancy(df["elo"] + home_adv, df["opp_elo"] + opp_home_adv)
-    df["xg_scored"]   = expected_goals(df["win_exp"].values)
-    df["xg_conceded"] = expected_goals(1 - df["win_exp"].values)
+    df["xg_scored"]   = expected_goals(df["win_exp"].values) * GOALS_SCALE
+    df["xg_conceded"] = expected_goals(1 - df["win_exp"].values) * GOALS_SCALE
 
     TILT_K = 0.25
     df["match_tilt"]    = df["tactical_tilt"] + df["opp_tactical_tilt"]
