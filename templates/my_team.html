@@ -1,0 +1,271 @@
+{% extends "base.html" %}
+
+{% block title %}My Team — World Cup Fantasy{% endblock %}
+
+{% block extra_styles %}
+    .debug-banner {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.4px;
+      color: var(--warn); background: rgba(251, 191, 36, 0.07);
+      border: 1px solid rgba(251, 191, 36, 0.22); border-radius: 6px;
+      padding: 5px 10px; margin-bottom: 18px;
+    }
+    .totals-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .total-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 18px; min-width: 96px;
+    }
+    .total-card .lbl { font-family: var(--mono); font-size: 0.66rem; color: var(--text-subtle);
+      text-transform: uppercase; letter-spacing: 1px; }
+    .total-card .val { font-family: var(--display); font-size: 1.7rem; font-weight: 800;
+      color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1.1; }
+
+    .pos-block { margin-bottom: 18px; }
+    .pos-header { display: flex; align-items: center; gap: 10px; padding: 12px 18px;
+      background: var(--surface-2); border-bottom: 1px solid var(--border); }
+    .pos-count { font-size: 0.72rem; color: var(--text-faint); font-family: var(--mono); }
+
+    td.player-name { font-family: var(--display); font-size: 1.05rem; font-weight: 600; }
+    td.flag-cell { width: 34px; font-size: 1.1rem; }
+    td.club { color: var(--text-muted); font-size: 0.82rem; }
+    td.price { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+    th.xp-col, td.xp-cell { text-align: center; font-variant-numeric: tabular-nums; width: 70px; }
+    td.xp-cell { color: var(--text-muted); }
+
+    .cv-badge { display: inline-block; font-family: var(--mono); font-size: 0.62rem; font-weight: 700;
+      width: 18px; height: 18px; line-height: 18px; text-align: center; border-radius: 5px; margin-left: 8px; }
+    .cv-badge.C { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent-border); }
+    .cv-badge.V { background: var(--surface-2); color: var(--text-muted); border: 1px solid var(--border); }
+
+    .error-box { background: rgba(244, 63, 94, 0.07); border: 1px solid rgba(244, 63, 94, 0.25);
+      color: var(--danger); border-radius: 10px; padding: 18px 20px; font-size: 0.9rem; line-height: 1.5; }
+
+    /* ── Rolling captaincy ── */
+    .cap-note { font-family: var(--mono); font-size: 0.66rem; color: var(--text-faint);
+      text-transform: none; letter-spacing: 0; }
+    .cap-pills { display: flex; gap: 8px; margin-bottom: 18px; }
+
+    .cap-summary { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+    .cap-stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+      padding: 10px 16px; display: flex; flex-direction: column; gap: 1px; min-width: 120px; }
+    .cap-stat .lbl { font-family: var(--mono); font-size: 0.62rem; color: var(--text-subtle);
+      text-transform: uppercase; letter-spacing: 1px; }
+    .cap-stat .val { font-family: var(--display); font-size: 1.5rem; font-weight: 800;
+      font-variant-numeric: tabular-nums; line-height: 1.1; }
+    .cap-stat .sub { font-size: 0.72rem; color: var(--text-muted); }
+    .cap-stat.uplift .val { color: var(--success); }
+
+    /* timeline ladder */
+    .ladder { position: relative; }
+    .lblock { display: flex; gap: 16px; }
+    .lrail { display: flex; flex-direction: column; align-items: center; width: 14px; }
+    .ldot { width: 12px; height: 12px; border-radius: 50%; background: var(--border-strong);
+      border: 2px solid var(--bg); flex-shrink: 0; margin-top: 4px; }
+    .ldot.start { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-bg); }
+    .ldot.last  { background: var(--success); }
+    .lline { flex: 1; width: 2px; background: var(--border); margin: 2px 0; }
+    .lcard { flex: 1; padding-bottom: 20px; min-width: 0; }
+
+    .lcard-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .lblk-idx { font-family: var(--display); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px; }
+    .lblk-ko { font-family: var(--mono); font-size: 0.72rem; color: var(--text-subtle); }
+    .tag { font-family: var(--mono); font-size: 0.6rem; font-weight: 700; padding: 2px 7px;
+      border-radius: 5px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .tag.start { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent-border); }
+    .tag.last  { background: rgba(52, 211, 153, 0.1); color: var(--success); border: 1px solid rgba(52, 211, 153, 0.25); }
+
+    .lcard-player { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+    .lcard-player .flag { font-size: 1.15rem; }
+    .lcard-player .pname { font-family: var(--display); font-size: 1.1rem; font-weight: 600; }
+    .lcard-player .pteam { font-size: 0.8rem; color: var(--text-muted); }
+    .lcard-player .pproj { margin-left: auto; font-family: var(--mono); font-size: 0.78rem;
+      color: var(--text-muted); font-variant-numeric: tabular-nums; }
+    .lcard-player .pproj b { color: var(--text); font-weight: 600; }
+
+    .lcard-decision { display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+      font-size: 0.82rem; color: var(--text-muted); }
+    .keep-rule b { color: var(--accent); font-variant-numeric: tabular-nums; }
+    .keep-always { color: var(--success); font-weight: 600; }
+    .keep-odds { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono);
+      font-size: 0.72rem; color: var(--text-subtle); }
+    .keep-odds .bar { width: 64px; height: 6px; border-radius: 4px; background: var(--surface-2);
+      overflow: hidden; border: 1px solid var(--border); }
+    .keep-odds .fill { display: block; height: 100%; background: var(--accent); }
+{% endblock %}
+
+{% block content %}
+    <div class="debug-banner">⚙ LOCAL DEBUG · not deployed to production</div>
+
+    {% if error %}
+      <div class="page-head"><div><h1 class="page-title">My Team</h1></div></div>
+      <div class="error-box">{{ error }}</div>
+    {% else %}
+      <div class="page-head">
+        <div>
+          <h1 class="page-title">My Team</h1>
+          <p class="page-sub">FIFA entry #{{ team_id }} · projected points (captain doubled)</p>
+        </div>
+        <div class="totals-row">
+          <div class="total-card"><div class="lbl">R1</div><div class="val">{{ totals.r1 }}</div></div>
+          <div class="total-card"><div class="lbl">R2</div><div class="val">{{ totals.r2 }}</div></div>
+          <div class="total-card"><div class="lbl">R3</div><div class="val">{{ totals.r3 }}</div></div>
+        </div>
+      </div>
+
+      {# ── Rolling captaincy (hero) ── #}
+      <div class="section-label">Rolling Captaincy
+        <span class="cap-note">· Poisson first-pass model — treat uplift as an upper bound</span>
+      </div>
+      <div class="cap-pills">
+        {% for rd in captaincy %}
+        <button class="pill cap-pill {% if loop.first %}active{% endif %}" data-round="{{ rd.round }}"
+                onclick="showCapRound('{{ rd.round }}')">Round {{ rd.round }}</button>
+        {% endfor %}
+      </div>
+
+      {% for rd in captaincy %}
+      <div class="cap-round" data-round="{{ rd.round }}" {% if not loop.first %}style="display:none"{% endif %}>
+        {% if not rd.blocks %}
+          <p class="no-results">No squad players have a fixture this round.</p>
+        {% else %}
+          <div class="cap-summary">
+            <div class="cap-stat">
+              <span class="lbl">Rolling EV</span>
+              <span class="val">{{ rd.rolling_ev }}</span>
+            </div>
+            {% if rd.static %}
+            <div class="cap-stat">
+              <span class="lbl">Static best</span>
+              <span class="val">{{ rd.static.value }}</span>
+              <span class="sub">{{ rd.static.player }}</span>
+            </div>
+            <div class="cap-stat uplift">
+              <span class="lbl">Uplift</span>
+              <span class="val">{{ '%+.2f' | format(rd.uplift) }}</span>
+              <span class="sub">{{ '%+.1f' | format(rd.uplift_pct) }}%</span>
+            </div>
+            {% endif %}
+          </div>
+
+          {% if rd.single_block %}
+          <p class="cap-note" style="margin-bottom: 18px;">Only one kickoff block this round — rolling captaincy has no value.</p>
+          {% endif %}
+
+          <div class="ladder">
+            {% for b in rd.blocks %}
+            <div class="lblock">
+              <div class="lrail">
+                <span class="ldot {% if b.is_start %}start{% elif b.is_last %}last{% endif %}"></span>
+                {% if not b.is_last %}<span class="lline"></span>{% endif %}
+              </div>
+              <div class="lcard">
+                <div class="lcard-top">
+                  <span class="lblk-idx">Block {{ b.index }}</span>
+                  <span class="lblk-ko">{{ b.kickoff_label }}</span>
+                  {% if b.is_start %}<span class="tag start">★ Start here</span>{% endif %}
+                  {% if b.is_last %}<span class="tag last">Last</span>{% endif %}
+                </div>
+                <div class="lcard-player">
+                  <span class="flag">{{ flags.get(b.abbr, '') }}</span>
+                  <span class="pname">{{ b.player }}</span>
+                  <span class="pos-badge {{ b.position }}">{{ b.position }}</span>
+                  <span class="pteam">{{ b.team }}</span>
+                  <span class="pproj">proj <b>{{ b.proj }}</b></span>
+                </div>
+                <div class="lcard-decision">
+                  {% if b.is_last %}
+                    <span class="keep-always">✓ Keep always</span>
+                  {% else %}
+                    <span class="keep-rule">Keep if ≥ <b>{{ b.threshold }}</b> · else roll to Block {{ b.roll_to }} ↓</span>
+                    <span class="keep-odds">
+                      <span class="bar"><span class="fill" style="width: {{ b.keep_prob }}%"></span></span>
+                      keep {{ b.keep_prob }}%
+                    </span>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+
+      <div class="section-label" style="margin-top: 36px;">Squad</div>
+      {% for pos in pos_order %}
+        {% if lineup[pos] %}
+        <div class="pos-block">
+          <div class="card">
+            <div class="pos-header">
+              <span class="pos-badge {{ pos }}">{{ pos }}</span>
+              <span class="pos-count">{{ lineup[pos] | length }} starting</span>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th></th><th>Player</th><th>Club</th><th>Price</th>
+                  <th class="xp-col">R1</th><th class="xp-col">R2</th><th class="xp-col">R3</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for p in lineup[pos] %}
+                <tr>
+                  <td class="flag-cell">{{ p.flag }}</td>
+                  <td class="player-name">{{ p.player }}{% if p.is_captain %}<span class="cv-badge C">C</span>{% elif p.is_vice %}<span class="cv-badge V">V</span>{% endif %}</td>
+                  <td class="club">{{ p.team }}</td>
+                  <td class="price">{% if p.price is not none %}£{{ p.price }}m{% else %}—{% endif %}</td>
+                  <td class="xp-cell">{{ p.r1 }}</td>
+                  <td class="xp-cell">{{ p.r2 }}</td>
+                  <td class="xp-cell">{{ p.r3 }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+
+      {% if bench %}
+      <div class="section-label" style="margin-top: 24px;">Bench</div>
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th></th><th></th><th>Player</th><th>Pos</th><th>Club</th><th>Price</th>
+              <th class="xp-col">R1</th><th class="xp-col">R2</th><th class="xp-col">R3</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for p in bench %}
+            <tr>
+              <td class="club" style="width: 28px;">{{ loop.index }}</td>
+              <td class="flag-cell">{{ p.flag }}</td>
+              <td class="player-name">{{ p.player }}</td>
+              <td><span class="pos-badge {{ p.position }}">{{ p.position }}</span></td>
+              <td class="club">{{ p.team }}</td>
+              <td class="price">{% if p.price is not none %}£{{ p.price }}m{% else %}—{% endif %}</td>
+              <td class="xp-cell">{{ p.r1 }}</td>
+              <td class="xp-cell">{{ p.r2 }}</td>
+              <td class="xp-cell">{{ p.r3 }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    function showCapRound(round) {
+      document.querySelectorAll(".cap-round").forEach(el => {
+        el.style.display = (el.dataset.round === round) ? "block" : "none";
+      });
+      document.querySelectorAll(".cap-pill").forEach(el => {
+        el.classList.toggle("active", el.dataset.round === round);
+      });
+    }
+  </script>
+{% endblock %}

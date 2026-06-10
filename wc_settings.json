@@ -8,5 +8,5 @@
     "ft": 1, 
     "xmin_lb": 45, 
     "use_wildcard": [3], 
-    "use_twelfth_man": []
+    "use_twelfth_man": [2]
 }

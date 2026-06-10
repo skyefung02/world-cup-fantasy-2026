@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()  # local-only convenience; Railway injects env vars directly
 
 import build_projections
+import fifa_team
 import refresh_ownership
 from build_projections import get_default_xmins_map, recompute_teams, build_full_projections
 from scoring import SCOUTING_BONUS_OWNERSHIP_PCT
@@ -176,6 +177,81 @@ def team(abbr):
         pos_order=pos_order,
         prev_team=prev_team,
         next_team=next_team,
+    )
+
+
+@app.route("/my-team")
+def my_team():
+    """Local-only debug page: fetch and render the creator's own FIFA fantasy team.
+
+    Gated by _local_only() so it 404s on the public Railway deploy (DEPLOY_MODE=public)
+    and is reachable only on localhost. Reads the session cookie from FIFA_SID (.env).
+    """
+    guard = _local_only()
+    if guard:
+        return guard
+
+    sid = os.environ.get("FIFA_SID")
+    if not sid:
+        return render_template("my_team.html", error="FIFA_SID is not set in .env — add it and restart.")
+    try:
+        raw = fifa_team.fetch_team(sid)
+    except Exception as e:
+        return render_template("my_team.html", error=f"Couldn't fetch team: {e}")
+
+    proj_df = current_projections_df()
+    meta = load_players().set_index("id").to_dict("index")
+    proj = proj_df.set_index("id")[["1_Pts", "2_Pts", "3_Pts"]].to_dict("index")
+    captain_id, vice_id = raw.get("captain"), raw.get("vice")
+
+    def resolve(pid):
+        m, p = meta.get(pid, {}), proj.get(pid, {})
+        abbr = m.get("abbr", "")
+        return {
+            "id": pid,
+            "player": m.get("player", f"#{pid}"),
+            "position": m.get("position", ""),
+            "team": m.get("team", ""),
+            "abbr": abbr,
+            "flag": FLAGS.get(abbr, ""),
+            "price": m.get("price"),
+            "is_captain": pid == captain_id,
+            "is_vice": pid == vice_id,
+            "r1": round(float(p.get("1_Pts", 0)), 2),
+            "r2": round(float(p.get("2_Pts", 0)), 2),
+            "r3": round(float(p.get("3_Pts", 0)), 2),
+        }
+
+    pos_order = ["GK", "DEF", "MID", "FWD"]
+    lineup = {pos: [resolve(pid) for pid in raw.get("lineup", {}).get(pos, [])] for pos in pos_order}
+    bench = [resolve(pid) for pid in raw.get("benchOrder", [])]
+
+    # Per-round projected totals for the starting XI, with the captain doubled.
+    xi = [pl for pos in pos_order for pl in lineup[pos]]
+    totals = {}
+    for key in ("r1", "r2", "r3"):
+        cap_bonus = next((pl[key] for pl in xi if pl["is_captain"]), 0)
+        totals[key] = round(sum(pl[key] for pl in xi) + cap_bonus, 2)
+
+    # Rolling-captaincy analysis (local-only; scipy imported lazily so the public
+    # deploy never pulls it in for this debug page).
+    import captain
+    squad_ids = [pid for ids in raw.get("lineup", {}).values() for pid in ids] \
+        + list(raw.get("benchOrder", []))
+    squad_records = captain.squad_records_from_df(proj_df, squad_ids, warn=False)
+    fixtures = pd.read_csv("data/processed/fixtures.csv")
+    captaincy = [captain.analyze_round(squad_records, fixtures, rnd) for rnd in (1, 2, 3)]
+
+    return render_template(
+        "my_team.html",
+        error=None,
+        team_id=raw.get("id"),
+        lineup=lineup,
+        bench=bench,
+        pos_order=pos_order,
+        totals=totals,
+        captaincy=captaincy,
+        flags=FLAGS,
     )
 
 
