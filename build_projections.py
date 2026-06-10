@@ -12,6 +12,7 @@ from scoring import (
 PROCESSED_DIR = "data/processed"
 XMINS_PATH = "data/xmins.csv"
 DEFAULT_XMINS_PATH = "data/default_xmins.csv"
+ROUNDS = (1, 2, 3)  # group-stage rounds (hardcoded across app/templates)
 XG_OVERRIDES_PATH = "data/xg_overrides.csv"
 SET_PIECE_TAKERS_PATH = "data/set_piece_takers.csv"
 
@@ -103,6 +104,35 @@ def get_default_xmins_map():
     return {int(pid): int(round(x)) for pid, x in zip(unique["id"], unique["default_xmins"])}
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# xMins maps are per-round: canonical shape is nested {player_id: {round_id: mins}}.
+# normalize_xmins() accepts either that or the legacy flat {player_id: mins} (which
+# it expands to all rounds), so old CSVs / session blobs / API payloads still load.
+# ─────────────────────────────────────────────────────────────────────────────
+
+def normalize_xmins(raw):
+    """Coerce a flat or nested xmins map into nested {int(id): {int(round): int(mins)}}."""
+    out = {}
+    for pid, val in (raw or {}).items():
+        pid = int(pid)
+        if isinstance(val, dict):
+            rounds = {int(r): int(m) for r, m in val.items()}
+        else:
+            rounds = {r: int(val) for r in ROUNDS}
+        if rounds:
+            out[pid] = rounds
+    return out
+
+
+def _flatten_xmins(nested):
+    """Nested {id: {round: mins}} → flat {(id, round): mins} for a MultiIndex lookup."""
+    return {
+        (int(pid), int(rnd)): int(mins)
+        for pid, rounds in (nested or {}).items()
+        for rnd, mins in rounds.items()
+    }
+
+
 def _precompute_base_state():
     """Build the immutable per-fixture × per-player table."""
     df = pd.read_csv(f"{PROCESSED_DIR}/player_fixtures.csv")
@@ -189,7 +219,15 @@ def _apply_allocations_and_points(df, xmins_map, override_map):
     """In-place: compute per-row player_xg/xa across three slices (pen + SP-assist + open-play),
     apply overrides to the open-play slice only, then derive all pts columns.
     """
-    df["xmins"] = df["id"].map(xmins_map).fillna(df["default_xmins"]).astype(float)
+    # Per-round override lookup keyed by (id, round_id); any round the user hasn't
+    # touched falls back to the player's per-player default_xmins.
+    flat_xmins = _flatten_xmins(normalize_xmins(xmins_map))
+    key = pd.MultiIndex.from_arrays([df["id"].astype(int), df["round_id"].astype(int)])
+    df["xmins"] = (
+        pd.Series(key.map(flat_xmins), index=df.index)
+        .fillna(df["default_xmins"])
+        .astype(float)
+    )
     df["goal_w"]   = df["goal_w_per_min"]   * df["xmins"]
     df["assist_w"] = df["assist_w_per_min"] * df["xmins"]
 
@@ -421,9 +459,20 @@ def build_full_projections(xmins_map=None, override_map=None):
 # ─────────────────────────────────────────────────────────────────────────────
 
 def load_xmins_csv():
-    if os.path.exists(XMINS_PATH):
-        return pd.read_csv(XMINS_PATH).set_index("id")["xmins"].to_dict()
-    return {}
+    """Read data/xmins.csv into nested {id: {round_id: mins}}.
+
+    Long format (id,round_id,xmins) is the current schema; a legacy file with just
+    (id,xmins) is read as a flat map and expanded to all rounds by normalize_xmins().
+    """
+    if not os.path.exists(XMINS_PATH):
+        return {}
+    df = pd.read_csv(XMINS_PATH)
+    if "round_id" in df.columns:
+        nested = {}
+        for r in df.itertuples(index=False):
+            nested.setdefault(int(r.id), {})[int(r.round_id)] = int(r.xmins)
+        return nested
+    return normalize_xmins(df.set_index("id")["xmins"].to_dict())
 
 
 def load_overrides_csv():

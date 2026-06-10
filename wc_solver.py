@@ -118,14 +118,23 @@ def prep_wc_data(options: dict) -> dict:
                     f"(next_round={next_round}, horizon={horizon})."
                 )
 
-    # Apply manual xmins overrides from xmins.csv on top of projections.csv defaults
+    # Apply manual xmins overrides from xmins.csv on top of projections.csv defaults.
+    # Long format (id,round_id,xmins) overrides per round; a legacy flat file
+    # (id,xmins) applies the same value to every round in the horizon.
     xmins_path = Path(options.get("xmins_file", "data/xmins.csv"))
     if xmins_path.exists():
-        xmins_overrides = pd.read_csv(xmins_path).set_index("id")["xmins"]
-        for pid in xmins_overrides.index:
-            if pid in df.index:
-                for r in rounds:
-                    df.loc[pid, f"{r}_xMins"] = float(xmins_overrides[pid])
+        xo = pd.read_csv(xmins_path)
+        if "round_id" in xo.columns:
+            for row in xo.itertuples(index=False):
+                pid, rnd, mins = int(row.id), int(row.round_id), float(row.xmins)
+                if pid in df.index and rnd in rounds and f"{rnd}_xMins" in df.columns:
+                    df.loc[pid, f"{rnd}_xMins"] = mins
+        else:
+            xmins_overrides = xo.set_index("id")["xmins"]
+            for pid in xmins_overrides.index:
+                if pid in df.index:
+                    for r in rounds:
+                        df.loc[pid, f"{r}_xMins"] = float(xmins_overrides[pid])
 
     df["total_ev"]   = df[[f"{r}_Pts"   for r in rounds]].sum(axis=1)
     df["total_mins"] = df[[f"{r}_xMins" for r in rounds]].sum(axis=1)

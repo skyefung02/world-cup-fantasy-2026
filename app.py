@@ -10,7 +10,10 @@ load_dotenv()  # local-only convenience; Railway injects env vars directly
 import build_projections
 import fifa_team
 import refresh_ownership
-from build_projections import get_default_xmins_map, recompute_teams, build_full_projections
+from build_projections import (
+    get_default_xmins_map, recompute_teams, build_full_projections,
+    load_xmins_csv, normalize_xmins, ROUNDS,
+)
 from scoring import SCOUTING_BONUS_OWNERSHIP_PCT
 
 app = Flask(__name__)
@@ -70,13 +73,19 @@ def load_players():
 
 
 def load_xmins():
-    if os.path.exists(XMINS_PATH):
-        return pd.read_csv(XMINS_PATH).set_index("id")["xmins"].to_dict()
-    return {}
+    """Nested {id: {round_id: mins}} from data/xmins.csv (legacy flat files expanded)."""
+    return load_xmins_csv()
 
 
 def save_xmins(xmins_dict):
-    df = pd.DataFrame(list(xmins_dict.items()), columns=["id", "xmins"])
+    """Persist nested {id: {round_id: mins}} as long-format CSV (id,round_id,xmins)."""
+    nested = normalize_xmins(xmins_dict)
+    rows = [
+        {"id": pid, "round_id": rnd, "xmins": mins}
+        for pid, rounds in nested.items()
+        for rnd, mins in sorted(rounds.items())
+    ]
+    df = pd.DataFrame(rows, columns=["id", "round_id", "xmins"])
     df.to_csv(XMINS_PATH, index=False)
 
 
@@ -95,9 +104,15 @@ def overridden_ids_list():
 
 
 def init_xmins(players, xmins_manual):
-    """Compute defaults from cached default_xmins, then apply manual overrides from xmins.csv."""
+    """Flat {id: mins} for the (single-input) team page display.
+
+    Starts from per-player defaults, then overlays manual overrides. xmins_manual is
+    nested {id: {round: mins}}; until the team UI is per-round (Phase 2), collapse each
+    player's override to its R1 value (Phase-1 edits write all rounds identically).
+    """
     result = get_default_xmins_map()
-    result.update(xmins_manual)
+    for pid, rounds in normalize_xmins(xmins_manual).items():
+        result[pid] = rounds.get(ROUNDS[0], next(iter(rounds.values())))
     return result
 
 
@@ -388,16 +403,19 @@ def _local_only():
 def save():
     guard = _local_only()
     if guard: return guard
-    data = request.json  # {player_id: xmins, ...}
+    # Body is {player_id: xmins} (flat, current team UI) or {player_id: {round: xmins}}
+    # (forward-compat). normalize_xmins() expands the flat form to all rounds.
+    data = normalize_xmins(request.json)
     players = load_players()
     defaults = get_default_xmins_map()
-    overrides = load_xmins()
-    for pid, val in data.items():
-        pid, val = int(pid), int(val)
-        if val == defaults.get(pid):
-            overrides.pop(pid, None)
+    overrides = load_xmins()  # nested {id: {round: mins}}
+    for pid, rounds in data.items():
+        default = defaults.get(pid)
+        kept = {r: m for r, m in rounds.items() if m != default}
+        if kept:
+            overrides[pid] = kept
         else:
-            overrides[pid] = val
+            overrides.pop(pid, None)
     save_xmins(overrides)
 
     # Fast recompute: just the affected teams
@@ -472,9 +490,9 @@ def reset_xg_override():
 
 def _parse_state(payload):
     """Coerce JSON payload into (xmins_map, override_map) with int keys."""
-    xmins_in = payload.get("xmins", {}) or {}
     over_in  = payload.get("overrides", {}) or {}
-    xmins_map = {int(k): int(v) for k, v in xmins_in.items()}
+    # Accept flat {id: mins} (current UI) or nested {id: {round: mins}}; normalize to nested.
+    xmins_map = normalize_xmins(payload.get("xmins", {}))
     override_map = {
         int(k): {
             "goal_share":   float(v.get("goal_share", 0.0)),
