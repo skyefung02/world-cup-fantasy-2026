@@ -15,7 +15,7 @@ MANUAL_STARTING_XI = {
     # ── Group A ────────────────────────────────────────────────────────────────
     "Mexico": [
         "Raúl Rangel",         # GK
-        "Jorge Sanchez",        # RB
+        "Jorge Sánchez",        # RB
         "Cesar Montes",        # CB
         "Johan Vasquez",       # CB
         "Jesus Gallardo",      # LB
@@ -87,7 +87,7 @@ MANUAL_STARTING_XI = {
     # ── Group C ────────────────────────────────────────────────────────────────
     "Brazil": [
         "Alisson",             # GK
-        "Wesley",              # RB
+        "Danilo",              # RB
         "Marquinhos",          # CB
         "Gabriel Magalhães",   # CB
         "Alex Sandro",         # LB
@@ -217,7 +217,7 @@ MANUAL_STARTING_XI = {
     "Netherlands": [
         "Bart Verbruggen",     # GK
         "Denzel Dumfries",     # RB
-        "Jurrien Timber",      # CB
+        "Jan Paul van Hecke",      # CB
         "Virgil Van Dijk",     # CB
         "Micky Van de Ven",    # LB
         "Ryan Gravenberch",    # CDM
@@ -281,15 +281,15 @@ MANUAL_STARTING_XI = {
         "Rodri",               # CDM
         "Pedri",               # CM
         "Fabián Ruiz",         # CM
-        "Lamine Yamal",        # RW
+        "Ferran Torres",        # RW
         "Mikel Oyarzabal",     # ST
-        "Nico Williams",       # LW
+        "Alex Baena",       # LW
     ],
 
     "Uruguay": [
         "Sergio Rochet",       # GK
         "Guillermo Varela",    # RB
-        "Ronald Araujo",       # CB
+        "Jose Maria Gimenez",       # CB
         "Sebastian Caceres",   # CB
         "Mathias Olivera",     # LB
         "Manuel Ugarte",       # CDM

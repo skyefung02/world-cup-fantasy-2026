@@ -420,9 +420,10 @@ def step_5_starter_selection(squad_agg, wc_roster):
             })
     if inj:
         squad_agg = pd.concat([squad_agg, pd.DataFrame(inj)], ignore_index=True)
-        details = ", ".join(f"{d['Player']} ({d['Pos']}→{d['conditional_min']:.0f})" for d in inj)
         print(f"  Injected {len(inj)} manual-XI starter(s) with no intl data, "
-              f"using position-average conditional_min: {details}")
+              f"using position-average conditional_min:")
+        for d in inj:
+            print(f"    {d['Player']} ({d['Pos']}→{d['conditional_min']:.0f})")
 
     # Audit: manual XI coverage per team
     print(f"  Algorithmic teams (no manual XI): "
@@ -431,10 +432,15 @@ def step_5_starter_selection(squad_agg, wc_roster):
     print(f"\n  Manual XI match counts (anything < 11 indicates a name-matching issue):")
     incomplete = []
     for team in MANUAL_XI_ASCII:
-        matched = squad_agg[(squad_agg["wc_team"] == team) & squad_agg["is_starter"]].shape[0]
+        team_starters = squad_agg[(squad_agg["wc_team"] == team) & squad_agg["is_starter"]]
+        matched = team_starters.shape[0]
         flag = "  ⚠" if matched < 11 else ""
         print(f"    {team:30s} {matched}/11{flag}")
         if matched < 11:
+            matched_ascii = set(team_starters["name_ascii"])
+            missing = [a for a in MANUAL_XI_ASCII[team] if a not in matched_ascii]
+            for a in missing:
+                print(f"        unmatched: {a}")
             incomplete.append((team, matched))
     if incomplete:
         print(f"\n  ⚠ {len(incomplete)} team(s) have incomplete manual XI matching — "
