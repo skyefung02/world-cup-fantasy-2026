@@ -18,6 +18,7 @@ data/results/
 # Creator personal opinions + derived artifacts (never ship to Railway)
 data/xmins.csv
 data/xg_overrides.csv
+data/scouting_overrides.csv
 data/projections.csv
 
 # Junk / local debug

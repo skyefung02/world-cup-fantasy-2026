@@ -6,7 +6,7 @@ import pandas as pd
 from scoring import (
     GOAL_PTS, CLEAN_SHEET_PTS, GOALS_CONCEDED_PTS, ASSIST_PTS,
     PEN_PROB, PEN_CONVERSION, SET_PIECE_ASSIST_PROB,
-    SCOUTING_BONUS_PTS, SCOUTING_BONUS_OWNERSHIP_PCT,
+    SCOUTING_BONUS_PTS, SCOUTING_RAMP_LO, SCOUTING_RAMP_HI,
 )
 
 PROCESSED_DIR = "data/processed"
@@ -14,6 +14,7 @@ XMINS_PATH = "data/xmins.csv"
 DEFAULT_XMINS_PATH = "data/default_xmins.csv"
 ROUNDS = (1, 2, 3)  # group-stage rounds (hardcoded across app/templates)
 XG_OVERRIDES_PATH = "data/xg_overrides.csv"
+SCOUTING_OVERRIDES_PATH = "data/scouting_overrides.csv"
 SET_PIECE_TAKERS_PATH = "data/set_piece_takers.csv"
 
 PEN_LOCK_FRACTION = PEN_PROB * PEN_CONVERSION
@@ -215,10 +216,13 @@ def _precompute_base_state():
 # instead of the full ~4200-row table.
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _apply_allocations_and_points(df, xmins_map, override_map):
+def _apply_allocations_and_points(df, xmins_map, override_map, scouting_off=None):
     """In-place: compute per-row player_xg/xa across three slices (pen + SP-assist + open-play),
     apply overrides to the open-play slice only, then derive all pts columns.
+
+    scouting_off: iterable of player ids whose scouting bonus is forced off.
     """
+    scouting_off = set(int(i) for i in scouting_off) if scouting_off else set()
     # Per-round override lookup keyed by (id, round_id); any round the user hasn't
     # touched falls back to the player's per-player default_xmins.
     flat_xmins = _flatten_xmins(normalize_xmins(xmins_map))
@@ -349,16 +353,25 @@ def _apply_allocations_and_points(df, xmins_map, override_map):
         np.where(xmins_arr >= 60, p_starter, p_sub),
     )
 
-    low_owned = (df["percentSelected"].values < SCOUTING_BONUS_OWNERSHIP_PCT).astype(float)
-    df["p_scouting_bonus"]   = p_pts_gt_4
-    df["scouting_bonus_pts"] = p_pts_gt_4 * low_owned * SCOUTING_BONUS_PTS
+    # Eligibility is a soft ramp on current ownership (we don't know deadline ownership):
+    # full bonus at/below LO, zero at/above HI, linear between. A per-player toggle forces
+    # eligibility to 0 ("I'm sure this player will be ≥5% owned at the deadline").
+    own = df["percentSelected"].values
+    p_eligible = np.clip(
+        (SCOUTING_RAMP_HI - own) / (SCOUTING_RAMP_HI - SCOUTING_RAMP_LO), 0.0, 1.0
+    )
+    if scouting_off:
+        p_eligible = np.where(df["id"].isin(scouting_off).values, 0.0, p_eligible)
+    df["p_scouting_eligible"] = p_eligible
+    df["p_scouting_bonus"]    = p_pts_gt_4
+    df["scouting_bonus_pts"]  = p_pts_gt_4 * p_eligible * SCOUTING_BONUS_PTS
 
     df["xpts_game"]    = (df["goal_pts"] + df["assist_pts"] + df["cs_pts"]
                           + df["conceded_pts"] + df["app_pts"] + df["scouting_bonus_pts"])
     return df
 
 
-def recompute_teams(xmins_map=None, override_map=None, teams=None):
+def recompute_teams(xmins_map=None, override_map=None, teams=None, scouting_off=None):
     """Fast path. Returns { player_id: { round_id: { 'Pts': ..., 'xMins': ..., ... } } }
     for players on the specified teams (or all teams if teams is None).
     """
@@ -367,7 +380,7 @@ def recompute_teams(xmins_map=None, override_map=None, teams=None):
         sliced = base[base["abbr"].isin(teams)].copy()
     else:
         sliced = base.copy()
-    df = _apply_allocations_and_points(sliced, xmins_map or {}, override_map or {})
+    df = _apply_allocations_and_points(sliced, xmins_map or {}, override_map or {}, scouting_off)
 
     out = {}
     for _, r in df.iterrows():
@@ -390,6 +403,7 @@ def recompute_teams(xmins_map=None, override_map=None, teams=None):
             "LockedSpXa":          float(r["locked_sp_xa"]),
             "ScoutingBonusPts":    float(r["scouting_bonus_pts"]),
             "PScoutingBonus":      float(r["p_scouting_bonus"]),
+            "PScoutingEligible":   float(r["p_scouting_eligible"]),
             "PercentSelected":     float(r["percentSelected"]),
         }
     return out
@@ -411,6 +425,7 @@ EXPORT_COLS = {
     "app_pts":               "AppPts",
     "scouting_bonus_pts":    "ScoutingBonusPts",
     "p_scouting_bonus":      "PScoutingBonus",
+    "p_scouting_eligible":   "PScoutingEligible",
     "percentSelected":       "PercentSelected",
     "opp_abbr":              "OppAbbr",
     "xg_scored":             "TeamXG",
@@ -427,10 +442,10 @@ EXPORT_COLS = {
 }
 
 
-def build_full_projections(xmins_map=None, override_map=None):
+def build_full_projections(xmins_map=None, override_map=None, scouting_off=None):
     """Return the wide-format DataFrame matching the historical projections.csv schema."""
     base = get_base_state().copy()
-    base = _apply_allocations_and_points(base, xmins_map or {}, override_map or {})
+    base = _apply_allocations_and_points(base, xmins_map or {}, override_map or {}, scouting_off)
 
     metadata = base[["id", "player", "position", "price", "team", "abbr"]].drop_duplicates("id")
     df_export = metadata.copy()
@@ -488,13 +503,21 @@ def load_overrides_csv():
     return {}
 
 
+def load_scouting_csv():
+    """Read data/scouting_overrides.csv → set of player ids with the scouting bonus forced off."""
+    if os.path.exists(SCOUTING_OVERRIDES_PATH):
+        return set(int(i) for i in pd.read_csv(SCOUTING_OVERRIDES_PATH)["id"])
+    return set()
+
+
 def run():
     """Backwards-compat entry point: read local CSVs, compute full projections, write to disk."""
     print("Loading data...")
     xmins_map = load_xmins_csv()
     override_map = load_overrides_csv()
+    scouting_off = load_scouting_csv()
     print("Applying Elo model and computing allocations...")
-    df_export = build_full_projections(xmins_map, override_map)
+    df_export = build_full_projections(xmins_map, override_map, scouting_off)
     df_export.to_csv("data/projections.csv", index=False)
     print(f"Exported {len(df_export)} players to data/projections.csv")
 

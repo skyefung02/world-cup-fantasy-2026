@@ -12,9 +12,8 @@ import fifa_team
 import refresh_ownership
 from build_projections import (
     get_default_xmins_map, recompute_teams, build_full_projections,
-    load_xmins_csv, normalize_xmins,
+    load_xmins_csv, normalize_xmins, load_scouting_csv,
 )
-from scoring import SCOUTING_BONUS_OWNERSHIP_PCT
 
 app = Flask(__name__)
 
@@ -41,12 +40,13 @@ def _refresh_projections_csv_async():
     Keeps the solver pipeline's input in sync with UI tweaks without blocking the response."""
     def _do():
         with _projections_write_lock:
-            df = build_full_projections(load_xmins(), load_overrides())
+            df = build_full_projections(load_xmins(), load_overrides(), load_scouting())
             df.to_csv(PROJECTIONS_CSV_PATH, index=False)
     threading.Thread(target=_do, daemon=True).start()
 
 XMINS_PATH = "data/xmins.csv"
 XG_OVERRIDES_PATH = "data/xg_overrides.csv"
+SCOUTING_PATH = "data/scouting_overrides.csv"
 
 FLAGS = {
     "ALG": "🇩🇿", "ARG": "🇦🇷", "AUS": "🇦🇺", "AUT": "🇦🇹",
@@ -103,13 +103,27 @@ def overridden_ids_list():
     return list(load_overrides().keys())
 
 
+def load_scouting():
+    """Set of player ids whose scouting bonus is forced off."""
+    return load_scouting_csv()
+
+
+def save_scouting(ids):
+    """Persist the toggled-off ids as data/scouting_overrides.csv (single `id` column)."""
+    pd.DataFrame({"id": sorted(int(i) for i in ids)}).to_csv(SCOUTING_PATH, index=False)
+
+
+def scouting_off_list():
+    return sorted(load_scouting())
+
+
 def current_projections_df():
     """Wide-format projections computed in-memory.
     In public mode, ignore any local creator CSVs — render pure defaults.
     """
     if IS_PUBLIC:
-        return build_full_projections({}, {})
-    return build_full_projections(load_xmins(), load_overrides())
+        return build_full_projections({}, {}, set())
+    return build_full_projections(load_xmins(), load_overrides(), load_scouting())
 
 
 def xp_dict_from_recompute(updates):
@@ -268,8 +282,11 @@ def projections_page():
         proj[col] = proj[col].round(2)
     ov_set = set(overridden_ids_list())
     proj["has_override"] = proj["id"].isin(ov_set)
-    # Scouting bonus eligibility: ownership stays put across rounds, so R1 is representative.
-    proj["has_scouting_bonus"] = proj["1_PercentSelected"].fillna(0) < SCOUTING_BONUS_OWNERSHIP_PCT
+    sc_set = set(scouting_off_list())
+    proj["scouting_off"] = proj["id"].isin(sc_set)
+    # Scouting bonus eligibility is now graded (soft ramp): show the marker whenever the
+    # player retains any bonus, i.e. eligibility > 0. Ownership is per-player, R1 representative.
+    proj["has_scouting_bonus"] = proj["1_PScoutingEligible"].fillna(0) > 0
     for r in [1, 2, 3]:
         proj[f"{r}_OppDisplay"] = proj[f"{r}_OppAbbr"].apply(
             lambda a: f"{FLAGS.get(a, '')} {a}".strip() if pd.notna(a) else ""
@@ -287,12 +304,12 @@ def projections_page():
         "1_PCleanSheet",  "2_PCleanSheet",  "3_PCleanSheet",
         "1_LockedPenXg",  "2_LockedPenXg",  "3_LockedPenXg",
         "1_LockedSpXa",   "2_LockedSpXa",   "3_LockedSpXa",
-        "1_PercentSelected",
+        "1_PercentSelected", "1_PScoutingEligible",
     ]
     players = (
         proj[["id", "player", "position", "price", "team", "abbr", "flag",
               "1_Pts", "2_Pts", "3_Pts", "avg_pts", "has_override",
-              "has_scouting_bonus"] + component_cols]
+              "has_scouting_bonus", "scouting_off"] + component_cols]
         .sort_values("avg_pts", ascending=False)
         .to_dict(orient="records")
     )
@@ -410,13 +427,14 @@ def save():
     # Fast recompute: just the affected teams
     changed_ids = [int(pid) for pid in data.keys()]
     affected_teams = list(players[players["id"].isin(changed_ids)]["abbr"].unique())
-    updates = recompute_teams(overrides, load_overrides(), teams=affected_teams)
+    updates = recompute_teams(overrides, load_overrides(), teams=affected_teams, scouting_off=load_scouting())
 
     _refresh_projections_csv_async()
     return jsonify({
         "status": "ok",
         "xp": xp_dict_from_recompute(updates),
         "overridden_ids": overridden_ids_list(),
+        "scouting_off_ids": scouting_off_list(),
     })
 
 
@@ -439,13 +457,14 @@ def save_xg_override():
 
     players = load_players()
     team_abbr = players.loc[players["id"] == player_id, "abbr"].iloc[0]
-    updates = recompute_teams(load_xmins(), load_overrides(), teams=[team_abbr])
+    updates = recompute_teams(load_xmins(), load_overrides(), teams=[team_abbr], scouting_off=load_scouting())
 
     _refresh_projections_csv_async()
     return jsonify({
         "status": "ok",
         "xp": xp_dict_from_recompute(updates),
         "overridden_ids": overridden_ids_list(),
+        "scouting_off_ids": scouting_off_list(),
     })
 
 
@@ -462,13 +481,44 @@ def reset_xg_override():
 
     players = load_players()
     team_abbr = players.loc[players["id"] == player_id, "abbr"].iloc[0]
-    updates = recompute_teams(load_xmins(), load_overrides(), teams=[team_abbr])
+    updates = recompute_teams(load_xmins(), load_overrides(), teams=[team_abbr], scouting_off=load_scouting())
 
     _refresh_projections_csv_async()
     return jsonify({
         "status": "ok",
         "xp": xp_dict_from_recompute(updates),
         "overridden_ids": overridden_ids_list(),
+        "scouting_off_ids": scouting_off_list(),
+    })
+
+
+@app.route("/toggle_scouting", methods=["POST"])
+def toggle_scouting():
+    """Local write-through: force a player's scouting bonus off (off=true) or back to the
+    ramp (off=false). Body: {player_id, off}."""
+    guard = _local_only()
+    if guard: return guard
+    data = request.json
+    player_id = int(data["player_id"])
+    off = bool(data.get("off"))
+
+    ids = load_scouting()
+    if off:
+        ids.add(player_id)
+    else:
+        ids.discard(player_id)
+    save_scouting(ids)
+
+    players = load_players()
+    team_abbr = players.loc[players["id"] == player_id, "abbr"].iloc[0]
+    updates = recompute_teams(load_xmins(), load_overrides(), teams=[team_abbr], scouting_off=ids)
+
+    _refresh_projections_csv_async()
+    return jsonify({
+        "status": "ok",
+        "xp": xp_dict_from_recompute(updates),
+        "overridden_ids": overridden_ids_list(),
+        "scouting_off_ids": scouting_off_list(),
     })
 
 
@@ -478,7 +528,7 @@ def reset_xg_override():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _parse_state(payload):
-    """Coerce JSON payload into (xmins_map, override_map) with int keys."""
+    """Coerce JSON payload into (xmins_map, override_map, scouting_off) with int keys."""
     over_in  = payload.get("overrides", {}) or {}
     # Accept flat {id: mins} (current UI) or nested {id: {round: mins}}; normalize to nested.
     xmins_map = normalize_xmins(payload.get("xmins", {}))
@@ -489,7 +539,10 @@ def _parse_state(payload):
         }
         for k, v in over_in.items()
     }
-    return xmins_map, override_map
+    # scouting may arrive as a list of ids or an {id: true} object; both → set of ids.
+    scouting_in = payload.get("scouting", []) or []
+    scouting_off = {int(k) for k in (scouting_in.keys() if isinstance(scouting_in, dict) else scouting_in)}
+    return xmins_map, override_map, scouting_off
 
 
 @app.route("/recompute", methods=["POST"])
@@ -497,8 +550,8 @@ def recompute_endpoint():
     """Stateless team-scoped recompute. Body: {teams: ["ARG"], xmins: {...}, overrides: {...}}."""
     payload = request.json or {}
     teams = payload.get("teams")  # None → all
-    xmins_map, override_map = _parse_state(payload)
-    updates = recompute_teams(xmins_map, override_map, teams=teams)
+    xmins_map, override_map, scouting_off = _parse_state(payload)
+    updates = recompute_teams(xmins_map, override_map, teams=teams, scouting_off=scouting_off)
 
     # Return the rich shape (per-player per-round, all model fields)
     serializable = {
@@ -512,8 +565,8 @@ def recompute_endpoint():
 def download_csv():
     """Stateless full export. Body: {xmins: {...}, overrides: {...}}. Returns CSV download."""
     payload = request.json or {}
-    xmins_map, override_map = _parse_state(payload)
-    df = build_full_projections(xmins_map, override_map)
+    xmins_map, override_map, scouting_off = _parse_state(payload)
+    df = build_full_projections(xmins_map, override_map, scouting_off)
     buf = io.StringIO()
     df.to_csv(buf, index=False)
     return Response(

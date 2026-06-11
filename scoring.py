@@ -47,7 +47,13 @@ SHOTS_ON_TARGET_PTS = 1   # FWD: every 2 shots on target
 # Bonus points
 FREE_KICK_GOAL_PTS = 1    # in addition to goal points
 SCOUTING_BONUS_PTS = 2    # >4pts in match + <5% ownership
-SCOUTING_BONUS_OWNERSHIP_PCT = 5   # eligibility cutoff (percentSelected strictly below)
+SCOUTING_BONUS_OWNERSHIP_PCT = 5   # the FIFA rule cutoff (percentSelected strictly below)
+# We don't know deadline ownership, so eligibility is a soft ramp on *current* ownership
+# rather than the hard <5% cliff: full bonus at/below LO, zero at/above HI, linear between.
+# Tuned so a player sitting exactly at the 5% line keeps ~25% of the bonus (likely to cross,
+# but not certain). LO controls how safe a genuine differential is; widen the band to soften.
+SCOUTING_RAMP_LO = 3.5    # ownership % at/below which the bonus is applied in full
+SCOUTING_RAMP_HI = 5.5    # ownership % at/above which the bonus is zeroed
 
 # Set-piece / penalty allocation (model parameters, not FIFA scoring)
 PEN_PROB = 0.20

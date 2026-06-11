@@ -476,7 +476,7 @@
     // Shared client-side edit state for public mode. Persisted to localStorage
     // so edits survive reloads and return visits. Keyed by stable FIFA player_id.
     const STORAGE_KEY = "wcfantasy:v1:state";
-    window.clientState = { xmins: {}, overrides: {} };
+    window.clientState = { xmins: {}, overrides: {}, scouting: {} };
 
     // xMins is per-round: {pid: {round: mins}}. Legacy blobs stored a flat scalar
     // {pid: mins} — expand those to all rounds so old saved state still loads.
@@ -500,6 +500,9 @@
             if (parsed.overrides && typeof parsed.overrides === "object") {
               window.clientState.overrides = parsed.overrides;
             }
+            if (parsed.scouting && typeof parsed.scouting === "object") {
+              window.clientState.scouting = parsed.scouting;
+            }
           }
         }
       } catch (e) {
@@ -518,12 +521,14 @@
     window.clearClientState = function() {
       window.clientState.xmins = {};
       window.clientState.overrides = {};
+      window.clientState.scouting = {};
       try { localStorage.removeItem(STORAGE_KEY); } catch {}
     };
 
     window.hasClientStateEdits = () =>
       Object.keys(window.clientState.xmins).length > 0 ||
-      Object.keys(window.clientState.overrides).length > 0;
+      Object.keys(window.clientState.overrides).length > 0 ||
+      Object.keys(window.clientState.scouting).length > 0;
 
     // Primary kit colour per nation. Black-kit nations (GER/JOR/NZL) use a
     // secondary identity colour so they're visible against the dark surface.

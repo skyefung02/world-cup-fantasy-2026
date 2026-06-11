@@ -249,6 +249,7 @@
             teams: ["{{ team.abbr }}"],
             xmins: window.clientState.xmins,
             overrides: window.clientState.overrides,
+            scouting: window.clientState.scouting,
           }),
         }).then(r => r.json()).then(resp => {
           if (resp.status !== "ok") return;
