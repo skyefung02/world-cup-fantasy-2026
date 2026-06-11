@@ -110,14 +110,60 @@
     .dec-rolled { color: var(--text-subtle); }
     .dec-keep { color: var(--success); font-weight: 600; }
     .dec-alt { color: var(--text-subtle); font-size: 0.78rem; }
+
+    /* ── import / paste view (public) ── */
+    .import-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+    @media (max-width: 720px) { .import-grid { grid-template-columns: 1fr; } }
+    .import-card { background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px; }
+    .import-step { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .import-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px; }
+    .import-hint { font-size: 0.78rem; color: var(--text-subtle); margin-top: 12px; margin-bottom: 0; }
+    .import-hint .mono { font-family: var(--mono); color: var(--text-muted); }
+    .bookmarklet-btn { display: inline-flex; align-items: center; gap: 8px; cursor: grab;
+      padding: 10px 16px; border-radius: 9px; font-weight: 600; font-size: 0.9rem;
+      color: #1a1205; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+      border: 1px solid var(--accent-strong); }
+    .import-card textarea { width: 100%; min-height: 120px; resize: vertical;
+      background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
+      border-radius: 9px; padding: 11px 13px; font-family: var(--mono); font-size: 0.78rem;
+      outline: none; margin-bottom: 12px; }
+    .import-card textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-bg); }
+    .paste-error { color: var(--danger) !important; font-size: 0.82rem !important; margin-bottom: 12px !important; }
 {% endblock %}
 
 {% block content %}
-    <div class="debug-banner">⚙ LOCAL DEBUG · not deployed to production</div>
+    {% if not IS_PUBLIC %}
+    <div class="debug-banner">⚙ LOCAL · auto-loaded from your FIFA session</div>
+    {% endif %}
 
     {% if error %}
       <div class="page-head"><div><h1 class="page-title">My Team</h1></div></div>
       <div class="error-box">{{ error }}</div>
+
+    {% elif awaiting_paste %}
+      <div class="page-head"><div>
+        <h1 class="page-title">Rolling Captaincy</h1>
+        <p class="page-sub">Load your FIFA fantasy team — credential-free. Nothing leaves your browser but the team itself.</p>
+      </div></div>
+      <div class="import-grid">
+        <div class="import-card">
+          <div class="import-step">1 · Grab your team</div>
+          <p>Drag this button to your bookmarks bar, then click it while logged in on <b>play.fifa.com</b>. It copies your team to the clipboard — your login never leaves your browser.</p>
+          {% raw %}<a class="bookmarklet-btn" href="javascript:(async()=>{try{const r=await fetch('/api/en/fantasy/team',{headers:{accept:'application/json'},credentials:'include'});const j=await r.json();await navigator.clipboard.writeText(JSON.stringify(j.success||j));alert('FIFA team copied - now paste it into the captaincy page.');}catch(e){alert('Could not read team: '+e);}})()">⚽ Copy my FIFA team</a>{% endraw %}
+          <p class="import-hint">No bookmarks bar? Open <span class="mono">play.fifa.com/api/en/fantasy/team</span> while logged in and copy everything you see.</p>
+        </div>
+        <div class="import-card">
+          <div class="import-step">2 · Paste it here</div>
+          <form method="post">
+            <textarea name="team_json" placeholder='{"id":...,"captain":...,"lineup":{...}}' required></textarea>
+            {% if paste_error %}<p class="paste-error">{{ paste_error }}</p>{% endif %}
+            <button type="submit" class="btn btn-primary">Analyze captaincy →</button>
+          </form>
+        </div>
+      </div>
+
     {% else %}
       <div class="page-head">
         <div>
