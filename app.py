@@ -251,14 +251,22 @@ def my_team():
         cap_bonus = next((pl[key] for pl in xi if pl["is_captain"]), 0)
         totals[key] = round(sum(pl[key] for pl in xi) + cap_bonus, 2)
 
-    # Rolling-captaincy analysis (local-only; scipy imported lazily so the public
-    # deploy never pulls it in for this debug page).
+    # Rolling-captaincy analysis (local-only; modules imported lazily so they're
+    # only pulled in for this debug route, never on the public deploy).
     import captain
+    import realized
+    import fetch_data
     squad_ids = [pid for ids in raw.get("lineup", {}).values() for pid in ids] \
         + list(raw.get("benchOrder", []))
-    squad_records = captain.squad_records_from_df(proj_df, squad_ids, warn=False)
-    fixtures = pd.read_csv("data/processed/fixtures.csv")
-    captaincy = [captain.analyze_round(squad_records, fixtures, rnd) for rnd in (1, 2, 3)]
+    captaincy = captain.analyze_squad_ids(
+        squad_ids, proj_df, pd.read_csv("data/processed/fixtures.csv"))
+
+    # Overlay realized results so far (no-op pre-round): marks resolved blocks,
+    # settles keep/roll vs the frozen thresholds, finds the live decision point.
+    points, finals = realized.load_realized(
+        fetch_data.load_cache("players"), fetch_data.load_cache("rounds"))
+    for rd in captaincy:
+        realized.overlay_realized(rd, points, finals)
 
     return render_template(
         "my_team.html",

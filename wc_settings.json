@@ -3,7 +3,7 @@
     "next_round": 1,
     "horizon": 3,
     "initial_squad": [],
-    "decay_base": 0.95,
+    "decay_base": 0.88,
     "itb": 100.0,
     "ft": 1, 
     "xmin_lb": 45, 

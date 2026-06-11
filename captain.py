@@ -190,12 +190,15 @@ def analyze_round(squad, fixtures, rnd):
         threshold = None if is_last else U[k + 1]
         out["blocks"].append({
             "index": k + 1,
+            "kickoff": block["kickoff"],            # raw ISO — used to match fixture finality
             "kickoff_label": fmt_kickoff(block["kickoff"]),
+            "id": cand["id"],                       # candidate player id — for realized lookup
             "player": cand["player"],
             "team": cand["team"],
             "abbr": cand["abbr"],
             "position": cand["position"],
             "proj": round(float(cand[ptcol]), 2),
+            "value": round(float(U[k]), 2),         # U[k] = value of playing from this block on
             "threshold": None if is_last else round(float(threshold), 2),
             "keep_prob": None if is_last else round(keep_probability(cand[ptcol], threshold) * 100, 1),
             "roll_to": None if is_last else k + 2,
@@ -215,6 +218,15 @@ def analyze_round(squad, fixtures, rnd):
     out["uplift"] = round(float(U[0]) - sv, 2)
     out["uplift_pct"] = round((float(U[0]) - sv) / sv * 100, 1) if sv else 0.0
     return out
+
+
+def analyze_squad_ids(squad_ids, projections_df, fixtures, rounds=ROUNDS):
+    """Run analyze_round for each round given a list of player ids plus the
+    projections/fixtures frames. Shared core for any caller — the CLI, the paste
+    sink (team_import), and the eventual web route all funnel through here so the
+    captaincy logic lives in exactly one place."""
+    squad = squad_records_from_df(projections_df, squad_ids, warn=False)
+    return [analyze_round(squad, fixtures, rnd) for rnd in rounds]
 
 
 # ─────────────────────────────────────────────────────────────────────────────

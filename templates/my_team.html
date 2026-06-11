@@ -91,6 +91,25 @@
     .keep-odds .bar { width: 64px; height: 6px; border-radius: 4px; background: var(--surface-2);
       overflow: hidden; border: 1px solid var(--border); }
     .keep-odds .fill { display: block; height: 100%; background: var(--accent); }
+
+    /* ── live overlay (realized results) ── */
+    .ldot.kept  { background: var(--success); box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.18); }
+    .ldot.rolled{ background: var(--text-faint); }
+    .ldot.live  { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-bg); }
+
+    .state-rolled .lcard { opacity: 0.72; transition: opacity 0.15s; }
+    .state-rolled:hover .lcard { opacity: 1; }  /* recede past blocks, but restore on hover — never hidden */
+    .state-live .lcard { background: var(--accent-bg); border: 1px solid var(--accent-border);
+      border-radius: 10px; padding: 10px 14px; margin: -2px 0 18px; }
+
+    .tag.live   { background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent-border); }
+    .tag.kept   { background: rgba(52, 211, 153, 0.1); color: var(--success); border: 1px solid rgba(52, 211, 153, 0.25); }
+    .tag.rolled { background: var(--surface-2); color: var(--text-subtle); border: 1px solid var(--border); }
+
+    .lcard-player .pproj b.scored { color: var(--accent); }
+    .dec-rolled { color: var(--text-subtle); }
+    .dec-keep { color: var(--success); font-weight: 600; }
+    .dec-alt { color: var(--text-subtle); font-size: 0.78rem; }
 {% endblock %}
 
 {% block content %}
@@ -153,30 +172,53 @@
 
           <div class="ladder">
             {% for b in rd.blocks %}
-            <div class="lblock">
+            {% set state = 'future' %}
+            {% if b.resolved and b.decision == 'roll' %}{% set state = 'rolled' %}
+            {% elif b.resolved and b.decision == 'keep' %}{% set state = 'kept' %}
+            {% elif b.index == rd.current_block %}{% set state = 'live' %}
+            {% endif %}
+            <div class="lblock state-{{ state }}">
               <div class="lrail">
-                <span class="ldot {% if b.is_start %}start{% elif b.is_last %}last{% endif %}"></span>
+                <span class="ldot
+                  {%- if state == 'kept' %} kept{% elif state == 'rolled' %} rolled{% elif state == 'live' %} live
+                  {%- elif b.is_start %} start{% elif b.is_last %} last{% endif %}"></span>
                 {% if not b.is_last %}<span class="lline"></span>{% endif %}
               </div>
               <div class="lcard">
                 <div class="lcard-top">
                   <span class="lblk-idx">Block {{ b.index }}</span>
                   <span class="lblk-ko">{{ b.kickoff_label }}</span>
-                  {% if b.is_start %}<span class="tag start">★ Start here</span>{% endif %}
-                  {% if b.is_last %}<span class="tag last">Last</span>{% endif %}
+                  {% if state == 'live' %}<span class="tag live">Up next</span>
+                  {% elif state == 'kept' %}<span class="tag kept">★ Keep (rec.)</span>
+                  {% elif state == 'rolled' %}<span class="tag rolled">Twist (rec.)</span>
+                  {% elif b.is_start %}<span class="tag start">★ Start here</span>
+                  {% elif b.is_last %}<span class="tag last">Last</span>{% endif %}
                 </div>
                 <div class="lcard-player">
                   <span class="flag">{{ flags.get(b.abbr, '') }}</span>
                   <span class="pname">{{ b.player }}</span>
                   <span class="pos-badge {{ b.position }}">{{ b.position }}</span>
                   <span class="pteam">{{ b.team }}</span>
-                  <span class="pproj">proj <b>{{ b.proj }}</b></span>
+                  {% if b.resolved %}
+                    <span class="pproj">scored <b class="scored">{{ b.realized }}</b> · proj {{ b.proj }}</span>
+                  {% else %}
+                    <span class="pproj">proj <b>{{ b.proj }}</b></span>
+                  {% endif %}
                 </div>
                 <div class="lcard-decision">
-                  {% if b.is_last %}
-                    <span class="keep-always">✓ Keep always</span>
+                  {% if state == 'rolled' %}
+                    <span class="dec-rolled">{{ b.realized }} &lt; {{ b.threshold }} bar — suggests twisting ↓</span>
+                  {% elif state == 'kept' %}
+                    {% if b.threshold is not none %}
+                      <span class="dec-keep">✓ Recommended <b>KEEP</b> — bank {{ b.realized }}</span>
+                      <span class="dec-alt">twist alt ~{{ b.threshold }} · edge {{ '%+.2f' | format(b.realized - b.threshold) }} · still free to twist ↓</span>
+                    {% else %}
+                      <span class="dec-keep">✓ Kept — banked {{ b.realized }} (last block)</span>
+                    {% endif %}
+                  {% elif b.is_last %}
+                    <span class="keep-always">✓ Keep always (last block)</span>
                   {% else %}
-                    <span class="keep-rule">Keep if ≥ <b>{{ b.threshold }}</b> · else roll to Block {{ b.roll_to }} ↓</span>
+                    <span class="keep-rule">Keep if ≥ <b>{{ b.threshold }}</b> · else twist to Block {{ b.roll_to }} ↓</span>
                     <span class="keep-odds">
                       <span class="bar"><span class="fill" style="width: {{ b.keep_prob }}%"></span></span>
                       keep {{ b.keep_prob }}%
@@ -190,70 +232,6 @@
         {% endif %}
       </div>
       {% endfor %}
-
-      <div class="section-label" style="margin-top: 36px;">Squad</div>
-      {% for pos in pos_order %}
-        {% if lineup[pos] %}
-        <div class="pos-block">
-          <div class="card">
-            <div class="pos-header">
-              <span class="pos-badge {{ pos }}">{{ pos }}</span>
-              <span class="pos-count">{{ lineup[pos] | length }} starting</span>
-            </div>
-            <table>
-              <thead>
-                <tr>
-                  <th></th><th>Player</th><th>Club</th><th>Price</th>
-                  <th class="xp-col">R1</th><th class="xp-col">R2</th><th class="xp-col">R3</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for p in lineup[pos] %}
-                <tr>
-                  <td class="flag-cell">{{ p.flag }}</td>
-                  <td class="player-name">{{ p.player }}{% if p.is_captain %}<span class="cv-badge C">C</span>{% elif p.is_vice %}<span class="cv-badge V">V</span>{% endif %}</td>
-                  <td class="club">{{ p.team }}</td>
-                  <td class="price">{% if p.price is not none %}£{{ p.price }}m{% else %}—{% endif %}</td>
-                  <td class="xp-cell">{{ p.r1 }}</td>
-                  <td class="xp-cell">{{ p.r2 }}</td>
-                  <td class="xp-cell">{{ p.r3 }}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
-        </div>
-        {% endif %}
-      {% endfor %}
-
-      {% if bench %}
-      <div class="section-label" style="margin-top: 24px;">Bench</div>
-      <div class="card">
-        <table>
-          <thead>
-            <tr>
-              <th></th><th></th><th>Player</th><th>Pos</th><th>Club</th><th>Price</th>
-              <th class="xp-col">R1</th><th class="xp-col">R2</th><th class="xp-col">R3</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for p in bench %}
-            <tr>
-              <td class="club" style="width: 28px;">{{ loop.index }}</td>
-              <td class="flag-cell">{{ p.flag }}</td>
-              <td class="player-name">{{ p.player }}</td>
-              <td><span class="pos-badge {{ p.position }}">{{ p.position }}</span></td>
-              <td class="club">{{ p.team }}</td>
-              <td class="price">{% if p.price is not none %}£{{ p.price }}m{% else %}—{% endif %}</td>
-              <td class="xp-cell">{{ p.r1 }}</td>
-              <td class="xp-cell">{{ p.r2 }}</td>
-              <td class="xp-cell">{{ p.r3 }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-      {% endif %}
     {% endif %}
 {% endblock %}
 
