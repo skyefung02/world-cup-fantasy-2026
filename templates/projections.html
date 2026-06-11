@@ -334,8 +334,8 @@
     }
 
     .xmins-input {
-      width: 80px;
-      padding: 5px 10px;
+      width: 64px;
+      padding: 5px 6px;
       text-align: center;
       font-variant-numeric: tabular-nums;
       font-weight: 600;
@@ -558,9 +558,9 @@
           <tbody>
             <tr>
               <td>xMins</td>
-              <td colspan="3" style="text-align:center">
-                <input type="number" id="modal-xmins" class="xmins-input" min="0" max="90" step="1" oninput="onSliderInput(false)">
-              </td>
+              <td><input type="number" id="modal-xmins-1" class="xmins-input" min="0" max="90" step="1" oninput="onSliderInput(false)"></td>
+              <td><input type="number" id="modal-xmins-2" class="xmins-input" min="0" max="90" step="1" oninput="onSliderInput(false)"></td>
+              <td><input type="number" id="modal-xmins-3" class="xmins-input" min="0" max="90" step="1" oninput="onSliderInput(false)"></td>
             </tr>
             <tr>
               <td>Proj. Goals</td>
@@ -781,7 +781,9 @@
       document.getElementById("m-opp-r2").textContent = d.r2Opp;
       document.getElementById("m-opp-r3").textContent = d.r3Opp;
 
-      document.getElementById("modal-xmins").value = d.r1Xmins;
+      document.getElementById("modal-xmins-1").value = d.r1Xmins;
+      document.getElementById("modal-xmins-2").value = d.r2Xmins;
+      document.getElementById("modal-xmins-3").value = d.r3Xmins;
 
       // Sliders are per-90: the override semantic on the server is
       // player_xg = team_xg * share * (xmins/90). For non-overridden players, the row's
@@ -799,7 +801,7 @@
       document.getElementById("goal-model-label").textContent   = `Model default: ${modelGoalPct}%`;
       document.getElementById("assist-model-label").textContent = `Model default: ${modelAssistPct}%`;
 
-      applySliderFloors(d, r1Xmins);
+      applySliderFloors(d);
 
       document.getElementById("btn-reset").disabled = !hasOverride;
       document.getElementById("saving-indicator").textContent = "";
@@ -820,19 +822,29 @@
     // Slider floor for designated takers: locked SP/pen contribution sets a per-90
     // minimum the player cannot drop below. Approximate when xmins is mid-edit —
     // uses server's locked amounts (frozen at last sync). Saving triggers re-sync.
-    function applySliderFloors(d, xmins) {
+    function applySliderFloors(d) {
       const goalSlider   = document.getElementById("goal-slider");
       const assistSlider = document.getElementById("assist-slider");
-      const teamXg = parseFloat(d.r1TeamXg) || 0;
-      const teamXa = teamXg * 0.75;
-      const lockedPenXg = parseFloat(d.r1LockedPenXg) || 0;
-      const lockedSpXa  = parseFloat(d.r1LockedSpXa)  || 0;
-      const denomG = teamXg * (xmins / 90);
-      const denomA = teamXa * (xmins / 90);
       const goalMax   = parseFloat(goalSlider.max);
       const assistMax = parseFloat(assistSlider.max);
-      const goalFloorPct   = denomG > 0 ? Math.min(goalMax,   (lockedPenXg / denomG) * 100) : 0;
-      const assistFloorPct = denomA > 0 ? Math.min(assistMax, (lockedSpXa  / denomA) * 100) : 0;
+
+      // The single per-90 slider applies to every round, so its floor must clear the
+      // locked SP/pen contribution in *all* rounds — take the max across them. A round
+      // with 0 xMins contributes no floor (denominator 0, skipped).
+      let goalFloorPct = 0, assistFloorPct = 0;
+      for (const r of [1, 2, 3]) {
+        const xmins = parseInt(document.getElementById(`modal-xmins-${r}`).value, 10) || 0;
+        const teamXg = parseFloat(d[`r${r}TeamXg`]) || 0;
+        const teamXa = teamXg * 0.75;
+        const lockedPenXg = parseFloat(d[`r${r}LockedPenXg`]) || 0;
+        const lockedSpXa  = parseFloat(d[`r${r}LockedSpXa`])  || 0;
+        const denomG = teamXg * (xmins / 90);
+        const denomA = teamXa * (xmins / 90);
+        if (denomG > 0) goalFloorPct   = Math.max(goalFloorPct,   (lockedPenXg / denomG) * 100);
+        if (denomA > 0) assistFloorPct = Math.max(assistFloorPct, (lockedSpXa  / denomA) * 100);
+      }
+      goalFloorPct   = Math.min(goalMax,   goalFloorPct);
+      assistFloorPct = Math.min(assistMax, assistFloorPct);
       goalSlider.min   = goalFloorPct.toFixed(2);
       assistSlider.min = assistFloorPct.toFixed(2);
       if (parseFloat(goalSlider.value)   < goalFloorPct)   goalSlider.value   = goalFloorPct.toFixed(1);
@@ -842,8 +854,7 @@
     function onSliderInput(fromUser) {
       if (fromUser) slidersDirty = true;
       const d = currentRow.dataset;
-      const xminsLive = parseInt(document.getElementById("modal-xmins").value, 10) || 0;
-      applySliderFloors(d, xminsLive);
+      applySliderFloors(d);
 
       const goalShare   = parseFloat(document.getElementById("goal-slider").value)   / 100;
       const assistShare = parseFloat(document.getElementById("assist-slider").value) / 100;
@@ -856,11 +867,10 @@
       const csPtsRate       = CLEAN_SHEET_PTS[pos]     ?? 0;
       const concededPtsRate = GOALS_CONCEDED_PTS[pos]  ?? 0;
 
-      const xmins = xminsLive;
-      const xminsScale = xmins / 90;
-      const appPts = appearancePts(xmins);
-
       for (const r of [1, 2, 3]) {
+        const xmins       = parseInt(document.getElementById(`modal-xmins-${r}`).value, 10) || 0;
+        const xminsScale  = xmins / 90;
+        const appPts      = appearancePts(xmins);
         const teamXG      = parseFloat(d[`r${r}TeamXg`]);
         const teamXGA     = parseFloat(d[`r${r}TeamXga`])     || 0;
         const pCleanSheet = parseFloat(d[`r${r}PCleanSheet`]) || 0;
@@ -882,7 +892,11 @@
     async function saveOverride() {
       if (!currentRow) return;
       const savedRow    = currentRow;
-      const xmins       = parseInt(document.getElementById("modal-xmins").value, 10) || 0;
+      const xmR = {
+        1: parseInt(document.getElementById("modal-xmins-1").value, 10) || 0,
+        2: parseInt(document.getElementById("modal-xmins-2").value, 10) || 0,
+        3: parseInt(document.getElementById("modal-xmins-3").value, 10) || 0,
+      };
       const goalShare   = parseFloat(document.getElementById("goal-slider").value)   / 100;
       const assistShare = parseFloat(document.getElementById("assist-slider").value) / 100;
       const playerId    = parseInt(savedRow.dataset.id);
@@ -891,7 +905,7 @@
 
       if (window.IS_PUBLIC) {
         // Public mode: mutate clientState, persist to localStorage, /recompute, never write to server CSVs.
-        clientState.xmins[playerId] = xmins;
+        clientState.xmins[playerId] = xmR;
         if (slidersDirty) {
           clientState.overrides[playerId] = { goal_share: goalShare, assist_share: assistShare };
         }
@@ -919,7 +933,7 @@
       const saveRes  = await fetch("/save", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({[playerId]: xmins}),
+        body: JSON.stringify({ [playerId]: xmR }),
       });
       let json = await saveRes.json();
 
@@ -935,9 +949,9 @@
 
       if (json.status === "ok") {
         applyXpUpdates(json.xp, json.overridden_ids);
-        savedRow.dataset.r1Xmins = xmins;
-        savedRow.dataset.r2Xmins = xmins;
-        savedRow.dataset.r3Xmins = xmins;
+        savedRow.dataset.r1Xmins = xmR[1];
+        savedRow.dataset.r2Xmins = xmR[2];
+        savedRow.dataset.r3Xmins = xmR[3];
         if (slidersDirty) {
           savedRow.dataset.overrideGoalShare   = goalShare;
           savedRow.dataset.overrideAssistShare = assistShare;
@@ -1109,7 +1123,8 @@
     }
 
     // ── Session export / import ──
-    const SESSION_FILE_VERSION = 1;
+    // v2 stores per-round xMins {pid: {round: mins}}; v1 stored a flat {pid: mins}.
+    const SESSION_FILE_VERSION = 2;
 
     function saveSession() {
       const payload = {
@@ -1154,11 +1169,12 @@
           alert("Invalid session file — wrong shape.");
           return;
         }
-        if (parsed.version !== SESSION_FILE_VERSION) {
-          alert(`Session file is from a different version (got ${parsed.version}, expected ${SESSION_FILE_VERSION}). Can't import safely.`);
+        if (parsed.version !== 1 && parsed.version !== 2) {
+          alert(`Session file is from a different version (got ${parsed.version}, expected 1 or 2). Can't import safely.`);
           return;
         }
-        const xmins = (parsed.xmins && typeof parsed.xmins === "object") ? parsed.xmins : {};
+        let xmins = (parsed.xmins && typeof parsed.xmins === "object") ? parsed.xmins : {};
+        if (parsed.version === 1) xmins = window.migrateXmins(xmins);   // flat → per-round
         const overrides = (parsed.overrides && typeof parsed.overrides === "object") ? parsed.overrides : {};
 
         if (window.hasClientStateEdits()) {

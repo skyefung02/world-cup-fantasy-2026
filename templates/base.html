@@ -478,6 +478,16 @@
     const STORAGE_KEY = "wcfantasy:v1:state";
     window.clientState = { xmins: {}, overrides: {} };
 
+    // xMins is per-round: {pid: {round: mins}}. Legacy blobs stored a flat scalar
+    // {pid: mins} — expand those to all rounds so old saved state still loads.
+    window.migrateXmins = function(x) {
+      const out = {};
+      for (const [pid, v] of Object.entries(x || {})) {
+        out[pid] = (v && typeof v === "object") ? v : { 1: v, 2: v, 3: v };
+      }
+      return out;
+    };
+
     if (window.IS_PUBLIC) {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
@@ -485,7 +495,7 @@
           const parsed = JSON.parse(raw);
           if (parsed && typeof parsed === "object") {
             if (parsed.xmins && typeof parsed.xmins === "object") {
-              window.clientState.xmins = parsed.xmins;
+              window.clientState.xmins = window.migrateXmins(parsed.xmins);
             }
             if (parsed.overrides && typeof parsed.overrides === "object") {
               window.clientState.overrides = parsed.overrides;

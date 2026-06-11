@@ -82,14 +82,17 @@
       letter-spacing: 0.2px;
     }
     td.price { color: var(--text-muted); font-variant-numeric: tabular-nums; }
-    td.xmins-cell { width: 130px; }
+    td.xmins-cell { width: 200px; }
+    th.xmins-head .xmins-head-sub { font-size: 0.66rem; color: var(--text-faint); font-family: var(--mono); font-weight: 400; }
     th.xp-col, td.xp-cell { text-align: center; font-variant-numeric: tabular-nums; width: 76px; }
     td.xp-cell { color: var(--text-muted); }
 
-    .xmins-wrap { display: flex; align-items: center; gap: 8px; }
+    .xmins-grid { display: flex; align-items: flex-end; gap: 6px; }
+    .xmins-col { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .xmins-rlabel { font-size: 0.62rem; color: var(--text-faint); font-family: var(--mono); }
     input.xmins {
-      width: 70px;
-      padding: 6px 10px;
+      width: 52px;
+      padding: 5px 4px;
       text-align: center;
       font-variant-numeric: tabular-nums;
       font-weight: 600;
@@ -99,7 +102,6 @@
       border-color: var(--warn);
       background: rgba(251, 191, 36, 0.06);
     }
-    .xmins-label { font-size: 0.72rem; color: var(--text-faint); font-family: var(--mono); }
 
     /* ── Footer save bar ── */
     .footer-bar {
@@ -176,7 +178,7 @@
               <tr>
                 <th>Player</th>
                 <th>Price</th>
-                <th>xMins</th>
+                <th class="xmins-head">xMins <span class="xmins-head-sub">R1 / R2 / R3</span></th>
                 <th class="xp-col">R1 xP</th>
                 <th class="xp-col">R2 xP</th>
                 <th class="xp-col">R3 xP</th>
@@ -188,9 +190,15 @@
                 <td class="player-name">{{ p.player }}</td>
                 <td class="price">£{{ p.price }}m</td>
                 <td class="xmins-cell">
-                  <div class="xmins-wrap">
-                    <input class="xmins" type="number" min="0" max="90" value="{{ p.xmins }}" data-id="{{ p.id }}">
-                    <span class="xmins-label">min</span>
+                  <div class="xmins-grid">
+                    {% for r in [1, 2, 3] %}
+                    <div class="xmins-col">
+                      <span class="xmins-rlabel">R{{ r }}</span>
+                      <input class="xmins" type="number" min="0" max="90"
+                             value="{{ p['r' ~ r ~ '_xmins'] }}"
+                             data-id="{{ p.id }}" data-round="{{ r }}">
+                    </div>
+                    {% endfor %}
                   </div>
                 </td>
                 <td class="xp-cell" data-id="{{ p.id }}" data-round="1">{{ p.r1_pts }}</td>
@@ -225,9 +233,9 @@
     if (window.IS_PUBLIC && window.hasClientStateEdits()) {
       let touched = false;
       document.querySelectorAll("input.xmins").forEach(inp => {
-        const pid = inp.dataset.id;
-        if (pid in window.clientState.xmins) {
-          inp.value = window.clientState.xmins[pid];
+        const ov = window.clientState.xmins[inp.dataset.id];
+        if (ov && ov[inp.dataset.round] != null) {
+          inp.value = ov[inp.dataset.round];
           touched = true;
         }
       });
@@ -261,9 +269,10 @@
 
     async function saveAll() {
       const inputs = document.querySelectorAll("input.xmins");
-      const xminsMap = {};
+      const xminsMap = {};   // nested {pid: {round: mins}}
       inputs.forEach(inp => {
-        xminsMap[inp.dataset.id] = parseInt(inp.value, 10) || 0;
+        const pid = inp.dataset.id;
+        (xminsMap[pid] ??= {})[inp.dataset.round] = parseInt(inp.value, 10) || 0;
         inp.classList.remove("dirty");
       });
 

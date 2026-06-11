@@ -12,7 +12,7 @@ import fifa_team
 import refresh_ownership
 from build_projections import (
     get_default_xmins_map, recompute_teams, build_full_projections,
-    load_xmins_csv, normalize_xmins, ROUNDS,
+    load_xmins_csv, normalize_xmins,
 )
 from scoring import SCOUTING_BONUS_OWNERSHIP_PCT
 
@@ -103,19 +103,6 @@ def overridden_ids_list():
     return list(load_overrides().keys())
 
 
-def init_xmins(players, xmins_manual):
-    """Flat {id: mins} for the (single-input) team page display.
-
-    Starts from per-player defaults, then overlays manual overrides. xmins_manual is
-    nested {id: {round: mins}}; until the team UI is per-round (Phase 2), collapse each
-    player's override to its R1 value (Phase-1 edits write all rounds identically).
-    """
-    result = get_default_xmins_map()
-    for pid, rounds in normalize_xmins(xmins_manual).items():
-        result[pid] = rounds.get(ROUNDS[0], next(iter(rounds.values())))
-    return result
-
-
 def current_projections_df():
     """Wide-format projections computed in-memory.
     In public mode, ignore any local creator CSVs — render pure defaults.
@@ -145,8 +132,6 @@ def home():
 @app.route("/squad")
 def squad():
     players = load_players()
-    xmins = init_xmins(players, load_xmins())
-
     teams = players[["abbr", "team", "group"]].drop_duplicates().sort_values("team")
     teams = teams.sort_values(["group", "team"]).to_dict(orient="records")
 
@@ -156,23 +141,27 @@ def squad():
 @app.route("/team/<abbr>")
 def team(abbr):
     players = load_players()
-    xmins = init_xmins(players, load_xmins())
-
     team_players = players[players["abbr"] == abbr].copy()
-    team_players["xmins"] = team_players["id"].map(xmins)
 
-    # Per-round xP from in-memory projections
-    proj = current_projections_df()[["id", "1_Pts", "2_Pts", "3_Pts"]].rename(
-        columns={"1_Pts": "r1_pts", "2_Pts": "r2_pts", "3_Pts": "r3_pts"}
-    )
+    # Per-round xP and (post-override) xMins from in-memory projections. xMins seeds
+    # the three per-round inputs; respects IS_PUBLIC (pure defaults on the deploy).
+    proj = current_projections_df()[
+        ["id", "1_Pts", "2_Pts", "3_Pts", "1_xMins", "2_xMins", "3_xMins"]
+    ].rename(columns={
+        "1_Pts": "r1_pts", "2_Pts": "r2_pts", "3_Pts": "r3_pts",
+        "1_xMins": "r1_xmins", "2_xMins": "r2_xmins", "3_xMins": "r3_xmins",
+    })
     team_players = team_players.merge(proj, on="id", how="left")
     for col in ["r1_pts", "r2_pts", "r3_pts"]:
         team_players[col] = team_players[col].fillna(0).round(2)
+    for col in ["r1_xmins", "r2_xmins", "r3_xmins"]:
+        team_players[col] = team_players[col].fillna(0).round().astype(int)
 
     pos_order = ["GK", "DEF", "MID", "FWD"]
     grouped = {
         pos: team_players[team_players["position"] == pos][
-            ["id", "player", "price", "xmins", "r1_pts", "r2_pts", "r3_pts"]
+            ["id", "player", "price",
+             "r1_xmins", "r2_xmins", "r3_xmins", "r1_pts", "r2_pts", "r3_pts"]
         ].to_dict(orient="records")
         for pos in pos_order
     }
