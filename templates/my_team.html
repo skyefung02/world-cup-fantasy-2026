@@ -150,9 +150,9 @@
       <div class="import-grid">
         <div class="import-card">
           <div class="import-step">1 · Grab your team</div>
-          <p>Drag this button to your bookmarks bar, then click it while logged in on <b>play.fifa.com</b>. It copies your team to the clipboard — your login never leaves your browser.</p>
-          {% raw %}<a class="bookmarklet-btn" href="javascript:(async()=>{try{const r=await fetch('/api/en/fantasy/team',{headers:{accept:'application/json'},credentials:'include'});const j=await r.json();await navigator.clipboard.writeText(JSON.stringify(j.success||j));alert('FIFA team copied - now paste it into the captaincy page.');}catch(e){alert('Could not read team: '+e);}})()">⚽ Copy my FIFA team</a>{% endraw %}
-          <p class="import-hint">No bookmarks bar? Open <span class="mono">play.fifa.com/api/en/fantasy/team</span> while logged in and copy everything you see.</p>
+          <p>Drag the button below to your bookmarks bar. Then go to <b>play.fifa.com</b>, open your fantasy team, and click the bookmark <b>there</b> — it copies your team to the clipboard. (Clicking it on this page won't work; it has to run on FIFA's site, using your session.)</p>
+          {% raw %}<a class="bookmarklet-btn" href="javascript:(async()=>{try{if(!location.hostname.endsWith('play.fifa.com')){alert('Open your team on play.fifa.com first, then click this bookmark there.');return;}const r=await fetch('/api/en/fantasy/team',{headers:{accept:'application/json'},credentials:'include'});const j=await r.json();if(j.errors&&j.errors.length){alert('FIFA says: '+j.errors[0].message+' - log in on play.fifa.com and retry.');return;}await navigator.clipboard.writeText(JSON.stringify(j.success||j));alert('FIFA team copied - now paste it into the captaincy page.');}catch(e){alert('Could not read team: '+e);}})()">⚽ Copy my FIFA team</a>{% endraw %}
+          <p class="import-hint">No bookmarks bar? On <span class="mono">play.fifa.com</span> open <span class="mono">/api/en/fantasy/team</span> while logged in and copy everything you see.</p>
         </div>
         <div class="import-card">
           <div class="import-step">2 · Paste it here</div>
