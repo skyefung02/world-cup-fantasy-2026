@@ -38,7 +38,7 @@ Match outcomes are converted to expected Fantasy points using the official FIFA 
 - Appearance points
 
 ### Step 3 — xMins
-A local web UI (Flask) allows manual xMins assignment per player. xPts per game is computed as:
+A local web UI (Flask) allows manual xMins assignment per player, independently for each group-stage round (R1/R2/R3). xPts per game is computed per round as:
 
 ```
 xpts_game = (xpts_p90 / 90) * xmins + appearance_pts
