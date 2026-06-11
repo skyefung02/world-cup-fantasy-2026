@@ -131,6 +131,14 @@
       outline: none; margin-bottom: 12px; }
     .import-card textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-bg); }
     .paste-error { color: var(--danger) !important; font-size: 0.82rem !important; margin-bottom: 12px !important; }
+    .bm-method { margin-bottom: 16px; }
+    .bm-label { font-family: var(--mono); font-size: 0.68rem; font-weight: 700; color: var(--text);
+      text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .bm-sub { font-size: 0.82rem !important; margin-bottom: 8px !important; }
+    .bm-copy { display: flex; gap: 8px; }
+    .bm-code { flex: 1; min-width: 0; background: var(--surface-2); border: 1px solid var(--border);
+      color: var(--text-muted); border-radius: 8px; padding: 8px 10px; font-family: var(--mono);
+      font-size: 0.72rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 {% endblock %}
 
 {% block content %}
@@ -149,10 +157,38 @@
       </div></div>
       <div class="import-grid">
         <div class="import-card">
-          <div class="import-step">1 · Grab your team</div>
-          <p>Drag the button below to your bookmarks bar. Then go to <b>play.fifa.com</b>, open your fantasy team, and click the bookmark <b>there</b> — it copies your team to the clipboard. (Clicking it on this page won't work; it has to run on FIFA's site, using your session.)</p>
-          {% raw %}<a class="bookmarklet-btn" href="javascript:(async()=>{try{if(!location.hostname.endsWith('play.fifa.com')){alert('Open your team on play.fifa.com first, then click this bookmark there.');return;}const r=await fetch('/api/en/fantasy/team',{headers:{accept:'application/json'},credentials:'include'});const j=await r.json();if(j.errors&&j.errors.length){alert('FIFA says: '+j.errors[0].message+' - log in on play.fifa.com and retry.');return;}await navigator.clipboard.writeText(JSON.stringify(j.success||j));alert('FIFA team copied - now paste it into the captaincy page.');}catch(e){alert('Could not read team: '+e);}})()">⚽ Copy my FIFA team</a>{% endraw %}
-          <p class="import-hint">No bookmarks bar? On <span class="mono">play.fifa.com</span> open <span class="mono">/api/en/fantasy/team</span> while logged in and copy everything you see.</p>
+          <div class="import-step">1 · Make a "copy my team" bookmark (once)</div>
+          <p>Two ways to set it up — use whichever your browser likes. You only do this once.</p>
+
+          <div class="bm-method">
+            <div class="bm-label">A — drag it</div>
+            <p class="bm-sub">Drag this onto your bookmarks bar:</p>
+            {% raw %}<a class="bookmarklet-btn" id="bmLink" href="javascript:(async()=>{try{if(!location.hostname.endsWith('play.fifa.com')){alert('Open your team on play.fifa.com first, then click this bookmark there.');return;}const r=await fetch('/api/en/fantasy/team',{headers:{accept:'application/json'},credentials:'include'});const j=await r.json();if(j.errors&&j.errors.length){alert('FIFA says: '+j.errors[0].message+' - log in on play.fifa.com and retry.');return;}await navigator.clipboard.writeText(JSON.stringify(j.success||j));alert('FIFA team copied - now paste it into the captaincy page.');}catch(e){alert('Could not read team: '+e);}})()">⚽ Copy my FIFA team</a>{% endraw %}
+          </div>
+
+          <div class="bm-method">
+            <div class="bm-label">B — copy it</div>
+            <p class="bm-sub">Or add a new bookmark by hand and paste this as its <b>URL / address</b>:</p>
+            <div class="bm-copy">
+              <input id="bmCode" class="bm-code" readonly>
+              <button type="button" class="btn" onclick="copyBookmarklet(event)">Copy</button>
+            </div>
+          </div>
+
+          <p class="import-hint">Then go to <b>play.fifa.com</b>, open your team, and click the bookmark <b>there</b> — it copies your team to the clipboard. (It won't work clicked on this page; it has to run on FIFA's site.)</p>
+          <script>
+            (function () {
+              var link = document.getElementById("bmLink"), code = document.getElementById("bmCode");
+              if (link && code) code.value = link.getAttribute("href");   // single-source the bookmarklet
+            })();
+            function copyBookmarklet(e) {
+              var code = document.getElementById("bmLink").getAttribute("href");
+              navigator.clipboard.writeText(code).then(function () {
+                var b = e.target, t = b.textContent;
+                b.textContent = "Copied!"; setTimeout(function () { b.textContent = t; }, 1500);
+              });
+            }
+          </script>
         </div>
         <div class="import-card">
           <div class="import-step">2 · Paste it here</div>
