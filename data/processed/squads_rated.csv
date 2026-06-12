@@ -4,10 +4,10 @@ id,name,group,abbr,isEliminated,elo,home_field,Tactical,Personnel,total_tilt,til
 3,Australia,d,AUS,False,1774,0.0,-0.04,-0.09,-0.12,Defensive
 4,Austria,j,AUT,False,1819,0.0,0.29,-0.07,0.22,Attacking
 5,Belgium,g,BEL,False,1901,0.0,0.21,0.01,0.21,Attacking
-6,Bosnia and Herzegovina,b,BIH,False,1705,0.0,0.18,-0.04,0.14,Attacking
+6,Bosnia and Herzegovina,b,BIH,False,1716,0.0,0.18,-0.04,0.14,Attacking
 7,Brazil,c,BRA,False,1992,0.0,0.12,0.09,0.21,Balanced
 8,Cabo Verde,h,CPV,False,1624,0.0,-0.2,-0.08,-0.28,Defensive
-9,Canada,b,CAN,False,1804,86.0,-0.1,0.03,-0.07,Balanced
+9,Canada,b,CAN,False,1793,86.0,-0.1,0.03,-0.07,Balanced
 10,Colombia,k,COL,False,1950,0.0,-0.31,0.06,-0.25,Defensive
 11,Congo DR,k,COD,False,1728,0.0,-0.1,0.03,-0.07,Balanced
 12,Côte d'Ivoire,e,CIV,False,1787,0.0,-0.11,0.05,-0.06,Balanced
