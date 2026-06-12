@@ -33,6 +33,7 @@ so this stays light and matches whatever env serves the Flask app).
 
 import math
 
+import numpy as np
 import pandas as pd
 
 # ── Your 15-player squad: list of FIFA player IDs (see /my-team for yours) ──
@@ -127,20 +128,58 @@ def _poisson_sf(n, mu):
     return max(0.0, 1.0 - cdf)
 
 
-def captain_score_expectation(candidate, rnd, threshold):
-    """Expected value of KEEPING the armband on this candidate, given that rolling
-    is worth `threshold`. Returns E[max(X, threshold)] for the captain's realised
-    score X.
+# ── Component Monte Carlo (the default model) ──
+# Sample realised fantasy points from the per-round component columns rather than
+# pretending the total is Poisson. The component expectations sum back to `_Pts`,
+# so the MC mean equals the existing projection — we only add the distribution
+# *shape* (the appearance floor + the goal-haul skew) that Poisson got wrong.
 
-    FIRST PASS: X ~ Poisson(mu), mu = candidate's projected points. Closed form
-    (verified to equal E[max(X, threshold)] exactly, integer thresholds included):
+N_SIMS = 20000
+_MC_SEED = 12345  # fixed → deterministic page (no threshold jitter between loads)
+
+
+def _num(candidate, key):
+    """Safe float read from a projections row: missing/NaN → 0.0."""
+    v = candidate.get(key, 0.0)
+    try:
+        v = float(v)
+    except (TypeError, ValueError):
+        return 0.0
+    return v if v == v else 0.0  # NaN guard
+
+
+def simulate_points(candidate, rnd, n, rng):
+    """Sample n realised point totals for this player in round `rnd`.
+
+    Deterministic appearance: AppPts (the projected 0/1/2 tier) and ConcededPts
+    are added as constants — the projected appearance is taken as given, so a
+    player never blanks to ~0 here (the v1.5 blank-risk refinement would sample
+    that). The volatile components are sampled and scaled by their per-event
+    value, derived from the expected-points columns (e.g. pts/goal = GoalPts/xG):
+        goals  ~ Poisson(xG),  assists ~ Poisson(xA)
+        clean sheet ~ Bernoulli(PCleanSheet),  bonus ~ Bernoulli(PScoutingBonus)
+    """
+    g = lambda k: _num(candidate, f"{rnd}_{k}")
+    xg, xa, pcs, pbon = g("xG"), g("xA"), g("PCleanSheet"), g("PScoutingBonus")
+
+    total = np.full(n, g("AppPts") + g("ConcededPts"), dtype=float)
+    if xg > 0:
+        total += rng.poisson(xg, n) * (g("GoalPts") / xg)
+    if xa > 0:
+        total += rng.poisson(xa, n) * (g("AssistPts") / xa)
+    if pcs > 0:
+        total += (rng.random(n) < pcs) * (g("CSPts") / pcs)
+    if pbon > 0:
+        total += (rng.random(n) < pbon) * (g("ScoutingBonusPts") / pbon)
+    return total
+
+
+def captain_score_expectation(candidate, rnd, threshold):
+    """Poisson closed form for E[max(X, threshold)], X ~ Poisson(mu), mu = _Pts.
+    Kept as the `model='poisson'` alternative for side-by-side comparison:
         m = int(threshold) + 1
         E = threshold + mu*sf(m-2, mu) - threshold*sf(m-1, mu)
-
-    TODO: replace the body with a component Monte Carlo over the per-round
-    projections.csv columns (xG, xA, PCleanSheet, AppPts, ...) and return
-    mean(max(sim_total, threshold)). The backward induction is agnostic to how
-    this expectation is produced.
+    (verified to equal E[max(X, threshold)] exactly, integer thresholds included).
     """
     mu = candidate[f"{rnd}_Pts"]
     m = int(threshold) + 1
@@ -153,20 +192,37 @@ def keep_probability(mu, threshold):
     return _poisson_sf(math.ceil(threshold) - 1, mu)
 
 
-def backward_induction(blocks, rnd):
-    """Returns (candidates, U) where candidates[k] is block k's captain candidate
-    and U[k] is the value of being at block k and playing optimally onward."""
-    candidates = [block_candidate(b, rnd) for b in blocks]
+def _solve(candidates, rnd, model="mc"):
+    """Backward induction over a round's block candidates. Returns (U, keep):
+        U[k]    = value of playing optimally from block k onward
+        keep[k] = P(realised_k >= U[k+1]), the chance this block ends the twist
+                  (None for the last block — there's nothing to roll to).
+
+    model='mc' samples the component distribution once per candidate and reads
+    both U and the keep-odds from the same samples; 'poisson' uses the closed form.
+    Thresholds are identical in spirit — only the score distribution differs.
+    """
     n = len(candidates)
+    ptcol = f"{rnd}_Pts"
     U = [0.0] * n
+    keep = [None] * n
 
-    U[n - 1] = candidates[n - 1][f"{rnd}_Pts"]  # last block: must keep
-    for k in range(n - 2, -1, -1):
-        U[k] = captain_score_expectation(candidates[k], rnd, threshold=U[k + 1])
-    return candidates, U
+    if model == "mc":
+        rng = np.random.default_rng(_MC_SEED)
+        samples = [simulate_points(c, rnd, N_SIMS, rng) for c in candidates]
+        U[n - 1] = float(samples[n - 1].mean())
+        for k in range(n - 2, -1, -1):
+            U[k] = float(np.maximum(samples[k], U[k + 1]).mean())
+            keep[k] = float((samples[k] >= U[k + 1]).mean())
+    else:
+        U[n - 1] = float(candidates[n - 1][ptcol])
+        for k in range(n - 2, -1, -1):
+            U[k] = captain_score_expectation(candidates[k], rnd, U[k + 1])
+            keep[k] = keep_probability(float(candidates[k][ptcol]), U[k + 1])
+    return U, keep
 
 
-def analyze_round(squad, fixtures, rnd):
+def analyze_round(squad, fixtures, rnd, model="mc"):
     """Run the full per-round analysis and return a JSON-friendly dict for both
     the CLI printer and the web template. Shape:
 
@@ -175,6 +231,9 @@ def analyze_round(squad, fixtures, rnd):
 
     Each block: {index, kickoff_label, player, team, abbr, position, proj,
                  threshold|None, keep_prob|None, roll_to|None, is_start, is_last}
+
+    model='mc' (default) samples the component distribution; 'poisson' uses the
+    closed form — handy for side-by-side comparison.
     """
     ptcol = f"{rnd}_Pts"
     blocks = build_blocks(squad, team_kickoffs(fixtures, rnd), rnd)
@@ -183,7 +242,8 @@ def analyze_round(squad, fixtures, rnd):
     if not blocks:
         return out
 
-    candidates, U = backward_induction(blocks, rnd)
+    candidates = [block_candidate(b, rnd) for b in blocks]
+    U, keep = _solve(candidates, rnd, model)
     n = len(blocks)
     for k, (block, cand) in enumerate(zip(blocks, candidates)):
         is_last = (k == n - 1)
@@ -200,7 +260,7 @@ def analyze_round(squad, fixtures, rnd):
             "proj": round(float(cand[ptcol]), 2),
             "value": round(float(U[k]), 2),         # U[k] = value of playing from this block on
             "threshold": None if is_last else round(float(threshold), 2),
-            "keep_prob": None if is_last else round(keep_probability(cand[ptcol], threshold) * 100, 1),
+            "keep_prob": None if is_last else round(keep[k] * 100, 1),
             "roll_to": None if is_last else k + 2,
             "is_start": k == 0,
             "is_last": is_last,
@@ -220,13 +280,13 @@ def analyze_round(squad, fixtures, rnd):
     return out
 
 
-def analyze_squad_ids(squad_ids, projections_df, fixtures, rounds=ROUNDS):
+def analyze_squad_ids(squad_ids, projections_df, fixtures, rounds=ROUNDS, model="mc"):
     """Run analyze_round for each round given a list of player ids plus the
     projections/fixtures frames. Shared core for any caller — the CLI, the paste
-    sink (team_import), and the eventual web route all funnel through here so the
-    captaincy logic lives in exactly one place."""
+    sink (team_import), and the web route all funnel through here so the captaincy
+    logic lives in exactly one place."""
     squad = squad_records_from_df(projections_df, squad_ids, warn=False)
-    return [analyze_round(squad, fixtures, rnd) for rnd in rounds]
+    return [analyze_round(squad, fixtures, rnd, model) for rnd in rounds]
 
 
 # ─────────────────────────────────────────────────────────────────────────────

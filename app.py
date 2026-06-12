@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify, Response
 import pandas as pd
 import os
 import io
+import json
 import threading
 
 from dotenv import load_dotenv
@@ -241,7 +242,17 @@ def my_team():
         return render_template("my_team.html", error=f"Couldn't read team: {e}")
 
     # ── shared analysis ──
-    proj_df = current_projections_df()
+    # Projections: locally read your CSVs; publicly honor the visitor's client-side
+    # edits — the same {xmins, overrides, scouting} blob /recompute consumes, posted
+    # alongside the team. Missing/malformed → defaults (identical to no edits).
+    if not IS_PUBLIC:
+        proj_df = current_projections_df()
+    else:
+        try:
+            edits = _parse_state(json.loads(request.form.get("client_state") or "{}"))
+            proj_df = build_full_projections(*edits)
+        except Exception:
+            proj_df = current_projections_df()
     proj = proj_df.set_index("id")[["1_Pts", "2_Pts", "3_Pts"]].to_dict("index")
 
     pos_order = ["GK", "DEF", "MID", "FWD"]

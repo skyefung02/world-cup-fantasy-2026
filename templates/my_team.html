@@ -192,11 +192,13 @@
         </div>
         <div class="import-card">
           <div class="import-step">2 · Paste it here</div>
-          <form method="post">
+          <form method="post" onsubmit="document.getElementById('clientStateField').value = JSON.stringify(window.clientState || {});">
             <textarea name="team_json" placeholder='{"id":...,"captain":...,"lineup":{...}}' required></textarea>
+            <input type="hidden" name="client_state" id="clientStateField">
             {% if paste_error %}<p class="paste-error">{{ paste_error }}</p>{% endif %}
             <button type="submit" class="btn btn-primary">Analyze captaincy →</button>
           </form>
+          <p class="import-hint">Any projection tweaks you've made on this site (goal share, xmins…) are applied automatically.</p>
         </div>
       </div>
 
@@ -215,7 +217,7 @@
 
       {# ── Rolling captaincy (hero) ── #}
       <div class="section-label">Rolling Captaincy
-        <span class="cap-note">· Poisson first-pass model — treat uplift as an upper bound</span>
+        <span class="cap-note">· Monte Carlo model — samples each player's goals / assists / clean sheets</span>
       </div>
       <div class="cap-pills">
         {% for rd in captaincy %}
@@ -269,7 +271,7 @@
               <div class="lcard">
                 <div class="lcard-top">
                   <span class="lblk-idx">Block {{ b.index }}</span>
-                  <span class="lblk-ko">{{ b.kickoff_label }}</span>
+                  <span class="lblk-ko" data-kickoff="{{ b.kickoff }}">{{ b.kickoff_label }}</span>
                   {% if state == 'live' %}<span class="tag live">Up next</span>
                   {% elif state == 'kept' %}<span class="tag kept">★ Keep (rec.)</span>
                   {% elif state == 'rolled' %}<span class="tag rolled">Twist (rec.)</span>
@@ -327,5 +329,17 @@
         el.classList.toggle("active", el.dataset.round === round);
       });
     }
+
+    // Kickoff times come from FIFA's feed in UK time (+01:00). Re-render each one
+    // in the viewer's own timezone so "when do I decide?" reads on their clock.
+    document.querySelectorAll(".lblk-ko[data-kickoff]").forEach(el => {
+      const d = new Date(el.dataset.kickoff);
+      if (!isNaN(d)) {
+        el.textContent = d.toLocaleString(undefined, {
+          weekday: "short", day: "2-digit", month: "short",
+          hour: "2-digit", minute: "2-digit", hour12: false,
+        });
+      }
+    });
   </script>
 {% endblock %}
