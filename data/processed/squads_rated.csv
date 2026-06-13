@@ -32,18 +32,18 @@ id,name,group,abbr,isEliminated,elo,home_field,Tactical,Personnel,total_tilt,til
 31,New Zealand,g,NZL,False,1641,0.0,-0.01,-0.01,-0.01,Balanced
 32,Norway,i,NOR,False,1951,0.0,0.09,0.14,0.23,Attacking
 33,Panama,l,PAN,False,1741,0.0,0.01,-0.05,-0.04,Balanced
-34,Paraguay,d,PAR,False,1836,0.0,-0.24,0.05,-0.2,Defensive
+34,Paraguay,d,PAR,False,1831,0.0,-0.24,0.05,-0.2,Defensive
 35,Portugal,k,POR,False,1978,0.0,0.03,0.0,0.03,Balanced
-36,Qatar,b,QAT,False,1550,0.0,0.05,0.1,0.15,Attacking
+36,Qatar,b,QAT,False,1571,0.0,0.05,0.1,0.15,Attacking
 37,Saudi Arabia,h,KSA,False,1642,0.0,-0.19,-0.04,-0.24,Defensive
 38,Scotland,c,SCO,False,1808,0.0,-0.05,-0.01,-0.06,Balanced
 39,Senegal,i,SEN,False,1895,0.0,-0.37,0.05,-0.32,Defensive
 40,South Africa,a,RSA,False,1668,0.0,-0.26,0.03,-0.23,Defensive
 41,Spain,h,ESP,False,2072,0.0,0.08,0.0,0.08,Balanced
 42,Sweden,f,SWE,False,1780,0.0,0.09,0.09,0.18,Attacking
-43,Switzerland,b,SUI,False,1892,0.0,0.13,-0.05,0.09,Balanced
+43,Switzerland,b,SUI,False,1871,0.0,0.13,-0.05,0.09,Balanced
 44,Tunisia,f,TUN,False,1688,0.0,-0.27,0.06,-0.2,Defensive
 45,Türkiye,d,TUR,False,1910,0.0,0.19,0.06,0.25,Attacking
 46,Uruguay,h,URU,False,1929,0.0,-0.13,-0.04,-0.17,Defensive
-47,USA,d,USA,False,1830,88.0,0.07,0.04,0.11,Attacking
+47,USA,d,USA,False,1836,88.0,0.07,0.04,0.11,Attacking
 48,Uzbekistan,k,UZB,False,1714,0.0,0.05,-0.08,-0.02,Balanced
