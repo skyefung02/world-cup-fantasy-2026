@@ -7,6 +7,6 @@
     "itb": 3.0,
     "ft": 2,
     "xmin_lb": 45, 
-    "use_wildcard": [3], 
-    "use_twelfth_man": [2]
+    "use_wildcard": [2], 
+    "use_twelfth_man": [3]
 }

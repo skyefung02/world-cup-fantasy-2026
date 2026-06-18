@@ -463,7 +463,6 @@
     <div class="round-filter">
       <span class="round-filter-label">Rounds</span>
       <div class="round-pills">
-        <button class="pill active" data-round="1" onclick="onRoundFilter(1)">R1</button>
         <button class="pill active" data-round="2" onclick="onRoundFilter(2)">R2</button>
         <button class="pill active" data-round="3" onclick="onRoundFilter(3)">R3</button>
       </div>
@@ -483,7 +482,7 @@
             <th class="sortable" data-col="team" onclick="onSort('team')">Team <span class="sort-ind">⇅</span></th>
             <th class="sortable num" data-col="price" onclick="onSort('price')">Price <span class="sort-ind">⇅</span></th>
             <th class="sortable num" data-col="own" onclick="onSort('own')" title="Live ownership (% of squads), refreshed hourly">Own % <span class="sort-ind">⇅</span></th>
-            <th class="sortable num" data-col="r1" onclick="onSort('r1')">R1 xP <span class="sort-ind">⇅</span></th>
+            <th class="sortable num" data-col="r1" onclick="onSort('r1')" style="display:none">R1 xP <span class="sort-ind">⇅</span></th>
             <th class="sortable num" data-col="r2" onclick="onSort('r2')">R2 xP <span class="sort-ind">⇅</span></th>
             <th class="sortable num" data-col="r3" onclick="onSort('r3')">R3 xP <span class="sort-ind">⇅</span></th>
             <th class="sortable num sorted" data-col="avg" onclick="onSort('avg')">Avg xP <span class="sort-ind">↓</span></th>
@@ -548,7 +547,7 @@
             <td class="price-cell num">£{{ p.price }}m</td>
             {%- set pe = p['1_PScoutingEligible'] -%}
             <td class="own-cell num{% if pe >= 1 %} own-safe{% elif pe > 0 %} own-danger{% endif %}" title="{% if pe >= 1 %}Clear differential — full scouting bonus{% elif pe > 0 %}Danger zone: {{ (pe * 100) | round | int }}% scouting eligibility, at risk of crossing 5%{% endif %}">{{ '%.1f' | format(p['1_PercentSelected']) }}%</td>
-            <td class="pts-cell num r1-pts">{{ p['1_Pts'] }}</td>
+            <td class="pts-cell num r1-pts" style="display:none">{{ p['1_Pts'] }}</td>
             <td class="pts-cell num r2-pts">{{ p['2_Pts'] }}</td>
             <td class="pts-cell num r3-pts">{{ p['3_Pts'] }}</td>
             <td class="avg-cell num avg-pts">{{ p.avg_pts }}</td>
@@ -578,7 +577,7 @@
           <thead>
             <tr>
               <th></th>
-              <th><span class="round-num">R1</span><span class="opp" id="m-opp-r1"></span></th>
+              <th style="display:none"><span class="round-num">R1</span><span class="opp" id="m-opp-r1"></span></th>
               <th><span class="round-num">R2</span><span class="opp" id="m-opp-r2"></span></th>
               <th><span class="round-num">R3</span><span class="opp" id="m-opp-r3"></span></th>
             </tr>
@@ -586,25 +585,25 @@
           <tbody>
             <tr>
               <td>xMins</td>
-              <td><input type="number" id="modal-xmins-1" class="xmins-input" min="0" max="90" step="1" oninput="onSliderInput(false)"></td>
+              <td style="display:none"><input type="number" id="modal-xmins-1" class="xmins-input" min="0" max="90" step="1" oninput="onSliderInput(false)"></td>
               <td><input type="number" id="modal-xmins-2" class="xmins-input" min="0" max="90" step="1" oninput="onSliderInput(false)"></td>
               <td><input type="number" id="modal-xmins-3" class="xmins-input" min="0" max="90" step="1" oninput="onSliderInput(false)"></td>
             </tr>
             <tr>
               <td>Proj. Goals</td>
-              <td id="goal-r1">—</td>
+              <td id="goal-r1" style="display:none">—</td>
               <td id="goal-r2">—</td>
               <td id="goal-r3">—</td>
             </tr>
             <tr>
               <td>Proj. Assists</td>
-              <td id="assist-r1">—</td>
+              <td id="assist-r1" style="display:none">—</td>
               <td id="assist-r2">—</td>
               <td id="assist-r3">—</td>
             </tr>
             <tr class="modal-xp-row">
               <td>Proj. xP</td>
-              <td id="xp-r1">—</td>
+              <td id="xp-r1" style="display:none">—</td>
               <td id="xp-r2">—</td>
               <td id="xp-r3">—</td>
             </tr>
@@ -656,7 +655,8 @@
     const allRows = playersTbody ? Array.from(playersTbody.querySelectorAll("tr")) : [];
     let sortCol = "avg", sortDir = -1;
     let filterPos = "all", filterSearch = "";
-    const selectedRounds = new Set([1, 2, 3]);
+    // R1 is complete: it's hidden in the UI and excluded from the average.
+    const selectedRounds = new Set([2, 3]);
 
     // Mean of a row's xP over the currently-selected rounds. Reads the per-round
     // data-r1/r2/r3 attrs, so it stays correct after edits/recomputes too.
@@ -913,11 +913,13 @@
       const assistMax = parseFloat(assistSlider.max);
 
       // The single per-90 slider applies to every round, so its floor must clear the
-      // locked SP/pen contribution in *all* rounds — take the max across them. A round
-      // with 0 xMins contributes no floor (denominator 0, skipped).
+      // locked SP/pen contribution in *all* rounds — take the max across them. Rounds
+      // with 0 xMins or very few minutes (<30) are skipped: at low playing time the
+      // per-90 conversion blows up disproportionately and the locked amount is tiny.
       let goalFloorPct = 0, assistFloorPct = 0;
       for (const r of [1, 2, 3]) {
         const xmins = parseInt(document.getElementById(`modal-xmins-${r}`).value, 10) || 0;
+        if (xmins < 30) continue;
         const teamXg = parseFloat(d[`r${r}TeamXg`]) || 0;
         const teamXa = teamXg * 0.75;
         const lockedPenXg = parseFloat(d[`r${r}LockedPenXg`]) || 0;

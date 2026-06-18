@@ -221,13 +221,13 @@
       </div>
       <div class="cap-pills">
         {% for rd in captaincy %}
-        <button class="pill cap-pill {% if loop.first %}active{% endif %}" data-round="{{ rd.round }}"
+        <button class="pill cap-pill {% if rd.round == active_round %}active{% endif %}" data-round="{{ rd.round }}"
                 onclick="showCapRound('{{ rd.round }}')">Round {{ rd.round }}</button>
         {% endfor %}
       </div>
 
       {% for rd in captaincy %}
-      <div class="cap-round" data-round="{{ rd.round }}" {% if not loop.first %}style="display:none"{% endif %}>
+      <div class="cap-round" data-round="{{ rd.round }}" {% if rd.round != active_round %}style="display:none"{% endif %}>
         {% if not rd.blocks %}
           <p class="no-results">No squad players have a fixture this round.</p>
         {% else %}

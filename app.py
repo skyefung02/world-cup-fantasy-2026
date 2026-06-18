@@ -275,6 +275,14 @@ def my_team():
     for rd in captaincy:
         realized.overlay_realized(rd, points, finals)
 
+    # Open on the live round — the first one whose armband decision is still open
+    # ('rolling'). Completed rounds resolve to 'locked', so this auto-advances as
+    # rounds finish (R1 done → opens on R2). All locked → fall back to the last round.
+    active_round = next(
+        (rd["round"] for rd in captaincy if rd["live_state"] == "rolling"), None)
+    if active_round is None and captaincy:
+        active_round = captaincy[-1]["round"]
+
     return render_template(
         "my_team.html",
         error=None,
@@ -282,6 +290,7 @@ def my_team():
         team_id=team["team_id"],
         totals=totals,
         captaincy=captaincy,
+        active_round=active_round,
         flags=FLAGS,
     )
 
@@ -289,7 +298,9 @@ def my_team():
 @app.route("/projections")
 def projections_page():
     proj = current_projections_df()
-    proj["avg_pts"] = ((proj["1_Pts"] + proj["2_Pts"] + proj["3_Pts"]) / 3).round(2)
+    # R1 is complete — average over the remaining (upcoming) rounds only. R1 data is
+    # still rendered into the page (data-r1* attrs) but hidden in the UI.
+    proj["avg_pts"] = ((proj["2_Pts"] + proj["3_Pts"]) / 2).round(2)
     proj["flag"] = proj["abbr"].map(FLAGS).fillna("")
     for col in ["1_Pts", "2_Pts", "3_Pts"]:
         proj[col] = proj[col].round(2)
@@ -346,7 +357,9 @@ def match_projections():
     team_group = fixtures[["abbr", "group"]].drop_duplicates().set_index("abbr")["group"].to_dict()
 
     rounds = []
-    for r in [1, 2, 3]:
+    # R1 is complete — omit it from the UI (R2 becomes the default tab). Data is
+    # untouched in the projection CSVs.
+    for r in [2, 3]:
         seen = set()
         round_matches = []
         for abbr, row in team_lookup.items():
