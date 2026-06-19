@@ -295,7 +295,7 @@
                   {% elif state == 'kept' %}
                     {% if b.threshold is not none %}
                       <span class="dec-keep">✓ Recommended <b>KEEP</b> — bank {{ b.realized }}</span>
-                      <span class="dec-alt">twist alt ~{{ b.threshold }} · edge {{ '%+.2f' | format(b.realized - b.threshold) }} · still free to twist ↓</span>
+                      <span class="dec-alt">twist alt ~{{ b.threshold }} · edge {{ '%+.2f' | format(b.realized - b.threshold) }}</span>
                     {% else %}
                       <span class="dec-keep">✓ Kept — banked {{ b.realized }} (last block)</span>
                     {% endif %}
