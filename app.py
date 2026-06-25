@@ -357,9 +357,9 @@ def match_projections():
     team_group = fixtures[["abbr", "group"]].drop_duplicates().set_index("abbr")["group"].to_dict()
 
     rounds = []
-    # R1 is complete — omit it from the UI (R2 becomes the default tab). Data is
-    # untouched in the projection CSVs.
-    for r in [2, 3]:
+    # R1 and R2 are complete — omit them from the UI (R3 is the default tab). Data
+    # is untouched in the projection CSVs.
+    for r in [3]:
         seen = set()
         round_matches = []
         for abbr, row in team_lookup.items():
@@ -417,7 +417,72 @@ def match_projections():
 
         rounds.append({"round": r, "groups": groups, "team_rows": team_rows})
 
-    return render_template("match_projections.html", rounds=rounds)
+    # ── Knockout projections (separate Monte Carlo pipeline) ──
+    # Advancement grid (team × round reach probabilities) + per-round team tables
+    # carrying P(play) and opponent-mix-averaged xG/xGA/CS. Empty if not yet built.
+    import os
+    grid = []
+    ko_rounds = []
+    KO_LABELS = {4: "R32", 5: "R16", 6: "QF", 7: "SF", 8: "Final"}
+    tp_path, kp_path = "data/knockout_team_probs.csv", "data/knockout_projections.csv"
+    if os.path.exists(tp_path):
+        tp = pd.read_csv(tp_path).sort_values("P_Champ", ascending=False)
+        for _, row in tp.iterrows():
+            ab = row["abbr"]
+            grid.append({
+                "flag": FLAGS.get(ab, ""), "team": row["name"], "abbr": ab,
+                "group": str(row["group"]).upper(),
+                "cells": [round(row[c] * 100, 1) for c in
+                          ("P_R32", "P_R16", "P_QF", "P_SF", "P_Final", "P_Champ")],
+            })
+    if os.path.exists(kp_path):
+        kp = pd.read_csv(kp_path).drop_duplicates("abbr")
+        name_by_abbr = dict(zip(kp["abbr"], kp["team"]))
+
+        # Confirmed knockout fixtures (FIFA-drawn) → shown as resolved cards, and
+        # their teams dropped from the opponent-uncertain table for that round.
+        confirmed = {}       # round -> [card, ...]
+        confirmed_abbrs = {}  # round -> {abbr, ...}
+        fx_path = "data/knockout_fixtures.csv"
+        if os.path.exists(fx_path):
+            fx = pd.read_csv(fx_path).sort_values(["round", "match"])  # bracket order
+            for _, f in fx.iterrows():
+                rnd, a, b = int(f["round"]), f["home_abbr"], f["away_abbr"]
+                total = float(f["home_xg"]) + float(f["away_xg"])
+                confirmed.setdefault(rnd, []).append({
+                    "a_abbr": a, "a_team": name_by_abbr.get(a, a), "a_flag": FLAGS.get(a, ""),
+                    "a_xg": round(float(f["home_xg"]), 2), "a_cs": float(f["home_cs"]),
+                    "b_abbr": b, "b_team": name_by_abbr.get(b, b), "b_flag": FLAGS.get(b, ""),
+                    "b_xg": round(float(f["away_xg"]), 2), "b_cs": float(f["away_cs"]),
+                    "a_share": round(float(f["home_xg"]) / total * 100, 1) if total > 0 else 50.0,
+                    "venue": f["venue"],
+                })
+                confirmed_abbrs.setdefault(rnd, set()).update([a, b])
+
+        for r in (4, 5, 6, 7, 8):
+            done = confirmed_abbrs.get(r, set())
+            team_rows = []
+            for _, row in kp.iterrows():
+                pplay = float(row.get(f"{r}_PPlay", 0) or 0)
+                if pplay < 0.01:  # hide <1% longshots; full picture is in the grid
+                    continue
+                ab = row["abbr"]
+                if ab in done:    # already shown as a confirmed fixture card
+                    continue
+                team_rows.append({
+                    "flag": FLAGS.get(ab, ""), "team": row["team"], "abbr": ab,
+                    "group": team_group.get(ab, "").upper(),
+                    "pplay": round(pplay * 100, 1),
+                    "xg": round(float(row[f"{r}_TeamXG"]), 2),
+                    "xga": round(float(row[f"{r}_TeamXGA"]), 2),
+                    "cs": round(float(row[f"{r}_PCleanSheet"]) * 100, 1),
+                })
+            team_rows.sort(key=lambda t: t["xg"], reverse=True)
+            ko_rounds.append({"round": r, "label": KO_LABELS[r],
+                              "team_rows": team_rows, "confirmed": confirmed.get(r, [])})
+
+    return render_template("match_projections.html", rounds=rounds,
+                           ko_rounds=ko_rounds, grid=grid)
 
 
 # ─────────────────────────────────────────────────────────────────────────────

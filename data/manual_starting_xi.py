@@ -96,7 +96,7 @@ MANUAL_STARTING_XI = {
         "Lucas Paqueta",       # CM
         "Raphinha",            # RW
         "Vinicius Júnior",     # ST
-        "Igor Thiago",       # LW
+        "Matheus Cunha",       # LW
     ],
 
     "Morocco": [
@@ -362,14 +362,14 @@ MANUAL_STARTING_XI = {
         "Emiliano Martinez",   # GK
         "Nahuel Molina",       # RB
         "Cristian Romero",     # CB
-        "Nicolas Otamendi",    # CB
-        "Nicolas Tagliafico",  # LB
+        "Lisandro Martinez",    # CB
+        "Facundo Medina",  # LB
         "Enzo Fernandez",      # CM
         "Alexis Mac Allister", # CM
         "Rodrigo de Paul",     # RW
         "Thiago Almada",
         "Lionel Messi",        # ST
-        "Julian Alvarez",      # LW
+        "Lautaro Martinez",      # LW
     ],
 
     # ── Group K ────────────────────────────────────────────────────────────────
@@ -377,7 +377,7 @@ MANUAL_STARTING_XI = {
         "Diogo Costa",         # GK
         "Joao Cancelo",        # RB
         "Ruben Dias",          # CB
-        "Goncalo Inacio",      # CB
+        "Renato Veiga",      # CB
         "Nuno Mendes",         # LB
         "Vitinha",             # CDM
         "Joao Neves",          # CM
@@ -406,7 +406,7 @@ MANUAL_STARTING_XI = {
         "Jordan Pickford",     # GK
         "Reece James",         # RB
         "John Stones",         # CB
-        "Marc Guehi",          # CB
+        "Ezri Konsa",          # CB
         "Nico O'Reilly",       # LB
         "Declan Rice",         # CDM
         "Elliot Anderson",     # CM

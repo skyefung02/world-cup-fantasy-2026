@@ -255,6 +255,109 @@
       height: 1px;
       background: var(--border);
     }
+
+    /* ── Section heading (knockout blocks) ── */
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin: 8px 0 14px;
+    }
+    .section-head h2 {
+      font-family: var(--display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      margin: 0;
+    }
+    .section-head .sub {
+      font-size: 0.72rem;
+      color: var(--text-faint);
+      font-family: var(--mono);
+    }
+
+    /* ── Advancement grid ── */
+    .adv-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: auto;
+      max-height: 460px;
+      margin-bottom: 36px;
+    }
+    .adv-grid { border-collapse: collapse; width: 100%; }
+    .adv-grid thead th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: var(--surface-2);
+      padding: 10px 12px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-subtle);
+      font-family: var(--display);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .adv-grid thead th.sorted-asc::after  { content: "↑"; color: var(--accent); margin-left: 3px; }
+    .adv-grid thead th.sorted-desc::after { content: "↓"; color: var(--accent); margin-left: 3px; }
+    .adv-grid th.team-col, .adv-grid td.team-col { text-align: left; }
+    .adv-grid td {
+      padding: 7px 12px;
+      font-size: 0.8rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-variant-numeric: tabular-nums;
+      border-bottom: 1px solid var(--surface-2);
+    }
+    .adv-grid tbody td.team-col {
+      border-left: 3px solid var(--team-color, var(--border-strong));
+      font-family: var(--display);
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      font-size: 0.84rem;
+      white-space: nowrap;
+    }
+    .adv-grid td .grp {
+      color: var(--text-faint);
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      margin-left: 6px;
+    }
+
+    /* ── Knockout round section ── */
+    /* No confirmed fixtures yet: single centred table. */
+    .round-section.ko.visible { display: block; }
+    /* Confirmed fixtures present: cards (single column, bracket order) left, table right. */
+    /* Cards ~1 column wide, table ~2 columns wide. */
+    .round-section.ko.has-cards.visible {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) 2fr;
+      gap: 28px;
+      align-items: flex-start;
+    }
+    @media (max-width: 1000px) {
+      .round-section.ko.has-cards.visible { grid-template-columns: 1fr; }
+    }
+    .ko-cards { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+    .ko-table-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 720px;
+    }
+    .ko-note {
+      font-size: 0.72rem;
+      color: var(--text-faint);
+      font-family: var(--mono);
+      margin: 0 0 14px;
+      max-width: 720px;
+    }
+    .rank-table .pp-val { color: var(--accent); font-weight: 600; }
 {% endblock %}
 
 {% block content %}
@@ -265,9 +368,48 @@
       </div>
     </div>
 
+    {% if grid %}
+    <div class="section-head">
+      <h2>Knockout Advancement</h2>
+      <span class="sub">probability of reaching each round · {{ grid|length }} teams</span>
+    </div>
+    <div class="adv-panel">
+      <table class="adv-grid" id="adv-grid">
+        <thead>
+          <tr>
+            <th class="team-col" data-col="team">Team</th>
+            <th data-col="r32">R32</th>
+            <th data-col="r16">R16</th>
+            <th data-col="qf">QF</th>
+            <th data-col="sf">SF</th>
+            <th data-col="final">Final</th>
+            <th data-col="champ" class="sorted-desc">Champ</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for t in grid %}
+          <tr data-abbr="{{ t.abbr }}"
+              data-team="{{ t.team }}"
+              data-r32="{{ t.cells[0] }}" data-r16="{{ t.cells[1] }}"
+              data-qf="{{ t.cells[2] }}" data-sf="{{ t.cells[3] }}"
+              data-final="{{ t.cells[4] }}" data-champ="{{ t.cells[5] }}">
+            <td class="team-col">{{ t.flag }} {{ t.team }}<span class="grp">{{ t.group }}</span></td>
+            {% for c in t.cells %}
+            <td style="background: rgba(255,179,0,{{ '%.3f'|format(c/100*0.85) }}); color: {{ '#15151a' if c >= 45 else 'var(--text)' }}">{{ c }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+
     <div class="round-tabs">
       {% for rd in rounds %}
       <button class="round-btn {% if loop.first %}active{% endif %}" onclick="showRound({{ rd.round }}, this)">Round {{ rd.round }}</button>
+      {% endfor %}
+      {% for kr in ko_rounds %}
+      <button class="round-btn" onclick="showRound({{ kr.round }}, this)">{{ kr.label }}</button>
       {% endfor %}
     </div>
 
@@ -366,6 +508,91 @@
 
     </div>
     {% endfor %}
+
+    {% macro ko_table(kr) %}
+      <table class="rank-table" id="rank-table-{{ kr.round }}">
+        <thead>
+          <tr>
+            <th data-col="team">Team</th>
+            <th data-col="pplay" class="num">P(play)</th>
+            <th data-col="xg"  class="num sorted-desc">xG</th>
+            <th data-col="xga" class="num">xGA</th>
+            <th data-col="cs"  class="num">CS%</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for t in kr.team_rows %}
+          <tr data-team="{{ t.team }}" data-abbr="{{ t.abbr }}" data-group="{{ t.group }}"
+              data-pplay="{{ t.pplay }}" data-xg="{{ t.xg }}" data-xga="{{ t.xga }}" data-cs="{{ t.cs }}">
+            <td>{{ t.flag }} {{ t.team }}</td>
+            <td class="num pp-val">{{ t.pplay }}%</td>
+            <td class="num xg-hi">{{ "%.2f"|format(t.xg) }}</td>
+            <td class="num">{{ "%.2f"|format(t.xga) }}</td>
+            <td class="num cs-val">{{ t.cs }}%</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endmacro %}
+
+    {% for kr in ko_rounds %}
+    <div class="round-section ko {% if kr.confirmed %}has-cards{% endif %}" id="round-{{ kr.round }}">
+      {% if kr.confirmed %}
+      <!-- Left: confirmed fixture cards, one per row in bracket order -->
+      <div class="ko-cards">
+        <div class="group-header">
+          <span class="label"><span class="letter">Confirmed fixtures</span></span>
+          <span class="divider"></span>
+        </div>
+        {% for m in kr.confirmed %}
+        <div class="match-card" data-a-abbr="{{ m.a_abbr }}" data-b-abbr="{{ m.b_abbr }}">
+          <div class="match-body">
+            <div class="team-col">
+              <div class="team-name-row"><span>{{ m.a_flag }}</span><span class="name">{{ m.a_team }}</span></div>
+              <div class="xg-num">{{ "%.2f"|format(m.a_xg) }}</div>
+              <div class="cs-label">Clean sheet</div>
+              <div class="cs-value">{{ m.a_cs }}%</div>
+            </div>
+            <div class="vs-col"><span class="vs-text">xG</span><span class="vs-text">vs</span></div>
+            <div class="team-col right">
+              <div class="team-name-row"><span>{{ m.b_flag }}</span><span class="name">{{ m.b_team }}</span></div>
+              <div class="xg-num">{{ "%.2f"|format(m.b_xg) }}</div>
+              <div class="cs-label">Clean sheet</div>
+              <div class="cs-value">{{ m.b_cs }}%</div>
+            </div>
+          </div>
+          <div class="xg-bar-wrap">
+            <div class="xg-bar"><div class="xg-bar-a" style="width: {{ m.a_share }}%"></div></div>
+            <div class="bar-labels">
+              <span class="bar-label">{{ m.a_share }}%</span>
+              <span class="bar-label">{{ "%.1f"|format(100 - m.a_share) }}%</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Right: opponent-uncertain table -->
+      <div class="table-panel">
+        <div class="table-panel-head">Opponent not yet decided · {{ kr.label }}</div>
+        <div class="table-scroll">
+          {% if kr.team_rows %}{{ ko_table(kr) }}{% else %}
+          <p class="ko-note" style="padding: 16px;">All {{ kr.label }} fixtures are confirmed.</p>
+          {% endif %}
+        </div>
+      </div>
+      {% else %}
+      <div>
+        <p class="ko-note">
+          Projected matchup quality, averaged over the opponents each team could face
+          this round. <strong>P(play)</strong> is the chance the team reaches {{ kr.label }};
+          xG / xGA / CS% are conditional on playing.
+        </p>
+        <div class="ko-table-wrap">{{ ko_table(kr) }}</div>
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
 {% endblock %}
 
 {% block scripts %}
@@ -377,7 +604,7 @@
       if (a) card.style.setProperty("--team-a-color", a);
       if (b) card.style.setProperty("--team-b-color", b);
     });
-    document.querySelectorAll(".rank-table tbody tr[data-abbr]").forEach(row => {
+    document.querySelectorAll(".rank-table tbody tr[data-abbr], .adv-grid tbody tr[data-abbr]").forEach(row => {
       const c = window.teamColor(row.dataset.abbr);
       if (c) row.style.setProperty("--team-color", c);
     });
@@ -392,9 +619,9 @@
     // ── Sortable tables ──
     const sortState = {};
 
-    document.querySelectorAll(".rank-table").forEach(table => {
+    document.querySelectorAll(".rank-table, .adv-grid").forEach(table => {
       const id = table.id;
-      sortState[id] = { col: "xg", dir: "desc" };
+      sortState[id] = { col: (id === "adv-grid" ? "champ" : "xg"), dir: "desc" };
 
       table.querySelectorAll("thead th[data-col]").forEach(th => {
         th.addEventListener("click", () => {
@@ -416,7 +643,8 @@
     function sortTable(table, col, dir) {
       const tbody = table.querySelector("tbody");
       const rows  = Array.from(tbody.querySelectorAll("tr"));
-      const numCols = new Set(["xg", "xga", "cs"]);
+      const numCols = new Set(["xg", "xga", "cs", "pplay",
+                               "r32", "r16", "qf", "sf", "final", "champ"]);
 
       rows.sort((a, b) => {
         const av = a.dataset[col] ?? "";

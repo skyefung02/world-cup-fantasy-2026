@@ -16,6 +16,27 @@ No git push needed for hourly ownership refreshes — they happen entirely serve
 
 ---
 
+## Daily refresh (tournament in progress)
+
+Once scores start coming in, the day-to-day update is a single command:
+
+```bash
+python refresh.py          # new scores only
+python refresh.py --elo    # new scores AND a fresh SilverBulletin Elo export
+```
+
+`refresh.py` runs the chain in the required order:
+
+1. `python main.py --live` — pull fresh scores/ownership from FIFA, rebuild processed CSVs + group `projections.csv`.
+2. *(only with `--elo`)* `python sync_elo.py --yes` — install the newest SilverBulletin export from `~/Downloads`, then rebuild. Must come **after** step 1, since it rebuilds from the cached (now fresh) `rounds.json` but does **not** pull scores itself.
+3. `python build_knockout_projections.py` — re-run the knockout Monte Carlo, regenerating `knockout_team_probs.csv` (advancement grid), `knockout_projections.csv` (per-round player xPts / opponent-uncertain tables), and `knockout_fixtures.csv` (confirmed-fixture cards).
+
+Then reload `http://localhost:5001/match-projections` — confirmed fixtures, advancement probabilities, and per-round tables all reflect the update.
+
+Use `--elo` **only** when you've downloaded a fresh SilverBulletin CSV that day; otherwise `sync_elo.py` errors (no new export to install).
+
+---
+
 ## When you need to push code/data changes
 
 Three situations require a manual `git push` to redeploy:

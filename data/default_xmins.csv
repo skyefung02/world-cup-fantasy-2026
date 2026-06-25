@@ -23,43 +23,43 @@ Farès Chaïbi,Algeria,MID,71.04
 Cristian Romero,Argentina,DEF,83.34
 Marcos Senesi,Argentina,DEF,0.01
 Nahuel Molina,Argentina,DEF,76.56
-Nicolás Otamendi,Argentina,DEF,77.6
-Nicolás Tagliafico,Argentina,DEF,80.2
-Lionel Messi,Argentina,FWD,78.55
-Julián Alvarez,Argentina,FWD,73.46
-Giuliano Simeone,Argentina,MID,8.02
-Nico González,Argentina,MID,24.65
+Nicolás Otamendi,Argentina,DEF,35.56
+Nicolás Tagliafico,Argentina,DEF,34.24
+Lionel Messi,Argentina,FWD,78.54
+Julián Alvarez,Argentina,FWD,34.91
+Giuliano Simeone,Argentina,MID,6.44
+Nico González,Argentina,MID,19.78
 José Manuel López,Argentina,FWD,0.01
 Emiliano Martínez,Argentina,GK,87.51
 Gerónimo Rulli,Argentina,GK,2.51
 Juan Musso,Argentina,GK,0.01
-Leandro Paredes,Argentina,MID,18.6
+Leandro Paredes,Argentina,MID,14.92
 Rodrigo De Paul,Argentina,MID,80.33
-Nico Paz,Argentina,MID,2.88
+Nico Paz,Argentina,MID,2.31
 Valentín Barco,Argentina,MID,0.01
-Exequiel Palacios,Argentina,MID,7.6
+Exequiel Palacios,Argentina,MID,6.1
 Thiago Almada,Argentina,MID,70.92
 Alexis Mac Allister,Argentina,MID,76.17
-Enzo Fernández,Argentina,MID,80.79
+Enzo Fernández,Argentina,MID,80.78
 Jordan Bos,Australia,DEF,60.54
 Alessandro Circati,Australia,DEF,84.42
 Cameron Burgess,Australia,DEF,85.69
-Milos Degenek,Australia,DEF,16.11
-Aziz Behich,Australia,DEF,48.72
-Jason Geria,Australia,DEF,29.37
+Milos Degenek,Australia,DEF,16.14
+Aziz Behich,Australia,DEF,48.84
+Jason Geria,Australia,DEF,29.44
 Kai Trewin,Australia,DEF,2.75
 Lucas Herrington,Australia,DEF,2.75
 Nestory Irankunda,Australia,FWD,62.25
-Nishan Velupillay,Australia,FWD,12.79
-Jacob Italiano,Australia,DEF,81.43
+Nishan Velupillay,Australia,FWD,12.82
+Jacob Italiano,Australia,DEF,81.17
 Mathew Ryan,Australia,GK,88.06
 Paul Izzo,Australia,GK,2.75
 Patrick Beach,Australia,GK,2.75
-Paul Okon,Australia,MID,75.09
+Paul Okon,Australia,MID,74.89
 Connor Metcalfe,Australia,MID,76.97
 Aiden O'Neill,Australia,MID,68.28
 Awer Mabil,Australia,MID,4.75
-Ajdin Hrustic,Australia,MID,17.77
+Ajdin Hrustic,Australia,MID,17.8
 David Alaba,Austria,DEF,74.67
 Philipp Lienhart,Austria,DEF,81.29
 Alexander Prass,Austria,DEF,27.94
@@ -86,126 +86,122 @@ Patrick Wimmer,Austria,MID,52.77
 Paul Wanner,Austria,MID,0.0
 Xaver Schlager,Austria,MID,64.1
 Maxim De Cuyper,Belgium,DEF,65.45
-Timothy Castagne,Belgium,DEF,35.77
-Arthur Theate,Belgium,DEF,39.97
-Thomas Meunier,Belgium,DEF,57.68
-Zeno Debast,Belgium,DEF,35.67
-Axel Witsel,Belgium,MID,1.71
-Koni De Winter,Belgium,DEF,8.04
-Brandon Mechele,Belgium,DEF,67.93
-Joaquin Seys,Belgium,DEF,3.34
-Nathan Ngoy,Belgium,DEF,78.76
-Romelu Lukaku,Belgium,FWD,16.53
+Timothy Castagne,Belgium,DEF,49.67
+Arthur Theate,Belgium,DEF,55.51
+Thomas Meunier,Belgium,DEF,57.69
+Zeno Debast,Belgium,DEF,49.54
+Axel Witsel,Belgium,MID,2.35
+Koni De Winter,Belgium,DEF,11.14
+Brandon Mechele,Belgium,DEF,67.94
+Joaquin Seys,Belgium,DEF,4.61
+Romelu Lukaku,Belgium,FWD,22.95
 Jérémy Doku,Belgium,MID,79.22
-Dodi Lukébakio,Belgium,FWD,10.98
-Alexis Saelemaekers,Belgium,MID,11.5
+Dodi Lukébakio,Belgium,FWD,15.23
+Alexis Saelemaekers,Belgium,MID,15.95
 Charles De Ketelaere,Belgium,MID,63.44
-Senne Lammens,Belgium,GK,6.41
-Nicolas Raskin,Belgium,MID,21.29
+Senne Lammens,Belgium,GK,6.42
+Nicolas Raskin,Belgium,MID,29.55
 Amadou Onana,Belgium,MID,72.77
 Youri Tielemans,Belgium,MID,68.34
 Kevin De Bruyne,Belgium,MID,79.52
 Sead Kolasinac,Bosnia and Herzegovina,DEF,75.61
 Amar Dedic,Bosnia and Herzegovina,DEF,82.32
-Tarik Muharemovic,Bosnia and Herzegovina,DEF,85.52
 Nikola Katic,Bosnia and Herzegovina,DEF,83.72
-Stjepan Radeljic,Bosnia and Herzegovina,DEF,9.84
-Nihad Mujakic,Bosnia and Herzegovina,DEF,7.87
+Stjepan Radeljic,Bosnia and Herzegovina,DEF,13.96
+Nihad Mujakic,Bosnia and Herzegovina,DEF,11.16
 Nidal Celik,Bosnia and Herzegovina,DEF,0.0
 Ermedin Demirovic,Bosnia and Herzegovina,FWD,85.28
-Edin Dzeko,Bosnia and Herzegovina,FWD,37.52
-Jovo Lukic,Bosnia and Herzegovina,FWD,70.47
-Haris Tabakovic,Bosnia and Herzegovina,FWD,8.21
+Edin Dzeko,Bosnia and Herzegovina,FWD,53.21
+Jovo Lukic,Bosnia and Herzegovina,FWD,69.99
+Haris Tabakovic,Bosnia and Herzegovina,FWD,11.64
 Esmir Bajraktarevic,Bosnia and Herzegovina,FWD,62.88
-Samed Bazdar,Bosnia and Herzegovina,FWD,9.6
-Kerim Alajbegovic,Bosnia and Herzegovina,FWD,13.09
+Samed Bazdar,Bosnia and Herzegovina,FWD,13.61
+Kerim Alajbegovic,Bosnia and Herzegovina,FWD,18.56
 Nikola Vasilj,Bosnia and Herzegovina,GK,89.19
 Martin Zlomislic,Bosnia and Herzegovina,GK,0.81
 Amar Memic,Bosnia and Herzegovina,MID,68.14
-Dzenis Burnic,Bosnia and Herzegovina,MID,24.86
-Ivan Sunjic,Bosnia and Herzegovina,MID,28.04
-Armin Gigovic,Bosnia and Herzegovina,MID,20.73
+Dzenis Burnic,Bosnia and Herzegovina,MID,35.25
+Ivan Sunjic,Bosnia and Herzegovina,MID,39.76
+Armin Gigovic,Bosnia and Herzegovina,MID,29.4
 Ivan Basic,Bosnia and Herzegovina,MID,49.55
 Benjamin Tahirovic,Bosnia and Herzegovina,MID,71.61
-Amir Hadziahmetovic,Bosnia and Herzegovina,MID,1.86
-Gabriel Magalhães,Brazil,DEF,84.17
-Marquinhos,Brazil,DEF,84.81
-Ibañez,Brazil,DEF,2.36
-Douglas Santos,Brazil,DEF,79.51
-Bremer,Brazil,DEF,2.01
-Léo Pereira,Brazil,DEF,2.01
-Vinícius Júnior,Brazil,MID,81.61
-Matheus Cunha,Brazil,FWD,14.16
-Gabriel Martinelli,Brazil,MID,22.71
-Luiz Henrique,Brazil,FWD,16.61
-Igor Thiago,Brazil,FWD,72.49
-Rayan,Brazil,FWD,2.01
-Endrick,Brazil,FWD,12.49
-Alisson Becker,Brazil,GK,86.51
-Fabinho,Brazil,MID,2.01
-Casemiro,Brazil,MID,82.68
-Lucas Paquetá,Brazil,MID,63.12
-João Paulo,Cabo Verde,MID,6.07
-Yannick Semedo,Cabo Verde,MID,6.07
-Kevin Pina,Cabo Verde,MID,88.74
-Steven Moreira,Cabo Verde,DEF,89.25
-Wagner Pina,Cabo Verde,DEF,17.18
+Amir Hadziahmetovic,Bosnia and Herzegovina,MID,2.64
+Gabriel Magalhães,Brazil,DEF,85.36
+Marquinhos,Brazil,DEF,86.01
+Ibañez,Brazil,DEF,3.56
+Douglas Santos,Brazil,DEF,80.71
+Bremer,Brazil,DEF,3.21
+Léo Pereira,Brazil,DEF,3.21
+Vinícius Júnior,Brazil,MID,82.81
+Matheus Cunha,Brazil,FWD,54.71
+Gabriel Martinelli,Brazil,MID,23.91
+Luiz Henrique,Brazil,FWD,17.81
+Igor Thiago,Brazil,FWD,3.21
+Rayan,Brazil,FWD,3.21
+Endrick,Brazil,FWD,13.68
+Alisson Becker,Brazil,GK,87.71
+Fabinho,Brazil,MID,3.21
+Casemiro,Brazil,MID,83.88
+Lucas Paquetá,Brazil,MID,64.32
+João Paulo,Cabo Verde,MID,6.31
+Yannick Semedo,Cabo Verde,MID,6.31
+Kevin Pina,Cabo Verde,MID,88.98
+Steven Moreira,Cabo Verde,DEF,89.49
+Wagner Pina,Cabo Verde,DEF,18.05
 Pico,Cabo Verde,DEF,90.0
-Kelvin Pires,Cabo Verde,DEF,6.07
-Sidny Cabral,Cabo Verde,DEF,13.29
-Diney,Cabo Verde,DEF,88.57
-Ryan Mendes,Cabo Verde,FWD,74.0
-Jovane Cabral,Cabo Verde,FWD,26.43
-Dailon Livramento,Cabo Verde,FWD,70.69
-Nuno da Costa,Cabo Verde,FWD,7.74
-Garry Rodrigues,Cabo Verde,FWD,21.62
-Willy Semedo,Cabo Verde,FWD,32.91
+Kelvin Pires,Cabo Verde,DEF,6.31
+Diney,Cabo Verde,DEF,88.81
+Ryan Mendes,Cabo Verde,FWD,74.24
+Jovane Cabral,Cabo Verde,FWD,27.84
+Dailon Livramento,Cabo Verde,FWD,70.93
+Nuno da Costa,Cabo Verde,FWD,8.07
+Garry Rodrigues,Cabo Verde,FWD,22.75
+Willy Semedo,Cabo Verde,FWD,34.69
 Vozinha,Cabo Verde,GK,90.0
-CJ dos Santos,Cabo Verde,GK,6.07
-Márcio da Rosa,Cabo Verde,GK,6.07
-Telmo Arcanjo,Cabo Verde,MID,23.78
-Deroy Duarte,Cabo Verde,MID,22.23
-Laros Duarte,Cabo Verde,MID,10.02
+CJ dos Santos,Cabo Verde,GK,6.31
+Márcio da Rosa,Cabo Verde,GK,6.31
+Telmo Arcanjo,Cabo Verde,MID,25.03
+Deroy Duarte,Cabo Verde,MID,23.4
+Laros Duarte,Cabo Verde,MID,10.49
 Richie Laryea,Canada,DEF,72.02
 Derek Cornelius,Canada,DEF,73.59
-Joel Waterman,Canada,DEF,13.51
+Joel Waterman,Canada,DEF,17.86
 Luc De Fougerolles,Canada,DEF,74.68
 Jonathan David,Canada,FWD,74.62
 Cyle Larin,Canada,FWD,61.0
 Tajon Buchanan,Canada,FWD,64.18
 Liam Millar,Canada,FWD,61.5
-Tani Oluwaseyi,Canada,FWD,20.65
+Tani Oluwaseyi,Canada,FWD,27.3
 Maxime Crépeau,Canada,GK,80.85
 Dayne St. Clair,Canada,GK,9.15
 Owen Goodman,Canada,GK,0.0
-Ali Ahmed,Canada,MID,12.47
-Niko Sigur,Canada,MID,20.14
-Nathan Saliba,Canada,MID,12.63
-Mathieu Choinière,Canada,MID,23.29
-Jonathan Osorio,Canada,MID,14.29
-Ismaël Koné,Canada,MID,68.16
-Kevin Castaño,Colombia,MID,19.09
+Ali Ahmed,Canada,MID,16.49
+Niko Sigur,Canada,MID,26.62
+Nathan Saliba,Canada,MID,16.69
+Mathieu Choinière,Canada,MID,30.78
+Jonathan Osorio,Canada,MID,18.89
+Kevin Castaño,Colombia,MID,19.16
 Richard Ríos,Colombia,MID,69.05
 Daniel Muñoz,Colombia,DEF,84.92
 Jhon Lucumí,Colombia,DEF,84.62
 Dávinson Sánchez,Colombia,DEF,85.24
-Déiver Machado,Colombia,DEF,13.58
+Déiver Machado,Colombia,DEF,13.64
 Johan Mojica,Colombia,DEF,84.61
-Santiago Arias,Colombia,DEF,14.3
+Santiago Arias,Colombia,DEF,14.36
 Luis Díaz,Colombia,MID,83.88
-Jhon Córdoba,Colombia,FWD,22.69
-Luis Suárez,Colombia,FWD,70.61
+Jhon Córdoba,Colombia,FWD,22.78
+Luis Suárez,Colombia,FWD,70.13
 Andrés Gómez,Colombia,FWD,0.45
 Camilo Vargas,Colombia,GK,87.23
 David Ospina,Colombia,GK,0.14
 Álvaro Montero,Colombia,GK,3.05
 Jefferson Lerma,Colombia,MID,77.9
 Gustavo Puerta,Colombia,MID,0.14
-Juan Fernando Quintero,Colombia,MID,6.6
-Jaminton Campaz,Colombia,MID,4.98
+Juan Fernando Quintero,Colombia,MID,6.63
+Jaminton Campaz,Colombia,MID,5.0
 Jhon Arias,Colombia,MID,70.36
 James Rodríguez,Colombia,MID,71.12
-Jorge Carrascal,Colombia,MID,7.86
+Jorge Carrascal,Colombia,MID,7.89
 Aaron Wan-Bissaka,Congo DR,DEF,86.63
 Arthur Masuaku,Congo DR,DEF,83.52
 Chancel Mbemba,Congo DR,DEF,88.85
@@ -229,27 +225,27 @@ Noah Sadiki,Congo DR,MID,19.35
 Charles Pickel,Congo DR,MID,58.04
 Edo Kayembe,Congo DR,MID,60.95
 Théo Bongonda,Congo DR,MID,20.57
-Christ Inao Oulaï,Côte d'Ivoire,MID,8.57
-Evan Ndicka,Côte d'Ivoire,DEF,38.72
+Christ Inao Oulaï,Côte d'Ivoire,MID,8.6
+Evan Ndicka,Côte d'Ivoire,DEF,38.82
 Wilfried Singo,Côte d'Ivoire,DEF,69.73
-Ousmane Diomande,Côte d'Ivoire,DEF,6.75
-Odilon Kossounou,Côte d'Ivoire,DEF,22.89
+Ousmane Diomande,Côte d'Ivoire,DEF,6.77
+Odilon Kossounou,Côte d'Ivoire,DEF,22.95
 Guéla Doué,Côte d'Ivoire,DEF,74.65
 Emmanuel Agbadou,Côte d'Ivoire,DEF,68.97
 Ghislain Konan,Côte d'Ivoire,DEF,83.75
 Yan Diomande,Côte d'Ivoire,FWD,72.35
 Nicolas Pépé,Côte d'Ivoire,FWD,58.1
-Elye Wahi,Côte d'Ivoire,FWD,70.47
+Elye Wahi,Côte d'Ivoire,FWD,69.99
 Amad Diallo,Côte d'Ivoire,FWD,73.54
-Simon Adingra,Côte d'Ivoire,FWD,21.25
-Evann Guessand,Côte d'Ivoire,FWD,19.8
-Bazoumana Touré,Côte d'Ivoire,FWD,5.12
+Simon Adingra,Côte d'Ivoire,FWD,21.3
+Evann Guessand,Côte d'Ivoire,FWD,19.85
+Bazoumana Touré,Côte d'Ivoire,FWD,5.14
 Alban Lafont,Côte d'Ivoire,GK,4.46
 Yahia Fofana,Côte d'Ivoire,GK,85.54
 Mohamed Koné,Côte d'Ivoire,GK,0.0
-Parfait Guiagon,Côte d'Ivoire,MID,1.05
-Jean Michaël Seri,Côte d'Ivoire,MID,10.09
-Ibrahim Sangaré,Côte d'Ivoire,MID,29.94
+Parfait Guiagon,Côte d'Ivoire,MID,1.06
+Jean Michaël Seri,Côte d'Ivoire,MID,10.12
+Ibrahim Sangaré,Côte d'Ivoire,MID,30.02
 Franck Kessie,Côte d'Ivoire,MID,77.85
 Seko Fofana,Côte d'Ivoire,MID,63.1
 Petar Sucic,Croatia,MID,69.33
@@ -300,21 +296,21 @@ Kevin Felida,Curaçao,MID,3.66
 Juninho Bacuna,Curaçao,MID,81.14
 Denis Visinsky,Czechia,MID,0.0
 Ladislav Krejcí,Czechia,DEF,89.15
-Tomás Holes,Czechia,DEF,18.15
-David Jurásek,Czechia,DEF,8.13
+Tomás Holes,Czechia,DEF,18.19
+David Jurásek,Czechia,DEF,8.15
 Robin Hranác,Czechia,DEF,84.38
 Jaroslav Zeleny,Czechia,DEF,80.94
 Vladimír Coufal,Czechia,DEF,86.7
 Stepán Chaloupek,Czechia,DEF,74.12
 Patrik Schick,Czechia,FWD,75.48
-Tomás Chory,Czechia,FWD,18.12
-Mojmír Chytil,Czechia,FWD,4.98
+Tomás Chory,Czechia,FWD,18.15
+Mojmír Chytil,Czechia,FWD,4.99
 Matej Kovár,Czechia,GK,87.75
 Lukás Hornícek,Czechia,GK,0.0
-Lukás Cerv,Czechia,MID,22.15
+Lukás Cerv,Czechia,MID,22.19
 Vladimír Darida,Czechia,MID,2.86
 Tomás Soucek,Czechia,MID,85.85
-Michal Sadílek,Czechia,MID,5.58
+Michal Sadílek,Czechia,MID,5.59
 Lukás Provod,Czechia,MID,71.79
 Pavel Sulc,Czechia,MID,79.54
 Denil Castillo,Ecuador,MID,0.03
@@ -362,23 +358,22 @@ Mohamed Alaa,Egypt,GK,0.85
 Mohanad Lasheen,Egypt,MID,18.76
 Ibrahim Adel,Egypt,MID,24.73
 Nico O'Reilly,England,DEF,79.29
-Tino Livramento,England,DEF,7.25
-Marc Guéhi,England,DEF,81.01
-Dan Burn,England,DEF,15.73
-Ezri Konsa,England,DEF,27.95
+Marc Guéhi,England,DEF,36.02
+Dan Burn,England,DEF,17.12
+Ezri Konsa,England,DEF,70.47
 John Stones,England,DEF,80.8
-Djed Spence,England,DEF,4.68
+Djed Spence,England,DEF,5.09
 Harry Kane,England,FWD,79.8
 Bukayo Saka,England,MID,74.45
-Marcus Rashford,England,MID,14.08
+Marcus Rashford,England,MID,15.32
 Anthony Gordon,England,MID,57.24
-Morgan Rogers,England,MID,18.91
-Noni Madueke,England,FWD,17.14
+Morgan Rogers,England,MID,20.57
+Noni Madueke,England,FWD,18.64
 Jordan Pickford,England,GK,87.63
 Dean Henderson,England,GK,2.37
 James Trafford,England,GK,0.0
-Jordan Henderson,England,MID,6.29
-Kobbie Mainoo,England,MID,9.82
+Jordan Henderson,England,MID,6.85
+Kobbie Mainoo,England,MID,10.69
 Elliot Anderson,England,MID,74.5
 Declan Rice,England,MID,76.16
 Jude Bellingham,England,MID,80.26
@@ -558,43 +553,43 @@ Obed Vargas,Mexico,MID,0.3
 Johan Vásquez,Mexico,DEF,81.75
 César Montes,Mexico,DEF,79.99
 Jesús Gallardo,Mexico,DEF,73.24
-Jorge Sánchez,Mexico,DEF,26.3
+Jorge Sánchez,Mexico,DEF,26.36
 Israel Reyes,Mexico,DEF,65.49
 Raúl Jiménez,Mexico,FWD,74.99
-Julián Quiñones,Mexico,FWD,16.76
-Alexis Vega,Mexico,FWD,27.39
+Julián Quiñones,Mexico,FWD,16.81
+Alexis Vega,Mexico,FWD,27.46
 Roberto Alvarado,Mexico,FWD,75.28
 Guillermo Martínez,Mexico,FWD,0.3
 Armando González,Mexico,FWD,0.3
 Guillermo Ochoa,Mexico,GK,0.3
 Carlos Acevedo,Mexico,GK,0.3
 Raúl Rangel,Mexico,GK,85.7
-Brian Gutiérrez,Mexico,MID,72.63
+Brian Gutiérrez,Mexico,MID,72.43
 Érik Lira,Mexico,MID,70.96
-Orbelín Pineda,Mexico,MID,10.08
-Álvaro Fidalgo,Mexico,MID,72.63
-Samir El Mourabet,Morocco,MID,0.17
-Anass Salah-Eddine,Morocco,DEF,12.43
-Ayoub El Kaabi,Morocco,FWD,42.53
-Gessime Yassine,Morocco,FWD,0.17
-Ismael Saibari,Morocco,MID,68.93
+Orbelín Pineda,Mexico,MID,10.1
+Álvaro Fidalgo,Mexico,MID,72.43
+Samir El Mourabet,Morocco,MID,0.19
+Anass Salah-Eddine,Morocco,DEF,12.45
+Ayoub El Kaabi,Morocco,FWD,42.54
+Gessime Yassine,Morocco,FWD,0.19
+Ismael Saibari,Morocco,MID,68.94
 Denzel Dumfries,Netherlands,DEF,83.86
 Virgil van Dijk,Netherlands,DEF,86.91
 Micky van de Ven,Netherlands,DEF,66.04
-Nathan Aké,Netherlands,DEF,24.48
+Nathan Aké,Netherlands,DEF,24.51
 Jan Paul van Hecke,Netherlands,DEF,67.25
-Jorrel Hato,Netherlands,DEF,8.99
+Jorrel Hato,Netherlands,DEF,9.0
 Cody Gakpo,Netherlands,FWD,77.87
 Donyell Malen,Netherlands,FWD,56.93
-Noa Lang,Netherlands,FWD,6.73
-Brian Brobbey,Netherlands,FWD,8.22
-Wout Weghorst,Netherlands,FWD,14.73
+Noa Lang,Netherlands,FWD,6.74
+Brian Brobbey,Netherlands,FWD,8.23
+Wout Weghorst,Netherlands,FWD,14.75
 Bart Verbruggen,Netherlands,GK,87.14
 Mark Flekken,Netherlands,GK,2.86
 Ryan Gravenberch,Netherlands,MID,74.73
 Teun Koopmeiners,Netherlands,MID,4.45
 Tijjani Reijnders,Netherlands,MID,75.28
-Quinten Timber,Netherlands,MID,11.1
+Quinten Timber,Netherlands,MID,11.12
 Callum McCowatt,New Zealand,MID,29.24
 Alex Rufer,New Zealand,MID,29.98
 Joe Bell,New Zealand,MID,74.89
@@ -615,26 +610,26 @@ Max Crocombe,New Zealand,GK,81.67
 Alex Paulsen,New Zealand,GK,8.33
 Michael Woud,New Zealand,GK,0.0
 Sander Berge,Norway,MID,82.83
-Oscar Bobb,Norway,MID,11.09
-Morten Thorsby,Norway,MID,16.04
-Patrick Berg,Norway,MID,22.01
+Oscar Bobb,Norway,MID,11.11
+Morten Thorsby,Norway,MID,16.07
+Patrick Berg,Norway,MID,22.05
 Kristoffer Ajer,Norway,DEF,83.54
 Julian Ryerson,Norway,DEF,84.13
-Marcus Pedersen,Norway,DEF,9.82
-Leo Østigård,Norway,DEF,16.3
+Marcus Pedersen,Norway,DEF,9.84
+Leo Østigård,Norway,DEF,16.33
 David Møller Wolfe,Norway,DEF,82.13
 Fredrik Bjørkan,Norway,DEF,0.9
 Torbjørn Heggem,Norway,DEF,74.65
 Henrik Falchener,Norway,DEF,0.0
 Erling Haaland,Norway,FWD,84.34
 Alexander Sørloth,Norway,FWD,74.74
-Andreas Schjelderup,Norway,FWD,7.53
-Jørgen Strand Larsen,Norway,FWD,3.9
+Andreas Schjelderup,Norway,FWD,7.54
+Jørgen Strand Larsen,Norway,FWD,3.91
 Ørjan Nyland,Norway,GK,85.25
 Egil Selvik,Norway,GK,4.75
-Jens Petter Hauge,Norway,MID,2.7
+Jens Petter Hauge,Norway,MID,2.71
 Antonio Nusa,Norway,MID,75.34
-Kristian Thorstvedt,Norway,MID,7.79
+Kristian Thorstvedt,Norway,MID,7.81
 Carlos Harvey,Panama,MID,72.01
 Cristian Martínez,Panama,MID,66.02
 Yoel Bárcenas,Panama,MID,20.87
@@ -656,69 +651,67 @@ Luis Mejía,Panama,GK,4.75
 Orlando Mosquera,Panama,GK,85.25
 César Samudio,Panama,GK,0.0
 Adalberto Carrasquilla,Panama,MID,79.39
-Maurício Magalhães Prado,Paraguay,MID,3.46
-Alejandro Romero,Paraguay,MID,3.46
-Matías Galarza,Paraguay,MID,17.78
-Braian Ojeda,Paraguay,MID,4.95
-Gustavo Gómez,Paraguay,DEF,89.71
-Júnior Alonso,Paraguay,DEF,87.87
-Omar Alderete,Paraguay,DEF,87.27
-Fabián Balbuena,Paraguay,DEF,83.53
-Gustavo Velázquez,Paraguay,DEF,22.33
-Juan José Cáceres,Paraguay,DEF,79.87
-José Canale,Paraguay,DEF,3.46
-Miguel Almirón,Paraguay,MID,84.62
-Antonio Sanabria,Paraguay,FWD,30.33
-Ramón Sosa,Paraguay,FWD,58.55
-Álex Arce,Paraguay,FWD,14.09
-Gabriel Ávalos,Paraguay,FWD,19.95
-Gustavo Caballero,Paraguay,FWD,3.46
-Alexandro Maidana,Paraguay,FWD,3.46
-Roberto Fernández,Paraguay,GK,3.46
-Gastón Olveira,Paraguay,GK,3.46
-Orlando Gill,Paraguay,GK,3.46
-Damián Bobadilla,Paraguay,MID,27.83
-Julio Enciso,Paraguay,MID,81.79
-Diego Gómez,Paraguay,MID,73.02
-Samú Costa,Portugal,MID,0.3
+Maurício Magalhães Prado,Paraguay,MID,4.28
+Alejandro Romero,Paraguay,MID,4.28
+Matías Galarza,Paraguay,MID,23.58
+Braian Ojeda,Paraguay,MID,6.28
+Gustavo Gómez,Paraguay,DEF,90.0
+Júnior Alonso,Paraguay,DEF,88.69
+Omar Alderete,Paraguay,DEF,88.09
+Fabián Balbuena,Paraguay,DEF,84.35
+Gustavo Velázquez,Paraguay,DEF,29.71
+Juan José Cáceres,Paraguay,DEF,80.69
+José Canale,Paraguay,DEF,4.28
+Antonio Sanabria,Paraguay,FWD,62.34
+Ramón Sosa,Paraguay,FWD,59.37
+Álex Arce,Paraguay,FWD,18.61
+Gabriel Ávalos,Paraguay,FWD,26.5
+Gustavo Caballero,Paraguay,FWD,4.28
+Alexandro Maidana,Paraguay,FWD,4.28
+Roberto Fernández,Paraguay,GK,4.28
+Gastón Olveira,Paraguay,GK,4.28
+Orlando Gill,Paraguay,GK,4.28
+Damián Bobadilla,Paraguay,MID,37.12
+Julio Enciso,Paraguay,MID,82.61
+Diego Gómez,Paraguay,MID,73.84
+Samú Costa,Portugal,MID,0.29
 Nuno Mendes,Portugal,DEF,87.19
 João Cancelo,Portugal,DEF,77.13
-Diogo Dalot,Portugal,DEF,15.28
-Gonçalo Inácio,Portugal,DEF,70.06
-Renato Veiga,Portugal,DEF,15.55
-Tomás Araújo,Portugal,DEF,1.24
-Gonçalo Ramos,Portugal,FWD,6.18
-João Félix,Portugal,FWD,9.44
+Diogo Dalot,Portugal,DEF,14.98
+Gonçalo Inácio,Portugal,DEF,14.02
+Renato Veiga,Portugal,DEF,73.55
+Tomás Araújo,Portugal,DEF,1.22
+Gonçalo Ramos,Portugal,FWD,6.06
+João Félix,Portugal,FWD,9.26
 Pedro Neto,Portugal,MID,68.18
-Trincão,Portugal,FWD,6.25
+Trincão,Portugal,FWD,6.12
 Gonçalo Guedes,Portugal,FWD,0.0
-Francisco Conceição,Portugal,MID,9.18
+Francisco Conceição,Portugal,MID,9.01
 Rui Silva,Portugal,GK,0.0
 José Sá,Portugal,GK,0.15
-Rúben Neves,Portugal,MID,18.43
-Matheus Nunes,Portugal,MID,0.77
+Rúben Neves,Portugal,MID,18.07
+Matheus Nunes,Portugal,MID,0.76
 Vitinha,Portugal,MID,80.24
 João Neves,Portugal,MID,68.56
 Bruno Fernandes,Portugal,MID,85.32
-Mohammad Al Mannai,Qatar,MID,18.38
-Ayoub Al Oui,Qatar,MID,7.13
-Ahmed Fathy,Qatar,MID,80.47
-Karim Boudiaf,Qatar,MID,23.07
-Assim Madibo,Qatar,MID,28.51
-Pedro Miguel,Qatar,DEF,7.13
-Lucas Mendes,Qatar,DEF,82.47
-Boualem Khoukhi,Qatar,DEF,84.56
-Hashmi Al Hussain,Qatar,DEF,12.76
-Issa Laye,Qatar,DEF,7.13
+Mohammad Al Mannai,Qatar,MID,19.87
+Ayoub Al Oui,Qatar,MID,8.62
+Ahmed Fathy,Qatar,MID,81.95
+Karim Boudiaf,Qatar,MID,24.56
+Pedro Miguel,Qatar,DEF,8.62
+Lucas Mendes,Qatar,DEF,83.95
+Boualem Khoukhi,Qatar,DEF,86.05
+Hashmi Al Hussain,Qatar,DEF,14.24
+Issa Laye,Qatar,DEF,8.62
 Akram Afif,Qatar,FWD,90.0
-Almoez Ali,Qatar,FWD,84.29
-Edmílson Junior,Qatar,FWD,70.06
-Hassan Al Haydos,Qatar,FWD,7.13
-Yusuf Abdurisag,Qatar,FWD,19.26
-Ahmed Al Ganehi,Qatar,FWD,62.07
+Almoez Ali,Qatar,FWD,85.78
+Edmílson Junior,Qatar,FWD,71.55
+Hassan Al Haydos,Qatar,FWD,8.62
+Yusuf Abdurisag,Qatar,FWD,20.74
+Ahmed Al Ganehi,Qatar,FWD,63.55
 Meshaal Barsham,Qatar,GK,90.0
-Salah Zakaria,Qatar,GK,9.17
-Mahmud Abunada,Qatar,GK,10.43
+Salah Zakaria,Qatar,GK,10.65
+Mahmud Abunada,Qatar,GK,11.92
 Musab Al Juwayr,Saudi Arabia,MID,64.58
 Ziyad Al Johani,Saudi Arabia,MID,22.6
 Mohamed Kanno,Saudi Arabia,MID,66.47
@@ -782,27 +775,25 @@ Mory Diaw,Senegal,GK,6.1
 Krépin Diatta,Senegal,MID,87.26
 Lamine Camara,Senegal,MID,24.14
 Habib Diarra,Senegal,MID,66.9
-Jayden Adams,South Africa,MID,9.75
-Teboho Mokoena,South Africa,MID,87.25
-Themba Zwane,South Africa,MID,29.28
-Thalente Mbatha,South Africa,MID,63.13
-Tshepang Moremi,South Africa,MID,14.43
-Yaya Sithole,South Africa,MID,77.48
-Aubrey Modiba,South Africa,DEF,83.78
-Thabang Matuludi,South Africa,DEF,2.25
-Khuliso Mudau,South Africa,DEF,87.51
-Nkosinathi Sibisi,South Africa,DEF,80.23
-Mbekezeli Mbokazi,South Africa,DEF,85.21
-Khulumani Ndamane,South Africa,DEF,12.25
-Ime Okon,South Africa,DEF,2.25
-Samukele Kabini,South Africa,DEF,12.67
-Lyle Foster,South Africa,FWD,78.8
-Relebohile Mofokeng,South Africa,FWD,19.85
-Oswin Appollis,South Africa,FWD,70.18
-Evidence Makgopa,South Africa,FWD,16.74
-Thapelo Maseko,South Africa,FWD,2.25
-Ronwen Williams,South Africa,GK,88.04
-Ricardo Goss,South Africa,GK,2.25
+Jayden Adams,South Africa,MID,14.61
+Thalente Mbatha,South Africa,MID,67.98
+Tshepang Moremi,South Africa,MID,19.29
+Yaya Sithole,South Africa,MID,82.34
+Aubrey Modiba,South Africa,DEF,88.63
+Thabang Matuludi,South Africa,DEF,7.11
+Khuliso Mudau,South Africa,DEF,90.0
+Nkosinathi Sibisi,South Africa,DEF,85.09
+Mbekezeli Mbokazi,South Africa,DEF,90.0
+Khulumani Ndamane,South Africa,DEF,17.11
+Ime Okon,South Africa,DEF,7.11
+Samukele Kabini,South Africa,DEF,17.53
+Lyle Foster,South Africa,FWD,83.66
+Relebohile Mofokeng,South Africa,FWD,24.7
+Oswin Appollis,South Africa,FWD,75.04
+Evidence Makgopa,South Africa,FWD,21.59
+Thapelo Maseko,South Africa,FWD,7.11
+Ronwen Williams,South Africa,GK,90.0
+Ricardo Goss,South Africa,GK,7.11
 Yéremy Pino,Spain,MID,9.51
 Álex Baena,Spain,MID,14.08
 Martín Zubimendi,Spain,MID,38.09
@@ -909,99 +900,99 @@ Altay Bayindir,Türkiye,GK,1.33
 Mert Günok,Türkiye,GK,4.26
 Arda Güler,Türkiye,MID,79.13
 Hakan Çalhanoglu,Türkiye,MID,75.22
-Juan Manuel Sanabria,Uruguay,MID,72.34
+Juan Manuel Sanabria,Uruguay,MID,72.14
 Emiliano Martínez,Uruguay,MID,2.78
-Facundo Pellistri,Uruguay,MID,37.83
+Facundo Pellistri,Uruguay,MID,37.87
 Maxi Araújo,Uruguay,MID,76.87
 Manuel Ugarte,Uruguay,MID,78.6
-Nicolás de la Cruz,Uruguay,MID,20.24
-Ronald Araujo,Uruguay,DEF,23.12
-José María Giménez,Uruguay,DEF,24.96
-Matías Viña,Uruguay,DEF,16.03
+Nicolás de la Cruz,Uruguay,MID,20.27
+Ronald Araujo,Uruguay,DEF,23.14
+José María Giménez,Uruguay,DEF,24.98
+Matías Viña,Uruguay,DEF,16.05
 Mathías Olivera,Uruguay,DEF,74.21
 Guillermo Varela,Uruguay,DEF,64.0
 Sebastián Cáceres,Uruguay,DEF,72.82
-Santiago Bueno,Uruguay,DEF,8.58
+Santiago Bueno,Uruguay,DEF,8.59
 Darwin Núñez,Uruguay,FWD,75.24
 Federico Viñas,Uruguay,FWD,46.6
-Brian Rodríguez,Uruguay,FWD,12.12
-Rodrigo Aguirre,Uruguay,FWD,11.72
-Agustín Canobbio,Uruguay,FWD,2.08
+Brian Rodríguez,Uruguay,FWD,12.14
+Rodrigo Aguirre,Uruguay,FWD,11.73
+Agustín Canobbio,Uruguay,FWD,2.09
 Sergio Rochet,Uruguay,GK,3.72
 Fernando Muslera,Uruguay,GK,85.4
 Santiago Mele,Uruguay,GK,0.88
-Giorgian de Arrascaeta,Uruguay,MID,14.82
+Giorgian de Arrascaeta,Uruguay,MID,14.84
 Federico Valverde,Uruguay,MID,83.72
 Cristian Roldan,USA,MID,0.0
-Sebastian Berhalter,USA,MID,34.74
-Brenden Aaronson,USA,MID,11.01
+Sebastian Berhalter,USA,MID,34.82
+Brenden Aaronson,USA,MID,11.03
 Malik Tillman,USA,MID,77.73
 Weston McKennie,USA,MID,77.46
-Giovanni Reyna,USA,MID,11.03
+Giovanni Reyna,USA,MID,11.05
 Antonee Robinson,USA,DEF,78.46
 Chris Richards,USA,DEF,82.73
-Joe Scally,USA,DEF,14.23
+Joe Scally,USA,DEF,14.26
 Tim Ream,USA,DEF,82.66
-Mark McKenzie,USA,DEF,1.31
+Mark McKenzie,USA,DEF,1.32
 Auston Trusty,USA,DEF,0.0
 Alexander Freeman,USA,DEF,81.62
-Timothy Weah,USA,MID,5.62
-Ricardo Pepi,USA,FWD,5.24
+Timothy Weah,USA,MID,5.64
+Ricardo Pepi,USA,FWD,5.25
 Folarin Balogun,USA,FWD,71.15
-Max Arfsten,USA,FWD,33.35
+Max Arfsten,USA,FWD,33.43
 Matt Turner,USA,GK,8.15
 Matt Freese,USA,GK,81.85
 Chris Brady,USA,GK,0.0
 Christian Pulisic,USA,MID,78.46
-Abdulla Abdullaev,Uzbekistan,MID,18.04
-Sherzod Esanov,Uzbekistan,MID,0.97
-Akmal Mozgovoy,Uzbekistan,MID,12.72
-Otabek Shukurov,Uzbekistan,MID,81.5
-Dostonbek Khamdamov,Uzbekistan,MID,0.97
-Aziz G'aniev,Uzbekistan,MID,1.04
-Odiljon Hamrobekov,Uzbekistan,MID,86.5
-Oston Urunov,Uzbekistan,MID,34.66
-Jamshid Iskanderov,Uzbekistan,MID,5.97
-Jaloliddin Masharipov,Uzbekistan,MID,79.66
-Abbosbek Fayzullaev,Uzbekistan,MID,64.69
-Abdukodir Khusanov,Uzbekistan,DEF,79.81
-Rustam Ashurmatov,Uzbekistan,DEF,77.85
-Sherzod Nasrullaev,Uzbekistan,DEF,76.04
-Farrukh Sayfiev,Uzbekistan,DEF,71.29
-Khojiakbar Alijonov,Uzbekistan,DEF,76.38
-Umar Eshmurodov,Uzbekistan,DEF,43.22
-Avazbek O'lmasaliev,Uzbekistan,DEF,0.97
-Bekhruz Karimov,Uzbekistan,DEF,0.97
-Jakhongir Urozov,Uzbekistan,DEF,0.97
-Eldor Shomurodov,Uzbekistan,FWD,79.42
-Igor Sergeev,Uzbekistan,FWD,3.79
-Azizbek Amanov,Uzbekistan,FWD,3.22
-Abduvokhid Ne'matov,Uzbekistan,GK,0.97
-Utkir Yusupov,Uzbekistan,GK,87.4
-Botirali Ergashev,Uzbekistan,GK,0.97
-Lisandro Martínez,Argentina,DEF,11.41
-Facundo Medina,Argentina,DEF,3.06
-Gonzalo Montiel,Argentina,DEF,11.6
-Giovani Lo Celso,Argentina,MID,9.51
-Lautaro Martínez,Argentina,FWD,24.7
-Dennis Hadzikadunic,Bosnia and Herzegovina,DEF,3.28
+Abdulla Abdullaev,Uzbekistan,MID,19.71
+Sherzod Esanov,Uzbekistan,MID,2.65
+Ruslanbek Jiyanov,Uzbekistan,MID,5.02
+Akmal Mozgovoy,Uzbekistan,MID,14.4
+Otabek Shukurov,Uzbekistan,MID,83.17
+Dostonbek Khamdamov,Uzbekistan,MID,2.65
+Aziz G'aniev,Uzbekistan,MID,2.71
+Odiljon Hamrobekov,Uzbekistan,MID,88.17
+Oston Urunov,Uzbekistan,MID,36.33
+Jamshid Iskanderov,Uzbekistan,MID,7.65
+Abbosbek Fayzullaev,Uzbekistan,MID,66.36
+Abdukodir Khusanov,Uzbekistan,DEF,81.49
+Rustam Ashurmatov,Uzbekistan,DEF,79.53
+Sherzod Nasrullaev,Uzbekistan,DEF,77.71
+Farrukh Sayfiev,Uzbekistan,DEF,72.96
+Khojiakbar Alijonov,Uzbekistan,DEF,78.06
+Umar Eshmurodov,Uzbekistan,DEF,77.72
+Avazbek O'lmasaliev,Uzbekistan,DEF,2.65
+Bekhruz Karimov,Uzbekistan,DEF,2.65
+Jakhongir Urozov,Uzbekistan,DEF,2.65
+Eldor Shomurodov,Uzbekistan,FWD,81.1
+Igor Sergeev,Uzbekistan,FWD,5.46
+Azizbek Amanov,Uzbekistan,FWD,4.9
+Abduvokhid Nematov,Uzbekistan,GK,2.65
+Utkir Yusupov,Uzbekistan,GK,89.07
+Botirali Ergashev,Uzbekistan,GK,2.65
+Lisandro Martínez,Argentina,DEF,73.1
+Facundo Medina,Argentina,DEF,53.34
+Gonzalo Montiel,Argentina,DEF,9.3
+Giovani Lo Celso,Argentina,MID,7.62
+Lautaro Martínez,Argentina,FWD,55.69
+Dennis Hadzikadunic,Bosnia and Herzegovina,DEF,4.65
 Ermin Mahmic,Bosnia and Herzegovina,MID,0.0
-Weverton,Brazil,GK,2.01
-Alex Sandro,Brazil,DEF,10.16
-Bruno Guimarães,Brazil,MID,79.26
-Raphinha,Brazil,MID,79.79
-Neymar,Brazil,MID,17.66
-Yerry Mina,Colombia,DEF,15.78
-Willer Ditta,Colombia,DEF,3.12
-Juan Portilla,Colombia,MID,6.24
-Cucho Hernández,Colombia,FWD,2.46
+Weverton,Brazil,GK,3.21
+Alex Sandro,Brazil,DEF,11.36
+Bruno Guimarães,Brazil,MID,80.46
+Raphinha,Brazil,MID,80.98
+Neymar,Brazil,MID,18.86
+Yerry Mina,Colombia,DEF,15.85
+Willer Ditta,Colombia,DEF,3.14
+Juan Portilla,Colombia,MID,6.26
+Cucho Hernández,Colombia,FWD,2.47
 Jindrich Stanek,Czechia,GK,2.25
-David Zima,Czechia,DEF,6.07
-Alexandr Sojka,Czechia,MID,72.34
-David Doudera,Czechia,MID,5.44
+David Zima,Czechia,DEF,6.09
+Alexandr Sojka,Czechia,MID,72.14
+David Doudera,Czechia,MID,5.45
 Hugo Sochurek,Czechia,MID,0.0
 Jan Kuchta,Czechia,FWD,2.14
-Adam Hlozek,Czechia,FWD,6.09
+Adam Hlozek,Czechia,FWD,6.1
 Robin Risser,France,GK,0.07
 William Saliba,France,DEF,87.62
 Jules Koundé,France,DEF,82.68
@@ -1012,13 +1003,13 @@ Ko Itakura,Japan,DEF,61.72
 Takehiro Tomiyasu,Japan,DEF,11.43
 Yuto Nagatomo,Japan,DEF,0.0
 Takefusa Kubo,Japan,MID,64.25
-Mateo Chávez,Mexico,DEF,9.95
-César Huerta,Mexico,MID,7.51
+Mateo Chávez,Mexico,DEF,9.97
+César Huerta,Mexico,MID,7.53
 Edson Álvarez,Mexico,MID,79.42
-Gilberto Mora,Mexico,MID,12.9
-Luis Chávez,Mexico,MID,16.91
-Luis Romo,Mexico,MID,9.83
-Santiago Giménez,Mexico,FWD,18.81
+Gilberto Mora,Mexico,MID,12.93
+Luis Chávez,Mexico,MID,16.95
+Luis Romo,Mexico,MID,9.85
+Santiago Giménez,Mexico,FWD,18.86
 Michael Boxall,New Zealand,DEF,80.62
 Liberato Cacace,New Zealand,DEF,71.9
 Nando Pijnaker,New Zealand,DEF,26.85
@@ -1026,13 +1017,12 @@ Tommy Smith,New Zealand,DEF,0.0
 Matthew Garbett,New Zealand,FWD,73.0
 Chris Wood,New Zealand,FWD,70.1
 Sarpreet Singh,New Zealand,MID,67.44
-Homam El Amin,Qatar,DEF,7.13
-Sultan Al Brake,Qatar,DEF,18.07
-Abdulaziz Hatem,Qatar,MID,66.85
-Jassem Gaber,Qatar,MID,70.6
-Ahmed Alaa,Qatar,FWD,7.13
-Mohammed Muntari,Qatar,FWD,16.38
-Tahsin Jamshid,Qatar,FWD,7.13
+Sultan Al Brake,Qatar,DEF,19.56
+Abdulaziz Hatem,Qatar,MID,68.33
+Jassem Gaber,Qatar,MID,72.09
+Ahmed Alaa,Qatar,FWD,8.62
+Mohammed Muntari,Qatar,FWD,17.87
+Tahsin Jamshid,Qatar,FWD,8.62
 Viktor Johansson,Sweden,GK,9.41
 Jacob Widell Zetterström,Sweden,GK,1.31
 Hjalmar Ekdal,Sweden,DEF,9.19
@@ -1040,18 +1030,18 @@ Isak Hien,Sweden,DEF,81.1
 Ken Sema,Sweden,MID,29.04
 Alexander Isak,Sweden,FWD,71.75
 Alexander Bernhardsson,Sweden,FWD,65.18
-Thibaut Courtois,Belgium,GK,81.74
+Thibaut Courtois,Belgium,GK,81.75
 Mike Penders,Belgium,GK,0.08
-Hans Vanaken,Belgium,MID,16.95
+Hans Vanaken,Belgium,MID,23.53
 Matias Fernandez-Pardo,Belgium,FWD,0.08
 Leandro Trossard,Belgium,MID,65.64
-Diego Moreira,Belgium,MID,1.19
-Stopira,Cabo Verde,DEF,6.38
-Logan Costa,Cabo Verde,DEF,89.25
-Jamiro Monteiro,Cabo Verde,MID,71.34
-Hélio Varela,Cabo Verde,MID,18.41
-Gilson Benchimol,Cabo Verde,MID,6.07
-Oumar Diakité,Côte d'Ivoire,FWD,16.22
+Diego Moreira,Belgium,MID,1.63
+Stopira,Cabo Verde,DEF,6.64
+Logan Costa,Cabo Verde,DEF,89.49
+Jamiro Monteiro,Cabo Verde,MID,71.58
+Hélio Varela,Cabo Verde,MID,19.36
+Gilson Benchimol,Cabo Verde,MID,6.31
+Oumar Diakité,Côte d'Ivoire,FWD,16.26
 Ange-Yoan Bonny,Côte d'Ivoire,FWD,0.0
 Dominik Kotarski,Croatia,GK,3.51
 Josko Gvardiol,Croatia,DEF,80.11
@@ -1084,10 +1074,10 @@ Mustafa Saadoon,Iraq,DEF,14.62
 Ahmed Qasem,Iraq,MID,2.32
 Diogo Costa,Portugal,GK,89.85
 Rúben Dias,Portugal,DEF,88.87
-Nélson Semedo,Portugal,DEF,16.6
+Nélson Semedo,Portugal,DEF,16.28
 Bernardo Silva,Portugal,MID,77.6
 Cristiano Ronaldo,Portugal,FWD,79.51
-Rafael Leão,Portugal,MID,18.14
+Rafael Leão,Portugal,MID,17.79
 Craig Gordon,Scotland,GK,6.3
 Aaron Hickey,Scotland,DEF,66.4
 Ben Gannon-Doak,Scotland,MID,61.31
@@ -1111,30 +1101,30 @@ Felix Nmecha,Germany,MID,61.22
 Aleksandar Pavlovic,Germany,MID,70.3
 Jamie Leweling,Germany,MID,7.77
 Maximilian Beier,Germany,FWD,5.77
-Andrés Cubas,Paraguay,MID,86.78
-Munir El Kajoui,Morocco,GK,0.17
-Youssef Belammari,Morocco,DEF,19.24
-Ayyoub Bouaddi,Morocco,MID,72.51
-Marwane Saadane,Morocco,MID,0.17
-Ayoube Amaimouni-Echghouyab,Morocco,FWD,0.17
+Andrés Cubas,Paraguay,MID,87.6
+Munir El Kajoui,Morocco,GK,0.19
+Youssef Belammari,Morocco,DEF,19.26
+Ayyoub Bouaddi,Morocco,MID,72.33
+Marwane Saadane,Morocco,MID,0.19
+Ayoube Amaimouni-Echghouyab,Morocco,FWD,0.19
 Sander Tangvik,Norway,GK,0.0
-Thelo Aasgaard,Norway,MID,5.41
-Fredrik Aursnes,Norway,MID,72.34
+Thelo Aasgaard,Norway,MID,5.42
+Fredrik Aursnes,Norway,MID,72.14
 Martin Ødegaard,Norway,MID,81.86
-Isidro Pitta,Paraguay,FWD,12.04
+Isidro Pitta,Paraguay,FWD,15.85
 Bara Sapoko Ndiaye,Senegal,MID,3.24
 Sadio Mané,Senegal,MID,85.02
-Sipho Chaine,South Africa,GK,2.25
-Olwethu Makhanya,South Africa,DEF,2.25
-Bradley Cross,South Africa,DEF,2.25
-Kamogelo Sebelebele,South Africa,MID,4.21
-Iqraam Rayners,South Africa,MID,53.43
-Jarell Quansah,England,DEF,3.73
+Sipho Chaine,South Africa,GK,7.11
+Olwethu Makhanya,South Africa,DEF,7.11
+Bradley Cross,South Africa,DEF,7.11
+Kamogelo Sebelebele,South Africa,MID,9.06
+Iqraam Rayners,South Africa,MID,58.29
+Jarell Quansah,England,DEF,4.05
 Reece James,England,DEF,71.0
-Eberechi Eze,England,MID,13.67
-Ollie Watkins,England,FWD,5.32
-Ivan Toney,England,FWD,0.93
-Amine Sbaï,Morocco,FWD,0.17
+Eberechi Eze,England,MID,14.88
+Ollie Watkins,England,FWD,5.79
+Ivan Toney,England,FWD,1.01
+Amine Sbaï,Morocco,FWD,0.19
 Sondre Langås,Norway,DEF,0.6
 Nilson Angulo,Ecuador,MID,9.4
 Hassan Al Tambakti,Saudi Arabia,DEF,82.26
@@ -1144,13 +1134,14 @@ Salem Al Dawsari,Saudi Arabia,MID,85.0
 Alaa Al Hejji,Saudi Arabia,MID,0.0
 Nasser Al Dawsari,Saudi Arabia,MID,68.59
 Mohammed Abu Al Shamat,Saudi Arabia,MID,0.0
-Alphonso Davies,Canada,DEF,20.7
+Alphonso Davies,Canada,DEF,27.36
 Alistair Johnston,Canada,DEF,74.0
-Moïse Bombito,Canada,DEF,24.35
+Moïse Bombito,Canada,DEF,32.19
 Alfie Jones,Canada,DEF,0.0
 Stephen Eustaquio,Canada,MID,78.73
-Jacob Shaffelburg,Canada,MID,30.31
-Promise David,Canada,FWD,5.18
+Jacob Shaffelburg,Canada,MID,40.07
+Jayden Nelson,Canada,MID,4.59
+Promise David,Canada,FWD,6.84
 Lawrence Ati Zigi,Ghana,GK,11.06
 Joseph Anang,Ghana,GK,4.24
 Abdul Baba,Ghana,DEF,4.24
@@ -1181,55 +1172,55 @@ Fabián Ruiz,Spain,MID,75.67
 Gavi,Spain,MID,0.03
 Nico Williams,Spain,MID,29.76
 Harry Souttar,Australia,DEF,88.06
-Cameron Devlin,Australia,MID,3.82
-Jackson Irvine,Australia,MID,59.88
-Mathew Leckie,Australia,MID,6.75
+Cameron Devlin,Australia,MID,3.83
+Jackson Irvine,Australia,MID,60.03
+Mathew Leckie,Australia,MID,6.76
 Mohamed Touré,Australia,FWD,2.75
 Tete Yengi,Australia,FWD,2.75
-Ahmed Tagnaouti,Morocco,GK,0.17
-Yassine Bounou,Morocco,GK,88.33
-Achraf Hakimi,Morocco,DEF,84.85
-Chadi Riad,Morocco,DEF,77.67
-Noussair Mazraoui,Morocco,DEF,84.09
-Redouane Halhal,Morocco,DEF,0.17
-Issa Diop,Morocco,DEF,78.85
-Zakaria El Ouahdi,Morocco,DEF,0.17
-Sofyan Amrabat,Morocco,MID,51.55
-Neil El Aynaoui,Morocco,MID,87.61
-Brahim Díaz,Morocco,MID,80.85
-Azzedine Ounahi,Morocco,MID,63.24
-Bilal El Khannouss,Morocco,MID,58.99
-Soufiane Rahimi,Morocco,FWD,14.64
-Chemsdine Talbi,Morocco,FWD,2.18
+Ahmed Tagnaouti,Morocco,GK,0.19
+Yassine Bounou,Morocco,GK,88.34
+Achraf Hakimi,Morocco,DEF,84.87
+Chadi Riad,Morocco,DEF,77.69
+Noussair Mazraoui,Morocco,DEF,84.1
+Redouane Halhal,Morocco,DEF,0.19
+Issa Diop,Morocco,DEF,78.61
+Zakaria El Ouahdi,Morocco,DEF,0.19
+Sofyan Amrabat,Morocco,MID,51.57
+Neil El Aynaoui,Morocco,MID,87.63
+Brahim Díaz,Morocco,MID,80.87
+Azzedine Ounahi,Morocco,MID,63.25
+Bilal El Khannouss,Morocco,MID,59.0
+Soufiane Rahimi,Morocco,FWD,14.65
+Chemsdine Talbi,Morocco,FWD,2.2
 Fidel Escobar,Panama,DEF,84.18
 Edgardo Fariña,Panama,DEF,10.89
 Alberto Quintero,Panama,FWD,1.11
 Azarías Londoño,Panama,FWD,7.92
 Tomás Rodríguez,Panama,FWD,10.42
-Sergiño Dest,USA,DEF,78.68
+Sergiño Dest,USA,DEF,78.42
 Miles Robinson,USA,DEF,0.54
 Tyler Adams,USA,MID,71.91
-Haji Wright,USA,FWD,2.05
+Haji Wright,USA,FWD,2.06
 Álex Zendejas,USA,MID,0.0
 Robin Roefs,Netherlands,GK,0.0
-Guus Til,Netherlands,MID,0.5
+Guus Til,Netherlands,MID,0.51
 Mats Wieffer,Netherlands,MID,6.7
 Frenkie de Jong,Netherlands,MID,79.06
 Marten de Roon,Netherlands,MID,0.0
-Justin Kluivert,Netherlands,MID,19.35
-Memphis Depay,Netherlands,FWD,40.08
-Crysencio Summerville,Netherlands,MID,72.34
+Justin Kluivert,Netherlands,MID,19.38
+Memphis Depay,Netherlands,FWD,40.13
+Crysencio Summerville,Netherlands,MID,72.14
 Oussama Benbot,Algeria,GK,6.53
 Samir Chergui,Algeria,DEF,10.91
 Mohamed Tougaï,Algeria,DEF,6.53
 Nabil Bentaleb,Algeria,MID,34.16
 Cristian Volpato,Australia,MID,2.75
-Christopher Opéri,Côte d'Ivoire,DEF,7.07
+Christopher Opéri,Côte d'Ivoire,DEF,7.09
 Piero Hincapié,Ecuador,DEF,83.71
 Willian Pacho,Ecuador,DEF,87.0
 Tyler Fletcher,Scotland,MID,0.0
 Herman Johansson,Sweden,MID,6.82
-Joaquín Piquerez,Uruguay,DEF,10.0
+Joaquín Piquerez,Uruguay,DEF,10.01
 Rodrigo Bentancur,Uruguay,MID,70.12
 Rodrigo Zalazar,Uruguay,MID,1.2
 Jaouen Hadjam,Algeria,DEF,30.91
@@ -1238,11 +1229,13 @@ Derrick Luckassen,Ghana,DEF,4.24
 Shahriyar Moghanlou,IR Iran,FWD,0.42
 Cho Wi-Je,Korea Republic,DEF,7.98
 Assan Ouédraogo,Germany,MID,0.61
-Lutsharel Geertruida,Netherlands,DEF,14.39
+Lutsharel Geertruida,Netherlands,DEF,14.4
 Dejan Ljubicic,Austria,MID,0.0
 Shuto Machino,Japan,FWD,7.13
 Garven Metusala,Haiti,DEF,19.72
-Danilo,Brazil,DEF,77.48
-Ederson,Brazil,GK,7.51
-Danilo,Brazil,MID,2.01
-Éderson,Brazil,MID,2.81
+Trevoh Chalobah,England,DEF,0.0
+Arjan Malic,Bosnia and Herzegovina,DEF,17.06
+Danilo,Brazil,DEF,78.68
+Ederson,Brazil,GK,8.71
+Danilo,Brazil,MID,3.21
+Éderson,Brazil,MID,4.01

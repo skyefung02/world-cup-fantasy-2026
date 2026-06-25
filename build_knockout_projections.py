@@ -449,6 +449,55 @@ def build_player_projections(n_sims=40000, seed=0):
     return wide.sort_values("ko_total", ascending=False).reset_index()
 
 
+KO_FIXTURES_PATH = "data/knockout_fixtures.csv"
+
+
+def _h2h_xg(teams, idx, home_abbr, away_abbr, venue):
+    """Head-to-head (home, away) xG for a known knockout matchup, venue-aware HF."""
+    elo = teams["elo"].values; hf = teams["home_field"].values; tilt = teams["tilt"].values
+    h, a = idx[home_abbr], idx[away_abbr]
+    host = idx.get(VENUE_HOST.get(venue))
+    bonus_h = hf[h] if (host is not None and h == host) else 0.0
+    bonus_a = hf[a] if (host is not None and a == host) else 0.0
+    we = win_expectancy(elo[h] + bonus_h, elo[a] + bonus_a)
+    scale = GOALS_SCALE * (1 + TILT_K * (tilt[h] + tilt[a]))
+    xg_h = float(expected_goals(np.array([we]))[0]) * scale
+    xg_a = float(expected_goals(np.array([1 - we]))[0]) * scale
+    return xg_h, xg_a
+
+
+def confirmed_knockout_fixtures():
+    """Knockout matchups FIFA has already populated in rounds.json, with
+    head-to-head xG/CS. Lets the app show resolved fixtures as cards rather than
+    opponent-mix projections. Empty frame if none are drawn yet."""
+    cols = ["round", "stage", "match", "venue", "home_abbr", "away_abbr",
+            "home_xg", "away_xg", "home_cs", "away_cs"]
+    teams, idx = load_teams()
+    bracket = {m["match"]: m for m in load_bracket()}
+    squad_abbr = {s["id"]: s["abbr"] for s in json.load(open("cache/squads.json"))}
+    rows = []
+    for r in json.load(open(ROUNDS_CACHE)):
+        if r["id"] < 4:
+            continue
+        for t in r["tournaments"]:
+            hid, aid = t.get("homeSquadId"), t.get("awaySquadId")
+            if not hid or not aid:
+                continue
+            ha, aa = squad_abbr.get(hid), squad_abbr.get(aid)
+            if ha not in idx or aa not in idx:
+                continue
+            venue = bracket.get(t["id"], {}).get("venue", "")
+            xg_h, xg_a = _h2h_xg(teams, idx, ha, aa, venue)
+            rows.append({
+                "round": r["id"], "stage": bracket.get(t["id"], {}).get("stage", ""),
+                "match": t["id"], "venue": venue, "home_abbr": ha, "away_abbr": aa,
+                "home_xg": round(xg_h, 2), "away_xg": round(xg_a, 2),
+                "home_cs": round(float(np.exp(-xg_a)) * 100, 1),
+                "away_cs": round(float(np.exp(-xg_h)) * 100, 1),
+            })
+    return pd.DataFrame(rows, columns=cols)
+
+
 def build_team_probs(n_sims=40000, seed=0):
     """Run the full tournament sim and return per-team round-reach probabilities."""
     sim = simulate_groups(n_sims=n_sims, seed=seed)
@@ -496,6 +545,10 @@ if __name__ == "__main__":
     proj = build_player_projections(n_sims=40000, seed=0)
     proj.to_csv(PLAYER_PROJ_PATH, index=False)
     print(f"wrote {PLAYER_PROJ_PATH}  ({len(proj)} players)")
+
+    fixtures = confirmed_knockout_fixtures()
+    fixtures.to_csv(KO_FIXTURES_PATH, index=False)
+    print(f"wrote {KO_FIXTURES_PATH}  ({len(fixtures)} confirmed fixtures)")
 
     pd.set_option("display.max_rows", None, "display.width", 200)
     cols = ["player", "position", "team", "price", "ko_total",
