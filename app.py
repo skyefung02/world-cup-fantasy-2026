@@ -295,49 +295,70 @@ def my_team():
     )
 
 
+# Rounds surfaced on the projections page. R1/R2 are complete, so they're dropped
+# from the UI entirely (no data shipped). The Group segment shows the remaining
+# group round(s); the Knockout segment shows rounds 4..8 with their P(play)-weighted
+# points. KO_LABELS drives the column headers + round pills in the Knockout segment.
+GROUP_DISPLAY_ROUNDS = [3]
+KO_DISPLAY_ROUNDS = [4, 5, 6, 7, 8]
+KO_ROUND_LABELS = {4: "R32", 5: "R16", 6: "QF", 7: "SF", 8: "F"}
+
+
 @app.route("/projections")
 def projections_page():
     proj = current_projections_df()
-    # R1 is complete — average over the remaining (upcoming) rounds only. R1 data is
-    # still rendered into the page (data-r1* attrs) but hidden in the UI.
-    proj["avg_pts"] = ((proj["2_Pts"] + proj["3_Pts"]) / 2).round(2)
+    display_rounds = GROUP_DISPLAY_ROUNDS + KO_DISPLAY_ROUNDS
+
     proj["flag"] = proj["abbr"].map(FLAGS).fillna("")
-    for col in ["1_Pts", "2_Pts", "3_Pts"]:
-        proj[col] = proj[col].round(2)
+    # Group headline = the remaining group round (R3). Knockout headline = Total xP,
+    # the sum of each KO round's already-P(play)-weighted points.
+    proj["avg_pts"] = proj["3_Pts"].round(2)
+    proj["ko_total"] = proj[[f"{r}_Pts" for r in KO_DISPLAY_ROUNDS]].sum(axis=1).round(2)
+    # Hide eliminated teams from the Knockout segment (no realistic path to any KO round).
+    proj["ko_alive"] = proj[[f"{r}_PPlay" for r in KO_DISPLAY_ROUNDS]].max(axis=1) > 0.01
+    for r in display_rounds:
+        proj[f"{r}_Pts"] = proj[f"{r}_Pts"].round(2)
+
     ov_set = set(overridden_ids_list())
     proj["has_override"] = proj["id"].isin(ov_set)
     sc_set = set(scouting_off_list())
     proj["scouting_off"] = proj["id"].isin(sc_set)
-    # Scouting bonus eligibility is now graded (soft ramp): show the marker whenever the
-    # player retains any bonus, i.e. eligibility > 0. Ownership is per-player, R1 representative.
+    # Scouting bonus eligibility is graded (soft ramp): show the marker whenever the
+    # player retains any bonus. Ownership is per-player, R1-representative.
     proj["has_scouting_bonus"] = proj["1_PScoutingEligible"].fillna(0) > 0
-    for r in [1, 2, 3]:
+
+    # Opponent display per round: flag + abbr for known fixtures (all group rounds and
+    # confirmed KO fixtures), blank for opponent-mix KO rounds (rendered as "vs field").
+    for r in display_rounds:
         proj[f"{r}_OppDisplay"] = proj[f"{r}_OppAbbr"].apply(
             lambda a: f"{FLAGS.get(a, '')} {a}".strip() if pd.notna(a) else ""
         )
-    component_cols = [
-        "1_OppDisplay", "2_OppDisplay", "3_OppDisplay",
-        "1_xMins", "2_xMins", "3_xMins",
-        "1_GoalShare", "2_GoalShare", "3_GoalShare",
-        "1_AssistShare", "2_AssistShare", "3_AssistShare",
-        "1_ModelGoalShare", "2_ModelGoalShare", "3_ModelGoalShare",
-        "1_ModelAssistShare", "2_ModelAssistShare", "3_ModelAssistShare",
-        "1_OverrideGoalShare", "1_OverrideAssistShare",
-        "1_TeamXG",       "2_TeamXG",       "3_TeamXG",
-        "1_TeamXGA",      "2_TeamXGA",      "3_TeamXGA",
-        "1_PCleanSheet",  "2_PCleanSheet",  "3_PCleanSheet",
-        "1_LockedPenXg",  "2_LockedPenXg",  "3_LockedPenXg",
-        "1_LockedSpXa",   "2_LockedSpXa",   "3_LockedSpXa",
+
+    # Per-round model components shipped for every displayed round (group + KO). The
+    # modal reads these to recompute live and to show the conditional/P(play) split.
+    per_round = [
+        "Pts", "PtsCond", "PPlay", "OppDisplay", "xMins",
+        "GoalShare", "AssistShare", "ModelGoalShare", "ModelAssistShare",
+        "TeamXG", "TeamXGA", "PCleanSheet", "LockedPenXg", "LockedSpXa",
+    ]
+    round_cols = [f"{r}_{c}" for r in display_rounds for c in per_round]
+    base_cols = [
+        "id", "player", "position", "price", "team", "abbr", "flag",
+        "avg_pts", "ko_total", "ko_alive", "has_override", "has_scouting_bonus",
+        "scouting_off", "1_OverrideGoalShare", "1_OverrideAssistShare",
         "1_PercentSelected", "1_PScoutingEligible",
     ]
     players = (
-        proj[["id", "player", "position", "price", "team", "abbr", "flag",
-              "1_Pts", "2_Pts", "3_Pts", "avg_pts", "has_override",
-              "has_scouting_bonus", "scouting_off"] + component_cols]
+        proj[base_cols + round_cols]
         .sort_values("avg_pts", ascending=False)
         .to_dict(orient="records")
     )
-    return render_template("projections.html", players=players)
+    round_labels = {3: "R3", **KO_ROUND_LABELS}
+    return render_template(
+        "projections.html", players=players,
+        group_rounds=GROUP_DISPLAY_ROUNDS, ko_rounds=KO_DISPLAY_ROUNDS,
+        round_labels=round_labels,
+    )
 
 
 @app.route("/match-projections")
@@ -508,7 +529,10 @@ def save():
     overrides = load_xmins()  # nested {id: {round: mins}}
     for pid, rounds in data.items():
         default = defaults.get(pid)
-        kept = {r: m for r, m in rounds.items() if m != default}
+        # Merge the posted rounds onto any existing edits (the modal posts only the
+        # active segment's rounds, so a KO save must not drop saved group rounds).
+        merged = {**overrides.get(pid, {}), **rounds}
+        kept = {r: m for r, m in merged.items() if m != default}
         if kept:
             overrides[pid] = kept
         else:

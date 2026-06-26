@@ -392,6 +392,7 @@ def walk_knockouts(sim, seed=1):
 
 TEAM_PROBS_PATH = "data/knockout_team_probs.csv"
 PLAYER_PROJ_PATH = "data/knockout_projections.csv"
+TEAM_ROUNDS_PATH = "data/knockout_team_rounds.csv"
 PROJ_ROUNDS = (4, 5, 6, 7, 8)
 
 
@@ -447,6 +448,37 @@ def build_player_projections(n_sims=40000, seed=0):
     pts_cols = [f"{r}_Pts" for r in PROJ_ROUNDS]
     wide["ko_total"] = wide[pts_cols].sum(axis=1).round(2)
     return wide.sort_values("ko_total", ascending=False).reset_index()
+
+
+def build_team_rounds(n_sims=40000, seed=0):
+    """Per-team, per-knockout-round (4..8) Monte Carlo aggregates.
+
+    Long-format table the *live* projection engine consumes to build its KO base
+    state — this replaces the static per-player knockout_projections.csv. Each row
+    carries the opponent-mix-averaged team xG/xGA *conditional on the team playing
+    that round*, plus P(play) (the probability the team reaches it). The web app
+    crosses these with the immutable per-player constants and routes them through
+    the same scoring engine as the group stage, so xMins / share / scouting edits
+    apply live. Resolved-fixture overrides (head-to-head xG, P(play)=1) are layered
+    on app-side from knockout_fixtures.csv; this table is pure opponent-mix.
+
+    Columns: abbr, round, cond_scored, cond_conceded, p_play.
+    """
+    sim = simulate_groups(n_sims=n_sims, seed=seed)
+    ko = walk_knockouts(sim, seed=seed + 1)
+    abbr = sim["teams"]["abbr"].values
+    rows = []
+    for r in PROJ_ROUNDS:
+        cs, cc, pp = ko["cond_scored"][r], ko["cond_conceded"][r], ko["p_play"][r]
+        for i, ab in enumerate(abbr):
+            rows.append({
+                "abbr": ab,
+                "round": r,
+                "cond_scored": round(float(cs[i]), 4),
+                "cond_conceded": round(float(cc[i]), 4),
+                "p_play": round(float(pp[i]), 4),
+            })
+    return pd.DataFrame(rows, columns=["abbr", "round", "cond_scored", "cond_conceded", "p_play"])
 
 
 KO_FIXTURES_PATH = "data/knockout_fixtures.csv"
@@ -541,6 +573,10 @@ if __name__ == "__main__":
     probs = build_team_probs(n_sims=40000, seed=0)
     probs.to_csv(TEAM_PROBS_PATH, index=False)
     print(f"wrote {TEAM_PROBS_PATH}  ({len(probs)} teams)")
+
+    team_rounds = build_team_rounds(n_sims=40000, seed=0)
+    team_rounds.to_csv(TEAM_ROUNDS_PATH, index=False)
+    print(f"wrote {TEAM_ROUNDS_PATH}  ({len(team_rounds)} team-rounds)")
 
     proj = build_player_projections(n_sims=40000, seed=0)
     proj.to_csv(PLAYER_PROJ_PATH, index=False)

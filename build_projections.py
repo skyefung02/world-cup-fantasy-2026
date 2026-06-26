@@ -17,6 +17,14 @@ XG_OVERRIDES_PATH = "data/xg_overrides.csv"
 SCOUTING_OVERRIDES_PATH = "data/scouting_overrides.csv"
 SET_PIECE_TAKERS_PATH = "data/set_piece_takers.csv"
 
+# Knockout stage: team-level Monte Carlo aggregates (opponent-mix xG/xGA + P(play))
+# from build_knockout_projections.build_team_rounds, plus confirmed-fixture cards.
+# The base state crosses these with the per-player constants so the live engine can
+# project rounds 4..8 with the same xMins/share/scouting edits as the group stage.
+KO_TEAM_ROUNDS_PATH = "data/knockout_team_rounds.csv"
+KO_FIXTURES_PATH = "data/knockout_fixtures.csv"
+KO_ROUNDS = (4, 5, 6, 7, 8)  # R32, R16, QF, SF, Final/3rd-place
+
 PEN_LOCK_FRACTION = PEN_PROB * PEN_CONVERSION
 
 # Elo->goals calibration (fit against SilverBulletin 48-team group-stage projections,
@@ -205,7 +213,68 @@ def _precompute_base_state():
         df.loc[outfield_mask & df["id"].isin(pen_ids), "is_pen_taker"] = True
         df.loc[df["id"].isin(sp_ids), "is_sp_assist_taker"] = True
 
+    # Group fixtures always happen: P(play) = 1. Knockout rows (appended below)
+    # carry the modelled P(reach round); exp_pts = xpts_game * p_play folds it in.
+    df["p_play"] = 1.0
+
+    # Append knockout rounds 4..8 as additional per-(player, round) rows, reusing
+    # the immutable per-player constants. Team xG/xGA/P(play) come from the cached
+    # Monte Carlo aggregates (confirmed fixtures override resolved rounds). No-op if
+    # the KO sim hasn't been built yet.
+    meta_cols = ["id", "player", "position", "price", "team", "abbr",
+                 "goal_w_per_min", "assist_w_per_min", "default_xmins",
+                 "is_pen_taker", "is_sp_assist_taker", "percentSelected"]
+    ko_rows = _knockout_base_rows(df.drop_duplicates("id")[meta_cols].copy())
+    if not ko_rows.empty:
+        df = pd.concat([df, ko_rows], ignore_index=True)
+
     return df
+
+
+def _knockout_base_rows(meta):
+    """Cross the per-player constants with KO rounds 4..8.
+
+    Each (player, round) row gets team-level opponent-mix xG/xGA + P(play) from
+    knockout_team_rounds.csv. Confirmed fixtures (knockout_fixtures.csv) override
+    any resolved round with the head-to-head xG and P(play)=1, and name the real
+    opponent — so the player table stays consistent with the fixture cards.
+    Returns an empty frame if the KO sim hasn't been built.
+    """
+    if not os.path.exists(KO_TEAM_ROUNDS_PATH):
+        return pd.DataFrame(columns=list(meta.columns))
+
+    tr = pd.read_csv(KO_TEAM_ROUNDS_PATH)
+    mc = {(r.abbr, int(r.round)): (r.cond_scored, r.cond_conceded, r.p_play)
+          for r in tr.itertuples(index=False)}
+
+    confirmed = {}  # (abbr, round) -> (xg_scored, xg_conceded, opp_abbr)
+    if os.path.exists(KO_FIXTURES_PATH):
+        fx = pd.read_csv(KO_FIXTURES_PATH)
+        for f in fx.itertuples(index=False):
+            confirmed[(f.home_abbr, int(f.round))] = (f.home_xg, f.away_xg, f.away_abbr)
+            confirmed[(f.away_abbr, int(f.round))] = (f.away_xg, f.home_xg, f.home_abbr)
+
+    frames = []
+    for rnd in KO_ROUNDS:
+        rows = meta.copy()
+        rows["round_id"] = rnd
+        xg_s, xg_c, pplay, opp = [], [], [], []
+        for ab in rows["abbr"]:
+            if (ab, rnd) in confirmed:
+                cs, cc, o = confirmed[(ab, rnd)]
+                xg_s.append(cs); xg_c.append(cc); pplay.append(1.0); opp.append(o)
+            elif (ab, rnd) in mc:
+                cs, cc, p = mc[(ab, rnd)]
+                xg_s.append(cs); xg_c.append(cc); pplay.append(p); opp.append(np.nan)
+            else:  # team with no KO data (shouldn't happen — all 48 are in the table)
+                xg_s.append(0.0); xg_c.append(0.0); pplay.append(0.0); opp.append(np.nan)
+        rows["xg_scored"]    = xg_s
+        rows["xg_conceded"]  = xg_c
+        rows["p_play"]       = pplay
+        rows["opp_abbr"]     = opp
+        rows["p_clean_sheet"] = clean_sheet_prob(np.asarray(xg_c, dtype=float))
+        frames.append(rows)
+    return pd.concat(frames, ignore_index=True)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -368,6 +437,12 @@ def _apply_allocations_and_points(df, xmins_map, override_map, scouting_off=None
 
     df["xpts_game"]    = (df["goal_pts"] + df["assist_pts"] + df["cs_pts"]
                           + df["conceded_pts"] + df["app_pts"] + df["scouting_bonus_pts"])
+
+    # Unconditional expected points: discount the per-match (conditional) points by
+    # P(play). Group rows have p_play = 1, so exp_pts == xpts_game there; knockout
+    # rows fold in the probability the team even reaches that round.
+    p_play = df["p_play"] if "p_play" in df.columns else 1.0
+    df["exp_pts"] = df["xpts_game"] * p_play
     return df
 
 
@@ -387,7 +462,9 @@ def recompute_teams(xmins_map=None, override_map=None, teams=None, scouting_off=
         pid = int(r["id"])
         rd  = int(r["round_id"])
         out.setdefault(pid, {})[rd] = {
-            "Pts":                 round(float(r["xpts_game"]), 2),
+            "Pts":                 round(float(r["exp_pts"]), 2),
+            "PtsCond":             round(float(r["xpts_game"]), 2),
+            "PPlay":               float(r["p_play"]),
             "xMins":               float(r["xmins"]),
             "xG":                  float(r["player_xg"]),
             "xA":                  float(r["player_xa"]),
@@ -414,7 +491,9 @@ def recompute_teams(xmins_map=None, override_map=None, teams=None, scouting_off=
 # ─────────────────────────────────────────────────────────────────────────────
 
 EXPORT_COLS = {
-    "xpts_game":             "Pts",
+    "exp_pts":               "Pts",
+    "xpts_game":             "PtsCond",
+    "p_play":                "PPlay",
     "xmins":                 "xMins",
     "player_xg":             "xG",
     "player_xa":             "xA",

@@ -2,6 +2,8 @@
 
 {% block title %}Projections — World Cup Fantasy{% endblock %}
 
+{% set display_rounds = group_rounds + ko_rounds %}
+
 {% block extra_styles %}
     /* ── Page-specific: hero the table identity ── */
     /* 4px team-colour stripe on each player row (set via JS as --team-color) */
@@ -41,6 +43,29 @@
       letter-spacing: 0.4px;
       text-transform: uppercase;
     }
+
+    /* ── Segmented toggle (Group / Knockout) ── */
+    .segmented {
+      display: inline-flex;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      overflow: hidden;
+      background: var(--surface-2);
+    }
+    .seg-btn {
+      background: transparent;
+      color: var(--text-muted);
+      border: none;
+      padding: 9px 22px;
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 0.86rem;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .seg-btn.active { background: var(--accent); color: #0b0b0f; }
+    .seg-btn:not(.active):hover { color: var(--text); background: var(--surface); }
 
     /* ── Controls bar ── */
     .controls {
@@ -247,7 +272,7 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 24px;
-      width: 520px;
+      width: 560px;
       max-width: 100%;
       max-height: calc(100vh - 40px);
       overflow-y: auto;
@@ -285,6 +310,18 @@
       color: var(--text-muted);
       margin-top: 3px;
       font-family: var(--mono);
+    }
+    .modal-seg-tag {
+      margin-left: auto;
+      font-family: var(--display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 9px;
     }
 
     .modal-stats-table {
@@ -345,9 +382,15 @@
     .modal-stats-table tbody tr.modal-xp-row td:first-child {
       color: var(--text);
     }
+    /* P(play) row — muted, read-only (model-only, not editable) */
+    .modal-stats-table tbody tr.modal-pplay-row td {
+      color: var(--text-faint);
+      font-size: 0.76rem;
+    }
+    .modal-stats-table tbody tr.modal-pplay-row td:first-child { color: var(--text-subtle); }
 
     .xmins-input {
-      width: 64px;
+      width: 56px;
       padding: 5px 6px;
       text-align: center;
       font-variant-numeric: tabular-nums;
@@ -435,6 +478,10 @@
         <h1 class="page-title">Projections</h1>
         <p class="page-sub">Expected points per gameweek. Click a row to inspect or override.</p>
       </div>
+      <div class="segmented" id="segmented">
+        <button class="seg-btn active" data-seg="group" onclick="switchSegment('group')">Group</button>
+        <button class="seg-btn" data-seg="knockout" onclick="switchSegment('knockout')">Knockout</button>
+      </div>
     </div>
 
     <div class="controls">
@@ -463,8 +510,9 @@
     <div class="round-filter">
       <span class="round-filter-label">Rounds</span>
       <div class="round-pills">
-        <button class="pill active" data-round="2" onclick="onRoundFilter(2)">R2</button>
-        <button class="pill active" data-round="3" onclick="onRoundFilter(3)">R3</button>
+        {% for r in display_rounds %}
+        <button class="pill active" data-round="{{ r }}" onclick="onRoundFilter({{ r }})" style="display:none">{{ round_labels[r] }}</button>
+        {% endfor %}
       </div>
     </div>
 
@@ -482,10 +530,10 @@
             <th class="sortable" data-col="team" onclick="onSort('team')">Team <span class="sort-ind">⇅</span></th>
             <th class="sortable num" data-col="price" onclick="onSort('price')">Price <span class="sort-ind">⇅</span></th>
             <th class="sortable num" data-col="own" onclick="onSort('own')" title="Live ownership (% of squads), refreshed hourly">Own % <span class="sort-ind">⇅</span></th>
-            <th class="sortable num" data-col="r1" onclick="onSort('r1')" style="display:none">R1 xP <span class="sort-ind">⇅</span></th>
-            <th class="sortable num" data-col="r2" onclick="onSort('r2')">R2 xP <span class="sort-ind">⇅</span></th>
-            <th class="sortable num" data-col="r3" onclick="onSort('r3')">R3 xP <span class="sort-ind">⇅</span></th>
-            <th class="sortable num sorted" data-col="avg" onclick="onSort('avg')">Avg xP <span class="sort-ind">↓</span></th>
+            {% for r in display_rounds %}
+            <th class="sortable num" data-col="r{{ r }}" onclick="onSort('r{{ r }}')" style="display:none">{{ round_labels[r] }} xP <span class="sort-ind">⇅</span></th>
+            {% endfor %}
+            <th class="sortable num sorted" data-col="agg" onclick="onSort('agg')"><span class="agg-label">Avg xP</span> <span class="sort-ind">↓</span></th>
           </tr>
         </thead>
         <tbody id="players-tbody">
@@ -501,45 +549,29 @@
             data-abbr="{{ p.abbr }}"
             data-team="{{ p.team | lower }}"
             data-price="{{ p.price }}"
-            data-r1="{{ p['1_Pts'] }}"
-            data-r2="{{ p['2_Pts'] }}"
-            data-r3="{{ p['3_Pts'] }}"
-            data-avg="{{ p.avg_pts }}"
-            data-r1-xmins="{{ p['1_xMins'] | int }}"
-            data-r2-xmins="{{ p['2_xMins'] | int }}"
-            data-r3-xmins="{{ p['3_xMins'] | int }}"
-            data-r1-goal-share="{{ '%.4f' | format(p['1_GoalShare']) }}"
-            data-r2-goal-share="{{ '%.4f' | format(p['2_GoalShare']) }}"
-            data-r3-goal-share="{{ '%.4f' | format(p['3_GoalShare']) }}"
-            data-r1-assist-share="{{ '%.4f' | format(p['1_AssistShare']) }}"
-            data-r2-assist-share="{{ '%.4f' | format(p['2_AssistShare']) }}"
-            data-r3-assist-share="{{ '%.4f' | format(p['3_AssistShare']) }}"
-            data-model-goal-share="{{ '%.4f' | format(p['1_ModelGoalShare']) }}"
-            data-model-assist-share="{{ '%.4f' | format(p['1_ModelAssistShare']) }}"
-            {% if p.has_override %}data-override-goal-share="{{ '%.4f' | format(p['1_OverrideGoalShare']) }}"{% endif %}
-            {% if p.has_override %}data-override-assist-share="{{ '%.4f' | format(p['1_OverrideAssistShare']) }}"{% endif %}
-            data-r1-opp="{{ p['1_OppDisplay'] }}"
-            data-r2-opp="{{ p['2_OppDisplay'] }}"
-            data-r3-opp="{{ p['3_OppDisplay'] }}"
-            data-r1-team-xg="{{ '%.4f' | format(p['1_TeamXG']) }}"
-            data-r2-team-xg="{{ '%.4f' | format(p['2_TeamXG']) }}"
-            data-r3-team-xg="{{ '%.4f' | format(p['3_TeamXG']) }}"
-            data-r1-team-xga="{{ '%.4f' | format(p['1_TeamXGA']) }}"
-            data-r2-team-xga="{{ '%.4f' | format(p['2_TeamXGA']) }}"
-            data-r3-team-xga="{{ '%.4f' | format(p['3_TeamXGA']) }}"
-            data-r1-p-clean-sheet="{{ '%.4f' | format(p['1_PCleanSheet']) }}"
-            data-r2-p-clean-sheet="{{ '%.4f' | format(p['2_PCleanSheet']) }}"
-            data-r3-p-clean-sheet="{{ '%.4f' | format(p['3_PCleanSheet']) }}"
-            data-r1-locked-pen-xg="{{ '%.4f' | format(p['1_LockedPenXg']) }}"
-            data-r2-locked-pen-xg="{{ '%.4f' | format(p['2_LockedPenXg']) }}"
-            data-r3-locked-pen-xg="{{ '%.4f' | format(p['3_LockedPenXg']) }}"
-            data-r1-locked-sp-xa="{{ '%.4f' | format(p['1_LockedSpXa']) }}"
-            data-r2-locked-sp-xa="{{ '%.4f' | format(p['2_LockedSpXa']) }}"
-            data-r3-locked-sp-xa="{{ '%.4f' | format(p['3_LockedSpXa']) }}"
+            data-agg="{{ p.avg_pts }}"
+            data-ko-total="{{ p.ko_total }}"
+            data-ko-alive="{{ 'true' if p.ko_alive else 'false' }}"
             data-has-override="{{ 'true' if p.has_override else 'false' }}"
             data-scouting-off="{{ 'true' if p.scouting_off else 'false' }}"
-            data-r1-p-eligible="{{ '%.4f' | format(p['1_PScoutingEligible']) }}"
             data-own="{{ '%.2f' | format(p['1_PercentSelected']) }}"
+            {% if p.has_override %}data-override-goal-share="{{ '%.4f' | format(p['1_OverrideGoalShare']) }}"{% endif %}
+            {% if p.has_override %}data-override-assist-share="{{ '%.4f' | format(p['1_OverrideAssistShare']) }}"{% endif %}
+            {% for r in display_rounds %}
+            data-r{{ r }}="{{ p[r ~ '_Pts'] }}"
+            data-r{{ r }}-pplay="{{ '%.4f' | format(p[r ~ '_PPlay']) }}"
+            data-r{{ r }}-opp="{{ p[r ~ '_OppDisplay'] }}"
+            data-r{{ r }}-xmins="{{ p[r ~ '_xMins'] | int }}"
+            data-r{{ r }}-goal-share="{{ '%.4f' | format(p[r ~ '_GoalShare']) }}"
+            data-r{{ r }}-assist-share="{{ '%.4f' | format(p[r ~ '_AssistShare']) }}"
+            data-r{{ r }}-model-goal-share="{{ '%.4f' | format(p[r ~ '_ModelGoalShare']) }}"
+            data-r{{ r }}-model-assist-share="{{ '%.4f' | format(p[r ~ '_ModelAssistShare']) }}"
+            data-r{{ r }}-team-xg="{{ '%.4f' | format(p[r ~ '_TeamXG']) }}"
+            data-r{{ r }}-team-xga="{{ '%.4f' | format(p[r ~ '_TeamXGA']) }}"
+            data-r{{ r }}-p-clean-sheet="{{ '%.4f' | format(p[r ~ '_PCleanSheet']) }}"
+            data-r{{ r }}-locked-pen-xg="{{ '%.4f' | format(p[r ~ '_LockedPenXg']) }}"
+            data-r{{ r }}-locked-sp-xa="{{ '%.4f' | format(p[r ~ '_LockedSpXa']) }}"
+            {% endfor %}
           >
             <td class="player-name">{{ p.player }}{% if p.has_override %}<span class="override-dot" title="Manually adjusted"></span>{% endif %}{% if p.has_scouting_bonus %}<span class="scouting-dot" title="Scouting bonus eligible ({{ '%.1f' | format(p['1_PercentSelected']) }}% owned). +2pts factored into projections if player scores >4 in a match."></span>{% endif %}</td>
             <td><span class="pos-badge {{ p.position }}">{{ p.position }}</span></td>
@@ -547,10 +579,10 @@
             <td class="price-cell num">£{{ p.price }}m</td>
             {%- set pe = p['1_PScoutingEligible'] -%}
             <td class="own-cell num{% if pe >= 1 %} own-safe{% elif pe > 0 %} own-danger{% endif %}" title="{% if pe >= 1 %}Clear differential — full scouting bonus{% elif pe > 0 %}Danger zone: {{ (pe * 100) | round | int }}% scouting eligibility, at risk of crossing 5%{% endif %}">{{ '%.1f' | format(p['1_PercentSelected']) }}%</td>
-            <td class="pts-cell num r1-pts" style="display:none">{{ p['1_Pts'] }}</td>
-            <td class="pts-cell num r2-pts">{{ p['2_Pts'] }}</td>
-            <td class="pts-cell num r3-pts">{{ p['3_Pts'] }}</td>
-            <td class="avg-cell num avg-pts">{{ p.avg_pts }}</td>
+            {% for r in display_rounds %}
+            <td class="pts-cell num r{{ r }}-pts" style="display:none">{{ p[r ~ '_Pts'] }}</td>
+            {% endfor %}
+            <td class="avg-cell num agg-pts">{{ p.avg_pts }}</td>
           </tr>
           {% endfor %}
         </tbody>
@@ -571,44 +603,10 @@
             <div class="modal-player-name" id="modal-name"></div>
             <div class="modal-meta" id="modal-meta"></div>
           </div>
+          <span class="modal-seg-tag" id="modal-seg-tag"></span>
         </div>
 
-        <table class="modal-stats-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th style="display:none"><span class="round-num">R1</span><span class="opp" id="m-opp-r1"></span></th>
-              <th><span class="round-num">R2</span><span class="opp" id="m-opp-r2"></span></th>
-              <th><span class="round-num">R3</span><span class="opp" id="m-opp-r3"></span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>xMins</td>
-              <td style="display:none"><input type="number" id="modal-xmins-1" class="xmins-input" min="0" max="90" step="1" oninput="onSliderInput(false)"></td>
-              <td><input type="number" id="modal-xmins-2" class="xmins-input" min="0" max="90" step="1" oninput="onSliderInput(false)"></td>
-              <td><input type="number" id="modal-xmins-3" class="xmins-input" min="0" max="90" step="1" oninput="onSliderInput(false)"></td>
-            </tr>
-            <tr>
-              <td>Proj. Goals</td>
-              <td id="goal-r1" style="display:none">—</td>
-              <td id="goal-r2">—</td>
-              <td id="goal-r3">—</td>
-            </tr>
-            <tr>
-              <td>Proj. Assists</td>
-              <td id="assist-r1" style="display:none">—</td>
-              <td id="assist-r2">—</td>
-              <td id="assist-r3">—</td>
-            </tr>
-            <tr class="modal-xp-row">
-              <td>Proj. xP</td>
-              <td id="xp-r1" style="display:none">—</td>
-              <td id="xp-r2">—</td>
-              <td id="xp-r3">—</td>
-            </tr>
-          </tbody>
-        </table>
+        <table class="modal-stats-table" id="modal-stats-table"><!-- built by JS per segment --></table>
 
         <div class="slider-section">
           <div class="slider-label">
@@ -628,8 +626,8 @@
           <div class="model-default" id="assist-model-label"></div>
         </div>
 
-        <div class="modal-note">
-          Set <strong>xMins per round</strong> (R1/R2/R3) for rotation or fixture-driven rest. Sliders show goal/assist share <strong>per 90 minutes</strong> — one full-match rate applied to every round; actual xG / xA / xP then scales with each round's xMins (visible in the Proj. rows above). Designated penalty / set-piece takers have a slider floor reflecting their locked contribution; adjustments only move their open-play share.
+        <div class="modal-note" id="modal-note">
+          Set <strong>xMins per round</strong> for rotation or fixture-driven rest. Sliders show goal/assist share <strong>per 90 minutes</strong> — one full-match rate applied to every round; actual xG / xA / xP then scales with each round's xMins. Designated penalty / set-piece takers have a slider floor reflecting their locked contribution; adjustments only move their open-play share.
         </div>
 
         <div class="scouting-section">
@@ -653,51 +651,99 @@
   <script>
     const playersTbody = document.getElementById("players-tbody");
     const allRows = playersTbody ? Array.from(playersTbody.querySelectorAll("tr")) : [];
-    let sortCol = "avg", sortDir = -1;
+    let sortCol = "agg", sortDir = -1;
     let filterPos = "all", filterSearch = "";
-    // R1 is complete: it's hidden in the UI and excluded from the average.
-    const selectedRounds = new Set([2, 3]);
 
-    // Mean of a row's xP over the currently-selected rounds. Reads the per-round
-    // data-r1/r2/r3 attrs, so it stays correct after edits/recomputes too.
-    function computeAvg(row) {
+    // ── Segments ──
+    // Group stage (remaining group rounds, averaged) vs Knockout (rounds 4..8, summed).
+    // R1/R2 are complete and not shipped. P(play) discounting lives in the Pts the
+    // server already sends (Knockout Pts = conditional × P(play)); the segment toggle
+    // just swaps which round columns + aggregation are shown.
+    const GROUP_ROUNDS = {{ group_rounds | tojson }};
+    const KO_ROUNDS    = {{ ko_rounds | tojson }};
+    const ROUND_LABELS = {{ round_labels | tojson }};
+    const ALL_DISPLAY_ROUNDS = GROUP_ROUNDS.concat(KO_ROUNDS);
+    const SEGMENTS = {
+      group:    { rounds: GROUP_ROUNDS, agg: "avg", aggLabel: "Avg xP" },
+      knockout: { rounds: KO_ROUNDS,    agg: "sum", aggLabel: "Total xP" },
+    };
+    let currentSegment = "group";
+    // Per-segment active round selection (all rounds on by default).
+    const selectedBySeg = {
+      group:    new Set(GROUP_ROUNDS),
+      knockout: new Set(KO_ROUNDS),
+    };
+    const seg = () => SEGMENTS[currentSegment];
+    const selectedRounds = () => selectedBySeg[currentSegment];
+    const isKO = () => currentSegment === "knockout";
+
+    // Aggregate a row's xP over the active rounds: mean (group) or sum (knockout).
+    function computeAgg(row) {
+      const sel = selectedRounds();
+      if (sel.size === 0) return 0;
       let sum = 0;
-      for (const r of selectedRounds) sum += parseFloat(row.dataset["r" + r]) || 0;
-      return sum / selectedRounds.size;
+      for (const r of sel) sum += parseFloat(row.dataset["r" + r]) || 0;
+      return seg().agg === "avg" ? sum / sel.size : sum;
     }
 
-    // Recompute every row's Avg (data + cell) from the current round selection.
-    function refreshAverages() {
+    function refreshAgg() {
       allRows.forEach(row => {
-        const avg = computeAvg(row).toFixed(2);
-        row.dataset.avg = avg;
-        row.querySelector(".avg-pts").textContent = avg;
+        const v = computeAgg(row).toFixed(2);
+        row.dataset.agg = v;
+        row.querySelector(".agg-pts").textContent = v;
       });
+    }
+
+    // Show the columns / pills / aggregation label for the current segment.
+    function applySegmentView() {
+      const active = new Set(seg().rounds);
+      document.querySelectorAll(".seg-btn").forEach(b =>
+        b.classList.toggle("active", b.dataset.seg === currentSegment));
+
+      ALL_DISPLAY_ROUNDS.forEach(r => {
+        const show = active.has(r) && selectedRounds().has(r);
+        const th = document.querySelector(`th[data-col="r${r}"]`);
+        if (th) th.style.display = show ? "" : "none";
+        document.querySelectorAll(`td.r${r}-pts`).forEach(td => td.style.display = show ? "" : "none");
+      });
+
+      document.querySelectorAll(".round-pills .pill").forEach(p => {
+        const r = parseInt(p.dataset.round, 10);
+        p.style.display = active.has(r) ? "" : "none";
+        p.classList.toggle("active", selectedRounds().has(r));
+      });
+
+      document.querySelector("th[data-col='agg'] .agg-label").textContent = seg().aggLabel;
+    }
+
+    function switchSegment(name) {
+      if (name === currentSegment || !SEGMENTS[name]) return;
+      currentSegment = name;
+      sortCol = "agg"; sortDir = -1;
+      applySegmentView();
+      refreshAgg();
+      filterRows();
+      sortTable();
+      updateHeaders();
     }
 
     function onRoundFilter(round) {
+      const active = new Set(seg().rounds);
+      if (!active.has(round)) return;              // pill not in current segment
+      const sel = selectedRounds();
+      if (sel.has(round) && sel.size === 1) return; // keep at least one round active
+
+      if (sel.has(round)) sel.delete(round); else sel.add(round);
       const btn = document.querySelector(`.round-pills .pill[data-round="${round}"]`);
-      // Keep at least one round active.
-      if (selectedRounds.has(round) && selectedRounds.size === 1) return;
+      btn.classList.toggle("active", sel.has(round));
 
-      if (selectedRounds.has(round)) selectedRounds.delete(round);
-      else selectedRounds.add(round);
-      btn.classList.toggle("active", selectedRounds.has(round));
-
-      // Show/hide that round's xP column (header + every body cell).
-      const show = selectedRounds.has(round);
+      const show = sel.has(round);
       document.querySelector(`th[data-col="r${round}"]`).style.display = show ? "" : "none";
-      document.querySelectorAll(`td.r${round}-pts`).forEach(td => {
-        td.style.display = show ? "" : "none";
-      });
+      document.querySelectorAll(`td.r${round}-pts`).forEach(td => td.style.display = show ? "" : "none");
 
-      // If we're sorting by a now-hidden round, fall back to Avg.
-      if (!show && sortCol === `r${round}`) {
-        sortCol = "avg";
-        sortDir = -1;
-      }
+      if (!show && sortCol === `r${round}`) { sortCol = "agg"; sortDir = -1; }
 
-      refreshAverages();
+      refreshAgg();
       sortTable();
       updateHeaders();
     }
@@ -738,7 +784,7 @@
         const av = a.dataset[sortCol], bv = b.dataset[sortCol];
         const an = parseFloat(av), bn = parseFloat(bv);
         if (!isNaN(an) && !isNaN(bn)) return (an - bn) * sortDir;
-        return av.localeCompare(bv) * sortDir;
+        return (av || "").localeCompare(bv || "") * sortDir;
       });
       allRows.forEach(r => tbody.appendChild(r));
     }
@@ -758,13 +804,16 @@
     }
 
     function filterRows() {
+      const koMode = isKO();
       let visible = 0;
       allRows.forEach(row => {
         const posMatch = filterPos === "all" || row.dataset.pos === filterPos;
         const searchMatch = !filterSearch ||
           row.dataset.player.includes(filterSearch) ||
           row.dataset.team.includes(filterSearch);
-        const show = posMatch && searchMatch;
+        // In the Knockout segment, hide players whose team has no realistic KO path.
+        const aliveMatch = !koMode || row.dataset.koAlive === "true";
+        const show = posMatch && searchMatch && aliveMatch;
         row.style.display = show ? "" : "none";
         if (show) visible++;
       });
@@ -777,7 +826,7 @@
         const ind = th.querySelector(".sort-ind");
         const active = col === sortCol;
         th.classList.toggle("sorted", active);
-        ind.textContent = active ? (sortDir === 1 ? " ↑" : " ↓") : " ⇅";
+        if (ind) ind.textContent = active ? (sortDir === 1 ? " ↑" : " ↓") : " ⇅";
       });
     }
 
@@ -845,38 +894,68 @@
       }
     }
 
+    // Build the per-round stats table for the active segment. Knockout adds a muted
+    // read-only P(play) row and an Exp. xP row (conditional xP × P(play), the headline);
+    // the group view's headline is the conditional xP row itself.
+    function buildModalStatsTable(rounds, ko, d) {
+      const th = ['<th></th>'].concat(rounds.map(r =>
+        `<th><span class="round-num">${ROUND_LABELS[r]}</span><span class="opp" id="m-opp-${r}"></span></th>`)).join('');
+      const xmins = ['<td>xMins</td>'].concat(rounds.map(r =>
+        `<td><input type="number" id="modal-xmins-${r}" class="xmins-input" min="0" max="90" step="1" oninput="onSliderInput(false)"></td>`)).join('');
+      const goals = ['<td>Proj. Goals</td>'].concat(rounds.map(r => `<td id="goal-${r}">—</td>`)).join('');
+      const assists = ['<td>Proj. Assists</td>'].concat(rounds.map(r => `<td id="assist-${r}">—</td>`)).join('');
+      const xpLabel = ko ? 'Proj. xP (if playing)' : 'Proj. xP';
+      const xp = [`<td>${xpLabel}</td>`].concat(rounds.map(r => `<td id="xp-${r}">—</td>`)).join('');
+
+      let body = `<tr>${xmins}</tr><tr>${goals}</tr><tr>${assists}</tr>`;
+      if (ko) {
+        const pplay = ['<td>P(play)</td>'].concat(rounds.map(r => `<td id="pplay-${r}">—</td>`)).join('');
+        const exp = ['<td>Exp. xP</td>'].concat(rounds.map(r => `<td id="exp-${r}">—</td>`)).join('');
+        body += `<tr>${xp}</tr><tr class="modal-pplay-row">${pplay}</tr><tr class="modal-xp-row">${exp}</tr>`;
+      } else {
+        body += `<tr class="modal-xp-row">${xp}</tr>`;
+      }
+      document.getElementById("modal-stats-table").innerHTML =
+        `<thead><tr>${th}</tr></thead><tbody>${body}</tbody>`;
+
+      rounds.forEach(r => {
+        const opp = d[`r${r}Opp`];
+        document.getElementById(`m-opp-${r}`).textContent = opp || (ko ? "vs field" : "");
+      });
+    }
+
     function openModal(row) {
       currentRow = row;
       slidersDirty = false;
       const d = row.dataset;
       const hasOverride = d.hasOverride === "true";
+      const rounds = seg().rounds;
+      const ko = isKO();
 
       document.getElementById("modal-pos").textContent  = d.pos;
       document.getElementById("modal-pos").className    = `pos-badge ${d.pos}`;
       document.getElementById("modal-name").textContent = d.name;
       document.getElementById("modal-meta").textContent = `${d.flag} ${d.abbr}  ·  £${d.price}m`;
+      document.getElementById("modal-seg-tag").textContent = ko ? "Knockout" : "Group";
 
-      document.getElementById("m-opp-r1").textContent = d.r1Opp;
-      document.getElementById("m-opp-r2").textContent = d.r2Opp;
-      document.getElementById("m-opp-r3").textContent = d.r3Opp;
+      buildModalStatsTable(rounds, ko, d);
+      rounds.forEach(r => {
+        document.getElementById(`modal-xmins-${r}`).value = d[`r${r}Xmins`];
+      });
 
-      document.getElementById("modal-xmins-1").value = d.r1Xmins;
-      document.getElementById("modal-xmins-2").value = d.r2Xmins;
-      document.getElementById("modal-xmins-3").value = d.r3Xmins;
-
-      // Sliders are per-90: the override semantic on the server is
-      // player_xg = team_xg * share * (xmins/90). For non-overridden players, the row's
-      // r1GoalShare / modelGoalShare are *effective* (xmins already baked in), so divide
-      // by xmins/90 to get the equivalent per-90 value.
-      const r1Xmins = parseInt(d.r1Xmins, 10) || 0;
-      const xminsScaleInit = r1Xmins > 0 ? r1Xmins / 90 : 1;
-      const goalInit   = hasOverride ? parseFloat(d.overrideGoalShare)   : parseFloat(d.r1GoalShare)   / xminsScaleInit;
-      const assistInit = hasOverride ? parseFloat(d.overrideAssistShare) : parseFloat(d.r1AssistShare) / xminsScaleInit;
+      // Sliders are per-90: server semantic is player_xg = team_xg * share * (xmins/90).
+      // For non-overridden players the row's per-round share is *effective* (xmins baked
+      // in), so divide by xmins/90 (using the segment's first round as representative).
+      const r0 = rounds[0];
+      const r0Xmins = parseInt(d[`r${r0}Xmins`], 10) || 0;
+      const xminsScaleInit = r0Xmins > 0 ? r0Xmins / 90 : 1;
+      const goalInit   = hasOverride ? parseFloat(d.overrideGoalShare)   : parseFloat(d[`r${r0}GoalShare`])   / xminsScaleInit;
+      const assistInit = hasOverride ? parseFloat(d.overrideAssistShare) : parseFloat(d[`r${r0}AssistShare`]) / xminsScaleInit;
       document.getElementById("goal-slider").value   = (goalInit   * 100).toFixed(1);
       document.getElementById("assist-slider").value = (assistInit * 100).toFixed(1);
 
-      const modelGoalPct   = (parseFloat(d.modelGoalShare)   / xminsScaleInit * 100).toFixed(1);
-      const modelAssistPct = (parseFloat(d.modelAssistShare) / xminsScaleInit * 100).toFixed(1);
+      const modelGoalPct   = (parseFloat(d[`r${r0}ModelGoalShare`])   / xminsScaleInit * 100).toFixed(1);
+      const modelAssistPct = (parseFloat(d[`r${r0}ModelAssistShare`]) / xminsScaleInit * 100).toFixed(1);
       document.getElementById("goal-model-label").textContent   = `Model default: ${modelGoalPct}%`;
       document.getElementById("assist-model-label").textContent = `Model default: ${modelAssistPct}%`;
 
@@ -912,12 +991,11 @@
       const goalMax   = parseFloat(goalSlider.max);
       const assistMax = parseFloat(assistSlider.max);
 
-      // The single per-90 slider applies to every round, so its floor must clear the
-      // locked SP/pen contribution in *all* rounds — take the max across them. Rounds
-      // with 0 xMins or very few minutes (<30) are skipped: at low playing time the
-      // per-90 conversion blows up disproportionately and the locked amount is tiny.
+      // The single per-90 slider applies to every round in the segment, so its floor
+      // must clear the locked SP/pen contribution in *all* of them — take the max.
+      // Rounds with <30 xMins are skipped (per-90 conversion blows up, locked is tiny).
       let goalFloorPct = 0, assistFloorPct = 0;
-      for (const r of [1, 2, 3]) {
+      for (const r of seg().rounds) {
         const xmins = parseInt(document.getElementById(`modal-xmins-${r}`).value, 10) || 0;
         if (xmins < 30) continue;
         const teamXg = parseFloat(d[`r${r}TeamXg`]) || 0;
@@ -940,6 +1018,7 @@
     function onSliderInput(fromUser) {
       if (fromUser) slidersDirty = true;
       const d = currentRow.dataset;
+      const ko = isKO();
       applySliderFloors(d);
 
       const goalShare   = parseFloat(document.getElementById("goal-slider").value)   / 100;
@@ -953,7 +1032,7 @@
       const csPtsRate       = CLEAN_SHEET_PTS[pos]     ?? 0;
       const concededPtsRate = GOALS_CONCEDED_PTS[pos]  ?? 0;
 
-      for (const r of [1, 2, 3]) {
+      for (const r of seg().rounds) {
         const xmins       = parseInt(document.getElementById(`modal-xmins-${r}`).value, 10) || 0;
         const xminsScale  = xmins / 90;
         const appPts      = appearancePts(xmins);
@@ -963,26 +1042,32 @@
 
         const playerXG = teamXG * goalShare * xminsScale;
         const playerXA = teamXG * 0.75 * assistShare * xminsScale;
-        document.getElementById(`goal-r${r}`).textContent   = playerXG.toFixed(2);
-        document.getElementById(`assist-r${r}`).textContent = playerXA.toFixed(2);
+        document.getElementById(`goal-${r}`).textContent   = playerXG.toFixed(2);
+        document.getElementById(`assist-${r}`).textContent = playerXA.toFixed(2);
 
         const goalPts     = playerXG * goalPtsRate;
         const assistPts   = playerXA * ASSIST_PTS;
         const csPts       = pCleanSheet * csPtsRate * (xmins >= 60 ? 1 : 0);
         const concededPts = (teamXGA - 1 + Math.exp(-teamXGA)) * concededPtsRate;
-        const totalXP     = goalPts + assistPts + csPts + concededPts + appPts;
-        document.getElementById(`xp-r${r}`).textContent = totalXP.toFixed(2);
+        const condXP      = goalPts + assistPts + csPts + concededPts + appPts;
+        document.getElementById(`xp-${r}`).textContent = condXP.toFixed(2);
+
+        if (ko) {
+          const pplay = parseFloat(d[`r${r}Pplay`]) || 0;
+          document.getElementById(`pplay-${r}`).textContent = (pplay * 100).toFixed(0) + "%";
+          document.getElementById(`exp-${r}`).textContent   = (condXP * pplay).toFixed(2);
+        }
       }
     }
 
     async function saveOverride() {
       if (!currentRow) return;
       const savedRow    = currentRow;
-      const xmR = {
-        1: parseInt(document.getElementById("modal-xmins-1").value, 10) || 0,
-        2: parseInt(document.getElementById("modal-xmins-2").value, 10) || 0,
-        3: parseInt(document.getElementById("modal-xmins-3").value, 10) || 0,
-      };
+      const rounds      = seg().rounds;
+      const xmR = {};
+      rounds.forEach(r => {
+        xmR[r] = parseInt(document.getElementById(`modal-xmins-${r}`).value, 10) || 0;
+      });
       const goalShare   = parseFloat(document.getElementById("goal-slider").value)   / 100;
       const assistShare = parseFloat(document.getElementById("assist-slider").value) / 100;
       const playerId    = parseInt(savedRow.dataset.id);
@@ -992,7 +1077,8 @@
 
       if (window.IS_PUBLIC) {
         // Public mode: mutate clientState, persist to localStorage, /recompute, never write to server CSVs.
-        clientState.xmins[playerId] = xmR;
+        // Merge the edited rounds so a Knockout save doesn't drop saved Group rounds (and vice-versa).
+        clientState.xmins[playerId] = Object.assign({}, clientState.xmins[playerId], xmR);
         if (slidersDirty) {
           clientState.overrides[playerId] = { goal_share: goalShare, assist_share: assistShare };
         }
@@ -1018,7 +1104,7 @@
         return;
       }
 
-      // Local mode: write-through to creator CSVs.
+      // Local mode: write-through to creator CSVs. /save merges per-round server-side.
       const saveRes  = await fetch("/save", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -1047,9 +1133,7 @@
 
       if (json.status === "ok") {
         applyXpUpdates(json.xp, json.overridden_ids, json.scouting_off_ids);
-        savedRow.dataset.r1Xmins = xmR[1];
-        savedRow.dataset.r2Xmins = xmR[2];
-        savedRow.dataset.r3Xmins = xmR[3];
+        rounds.forEach(r => { savedRow.dataset[`r${r}Xmins`] = xmR[r]; });
         savedRow.dataset.scoutingOff = scOff ? "true" : "false";
         if (slidersDirty) {
           savedRow.dataset.overrideGoalShare   = goalShare;
@@ -1109,21 +1193,29 @@
       document.getElementById("btn-reset").disabled = isSaving;
     }
 
+    // Update one row's displayed round Pts + agg from a {round: pts} map.
+    function setRowRoundPts(row, pid, ptsByRound) {
+      for (const [rStr, pts] of Object.entries(ptsByRound)) {
+        const r = parseInt(rStr, 10);
+        if (!ALL_DISPLAY_ROUNDS.includes(r)) continue;
+        row.dataset["r" + r] = pts;
+        const cell = row.querySelector(`.r${r}-pts`);
+        if (cell) cell.textContent = (+pts).toFixed(2);
+      }
+      const v = computeAgg(row).toFixed(2);
+      row.dataset.agg = v;
+      row.querySelector(".agg-pts").textContent = v;
+    }
+
+    // Local-mode response: { "<pid>": { "<round>": pts } }
     function applyXpUpdates(xp, overriddenIds, scoutingOffIds) {
       const overriddenSet = new Set(overriddenIds.map(String));
       const scoutingOffSet = new Set((scoutingOffIds || []).map(String));
-      for (const [pidStr, pts] of Object.entries(xp)) {
+      for (const [pidStr, ptsByRound] of Object.entries(xp)) {
         const row = document.querySelector(`tr[data-id="${pidStr}"]`);
         if (!row) continue;
-        row.dataset.r1  = pts["1"];
-        row.dataset.r2  = pts["2"];
-        row.dataset.r3  = pts["3"];
-        row.querySelector(".r1-pts").textContent  = pts["1"];
-        row.querySelector(".r2-pts").textContent  = pts["2"];
-        row.querySelector(".r3-pts").textContent  = pts["3"];
-        const avg = computeAvg(row).toFixed(2);
-        row.dataset.avg = avg;
-        row.querySelector(".avg-pts").textContent = avg;
+        setRowRoundPts(row, pidStr, ptsByRound);
+
         const hasOverride = overriddenSet.has(pidStr);
         row.dataset.hasOverride = hasOverride ? "true" : "false";
         row.classList.toggle("overridden", hasOverride);
@@ -1147,39 +1239,29 @@
 
     // ── Public-mode helpers ──
 
-    // Apply the rich /recompute response to the DOM.
-    // Shape: { "<pid>": { "<round>": { Pts, xMins, xG, xA, GoalShare, AssistShare, ModelGoalShare, ... } } }
+    // Apply the rich /recompute response to the DOM. Shape:
+    // { "<pid>": { "<round>": { Pts, PtsCond, PPlay, xMins, GoalShare, AssistShare, ModelGoalShare, ... } } }
     function applyRecomputeResponse(players) {
       for (const [pidStr, rounds] of Object.entries(players)) {
         const row = document.querySelector(`tr[data-id="${pidStr}"]`);
         if (!row) continue;
-        const r1 = +rounds["1"].Pts.toFixed(2);
-        const r2 = +rounds["2"].Pts.toFixed(2);
-        const r3 = +rounds["3"].Pts.toFixed(2);
 
-        row.dataset.r1  = r1;
-        row.dataset.r2  = r2;
-        row.dataset.r3  = r3;
-        row.querySelector(".r1-pts").textContent  = r1.toFixed(2);
-        row.querySelector(".r2-pts").textContent  = r2.toFixed(2);
-        row.querySelector(".r3-pts").textContent  = r3.toFixed(2);
-        const avg = computeAvg(row).toFixed(2);
-        row.dataset.avg = avg;
-        row.querySelector(".avg-pts").textContent = avg;
-
-        row.dataset.r1Xmins = Math.round(rounds["1"].xMins);
-        row.dataset.r2Xmins = Math.round(rounds["2"].xMins);
-        row.dataset.r3Xmins = Math.round(rounds["3"].xMins);
-        row.dataset.r1GoalShare      = rounds["1"].GoalShare.toFixed(4);
-        row.dataset.r1AssistShare    = rounds["1"].AssistShare.toFixed(4);
-        row.dataset.modelGoalShare   = rounds["1"].ModelGoalShare.toFixed(4);
-        row.dataset.modelAssistShare = rounds["1"].ModelAssistShare.toFixed(4);
-        for (const r of [1, 2, 3]) {
-          row.dataset[`r${r}LockedPenXg`] = rounds[r].LockedPenXg.toFixed(4);
-          row.dataset[`r${r}LockedSpXa`]  = rounds[r].LockedSpXa.toFixed(4);
+        const ptsByRound = {};
+        for (const [rStr, vals] of Object.entries(rounds)) {
+          const r = parseInt(rStr, 10);
+          if (!ALL_DISPLAY_ROUNDS.includes(r)) continue;
+          ptsByRound[r] = +vals.Pts.toFixed(2);
+          row.dataset[`r${r}Xmins`]          = Math.round(vals.xMins);
+          row.dataset[`r${r}GoalShare`]      = vals.GoalShare.toFixed(4);
+          row.dataset[`r${r}AssistShare`]    = vals.AssistShare.toFixed(4);
+          row.dataset[`r${r}ModelGoalShare`]   = vals.ModelGoalShare.toFixed(4);
+          row.dataset[`r${r}ModelAssistShare`] = vals.ModelAssistShare.toFixed(4);
+          row.dataset[`r${r}LockedPenXg`]    = vals.LockedPenXg.toFixed(4);
+          row.dataset[`r${r}LockedSpXa`]     = vals.LockedSpXa.toFixed(4);
         }
+        setRowRoundPts(row, pidStr, ptsByRound);
+
         // Scouting: eligibility already reflects the (client-side) toggle.
-        row.dataset.r1PEligible = rounds["1"].PScoutingEligible.toFixed(4);
         const off = !!clientState.scouting[pidStr];
         row.dataset.scoutingOff = off ? "true" : "false";
         updateScoutingDot(row, off);
@@ -1336,5 +1418,11 @@
       a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 0);
     }
+
+    // ── Initial paint ──
+    applySegmentView();
+    refreshAgg();
+    filterRows();
+    updateHeaders();
   </script>
 {% endblock %}

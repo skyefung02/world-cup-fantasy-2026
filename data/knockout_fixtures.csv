@@ -1,2 +1,5 @@
 round,stage,match,venue,home_abbr,away_abbr,home_xg,away_xg,home_cs,away_cs
-4,R32,73,Inglewood,RSA,CAN,0.94,1.43,23.8,39.0
+4,R32,73,Inglewood,RSA,CAN,0.92,1.47,23.0,39.8
+4,R32,74,Foxborough,BRA,JPN,1.74,1.05,35.0,17.5
+4,R32,75,Guadalupe,NED,MAR,1.33,1.02,36.2,26.5
+4,R32,76,Houston,USA,BIH,2.22,0.83,43.5,10.8
