@@ -12,12 +12,13 @@ Reuses the group-stage Elo->xG engine from build_projections (win_expectancy,
 expected_goals, GOALS_SCALE) so knockout match modelling is consistent with the
 group-stage projections.
 
-Outputs (kept SEPARATE from the group-stage projections.csv for now):
+Outputs (all TEAM-level — per-player knockout xPts are produced live by the web
+app, which crosses these aggregates with the per-player constants and routes them
+through the group-stage scoring engine; see build_projections._knockout_base_rows):
     data/knockout_team_probs.csv   — per-team P(finish 1st/2nd/3rd), P(best-third),
                                      P(reach R32/R16/QF/SF/Final), P(win)
-    data/knockout_projections.csv  — (Stage 3) per-player knockout xPts
-
-Stage 1 (this file, so far): group simulation + standings + qualification probs.
+    data/knockout_team_rounds.csv  — per-(team, round 4..8) opponent-mix xG/xGA + P(play)
+    data/knockout_fixtures.csv     — confirmed (FIFA-drawn) fixtures, head-to-head xG
 """
 
 import json
@@ -391,63 +392,8 @@ def walk_knockouts(sim, seed=1):
 
 
 TEAM_PROBS_PATH = "data/knockout_team_probs.csv"
-PLAYER_PROJ_PATH = "data/knockout_projections.csv"
 TEAM_ROUNDS_PATH = "data/knockout_team_rounds.csv"
 PROJ_ROUNDS = (4, 5, 6, 7, 8)
-
-
-def build_player_projections(n_sims=40000, seed=0):
-    """Per-player expected knockout xPts, round by round (4..8).
-
-    Feeds the MC's conditional (opponent-mix) team xG/xGA through the existing
-    group-stage scoring engine, then scales each round's points by P(play).
-    Group default xMins are carried over unchanged (decision: no ET modelling).
-    """
-    from build_projections import get_base_state, _apply_allocations_and_points, clean_sheet_prob
-
-    sim = simulate_groups(n_sims=n_sims, seed=seed)
-    ko = walk_knockouts(sim, seed=seed + 1)
-
-    # team index -> abbr, to key the conditional aggregates by team.
-    abbr = sim["teams"]["abbr"].values
-    scored = {r: dict(zip(abbr, ko["cond_scored"][r])) for r in PROJ_ROUNDS}
-    conceded = {r: dict(zip(abbr, ko["cond_conceded"][r])) for r in PROJ_ROUNDS}
-    pplay = {r: dict(zip(abbr, ko["p_play"][r])) for r in PROJ_ROUNDS}
-
-    # One row per player with the immutable per-player constants from base state.
-    base = get_base_state()
-    players = base.drop_duplicates("id").copy()
-
-    frames = []
-    for r in PROJ_ROUNDS:
-        pr = players.copy()
-        pr["round_id"] = r
-        pr["xg_scored"] = pr["abbr"].map(scored[r]).fillna(0.0)
-        pr["xg_conceded"] = pr["abbr"].map(conceded[r]).fillna(0.0)
-        pr["p_play"] = pr["abbr"].map(pplay[r]).fillna(0.0)
-        frames.append(pr)
-    df = pd.concat(frames, ignore_index=True)
-    df["p_clean_sheet"] = clean_sheet_prob(df["xg_conceded"].values)
-
-    # Conditional per-match points via the unchanged engine; default xMins.
-    df = _apply_allocations_and_points(df, {}, {}, None)
-    df["exp_pts"] = df["xpts_game"] * df["p_play"]      # expected contribution
-
-    # Wide per-round export.
-    keep = {
-        "exp_pts": "Pts", "xpts_game": "PtsCond", "p_play": "PPlay",
-        "xmins": "xMins", "player_xg": "xG", "player_xa": "xA",
-        "xg_scored": "TeamXG", "xg_conceded": "TeamXGA", "p_clean_sheet": "PCleanSheet",
-    }
-    meta = df.drop_duplicates("id")[["id", "player", "position", "price", "team", "abbr"]]
-    wide = meta.set_index("id")
-    for r in PROJ_ROUNDS:
-        slc = df[df["round_id"] == r].set_index("id")[list(keep)]
-        slc.columns = [f"{r}_{v}" for v in keep.values()]
-        wide = wide.join(slc.round(3))
-    pts_cols = [f"{r}_Pts" for r in PROJ_ROUNDS]
-    wide["ko_total"] = wide[pts_cols].sum(axis=1).round(2)
-    return wide.sort_values("ko_total", ascending=False).reset_index()
 
 
 def build_team_rounds(n_sims=40000, seed=0):
@@ -578,16 +524,6 @@ if __name__ == "__main__":
     team_rounds.to_csv(TEAM_ROUNDS_PATH, index=False)
     print(f"wrote {TEAM_ROUNDS_PATH}  ({len(team_rounds)} team-rounds)")
 
-    proj = build_player_projections(n_sims=40000, seed=0)
-    proj.to_csv(PLAYER_PROJ_PATH, index=False)
-    print(f"wrote {PLAYER_PROJ_PATH}  ({len(proj)} players)")
-
     fixtures = confirmed_knockout_fixtures()
     fixtures.to_csv(KO_FIXTURES_PATH, index=False)
     print(f"wrote {KO_FIXTURES_PATH}  ({len(fixtures)} confirmed fixtures)")
-
-    pd.set_option("display.max_rows", None, "display.width", 200)
-    cols = ["player", "position", "team", "price", "ko_total",
-            "4_Pts", "5_Pts", "6_Pts", "7_Pts", "8_Pts", "4_PPlay", "7_PPlay"]
-    print("\nTop 25 knockout-stage projections:")
-    print(proj[cols].head(25).to_string(index=False))

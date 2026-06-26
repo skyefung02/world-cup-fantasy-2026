@@ -445,7 +445,8 @@ def match_projections():
     grid = []
     ko_rounds = []
     KO_LABELS = {4: "R32", 5: "R16", 6: "QF", 7: "SF", 8: "Final"}
-    tp_path, kp_path = "data/knockout_team_probs.csv", "data/knockout_projections.csv"
+    tp_path = "data/knockout_team_probs.csv"
+    kr_path = "data/knockout_team_rounds.csv"
     if os.path.exists(tp_path):
         tp = pd.read_csv(tp_path).sort_values("P_Champ", ascending=False)
         for _, row in tp.iterrows():
@@ -456,9 +457,15 @@ def match_projections():
                 "cells": [round(row[c] * 100, 1) for c in
                           ("P_R32", "P_R16", "P_QF", "P_SF", "P_Final", "P_Champ")],
             })
-    if os.path.exists(kp_path):
-        kp = pd.read_csv(kp_path).drop_duplicates("abbr")
-        name_by_abbr = dict(zip(kp["abbr"], kp["team"]))
+    if os.path.exists(kr_path):
+        # Team-level Monte Carlo aggregates (the same source the live player engine
+        # reads, so the player table and these tables can't diverge). Long format:
+        # one row per (abbr, round) with opponent-mix cond_scored/cond_conceded + p_play.
+        kr = pd.read_csv(kr_path)
+        ko_team = {(t.abbr, int(t.round)): (t.cond_scored, t.cond_conceded, t.p_play)
+                   for t in kr.itertuples(index=False)}
+        name_by_abbr = {ab: team_lookup.get(ab, {}).get("team", ab)
+                        for ab in kr["abbr"].unique()}
 
         # Confirmed knockout fixtures (FIFA-drawn) → shown as resolved cards, and
         # their teams dropped from the opponent-uncertain table for that round.
@@ -483,20 +490,19 @@ def match_projections():
         for r in (4, 5, 6, 7, 8):
             done = confirmed_abbrs.get(r, set())
             team_rows = []
-            for _, row in kp.iterrows():
-                pplay = float(row.get(f"{r}_PPlay", 0) or 0)
+            for ab in kr.loc[kr["round"] == r, "abbr"]:
+                cond_scored, cond_conceded, pplay = ko_team[(ab, r)]
                 if pplay < 0.01:  # hide <1% longshots; full picture is in the grid
                     continue
-                ab = row["abbr"]
                 if ab in done:    # already shown as a confirmed fixture card
                     continue
                 team_rows.append({
-                    "flag": FLAGS.get(ab, ""), "team": row["team"], "abbr": ab,
+                    "flag": FLAGS.get(ab, ""), "team": name_by_abbr.get(ab, ab), "abbr": ab,
                     "group": team_group.get(ab, "").upper(),
-                    "pplay": round(pplay * 100, 1),
-                    "xg": round(float(row[f"{r}_TeamXG"]), 2),
-                    "xga": round(float(row[f"{r}_TeamXGA"]), 2),
-                    "cs": round(float(row[f"{r}_PCleanSheet"]) * 100, 1),
+                    "pplay": round(float(pplay) * 100, 1),
+                    "xg": round(float(cond_scored), 2),
+                    "xga": round(float(cond_conceded), 2),
+                    "cs": round(float(np.exp(-cond_conceded)) * 100, 1),
                 })
             team_rows.sort(key=lambda t: t["xg"], reverse=True)
             ko_rounds.append({"round": r, "label": KO_LABELS[r],
