@@ -215,7 +215,9 @@ def _precompute_base_state():
 
     # Group fixtures always happen: P(play) = 1. Knockout rows (appended below)
     # carry the modelled P(reach round); exp_pts = xpts_game * p_play folds it in.
+    # p_advance (Qual Booster) is meaningless in the group stage → 0.
     df["p_play"] = 1.0
+    df["p_advance"] = 0.0
 
     # Append knockout rounds 4..8 as additional per-(player, round) rows, reusing
     # the immutable per-player constants. Team xG/xGA/P(play) come from the cached
@@ -244,7 +246,7 @@ def _knockout_base_rows(meta):
         return pd.DataFrame(columns=list(meta.columns))
 
     tr = pd.read_csv(KO_TEAM_ROUNDS_PATH)
-    mc = {(r.abbr, int(r.round)): (r.cond_scored, r.cond_conceded, r.p_play)
+    mc = {(r.abbr, int(r.round)): (r.cond_scored, r.cond_conceded, r.p_play, r.p_advance)
           for r in tr.itertuples(index=False)}
 
     confirmed = {}  # (abbr, round) -> (xg_scored, xg_conceded, opp_abbr)
@@ -258,19 +260,24 @@ def _knockout_base_rows(meta):
     for rnd in KO_ROUNDS:
         rows = meta.copy()
         rows["round_id"] = rnd
-        xg_s, xg_c, pplay, opp = [], [], [], []
+        xg_s, xg_c, pplay, opp, padv = [], [], [], [], []
         for ab in rows["abbr"]:
+            # p_advance (Qual Booster) always comes from the MC — a confirmed fixture
+            # fixes the opponent/xG and P(play)=1, but P(progress) is still modelled.
+            adv = mc[(ab, rnd)][3] if (ab, rnd) in mc else 0.0
             if (ab, rnd) in confirmed:
                 cs, cc, o = confirmed[(ab, rnd)]
                 xg_s.append(cs); xg_c.append(cc); pplay.append(1.0); opp.append(o)
             elif (ab, rnd) in mc:
-                cs, cc, p = mc[(ab, rnd)]
+                cs, cc, p, _ = mc[(ab, rnd)]
                 xg_s.append(cs); xg_c.append(cc); pplay.append(p); opp.append(np.nan)
             else:  # team with no KO data (shouldn't happen — all 48 are in the table)
                 xg_s.append(0.0); xg_c.append(0.0); pplay.append(0.0); opp.append(np.nan)
+            padv.append(adv)
         rows["xg_scored"]    = xg_s
         rows["xg_conceded"]  = xg_c
         rows["p_play"]       = pplay
+        rows["p_advance"]    = padv
         rows["opp_abbr"]     = opp
         rows["p_clean_sheet"] = clean_sheet_prob(np.asarray(xg_c, dtype=float))
         frames.append(rows)
@@ -494,6 +501,7 @@ EXPORT_COLS = {
     "exp_pts":               "Pts",
     "xpts_game":             "PtsCond",
     "p_play":                "PPlay",
+    "p_advance":             "QualProb",
     "xmins":                 "xMins",
     "player_xg":             "xG",
     "player_xa":             "xA",

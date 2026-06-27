@@ -158,13 +158,25 @@ def prep_wc_data(options: dict) -> dict:
     default_budget     = KNOCKOUT_BUDGET if in_knockout else BUDGET
     itb                = float(options.get("itb", default_budget))
 
+    # Qualification Booster: P(player's team progresses FROM round r), read per
+    # (id, round) from the {r}_QualProb projection column (0 in the group stage,
+    # where the booster is unavailable). "Progress" is bracket-aware — from the SF
+    # it means reaching the final, from the final it means winning it. Drives the
+    # +2-per-advancing-starter bonus in solve_wc.
+    qual_prob_pw = {}
+    for r in rounds:
+        col = f"{r}_QualProb"
+        if col in df.columns:
+            for pid, v in df[col].items():
+                qual_prob_pw[(int(pid), r)] = float(v)
+
     return {
         "df":                 df,
         "rounds":             rounds,
         "next_round":         next_round,
         "group_stage_rounds": group_stage_rounds,
         "buy_price":          df["price"].to_dict(),
-        "qual_prob":          df["qual_prob"].to_dict() if "qual_prob" in df.columns else {},
+        "qual_prob_pw":       qual_prob_pw,
         "initial_squad":      [int(i) for i in options.get("initial_squad", [])],
         "itb":                itb,
         "ft":                 int(options.get("ft", 1)),
@@ -212,10 +224,13 @@ def solve_wc(data: dict, options: dict) -> list[dict]:
     next_round         = data["next_round"]
     group_stage_rounds = data["group_stage_rounds"]
     buy_price          = data["buy_price"]
-    qual_prob          = data["qual_prob"]
+    qual_prob_pw       = data["qual_prob_pw"]
     initial_squad      = data["initial_squad"]
     itb                = data["itb"]
-    initial_ft         = data["ft"]
+    # You can never make more than SQUAD_SIZE transfers, so clamp the free-transfer
+    # count there. This lets "unlimited" sentinels (e.g. ft=99 at the R32 reset, or
+    # ft_schedule's 99) mean "no hits possible" without exceeding ft_var's ub.
+    initial_ft         = min(int(data["ft"]), SQUAD_SIZE)
 
     players    = df.index.tolist()
     teams      = df["team"].unique().tolist()
@@ -226,9 +241,12 @@ def solve_wc(data: dict, options: dict) -> list[dict]:
     points_pw   = {(p, r): float(df.loc[p, f"{r}_Pts"])   for p in players for r in rounds}
     mins_pw     = {(p, r): float(df.loc[p, f"{r}_xMins"]) for p in players for r in rounds}
 
-    # FT schedule: base allocation per round (99 = effectively unlimited)
+    # FT schedule: base allocation per round (99 = effectively unlimited). Clamped to
+    # SQUAD_SIZE so the "unlimited" sentinel stays within ft_var's bounds (you can
+    # never transfer more than the whole squad anyway).
     ft_schedule = options.get("ft_schedule", {})
-    base_ft = {r: int(ft_schedule.get(str(r), ft_schedule.get(r, 1))) for r in rounds}
+    base_ft = {r: min(int(ft_schedule.get(str(r), ft_schedule.get(r, 1))), SQUAD_SIZE)
+               for r in rounds}
 
     # Country limit per round (varies by stage)
     country_limit_by_round = options.get("country_limit_by_round", {})
@@ -534,10 +552,13 @@ def solve_wc(data: dict, options: dict) -> list[dict]:
 
     # ── Qual Booster linearisation ────────────────────────────────────────────
     # use_qb[r] * lineup[p,r] is bilinear — MPS format doesn't support it.
-    # Introduce qb_lineup[p,r] = use_qb[r] AND lineup[p,r] via standard
-    # binary linearisation. Skipped entirely when qual_prob data isn't present
-    # (i.e. all group-stage runs), keeping the model small.
-    has_qual_prob = bool(qual_prob)
+    # Introduce qb_lineup[p,r] = use_qb[r] AND lineup[p,r] via standard binary
+    # linearisation, then award +2 × P(progress from round r) per STARTING XI
+    # player (matches the official rule: flat +2 per advancing starter, NOT
+    # doubled by the captain since it's added outside the captain multiplier).
+    # Skipped entirely when no QualProb data is present (all group-stage runs),
+    # keeping the model small.
+    has_qual_prob = any(v > 0 for v in qual_prob_pw.values())
     if has_qual_prob:
         qb_lineup = model.add_variables(players, rounds, name="qb_lu", vartype=so.binary)
         model.add_constraints(
@@ -553,7 +574,7 @@ def solve_wc(data: dict, options: dict) -> list[dict]:
             name="qbl_lb",
         )
         qb_xp = {
-            r: 2 * so.expr_sum(qual_prob.get(p, 0) * qb_lineup[p, r] for p in players)
+            r: 2 * so.expr_sum(qual_prob_pw.get((p, r), 0) * qb_lineup[p, r] for p in players)
             for r in rounds
         }
     else:
@@ -615,6 +636,7 @@ def solve_wc(data: dict, options: dict) -> list[dict]:
         h.setOptionValue("mip_rel_gap",    float(options.get("gap", 0.0)))
         h.setOptionValue("log_to_console", bool(options.get("verbose", False)))
         h.run()
+        solve_status = h.modelStatusToString(h.getModelStatus())
 
         sol = h.getSolution()
         for idx, var in enumerate(model.get_variables()):
@@ -705,6 +727,13 @@ def solve_wc(data: dict, options: dict) -> list[dict]:
                         "ft":           round(ft_var[r].get_value()),
                         "iter":         iteration,
                     })
+
+        if not picks:
+            raise RuntimeError(
+                f"Solver returned no squad (HiGHS status: {solve_status}). The model is "
+                f"likely infeasible — check the fixed initial_squad against the round-"
+                f"{next_round - 1} country/quota limits, the budget (itb={itb}), and ft."
+            )
 
         picks_df = pd.DataFrame(picks).sort_values(
             by=["round", "squad", "lineup", "bench", "position"],

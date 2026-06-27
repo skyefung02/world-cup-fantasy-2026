@@ -47,14 +47,14 @@ round_id,fixture_id,date,home_id,away_id,home_team,away_team,home_abbr,away_abbr
 2,46,2026-06-23T21:00:00+01:00,18,21,England,Ghana,ENG,GHA
 2,47,2026-06-24T00:00:00+01:00,33,13,Panama,Croatia,PAN,CRO
 2,48,2026-06-24T03:00:00+01:00,10,11,Colombia,Congo DR,COL,COD
-3,50,2026-06-24T20:00:00+01:00,6,36,Bosnia and Herzegovina,Qatar,BIH,QAT
 3,49,2026-06-24T20:00:00+01:00,43,9,Switzerland,Canada,SUI,CAN
-3,51,2026-06-24T23:00:00+01:00,38,7,Scotland,Brazil,SCO,BRA
+3,50,2026-06-24T20:00:00+01:00,6,36,Bosnia and Herzegovina,Qatar,BIH,QAT
 3,52,2026-06-24T23:00:00+01:00,29,22,Morocco,Haiti,MAR,HAI
+3,51,2026-06-24T23:00:00+01:00,38,7,Scotland,Brazil,SCO,BRA
 3,54,2026-06-25T02:00:00+01:00,40,27,South Africa,Korea Republic,RSA,KOR
 3,53,2026-06-25T02:00:00+01:00,15,28,Czechia,Mexico,CZE,MEX
-3,56,2026-06-25T21:00:00+01:00,14,12,Curaçao,Côte d'Ivoire,CUW,CIV
 3,55,2026-06-25T21:00:00+01:00,16,20,Ecuador,Germany,ECU,GER
+3,56,2026-06-25T21:00:00+01:00,14,12,Curaçao,Côte d'Ivoire,CUW,CIV
 3,58,2026-06-26T00:00:00+01:00,25,42,Japan,Sweden,JPN,SWE
 3,57,2026-06-26T00:00:00+01:00,44,30,Tunisia,Netherlands,TUN,NED
 3,60,2026-06-26T03:00:00+01:00,34,3,Paraguay,Australia,PAR,AUS
@@ -73,5 +73,9 @@ round_id,fixture_id,date,home_id,away_id,home_team,away_team,home_abbr,away_abbr
 3,72,2026-06-28T03:00:00+01:00,1,4,Algeria,Austria,ALG,AUT
 4,73,2026-06-28T20:00:00+01:00,40,9,South Africa,Canada,RSA,CAN
 4,74,2026-06-29T18:00:00+01:00,7,25,Brazil,Japan,BRA,JPN
+4,78,2026-06-29T21:30:00+01:00,20,34,Germany,Paraguay,GER,PAR
 4,75,2026-06-30T02:00:00+01:00,30,29,Netherlands,Morocco,NED,MAR
+4,77,2026-06-30T18:00:00+01:00,12,32,Côte d'Ivoire,Norway,CIV,NOR
+4,79,2026-06-30T22:00:00+01:00,19,42,France,Sweden,FRA,SWE
 4,76,2026-07-02T01:00:00+01:00,47,6,USA,Bosnia and Herzegovina,USA,BIH
+4,80,2026-07-03T23:00:00+01:00,2,8,Argentina,Cabo Verde,ARG,CPV

@@ -396,19 +396,27 @@ TEAM_ROUNDS_PATH = "data/knockout_team_rounds.csv"
 PROJ_ROUNDS = (4, 5, 6, 7, 8)
 
 
+# P(progress FROM this round) for the Qualification Booster. "Progress" = reach the
+# NEXT knockout stage, which is bracket-aware: from the SF it means reaching the
+# final (NOT merely playing round 8, since round 8 also holds the 3rd-place playoff
+# for SF losers); from the final it means winning it (champion).
+ADVANCE_STAGE = {4: "R16", 5: "QF", 6: "SF", 7: "F"}  # round -> stage that = "progressed"
+
+
 def build_team_rounds(n_sims=40000, seed=0):
     """Per-team, per-knockout-round (4..8) Monte Carlo aggregates.
 
     Long-format table the *live* projection engine consumes to build its KO base
     state — this replaces the static per-player knockout_projections.csv. Each row
     carries the opponent-mix-averaged team xG/xGA *conditional on the team playing
-    that round*, plus P(play) (the probability the team reaches it). The web app
-    crosses these with the immutable per-player constants and routes them through
-    the same scoring engine as the group stage, so xMins / share / scouting edits
-    apply live. Resolved-fixture overrides (head-to-head xG, P(play)=1) are layered
-    on app-side from knockout_fixtures.csv; this table is pure opponent-mix.
+    that round*, P(play) (the probability the team reaches it), and p_advance
+    (P(progress FROM that round) — feeds the solver's Qualification Booster).
+    The web app crosses these with the immutable per-player constants and routes
+    them through the same scoring engine as the group stage, so xMins / share /
+    scouting edits apply live. Resolved-fixture overrides (head-to-head xG,
+    P(play)=1) are layered on app-side from knockout_fixtures.csv.
 
-    Columns: abbr, round, cond_scored, cond_conceded, p_play.
+    Columns: abbr, round, cond_scored, cond_conceded, p_play, p_advance.
     """
     sim = simulate_groups(n_sims=n_sims, seed=seed)
     ko = walk_knockouts(sim, seed=seed + 1)
@@ -416,6 +424,8 @@ def build_team_rounds(n_sims=40000, seed=0):
     rows = []
     for r in PROJ_ROUNDS:
         cs, cc, pp = ko["cond_scored"][r], ko["cond_conceded"][r], ko["p_play"][r]
+        # p_advance: reach the next stage (rounds 4-7) or win the final (round 8).
+        padv = ko["champ"].mean(axis=1) if r == 8 else ko["played"][ADVANCE_STAGE[r]].mean(axis=1)
         for i, ab in enumerate(abbr):
             rows.append({
                 "abbr": ab,
@@ -423,8 +433,10 @@ def build_team_rounds(n_sims=40000, seed=0):
                 "cond_scored": round(float(cs[i]), 4),
                 "cond_conceded": round(float(cc[i]), 4),
                 "p_play": round(float(pp[i]), 4),
+                "p_advance": round(float(padv[i]), 4),
             })
-    return pd.DataFrame(rows, columns=["abbr", "round", "cond_scored", "cond_conceded", "p_play"])
+    return pd.DataFrame(rows, columns=["abbr", "round", "cond_scored",
+                                       "cond_conceded", "p_play", "p_advance"])
 
 
 KO_FIXTURES_PATH = "data/knockout_fixtures.csv"
