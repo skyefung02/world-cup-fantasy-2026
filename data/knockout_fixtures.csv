@@ -1,10 +1,15 @@
 round,stage,match,venue,home_abbr,away_abbr,home_xg,away_xg,home_cs,away_cs
 4,R32,73,Inglewood,RSA,CAN,0.94,1.43,23.8,39.0
-4,R32,74,Foxborough,BRA,JPN,1.72,1.06,34.6,17.9
-4,R32,78,Arlington,GER,PAR,1.7,1.1,33.3,18.3
+4,R32,74,Houston,BRA,JPN,1.72,1.06,34.6,17.9
+4,R32,78,Foxborough,GER,PAR,1.7,1.1,33.3,18.3
 4,R32,75,Guadalupe,NED,MAR,1.36,0.99,37.0,25.6
-4,R32,77,East Rutherford,CIV,NOR,0.99,1.76,17.2,37.1
-4,R32,79,Mexico City,FRA,SWE,2.55,0.67,51.0,7.8
-4,R32,76,Houston,USA,BIH,2.14,0.86,42.3,11.7
-4,R32,81,Santa Clara,AUS,EGY,1.24,1.11,33.0,28.9
-4,R32,80,Atlanta,ARG,CPV,3.45,0.42,65.9,3.2
+4,R32,77,Arlington,CIV,NOR,0.99,1.76,17.2,37.1
+4,R32,79,East Rutherford,FRA,SWE,2.55,0.67,51.0,7.8
+4,R32,82,Mexico City,MEX,ECU,1.39,0.9,40.7,24.9
+4,R32,83,Atlanta,ENG,COD,2.25,0.66,51.9,10.6
+4,R32,84,Seattle,BEL,SEN,1.15,1.26,28.4,31.6
+4,R32,76,Santa Clara,USA,BIH,2.14,0.86,42.3,11.7
+4,R32,85,Toronto,POR,CRO,1.57,1.02,36.1,20.7
+4,R32,81,Arlington,AUS,EGY,1.24,1.11,33.0,28.9
+4,R32,80,Miami Gardens,ARG,CPV,3.45,0.42,65.9,3.2
+4,R32,86,Kansas City,COL,GHA,2.08,0.65,52.1,12.5

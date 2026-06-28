@@ -476,7 +476,11 @@ def confirmed_knockout_fixtures():
             ha, aa = squad_abbr.get(hid), squad_abbr.get(aid)
             if ha not in idx or aa not in idx:
                 continue
-            venue = bracket.get(t["id"], {}).get("venue", "")
+            # Venue from the live feed (rounds.json), NOT the pre-tournament bracket
+            # template — the template's venues/routing can be stale or misaligned with
+            # the actual draw. Normalise "City, State" -> "City" to match VENUE_HOST
+            # (e.g. "Houston, Texas" -> "Houston"), so host home-field is applied right.
+            venue = (t.get("venueCity") or "").split(",")[0].strip()
             xg_h, xg_a = _h2h_xg(teams, idx, ha, aa, venue)
             rows.append({
                 "round": r["id"], "stage": bracket.get(t["id"], {}).get("stage", ""),
