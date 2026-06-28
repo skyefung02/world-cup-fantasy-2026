@@ -305,11 +305,34 @@ def resolve_r32(sim, bracket):
     return r32
 
 
+def actual_r32_draw():
+    """Actual drawn R32 fixtures from the live feed (rounds.json):
+    {match_id: (home_abbr, away_abbr, venue_city)}. Empty until the R32 is drawn.
+
+    Venue is normalised ("City, State" -> "City") to match VENUE_HOST. Once all 16
+    ties are present, walk_knockouts seeds them directly instead of reconstructing the
+    R32 from the pre-tournament template (whose group->slot routing and venues are
+    stale), removing the matchup/venue ambiguity for the rest of the bracket.
+    """
+    squad_abbr = {s["id"]: s["abbr"] for s in json.load(open("cache/squads.json"))}
+    out = {}
+    for r in json.load(open(ROUNDS_CACHE)):
+        if r["id"] != 4:
+            continue
+        for t in r["tournaments"]:
+            hid, aid = t.get("homeSquadId"), t.get("awaySquadId")
+            if hid and aid:
+                out[t["id"]] = (squad_abbr.get(hid), squad_abbr.get(aid),
+                                (t.get("venueCity") or "").split(",")[0].strip())
+    return out
+
+
 def walk_knockouts(sim, seed=1):
     """Walk R32->Final, sampling each tie's winner from Elo win expectancy.
 
-    Neutral venues (no home-field) in the knockout stage. Returns reach-probability
-    arrays per stage plus champion / third-place participation, shape (n_teams, n_sims).
+    Host home-field applies only when a host plays a tie in its own country (venue
+    -> host nation via VENUE_HOST). Returns reach-probability arrays per stage plus
+    champion / third-place participation, shape (n_teams, n_sims).
     """
     rng = np.random.default_rng(seed)
     teams = sim["teams"]; n_sims = sim["n_sims"]; n_teams = len(teams)
@@ -322,6 +345,20 @@ def walk_knockouts(sim, seed=1):
     bracket = load_bracket()
 
     r32 = resolve_r32(sim, bracket)
+
+    # Once the R32 is fully drawn, seed the actual pairings + venues from the live feed,
+    # bypassing the template reconstruction (whose group->slot routing and venues are
+    # stale). A fully-drawn R32 is a valid 32-team bijection, so this is exact and
+    # unambiguous; partial draws fall back to the reconstruction (avoids duplicates).
+    r32_ids = [m["match"] for m in bracket if m["stage"] == "R32"]
+    actual = actual_r32_draw()
+    venue_override = {}
+    if all(mid in actual and actual[mid][0] in idx and actual[mid][1] in idx for mid in r32_ids):
+        for mid in r32_ids:
+            ha, aa, venue = actual[mid]
+            r32[mid] = {"home": np.full(n_sims, idx[ha]), "away": np.full(n_sims, idx[aa])}
+            venue_override[mid] = venue
+
     winner = {}; loser = {}
     stages = ["R32", "R16", "QF", "SF", "3P", "F"]
     played = {st: np.zeros((n_teams, n_sims), dtype=bool) for st in stages}
@@ -348,8 +385,10 @@ def walk_knockouts(sim, seed=1):
         played[st][home_i, arange] = True
         played[st][away_i, arange] = True
 
-        # Host home-field applies only when the host plays in its own country.
-        vh = host_idx.get(VENUE_HOST.get(m["venue"]))
+        # Host home-field applies only when the host plays in its own country. Use the
+        # actual drawn venue for seeded R32 ties; template venue elsewhere (R16+ until drawn).
+        venue = venue_override.get(mid, m["venue"])
+        vh = host_idx.get(VENUE_HOST.get(venue))
         bonus_h = hf[home_i] * (home_i == vh) if vh is not None else 0.0
         bonus_a = hf[away_i] * (away_i == vh) if vh is not None else 0.0
         we = win_expectancy(elo[home_i] + bonus_h, elo[away_i] + bonus_a)

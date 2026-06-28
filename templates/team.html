@@ -82,16 +82,11 @@
       letter-spacing: 0.2px;
     }
     td.price { color: var(--text-muted); font-variant-numeric: tabular-nums; }
-    td.xmins-cell { width: 200px; }
+    td.xmins-cell { width: 120px; }
     th.xmins-head .xmins-head-sub { font-size: 0.66rem; color: var(--text-faint); font-family: var(--mono); font-weight: 400; }
-    th.xp-col, td.xp-cell { text-align: center; font-variant-numeric: tabular-nums; width: 76px; }
-    td.xp-cell { color: var(--text-muted); }
 
-    .xmins-grid { display: flex; align-items: flex-end; gap: 6px; }
-    .xmins-col { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-    .xmins-rlabel { font-size: 0.62rem; color: var(--text-faint); font-family: var(--mono); }
     input.xmins {
-      width: 52px;
+      width: 56px;
       padding: 5px 4px;
       text-align: center;
       font-variant-numeric: tabular-nums;
@@ -152,7 +147,7 @@
             <h1>{{ team.team }}</h1>
             <span class="group-badge">Group {{ team.group | upper }}</span>
           </div>
-          <p class="page-sub" style="margin-top: 0;">Adjust expected minutes by player.</p>
+          <p class="page-sub" style="margin-top: 0;">Set expected minutes for the knockout rounds.</p>
         </div>
       </div>
       <div class="team-nav">
@@ -178,10 +173,7 @@
               <tr>
                 <th>Player</th>
                 <th>Price</th>
-                <th class="xmins-head">xMins <span class="xmins-head-sub">R1 / R2 / R3</span></th>
-                <th class="xp-col">R1 xP</th>
-                <th class="xp-col">R2 xP</th>
-                <th class="xp-col">R3 xP</th>
+                <th class="xmins-head">xMins <span class="xmins-head-sub">Knockouts</span></th>
               </tr>
             </thead>
             <tbody>
@@ -190,20 +182,9 @@
                 <td class="player-name">{{ p.player }}</td>
                 <td class="price">£{{ p.price }}m</td>
                 <td class="xmins-cell">
-                  <div class="xmins-grid">
-                    {% for r in [1, 2, 3] %}
-                    <div class="xmins-col">
-                      <span class="xmins-rlabel">R{{ r }}</span>
-                      <input class="xmins" type="number" min="0" max="90"
-                             value="{{ p['r' ~ r ~ '_xmins'] }}"
-                             data-id="{{ p.id }}" data-round="{{ r }}">
-                    </div>
-                    {% endfor %}
-                  </div>
+                  <input class="xmins" type="number" min="0" max="90"
+                         value="{{ p.xmins }}" data-id="{{ p.id }}">
                 </td>
-                <td class="xp-cell" data-id="{{ p.id }}" data-round="1">{{ p.r1_pts }}</td>
-                <td class="xp-cell" data-id="{{ p.id }}" data-round="2">{{ p.r2_pts }}</td>
-                <td class="xp-cell" data-id="{{ p.id }}" data-round="3">{{ p.r3_pts }}</td>
               </tr>
               {% endfor %}
             </tbody>
@@ -227,40 +208,20 @@
       if (c) document.documentElement.style.setProperty("--team-color", c);
     }
 
+    // Knockout rounds this single input drives. The input shows / writes the earliest
+    // (SEED_ROUND); saving fans that value across all KO rounds. Per-round fine-tuning
+    // lives in the projections-page modal.
+    const KO_ROUNDS = [4, 5, 6, 7, 8];
+    const SEED_ROUND = KO_ROUNDS[0];
+
     // Public-mode hydration: if this team's players have edits in shared clientState
     // (from a prior visit to /projections or another team page this session), reflect
-    // them in the inputs and re-pull xP cells from /recompute.
+    // them in the inputs. Show the seed round's value to match the server-rendered seed.
     if (window.IS_PUBLIC && window.hasClientStateEdits()) {
-      let touched = false;
       document.querySelectorAll("input.xmins").forEach(inp => {
         const ov = window.clientState.xmins[inp.dataset.id];
-        if (ov && ov[inp.dataset.round] != null) {
-          inp.value = ov[inp.dataset.round];
-          touched = true;
-        }
+        if (ov && ov[SEED_ROUND] != null) inp.value = ov[SEED_ROUND];
       });
-      // Always refresh xP cells if any overrides exist (could affect this team's players
-      // even if xmins themselves weren't edited here).
-      if (touched || Object.keys(window.clientState.overrides).length > 0) {
-        fetch("/recompute", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            teams: ["{{ team.abbr }}"],
-            xmins: window.clientState.xmins,
-            overrides: window.clientState.overrides,
-            scouting: window.clientState.scouting,
-          }),
-        }).then(r => r.json()).then(resp => {
-          if (resp.status !== "ok") return;
-          Object.entries(resp.players).forEach(([pid, rounds]) => {
-            Object.entries(rounds).forEach(([r, vals]) => {
-              const cell = document.querySelector(`.xp-cell[data-id="${pid}"][data-round="${r}"]`);
-              if (cell) cell.textContent = vals.Pts.toFixed(2);
-            });
-          });
-        });
-      }
     }
 
     document.querySelectorAll("input.xmins").forEach(inp => {
@@ -270,10 +231,10 @@
 
     async function saveAll() {
       const inputs = document.querySelectorAll("input.xmins");
-      const xminsMap = {};   // nested {pid: {round: mins}}
+      const xminsMap = {};   // nested {pid: {round: mins}} — one value fanned across KO rounds
       inputs.forEach(inp => {
-        const pid = inp.dataset.id;
-        (xminsMap[pid] ??= {})[inp.dataset.round] = parseInt(inp.value, 10) || 0;
+        const v = parseInt(inp.value, 10) || 0;
+        xminsMap[inp.dataset.id] = Object.fromEntries(KO_ROUNDS.map(r => [r, v]));
         inp.classList.remove("dirty");
       });
 
@@ -286,44 +247,16 @@
 
       try {
         if (window.IS_PUBLIC) {
-          // Public mode: merge into shared clientState, persist to localStorage,
-          // then /recompute (including existing overrides so they survive the round-trip).
+          // Public mode: merge into shared clientState and persist to localStorage.
           Object.assign(window.clientState.xmins, xminsMap);
           window.saveClientState();
-          const res = await fetch("/recompute", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              teams: ["{{ team.abbr }}"],
-              xmins: window.clientState.xmins,
-              overrides: window.clientState.overrides,
-            }),
-          });
-          const resp = await res.json();
-          if (resp.status === "ok") {
-            Object.entries(resp.players).forEach(([pid, rounds]) => {
-              Object.entries(rounds).forEach(([r, vals]) => {
-                const cell = document.querySelector(`.xp-cell[data-id="${pid}"][data-round="${r}"]`);
-                if (cell) cell.textContent = vals.Pts.toFixed(2);
-              });
-            });
-          }
         } else {
-          // Local mode: today's write-through /save returns {xp: {pid: {round: pts}}}
-          const res = await fetch("/save", {
+          // Local mode: write-through /save persists the fanned-out KO rounds.
+          await fetch("/save", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(xminsMap),
           });
-          const resp = await res.json();
-          if (resp.xp) {
-            Object.entries(resp.xp).forEach(([pid, rounds]) => {
-              Object.entries(rounds).forEach(([r, pts]) => {
-                const cell = document.querySelector(`.xp-cell[data-id="${pid}"][data-round="${r}"]`);
-                if (cell) cell.textContent = pts;
-              });
-            });
-          }
         }
         statusEl.textContent = "Saved";
         statusEl.style.color = "var(--success)";

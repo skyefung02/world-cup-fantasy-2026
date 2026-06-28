@@ -160,25 +160,17 @@ def team(abbr):
     players = load_players()
     team_players = players[players["abbr"] == abbr].copy()
 
-    # Per-round xP and (post-override) xMins from in-memory projections. xMins seeds
-    # the three per-round inputs; respects IS_PUBLIC (pure defaults on the deploy).
-    proj = current_projections_df()[
-        ["id", "1_Pts", "2_Pts", "3_Pts", "1_xMins", "2_xMins", "3_xMins"]
-    ].rename(columns={
-        "1_Pts": "r1_pts", "2_Pts": "r2_pts", "3_Pts": "r3_pts",
-        "1_xMins": "r1_xmins", "2_xMins": "r2_xmins", "3_xMins": "r3_xmins",
-    })
+    # Pure xMins editor: one input per player covering all upcoming (knockout) rounds.
+    # Seed it from the earliest KO round (R32 / round 4) xMins; saving fans the single
+    # value back out across all KO rounds. Respects IS_PUBLIC (pure defaults on deploy).
+    proj = current_projections_df()[["id", "4_xMins"]].rename(columns={"4_xMins": "xmins"})
     team_players = team_players.merge(proj, on="id", how="left")
-    for col in ["r1_pts", "r2_pts", "r3_pts"]:
-        team_players[col] = team_players[col].fillna(0).round(2)
-    for col in ["r1_xmins", "r2_xmins", "r3_xmins"]:
-        team_players[col] = team_players[col].fillna(0).round().astype(int)
+    team_players["xmins"] = team_players["xmins"].fillna(0).round().astype(int)
 
     pos_order = ["GK", "DEF", "MID", "FWD"]
     grouped = {
         pos: team_players[team_players["position"] == pos][
-            ["id", "player", "price",
-             "r1_xmins", "r2_xmins", "r3_xmins", "r1_pts", "r2_pts", "r3_pts"]
+            ["id", "player", "price", "xmins"]
         ].to_dict(orient="records")
         for pos in pos_order
     }
