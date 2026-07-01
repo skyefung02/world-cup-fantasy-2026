@@ -2,7 +2,7 @@
 
 {% block title %}Projections — World Cup Fantasy{% endblock %}
 
-{% set display_rounds = group_rounds + ko_rounds %}
+{% set display_rounds = ko_rounds %}
 
 {% block extra_styles %}
     /* ── Page-specific: hero the table identity ── */
@@ -43,29 +43,6 @@
       letter-spacing: 0.4px;
       text-transform: uppercase;
     }
-
-    /* ── Segmented toggle (Group / Knockout) ── */
-    .segmented {
-      display: inline-flex;
-      border: 1px solid var(--border);
-      border-radius: 9px;
-      overflow: hidden;
-      background: var(--surface-2);
-    }
-    .seg-btn {
-      background: transparent;
-      color: var(--text-muted);
-      border: none;
-      padding: 9px 22px;
-      font-family: var(--display);
-      font-weight: 600;
-      font-size: 0.86rem;
-      letter-spacing: 0.4px;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-    .seg-btn.active { background: var(--accent); color: #0b0b0f; }
-    .seg-btn:not(.active):hover { color: var(--text); background: var(--surface); }
 
     /* ── Controls bar ── */
     .controls {
@@ -476,11 +453,7 @@
     <div class="page-head">
       <div>
         <h1 class="page-title">Projections</h1>
-        <p class="page-sub">Expected points per gameweek. Click a row to inspect or override.</p>
-      </div>
-      <div class="segmented" id="segmented">
-        <button class="seg-btn active" data-seg="group" onclick="switchSegment('group')">Group</button>
-        <button class="seg-btn" data-seg="knockout" onclick="switchSegment('knockout')">Knockout</button>
+        <p class="page-sub">Knockout expected points, P(play)-weighted. Click a row to inspect or override.</p>
       </div>
     </div>
 
@@ -549,7 +522,7 @@
             data-abbr="{{ p.abbr }}"
             data-team="{{ p.team | lower }}"
             data-price="{{ p.price }}"
-            data-agg="{{ p.avg_pts }}"
+            data-agg="{{ p.ko_total }}"
             data-ko-total="{{ p.ko_total }}"
             data-ko-alive="{{ 'true' if p.ko_alive else 'false' }}"
             data-has-override="{{ 'true' if p.has_override else 'false' }}"
@@ -582,7 +555,7 @@
             {% for r in display_rounds %}
             <td class="pts-cell num r{{ r }}-pts" style="display:none">{{ p[r ~ '_Pts'] }}</td>
             {% endfor %}
-            <td class="avg-cell num agg-pts">{{ p.avg_pts }}</td>
+            <td class="avg-cell num agg-pts">{{ p.ko_total }}</td>
           </tr>
           {% endfor %}
         </tbody>
@@ -654,23 +627,19 @@
     let sortCol = "agg", sortDir = -1;
     let filterPos = "all", filterSearch = "";
 
-    // ── Segments ──
-    // Group stage (remaining group rounds, averaged) vs Knockout (rounds 4..8, summed).
-    // R1/R2 are complete and not shipped. P(play) discounting lives in the Pts the
-    // server already sends (Knockout Pts = conditional × P(play)); the segment toggle
-    // just swaps which round columns + aggregation are shown.
-    const GROUP_ROUNDS = {{ group_rounds | tojson }};
+    // ── Knockout view ──
+    // The group stage is complete, so the page is knockout-only: rounds 4..8, summed.
+    // P(play) discounting lives in the Pts the server sends (Knockout Pts =
+    // conditional × P(play)); ROUND_LABELS drives the column headers + round pills.
     const KO_ROUNDS    = {{ ko_rounds | tojson }};
     const ROUND_LABELS = {{ round_labels | tojson }};
-    const ALL_DISPLAY_ROUNDS = GROUP_ROUNDS.concat(KO_ROUNDS);
+    const ALL_DISPLAY_ROUNDS = KO_ROUNDS.slice();
     const SEGMENTS = {
-      group:    { rounds: GROUP_ROUNDS, agg: "avg", aggLabel: "Avg xP" },
-      knockout: { rounds: KO_ROUNDS,    agg: "sum", aggLabel: "Total xP" },
+      knockout: { rounds: KO_ROUNDS, agg: "sum", aggLabel: "Total xP" },
     };
-    let currentSegment = "group";
-    // Per-segment active round selection (all rounds on by default).
+    let currentSegment = "knockout";
+    // Active round selection (all KO rounds on by default).
     const selectedBySeg = {
-      group:    new Set(GROUP_ROUNDS),
       knockout: new Set(KO_ROUNDS),
     };
     const seg = () => SEGMENTS[currentSegment];
@@ -697,8 +666,6 @@
     // Show the columns / pills / aggregation label for the current segment.
     function applySegmentView() {
       const active = new Set(seg().rounds);
-      document.querySelectorAll(".seg-btn").forEach(b =>
-        b.classList.toggle("active", b.dataset.seg === currentSegment));
 
       ALL_DISPLAY_ROUNDS.forEach(r => {
         const show = active.has(r) && selectedRounds().has(r);
@@ -714,17 +681,6 @@
       });
 
       document.querySelector("th[data-col='agg'] .agg-label").textContent = seg().aggLabel;
-    }
-
-    function switchSegment(name) {
-      if (name === currentSegment || !SEGMENTS[name]) return;
-      currentSegment = name;
-      sortCol = "agg"; sortDir = -1;
-      applySegmentView();
-      refreshAgg();
-      filterRows();
-      sortTable();
-      updateHeaders();
     }
 
     function onRoundFilter(round) {

@@ -327,6 +327,39 @@ def actual_r32_draw():
     return out
 
 
+def completed_ko_results(idx):
+    """Actual finished knockout ties from the live feed, as fixed outcomes:
+    {frozenset({winner_i, loser_i}): winner_i} keyed by team indices.
+
+    Winner is the higher scorer; on a level scoreline the penalty shootout
+    (home/awayPenaltyScore) decides it. A drawn tie with no shootout data is
+    skipped (can't be resolved). walk_knockouts uses this to hold played
+    matches fixed instead of re-simulating them — a knocked-out team must not
+    keep a live path in the tournament, exactly as group results are held fixed.
+    """
+    squad_abbr = {s["id"]: s["abbr"] for s in json.load(open("cache/squads.json"))}
+    out = {}
+    for r in json.load(open(ROUNDS_CACHE)):
+        if r["id"] < 4:
+            continue
+        for t in r["tournaments"]:
+            if t.get("status") != "complete" or t.get("homeScore") is None:
+                continue
+            ha, aa = squad_abbr.get(t.get("homeSquadId")), squad_abbr.get(t.get("awaySquadId"))
+            if ha not in idx or aa not in idx:
+                continue
+            hs, as_ = int(t["homeScore"]), int(t["awayScore"])
+            if hs != as_:
+                win = ha if hs > as_ else aa
+            else:
+                hp, ap = t.get("homePenaltyScore"), t.get("awayPenaltyScore")
+                if hp is None or ap is None:
+                    continue  # level tie, no shootout data — can't resolve
+                win = ha if int(hp) > int(ap) else aa
+            out[frozenset((idx[ha], idx[aa]))] = idx[win]
+    return out
+
+
 def _draw_to_template_positions(sim, bracket):
     """Map the actual R32 draw onto TEMPLATE bracket positions by group-slot.
 
@@ -395,6 +428,10 @@ def walk_knockouts(sim, seed=1):
     arange = np.arange(n_sims)
     bracket = load_bracket()
 
+    # Finished knockout ties are held fixed (like completed group results) so a
+    # knocked-out team keeps no simulated path forward. {frozenset(pair): winner_i}.
+    results = completed_ko_results(idx)
+
     r32 = resolve_r32(sim, bracket)
 
     # Once the R32 is fully drawn, seed the actual ties + venues onto the correct
@@ -455,6 +492,14 @@ def walk_knockouts(sim, seed=1):
         np.add.at(play_count[pr], away_i, 1)
 
         home_win = rng.random(n_sims) < we
+        # Override the sampled outcome wherever this exact tie has already been
+        # played — force the real winner so eliminated teams advance in 0 sims.
+        if results:
+            for pair, win_i in results.items():
+                a_i, b_i = tuple(pair)
+                hit = ((home_i == a_i) & (away_i == b_i)) | ((home_i == b_i) & (away_i == a_i))
+                if hit.any():
+                    home_win[hit] = home_i[hit] == win_i
         winner[mid] = np.where(home_win, home_i, away_i)
         loser[mid] = np.where(home_win, away_i, home_i)
 

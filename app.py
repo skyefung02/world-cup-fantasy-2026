@@ -288,11 +288,9 @@ def my_team():
     )
 
 
-# Rounds surfaced on the projections page. R1/R2 are complete, so they're dropped
-# from the UI entirely (no data shipped). The Group segment shows the remaining
-# group round(s); the Knockout segment shows rounds 4..8 with their P(play)-weighted
-# points. KO_LABELS drives the column headers + round pills in the Knockout segment.
-GROUP_DISPLAY_ROUNDS = [3]
+# Rounds surfaced on the projections page. The group stage is complete (R1-R3), so
+# no group rounds are shipped — the page is knockout-only, showing rounds 4..8 with
+# their P(play)-weighted points. KO_ROUND_LABELS drives the column headers + round pills.
 KO_DISPLAY_ROUNDS = [4, 5, 6, 7, 8]
 KO_ROUND_LABELS = {4: "R32", 5: "R16", 6: "QF", 7: "SF", 8: "F"}
 
@@ -300,12 +298,10 @@ KO_ROUND_LABELS = {4: "R32", 5: "R16", 6: "QF", 7: "SF", 8: "F"}
 @app.route("/projections")
 def projections_page():
     proj = current_projections_df()
-    display_rounds = GROUP_DISPLAY_ROUNDS + KO_DISPLAY_ROUNDS
+    display_rounds = KO_DISPLAY_ROUNDS
 
     proj["flag"] = proj["abbr"].map(FLAGS).fillna("")
-    # Group headline = the remaining group round (R3). Knockout headline = Total xP,
-    # the sum of each KO round's already-P(play)-weighted points.
-    proj["avg_pts"] = proj["3_Pts"].round(2)
+    # Headline = Total xP, the sum of each KO round's already-P(play)-weighted points.
     proj["ko_total"] = proj[[f"{r}_Pts" for r in KO_DISPLAY_ROUNDS]].sum(axis=1).round(2)
     # Hide eliminated teams from the Knockout segment (no realistic path to any KO round).
     proj["ko_alive"] = proj[[f"{r}_PPlay" for r in KO_DISPLAY_ROUNDS]].max(axis=1) > 0.01
@@ -337,20 +333,18 @@ def projections_page():
     round_cols = [f"{r}_{c}" for r in display_rounds for c in per_round]
     base_cols = [
         "id", "player", "position", "price", "team", "abbr", "flag",
-        "avg_pts", "ko_total", "ko_alive", "has_override", "has_scouting_bonus",
+        "ko_total", "ko_alive", "has_override", "has_scouting_bonus",
         "scouting_off", "1_OverrideGoalShare", "1_OverrideAssistShare",
         "1_PercentSelected", "1_PScoutingEligible",
     ]
     players = (
         proj[base_cols + round_cols]
-        .sort_values("avg_pts", ascending=False)
+        .sort_values("ko_total", ascending=False)
         .to_dict(orient="records")
     )
-    round_labels = {3: "R3", **KO_ROUND_LABELS}
     return render_template(
         "projections.html", players=players,
-        group_rounds=GROUP_DISPLAY_ROUNDS, ko_rounds=KO_DISPLAY_ROUNDS,
-        round_labels=round_labels,
+        ko_rounds=KO_DISPLAY_ROUNDS, round_labels=KO_ROUND_LABELS,
     )
 
 
@@ -442,13 +436,20 @@ def match_projections():
     kr_path = "data/knockout_team_rounds.csv"
     if os.path.exists(tp_path):
         tp = pd.read_csv(tp_path).sort_values("P_Champ", ascending=False)
+        reach_cols = ("P_R32", "P_R16", "P_QF", "P_SF", "P_Final", "P_Champ")
         for _, row in tp.iterrows():
             ab = row["abbr"]
+            cells = [round(row[c] * 100, 1) for c in reach_cols]
+            # Show only teams still mathematically alive. Decided rounds are exactly
+            # 0 or 1 (group exits are all-zero; a team knocked out in the R32 sits at
+            # R32=1, everything after 0), so "alive" == some reach prob is strictly
+            # between 0 and 1, i.e. its final placing is still undetermined.
+            if not any(0 < row[c] < 1 for c in reach_cols):
+                continue
             grid.append({
                 "flag": FLAGS.get(ab, ""), "team": row["name"], "abbr": ab,
                 "group": str(row["group"]).upper(),
-                "cells": [round(row[c] * 100, 1) for c in
-                          ("P_R32", "P_R16", "P_QF", "P_SF", "P_Final", "P_Champ")],
+                "cells": cells,
             })
     if os.path.exists(kr_path):
         # Team-level Monte Carlo aggregates (the same source the live player engine
