@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()  # local-only convenience; Railway injects env vars directly
 
 import build_projections
+import build_knockout_projections as bk
 import fifa_team
 import refresh_ownership
 from build_projections import (
@@ -370,9 +371,9 @@ def match_projections():
     team_group = fixtures[["abbr", "group"]].drop_duplicates().set_index("abbr")["group"].to_dict()
 
     rounds = []
-    # R1 and R2 are complete — omit them from the UI (R3 is the default tab). Data
-    # is untouched in the projection CSVs.
-    for r in [3]:
+    # Group stage is complete — omit group rounds from the UI entirely (knockout is the
+    # default view now). Data is untouched in the projection CSVs; this only hides it.
+    for r in []:
         seen = set()
         round_matches = []
         for abbr, row in team_lookup.items():
@@ -470,6 +471,7 @@ def match_projections():
                 rnd, a, b = int(f["round"]), f["home_abbr"], f["away_abbr"]
                 total = float(f["home_xg"]) + float(f["away_xg"])
                 confirmed.setdefault(rnd, []).append({
+                    "match": int(f["match"]),
                     "a_abbr": a, "a_team": name_by_abbr.get(a, a), "a_flag": FLAGS.get(a, ""),
                     "a_xg": round(float(f["home_xg"]), 2), "a_cs": float(f["home_cs"]),
                     "b_abbr": b, "b_team": name_by_abbr.get(b, b), "b_flag": FLAGS.get(b, ""),
@@ -478,6 +480,11 @@ def match_projections():
                     "venue": f["venue"],
                 })
                 confirmed_abbrs.setdefault(rnd, set()).update([a, b])
+
+        # Bracket feeder tree: which two same-round ties feed each next-round match.
+        # Lets the R32 tab show the bracket (winner of tie A meets winner of tie B).
+        bracket_def = json.load(open("data/knockout_bracket.json"))["matches"]
+        NEXT_STAGE = {4: "R16", 5: "QF", 6: "SF", 7: "F"}
 
         for r in (4, 5, 6, 7, 8):
             done = confirmed_abbrs.get(r, set())
@@ -497,8 +504,33 @@ def match_projections():
                     "cs": round(float(np.exp(-cond_conceded)) * 100, 1),
                 })
             team_rows.sort(key=lambda t: t["xg"], reverse=True)
+
+            # Pair up this round's confirmed ties by the next-round match their winners
+            # feed into. Feed match-ids are permuted vs the template, so map each tie to
+            # its TEMPLATE bracket position (by group-slot) first, then walk the template
+            # feeder tree. Only pairs where BOTH feeders are confirmed are shown.
+            cards = confirmed.get(r, [])
+            pairs = []
+            nxt = NEXT_STAGE.get(r)
+            if nxt and cards:
+                seeded = bk.actual_r32_in_template_space() if r == 4 else {}
+                card_by_teams = {frozenset((c["a_abbr"], c["b_abbr"])): c for c in cards}
+                card_by_template = {}
+                for tmid, (ha, aa, _v) in seeded.items():
+                    c = card_by_teams.get(frozenset((ha, aa)))
+                    if c:
+                        card_by_template[tmid] = c
+                for m in sorted((m for m in bracket_def if m.get("stage") == nxt),
+                                key=lambda m: m["match"]):
+                    h, a = m.get("home", {}), m.get("away", {})
+                    if h.get("type") == "winner" and a.get("type") == "winner":
+                        top, bot = card_by_template.get(h["match"]), card_by_template.get(a["match"])
+                        if top and bot:
+                            pairs.append({"top": top, "bottom": bot, "next_label": KO_LABELS.get(r + 1, "")})
+
             ko_rounds.append({"round": r, "label": KO_LABELS[r],
-                              "team_rows": team_rows, "confirmed": confirmed.get(r, [])})
+                              "team_rows": team_rows, "confirmed": cards,
+                              "bracket_pairs": pairs})
 
     return render_template("match_projections.html", rounds=rounds,
                            ko_rounds=ko_rounds, grid=grid)

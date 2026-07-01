@@ -327,6 +327,57 @@ def actual_r32_draw():
     return out
 
 
+def _draw_to_template_positions(sim, bracket):
+    """Map the actual R32 draw onto TEMPLATE bracket positions by group-slot.
+
+    The live feed numbers R32 ties differently from the pre-tournament template, so
+    seeding by match-id would mis-pair the R16 (it did). Instead, identify each drawn
+    tie by its non-third group slots (e.g. winner-of-E) and drop it into the template
+    match that calls for those slots — then the template's (correct) feeder tree pairs
+    the right ties. The actual third-placed team rides along with the tie, so FIFA's
+    third-place routing is taken from the feed, not reconstructed.
+
+    Returns {template_match_id: (home_abbr, away_abbr, venue)} when the R32 is fully
+    drawn and maps cleanly; {} otherwise (caller falls back to reconstruction).
+    """
+    draw = actual_r32_draw()
+    r32_ids = {m["match"] for m in bracket if m["stage"] == "R32"}
+    if not r32_ids.issubset(draw.keys()):
+        return {}
+
+    teams = sim["teams"]; pos = sim["pos"][:, 0]; idx = sim["idx"]
+    group_of = {ab: str(teams["group"].values[i]).upper() for ab, i in idx.items()}
+    team_slot = {ab: (int(pos[i]), group_of[ab]) for ab, i in idx.items()}  # (1/2/3/4, GROUP)
+
+    def fixed_key(m):
+        out = set()
+        for side in ("home", "away"):
+            s = m[side]
+            if s["type"] == "group_winner":
+                out.add((1, str(s["group"]).upper()))
+            elif s["type"] == "group_runner_up":
+                out.add((2, str(s["group"]).upper()))
+        return frozenset(out)
+
+    tmpl_by_key = {fixed_key(m): m["match"] for m in bracket if m["stage"] == "R32"}
+
+    out = {}
+    for ha, aa, venue in draw.values():
+        key = frozenset(s for s in (team_slot.get(ha), team_slot.get(aa)) if s and s[0] in (1, 2))
+        tmid = tmpl_by_key.get(key)
+        if tmid is None or tmid in out:
+            return {}  # ambiguous/incomplete mapping — fall back to reconstruction
+        out[tmid] = (ha, aa, venue)
+    return out if len(out) == len(r32_ids) else {}
+
+
+def actual_r32_in_template_space(n_sims=1, seed=0):
+    """{template_match_id: (home_abbr, away_abbr, venue)} for the drawn R32, mapped onto
+    template positions (see _draw_to_template_positions). Lets the web app render the
+    bracket via the template feeder tree. {} if not fully drawn / unmappable."""
+    return _draw_to_template_positions(simulate_groups(n_sims=n_sims, seed=seed), load_bracket())
+
+
 def walk_knockouts(sim, seed=1):
     """Walk R32->Final, sampling each tie's winner from Elo win expectancy.
 
@@ -346,18 +397,15 @@ def walk_knockouts(sim, seed=1):
 
     r32 = resolve_r32(sim, bracket)
 
-    # Once the R32 is fully drawn, seed the actual pairings + venues from the live feed,
-    # bypassing the template reconstruction (whose group->slot routing and venues are
-    # stale). A fully-drawn R32 is a valid 32-team bijection, so this is exact and
-    # unambiguous; partial draws fall back to the reconstruction (avoids duplicates).
-    r32_ids = [m["match"] for m in bracket if m["stage"] == "R32"]
-    actual = actual_r32_draw()
+    # Once the R32 is fully drawn, seed the actual ties + venues onto the correct
+    # template bracket positions (by group-slot — feed match-ids are permuted vs the
+    # template's, so seeding by id mis-pairs the R16). The template feeder tree then
+    # pairs the right ties. Partial/unmappable draws fall back to the reconstruction.
+    seeded = _draw_to_template_positions(sim, bracket)
     venue_override = {}
-    if all(mid in actual and actual[mid][0] in idx and actual[mid][1] in idx for mid in r32_ids):
-        for mid in r32_ids:
-            ha, aa, venue = actual[mid]
-            r32[mid] = {"home": np.full(n_sims, idx[ha]), "away": np.full(n_sims, idx[aa])}
-            venue_override[mid] = venue
+    for tmid, (ha, aa, venue) in seeded.items():
+        r32[tmid] = {"home": np.full(n_sims, idx[ha]), "away": np.full(n_sims, idx[aa])}
+        venue_override[tmid] = venue
 
     winner = {}; loser = {}
     stages = ["R32", "R16", "QF", "SF", "3P", "F"]

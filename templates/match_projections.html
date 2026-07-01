@@ -343,6 +343,48 @@
       .round-section.ko.has-cards.visible { grid-template-columns: 1fr; }
     }
     .ko-cards { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+    /* Fully-drawn round (no uncertain table): grid the cards instead of one tall column. */
+    .ko-cards.cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 12px;
+    }
+    .ko-cards.cards-grid .group-header { grid-column: 1 / -1; }
+
+    /* ── Bracket view (fully-drawn round): pairs of ties whose winners meet next ── */
+    .bracket-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+      gap: 26px 40px;
+    }
+    .bracket-pair {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 96px;
+      align-items: stretch;
+    }
+    .pair-cards { display: flex; flex-direction: column; justify-content: center; gap: 14px; min-width: 0; }
+    /* Connector: a [ bracket hugging the two cards + a stub out to the next-round chip. */
+    .bracket-join { position: relative; display: flex; align-items: center; justify-content: flex-end; }
+    .bracket-join::before {
+      content: ""; position: absolute; left: 0; top: 25%; bottom: 25%; width: 14px;
+      border: 2px solid var(--border-strong); border-right: none;
+    }
+    .bracket-join::after {
+      content: ""; position: absolute; left: 14px; right: 0; top: 50%;
+      border-top: 2px solid var(--border-strong);
+    }
+    .join-label {
+      position: relative; z-index: 1;
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 7px; padding: 6px 11px;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.6px;
+      color: var(--text-muted); text-transform: uppercase; white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .bracket-pair { grid-template-columns: 1fr; }
+      .bracket-join { justify-content: flex-start; margin: 4px 0 2px; }
+      .bracket-join::before, .bracket-join::after { display: none; }
+    }
     .ko-table-wrap {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -409,7 +451,7 @@
       <button class="round-btn {% if loop.first %}active{% endif %}" onclick="showRound({{ rd.round }}, this)">Round {{ rd.round }}</button>
       {% endfor %}
       {% for kr in ko_rounds %}
-      <button class="round-btn" onclick="showRound({{ kr.round }}, this)">{{ kr.label }}</button>
+      <button class="round-btn {% if not rounds and loop.first %}active{% endif %}" onclick="showRound({{ kr.round }}, this)">{{ kr.label }}</button>
       {% endfor %}
     </div>
 
@@ -535,52 +577,74 @@
       </table>
     {% endmacro %}
 
+    {% macro match_card(m) %}
+      <div class="match-card" data-a-abbr="{{ m.a_abbr }}" data-b-abbr="{{ m.b_abbr }}">
+        <div class="match-body">
+          <div class="team-col">
+            <div class="team-name-row"><span>{{ m.a_flag }}</span><span class="name">{{ m.a_team }}</span></div>
+            <div class="xg-num">{{ "%.2f"|format(m.a_xg) }}</div>
+            <div class="cs-label">Clean sheet</div>
+            <div class="cs-value">{{ m.a_cs }}%</div>
+          </div>
+          <div class="vs-col"><span class="vs-text">xG</span><span class="vs-text">vs</span></div>
+          <div class="team-col right">
+            <div class="team-name-row"><span>{{ m.b_flag }}</span><span class="name">{{ m.b_team }}</span></div>
+            <div class="xg-num">{{ "%.2f"|format(m.b_xg) }}</div>
+            <div class="cs-label">Clean sheet</div>
+            <div class="cs-value">{{ m.b_cs }}%</div>
+          </div>
+        </div>
+        <div class="xg-bar-wrap">
+          <div class="xg-bar"><div class="xg-bar-a" style="width: {{ m.a_share }}%"></div></div>
+          <div class="bar-labels">
+            <span class="bar-label">{{ m.a_share }}%</span>
+            <span class="bar-label">{{ "%.1f"|format(100 - m.a_share) }}%</span>
+          </div>
+        </div>
+      </div>
+    {% endmacro %}
+
     {% for kr in ko_rounds %}
-    <div class="round-section ko {% if kr.confirmed %}has-cards{% endif %}" id="round-{{ kr.round }}">
+    <div class="round-section ko {% if kr.confirmed and kr.team_rows %}has-cards{% endif %} {% if not rounds and loop.first %}visible{% endif %}" id="round-{{ kr.round }}">
       {% if kr.confirmed %}
-      <!-- Left: confirmed fixture cards, one per row in bracket order -->
-      <div class="ko-cards">
+      {% if kr.bracket_pairs %}
+      <!-- Bracket view: the two ties whose winners meet next are grouped together. -->
+      <div class="ko-bracket">
+        <div class="group-header">
+          <span class="label"><span class="letter">Confirmed fixtures · winners pair up in the {{ kr.bracket_pairs[0].next_label }}</span></span>
+          <span class="divider"></span>
+        </div>
+        <div class="bracket-grid">
+          {% for p in kr.bracket_pairs %}
+          <div class="bracket-pair">
+            <div class="pair-cards">
+              {{ match_card(p.top) }}
+              {{ match_card(p.bottom) }}
+            </div>
+            <div class="bracket-join"><span class="join-label">{{ p.next_label }}</span></div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% else %}
+      <!-- Flat cards (partial draw / no next-round pairing yet). Grid them when there's
+           no uncertain table alongside so they don't stretch full-width. -->
+      <div class="ko-cards {% if not kr.team_rows %}cards-grid{% endif %}">
         <div class="group-header">
           <span class="label"><span class="letter">Confirmed fixtures</span></span>
           <span class="divider"></span>
         </div>
-        {% for m in kr.confirmed %}
-        <div class="match-card" data-a-abbr="{{ m.a_abbr }}" data-b-abbr="{{ m.b_abbr }}">
-          <div class="match-body">
-            <div class="team-col">
-              <div class="team-name-row"><span>{{ m.a_flag }}</span><span class="name">{{ m.a_team }}</span></div>
-              <div class="xg-num">{{ "%.2f"|format(m.a_xg) }}</div>
-              <div class="cs-label">Clean sheet</div>
-              <div class="cs-value">{{ m.a_cs }}%</div>
-            </div>
-            <div class="vs-col"><span class="vs-text">xG</span><span class="vs-text">vs</span></div>
-            <div class="team-col right">
-              <div class="team-name-row"><span>{{ m.b_flag }}</span><span class="name">{{ m.b_team }}</span></div>
-              <div class="xg-num">{{ "%.2f"|format(m.b_xg) }}</div>
-              <div class="cs-label">Clean sheet</div>
-              <div class="cs-value">{{ m.b_cs }}%</div>
-            </div>
-          </div>
-          <div class="xg-bar-wrap">
-            <div class="xg-bar"><div class="xg-bar-a" style="width: {{ m.a_share }}%"></div></div>
-            <div class="bar-labels">
-              <span class="bar-label">{{ m.a_share }}%</span>
-              <span class="bar-label">{{ "%.1f"|format(100 - m.a_share) }}%</span>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
+        {% for m in kr.confirmed %}{{ match_card(m) }}{% endfor %}
       </div>
+      {% endif %}
 
-      <!-- Right: opponent-uncertain table -->
+      <!-- Right: opponent-uncertain table — only when some opponents are still undecided. -->
+      {% if kr.team_rows %}
       <div class="table-panel">
         <div class="table-panel-head">Opponent not yet decided · {{ kr.label }}</div>
-        <div class="table-scroll">
-          {% if kr.team_rows %}{{ ko_table(kr) }}{% else %}
-          <p class="ko-note" style="padding: 16px;">All {{ kr.label }} fixtures are confirmed.</p>
-          {% endif %}
-        </div>
+        <div class="table-scroll">{{ ko_table(kr) }}</div>
       </div>
+      {% endif %}
       {% else %}
       <div>
         <p class="ko-note">
