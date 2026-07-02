@@ -112,6 +112,7 @@
 
     /* ── Match card ── */
     .match-card {
+      position: relative;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -123,6 +124,19 @@
         inset -4px 0 0 var(--team-b-color, transparent);
     }
     .match-card:hover { border-color: var(--border-strong); }
+
+    /* Decided (played) tie: reads as a result, not a live forecast. */
+    .match-card.decided { background: var(--surface-2); }
+    .final-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 5px 14px; background: var(--surface); border-bottom: 1px solid var(--border);
+      font-family: var(--mono); font-size: 0.56rem; font-weight: 700;
+      letter-spacing: 0.7px; text-transform: uppercase; color: var(--text-subtle);
+    }
+    .final-header .fh-note { color: var(--text-faint); font-weight: 600; }
+    .win-tick { color: var(--success); font-weight: 800; margin: 0 4px; }
+    .match-card.decided .team-col.lost { opacity: 0.42; }
+    .match-card.decided .xg-num { opacity: 0.6; }
 
     .match-body {
       display: flex;
@@ -190,10 +204,13 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding: 4px 4px 0;
-      gap: 4px;
+      padding: 0 4px;
+      gap: 6px;               /* match .team-col row gap so the bands line up */
     }
     .vs-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 0.6rem;
       font-weight: 700;
       color: var(--text-faint);
@@ -201,6 +218,8 @@
       text-transform: uppercase;
       font-family: var(--mono);
     }
+    .vs-text.vs-names { height: 1.14rem; }  /* aligns with the team-name row */
+    .vs-text.vs-xg    { height: 1.9rem; }   /* aligns with the .xg-num value */
 
     /* ── xG bar ── */
     .xg-bar-wrap { padding: 0 16px 14px; }
@@ -228,6 +247,14 @@
       font-weight: 600;
       font-family: var(--mono);
       font-variant-numeric: tabular-nums;
+    }
+    .bar-caption {
+      align-self: center;
+      font-size: 0.58rem;
+      color: var(--text-faint);
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     /* ── Group header ── */
@@ -357,17 +384,30 @@
       grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
       gap: 26px 40px;
     }
+    /* Two-sided: left-half ties on the left, right-half mirrored on the right, so
+       the two halves of the draw converge toward the centre like a real bracket. */
+    .bracket-grid.two-sided { grid-template-columns: 1fr 1fr; gap: 0 56px; align-items: start; }
+    .bracket-col { display: flex; flex-direction: column; gap: 26px; min-width: 0; }
     .bracket-pair {
       display: grid;
       grid-template-columns: minmax(0, 1fr) 96px;
       align-items: stretch;
     }
+    /* Right half: cards on the right, connector on the left pointing inward. */
+    .bracket-pair.mirror { grid-template-columns: 96px minmax(0, 1fr); }
+    .bracket-pair.mirror .pair-cards { order: 2; }
+    .bracket-pair.mirror .bracket-join { order: 1; justify-content: flex-start; }
+    .bracket-pair.mirror .bracket-join::before {
+      left: auto; right: 0; border: 2px solid var(--border-strong); border-right: none;
+    }
+    .bracket-pair.mirror .bracket-join::after { left: 0; right: 14px; }
     .pair-cards { display: flex; flex-direction: column; justify-content: center; gap: 14px; min-width: 0; }
-    /* Connector: a [ bracket hugging the two cards + a stub out to the next-round chip. */
+    /* Connector: a ] bracket hugging the two cards (arms point left toward them,
+       spine on the right) + a stub out to the next-round chip. */
     .bracket-join { position: relative; display: flex; align-items: center; justify-content: flex-end; }
     .bracket-join::before {
       content: ""; position: absolute; left: 0; top: 25%; bottom: 25%; width: 14px;
-      border: 2px solid var(--border-strong); border-right: none;
+      border: 2px solid var(--border-strong); border-left: none;
     }
     .bracket-join::after {
       content: ""; position: absolute; left: 14px; right: 0; top: 50%;
@@ -381,7 +421,9 @@
       color: var(--text-muted); text-transform: uppercase; white-space: nowrap;
     }
     @media (max-width: 640px) {
-      .bracket-pair { grid-template-columns: 1fr; }
+      .bracket-grid.two-sided { grid-template-columns: 1fr; gap: 26px; }
+      .bracket-pair, .bracket-pair.mirror { grid-template-columns: 1fr; }
+      .bracket-pair.mirror .pair-cards { order: 0; }
       .bracket-join { justify-content: flex-start; margin: 4px 0 2px; }
       .bracket-join::before, .bracket-join::after { display: none; }
     }
@@ -480,8 +522,8 @@
                   <div class="cs-value">{{ m.a_cs }}%</div>
                 </div>
                 <div class="vs-col">
-                  <span class="vs-text">xG</span>
-                  <span class="vs-text">vs</span>
+                  <span class="vs-text vs-names">vs</span>
+                  <span class="vs-text vs-xg">xG</span>
                 </div>
                 <div class="team-col right">
                   <div class="team-name-row">
@@ -578,26 +620,28 @@
     {% endmacro %}
 
     {% macro match_card(m) %}
-      <div class="match-card" data-a-abbr="{{ m.a_abbr }}" data-b-abbr="{{ m.b_abbr }}">
+      <div class="match-card {% if m.decided %}decided{% endif %}" data-a-abbr="{{ m.a_abbr }}" data-b-abbr="{{ m.b_abbr }}">
+        {% if m.decided %}<div class="final-header"><span>Final</span><span class="fh-note">xG is pre-match</span></div>{% endif %}
         <div class="match-body">
-          <div class="team-col">
-            <div class="team-name-row"><span>{{ m.a_flag }}</span><span class="name">{{ m.a_team }}</span></div>
+          <div class="team-col {% if m.decided and m.winner != 'a' %}lost{% endif %}">
+            <div class="team-name-row"><span>{{ m.a_flag }}</span><span class="name">{{ m.a_team }}</span>{% if m.decided and m.winner == 'a' %}<span class="win-tick">✓</span>{% endif %}</div>
             <div class="xg-num">{{ "%.2f"|format(m.a_xg) }}</div>
             <div class="cs-label">Clean sheet</div>
             <div class="cs-value">{{ m.a_cs }}%</div>
           </div>
-          <div class="vs-col"><span class="vs-text">xG</span><span class="vs-text">vs</span></div>
-          <div class="team-col right">
-            <div class="team-name-row"><span>{{ m.b_flag }}</span><span class="name">{{ m.b_team }}</span></div>
+          <div class="vs-col"><span class="vs-text vs-names">vs</span><span class="vs-text vs-xg">xG</span></div>
+          <div class="team-col right {% if m.decided and m.winner != 'b' %}lost{% endif %}">
+            <div class="team-name-row"><span>{{ m.b_flag }}</span><span class="name">{{ m.b_team }}</span>{% if m.decided and m.winner == 'b' %}<span class="win-tick">✓</span>{% endif %}</div>
             <div class="xg-num">{{ "%.2f"|format(m.b_xg) }}</div>
             <div class="cs-label">Clean sheet</div>
             <div class="cs-value">{{ m.b_cs }}%</div>
           </div>
         </div>
         <div class="xg-bar-wrap">
-          <div class="xg-bar"><div class="xg-bar-a" style="width: {{ m.a_share }}%"></div></div>
+          <div class="xg-bar"><div class="xg-bar-a" style="width: {% if m.decided %}100{% else %}{{ m.a_share }}{% endif %}%"></div></div>
           <div class="bar-labels">
             <span class="bar-label">{{ m.a_share }}%</span>
+            <span class="bar-caption">{% if m.decided %}advanced{% else %}to win tie{% endif %}</span>
             <span class="bar-label">{{ "%.1f"|format(100 - m.a_share) }}%</span>
           </div>
         </div>
@@ -614,16 +658,31 @@
           <span class="label"><span class="letter">Confirmed fixtures · winners pair up in the {{ kr.bracket_pairs[0].next_label }}</span></span>
           <span class="divider"></span>
         </div>
-        <div class="bracket-grid">
-          {% for p in kr.bracket_pairs %}
-          <div class="bracket-pair">
-            <div class="pair-cards">
-              {{ match_card(p.top) }}
-              {{ match_card(p.bottom) }}
+        {% set left = kr.bracket_pairs | selectattr('half', 'equalto', 'l') | list %}
+        {% set right = kr.bracket_pairs | selectattr('half', 'equalto', 'r') | list %}
+        <div class="bracket-grid two-sided">
+          <div class="bracket-col">
+            {% for p in left %}
+            <div class="bracket-pair">
+              <div class="pair-cards">
+                {{ match_card(p.top) }}
+                {{ match_card(p.bottom) }}
+              </div>
+              <div class="bracket-join"><span class="join-label">{{ p.next_label }}</span></div>
             </div>
-            <div class="bracket-join"><span class="join-label">{{ p.next_label }}</span></div>
+            {% endfor %}
           </div>
-          {% endfor %}
+          <div class="bracket-col">
+            {% for p in right %}
+            <div class="bracket-pair mirror">
+              <div class="pair-cards">
+                {{ match_card(p.top) }}
+                {{ match_card(p.bottom) }}
+              </div>
+              <div class="bracket-join"><span class="join-label">{{ p.next_label }}</span></div>
+            </div>
+            {% endfor %}
+          </div>
         </div>
       </div>
       {% else %}

@@ -316,6 +316,30 @@ KO_ROUND_NAMES = {4: "Round of 32", 5: "Round of 16", 6: "Quarter Finals",
 KO_ROUND_FIXTURES = {4: 16, 5: 8, 6: 4, 7: 2, 8: 2}
 
 
+def _bracket_halves(bracket_def):
+    """Map each match id → bracket half ('l'/'r') by splitting the feeder tree at
+    the final: everything under the final's home-feeder (a semifinal) is the left
+    half, everything under its away-feeder is the right half. Lets the bracket view
+    lay the two halves out on their correct sides instead of interleaving them."""
+    child = {m["match"]: [x.get("match") for x in (m.get("home"), m.get("away"))
+                          if isinstance(x, dict) and x.get("type") == "winner"]
+             for m in bracket_def}
+    out = {}
+
+    def descend(mid, half):
+        if mid is None:
+            return
+        out[mid] = half
+        for c in child.get(mid, []):
+            descend(c, half)
+
+    final = next((m for m in bracket_def if m.get("stage") == "F"), None)
+    if final:
+        descend(final.get("home", {}).get("match"), "l")
+        descend(final.get("away", {}).get("match"), "r")
+    return out
+
+
 def _counts_by_country(player_ids, proj_df):
     """Collapse a squad's player ids to {abbr: count} — all the risk math needs."""
     id2abbr = proj_df.set_index("id")["abbr"].to_dict()
@@ -573,6 +597,16 @@ def match_projections():
         kr = pd.read_csv(kr_path)
         ko_team = {(t.abbr, int(t.round)): (t.cond_scored, t.cond_conceded, t.p_play)
                    for t in kr.itertuples(index=False)}
+        # Conditional "win this tie" prob = P(advance | in the round) = p_advance/p_play.
+        # Same quantity the squad-risk page shows, so the card bar and that page agree.
+        ko_advance = {(t.abbr, int(t.round)): float(t.p_advance) for t in kr.itertuples(index=False)}
+
+        def _win_tie_share(abbr, rnd):
+            adv, cell = ko_advance.get((abbr, rnd)), ko_team.get((abbr, rnd))
+            play = cell[2] if cell else None
+            if adv is not None and play and play > 0:
+                return max(0.0, min(1.0, adv / play))
+            return None
         name_by_abbr = {ab: team_lookup.get(ab, {}).get("team", ab)
                         for ab in kr["abbr"].unique()}
 
@@ -586,13 +620,23 @@ def match_projections():
             for _, f in fx.iterrows():
                 rnd, a, b = int(f["round"]), f["home_abbr"], f["away_abbr"]
                 total = float(f["home_xg"]) + float(f["away_xg"])
+                # Bar = P(win the tie) from the knockout sim (falls back to xG share
+                # if advance probs are missing). Complementary side is 100 − a_share.
+                aw = _win_tie_share(a, rnd)
+                a_share = (round(aw * 100, 1) if aw is not None
+                           else round(float(f["home_xg"]) / total * 100, 1) if total > 0 else 50.0)
+                # A played tie is decided: the sim pins the winner's advance prob to
+                # 1 and the loser's to 0. Flag it so the card reads as a result, not
+                # a live forecast (its xG/CS become a pre-match projection).
+                decided = aw is not None and (aw >= 0.999 or aw <= 0.001)
+                winner = ("a" if aw >= 0.5 else "b") if decided else None
                 confirmed.setdefault(rnd, []).append({
                     "match": int(f["match"]),
                     "a_abbr": a, "a_team": name_by_abbr.get(a, a), "a_flag": FLAGS.get(a, ""),
                     "a_xg": round(float(f["home_xg"]), 2), "a_cs": float(f["home_cs"]),
                     "b_abbr": b, "b_team": name_by_abbr.get(b, b), "b_flag": FLAGS.get(b, ""),
                     "b_xg": round(float(f["away_xg"]), 2), "b_cs": float(f["away_cs"]),
-                    "a_share": round(float(f["home_xg"]) / total * 100, 1) if total > 0 else 50.0,
+                    "a_share": a_share, "decided": decided, "winner": winner,
                     "venue": f["venue"],
                 })
                 confirmed_abbrs.setdefault(rnd, set()).update([a, b])
@@ -601,6 +645,7 @@ def match_projections():
         # Lets the R32 tab show the bracket (winner of tie A meets winner of tie B).
         bracket_def = json.load(open("data/knockout_bracket.json"))["matches"]
         NEXT_STAGE = {4: "R16", 5: "QF", 6: "SF", 7: "F"}
+        half_of = _bracket_halves(bracket_def)   # match id → 'l' / 'r'
 
         for r in (4, 5, 6, 7, 8):
             done = confirmed_abbrs.get(r, set())
@@ -642,7 +687,8 @@ def match_projections():
                     if h.get("type") == "winner" and a.get("type") == "winner":
                         top, bot = card_by_template.get(h["match"]), card_by_template.get(a["match"])
                         if top and bot:
-                            pairs.append({"top": top, "bottom": bot, "next_label": KO_LABELS.get(r + 1, "")})
+                            pairs.append({"top": top, "bottom": bot, "half": half_of.get(m["match"], "l"),
+                                          "next_label": KO_LABELS.get(r + 1, "")})
 
             ko_rounds.append({"round": r, "label": KO_LABELS[r],
                               "team_rows": team_rows, "confirmed": cards,

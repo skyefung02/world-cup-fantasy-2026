@@ -1,15 +1,16 @@
 {
     "projection_file": "data/projections.csv",
-    "next_round": 4,
+    "next_round": 5,
     "horizon": 3,
-    "initial_squad": [],
+    "initial_squad": [1099, 457, 492, 2031, 517, 1092, 1082, 173, 468, 500, 38, 262, 1320, 1318, 270],
     "decay_base": 1,
-    "itb": 105.0,
-    "ft": 99,
-    "xmin_lb": 45, 
+    "itb": 0.1,
+    "ft": 4,
+    "xmin_lb": 45,
     "use_wildcard": [],
     "use_twelfth_man": [],
     "used_wildcard": 1,
     "used_twelfth_man": 1,
-    "used_max_captain": 1
+    "used_max_captain": 1,
+    "used_qual_booster": 1
 }
