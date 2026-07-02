@@ -6,9 +6,9 @@ round,stage,match,venue,home_abbr,away_abbr,home_xg,away_xg,home_cs,away_cs
 4,R32,77,Arlington,CIV,NOR,0.97,1.8,16.6,37.8
 4,R32,79,East Rutherford,FRA,SWE,2.65,0.64,52.7,7.0
 4,R32,82,Mexico City,MEX,ECU,1.52,0.84,43.2,21.9
-4,R32,83,Atlanta,ENG,COD,2.17,0.68,50.5,11.4
-4,R32,84,Seattle,BEL,SEN,1.15,1.26,28.4,31.6
-4,R32,76,Santa Clara,USA,BIH,2.14,0.86,42.3,11.7
+4,R32,83,Atlanta,ENG,COD,2.13,0.7,49.8,11.8
+4,R32,84,Seattle,BEL,SEN,1.24,1.17,31.1,28.9
+4,R32,76,Santa Clara,USA,BIH,2.21,0.84,43.3,11.0
 4,R32,87,Inglewood,ESP,AUT,2.36,0.8,45.0,9.4
 4,R32,85,Toronto,POR,CRO,1.55,1.03,35.7,21.1
 4,R32,88,Vancouver,SUI,ALG,1.65,1.04,35.2,19.2
@@ -18,5 +18,5 @@ round,stage,match,venue,home_abbr,away_abbr,home_xg,away_xg,home_cs,away_cs
 5,R16,89,Houston,CAN,MAR,0.87,1.38,25.0,41.8
 5,R16,91,Philadelphia,PAR,FRA,0.75,1.93,14.5,47.1
 5,R16,90,East Rutherford,BRA,NOR,1.61,1.19,30.3,20.0
-5,R16,92,Mexico City,MEX,ENG,1.19,1.1,33.4,30.4
-5,R16,93,Seattle,USA,BEL,1.41,1.27,28.1,24.4
+5,R16,92,Mexico City,MEX,ENG,1.2,1.09,33.7,30.2
+5,R16,93,Seattle,USA,BEL,1.36,1.31,26.9,25.7
