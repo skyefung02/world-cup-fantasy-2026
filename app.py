@@ -335,14 +335,33 @@ def squad_risk_page():
     country composition, so all recompute happens in the browser)."""
     import squad_risk as sr
 
-    ko_round = sr.current_ko_round()
-    ko_probs = sr.team_ko_probs(ko_round)                 # {abbr: p_ko}
+    # Planning spans the live round through the final: the same squad can be
+    # evaluated against any upcoming round's survival odds. team_ko_probs(r) is
+    # the chance a team loses in round r *given it's in it* — exactly what you
+    # want when modelling "the squad I'll field in the R16".
+    live_round = sr.current_ko_round()
+    plan_rounds = [r for r in KO_DISPLAY_ROUNDS if r >= live_round]
+
     proj_df = current_projections_df()
     name_by_abbr = proj_df.drop_duplicates("abbr").set_index("abbr")["team"].to_dict()
-    teams = sorted(
-        ({"abbr": a, "name": name_by_abbr.get(a, a), "flag": FLAGS.get(a, ""),
-          "p_ko": round(p, 4)} for a, p in ko_probs.items()),
-        key=lambda t: t["name"])
+
+    ko_probs_by_round = {r: {a: round(p, 4) for a, p in sr.team_ko_probs(r).items()}
+                         for r in plan_rounds}
+    all_abbrs = set().union(*(m.keys() for m in ko_probs_by_round.values())) if ko_probs_by_round else set()
+    teams_meta = {a: {"name": name_by_abbr.get(a, a), "flag": FLAGS.get(a, "")} for a in all_abbrs}
+    ft_by_round = {r: sr.FREE_TRANSFERS.get(r, 4) for r in plan_rounds}
+    round_options = [{"num": r, "label": KO_ROUND_LABELS.get(r, f"R{r}"),
+                      "name": KO_ROUND_NAMES.get(r, f"Round {r}")} for r in plan_rounds]
+
+    # A team's survival is "confirmed" when its opponent for that round is set —
+    # i.e. it appears in the confirmed fixtures. Otherwise the odds are projected
+    # (a Monte-Carlo average over the possible opponents the bracket could yield).
+    conf_fx = pd.read_csv("data/processed/fixtures.csv")
+    confirmed_by_round = {
+        r: sorted(set(sub["home_abbr"]) | set(sub["away_abbr"]))
+        for r in plan_rounds
+        for sub in [conf_fx[conf_fx["round_id"] == r]]
+    }
 
     counts, paste_error = {}, None
     start_empty = request.args.get("empty")
@@ -367,9 +386,9 @@ def squad_risk_page():
             except Exception:
                 counts = {}
 
-    # Keep only countries actually in this round (drops any already-eliminated
-    # players a stale imported squad might carry — the editor plans in-round only).
-    counts = {a: n for a, n in counts.items() if a in ko_probs}
+    # Keep only countries that appear in some planning round (drops group-stage
+    # leftovers a stale imported squad might carry).
+    counts = {a: n for a, n in counts.items() if a in all_abbrs}
 
     # Public + no team yet (and not explicitly starting empty) → show the import prompt.
     awaiting = IS_PUBLIC and request.method == "GET" and not start_empty
@@ -380,10 +399,12 @@ def squad_risk_page():
         "squad_risk.html",
         awaiting_paste=awaiting,
         paste_error=paste_error,
-        round_label=KO_ROUND_LABELS.get(ko_round, f"R{ko_round}"),
-        free_transfers=sr.FREE_TRANSFERS.get(ko_round, 4),
-        teams=teams,
-        ko_probs={a: round(p, 4) for a, p in ko_probs.items()},
+        round_options=round_options,
+        default_round=live_round,
+        ko_probs_by_round=ko_probs_by_round,
+        teams_meta=teams_meta,
+        ft_by_round=ft_by_round,
+        confirmed_by_round=confirmed_by_round,
         counts=counts,
         flags=FLAGS,
     )

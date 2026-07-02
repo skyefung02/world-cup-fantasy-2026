@@ -806,9 +806,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 516,Rayan Cherki,MID,8.0,playing,4.1,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1893,0.0,-0.37
 516,Rayan Cherki,MID,8.0,playing,4.1,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
 516,Rayan Cherki,MID,8.0,playing,4.1,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
-517,Michael Olise,MID,9.5,playing,35.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1893,0.0,-0.37
-517,Michael Olise,MID,9.5,playing,35.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
-517,Michael Olise,MID,9.5,playing,35.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
+517,Michael Olise,MID,9.5,playing,35.5,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1893,0.0,-0.37
+517,Michael Olise,MID,9.5,playing,35.5,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
+517,Michael Olise,MID,9.5,playing,35.5,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
 565,Benjamin Asare,GK,3.8,playing,0.2,21,Ghana,GHA,l,1702,0.0,-0.24,-0.1,Defensive,1,PAN,1701,0.0,0.01
 565,Benjamin Asare,GK,3.8,playing,0.2,21,Ghana,GHA,l,1702,0.0,-0.24,-0.1,Defensive,2,ENG,2007,0.0,-0.16
 565,Benjamin Asare,GK,3.8,playing,0.2,21,Ghana,GHA,l,1702,0.0,-0.24,-0.1,Defensive,3,CRO,1868,0.0,0.09
@@ -1295,9 +1295,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 1361,Bruno Guimarães,MID,6.8,playing,5.6,7,Brazil,BRA,c,2013,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
 1361,Bruno Guimarães,MID,6.8,playing,5.6,7,Brazil,BRA,c,2013,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
 1361,Bruno Guimarães,MID,6.8,playing,5.6,7,Brazil,BRA,c,2013,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-1366,Raphinha,MID,8.2,playing,8.9,7,Brazil,BRA,c,2013,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-1366,Raphinha,MID,8.2,playing,8.9,7,Brazil,BRA,c,2013,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-1366,Raphinha,MID,8.2,playing,8.9,7,Brazil,BRA,c,2013,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
+1366,Raphinha,MID,8.2,playing,8.8,7,Brazil,BRA,c,2013,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
+1366,Raphinha,MID,8.2,playing,8.8,7,Brazil,BRA,c,2013,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
+1366,Raphinha,MID,8.2,playing,8.8,7,Brazil,BRA,c,2013,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
 1369,Neymar,MID,7.2,playing,2.2,7,Brazil,BRA,c,2013,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
 1369,Neymar,MID,7.2,playing,2.2,7,Brazil,BRA,c,2013,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
 1369,Neymar,MID,7.2,playing,2.2,7,Brazil,BRA,c,2013,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
@@ -1664,9 +1664,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 2025,Chemsdine Talbi,FWD,4.4,playing,0.1,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2013,0.0,0.12
 2025,Chemsdine Talbi,FWD,4.4,playing,0.1,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
 2025,Chemsdine Talbi,FWD,4.4,playing,0.1,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
-2031,Sergiño Dest,DEF,4.3,playing,11.6,47,USA,USA,d,1806,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
-2031,Sergiño Dest,DEF,4.3,playing,11.6,47,USA,USA,d,1806,91.0,0.07,0.11,Attacking,2,AUS,1804,0.0,-0.04
-2031,Sergiño Dest,DEF,4.3,playing,11.6,47,USA,USA,d,1806,91.0,0.07,0.11,Attacking,3,TUR,1852,0.0,0.19
+2031,Sergiño Dest,DEF,4.3,playing,11.7,47,USA,USA,d,1806,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
+2031,Sergiño Dest,DEF,4.3,playing,11.7,47,USA,USA,d,1806,91.0,0.07,0.11,Attacking,2,AUS,1804,0.0,-0.04
+2031,Sergiño Dest,DEF,4.3,playing,11.7,47,USA,USA,d,1806,91.0,0.07,0.11,Attacking,3,TUR,1852,0.0,0.19
 2032,Miles Robinson,DEF,4.0,playing,0.3,47,USA,USA,d,1806,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
 2032,Miles Robinson,DEF,4.0,playing,0.3,47,USA,USA,d,1806,91.0,0.07,0.11,Attacking,2,AUS,1804,0.0,-0.04
 2032,Miles Robinson,DEF,4.0,playing,0.3,47,USA,USA,d,1806,91.0,0.07,0.11,Attacking,3,TUR,1852,0.0,0.19

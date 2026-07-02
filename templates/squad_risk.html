@@ -39,6 +39,10 @@
     .crow .cname { font-weight: 600; min-width: 120px; }
     .crow .csurv { font-family: var(--mono); font-size: 0.74rem; }
     .csurv.hot { color: var(--danger); } .csurv.warm { color: var(--warn); } .csurv.cool { color: var(--success); }
+    .fixture-tag { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.3px; text-transform: uppercase;
+      padding: 1px 6px; border-radius: 5px; cursor: help; }
+    .fixture-tag.proj { color: var(--warn); background: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.28); }
+    .fixture-tag.conf { color: var(--text-subtle); }
     .cstep { display: flex; align-items: center; gap: 10px; margin-left: auto; }
     .stepbtn { width: 26px; height: 26px; border-radius: 7px; background: var(--surface-2);
       border: 1px solid var(--border); color: var(--text); font-size: 1rem; cursor: pointer; line-height: 1; }
@@ -62,6 +66,14 @@
     .rd-p { width: 44px; color: var(--text-muted); }
     .tlink { color: var(--accent); text-decoration: none; }
     .tlink:hover { text-decoration: underline; }
+
+    /* ── round selector ── */
+    .round-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .round-pill { font-family: var(--display); font-weight: 700; font-size: 0.88rem; padding: 7px 14px;
+      border-radius: 999px; background: var(--surface); border: 1px solid var(--border);
+      color: var(--text-muted); cursor: pointer; }
+    .round-pill:hover { color: var(--text); border-color: var(--border-strong); }
+    .round-pill.active { background: var(--accent-bg); color: var(--accent); border-color: var(--accent-border); }
 
     /* ── start: two equal paths (manual | import) ── */
     .start-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 8px 0 30px; }
@@ -109,7 +121,7 @@
   {% if awaiting_paste %}
     <div class="page-head"><div>
       <h1 class="page-title">Squad Risk Planner</h1>
-      <p class="page-sub">Test transfer scenarios for the {{ round_label }} — two ways to start, whichever you prefer.</p>
+      <p class="page-sub">Test transfer scenarios round by round — two ways to start, whichever you prefer.</p>
     </div></div>
 
     <div class="start-choices">
@@ -136,13 +148,25 @@
   {% else %}
     <div class="page-head"><div>
       <h1 class="page-title">Squad Risk Planner</h1>
-      <p class="page-sub">Edit your countries and watch the {{ round_label }} risk move · same-country players share fate</p>
+      <p class="page-sub">Pick a round, set your projected squad, and watch the knockout risk move · same-country players share fate</p>
     </div></div>
 
     <div id="riskApp"
-         data-koprobs='{{ ko_probs | tojson }}'
-         data-teams='{{ teams | tojson }}'
+         data-koprobs-by-round='{{ ko_probs_by_round | tojson }}'
+         data-teams-meta='{{ teams_meta | tojson }}'
+         data-ft-by-round='{{ ft_by_round | tojson }}'
+         data-confirmed-by-round='{{ confirmed_by_round | tojson }}'
+         data-default-round="{{ default_round }}"
          data-counts='{{ counts | tojson }}'>
+
+      <div class="section-label" style="margin:0 0 10px">Planning for</div>
+      <div class="round-pills" id="roundPills">
+        {% for r in round_options %}
+        <button class="round-pill {% if r.num == default_round %}active{% endif %}" data-round="{{ r.num }}">{{ r.name }}</button>
+        {% endfor %}
+      </div>
+      <p class="cap-note" id="planHint" style="margin:-8px 0 20px"></p>
+
       <div class="risk-summary">
         <div class="cap-stat">
           <span class="lbl">Expected out</span>
@@ -151,8 +175,8 @@
         </div>
         <div class="cap-stat">
           <span class="lbl">Free transfers</span>
-          <span class="val"><input class="ft-input" id="ftInput" type="number" min="0" max="15" value="{{ free_transfers }}"></span>
-          <span class="sub">what you have to spend</span>
+          <span class="val"><input class="ft-input" id="ftInput" type="number" min="0" max="15" value=""></span>
+          <span class="sub">before the next round</span>
         </div>
         <div class="cap-stat risk-over" id="riskOver">
           <span class="lbl">Chance forced &gt; FT</span>
@@ -167,9 +191,13 @@
       </div>
       <div id="countryRows" class="country-rows"></div>
       <p class="cap-note" id="squadHint" style="margin-top:10px"></p>
+      <p class="cap-note" style="margin-top:6px">
+        <span class="fixture-tag conf">✓ confirmed</span> opponent known ·
+        <span class="fixture-tag proj">projected</span> opponent still to be decided — odds averaged over possible matchups
+      </p>
 
       <div class="section-label" style="margin-top:26px">Knockout distribution
-        <span class="cap-note">· P(exactly k of your players eliminated in the {{ round_label }})</span>
+        <span class="cap-note">· P(exactly k of your players eliminated in the <span id="distRoundName"></span>)</span>
       </div>
       <div class="risk-dist" id="riskDist"></div>
     </div>
@@ -181,11 +209,18 @@
     (function () {
       const app = document.getElementById("riskApp");
       if (!app) return;
-      const koProbs = JSON.parse(app.dataset.koprobs);          // {abbr: p_ko}
-      const teams   = JSON.parse(app.dataset.teams);            // [{abbr,name,flag,p_ko}]
-      let   counts  = JSON.parse(app.dataset.counts);           // {abbr: n}
-      const teamByAbbr = Object.fromEntries(teams.map(t => [t.abbr, t]));
+      const koByRound = JSON.parse(app.dataset.koprobsByRound);   // {round: {abbr: p_ko}}
+      const teamsMeta = JSON.parse(app.dataset.teamsMeta);        // {abbr: {name, flag}}
+      const ftByRound = JSON.parse(app.dataset.ftByRound);        // {round: ft}
+      const confByRound = JSON.parse(app.dataset.confirmedByRound); // {round: [abbr]} with a set opponent
+      let   counts    = JSON.parse(app.dataset.counts);           // {abbr: n}
+      let   round     = String(app.dataset.defaultRound);         // active round key
+      const rounds    = Object.keys(koByRound).map(Number).sort((a, b) => a - b);
+      const firstRound = String(rounds[0]);
 
+      const pillWrap = document.getElementById("roundPills");
+      const planHint = document.getElementById("planHint");
+      const distName = document.getElementById("distRoundName");
       const rowsEl  = document.getElementById("countryRows");
       const addSel  = document.getElementById("addCountry");
       const ftInput = document.getElementById("ftInput");
@@ -196,15 +231,20 @@
       const distEl  = document.getElementById("riskDist");
       const hintEl  = document.getElementById("squadHint");
 
+      // Active round's knockout probs + its label (from the pill text).
+      const koProbs = () => koByRound[round] || {};
+      const roundName = r => (pillWrap.querySelector(`[data-round="${r}"]`) || {}).textContent || "";
+
       const total = () => Object.values(counts).reduce((s, n) => s + n, 0);
       const survClass = s => s < 0.5 ? "hot" : s < 0.85 ? "warm" : "cool";
 
       // Grouped Poisson-binomial: one spike per country (all n share fate).
       function computeDist() {
+        const ko = koProbs();
         let dist = [1.0];
         for (const [abbr, n] of Object.entries(counts)) {
           if (!n) continue;
-          const p = koProbs[abbr] ?? 0;
+          const p = ko[abbr] ?? 0;
           const next = new Array(dist.length + n).fill(0);
           for (let k = 0; k < dist.length; k++) {
             next[k] += dist[k] * (1 - p);      // country survives
@@ -216,16 +256,25 @@
       }
 
       function renderRows() {
+        const ko = koProbs();
+        const conf = confByRound[round] || [];
         const abbrs = Object.keys(counts).filter(a => counts[a] > 0)
-          .sort((a, b) => counts[b] * (koProbs[b] ?? 0) - counts[a] * (koProbs[a] ?? 0));
+          .sort((a, b) => counts[b] * (ko[b] ?? 0) - counts[a] * (ko[a] ?? 0));
         const t = total();
         rowsEl.innerHTML = abbrs.map(a => {
-          const info = teamByAbbr[a] || { name: a, flag: "" };
-          const surv = 1 - (koProbs[a] ?? 0);
+          const info = teamsMeta[a] || { name: a, flag: "" };
+          const inRound = a in ko;
+          const surv = 1 - (ko[a] ?? 1);
+          const survTxt = inRound ? `${Math.round(surv * 100)}% survive` : "out this round";
+          const tag = !inRound ? ""
+            : conf.includes(a)
+              ? `<span class="fixture-tag conf" title="Opponent confirmed — odds from the actual fixture">✓ confirmed</span>`
+              : `<span class="fixture-tag proj" title="Opponent not set yet — odds are a Monte-Carlo average over the possible matchups">projected</span>`;
           return `<div class="crow" data-abbr="${a}">
             <span class="flag">${info.flag || ""}</span>
             <span class="cname">${info.name}</span>
-            <span class="csurv ${survClass(surv)}">${Math.round(surv * 100)}% survive</span>
+            <span class="csurv ${inRound ? survClass(surv) : "hot"}">${survTxt}</span>
+            ${tag}
             <div class="cstep">
               <button class="stepbtn" data-act="dec" title="Remove one">−</button>
               <span class="cnum">${counts[a]}</span>
@@ -237,9 +286,16 @@
       }
 
       function renderAdd() {
-        const avail = teams.filter(t => !(counts[t.abbr] > 0));
+        const ko = koProbs();
+        const conf = confByRound[round] || [];
+        // Offer countries still alive for this round (skip ones already added / eliminated).
+        const avail = Object.keys(ko)
+          .filter(a => !(counts[a] > 0) && ko[a] < 0.999)
+          .map(a => ({ abbr: a, name: (teamsMeta[a] || {}).name || a, flag: (teamsMeta[a] || {}).flag || "",
+                       surv: 1 - ko[a], proj: !conf.includes(a) }))
+          .sort((x, y) => x.name.localeCompare(y.name));
         addSel.innerHTML = `<option value="">+ Add a country…</option>` +
-          avail.map(t => `<option value="${t.abbr}">${t.flag || ""} ${t.name} — ${Math.round((1 - t.p_ko) * 100)}% survive</option>`).join("");
+          avail.map(t => `<option value="${t.abbr}">${t.flag} ${t.name} — ${Math.round(t.surv * 100)}% survive${t.proj ? " (projected)" : ""}</option>`).join("");
       }
 
       function renderRisk() {
@@ -272,7 +328,28 @@
           : `${t} of 15 — add ${15 - t} more for a full squad.`;
       }
 
-      function renderAll() { renderRows(); renderAdd(); renderRisk(); }
+      function renderMeta() {
+        distName.textContent = roundName(round);
+        planHint.textContent = round === firstRound
+          ? "Your squad as it stands, scored against this round's matchups."
+          : `Planning ahead — set the squad you expect to field in the ${roundName(round)} after your transfers.`;
+        pillWrap.querySelectorAll(".round-pill").forEach(p =>
+          p.classList.toggle("active", p.dataset.round === round));
+      }
+
+      function renderAll() { renderMeta(); renderRows(); renderAdd(); renderRisk(); }
+
+      function selectRound(r) {
+        if (!(r in koByRound)) return;
+        round = r;
+        ftInput.value = ftByRound[r];   // reset to the round's transfer allowance
+        renderAll();
+      }
+
+      pillWrap.addEventListener("click", e => {
+        const pill = e.target.closest(".round-pill"); if (!pill) return;
+        selectRound(pill.dataset.round);
+      });
 
       rowsEl.addEventListener("click", e => {
         const btn = e.target.closest("[data-act]"); if (!btn) return;
@@ -292,6 +369,7 @@
       });
 
       ftInput.addEventListener("input", renderRisk);
+      ftInput.value = ftByRound[round];   // seed the current round's allowance
       renderAll();
     })();
   </script>
