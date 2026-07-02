@@ -295,6 +295,79 @@ KO_DISPLAY_ROUNDS = [4, 5, 6, 7, 8]
 KO_ROUND_LABELS = {4: "R32", 5: "R16", 6: "QF", 7: "SF", 8: "F"}
 
 
+def _counts_by_country(player_ids, proj_df):
+    """Collapse a squad's player ids to {abbr: count} — all the risk math needs."""
+    id2abbr = proj_df.set_index("id")["abbr"].to_dict()
+    counts = {}
+    for pid in player_ids:
+        abbr = id2abbr.get(pid)
+        if abbr:
+            counts[abbr] = counts.get(abbr, 0) + 1
+    return counts
+
+
+@app.route("/squad-risk", methods=["GET", "POST"])
+def squad_risk_page():
+    """Interactive planner: edit per-country player counts and watch the chance
+    of being forced past your free transfers move. Import seeds the counts from
+    the real team; from there it's a client-side sandbox (risk depends only on
+    country composition, so all recompute happens in the browser)."""
+    import squad_risk as sr
+
+    ko_round = sr.current_ko_round()
+    ko_probs = sr.team_ko_probs(ko_round)                 # {abbr: p_ko}
+    proj_df = current_projections_df()
+    name_by_abbr = proj_df.drop_duplicates("abbr").set_index("abbr")["team"].to_dict()
+    teams = sorted(
+        ({"abbr": a, "name": name_by_abbr.get(a, a), "flag": FLAGS.get(a, ""),
+          "p_ko": round(p, 4)} for a, p in ko_probs.items()),
+        key=lambda t: t["name"])
+
+    counts, paste_error = {}, None
+    start_empty = request.args.get("empty")
+
+    # Seed counts from the imported team (local: auto-fetch; public: pasted blob).
+    if request.method == "POST":
+        import team_import
+        source = (request.form.get("team_json") or "").strip()
+        try:
+            team = team_import.parse_team(source)
+            counts = _counts_by_country(team["player_ids"], proj_df)
+        except team_import.TeamParseError as e:
+            paste_error = str(e)
+    elif not IS_PUBLIC and not start_empty:
+        import fifa_team
+        import team_import
+        sid = os.environ.get("FIFA_SID")
+        if sid:
+            try:
+                team = team_import.parse_team(fifa_team.fetch_team(sid))
+                counts = _counts_by_country(team["player_ids"], proj_df)
+            except Exception:
+                counts = {}
+
+    # Keep only countries actually in this round (drops any already-eliminated
+    # players a stale imported squad might carry — the editor plans in-round only).
+    counts = {a: n for a, n in counts.items() if a in ko_probs}
+
+    # Public + no team yet (and not explicitly starting empty) → show the import prompt.
+    awaiting = IS_PUBLIC and request.method == "GET" and not start_empty
+    if paste_error:
+        awaiting = True
+
+    return render_template(
+        "squad_risk.html",
+        awaiting_paste=awaiting,
+        paste_error=paste_error,
+        round_label=KO_ROUND_LABELS.get(ko_round, f"R{ko_round}"),
+        free_transfers=sr.FREE_TRANSFERS.get(ko_round, 4),
+        teams=teams,
+        ko_probs={a: round(p, 4) for a, p in ko_probs.items()},
+        counts=counts,
+        flags=FLAGS,
+    )
+
+
 @app.route("/projections")
 def projections_page():
     proj = current_projections_df()

@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+
+{% block title %}Squad Risk Planner — World Cup Fantasy{% endblock %}
+
+{% block extra_styles %}
+    /* ── risk summary (shared look with the captaincy panel) ── */
+    .risk-summary { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+    .cap-stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+      padding: 10px 16px; display: flex; flex-direction: column; gap: 1px; min-width: 130px; }
+    .cap-stat .lbl { font-family: var(--mono); font-size: 0.62rem; color: var(--text-subtle);
+      text-transform: uppercase; letter-spacing: 1px; }
+    .cap-stat .val { font-family: var(--display); font-size: 1.5rem; font-weight: 800;
+      font-variant-numeric: tabular-nums; line-height: 1.1; color: var(--accent); }
+    .cap-stat .sub { font-size: 0.72rem; color: var(--text-muted); }
+    .cap-stat.risk-over.danger .val { color: var(--danger); }
+    .cap-stat.risk-over.safe .val { color: var(--success); }
+    .cap-note { font-family: var(--mono); font-size: 0.7rem; color: var(--text-faint);
+      text-transform: none; letter-spacing: 0; }
+
+    .ft-input { font-family: var(--display); font-size: 1.5rem; font-weight: 800; width: 2.6em;
+      box-sizing: content-box; background: transparent; border: none; border-bottom: 2px solid var(--accent-border);
+      color: var(--accent); text-align: center; padding: 2px 4px; outline: none; line-height: 1.1;
+      font-variant-numeric: tabular-nums; -webkit-appearance: none; -moz-appearance: textfield; appearance: none; }
+    .ft-input::-webkit-outer-spin-button,
+    .ft-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .ft-input:focus { border-color: var(--accent); }
+
+    /* ── country editor ── */
+    .editor-head { display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      margin: 4px 0 12px; flex-wrap: wrap; }
+    .add-select { background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
+      border-radius: 8px; padding: 8px 12px; font-size: 0.85rem; outline: none; cursor: pointer; max-width: 100%; }
+    .add-select:focus { border-color: var(--accent); }
+
+    .country-rows { display: flex; flex-direction: column; gap: 8px; max-width: 560px; }
+    .crow { display: flex; align-items: center; gap: 12px; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; }
+    .crow .flag { font-size: 1.2rem; }
+    .crow .cname { font-weight: 600; min-width: 120px; }
+    .crow .csurv { font-family: var(--mono); font-size: 0.74rem; }
+    .csurv.hot { color: var(--danger); } .csurv.warm { color: var(--warn); } .csurv.cool { color: var(--success); }
+    .cstep { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+    .stepbtn { width: 26px; height: 26px; border-radius: 7px; background: var(--surface-2);
+      border: 1px solid var(--border); color: var(--text); font-size: 1rem; cursor: pointer; line-height: 1; }
+    .stepbtn:hover { border-color: var(--accent); color: var(--accent); }
+    .stepbtn:disabled { opacity: 0.35; cursor: default; }
+    .cnum { font-family: var(--display); font-weight: 800; font-size: 1.15rem; min-width: 1.4ch;
+      text-align: center; font-variant-numeric: tabular-nums; }
+    .removebtn { background: transparent; border: none; color: var(--text-faint); cursor: pointer;
+      font-size: 0.9rem; padding: 4px; }
+    .removebtn:hover { color: var(--danger); }
+
+    /* ── distribution ── */
+    .risk-dist { display: flex; flex-direction: column; gap: 4px; max-width: 460px; }
+    .rd-row { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 0.72rem; }
+    .rd-k { width: 44px; color: var(--text-subtle); text-align: right; }
+    .rd-track { flex: 1; height: 14px; background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 4px; overflow: hidden; }
+    .rd-fill { display: block; height: 100%; background: var(--accent); }
+    .rd-row.over .rd-fill { background: var(--danger); }
+    .rd-row.over .rd-k { color: var(--danger); }
+    .rd-p { width: 44px; color: var(--text-muted); }
+    .tlink { color: var(--accent); text-decoration: none; }
+    .tlink:hover { text-decoration: underline; }
+
+    /* ── import / paste view (public) ── */
+    .import-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+    @media (max-width: 720px) { .import-grid { grid-template-columns: 1fr; } }
+    .import-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .import-step { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .import-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px; }
+    .import-hint { font-size: 0.78rem; color: var(--text-subtle); margin-top: 12px; margin-bottom: 0; }
+    .bookmarklet-btn { display: inline-flex; align-items: center; gap: 8px; cursor: grab;
+      padding: 10px 16px; border-radius: 9px; font-weight: 600; font-size: 0.9rem;
+      color: #1a1205; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+      border: 1px solid var(--accent-strong); }
+    .import-card textarea { width: 100%; min-height: 120px; resize: vertical;
+      background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
+      border-radius: 9px; padding: 11px 13px; font-family: var(--mono); font-size: 0.78rem;
+      outline: none; margin-bottom: 12px; }
+    .import-card textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-bg); }
+    .paste-error { color: var(--danger) !important; font-size: 0.82rem !important; margin-bottom: 12px !important; }
+    .bm-method { margin-bottom: 16px; }
+    .bm-label { font-family: var(--mono); font-size: 0.68rem; font-weight: 700; color: var(--text);
+      text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .bm-sub { font-size: 0.82rem !important; margin-bottom: 8px !important; }
+    .bm-copy { display: flex; gap: 8px; }
+    .bm-code { flex: 1; min-width: 0; background: var(--surface-2); border: 1px solid var(--border);
+      color: var(--text-muted); border-radius: 8px; padding: 8px 10px; font-family: var(--mono);
+      font-size: 0.72rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+{% endblock %}
+
+{% block content %}
+  {% if awaiting_paste %}
+    <div class="page-head"><div>
+      <h1 class="page-title">Squad Risk Planner</h1>
+      <p class="page-sub">Load your FIFA team to test transfer scenarios for the {{ round_label }} — credential-free. Nothing leaves your browser but the team itself.</p>
+    </div></div>
+    {% set submit_label = "Load squad →" %}
+    {% include "_import_team.html" %}
+    <p class="import-hint" style="margin-top:18px">Or <a href="/squad-risk?empty=1" class="tlink">start from an empty board</a> and add countries by hand.</p>
+
+  {% else %}
+    <div class="page-head"><div>
+      <h1 class="page-title">Squad Risk Planner</h1>
+      <p class="page-sub">Edit your countries and watch the {{ round_label }} risk move · same-country players share fate</p>
+    </div></div>
+
+    <div id="riskApp"
+         data-koprobs='{{ ko_probs | tojson }}'
+         data-teams='{{ teams | tojson }}'
+         data-counts='{{ counts | tojson }}'>
+      <div class="risk-summary">
+        <div class="cap-stat">
+          <span class="lbl">Expected out</span>
+          <span class="val" id="expOut">–</span>
+          <span class="sub">of <b id="totalPlayers">0</b> players</span>
+        </div>
+        <div class="cap-stat">
+          <span class="lbl">Free transfers</span>
+          <span class="val"><input class="ft-input" id="ftInput" type="number" min="0" max="15" value="{{ free_transfers }}"></span>
+          <span class="sub">what you have to spend</span>
+        </div>
+        <div class="cap-stat risk-over" id="riskOver">
+          <span class="lbl">Chance forced &gt; FT</span>
+          <span class="val" id="pOverFt">–</span>
+          <span class="sub">can't cover every loss</span>
+        </div>
+      </div>
+
+      <div class="editor-head">
+        <span class="section-label" style="margin:0">Players per country</span>
+        <select id="addCountry" class="add-select"><option value="">+ Add a country…</option></select>
+      </div>
+      <div id="countryRows" class="country-rows"></div>
+      <p class="cap-note" id="squadHint" style="margin-top:10px"></p>
+
+      <div class="section-label" style="margin-top:26px">Knockout distribution
+        <span class="cap-note">· P(exactly k of your players eliminated in the {{ round_label }})</span>
+      </div>
+      <div class="risk-dist" id="riskDist"></div>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    (function () {
+      const app = document.getElementById("riskApp");
+      if (!app) return;
+      const koProbs = JSON.parse(app.dataset.koprobs);          // {abbr: p_ko}
+      const teams   = JSON.parse(app.dataset.teams);            // [{abbr,name,flag,p_ko}]
+      let   counts  = JSON.parse(app.dataset.counts);           // {abbr: n}
+      const teamByAbbr = Object.fromEntries(teams.map(t => [t.abbr, t]));
+
+      const rowsEl  = document.getElementById("countryRows");
+      const addSel  = document.getElementById("addCountry");
+      const ftInput = document.getElementById("ftInput");
+      const expEl   = document.getElementById("expOut");
+      const totalEl = document.getElementById("totalPlayers");
+      const pEl     = document.getElementById("pOverFt");
+      const overCard = document.getElementById("riskOver");
+      const distEl  = document.getElementById("riskDist");
+      const hintEl  = document.getElementById("squadHint");
+
+      const total = () => Object.values(counts).reduce((s, n) => s + n, 0);
+      const survClass = s => s < 0.5 ? "hot" : s < 0.85 ? "warm" : "cool";
+
+      // Grouped Poisson-binomial: one spike per country (all n share fate).
+      function computeDist() {
+        let dist = [1.0];
+        for (const [abbr, n] of Object.entries(counts)) {
+          if (!n) continue;
+          const p = koProbs[abbr] ?? 0;
+          const next = new Array(dist.length + n).fill(0);
+          for (let k = 0; k < dist.length; k++) {
+            next[k] += dist[k] * (1 - p);      // country survives
+            next[k + n] += dist[k] * p;        // country out -> +n players
+          }
+          dist = next;
+        }
+        return dist;
+      }
+
+      function renderRows() {
+        const abbrs = Object.keys(counts).filter(a => counts[a] > 0)
+          .sort((a, b) => counts[b] * (koProbs[b] ?? 0) - counts[a] * (koProbs[a] ?? 0));
+        const t = total();
+        rowsEl.innerHTML = abbrs.map(a => {
+          const info = teamByAbbr[a] || { name: a, flag: "" };
+          const surv = 1 - (koProbs[a] ?? 0);
+          return `<div class="crow" data-abbr="${a}">
+            <span class="flag">${info.flag || ""}</span>
+            <span class="cname">${info.name}</span>
+            <span class="csurv ${survClass(surv)}">${Math.round(surv * 100)}% survive</span>
+            <div class="cstep">
+              <button class="stepbtn" data-act="dec" title="Remove one">−</button>
+              <span class="cnum">${counts[a]}</span>
+              <button class="stepbtn" data-act="inc" title="Add one" ${t >= 15 ? "disabled" : ""}>+</button>
+            </div>
+            <button class="removebtn" data-act="rm" title="Remove country">✕</button>
+          </div>`;
+        }).join("") || `<p class="cap-note">No countries yet — add one above to start planning.</p>`;
+      }
+
+      function renderAdd() {
+        const avail = teams.filter(t => !(counts[t.abbr] > 0));
+        addSel.innerHTML = `<option value="">+ Add a country…</option>` +
+          avail.map(t => `<option value="${t.abbr}">${t.flag || ""} ${t.name} — ${Math.round((1 - t.p_ko) * 100)}% survive</option>`).join("");
+      }
+
+      function renderRisk() {
+        const dist = computeDist();
+        const exp = dist.reduce((s, p, k) => s + k * p, 0);
+        expEl.textContent = exp.toFixed(1);
+        totalEl.textContent = total();
+
+        const ft = parseInt(ftInput.value, 10);
+        const maxP = Math.max(...dist, 0.0001);
+        distEl.innerHTML = dist.map((p, k) => {
+          if (p < 0.005 && k !== 0) return "";
+          const over = !isNaN(ft) && k > ft;
+          return `<div class="rd-row${over ? " over" : ""}">
+            <span class="rd-k">${k} out</span>
+            <span class="rd-track"><span class="rd-fill" style="width:${(p / maxP * 100).toFixed(1)}%"></span></span>
+            <span class="rd-p">${Math.round(p * 100)}%</span></div>`;
+        }).join("");
+
+        if (isNaN(ft)) { pEl.textContent = "–"; overCard.className = "cap-stat risk-over"; }
+        else {
+          const pOver = dist.reduce((s, p, k) => s + (k > ft ? p : 0), 0);
+          pEl.textContent = Math.round(pOver * 100) + "%";
+          overCard.className = "cap-stat risk-over " + (pOver >= 0.25 ? "danger" : "safe");
+        }
+
+        const t = total();
+        hintEl.textContent = t === 15 ? "✓ 15-man squad"
+          : t > 15 ? `${t} players — a fantasy squad is 15.`
+          : `${t} of 15 — add ${15 - t} more for a full squad.`;
+      }
+
+      function renderAll() { renderRows(); renderAdd(); renderRisk(); }
+
+      rowsEl.addEventListener("click", e => {
+        const btn = e.target.closest("[data-act]"); if (!btn) return;
+        const abbr = e.target.closest(".crow").dataset.abbr;
+        const act = btn.dataset.act;
+        if (act === "inc" && total() < 15) counts[abbr] = (counts[abbr] || 0) + 1;
+        else if (act === "dec") counts[abbr] = (counts[abbr] || 0) - 1;
+        else if (act === "rm") counts[abbr] = 0;
+        if (counts[abbr] <= 0) delete counts[abbr];
+        renderAll();
+      });
+
+      addSel.addEventListener("change", () => {
+        const a = addSel.value; if (!a) return;
+        if (total() < 15) counts[a] = (counts[a] || 0) + 1;
+        renderAll();
+      });
+
+      ftInput.addEventListener("input", renderRisk);
+      renderAll();
+    })();
+  </script>
+{% endblock %}

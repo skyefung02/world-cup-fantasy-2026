@@ -1,0 +1,49 @@
+{# Reusable FIFA-team import UI (bookmarklet + paste). The form POSTs to the
+   CURRENT route, so any page that handles a POST with `team_json` can include
+   this. Caller may set (via context): submit_label, import_hint, paste_error. #}
+<div class="import-grid">
+  <div class="import-card">
+    <div class="import-step">1 · Make a "copy my team" bookmark (once)</div>
+    <p>Two ways to set it up — use whichever your browser likes. You only do this once.</p>
+
+    <div class="bm-method">
+      <div class="bm-label">A — drag it</div>
+      <p class="bm-sub">Drag this onto your bookmarks bar:</p>
+      {% raw %}<a class="bookmarklet-btn" id="bmLink" href="javascript:(async()=>{try{if(!location.hostname.endsWith('play.fifa.com')){alert('Open your team on play.fifa.com first, then click this bookmark there.');return;}const r=await fetch('/api/en/fantasy/team',{headers:{accept:'application/json'},credentials:'include'});const j=await r.json();if(j.errors&&j.errors.length){alert('FIFA says: '+j.errors[0].message+' - log in on play.fifa.com and retry.');return;}await navigator.clipboard.writeText(JSON.stringify(j.success||j));alert('FIFA team copied - now paste it into the planner.');}catch(e){alert('Could not read team: '+e);}})()">⚽ Copy my FIFA team</a>{% endraw %}
+    </div>
+
+    <div class="bm-method">
+      <div class="bm-label">B — copy it</div>
+      <p class="bm-sub">Or add a new bookmark by hand and paste this as its <b>URL / address</b>:</p>
+      <div class="bm-copy">
+        <input id="bmCode" class="bm-code" readonly>
+        <button type="button" class="btn" onclick="copyBookmarklet(event)">Copy</button>
+      </div>
+    </div>
+
+    <p class="import-hint">Then go to <b>play.fifa.com</b>, open your team, and click the bookmark <b>there</b> — it copies your team to the clipboard. (It won't work clicked on this page; it has to run on FIFA's site.)</p>
+    <script>
+      (function () {
+        var link = document.getElementById("bmLink"), code = document.getElementById("bmCode");
+        if (link && code) code.value = link.getAttribute("href");   // single-source the bookmarklet
+      })();
+      function copyBookmarklet(e) {
+        var code = document.getElementById("bmLink").getAttribute("href");
+        navigator.clipboard.writeText(code).then(function () {
+          var b = e.target, t = b.textContent;
+          b.textContent = "Copied!"; setTimeout(function () { b.textContent = t; }, 1500);
+        });
+      }
+    </script>
+  </div>
+  <div class="import-card">
+    <div class="import-step">2 · Paste it here</div>
+    <form method="post" onsubmit="var f=document.getElementById('clientStateField'); if(f) f.value = JSON.stringify(window.clientState || {});">
+      <textarea name="team_json" placeholder='{"id":...,"captain":...,"lineup":{...}}' required></textarea>
+      <input type="hidden" name="client_state" id="clientStateField">
+      {% if paste_error %}<p class="paste-error">{{ paste_error }}</p>{% endif %}
+      <button type="submit" class="btn btn-primary">{{ submit_label | default('Continue →') }}</button>
+    </form>
+    {% if import_hint %}<p class="import-hint">{{ import_hint }}</p>{% endif %}
+  </div>
+</div>

@@ -111,6 +111,41 @@
     .dec-keep { color: var(--success); font-weight: 600; }
     .dec-alt { color: var(--text-subtle); font-size: 0.78rem; }
 
+    /* ── squad knockout risk ── */
+    .risk-panel { margin-bottom: 26px; }
+    .risk-summary { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+    .cap-stat.risk-over.danger .val { color: var(--danger); }
+    .cap-stat.risk-over.safe .val { color: var(--success); }
+    .ft-input { font-family: var(--display); font-size: 1.5rem; font-weight: 800; width: 2.6em;
+      box-sizing: content-box; background: transparent; border: none; border-bottom: 2px solid var(--accent-border);
+      color: var(--accent); text-align: center; padding: 2px 4px; outline: none; line-height: 1.1;
+      font-variant-numeric: tabular-nums; -webkit-appearance: none; -moz-appearance: textfield; appearance: none; }
+    .ft-input::-webkit-outer-spin-button,
+    .ft-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .ft-input:focus { border-color: var(--accent); }
+
+    .risk-countries { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .rc-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; font-size: 0.82rem; }
+    .rc-chip .flag { font-size: 1rem; }
+    .rc-chip .rc-team { font-weight: 600; }
+    .rc-chip .rc-n { font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); }
+    .rc-chip .rc-surv { font-family: var(--mono); font-size: 0.72rem; }
+    .rc-chip.hot { border-color: rgba(244, 63, 94, 0.35); }
+    .rc-chip.hot .rc-surv { color: var(--danger); }
+    .rc-chip.warm .rc-surv { color: var(--warn); }
+    .rc-chip.cool .rc-surv { color: var(--success); }
+
+    .risk-dist { display: flex; flex-direction: column; gap: 4px; max-width: 460px; }
+    .rd-row { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 0.72rem; }
+    .rd-k { width: 44px; color: var(--text-subtle); text-align: right; }
+    .rd-track { flex: 1; height: 14px; background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 4px; overflow: hidden; }
+    .rd-fill { display: block; height: 100%; background: var(--accent); }
+    .rd-row.over .rd-fill { background: var(--danger); }
+    .rd-row.over .rd-k { color: var(--danger); }
+    .rd-p { width: 44px; color: var(--text-muted); }
+
     /* ── import / paste view (public) ── */
     .import-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
     @media (max-width: 720px) { .import-grid { grid-template-columns: 1fr; } }
@@ -155,52 +190,9 @@
         <h1 class="page-title">Rolling Captaincy</h1>
         <p class="page-sub">Load your FIFA fantasy team — credential-free. Nothing leaves your browser but the team itself.</p>
       </div></div>
-      <div class="import-grid">
-        <div class="import-card">
-          <div class="import-step">1 · Make a "copy my team" bookmark (once)</div>
-          <p>Two ways to set it up — use whichever your browser likes. You only do this once.</p>
-
-          <div class="bm-method">
-            <div class="bm-label">A — drag it</div>
-            <p class="bm-sub">Drag this onto your bookmarks bar:</p>
-            {% raw %}<a class="bookmarklet-btn" id="bmLink" href="javascript:(async()=>{try{if(!location.hostname.endsWith('play.fifa.com')){alert('Open your team on play.fifa.com first, then click this bookmark there.');return;}const r=await fetch('/api/en/fantasy/team',{headers:{accept:'application/json'},credentials:'include'});const j=await r.json();if(j.errors&&j.errors.length){alert('FIFA says: '+j.errors[0].message+' - log in on play.fifa.com and retry.');return;}await navigator.clipboard.writeText(JSON.stringify(j.success||j));alert('FIFA team copied - now paste it into the captaincy page.');}catch(e){alert('Could not read team: '+e);}})()">⚽ Copy my FIFA team</a>{% endraw %}
-          </div>
-
-          <div class="bm-method">
-            <div class="bm-label">B — copy it</div>
-            <p class="bm-sub">Or add a new bookmark by hand and paste this as its <b>URL / address</b>:</p>
-            <div class="bm-copy">
-              <input id="bmCode" class="bm-code" readonly>
-              <button type="button" class="btn" onclick="copyBookmarklet(event)">Copy</button>
-            </div>
-          </div>
-
-          <p class="import-hint">Then go to <b>play.fifa.com</b>, open your team, and click the bookmark <b>there</b> — it copies your team to the clipboard. (It won't work clicked on this page; it has to run on FIFA's site.)</p>
-          <script>
-            (function () {
-              var link = document.getElementById("bmLink"), code = document.getElementById("bmCode");
-              if (link && code) code.value = link.getAttribute("href");   // single-source the bookmarklet
-            })();
-            function copyBookmarklet(e) {
-              var code = document.getElementById("bmLink").getAttribute("href");
-              navigator.clipboard.writeText(code).then(function () {
-                var b = e.target, t = b.textContent;
-                b.textContent = "Copied!"; setTimeout(function () { b.textContent = t; }, 1500);
-              });
-            }
-          </script>
-        </div>
-        <div class="import-card">
-          <div class="import-step">2 · Paste it here</div>
-          <form method="post" onsubmit="document.getElementById('clientStateField').value = JSON.stringify(window.clientState || {});">
-            <textarea name="team_json" placeholder='{"id":...,"captain":...,"lineup":{...}}' required></textarea>
-            <input type="hidden" name="client_state" id="clientStateField">
-            {% if paste_error %}<p class="paste-error">{{ paste_error }}</p>{% endif %}
-            <button type="submit" class="btn btn-primary">Analyze captaincy →</button>
-          </form>
-          <p class="import-hint">Any projection tweaks you've made on this site (goal share, xmins…) are applied automatically.</p>
-        </div>
-      </div>
+      {% set submit_label = "Analyze captaincy →" %}
+      {% set import_hint = "Any projection tweaks you've made on this site (goal share, xmins…) are applied automatically." %}
+      {% include "_import_team.html" %}
 
     {% else %}
       <div class="page-head">
@@ -329,6 +321,39 @@
         el.classList.toggle("active", el.dataset.round === round);
       });
     }
+
+    // ── Squad knockout risk: render distribution + live P(forced > FT) ──
+    (function () {
+      const panel = document.querySelector(".risk-panel");
+      if (!panel) return;
+      const dist = JSON.parse(panel.dataset.dist);          // dist[k] = P(exactly k out)
+      const distEl = document.getElementById("riskDist");
+      const ftInput = document.getElementById("ftInput");
+      const pEl = document.getElementById("pOverFt");
+      const overCard = document.getElementById("riskOver");
+      const maxP = Math.max(...dist, 0.0001);
+
+      function render() {
+        const ft = parseInt(ftInput.value, 10);
+        // Distribution bars (skip negligible masses), highlighting k > FT.
+        distEl.innerHTML = dist.map((p, k) => {
+          if (p < 0.005 && k !== 0) return "";
+          const over = !isNaN(ft) && k > ft;
+          return `<div class="rd-row${over ? " over" : ""}">
+              <span class="rd-k">${k} out</span>
+              <span class="rd-track"><span class="rd-fill" style="width:${(p / maxP * 100).toFixed(1)}%"></span></span>
+              <span class="rd-p">${(p * 100).toFixed(0)}%</span>
+            </div>`;
+        }).join("");
+        // P(forced transfers > FT) = tail mass above FT.
+        if (isNaN(ft)) { pEl.textContent = "–"; overCard.className = "cap-stat risk-over"; return; }
+        const pOver = dist.reduce((s, p, k) => s + (k > ft ? p : 0), 0);
+        pEl.textContent = (pOver * 100).toFixed(0) + "%";
+        overCard.className = "cap-stat risk-over " + (pOver >= 0.25 ? "danger" : "safe");
+      }
+      ftInput.addEventListener("input", render);
+      render();
+    })();
 
     // Kickoff times come from FIFA's feed in UK time (+01:00). Re-render each one
     // in the viewer's own timezone so "when do I decide?" reads on their clock.

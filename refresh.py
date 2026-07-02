@@ -15,9 +15,11 @@ latest scores and Elo:
 Usage:
     python refresh.py            # scores only (no new Elo download today)
     python refresh.py --elo      # also install a fresh SilverBulletin Elo export
+    python refresh.py --elo --yes # ...and skip sync_elo's confirmation prompt
 
 Step 2 is skipped without --elo because sync_elo.py requires a new export in
-~/Downloads and errors if there isn't one.
+~/Downloads and errors if there isn't one. By default the Elo step stops to let
+you review the per-team PELE diff before installing; pass --yes to run unattended.
 """
 
 import argparse
@@ -40,11 +42,16 @@ def main():
     parser = argparse.ArgumentParser(description="Daily WC fantasy refresh (scores → elo → knockouts).")
     parser.add_argument("--elo", action="store_true",
                         help="Also install the latest SilverBulletin Elo export from ~/Downloads.")
+    parser.add_argument("-y", "--yes", action="store_true",
+                        help="Skip sync_elo's confirmation prompt (unattended run). Only affects --elo.")
     args = parser.parse_args()
 
     run(["main.py", "--live"])                  # fresh scores + group projections
     if args.elo:
-        run(["sync_elo.py", "--yes"])           # new Elo + rebuild (uses cached fresh scores)
+        # Default: stop at sync_elo's [y/N] gate so the PELE diff can be reviewed
+        # before the new Elo is installed. --yes passes through for unattended runs.
+        sync_cmd = ["sync_elo.py", "--yes"] if args.yes else ["sync_elo.py"]
+        run(sync_cmd)                           # new Elo + rebuild (uses cached fresh scores)
     run(["build_knockout_projections.py"])      # knockout Monte Carlo
 
     print("\n=== Done. Reload /match-projections to see the update. ===")
