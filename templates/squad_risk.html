@@ -63,6 +63,20 @@
     .tlink { color: var(--accent); text-decoration: none; }
     .tlink:hover { text-decoration: underline; }
 
+    /* ── start: two equal paths (manual | import) ── */
+    .start-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 8px 0 30px; }
+    @media (max-width: 720px) { .start-choices { grid-template-columns: 1fr; } }
+    .choice-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 22px 22px 24px; display: flex; flex-direction: column; }
+    .choice-card.featured { border-color: var(--accent-border); box-shadow: 0 0 0 3px var(--accent-bg); }
+    .choice-tag { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .choice-h { font-family: var(--display); font-size: 1.35rem; font-weight: 800; margin: 0 0 8px; }
+    .choice-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 18px; }
+    .choice-btn { align-self: flex-start; margin-top: auto; }
+    .import-section { margin-top: 8px; }
+    .import-section .section-label { margin-top: 0; }
+
     /* ── import / paste view (public) ── */
     .import-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
     @media (max-width: 720px) { .import-grid { grid-template-columns: 1fr; } }
@@ -95,11 +109,29 @@
   {% if awaiting_paste %}
     <div class="page-head"><div>
       <h1 class="page-title">Squad Risk Planner</h1>
-      <p class="page-sub">Load your FIFA team to test transfer scenarios for the {{ round_label }} — credential-free. Nothing leaves your browser but the team itself.</p>
+      <p class="page-sub">Test transfer scenarios for the {{ round_label }} — two ways to start, whichever you prefer.</p>
     </div></div>
-    {% set submit_label = "Load squad →" %}
-    {% include "_import_team.html" %}
-    <p class="import-hint" style="margin-top:18px">Or <a href="/squad-risk?empty=1" class="tlink">start from an empty board</a> and add countries by hand.</p>
+
+    <div class="start-choices">
+      <div class="choice-card">
+        <div class="choice-tag">Enter manually</div>
+        <h2 class="choice-h">Build your squad by country</h2>
+        <p>Just set how many players you have from each country. Fastest way to a risk estimate — no login, no bookmark needed.</p>
+        <a href="/squad-risk?empty=1" class="btn btn-primary choice-btn">Build by country →</a>
+      </div>
+      <div class="choice-card {% if paste_error %}featured{% endif %}">
+        <div class="choice-tag">Import from FIFA</div>
+        <h2 class="choice-h">Load your exact team</h2>
+        <p>Copy your real 15-man squad in via a one-time bookmark, then tweak transfers. Credential-free — only the team leaves your browser.</p>
+        <a href="#import-section" class="btn choice-btn">Set up import ↓</a>
+      </div>
+    </div>
+
+    <div id="import-section" class="import-section">
+      <div class="section-label">Import from FIFA</div>
+      {% set submit_label = "Load squad →" %}
+      {% include "_import_team.html" %}
+    </div>
 
   {% else %}
     <div class="page-head"><div>

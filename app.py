@@ -246,7 +246,19 @@ def my_team():
             proj_df = build_full_projections(*edits)
         except Exception:
             proj_df = current_projections_df()
-    proj = proj_df.set_index("id")[["1_Pts", "2_Pts", "3_Pts"]].to_dict("index")
+    # Captaincy runs on the live knockout round onward (the group stage is done):
+    # each KO round from the current one up, but only once its bracket is fully
+    # confirmed (all fixtures present) — a half-set round (some winners TBD) is
+    # hidden until the rest of its matchups lock in.
+    import squad_risk
+    fixtures_df = pd.read_csv("data/processed/fixtures.csv")
+    live_round = squad_risk.current_ko_round()
+    fx_counts = fixtures_df["round_id"].value_counts().to_dict()
+    cap_rounds = sorted(
+        int(r) for r in fx_counts
+        if r >= live_round and fx_counts[r] >= KO_ROUND_FIXTURES.get(r, 1))
+
+    proj = proj_df.set_index("id")[[f"{r}_Pts" for r in cap_rounds]].to_dict("index")
 
     pos_order = ["GK", "DEF", "MID", "FWD"]
     xi_ids = [pid for pos in pos_order for pid in team["lineup"].get(pos, [])]
@@ -256,10 +268,11 @@ def my_team():
         s = sum(float(proj.get(pid, {}).get(col, 0)) for pid in xi_ids)
         s += float(proj.get(cap_id, {}).get(col, 0)) if cap_id in xi_ids else 0  # captain doubled
         return round(s, 2)
-    totals = {"r1": _total("1_Pts"), "r2": _total("2_Pts"), "r3": _total("3_Pts")}
+    totals = [{"label": KO_ROUND_LABELS.get(r, f"R{r}"), "value": _total(f"{r}_Pts")}
+              for r in cap_rounds]
 
     captaincy = captain.analyze_squad_ids(
-        team["player_ids"], proj_df, pd.read_csv("data/processed/fixtures.csv"))
+        team["player_ids"], proj_df, fixtures_df, rounds=cap_rounds)
 
     # Overlay realized results so far (no-op pre-round): marks resolved blocks,
     # settles keep/twist vs the frozen thresholds, finds the live decision point.
@@ -284,6 +297,7 @@ def my_team():
         totals=totals,
         captaincy=captaincy,
         active_round=active_round,
+        round_labels=KO_ROUND_NAMES,
         flags=FLAGS,
     )
 
@@ -293,6 +307,13 @@ def my_team():
 # their P(play)-weighted points. KO_ROUND_LABELS drives the column headers + round pills.
 KO_DISPLAY_ROUNDS = [4, 5, 6, 7, 8]
 KO_ROUND_LABELS = {4: "R32", 5: "R16", 6: "QF", 7: "SF", 8: "F"}
+# Full names for the captaincy round selector.
+KO_ROUND_NAMES = {4: "Round of 32", 5: "Round of 16", 6: "Quarter Finals",
+                  7: "Semi Finals", 8: "Final"}
+# Fixtures a KO round has once its bracket is fully set — used to hide a round
+# from captaincy until every matchup is confirmed (R16 stays hidden while some
+# R32 winners are still TBD). Round 8 = final + third-place playoff.
+KO_ROUND_FIXTURES = {4: 16, 5: 8, 6: 4, 7: 2, 8: 2}
 
 
 def _counts_by_country(player_ids, proj_df):

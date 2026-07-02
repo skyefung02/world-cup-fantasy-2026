@@ -111,41 +111,6 @@
     .dec-keep { color: var(--success); font-weight: 600; }
     .dec-alt { color: var(--text-subtle); font-size: 0.78rem; }
 
-    /* ── squad knockout risk ── */
-    .risk-panel { margin-bottom: 26px; }
-    .risk-summary { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
-    .cap-stat.risk-over.danger .val { color: var(--danger); }
-    .cap-stat.risk-over.safe .val { color: var(--success); }
-    .ft-input { font-family: var(--display); font-size: 1.5rem; font-weight: 800; width: 2.6em;
-      box-sizing: content-box; background: transparent; border: none; border-bottom: 2px solid var(--accent-border);
-      color: var(--accent); text-align: center; padding: 2px 4px; outline: none; line-height: 1.1;
-      font-variant-numeric: tabular-nums; -webkit-appearance: none; -moz-appearance: textfield; appearance: none; }
-    .ft-input::-webkit-outer-spin-button,
-    .ft-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-    .ft-input:focus { border-color: var(--accent); }
-
-    .risk-countries { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-    .rc-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--surface);
-      border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; font-size: 0.82rem; }
-    .rc-chip .flag { font-size: 1rem; }
-    .rc-chip .rc-team { font-weight: 600; }
-    .rc-chip .rc-n { font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); }
-    .rc-chip .rc-surv { font-family: var(--mono); font-size: 0.72rem; }
-    .rc-chip.hot { border-color: rgba(244, 63, 94, 0.35); }
-    .rc-chip.hot .rc-surv { color: var(--danger); }
-    .rc-chip.warm .rc-surv { color: var(--warn); }
-    .rc-chip.cool .rc-surv { color: var(--success); }
-
-    .risk-dist { display: flex; flex-direction: column; gap: 4px; max-width: 460px; }
-    .rd-row { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 0.72rem; }
-    .rd-k { width: 44px; color: var(--text-subtle); text-align: right; }
-    .rd-track { flex: 1; height: 14px; background: var(--surface-2); border: 1px solid var(--border);
-      border-radius: 4px; overflow: hidden; }
-    .rd-fill { display: block; height: 100%; background: var(--accent); }
-    .rd-row.over .rd-fill { background: var(--danger); }
-    .rd-row.over .rd-k { color: var(--danger); }
-    .rd-p { width: 44px; color: var(--text-muted); }
-
     /* ── import / paste view (public) ── */
     .import-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
     @media (max-width: 720px) { .import-grid { grid-template-columns: 1fr; } }
@@ -201,9 +166,9 @@
           <p class="page-sub">FIFA entry #{{ team_id }} · projected points (captain doubled)</p>
         </div>
         <div class="totals-row">
-          <div class="total-card"><div class="lbl">R1</div><div class="val">{{ totals.r1 }}</div></div>
-          <div class="total-card"><div class="lbl">R2</div><div class="val">{{ totals.r2 }}</div></div>
-          <div class="total-card"><div class="lbl">R3</div><div class="val">{{ totals.r3 }}</div></div>
+          {% for t in totals %}
+          <div class="total-card"><div class="lbl">{{ t.label }}</div><div class="val">{{ t.value }}</div></div>
+          {% endfor %}
         </div>
       </div>
 
@@ -214,7 +179,7 @@
       <div class="cap-pills">
         {% for rd in captaincy %}
         <button class="pill cap-pill {% if rd.round == active_round %}active{% endif %}" data-round="{{ rd.round }}"
-                onclick="showCapRound('{{ rd.round }}')">Round {{ rd.round }}</button>
+                onclick="showCapRound('{{ rd.round }}')">{{ round_labels.get(rd.round, 'Round ' ~ rd.round) }}</button>
         {% endfor %}
       </div>
 
@@ -321,39 +286,6 @@
         el.classList.toggle("active", el.dataset.round === round);
       });
     }
-
-    // ── Squad knockout risk: render distribution + live P(forced > FT) ──
-    (function () {
-      const panel = document.querySelector(".risk-panel");
-      if (!panel) return;
-      const dist = JSON.parse(panel.dataset.dist);          // dist[k] = P(exactly k out)
-      const distEl = document.getElementById("riskDist");
-      const ftInput = document.getElementById("ftInput");
-      const pEl = document.getElementById("pOverFt");
-      const overCard = document.getElementById("riskOver");
-      const maxP = Math.max(...dist, 0.0001);
-
-      function render() {
-        const ft = parseInt(ftInput.value, 10);
-        // Distribution bars (skip negligible masses), highlighting k > FT.
-        distEl.innerHTML = dist.map((p, k) => {
-          if (p < 0.005 && k !== 0) return "";
-          const over = !isNaN(ft) && k > ft;
-          return `<div class="rd-row${over ? " over" : ""}">
-              <span class="rd-k">${k} out</span>
-              <span class="rd-track"><span class="rd-fill" style="width:${(p / maxP * 100).toFixed(1)}%"></span></span>
-              <span class="rd-p">${(p * 100).toFixed(0)}%</span>
-            </div>`;
-        }).join("");
-        // P(forced transfers > FT) = tail mass above FT.
-        if (isNaN(ft)) { pEl.textContent = "–"; overCard.className = "cap-stat risk-over"; return; }
-        const pOver = dist.reduce((s, p, k) => s + (k > ft ? p : 0), 0);
-        pEl.textContent = (pOver * 100).toFixed(0) + "%";
-        overCard.className = "cap-stat risk-over " + (pOver >= 0.25 ? "danger" : "safe");
-      }
-      ftInput.addEventListener("input", render);
-      render();
-    })();
 
     // Kickoff times come from FIFA's feed in UK time (+01:00). Re-render each one
     // in the viewer's own timezone so "when do I decide?" reads on their clock.
