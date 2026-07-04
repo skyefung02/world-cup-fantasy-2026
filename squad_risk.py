@@ -28,12 +28,6 @@ ROUNDS_CSV = "data/knockout_team_rounds.csv"
 # after SF→6 (before Final). The Final (8) has no subsequent transfer window.
 FREE_TRANSFERS = {4: 4, 5: 4, 6: 5, 7: 6, 8: 0}
 
-# Max players allowed from one country, by round (mirrors wc_settings
-# country_limit_by_round). Drives the "ideal squad" floor on the planner: the
-# lowest-risk 15 is the safest teams filled up to this cap. Rises as the field
-# shrinks so 15 players stay feasible.
-COUNTRY_LIMITS = {4: 3, 5: 4, 6: 5, 7: 6, 8: 8}
-
 
 def current_ko_round(rounds_csv=ROUNDS_CSV):
     """The live knockout round: the lowest round that still has an unresolved

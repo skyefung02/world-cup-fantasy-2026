@@ -12,7 +12,6 @@
     .cap-stat .val { font-family: var(--display); font-size: 1.5rem; font-weight: 800;
       font-variant-numeric: tabular-nums; line-height: 1.1; color: var(--accent); }
     .cap-stat .sub { font-size: 0.72rem; color: var(--text-muted); }
-    .cap-stat .ideal-sub b { color: var(--text); font-weight: 700; font-variant-numeric: tabular-nums; }
     .cap-stat.risk-over.danger .val { color: var(--danger); }
     .cap-stat.risk-over.safe .val { color: var(--success); }
     .cap-note { font-family: var(--mono); font-size: 0.7rem; color: var(--text-faint);
@@ -156,7 +155,6 @@
          data-koprobs-by-round='{{ ko_probs_by_round | tojson }}'
          data-teams-meta='{{ teams_meta | tojson }}'
          data-ft-by-round='{{ ft_by_round | tojson }}'
-         data-cap-by-round='{{ cap_by_round | tojson }}'
          data-confirmed-by-round='{{ confirmed_by_round | tojson }}'
          data-default-round="{{ default_round }}"
          data-counts='{{ counts | tojson }}'>
@@ -173,7 +171,7 @@
         <div class="cap-stat">
           <span class="lbl">Expected out</span>
           <span class="val" id="expOut">–</span>
-          <span class="sub ideal-sub">best possible <b id="idealExp">–</b></span>
+          <span class="sub">of <b id="totalPlayers">0</b> players</span>
         </div>
         <div class="cap-stat">
           <span class="lbl">Free transfers</span>
@@ -183,10 +181,9 @@
         <div class="cap-stat risk-over" id="riskOver">
           <span class="lbl">Chance forced &gt; FT</span>
           <span class="val" id="pOverFt">–</span>
-          <span class="sub ideal-sub">best possible <b id="idealTail">–</b></span>
+          <span class="sub">can't cover every loss</span>
         </div>
       </div>
-      <p class="cap-note" id="idealNote" style="margin:-14px 0 20px"></p>
 
       <div class="editor-head">
         <span class="section-label" style="margin:0">Players per country</span>
@@ -215,7 +212,6 @@
       const koByRound = JSON.parse(app.dataset.koprobsByRound);   // {round: {abbr: p_ko}}
       const teamsMeta = JSON.parse(app.dataset.teamsMeta);        // {abbr: {name, flag}}
       const ftByRound = JSON.parse(app.dataset.ftByRound);        // {round: ft}
-      const capByRound = JSON.parse(app.dataset.capByRound);      // {round: max players/country}
       const confByRound = JSON.parse(app.dataset.confirmedByRound); // {round: [abbr]} with a set opponent
       let   counts    = JSON.parse(app.dataset.counts);           // {abbr: n}
       let   round     = String(app.dataset.defaultRound);         // active round key
@@ -234,9 +230,6 @@
       const overCard = document.getElementById("riskOver");
       const distEl  = document.getElementById("riskDist");
       const hintEl  = document.getElementById("squadHint");
-      const idealExpEl = document.getElementById("idealExp");
-      const idealTailEl = document.getElementById("idealTail");
-      const idealNoteEl = document.getElementById("idealNote");
 
       // Active round's knockout probs + its label (from the pill text).
       const koProbs = () => koByRound[round] || {};
@@ -244,57 +237,6 @@
 
       const total = () => Object.values(counts).reduce((s, n) => s + n, 0);
       const survClass = s => s < 0.5 ? "hot" : s < 0.85 ? "warm" : "cool";
-
-      // ── "Ideal" floor: the lowest-risk feasible 15 (safest teams up to the cap).
-      // The safest teams' knockout probs for the round; eliminated teams (p≈1)
-      // can't be picked. Cached per round / (round,ft) — the DP is cheap but the
-      // FT input fires it on every keystroke.
-      const _idealCache = {};
-      const safeProbs = () => Object.values(koProbs()).filter(p => p < 0.999).sort((a, b) => a - b);
-
-      function idealMinExpected() {
-        const key = "e" + round;
-        if (key in _idealCache) return _idealCache[key];
-        const probs = safeProbs();
-        const cap = capByRound[round] || 3;
-        let used = 0, exp = 0;
-        for (const p of probs) { const n = Math.min(cap, 15 - used); if (n <= 0) break; exp += n * p; used += n; }
-        return _idealCache[key] = exp;
-      }
-
-      // Min P(out > ft) over compositions (safest teams, ≤cap each, 15 total).
-      // Grouped Poisson-binomial; DP tracks the tail-truncated distribution with
-      // CDF-dominance pruning so only the Pareto frontier survives (stays small).
-      function idealMinTail(ft) {
-        if (isNaN(ft)) return NaN;
-        const key = "t" + round + "_" + ft;
-        if (key in _idealCache) return _idealCache[key];
-        const probs = safeProbs();
-        const cap = capByRound[round] || 3;
-        const convTrunc = (d, p, n) => {
-          const nd = new Array(ft + 2).fill(0);
-          for (let k = 0; k < d.length; k++) { const m = d[k]; if (!m) continue;
-            nd[k <= ft ? k : ft + 1] += m * (1 - p); nd[Math.min(k + n, ft + 1)] += m * p; }
-          return nd;
-        };
-        const cdf = d => { const c = []; let s = 0; for (let k = 0; k <= ft; k++) { s += d[k]; c.push(s); } return c; };
-        const dom = (a, b) => a.every((x, i) => x >= b[i] - 1e-12);
-        let dp = new Map([[0, [[1].concat(new Array(ft + 1).fill(0))]]]);
-        for (const p of probs) {
-          const ndp = new Map(); for (const [u, v] of dp) ndp.set(u, v.slice());
-          for (const [used, ds] of dp) for (const d of ds) {
-            for (let n = 1; n <= Math.min(cap, 15 - used); n++) {
-              const nu = used + n, nd = convTrunc(d, p, n), cn = cdf(nd);
-              const lst = ndp.get(nu) || []; if (!ndp.has(nu)) ndp.set(nu, lst);
-              if (lst.some(e => dom(cdf(e), cn))) continue;
-              const keep = lst.filter(e => !dom(cn, cdf(e))); keep.push(nd); ndp.set(nu, keep);
-            }
-          }
-          dp = ndp;
-        }
-        const fin = dp.get(15) || [];
-        return _idealCache[key] = (fin.length ? Math.min(...fin.map(d => d[ft + 1])) : NaN);
-      }
 
       // Grouped Poisson-binomial: one spike per country (all n share fate).
       function computeDist() {
@@ -379,13 +321,6 @@
           pEl.textContent = Math.round(pOver * 100) + "%";
           overCard.className = "cap-stat risk-over " + (pOver >= 0.25 ? "danger" : "safe");
         }
-
-        // Ideal floors for this round (the safest feasible 15).
-        const iExp = idealMinExpected();
-        idealExpEl.textContent = iExp.toFixed(1);
-        const iTail = idealMinTail(ft);
-        idealTailEl.textContent = isNaN(iTail) ? "–" : Math.round(iTail * 100) + "%";
-        idealNoteEl.textContent = `Best possible = the safest feasible 15 (max ${capByRound[round] || 3} per country) for the ${roundName(round)}.`;
 
         const t = total();
         hintEl.textContent = t === 15 ? "✓ 15-man squad"

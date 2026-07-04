@@ -365,6 +365,10 @@ def squad_risk_page():
     # want when modelling "the squad I'll field in the R16".
     live_round = sr.current_ko_round()
     plan_rounds = [r for r in KO_DISPLAY_ROUNDS if r >= live_round]
+    # The final has no round after it — nothing to transfer for — so it's never a
+    # planning target. Drop it (unless it's somehow the only round left).
+    if len(plan_rounds) > 1:
+        plan_rounds = [r for r in plan_rounds if r != KO_DISPLAY_ROUNDS[-1]]
 
     proj_df = current_projections_df()
     name_by_abbr = proj_df.drop_duplicates("abbr").set_index("abbr")["team"].to_dict()
@@ -374,7 +378,6 @@ def squad_risk_page():
     all_abbrs = set().union(*(m.keys() for m in ko_probs_by_round.values())) if ko_probs_by_round else set()
     teams_meta = {a: {"name": name_by_abbr.get(a, a), "flag": FLAGS.get(a, "")} for a in all_abbrs}
     ft_by_round = {r: sr.FREE_TRANSFERS.get(r, 4) for r in plan_rounds}
-    cap_by_round = {r: sr.COUNTRY_LIMITS.get(r, 3) for r in plan_rounds}
     round_options = [{"num": r, "label": KO_ROUND_LABELS.get(r, f"R{r}"),
                       "name": KO_ROUND_NAMES.get(r, f"Round {r}")} for r in plan_rounds]
 
@@ -429,7 +432,6 @@ def squad_risk_page():
         ko_probs_by_round=ko_probs_by_round,
         teams_meta=teams_meta,
         ft_by_round=ft_by_round,
-        cap_by_round=cap_by_round,
         confirmed_by_round=confirmed_by_round,
         counts=counts,
         flags=FLAGS,
@@ -438,14 +440,17 @@ def squad_risk_page():
 
 @app.route("/projections")
 def projections_page():
+    import squad_risk
     proj = current_projections_df()
-    display_rounds = KO_DISPLAY_ROUNDS
+    # Only rounds still to play — a completed KO round drops off as it finishes.
+    live_round = squad_risk.current_ko_round()
+    display_rounds = [r for r in KO_DISPLAY_ROUNDS if r >= live_round]
 
     proj["flag"] = proj["abbr"].map(FLAGS).fillna("")
-    # Headline = Total xP, the sum of each KO round's already-P(play)-weighted points.
-    proj["ko_total"] = proj[[f"{r}_Pts" for r in KO_DISPLAY_ROUNDS]].sum(axis=1).round(2)
-    # Hide eliminated teams from the Knockout segment (no realistic path to any KO round).
-    proj["ko_alive"] = proj[[f"{r}_PPlay" for r in KO_DISPLAY_ROUNDS]].max(axis=1) > 0.01
+    # Headline = Total xP, the sum of each remaining KO round's P(play)-weighted points.
+    proj["ko_total"] = proj[[f"{r}_Pts" for r in display_rounds]].sum(axis=1).round(2)
+    # Hide eliminated teams from the Knockout segment (no realistic path to a live KO round).
+    proj["ko_alive"] = proj[[f"{r}_PPlay" for r in display_rounds]].max(axis=1) > 0.01
     for r in display_rounds:
         proj[f"{r}_Pts"] = proj[f"{r}_Pts"].round(2)
 
@@ -485,7 +490,7 @@ def projections_page():
     )
     return render_template(
         "projections.html", players=players,
-        ko_rounds=KO_DISPLAY_ROUNDS, round_labels=KO_ROUND_LABELS,
+        ko_rounds=display_rounds, round_labels=KO_ROUND_LABELS,
     )
 
 
@@ -647,9 +652,46 @@ def match_projections():
         # Lets the R32 tab show the bracket (winner of tie A meets winner of tie B).
         bracket_def = json.load(open("data/knockout_bracket.json"))["matches"]
         NEXT_STAGE = {4: "R16", 5: "QF", 6: "SF", 7: "F"}
+        KO_STAGE = {4: "R32", 5: "R16", 6: "QF", 7: "SF", 8: "F"}
         half_of = _bracket_halves(bracket_def)   # match id → 'l' / 'r'
+        by_stage = {}
+        for m in bracket_def:
+            by_stage.setdefault(m.get("stage"), []).append(m)
 
+        # Map each confirmed tie to its TEMPLATE bracket position so winners can be
+        # paired into the next round. Feed match-ids are permuted vs the template at
+        # EVERY round, so we can't trust the ids: R32 positions come from the draw
+        # (actual_r32_in_template_space); later rounds are propagated forward — a
+        # template slot's team is whichever of its feeder tie's two teams advanced
+        # (i.e. shows up among this round's confirmed fixtures).
+        try:
+            seeded_r32 = bk.actual_r32_in_template_space()
+        except Exception:
+            seeded_r32 = {}
+        tmpl_teams = {mid: frozenset((a, b)) for mid, (a, b, _v) in seeded_r32.items()}
+        alive_by_round = {rd: {t for c in cs for t in (c["a_abbr"], c["b_abbr"])}
+                          for rd, cs in confirmed.items()}
+        for r in (5, 6, 7, 8):
+            alive = alive_by_round.get(r, set())
+            if not alive:
+                continue
+            for m in by_stage.get(KO_STAGE[r], []):
+                h, a = m.get("home", {}), m.get("away", {})
+                if h.get("type") != "winner" or a.get("type") != "winner":
+                    continue
+                w1 = [t for t in tmpl_teams.get(h["match"], ()) if t in alive]
+                w2 = [t for t in tmpl_teams.get(a["match"], ()) if t in alive]
+                if len(w1) == 1 and len(w2) == 1:
+                    tmpl_teams[m["match"]] = frozenset((w1[0], w2[0]))
+
+        # Hide completed rounds (all matches played) — the tab drops off as a round
+        # finishes, so the page opens on the current one. R32's confirmed data still
+        # feeds the forward template-position mapping above; it just isn't shown.
+        import squad_risk
+        live_round = squad_risk.current_ko_round()
         for r in (4, 5, 6, 7, 8):
+            if r < live_round:
+                continue
             done = confirmed_abbrs.get(r, set())
             team_rows = []
             for ab in kr.loc[kr["round"] == r, "abbr"]:
@@ -668,23 +710,20 @@ def match_projections():
                 })
             team_rows.sort(key=lambda t: t["xg"], reverse=True)
 
-            # Pair up this round's confirmed ties by the next-round match their winners
-            # feed into. Feed match-ids are permuted vs the template, so map each tie to
-            # its TEMPLATE bracket position (by group-slot) first, then walk the template
-            # feeder tree. Only pairs where BOTH feeders are confirmed are shown.
+            # Pair this round's confirmed ties by the next-round match their winners
+            # feed into: map each tie to its TEMPLATE position via tmpl_teams, then
+            # walk the feeder tree. Only pairs where BOTH feeders are confirmed show.
             cards = confirmed.get(r, [])
             pairs = []
             nxt = NEXT_STAGE.get(r)
             if nxt and cards:
-                seeded = bk.actual_r32_in_template_space() if r == 4 else {}
                 card_by_teams = {frozenset((c["a_abbr"], c["b_abbr"])): c for c in cards}
                 card_by_template = {}
-                for tmid, (ha, aa, _v) in seeded.items():
-                    c = card_by_teams.get(frozenset((ha, aa)))
+                for m in by_stage.get(KO_STAGE.get(r), []):
+                    c = card_by_teams.get(tmpl_teams.get(m["match"]))
                     if c:
-                        card_by_template[tmid] = c
-                for m in sorted((m for m in bracket_def if m.get("stage") == nxt),
-                                key=lambda m: m["match"]):
+                        card_by_template[m["match"]] = c
+                for m in sorted(by_stage.get(nxt, []), key=lambda m: m["match"]):
                     h, a = m.get("home", {}), m.get("away", {})
                     if h.get("type") == "winner" and a.get("type") == "winner":
                         top, bot = card_by_template.get(h["match"]), card_by_template.get(a["match"])
