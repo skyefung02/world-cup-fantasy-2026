@@ -374,6 +374,7 @@ def squad_risk_page():
     all_abbrs = set().union(*(m.keys() for m in ko_probs_by_round.values())) if ko_probs_by_round else set()
     teams_meta = {a: {"name": name_by_abbr.get(a, a), "flag": FLAGS.get(a, "")} for a in all_abbrs}
     ft_by_round = {r: sr.FREE_TRANSFERS.get(r, 4) for r in plan_rounds}
+    cap_by_round = {r: sr.COUNTRY_LIMITS.get(r, 3) for r in plan_rounds}
     round_options = [{"num": r, "label": KO_ROUND_LABELS.get(r, f"R{r}"),
                       "name": KO_ROUND_NAMES.get(r, f"Round {r}")} for r in plan_rounds]
 
@@ -428,6 +429,7 @@ def squad_risk_page():
         ko_probs_by_round=ko_probs_by_round,
         teams_meta=teams_meta,
         ft_by_round=ft_by_round,
+        cap_by_round=cap_by_round,
         confirmed_by_round=confirmed_by_round,
         counts=counts,
         flags=FLAGS,

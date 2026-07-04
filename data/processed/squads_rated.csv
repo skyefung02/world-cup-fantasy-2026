@@ -1,25 +1,25 @@
 id,name,group,abbr,isEliminated,elo,home_field,Tactical,Personnel,total_tilt,tilt_cat
-1,Algeria,j,ALG,False,1787,0.0,-0.01,0.09,0.08,Balanced
-2,Argentina,j,ARG,False,2084,0.0,-0.19,0.07,-0.11,Defensive
-3,Australia,d,AUS,False,1804,0.0,-0.04,-0.09,-0.12,Defensive
-4,Austria,j,AUT,False,1812,0.0,0.29,-0.07,0.22,Attacking
+1,Algeria,j,ALG,False,1766,0.0,-0.01,0.09,0.08,Balanced
+2,Argentina,j,ARG,False,2071,0.0,-0.19,0.07,-0.11,Defensive
+3,Australia,d,AUS,False,1793,0.0,-0.04,-0.09,-0.12,Defensive
+4,Austria,j,AUT,False,1798,0.0,0.29,-0.07,0.22,Attacking
 5,Belgium,g,BEL,False,1890,0.0,0.21,0.01,0.21,Attacking
 6,Bosnia and Herzegovina,b,BIH,False,1689,0.0,0.18,-0.04,0.14,Attacking
-7,Brazil,c,BRA,False,2013,0.0,0.12,0.09,0.21,Balanced
-8,Cabo Verde,h,CPV,False,1648,0.0,-0.2,-0.08,-0.28,Defensive
+7,Brazil,c,BRA,False,2010,0.0,0.12,0.09,0.21,Balanced
+8,Cabo Verde,h,CPV,False,1662,0.0,-0.2,-0.08,-0.28,Defensive
 9,Canada,b,CAN,False,1791,86.0,-0.1,0.03,-0.07,Balanced
-10,Colombia,k,COL,False,1954,0.0,-0.31,0.06,-0.25,Defensive
+10,Colombia,k,COL,False,1949,0.0,-0.31,0.06,-0.25,Defensive
 11,Congo DR,k,COD,False,1765,0.0,-0.1,0.03,-0.07,Balanced
-12,Côte d'Ivoire,e,CIV,False,1806,0.0,-0.11,0.05,-0.06,Balanced
-13,Croatia,l,CRO,False,1868,0.0,0.09,-0.09,0.0,Balanced
+12,Côte d'Ivoire,e,CIV,False,1804,0.0,-0.11,0.05,-0.06,Balanced
+13,Croatia,l,CRO,False,1858,0.0,0.09,-0.09,0.0,Balanced
 14,Curaçao,e,CUW,False,1567,0.0,0.05,-0.03,0.03,Balanced
 15,Czechia,a,CZE,False,1719,0.0,0.12,-0.04,0.09,Balanced
 16,Ecuador,e,ECU,False,1894,0.0,-0.12,-0.12,-0.24,Defensive
-17,Egypt,g,EGY,False,1760,0.0,-0.26,0.17,-0.09,Balanced
+17,Egypt,g,EGY,False,1789,0.0,-0.26,0.17,-0.09,Balanced
 18,England,l,ENG,False,2004,0.0,-0.16,0.06,-0.11,Defensive
 19,France,i,FRA,False,2069,0.0,-0.09,0.06,-0.03,Balanced
 20,Germany,e,GER,False,1926,0.0,0.51,0.04,0.55,Very attacking
-21,Ghana,l,GHA,False,1702,0.0,-0.24,0.14,-0.1,Defensive
+21,Ghana,l,GHA,False,1704,0.0,-0.24,0.14,-0.1,Defensive
 22,Haiti,c,HAI,False,1606,0.0,0.14,0.09,0.23,Attacking
 23,IR Iran,g,IRN,False,1727,0.0,-0.27,0.12,-0.16,Defensive
 24,Iraq,i,IRQ,False,1603,0.0,-0.26,0.09,-0.17,Defensive
@@ -33,15 +33,15 @@ id,name,group,abbr,isEliminated,elo,home_field,Tactical,Personnel,total_tilt,til
 32,Norway,i,NOR,False,1943,0.0,0.09,0.14,0.23,Attacking
 33,Panama,l,PAN,False,1701,0.0,0.01,-0.05,-0.04,Balanced
 34,Paraguay,d,PAR,False,1866,0.0,-0.24,0.05,-0.2,Defensive
-35,Portugal,k,POR,False,1963,0.0,0.03,0.0,0.03,Balanced
+35,Portugal,k,POR,False,1972,0.0,0.03,0.0,0.03,Balanced
 36,Qatar,b,QAT,False,1540,0.0,0.05,0.1,0.15,Attacking
 37,Saudi Arabia,h,KSA,False,1644,0.0,-0.19,-0.04,-0.24,Defensive
 38,Scotland,c,SCO,False,1768,0.0,-0.05,-0.01,-0.06,Balanced
 39,Senegal,i,SEN,False,1875,0.0,-0.37,0.05,-0.32,Defensive
 40,South Africa,a,RSA,False,1680,0.0,-0.26,0.03,-0.23,Defensive
-41,Spain,h,ESP,False,2044,0.0,0.08,0.0,0.08,Balanced
+41,Spain,h,ESP,False,2062,0.0,0.08,0.0,0.08,Balanced
 42,Sweden,f,SWE,False,1765,0.0,0.09,0.09,0.18,Attacking
-43,Switzerland,b,SUI,False,1892,0.0,0.13,-0.05,0.09,Balanced
+43,Switzerland,b,SUI,False,1908,0.0,0.13,-0.05,0.09,Balanced
 44,Tunisia,f,TUN,False,1637,0.0,-0.27,0.06,-0.2,Defensive
 45,Türkiye,d,TUR,False,1853,0.0,0.19,0.06,0.25,Attacking
 46,Uruguay,h,URU,False,1889,0.0,-0.13,-0.04,-0.17,Defensive
