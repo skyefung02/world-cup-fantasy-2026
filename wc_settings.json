@@ -1,10 +1,10 @@
 {
     "projection_file": "data/projections.csv",
-    "next_round": 5,
+    "next_round": 6,
     "horizon": 3,
-    "initial_squad": [1099, 457, 492, 2031, 517, 1092, 1082, 173, 468, 500, 38, 262, 1320, 1318, 270],
+    "initial_squad": [506, 2015, 28, 2031, 792, 517, 1092, 1082, 173, 468, 500, 1099, 1320, 1318, 38],
     "decay_base": 1,
-    "itb": 0.1,
+    "itb": 0.4,
     "ft": 4,
     "xmin_lb": 45,
     "use_wildcard": [],

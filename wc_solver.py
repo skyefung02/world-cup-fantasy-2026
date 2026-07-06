@@ -152,6 +152,20 @@ def prep_wc_data(options: dict) -> dict:
 
     print(f"Player pool: {n_before} → {len(df)} after filtering")
 
+    # Every held player MUST be in the pool, or the initial_squad constraint below
+    # silently omits them: the squad starts under-sized and the model fills the gap
+    # as a free buy-in (num_transfers counts only transfer_out), handing out a
+    # transfer you don't have. This usually means a held player's team was
+    # eliminated and dropped from projections — run refresh_settings.py first, which
+    # backfills a zero-point placeholder row for them.
+    absent = [pid for pid in options.get("initial_squad", []) if pid not in df.index]
+    if absent:
+        raise ValueError(
+            f"initial_squad player id(s) {absent} are not in the projection pool. "
+            f"If their team was eliminated, run refresh_settings.py to backfill a "
+            f"held-asset row before solving."
+        )
+
     # Determine starting budget (increases by £5m from R32 onwards)
     group_stage_rounds = set(options.get("group_stage_rounds", [1, 2, 3]))
     in_knockout        = all(r not in group_stage_rounds for r in rounds)
