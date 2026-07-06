@@ -14,9 +14,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 34,Nicolás Tagliafico,DEF,4.3,playing,0.6,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
 34,Nicolás Tagliafico,DEF,4.3,playing,0.6,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
 34,Nicolás Tagliafico,DEF,4.3,playing,0.6,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
-38,Lionel Messi,FWD,10.0,playing,53.2,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
-38,Lionel Messi,FWD,10.0,playing,53.2,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
-38,Lionel Messi,FWD,10.0,playing,53.2,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
+38,Lionel Messi,FWD,10.0,playing,53.4,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
+38,Lionel Messi,FWD,10.0,playing,53.4,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
+38,Lionel Messi,FWD,10.0,playing,53.4,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
 39,Julián Alvarez,FWD,8.6,playing,7.9,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
 39,Julián Alvarez,FWD,8.6,playing,7.9,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
 39,Julián Alvarez,FWD,8.6,playing,7.9,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
@@ -41,9 +41,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 48,Leandro Paredes,MID,5.6,playing,0.2,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
 48,Leandro Paredes,MID,5.6,playing,0.2,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
 48,Leandro Paredes,MID,5.6,playing,0.2,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
-50,Rodrigo De Paul,MID,5.9,playing,2.3,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
-50,Rodrigo De Paul,MID,5.9,playing,2.3,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
-50,Rodrigo De Paul,MID,5.9,playing,2.3,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
+50,Rodrigo De Paul,MID,5.9,playing,2.4,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
+50,Rodrigo De Paul,MID,5.9,playing,2.4,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
+50,Rodrigo De Paul,MID,5.9,playing,2.4,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
 51,Nico Paz,MID,5.9,playing,0.8,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
 51,Nico Paz,MID,5.9,playing,0.8,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
 51,Nico Paz,MID,5.9,playing,0.8,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
@@ -56,9 +56,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 55,Thiago Almada,MID,6.5,playing,0.3,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
 55,Thiago Almada,MID,6.5,playing,0.3,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
 55,Thiago Almada,MID,6.5,playing,0.3,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
-56,Alexis Mac Allister,MID,6.6,playing,5.1,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
-56,Alexis Mac Allister,MID,6.6,playing,5.1,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
-56,Alexis Mac Allister,MID,6.6,playing,5.1,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
+56,Alexis Mac Allister,MID,6.6,playing,5.3,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
+56,Alexis Mac Allister,MID,6.6,playing,5.3,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
+56,Alexis Mac Allister,MID,6.6,playing,5.3,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
 57,Enzo Fernández,MID,7.5,playing,2.7,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
 57,Enzo Fernández,MID,7.5,playing,2.7,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
 57,Enzo Fernández,MID,7.5,playing,2.7,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
@@ -122,126 +122,15 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 138,Kevin De Bruyne,MID,7.5,playing,4.4,5,Belgium,BEL,g,1890,0.0,0.21,0.21,Attacking,1,EGY,1789,0.0,-0.26
 138,Kevin De Bruyne,MID,7.5,playing,4.4,5,Belgium,BEL,g,1890,0.0,0.21,0.21,Attacking,2,IRN,1727,0.0,-0.27
 138,Kevin De Bruyne,MID,7.5,playing,4.4,5,Belgium,BEL,g,1890,0.0,0.21,0.21,Attacking,3,NZL,1624,0.0,-0.01
-164,Gabriel Magalhães,DEF,5.5,playing,18.5,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-164,Gabriel Magalhães,DEF,5.5,playing,18.5,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-164,Gabriel Magalhães,DEF,5.5,playing,18.5,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-165,Marquinhos,DEF,5.2,playing,7.6,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-165,Marquinhos,DEF,5.2,playing,7.6,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-165,Marquinhos,DEF,5.2,playing,7.6,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-166,Ibañez,DEF,4.4,playing,0.2,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-166,Ibañez,DEF,4.4,playing,0.2,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-166,Ibañez,DEF,4.4,playing,0.2,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-167,Danilo,DEF,4.3,playing,1.5,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-167,Danilo,DEF,4.3,playing,1.5,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-167,Danilo,DEF,4.3,playing,1.5,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-168,Douglas Santos,DEF,4.3,playing,3.3,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-168,Douglas Santos,DEF,4.3,playing,3.3,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-168,Douglas Santos,DEF,4.3,playing,3.3,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-169,Bremer,DEF,4.3,playing,0.3,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-169,Bremer,DEF,4.3,playing,0.3,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-169,Bremer,DEF,4.3,playing,0.3,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-170,Léo Pereira,DEF,4.2,playing,0.1,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-170,Léo Pereira,DEF,4.2,playing,0.1,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-170,Léo Pereira,DEF,4.2,playing,0.1,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-173,Vinícius Júnior,MID,10.0,playing,43.9,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-173,Vinícius Júnior,MID,10.0,playing,43.9,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-173,Vinícius Júnior,MID,10.0,playing,43.9,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-174,Matheus Cunha,FWD,7.3,playing,5.4,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-174,Matheus Cunha,FWD,7.3,playing,5.4,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-174,Matheus Cunha,FWD,7.3,playing,5.4,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-176,Gabriel Martinelli,MID,6.5,playing,0.6,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-176,Gabriel Martinelli,MID,6.5,playing,0.6,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-176,Gabriel Martinelli,MID,6.5,playing,0.6,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-177,Luiz Henrique,FWD,6.1,playing,0.2,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-177,Luiz Henrique,FWD,6.1,playing,0.2,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-177,Luiz Henrique,FWD,6.1,playing,0.2,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-178,Igor Thiago,FWD,5.9,playing,1.2,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-178,Igor Thiago,FWD,5.9,playing,1.2,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-178,Igor Thiago,FWD,5.9,playing,1.2,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-179,Rayan,FWD,5.6,playing,0.4,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-179,Rayan,FWD,5.6,playing,0.4,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-179,Rayan,FWD,5.6,playing,0.4,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-181,Endrick,FWD,5.5,playing,1.9,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-181,Endrick,FWD,5.5,playing,1.9,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-181,Endrick,FWD,5.5,playing,1.9,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-182,Ederson,GK,5.0,playing,2.4,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-182,Ederson,GK,5.0,playing,2.4,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-182,Ederson,GK,5.0,playing,2.4,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-183,Alisson Becker,GK,5.0,playing,7.7,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-183,Alisson Becker,GK,5.0,playing,7.7,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-183,Alisson Becker,GK,5.0,playing,7.7,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-186,Fabinho,MID,5.2,playing,0.3,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-186,Fabinho,MID,5.2,playing,0.3,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-186,Fabinho,MID,5.2,playing,0.3,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-187,Danilo,MID,5.6,playing,0.2,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-187,Danilo,MID,5.6,playing,0.2,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-187,Danilo,MID,5.6,playing,0.2,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-188,Casemiro,MID,6.3,playing,2.0,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-188,Casemiro,MID,6.3,playing,2.0,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-188,Casemiro,MID,6.3,playing,2.0,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-190,Lucas Paquetá,MID,6.5,playing,0.8,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-190,Lucas Paquetá,MID,6.5,playing,0.8,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-190,Lucas Paquetá,MID,6.5,playing,0.8,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-220,Richie Laryea,DEF,3.9,playing,0.8,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-220,Richie Laryea,DEF,3.9,playing,0.8,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-220,Richie Laryea,DEF,3.9,playing,0.8,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-221,Derek Cornelius,DEF,4.0,playing,0.4,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-221,Derek Cornelius,DEF,4.0,playing,0.4,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-221,Derek Cornelius,DEF,4.0,playing,0.4,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-223,Joel Waterman,DEF,3.7,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-223,Joel Waterman,DEF,3.7,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-223,Joel Waterman,DEF,3.7,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-225,Luc De Fougerolles,DEF,3.5,playing,0.9,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-225,Luc De Fougerolles,DEF,3.5,playing,0.9,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-225,Luc De Fougerolles,DEF,3.5,playing,0.9,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-226,Jonathan David,FWD,7.0,playing,2.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-226,Jonathan David,FWD,7.0,playing,2.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-226,Jonathan David,FWD,7.0,playing,2.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-227,Cyle Larin,FWD,6.2,playing,0.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-227,Cyle Larin,FWD,6.2,playing,0.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-227,Cyle Larin,FWD,6.2,playing,0.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-228,Tajon Buchanan,FWD,5.5,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-228,Tajon Buchanan,FWD,5.5,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-228,Tajon Buchanan,FWD,5.5,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-229,Liam Millar,FWD,5.1,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-229,Liam Millar,FWD,5.1,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-229,Liam Millar,FWD,5.1,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-230,Tani Oluwaseyi,FWD,4.9,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-230,Tani Oluwaseyi,FWD,4.9,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-230,Tani Oluwaseyi,FWD,4.9,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-235,Maxime Crépeau,GK,4.0,playing,4.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-235,Maxime Crépeau,GK,4.0,playing,4.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-235,Maxime Crépeau,GK,4.0,playing,4.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-236,Dayne St. Clair,GK,3.8,playing,0.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-236,Dayne St. Clair,GK,3.8,playing,0.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-236,Dayne St. Clair,GK,3.8,playing,0.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-237,Owen Goodman,GK,3.5,playing,0.7,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-237,Owen Goodman,GK,3.5,playing,0.7,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-237,Owen Goodman,GK,3.5,playing,0.7,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-238,Ali Ahmed,MID,4.9,playing,0.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-238,Ali Ahmed,MID,4.9,playing,0.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-238,Ali Ahmed,MID,4.9,playing,0.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-240,Niko Sigur,MID,4.9,playing,0.0,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-240,Niko Sigur,MID,4.9,playing,0.0,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-240,Niko Sigur,MID,4.9,playing,0.0,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-241,Nathan Saliba,MID,5.1,playing,1.8,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-241,Nathan Saliba,MID,5.1,playing,1.8,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-241,Nathan Saliba,MID,5.1,playing,1.8,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-242,Mathieu Choinière,MID,5.3,playing,0.0,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-242,Mathieu Choinière,MID,5.3,playing,0.0,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-242,Mathieu Choinière,MID,5.3,playing,0.0,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-243,Jonathan Osorio,MID,5.6,playing,0.0,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-243,Jonathan Osorio,MID,5.6,playing,0.0,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-243,Jonathan Osorio,MID,5.6,playing,0.0,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
 246,Kevin Castaño,MID,4.3,playing,0.3,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,1,UZB,1655,0.0,0.05
 246,Kevin Castaño,MID,4.3,playing,0.3,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,2,COD,1765,0.0,-0.1
 246,Kevin Castaño,MID,4.3,playing,0.3,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,3,POR,1972,0.0,0.03
 247,Richard Ríos,MID,4.7,playing,0.4,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,1,UZB,1655,0.0,0.05
 247,Richard Ríos,MID,4.7,playing,0.4,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,2,COD,1765,0.0,-0.1
 247,Richard Ríos,MID,4.7,playing,0.4,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,3,POR,1972,0.0,0.03
-248,Daniel Muñoz,DEF,4.6,playing,19.4,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,1,UZB,1655,0.0,0.05
-248,Daniel Muñoz,DEF,4.6,playing,19.4,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,2,COD,1765,0.0,-0.1
-248,Daniel Muñoz,DEF,4.6,playing,19.4,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,3,POR,1972,0.0,0.03
+248,Daniel Muñoz,DEF,4.6,playing,19.5,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,1,UZB,1655,0.0,0.05
+248,Daniel Muñoz,DEF,4.6,playing,19.5,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,2,COD,1765,0.0,-0.1
+248,Daniel Muñoz,DEF,4.6,playing,19.5,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,3,POR,1972,0.0,0.03
 249,Jhon Lucumí,DEF,4.3,playing,0.5,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,1,UZB,1655,0.0,0.05
 249,Jhon Lucumí,DEF,4.3,playing,0.5,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,2,COD,1765,0.0,-0.1
 249,Jhon Lucumí,DEF,4.3,playing,0.5,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,3,POR,1972,0.0,0.03
@@ -269,9 +158,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 261,Andrés Gómez,FWD,4.9,playing,0.1,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,1,UZB,1655,0.0,0.05
 261,Andrés Gómez,FWD,4.9,playing,0.1,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,2,COD,1765,0.0,-0.1
 261,Andrés Gómez,FWD,4.9,playing,0.1,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,3,POR,1972,0.0,0.03
-262,Camilo Vargas,GK,4.3,playing,5.0,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,1,UZB,1655,0.0,0.05
-262,Camilo Vargas,GK,4.3,playing,5.0,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,2,COD,1765,0.0,-0.1
-262,Camilo Vargas,GK,4.3,playing,5.0,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,3,POR,1972,0.0,0.03
+262,Camilo Vargas,GK,4.3,playing,5.1,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,1,UZB,1655,0.0,0.05
+262,Camilo Vargas,GK,4.3,playing,5.1,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,2,COD,1765,0.0,-0.1
+262,Camilo Vargas,GK,4.3,playing,5.1,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,3,POR,1972,0.0,0.03
 263,David Ospina,GK,4.0,playing,0.7,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,1,UZB,1655,0.0,0.05
 263,David Ospina,GK,4.0,playing,0.7,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,2,COD,1765,0.0,-0.1
 263,David Ospina,GK,4.0,playing,0.7,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,3,POR,1972,0.0,0.03
@@ -281,9 +170,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 265,Jefferson Lerma,MID,4.9,playing,0.3,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,1,UZB,1655,0.0,0.05
 265,Jefferson Lerma,MID,4.9,playing,0.3,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,2,COD,1765,0.0,-0.1
 265,Jefferson Lerma,MID,4.9,playing,0.3,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,3,POR,1972,0.0,0.03
-266,Gustavo Puerta,MID,5.3,playing,0.3,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,1,UZB,1655,0.0,0.05
-266,Gustavo Puerta,MID,5.3,playing,0.3,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,2,COD,1765,0.0,-0.1
-266,Gustavo Puerta,MID,5.3,playing,0.3,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,3,POR,1972,0.0,0.03
+266,Gustavo Puerta,MID,5.3,playing,0.4,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,1,UZB,1655,0.0,0.05
+266,Gustavo Puerta,MID,5.3,playing,0.4,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,2,COD,1765,0.0,-0.1
+266,Gustavo Puerta,MID,5.3,playing,0.4,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,3,POR,1972,0.0,0.03
 267,Juan Fernando Quintero,MID,5.6,playing,0.1,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,1,UZB,1655,0.0,0.05
 267,Juan Fernando Quintero,MID,5.6,playing,0.1,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,2,COD,1765,0.0,-0.1
 267,Juan Fernando Quintero,MID,5.6,playing,0.1,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,3,POR,1972,0.0,0.03
@@ -308,9 +197,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 434,Hamdi Fathy,MID,4.4,playing,0.1,17,Egypt,EGY,g,1789,0.0,-0.26,-0.09,Balanced,1,BEL,1890,0.0,0.21
 434,Hamdi Fathy,MID,4.4,playing,0.1,17,Egypt,EGY,g,1789,0.0,-0.26,-0.09,Balanced,2,NZL,1624,0.0,-0.01
 434,Hamdi Fathy,MID,4.4,playing,0.1,17,Egypt,EGY,g,1789,0.0,-0.26,-0.09,Balanced,3,IRN,1727,0.0,-0.27
-435,Emam Ashour,MID,4.6,playing,1.4,17,Egypt,EGY,g,1789,0.0,-0.26,-0.09,Balanced,1,BEL,1890,0.0,0.21
-435,Emam Ashour,MID,4.6,playing,1.4,17,Egypt,EGY,g,1789,0.0,-0.26,-0.09,Balanced,2,NZL,1624,0.0,-0.01
-435,Emam Ashour,MID,4.6,playing,1.4,17,Egypt,EGY,g,1789,0.0,-0.26,-0.09,Balanced,3,IRN,1727,0.0,-0.27
+435,Emam Ashour,MID,4.6,playing,1.5,17,Egypt,EGY,g,1789,0.0,-0.26,-0.09,Balanced,1,BEL,1890,0.0,0.21
+435,Emam Ashour,MID,4.6,playing,1.5,17,Egypt,EGY,g,1789,0.0,-0.26,-0.09,Balanced,2,NZL,1624,0.0,-0.01
+435,Emam Ashour,MID,4.6,playing,1.5,17,Egypt,EGY,g,1789,0.0,-0.26,-0.09,Balanced,3,IRN,1727,0.0,-0.27
 436,Mahmoud Saber,MID,4.9,playing,0.0,17,Egypt,EGY,g,1789,0.0,-0.26,-0.09,Balanced,1,BEL,1890,0.0,0.21
 436,Mahmoud Saber,MID,4.9,playing,0.0,17,Egypt,EGY,g,1789,0.0,-0.26,-0.09,Balanced,2,NZL,1624,0.0,-0.01
 436,Mahmoud Saber,MID,4.9,playing,0.0,17,Egypt,EGY,g,1789,0.0,-0.26,-0.09,Balanced,3,IRN,1727,0.0,-0.27
@@ -380,27 +269,27 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 467,Djed Spence,DEF,4.5,playing,0.6,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
 467,Djed Spence,DEF,4.5,playing,0.6,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
 467,Djed Spence,DEF,4.5,playing,0.6,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
-468,Harry Kane,FWD,10.5,playing,42.3,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
-468,Harry Kane,FWD,10.5,playing,42.3,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
-468,Harry Kane,FWD,10.5,playing,42.3,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
+468,Harry Kane,FWD,10.5,playing,42.4,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
+468,Harry Kane,FWD,10.5,playing,42.4,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
+468,Harry Kane,FWD,10.5,playing,42.4,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
 469,Bukayo Saka,MID,9.5,playing,4.0,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
 469,Bukayo Saka,MID,9.5,playing,4.0,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
 469,Bukayo Saka,MID,9.5,playing,4.0,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
 471,Marcus Rashford,MID,7.5,playing,2.1,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
 471,Marcus Rashford,MID,7.5,playing,2.1,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
 471,Marcus Rashford,MID,7.5,playing,2.1,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
-474,Anthony Gordon,MID,7.0,playing,1.3,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
-474,Anthony Gordon,MID,7.0,playing,1.3,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
-474,Anthony Gordon,MID,7.0,playing,1.3,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
+474,Anthony Gordon,MID,7.0,playing,1.4,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
+474,Anthony Gordon,MID,7.0,playing,1.4,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
+474,Anthony Gordon,MID,7.0,playing,1.4,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
 475,Morgan Rogers,MID,7.2,playing,0.5,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
 475,Morgan Rogers,MID,7.2,playing,0.5,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
 475,Morgan Rogers,MID,7.2,playing,0.5,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
 476,Noni Madueke,FWD,6.1,playing,0.4,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
 476,Noni Madueke,FWD,6.1,playing,0.4,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
 476,Noni Madueke,FWD,6.1,playing,0.4,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
-477,Jordan Pickford,GK,4.8,playing,15.7,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
-477,Jordan Pickford,GK,4.8,playing,15.7,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
-477,Jordan Pickford,GK,4.8,playing,15.7,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
+477,Jordan Pickford,GK,4.8,playing,15.8,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
+477,Jordan Pickford,GK,4.8,playing,15.8,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
+477,Jordan Pickford,GK,4.8,playing,15.8,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
 478,Dean Henderson,GK,4.2,playing,0.3,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
 478,Dean Henderson,GK,4.2,playing,0.3,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
 478,Dean Henderson,GK,4.2,playing,0.3,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
@@ -413,60 +302,60 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 485,Kobbie Mainoo,MID,6.1,playing,0.4,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
 485,Kobbie Mainoo,MID,6.1,playing,0.4,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
 485,Kobbie Mainoo,MID,6.1,playing,0.4,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
-486,Elliot Anderson,MID,6.5,playing,1.0,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
-486,Elliot Anderson,MID,6.5,playing,1.0,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
-486,Elliot Anderson,MID,6.5,playing,1.0,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
+486,Elliot Anderson,MID,6.5,playing,1.1,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
+486,Elliot Anderson,MID,6.5,playing,1.1,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
+486,Elliot Anderson,MID,6.5,playing,1.1,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
 488,Declan Rice,MID,7.0,playing,5.7,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
 488,Declan Rice,MID,7.0,playing,5.7,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
 488,Declan Rice,MID,7.0,playing,5.7,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
-491,Jude Bellingham,MID,8.3,playing,23.0,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
-491,Jude Bellingham,MID,8.3,playing,23.0,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
-491,Jude Bellingham,MID,8.3,playing,23.0,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
+491,Jude Bellingham,MID,8.3,playing,23.9,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
+491,Jude Bellingham,MID,8.3,playing,23.9,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
+491,Jude Bellingham,MID,8.3,playing,23.9,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
 492,Theo Hernández,DEF,5.0,playing,2.6,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
 492,Theo Hernández,DEF,5.0,playing,2.6,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
 492,Theo Hernández,DEF,5.0,playing,2.6,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
 493,Maxence Lacroix,DEF,4.5,playing,0.3,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
 493,Maxence Lacroix,DEF,4.5,playing,0.3,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
 493,Maxence Lacroix,DEF,4.5,playing,0.3,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
-494,Dayot Upamecano,DEF,5.3,playing,9.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
-494,Dayot Upamecano,DEF,5.3,playing,9.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
-494,Dayot Upamecano,DEF,5.3,playing,9.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
+494,Dayot Upamecano,DEF,5.3,playing,9.6,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
+494,Dayot Upamecano,DEF,5.3,playing,9.6,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
+494,Dayot Upamecano,DEF,5.3,playing,9.6,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
 495,Ibrahima Konaté,DEF,4.9,playing,1.5,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
 495,Ibrahima Konaté,DEF,4.9,playing,1.5,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
 495,Ibrahima Konaté,DEF,4.9,playing,1.5,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
 496,Lucas Hernández,DEF,5.2,playing,1.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
 496,Lucas Hernández,DEF,5.2,playing,1.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
 496,Lucas Hernández,DEF,5.2,playing,1.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
-498,Lucas Digne,DEF,5.0,playing,2.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
-498,Lucas Digne,DEF,5.0,playing,2.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
-498,Lucas Digne,DEF,5.0,playing,2.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
+498,Lucas Digne,DEF,5.0,playing,2.5,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
+498,Lucas Digne,DEF,5.0,playing,2.5,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
+498,Lucas Digne,DEF,5.0,playing,2.5,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
 499,Malo Gusto,DEF,5.1,playing,0.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
 499,Malo Gusto,DEF,5.1,playing,0.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
 499,Malo Gusto,DEF,5.1,playing,0.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
-500,Kylian Mbappé,FWD,10.5,playing,68.8,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
-500,Kylian Mbappé,FWD,10.5,playing,68.8,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
-500,Kylian Mbappé,FWD,10.5,playing,68.8,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
-501,Ousmane Dembélé,MID,10.0,playing,40.3,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
-501,Ousmane Dembélé,MID,10.0,playing,40.3,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
-501,Ousmane Dembélé,MID,10.0,playing,40.3,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
+500,Kylian Mbappé,FWD,10.5,playing,68.9,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
+500,Kylian Mbappé,FWD,10.5,playing,68.9,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
+500,Kylian Mbappé,FWD,10.5,playing,68.9,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
+501,Ousmane Dembélé,MID,10.0,playing,40.8,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
+501,Ousmane Dembélé,MID,10.0,playing,40.8,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
+501,Ousmane Dembélé,MID,10.0,playing,40.8,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
 502,Marcus Thuram,FWD,7.5,playing,0.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
 502,Marcus Thuram,FWD,7.5,playing,0.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
 502,Marcus Thuram,FWD,7.5,playing,0.4,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
 505,Désiré Doué,MID,7.5,playing,3.0,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
 505,Désiré Doué,MID,7.5,playing,3.0,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
 505,Désiré Doué,MID,7.5,playing,3.0,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
-506,Mike Maignan,GK,5.0,playing,14.7,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
-506,Mike Maignan,GK,5.0,playing,14.7,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
-506,Mike Maignan,GK,5.0,playing,14.7,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
+506,Mike Maignan,GK,5.0,playing,15.1,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
+506,Mike Maignan,GK,5.0,playing,15.1,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
+506,Mike Maignan,GK,5.0,playing,15.1,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
 508,Brice Samba,GK,4.5,playing,0.1,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
 508,Brice Samba,GK,4.5,playing,0.1,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
 508,Brice Samba,GK,4.5,playing,0.1,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
 509,N'Golo Kanté,MID,5.1,playing,0.8,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
 509,N'Golo Kanté,MID,5.1,playing,0.8,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
 509,N'Golo Kanté,MID,5.1,playing,0.8,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
-510,Adrien Rabiot,MID,6.4,playing,0.5,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
-510,Adrien Rabiot,MID,6.4,playing,0.5,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
-510,Adrien Rabiot,MID,6.4,playing,0.5,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
+510,Adrien Rabiot,MID,6.4,playing,0.6,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
+510,Adrien Rabiot,MID,6.4,playing,0.6,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
+510,Adrien Rabiot,MID,6.4,playing,0.6,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
 511,Warren Zaïre-Emery,MID,6.1,playing,0.2,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
 511,Warren Zaïre-Emery,MID,6.1,playing,0.2,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
 511,Warren Zaïre-Emery,MID,6.1,playing,0.2,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
@@ -482,66 +371,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 516,Rayan Cherki,MID,8.0,playing,4.0,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
 516,Rayan Cherki,MID,8.0,playing,4.0,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
 516,Rayan Cherki,MID,8.0,playing,4.0,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
-517,Michael Olise,MID,9.5,playing,43.1,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
-517,Michael Olise,MID,9.5,playing,43.1,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
-517,Michael Olise,MID,9.5,playing,43.1,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
-738,Obed Vargas,MID,4.7,playing,0.2,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-738,Obed Vargas,MID,4.7,playing,0.2,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-738,Obed Vargas,MID,4.7,playing,0.2,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-740,Johan Vásquez,DEF,4.7,playing,3.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-740,Johan Vásquez,DEF,4.7,playing,3.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-740,Johan Vásquez,DEF,4.7,playing,3.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-741,César Montes,DEF,4.7,playing,0.5,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-741,César Montes,DEF,4.7,playing,0.5,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-741,César Montes,DEF,4.7,playing,0.5,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-742,Jesús Gallardo,DEF,4.7,playing,1.2,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-742,Jesús Gallardo,DEF,4.7,playing,1.2,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-742,Jesús Gallardo,DEF,4.7,playing,1.2,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-743,Jorge Sánchez,DEF,4.0,playing,4.7,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-743,Jorge Sánchez,DEF,4.0,playing,4.7,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-743,Jorge Sánchez,DEF,4.0,playing,4.7,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-744,Israel Reyes,DEF,4.0,playing,0.8,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-744,Israel Reyes,DEF,4.0,playing,0.8,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-744,Israel Reyes,DEF,4.0,playing,0.8,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-748,Raúl Jiménez,FWD,7.0,playing,2.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-748,Raúl Jiménez,FWD,7.0,playing,2.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-748,Raúl Jiménez,FWD,7.0,playing,2.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-750,Julián Quiñones,FWD,5.6,playing,3.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-750,Julián Quiñones,FWD,5.6,playing,3.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-750,Julián Quiñones,FWD,5.6,playing,3.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-751,Alexis Vega,FWD,5.3,playing,0.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-751,Alexis Vega,FWD,5.3,playing,0.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-751,Alexis Vega,FWD,5.3,playing,0.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-752,Roberto Alvarado,FWD,5.3,playing,0.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-752,Roberto Alvarado,FWD,5.3,playing,0.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-752,Roberto Alvarado,FWD,5.3,playing,0.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-753,Guillermo Martínez,FWD,4.7,playing,0.2,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-753,Guillermo Martínez,FWD,4.7,playing,0.2,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-753,Guillermo Martínez,FWD,4.7,playing,0.2,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-754,Armando González,FWD,4.4,playing,0.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-754,Armando González,FWD,4.4,playing,0.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-754,Armando González,FWD,4.4,playing,0.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-755,Guillermo Ochoa,GK,4.2,playing,2.4,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-755,Guillermo Ochoa,GK,4.2,playing,2.4,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-755,Guillermo Ochoa,GK,4.2,playing,2.4,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-756,Carlos Acevedo,GK,4.0,playing,0.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-756,Carlos Acevedo,GK,4.0,playing,0.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-756,Carlos Acevedo,GK,4.0,playing,0.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-757,Raúl Rangel,GK,3.9,playing,9.8,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-757,Raúl Rangel,GK,3.9,playing,9.8,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-757,Raúl Rangel,GK,3.9,playing,9.8,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-758,Brian Gutiérrez,MID,5.0,playing,1.0,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-758,Brian Gutiérrez,MID,5.0,playing,1.0,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-758,Brian Gutiérrez,MID,5.0,playing,1.0,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-759,Érik Lira,MID,5.6,playing,0.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-759,Érik Lira,MID,5.6,playing,0.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-759,Érik Lira,MID,5.6,playing,0.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-762,Orbelín Pineda,MID,6.2,playing,0.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-762,Orbelín Pineda,MID,6.2,playing,0.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-762,Orbelín Pineda,MID,6.2,playing,0.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-763,Álvaro Fidalgo,MID,6.4,playing,0.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-763,Álvaro Fidalgo,MID,6.4,playing,0.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-763,Álvaro Fidalgo,MID,6.4,playing,0.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
+517,Michael Olise,MID,9.5,playing,43.5,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
+517,Michael Olise,MID,9.5,playing,43.5,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
+517,Michael Olise,MID,9.5,playing,43.5,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
 765,Samir El Mourabet,MID,4.7,playing,0.1,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
 765,Samir El Mourabet,MID,4.7,playing,0.1,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
 765,Samir El Mourabet,MID,4.7,playing,0.1,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
@@ -554,9 +386,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 782,Gessime Yassine,FWD,4.0,playing,0.3,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
 782,Gessime Yassine,FWD,4.0,playing,0.3,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
 782,Gessime Yassine,FWD,4.0,playing,0.3,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
-792,Ismael Saibari,MID,6.8,playing,22.0,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
-792,Ismael Saibari,MID,6.8,playing,22.0,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
-792,Ismael Saibari,MID,6.8,playing,22.0,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
+792,Ismael Saibari,MID,6.8,playing,21.9,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
+792,Ismael Saibari,MID,6.8,playing,21.9,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
+792,Ismael Saibari,MID,6.8,playing,21.9,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
 841,Sander Berge,MID,4.7,playing,0.3,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
 841,Sander Berge,MID,4.7,playing,0.3,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
 841,Sander Berge,MID,4.7,playing,0.3,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
@@ -569,9 +401,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 845,Patrick Berg,MID,5.6,playing,0.2,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
 845,Patrick Berg,MID,5.6,playing,0.2,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
 845,Patrick Berg,MID,5.6,playing,0.2,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
-846,Kristoffer Ajer,DEF,4.3,playing,0.4,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
-846,Kristoffer Ajer,DEF,4.3,playing,0.4,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
-846,Kristoffer Ajer,DEF,4.3,playing,0.4,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
+846,Kristoffer Ajer,DEF,4.3,playing,0.5,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
+846,Kristoffer Ajer,DEF,4.3,playing,0.5,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
+846,Kristoffer Ajer,DEF,4.3,playing,0.5,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
 847,Julian Ryerson,DEF,4.2,playing,2.5,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
 847,Julian Ryerson,DEF,4.2,playing,2.5,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
 847,Julian Ryerson,DEF,4.2,playing,2.5,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
@@ -581,9 +413,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 849,Leo Østigård,DEF,4.1,playing,0.6,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
 849,Leo Østigård,DEF,4.1,playing,0.6,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
 849,Leo Østigård,DEF,4.1,playing,0.6,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
-850,David Møller Wolfe,DEF,4.0,playing,0.7,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
-850,David Møller Wolfe,DEF,4.0,playing,0.7,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
-850,David Møller Wolfe,DEF,4.0,playing,0.7,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
+850,David Møller Wolfe,DEF,4.0,playing,0.8,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
+850,David Møller Wolfe,DEF,4.0,playing,0.8,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
+850,David Møller Wolfe,DEF,4.0,playing,0.8,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
 851,Fredrik Bjørkan,DEF,4.0,playing,0.3,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
 851,Fredrik Bjørkan,DEF,4.0,playing,0.3,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
 851,Fredrik Bjørkan,DEF,4.0,playing,0.3,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
@@ -593,9 +425,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 854,Henrik Falchener,DEF,3.5,playing,0.3,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
 854,Henrik Falchener,DEF,3.5,playing,0.3,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
 854,Henrik Falchener,DEF,3.5,playing,0.3,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
-855,Erling Haaland,FWD,10.5,playing,28.3,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
-855,Erling Haaland,FWD,10.5,playing,28.3,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
-855,Erling Haaland,FWD,10.5,playing,28.3,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
+855,Erling Haaland,FWD,10.5,playing,28.6,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
+855,Erling Haaland,FWD,10.5,playing,28.6,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
+855,Erling Haaland,FWD,10.5,playing,28.6,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
 856,Alexander Sørloth,FWD,6.8,playing,0.8,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
 856,Alexander Sørloth,FWD,6.8,playing,0.8,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
 856,Alexander Sørloth,FWD,6.8,playing,0.8,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
@@ -605,9 +437,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 858,Jørgen Strand Larsen,FWD,5.6,playing,0.1,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
 858,Jørgen Strand Larsen,FWD,5.6,playing,0.1,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
 858,Jørgen Strand Larsen,FWD,5.6,playing,0.1,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
-859,Ørjan Nyland,GK,4.2,playing,1.2,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
-859,Ørjan Nyland,GK,4.2,playing,1.2,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
-859,Ørjan Nyland,GK,4.2,playing,1.2,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
+859,Ørjan Nyland,GK,4.2,playing,1.3,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
+859,Ørjan Nyland,GK,4.2,playing,1.3,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
+859,Ørjan Nyland,GK,4.2,playing,1.3,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
 860,Egil Selvik,GK,3.8,playing,0.1,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
 860,Egil Selvik,GK,3.8,playing,0.1,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
 860,Egil Selvik,GK,3.8,playing,0.1,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
@@ -620,78 +452,6 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 864,Kristian Thorstvedt,MID,6.2,playing,0.0,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
 864,Kristian Thorstvedt,MID,6.2,playing,0.0,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
 864,Kristian Thorstvedt,MID,6.2,playing,0.0,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
-888,Maurício Magalhães Prado,MID,4.6,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-888,Maurício Magalhães Prado,MID,4.6,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-888,Maurício Magalhães Prado,MID,4.6,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-889,Alejandro Romero,MID,4.7,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-889,Alejandro Romero,MID,4.7,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-889,Alejandro Romero,MID,4.7,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-890,Matías Galarza,MID,4.8,playing,0.6,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-890,Matías Galarza,MID,4.8,playing,0.6,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-890,Matías Galarza,MID,4.8,playing,0.6,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-892,Braian Ojeda,MID,5.6,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-892,Braian Ojeda,MID,5.6,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-892,Braian Ojeda,MID,5.6,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-893,Gustavo Gómez,DEF,4.6,playing,0.3,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-893,Gustavo Gómez,DEF,4.6,playing,0.3,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-893,Gustavo Gómez,DEF,4.6,playing,0.3,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-894,Júnior Alonso,DEF,4.1,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-894,Júnior Alonso,DEF,4.1,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-894,Júnior Alonso,DEF,4.1,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-895,Omar Alderete,DEF,4.1,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-895,Omar Alderete,DEF,4.1,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-895,Omar Alderete,DEF,4.1,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-896,Fabián Balbuena,DEF,4.0,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-896,Fabián Balbuena,DEF,4.0,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-896,Fabián Balbuena,DEF,4.0,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-898,Gustavo Velázquez,DEF,3.8,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-898,Gustavo Velázquez,DEF,3.8,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-898,Gustavo Velázquez,DEF,3.8,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-899,Juan José Cáceres,DEF,3.8,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-899,Juan José Cáceres,DEF,3.8,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-899,Juan José Cáceres,DEF,3.8,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-900,José Canale,DEF,3.6,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-900,José Canale,DEF,3.6,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-900,José Canale,DEF,3.6,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-901,Miguel Almirón,MID,6.0,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-901,Miguel Almirón,MID,6.0,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-901,Miguel Almirón,MID,6.0,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-902,Antonio Sanabria,FWD,6.5,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-902,Antonio Sanabria,FWD,6.5,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-902,Antonio Sanabria,FWD,6.5,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-903,Ramón Sosa,FWD,5.3,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-903,Ramón Sosa,FWD,5.3,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-903,Ramón Sosa,FWD,5.3,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-904,Álex Arce,FWD,4.9,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-904,Álex Arce,FWD,4.9,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-904,Álex Arce,FWD,4.9,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-905,Gabriel Ávalos,FWD,4.9,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-905,Gabriel Ávalos,FWD,4.9,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-905,Gabriel Ávalos,FWD,4.9,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-906,Gustavo Caballero,FWD,4.2,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-906,Gustavo Caballero,FWD,4.2,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-906,Gustavo Caballero,FWD,4.2,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-907,Alexandro Maidana,FWD,4.0,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-907,Alexandro Maidana,FWD,4.0,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-907,Alexandro Maidana,FWD,4.0,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-908,Roberto Fernández,GK,4.0,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-908,Roberto Fernández,GK,4.0,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-908,Roberto Fernández,GK,4.0,playing,0.2,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-909,Gastón Olveira,GK,3.8,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-909,Gastón Olveira,GK,3.8,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-909,Gastón Olveira,GK,3.8,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-910,Orlando Gill,GK,3.5,playing,1.5,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-910,Orlando Gill,GK,3.5,playing,1.5,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-910,Orlando Gill,GK,3.5,playing,1.5,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-911,Damián Bobadilla,MID,5.5,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-911,Damián Bobadilla,MID,5.5,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-911,Damián Bobadilla,MID,5.5,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-912,Julio Enciso,MID,6.6,playing,0.4,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-912,Julio Enciso,MID,6.6,playing,0.4,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-912,Julio Enciso,MID,6.6,playing,0.4,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-913,Diego Gómez,MID,6.8,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-913,Diego Gómez,MID,6.8,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-913,Diego Gómez,MID,6.8,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
 915,Samú Costa,MID,5.6,playing,0.0,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,1,COD,1765,0.0,-0.1
 915,Samú Costa,MID,5.6,playing,0.0,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,2,UZB,1655,0.0,0.05
 915,Samú Costa,MID,5.6,playing,0.0,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,3,COL,1949,0.0,-0.31
@@ -719,9 +479,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 924,João Félix,FWD,6.5,playing,1.3,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,1,COD,1765,0.0,-0.1
 924,João Félix,FWD,6.5,playing,1.3,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,2,UZB,1655,0.0,0.05
 924,João Félix,FWD,6.5,playing,1.3,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,3,COL,1949,0.0,-0.31
-925,Pedro Neto,MID,6.4,playing,0.6,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,1,COD,1765,0.0,-0.1
-925,Pedro Neto,MID,6.4,playing,0.6,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,2,UZB,1655,0.0,0.05
-925,Pedro Neto,MID,6.4,playing,0.6,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,3,COL,1949,0.0,-0.31
+925,Pedro Neto,MID,6.4,playing,0.7,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,1,COD,1765,0.0,-0.1
+925,Pedro Neto,MID,6.4,playing,0.7,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,2,UZB,1655,0.0,0.05
+925,Pedro Neto,MID,6.4,playing,0.7,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,3,COL,1949,0.0,-0.31
 926,Trincão,FWD,5.9,playing,0.1,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,1,COD,1765,0.0,-0.1
 926,Trincão,FWD,5.9,playing,0.1,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,2,UZB,1655,0.0,0.05
 926,Trincão,FWD,5.9,playing,0.1,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,3,COL,1949,0.0,-0.31
@@ -749,33 +509,33 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 937,João Neves,MID,6.5,playing,4.5,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,1,COD,1765,0.0,-0.1
 937,João Neves,MID,6.5,playing,4.5,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,2,UZB,1655,0.0,0.05
 937,João Neves,MID,6.5,playing,4.5,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,3,COL,1949,0.0,-0.31
-939,Bruno Fernandes,MID,8.5,playing,27.3,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,1,COD,1765,0.0,-0.1
-939,Bruno Fernandes,MID,8.5,playing,27.3,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,2,UZB,1655,0.0,0.05
-939,Bruno Fernandes,MID,8.5,playing,27.3,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,3,COL,1949,0.0,-0.31
-1081,Yéremy Pino,MID,5.9,playing,0.0,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
-1081,Yéremy Pino,MID,5.9,playing,0.0,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
-1081,Yéremy Pino,MID,5.9,playing,0.0,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
-1082,Álex Baena,MID,6.0,playing,1.7,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
-1082,Álex Baena,MID,6.0,playing,1.7,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
-1082,Álex Baena,MID,6.0,playing,1.7,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
+939,Bruno Fernandes,MID,8.5,playing,27.2,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,1,COD,1765,0.0,-0.1
+939,Bruno Fernandes,MID,8.5,playing,27.2,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,2,UZB,1655,0.0,0.05
+939,Bruno Fernandes,MID,8.5,playing,27.2,35,Portugal,POR,k,1972,0.0,0.03,0.03,Balanced,3,COL,1949,0.0,-0.31
+1081,Yéremy Pino,MID,5.9,playing,0.1,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
+1081,Yéremy Pino,MID,5.9,playing,0.1,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
+1081,Yéremy Pino,MID,5.9,playing,0.1,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
+1082,Álex Baena,MID,6.0,playing,1.8,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
+1082,Álex Baena,MID,6.0,playing,1.8,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
+1082,Álex Baena,MID,6.0,playing,1.8,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
 1084,Martín Zubimendi,MID,6.1,playing,0.2,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
 1084,Martín Zubimendi,MID,6.1,playing,0.2,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
 1084,Martín Zubimendi,MID,6.1,playing,0.2,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
 1085,Pedro Porro,DEF,5.5,playing,4.6,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
 1085,Pedro Porro,DEF,5.5,playing,4.6,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
 1085,Pedro Porro,DEF,5.5,playing,4.6,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
-1086,Aymeric Laporte,DEF,5.5,playing,14.0,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
-1086,Aymeric Laporte,DEF,5.5,playing,14.0,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
-1086,Aymeric Laporte,DEF,5.5,playing,14.0,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
+1086,Aymeric Laporte,DEF,5.5,playing,14.1,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
+1086,Aymeric Laporte,DEF,5.5,playing,14.1,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
+1086,Aymeric Laporte,DEF,5.5,playing,14.1,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
 1087,Alejandro Grimaldo,DEF,4.9,playing,0.7,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
 1087,Alejandro Grimaldo,DEF,4.9,playing,0.7,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
 1087,Alejandro Grimaldo,DEF,4.9,playing,0.7,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
-1088,Marc Cucurella,DEF,5.1,playing,37.8,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
-1088,Marc Cucurella,DEF,5.1,playing,37.8,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
-1088,Marc Cucurella,DEF,5.1,playing,37.8,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
-1089,Pau Cubarsí,DEF,5.0,playing,7.1,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
-1089,Pau Cubarsí,DEF,5.0,playing,7.1,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
-1089,Pau Cubarsí,DEF,5.0,playing,7.1,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
+1088,Marc Cucurella,DEF,5.1,playing,38.2,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
+1088,Marc Cucurella,DEF,5.1,playing,38.2,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
+1088,Marc Cucurella,DEF,5.1,playing,38.2,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
+1089,Pau Cubarsí,DEF,5.0,playing,7.2,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
+1089,Pau Cubarsí,DEF,5.0,playing,7.2,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
+1089,Pau Cubarsí,DEF,5.0,playing,7.2,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
 1092,Lamine Yamal,MID,10.0,playing,36.0,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
 1092,Lamine Yamal,MID,10.0,playing,36.0,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
 1092,Lamine Yamal,MID,10.0,playing,36.0,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
@@ -794,9 +554,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 1098,David Raya,GK,5.0,playing,7.5,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
 1098,David Raya,GK,5.0,playing,7.5,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
 1098,David Raya,GK,5.0,playing,7.5,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
-1099,Unai Simón,GK,5.0,playing,10.9,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
-1099,Unai Simón,GK,5.0,playing,10.9,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
-1099,Unai Simón,GK,5.0,playing,10.9,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
+1099,Unai Simón,GK,5.0,playing,11.0,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
+1099,Unai Simón,GK,5.0,playing,11.0,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
+1099,Unai Simón,GK,5.0,playing,11.0,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
 1101,Joan García,GK,4.0,playing,0.9,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
 1101,Joan García,GK,4.0,playing,0.9,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
 1101,Joan García,GK,4.0,playing,0.9,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
@@ -806,15 +566,15 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 1104,Rodri,MID,7.5,playing,1.6,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
 1104,Rodri,MID,7.5,playing,1.6,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
 1104,Rodri,MID,7.5,playing,1.6,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
-1105,Dani Olmo,MID,7.7,playing,1.7,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
-1105,Dani Olmo,MID,7.7,playing,1.7,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
-1105,Dani Olmo,MID,7.7,playing,1.7,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
+1105,Dani Olmo,MID,7.7,playing,1.8,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
+1105,Dani Olmo,MID,7.7,playing,1.8,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
+1105,Dani Olmo,MID,7.7,playing,1.8,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
 1106,Pedri,MID,8.1,playing,7.0,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
 1106,Pedri,MID,8.1,playing,7.0,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
 1106,Pedri,MID,8.1,playing,7.0,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
-1133,Johan Manzambi,MID,5.6,playing,10.9,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,1,QAT,1540,0.0,0.05
-1133,Johan Manzambi,MID,5.6,playing,10.9,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,2,BIH,1689,0.0,0.18
-1133,Johan Manzambi,MID,5.6,playing,10.9,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,3,CAN,1791,86.0,-0.1
+1133,Johan Manzambi,MID,5.6,playing,11.0,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,1,QAT,1540,0.0,0.05
+1133,Johan Manzambi,MID,5.6,playing,11.0,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,2,BIH,1689,0.0,0.18
+1133,Johan Manzambi,MID,5.6,playing,11.0,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,3,CAN,1791,86.0,-0.1
 1135,Granit Xhaka,MID,6.2,playing,2.3,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,1,QAT,1540,0.0,0.05
 1135,Granit Xhaka,MID,6.2,playing,2.3,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,2,BIH,1689,0.0,0.18
 1135,Granit Xhaka,MID,6.2,playing,2.3,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,3,CAN,1791,86.0,-0.1
@@ -842,9 +602,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 1144,Silvan Widmer,DEF,4.2,playing,0.4,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,1,QAT,1540,0.0,0.05
 1144,Silvan Widmer,DEF,4.2,playing,0.4,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,2,BIH,1689,0.0,0.18
 1144,Silvan Widmer,DEF,4.2,playing,0.4,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,3,CAN,1791,86.0,-0.1
-1145,Miro Muheim,DEF,4.0,playing,0.2,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,1,QAT,1540,0.0,0.05
-1145,Miro Muheim,DEF,4.0,playing,0.2,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,2,BIH,1689,0.0,0.18
-1145,Miro Muheim,DEF,4.0,playing,0.2,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,3,CAN,1791,86.0,-0.1
+1145,Miro Muheim,DEF,4.0,playing,0.3,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,1,QAT,1540,0.0,0.05
+1145,Miro Muheim,DEF,4.0,playing,0.3,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,2,BIH,1689,0.0,0.18
+1145,Miro Muheim,DEF,4.0,playing,0.3,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,3,CAN,1791,86.0,-0.1
 1146,Eray Cömert,DEF,3.9,playing,0.0,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,1,QAT,1540,0.0,0.05
 1146,Eray Cömert,DEF,3.9,playing,0.0,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,2,BIH,1689,0.0,0.18
 1146,Eray Cömert,DEF,3.9,playing,0.0,43,Switzerland,SUI,b,1908,0.0,0.13,0.09,Balanced,3,CAN,1791,86.0,-0.1
@@ -884,15 +644,15 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 1249,Cristian Roldan,MID,4.7,playing,0.1,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
 1249,Cristian Roldan,MID,4.7,playing,0.1,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
 1249,Cristian Roldan,MID,4.7,playing,0.1,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
-1250,Sebastian Berhalter,MID,4.7,playing,0.5,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
-1250,Sebastian Berhalter,MID,4.7,playing,0.5,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
-1250,Sebastian Berhalter,MID,4.7,playing,0.5,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
+1250,Sebastian Berhalter,MID,4.7,playing,0.6,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
+1250,Sebastian Berhalter,MID,4.7,playing,0.6,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
+1250,Sebastian Berhalter,MID,4.7,playing,0.6,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
 1253,Brenden Aaronson,MID,5.7,playing,0.2,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
 1253,Brenden Aaronson,MID,5.7,playing,0.2,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
 1253,Brenden Aaronson,MID,5.7,playing,0.2,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
-1254,Malik Tillman,MID,6.1,playing,1.2,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
-1254,Malik Tillman,MID,6.1,playing,1.2,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
-1254,Malik Tillman,MID,6.1,playing,1.2,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
+1254,Malik Tillman,MID,6.1,playing,1.3,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
+1254,Malik Tillman,MID,6.1,playing,1.3,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
+1254,Malik Tillman,MID,6.1,playing,1.3,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
 1255,Weston McKennie,MID,6.1,playing,0.9,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
 1255,Weston McKennie,MID,6.1,playing,0.9,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
 1255,Weston McKennie,MID,6.1,playing,0.9,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
@@ -917,15 +677,18 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 1263,Auston Trusty,DEF,3.9,playing,0.1,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
 1263,Auston Trusty,DEF,3.9,playing,0.1,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
 1263,Auston Trusty,DEF,3.9,playing,0.1,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
-1264,Alexander Freeman,DEF,4.0,playing,10.0,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
-1264,Alexander Freeman,DEF,4.0,playing,10.0,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
-1264,Alexander Freeman,DEF,4.0,playing,10.0,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
+1264,Alexander Freeman,DEF,4.0,playing,10.1,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
+1264,Alexander Freeman,DEF,4.0,playing,10.1,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
+1264,Alexander Freeman,DEF,4.0,playing,10.1,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
 1265,Timothy Weah,MID,5.8,playing,0.2,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
 1265,Timothy Weah,MID,5.8,playing,0.2,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
 1265,Timothy Weah,MID,5.8,playing,0.2,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
 1266,Ricardo Pepi,FWD,5.9,playing,0.2,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
 1266,Ricardo Pepi,FWD,5.9,playing,0.2,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
 1266,Ricardo Pepi,FWD,5.9,playing,0.2,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
+1267,Folarin Balogun,FWD,6.0,playing,2.2,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
+1267,Folarin Balogun,FWD,6.0,playing,2.2,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
+1267,Folarin Balogun,FWD,6.0,playing,2.2,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
 1269,Max Arfsten,FWD,4.4,playing,0.0,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
 1269,Max Arfsten,FWD,4.4,playing,0.0,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
 1269,Max Arfsten,FWD,4.4,playing,0.0,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
@@ -941,12 +704,12 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 1274,Christian Pulisic,MID,7.0,playing,4.6,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
 1274,Christian Pulisic,MID,7.0,playing,4.6,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
 1274,Christian Pulisic,MID,7.0,playing,4.6,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
-1318,Lisandro Martínez,DEF,4.6,playing,15.0,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
-1318,Lisandro Martínez,DEF,4.6,playing,15.0,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
-1318,Lisandro Martínez,DEF,4.6,playing,15.0,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
-1320,Facundo Medina,DEF,4.0,playing,15.0,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
-1320,Facundo Medina,DEF,4.0,playing,15.0,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
-1320,Facundo Medina,DEF,4.0,playing,15.0,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
+1318,Lisandro Martínez,DEF,4.6,playing,15.4,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
+1318,Lisandro Martínez,DEF,4.6,playing,15.4,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
+1318,Lisandro Martínez,DEF,4.6,playing,15.4,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
+1320,Facundo Medina,DEF,4.0,playing,15.1,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
+1320,Facundo Medina,DEF,4.0,playing,15.1,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
+1320,Facundo Medina,DEF,4.0,playing,15.1,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
 1323,Gonzalo Montiel,DEF,4.3,playing,0.2,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
 1323,Gonzalo Montiel,DEF,4.3,playing,0.2,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
 1323,Gonzalo Montiel,DEF,4.3,playing,0.2,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
@@ -956,21 +719,6 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 1338,Lautaro Martínez,FWD,8.8,playing,2.6,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,1,ALG,1766,0.0,-0.01
 1338,Lautaro Martínez,FWD,8.8,playing,2.6,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,2,AUT,1798,0.0,0.29
 1338,Lautaro Martínez,FWD,8.8,playing,2.6,2,Argentina,ARG,j,2071,0.0,-0.19,-0.11,Defensive,3,JOR,1629,0.0,-0.16
-1343,Weverton,GK,4.5,playing,0.1,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-1343,Weverton,GK,4.5,playing,0.1,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-1343,Weverton,GK,4.5,playing,0.1,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-1345,Alex Sandro,DEF,4.5,playing,0.4,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-1345,Alex Sandro,DEF,4.5,playing,0.4,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-1345,Alex Sandro,DEF,4.5,playing,0.4,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-1361,Bruno Guimarães,MID,6.8,playing,8.0,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-1361,Bruno Guimarães,MID,6.8,playing,8.0,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-1361,Bruno Guimarães,MID,6.8,playing,8.0,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-1366,Raphinha,MID,8.2,playing,8.4,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-1366,Raphinha,MID,8.2,playing,8.4,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-1366,Raphinha,MID,8.2,playing,8.4,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
-1369,Neymar,MID,7.2,playing,2.2,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-1369,Neymar,MID,7.2,playing,2.2,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-1369,Neymar,MID,7.2,playing,2.2,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
 1374,Yerry Mina,DEF,4.2,playing,0.2,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,1,UZB,1655,0.0,0.05
 1374,Yerry Mina,DEF,4.2,playing,0.2,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,2,COD,1765,0.0,-0.1
 1374,Yerry Mina,DEF,4.2,playing,0.2,10,Colombia,COL,k,1949,0.0,-0.31,-0.25,Defensive,3,POR,1972,0.0,0.03
@@ -986,39 +734,18 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 1428,Robin Risser,GK,3.5,playing,0.3,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
 1428,Robin Risser,GK,3.5,playing,0.3,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
 1428,Robin Risser,GK,3.5,playing,0.3,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
-1429,William Saliba,DEF,5.3,playing,13.6,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
-1429,William Saliba,DEF,5.3,playing,13.6,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
-1429,William Saliba,DEF,5.3,playing,13.6,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
-1430,Jules Koundé,DEF,5.4,playing,8.9,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
-1430,Jules Koundé,DEF,5.4,playing,8.9,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
-1430,Jules Koundé,DEF,5.4,playing,8.9,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
-1431,Bradley Barcola,MID,8.0,playing,3.8,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
-1431,Bradley Barcola,MID,8.0,playing,3.8,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
-1431,Bradley Barcola,MID,8.0,playing,3.8,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
+1429,William Saliba,DEF,5.3,playing,13.7,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
+1429,William Saliba,DEF,5.3,playing,13.7,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
+1429,William Saliba,DEF,5.3,playing,13.7,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
+1430,Jules Koundé,DEF,5.4,playing,9.0,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
+1430,Jules Koundé,DEF,5.4,playing,9.0,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
+1430,Jules Koundé,DEF,5.4,playing,9.0,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
+1431,Bradley Barcola,MID,8.0,playing,4.0,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
+1431,Bradley Barcola,MID,8.0,playing,4.0,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
+1431,Bradley Barcola,MID,8.0,playing,4.0,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
 1432,Jean-Philippe Mateta,FWD,6.5,playing,0.1,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,1,SEN,1875,0.0,-0.37
 1432,Jean-Philippe Mateta,FWD,6.5,playing,0.1,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,2,IRQ,1603,0.0,-0.26
 1432,Jean-Philippe Mateta,FWD,6.5,playing,0.1,19,France,FRA,i,2069,0.0,-0.09,-0.03,Balanced,3,NOR,1943,0.0,0.09
-1465,Mateo Chávez,DEF,3.5,playing,1.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-1465,Mateo Chávez,DEF,3.5,playing,1.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-1465,Mateo Chávez,DEF,3.5,playing,1.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-1473,César Huerta,MID,6.3,playing,0.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-1473,César Huerta,MID,6.3,playing,0.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-1473,César Huerta,MID,6.3,playing,0.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-1474,Edson Álvarez,MID,6.0,playing,0.4,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-1474,Edson Álvarez,MID,6.0,playing,0.4,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-1474,Edson Álvarez,MID,6.0,playing,0.4,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-1476,Gilberto Mora,MID,4.5,playing,0.8,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-1476,Gilberto Mora,MID,4.5,playing,0.8,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-1476,Gilberto Mora,MID,4.5,playing,0.8,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-1477,Luis Chávez,MID,6.3,playing,0.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-1477,Luis Chávez,MID,6.3,playing,0.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-1477,Luis Chávez,MID,6.3,playing,0.1,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-1478,Luis Romo,MID,5.5,playing,0.9,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-1478,Luis Romo,MID,5.5,playing,0.9,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-1478,Luis Romo,MID,5.5,playing,0.9,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
-1485,Santiago Giménez,FWD,6.8,playing,0.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,1,RSA,1680,0.0,-0.26
-1485,Santiago Giménez,FWD,6.8,playing,0.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,2,KOR,1759,0.0,-0.23
-1485,Santiago Giménez,FWD,6.8,playing,0.3,28,Mexico,MEX,a,1883,144.0,-0.21,-0.2,Defensive,3,CZE,1719,0.0,0.12
 1522,Thibaut Courtois,GK,4.9,playing,9.5,5,Belgium,BEL,g,1890,0.0,0.21,0.21,Attacking,1,EGY,1789,0.0,-0.26
 1522,Thibaut Courtois,GK,4.9,playing,9.5,5,Belgium,BEL,g,1890,0.0,0.21,0.21,Attacking,2,IRN,1727,0.0,-0.27
 1522,Thibaut Courtois,GK,4.9,playing,9.5,5,Belgium,BEL,g,1890,0.0,0.21,0.21,Attacking,3,NZL,1624,0.0,-0.01
@@ -1079,9 +806,6 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 1597,Mohamed Salah,MID,10.0,playing,4.9,17,Egypt,EGY,g,1789,0.0,-0.26,-0.09,Balanced,1,BEL,1890,0.0,0.21
 1597,Mohamed Salah,MID,10.0,playing,4.9,17,Egypt,EGY,g,1789,0.0,-0.26,-0.09,Balanced,2,NZL,1624,0.0,-0.01
 1597,Mohamed Salah,MID,10.0,playing,4.9,17,Egypt,EGY,g,1789,0.0,-0.26,-0.09,Balanced,3,IRN,1727,0.0,-0.27
-1616,Andrés Cubas,MID,4.7,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-1616,Andrés Cubas,MID,4.7,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-1616,Andrés Cubas,MID,4.7,playing,0.1,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
 1665,Munir El Kajoui,GK,4.0,playing,0.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
 1665,Munir El Kajoui,GK,4.0,playing,0.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
 1665,Munir El Kajoui,GK,4.0,playing,0.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
@@ -1106,24 +830,18 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 1683,Fredrik Aursnes,MID,6.5,playing,0.1,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
 1683,Fredrik Aursnes,MID,6.5,playing,0.1,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
 1683,Fredrik Aursnes,MID,6.5,playing,0.1,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
-1684,Martin Ødegaard,MID,7.7,playing,3.9,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
-1684,Martin Ødegaard,MID,7.7,playing,3.9,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
-1684,Martin Ødegaard,MID,7.7,playing,3.9,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
-1688,Isidro Pitta,FWD,5.9,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,1,USA,1807,91.0,0.07
-1688,Isidro Pitta,FWD,5.9,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,2,TUR,1853,0.0,0.19
-1688,Isidro Pitta,FWD,5.9,playing,0.0,34,Paraguay,PAR,d,1866,0.0,-0.24,-0.2,Defensive,3,AUS,1793,0.0,-0.04
-1708,Jarell Quansah,DEF,4.4,playing,0.1,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
-1708,Jarell Quansah,DEF,4.4,playing,0.1,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
-1708,Jarell Quansah,DEF,4.4,playing,0.1,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
+1684,Martin Ødegaard,MID,7.7,playing,4.0,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
+1684,Martin Ødegaard,MID,7.7,playing,4.0,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
+1684,Martin Ødegaard,MID,7.7,playing,4.0,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
 1709,Reece James,DEF,5.2,playing,3.0,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
 1709,Reece James,DEF,5.2,playing,3.0,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
 1709,Reece James,DEF,5.2,playing,3.0,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
 1710,Eberechi Eze,MID,8.0,playing,0.9,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
 1710,Eberechi Eze,MID,8.0,playing,0.9,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
 1710,Eberechi Eze,MID,8.0,playing,0.9,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
-1711,Ollie Watkins,FWD,7.9,playing,0.9,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
-1711,Ollie Watkins,FWD,7.9,playing,0.9,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
-1711,Ollie Watkins,FWD,7.9,playing,0.9,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
+1711,Ollie Watkins,FWD,7.9,playing,0.8,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
+1711,Ollie Watkins,FWD,7.9,playing,0.8,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
+1711,Ollie Watkins,FWD,7.9,playing,0.8,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
 1712,Ivan Toney,FWD,7.5,playing,0.2,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
 1712,Ivan Toney,FWD,7.5,playing,0.2,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
 1712,Ivan Toney,FWD,7.5,playing,0.2,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
@@ -1133,30 +851,6 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 1714,Sondre Langås,DEF,4.0,playing,0.2,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,1,IRQ,1603,0.0,-0.26
 1714,Sondre Langås,DEF,4.0,playing,0.2,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,2,SEN,1875,0.0,-0.37
 1714,Sondre Langås,DEF,4.0,playing,0.2,32,Norway,NOR,i,1943,0.0,0.09,0.23,Attacking,3,FRA,2069,0.0,-0.09
-1961,Alphonso Davies,DEF,4.9,playing,2.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-1961,Alphonso Davies,DEF,4.9,playing,2.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-1961,Alphonso Davies,DEF,4.9,playing,2.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-1963,Alistair Johnston,DEF,4.0,playing,0.9,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-1963,Alistair Johnston,DEF,4.0,playing,0.9,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-1963,Alistair Johnston,DEF,4.0,playing,0.9,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-1964,Moïse Bombito,DEF,4.1,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-1964,Moïse Bombito,DEF,4.1,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-1964,Moïse Bombito,DEF,4.1,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-1966,Alfie Jones,DEF,3.8,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-1966,Alfie Jones,DEF,3.8,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-1966,Alfie Jones,DEF,3.8,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-1967,Stephen Eustaquio,MID,5.0,playing,1.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-1967,Stephen Eustaquio,MID,5.0,playing,1.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-1967,Stephen Eustaquio,MID,5.0,playing,1.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-1968,Jacob Shaffelburg,MID,5.2,playing,0.0,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-1968,Jacob Shaffelburg,MID,5.2,playing,0.0,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-1968,Jacob Shaffelburg,MID,5.2,playing,0.0,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-1969,Jayden Nelson,MID,5.0,playing,0.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-1969,Jayden Nelson,MID,5.0,playing,0.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-1969,Jayden Nelson,MID,5.0,playing,0.2,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
-1970,Promise David,FWD,5.4,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,1,BIH,1689,0.0,0.18
-1970,Promise David,FWD,5.4,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,2,QAT,1540,0.0,0.05
-1970,Promise David,FWD,5.4,playing,0.1,9,Canada,CAN,b,1791,86.0,-0.1,-0.07,Balanced,3,SUI,1908,0.0,0.13
 1995,Eric García,DEF,4.5,playing,0.6,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,1,CPV,1662,0.0,-0.2
 1995,Eric García,DEF,4.5,playing,0.6,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,2,KSA,1644,0.0,-0.19
 1995,Eric García,DEF,4.5,playing,0.6,41,Spain,ESP,h,2062,0.0,0.08,0.08,Balanced,3,URU,1889,0.0,-0.13
@@ -1181,9 +875,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 2010,Yassine Bounou,GK,4.7,playing,5.6,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
 2010,Yassine Bounou,GK,4.7,playing,5.6,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
 2010,Yassine Bounou,GK,4.7,playing,5.6,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
-2012,Achraf Hakimi,DEF,6.0,playing,33.1,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
-2012,Achraf Hakimi,DEF,6.0,playing,33.1,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
-2012,Achraf Hakimi,DEF,6.0,playing,33.1,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
+2012,Achraf Hakimi,DEF,6.0,playing,33.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
+2012,Achraf Hakimi,DEF,6.0,playing,33.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
+2012,Achraf Hakimi,DEF,6.0,playing,33.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
 2013,Chadi Riad,DEF,3.9,playing,1.5,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
 2013,Chadi Riad,DEF,3.9,playing,1.5,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
 2013,Chadi Riad,DEF,3.9,playing,1.5,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
@@ -1193,9 +887,9 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 2015,Redouane Halhal,DEF,3.5,playing,2.7,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
 2015,Redouane Halhal,DEF,3.5,playing,2.7,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
 2015,Redouane Halhal,DEF,3.5,playing,2.7,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
-2016,Issa Diop,DEF,4.5,playing,1.7,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
-2016,Issa Diop,DEF,4.5,playing,1.7,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
-2016,Issa Diop,DEF,4.5,playing,1.7,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
+2016,Issa Diop,DEF,4.5,playing,1.8,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
+2016,Issa Diop,DEF,4.5,playing,1.8,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
+2016,Issa Diop,DEF,4.5,playing,1.8,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
 2017,Zakaria El Ouahdi,DEF,4.1,playing,0.0,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
 2017,Zakaria El Ouahdi,DEF,4.1,playing,0.0,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
 2017,Zakaria El Ouahdi,DEF,4.1,playing,0.0,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
@@ -1205,24 +899,24 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 2019,Neil El Aynaoui,MID,5.6,playing,0.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
 2019,Neil El Aynaoui,MID,5.6,playing,0.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
 2019,Neil El Aynaoui,MID,5.6,playing,0.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
-2020,Brahim Díaz,MID,6.4,playing,3.8,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
-2020,Brahim Díaz,MID,6.4,playing,3.8,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
-2020,Brahim Díaz,MID,6.4,playing,3.8,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
-2021,Azzedine Ounahi,MID,6.2,playing,0.1,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
-2021,Azzedine Ounahi,MID,6.2,playing,0.1,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
-2021,Azzedine Ounahi,MID,6.2,playing,0.1,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
+2020,Brahim Díaz,MID,6.4,playing,4.0,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
+2020,Brahim Díaz,MID,6.4,playing,4.0,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
+2020,Brahim Díaz,MID,6.4,playing,4.0,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
+2021,Azzedine Ounahi,MID,6.2,playing,0.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
+2021,Azzedine Ounahi,MID,6.2,playing,0.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
+2021,Azzedine Ounahi,MID,6.2,playing,0.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
 2022,Bilal El Khannouss,MID,6.2,playing,0.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
 2022,Bilal El Khannouss,MID,6.2,playing,0.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
 2022,Bilal El Khannouss,MID,6.2,playing,0.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
-2023,Soufiane Rahimi,FWD,5.6,playing,0.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
-2023,Soufiane Rahimi,FWD,5.6,playing,0.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
-2023,Soufiane Rahimi,FWD,5.6,playing,0.2,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
+2023,Soufiane Rahimi,FWD,5.6,playing,0.3,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
+2023,Soufiane Rahimi,FWD,5.6,playing,0.3,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
+2023,Soufiane Rahimi,FWD,5.6,playing,0.3,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
 2025,Chemsdine Talbi,FWD,4.4,playing,0.1,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,1,BRA,2010,0.0,0.12
 2025,Chemsdine Talbi,FWD,4.4,playing,0.1,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,2,SCO,1768,0.0,-0.05
 2025,Chemsdine Talbi,FWD,4.4,playing,0.1,29,Morocco,MAR,c,1897,0.0,-0.48,-0.44,Very defensive,3,HAI,1606,0.0,0.14
-2031,Sergiño Dest,DEF,4.3,playing,14.3,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
-2031,Sergiño Dest,DEF,4.3,playing,14.3,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
-2031,Sergiño Dest,DEF,4.3,playing,14.3,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
+2031,Sergiño Dest,DEF,4.3,playing,14.4,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
+2031,Sergiño Dest,DEF,4.3,playing,14.4,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
+2031,Sergiño Dest,DEF,4.3,playing,14.4,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
 2032,Miles Robinson,DEF,4.0,playing,0.3,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
 2032,Miles Robinson,DEF,4.0,playing,0.3,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
 2032,Miles Robinson,DEF,4.0,playing,0.3,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
@@ -1235,9 +929,6 @@ id,player,position,price,status,percentSelected,squadId,team,abbr,group,elo,home
 2035,Álex Zendejas,MID,5.5,playing,0.0,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,1,PAR,1866,0.0,-0.24
 2035,Álex Zendejas,MID,5.5,playing,0.0,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,2,AUS,1793,0.0,-0.04
 2035,Álex Zendejas,MID,5.5,playing,0.0,47,USA,USA,d,1807,91.0,0.07,0.11,Attacking,3,TUR,1853,0.0,0.19
-2073,Éderson,MID,6.3,playing,0.1,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,1,MAR,1897,0.0,-0.48
-2073,Éderson,MID,6.3,playing,0.1,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,2,HAI,1606,0.0,0.14
-2073,Éderson,MID,6.3,playing,0.1,7,Brazil,BRA,c,2010,0.0,0.12,0.21,Balanced,3,SCO,1768,0.0,-0.05
 2078,Trevoh Chalobah,DEF,4.5,playing,0.0,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,1,CRO,1858,0.0,0.09
 2078,Trevoh Chalobah,DEF,4.5,playing,0.0,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,2,GHA,1704,0.0,-0.24
 2078,Trevoh Chalobah,DEF,4.5,playing,0.0,18,England,ENG,l,2004,0.0,-0.16,-0.11,Defensive,3,PAN,1701,0.0,0.01
