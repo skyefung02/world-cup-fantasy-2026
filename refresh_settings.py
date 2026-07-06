@@ -22,11 +22,11 @@ which refresh keeps up to date) or, as a bootstrap, the newest solver result tha
 still listed them — so the solver holds the dead asset and plans to sell it for one
 transfer. Use --dead-price ID=VALUE to override a recovered price.
 
-ITB note: FIFA doesn't expose your bank balance in the team payload, and it
-tracks selling prices separately from current prices (which the solver can't
-see). So itb is computed as (stage budget − squad value at CURRENT prices),
-which is exact only if no player prices have moved. Check the value it prints
-against the ITB shown in the FIFA app and pass --itb <value> to override.
+ITB note: FIFA doesn't expose your bank balance in the team payload, so itb is
+derived as (stage budget − squad value). Prices are FIXED in this game (buy =
+current = sell), so this is exact — the only way it can be off is a wrong budget
+constant or a projections price that disagrees with FIFA. Pass --itb <value> to
+override if you ever need to.
 
 Usage:
     python refresh_settings.py                 # refresh from live team
@@ -36,28 +36,21 @@ Usage:
 """
 
 import argparse
-import glob
 import json
 import os
 import re
-from pathlib import Path
 
 import pandas as pd
 from dotenv import load_dotenv
 
 import fifa_team
 import team_import
-from wc_solver import BUDGET, KNOCKOUT_BUDGET, SETTINGS_USER_PATH, load_settings
+from wc_solver import (
+    BUDGET, KNOCKOUT_BUDGET, META_COLS, PRICE_CACHE_PATH, SETTINGS_USER_PATH,
+    load_price_cache, load_settings, meta_from_row, newest_results_lookup,
+)
 
 PROJECTIONS_FALLBACK = "data/projections.csv"
-
-# Persistent {id → price/meta} snapshot. build_projections drops players whose
-# team is eliminated (FIFA strips them from the live feed), but you still HOLD
-# them as dead assets. We remember their last-known price here so refresh can
-# rebuild a zero-point placeholder row for the solver. See reconcile_projections.
-PRICE_CACHE_PATH = Path("data/price_cache.csv")
-RESULTS_DIR      = "data/results"
-META_COLS        = ["id", "player", "position", "price", "team", "abbr"]
 
 
 def derived_used_flags(team_payload: dict) -> dict:
@@ -80,44 +73,9 @@ def derived_used_flags(team_payload: dict) -> dict:
     }
 
 
-def _meta_from_row(pid: int, row) -> dict:
-    """Extract the META_COLS record from a projections/results/cache row."""
-    return {
-        "id":       pid,
-        "player":   row.get("player", row.get("name", f"id{pid}")),
-        "position": row["position"],
-        "price":    float(row["price"]),
-        "team":     row.get("team", ""),
-        "abbr":     row.get("abbr", ""),
-    }
-
-
-def load_price_cache() -> dict[int, dict]:
-    """Read the persistent price snapshot into {id → meta}. Missing file → {}."""
-    if not PRICE_CACHE_PATH.exists():
-        return {}
-    cache = pd.read_csv(PRICE_CACHE_PATH)
-    return {int(r["id"]): _meta_from_row(int(r["id"]), r) for _, r in cache.iterrows()}
-
-
 def save_price_cache(cache: dict[int, dict]) -> None:
     pd.DataFrame([cache[k] for k in sorted(cache)], columns=META_COLS).to_csv(
         PRICE_CACHE_PATH, index=False)
-
-
-def newest_results_lookup(pid: int) -> dict | None:
-    """Recover a player's last-known meta from the most recent solver result CSV
-    that still contains them — the bootstrap source when the price cache predates
-    the player's elimination (or doesn't exist yet)."""
-    for f in sorted(glob.glob(os.path.join(RESULTS_DIR, "wc_*_iter0.csv")), reverse=True):
-        try:
-            res = pd.read_csv(f)
-        except Exception:
-            continue
-        hit = res[res["id"] == pid]
-        if len(hit):
-            return _meta_from_row(pid, hit.iloc[0])
-    return None
 
 
 def _zero_row(proj: pd.DataFrame, meta: dict) -> dict:
@@ -265,8 +223,8 @@ def main() -> None:
           f"(budget £{budget:.0f}m, squad value £{squad_value:.1f}m)")
     print(json.dumps(updates, indent=4, ensure_ascii=False))
     if args.itb is None:
-        print(f"\nitb computed from current prices (£{budget:.0f}m − £{squad_value:.1f}m). "
-              f"Verify against the FIFA app; use --itb to override.")
+        print(f"\nitb = £{budget:.0f}m budget − £{squad_value:.1f}m squad value "
+              f"(exact — prices are fixed). Use --itb to override if needed.")
 
     if args.dry_run:
         print("\n--dry-run: wc_settings.json not modified.")

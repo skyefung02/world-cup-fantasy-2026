@@ -14,7 +14,9 @@ Settings priority (lowest → highest):
 
 import argparse
 import datetime
+import glob
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -40,6 +42,51 @@ BINARY_THRESHOLD = 0.5
 
 SETTINGS_DEFAULTS_PATH = Path("wc_settings_defaults.json")
 SETTINGS_USER_PATH     = Path("wc_settings.json")
+
+# ── Held-asset price recovery ─────────────────────────────────────────────────
+# When a team is eliminated, build_projections drops its players, but you still
+# HOLD any you own as dead 0-point assets. Prices are fixed in this game, so a
+# player's last-known price stays valid — we remember it in the price cache
+# (maintained by refresh_settings) and fall back to the newest solver result.
+# Shared with refresh_settings.py, which imports these.
+PRICE_CACHE_PATH = Path("data/price_cache.csv")
+RESULTS_DIR      = "data/results"
+META_COLS        = ["id", "player", "position", "price", "team", "abbr"]
+
+
+def meta_from_row(pid: int, row) -> dict:
+    """Extract the META_COLS record from a projections/results/cache row."""
+    return {
+        "id":       pid,
+        "player":   row.get("player", row.get("name", f"id{pid}")),
+        "position": row["position"],
+        "price":    float(row["price"]),
+        "team":     row.get("team", ""),
+        "abbr":     row.get("abbr", ""),
+    }
+
+
+def load_price_cache() -> dict[int, dict]:
+    """Read the persistent price snapshot into {id → meta}. Missing file → {}."""
+    if not PRICE_CACHE_PATH.exists():
+        return {}
+    cache = pd.read_csv(PRICE_CACHE_PATH)
+    return {int(r["id"]): meta_from_row(int(r["id"]), r) for _, r in cache.iterrows()}
+
+
+def newest_results_lookup(pid: int) -> dict | None:
+    """Recover a player's last-known meta from the most recent solver result CSV
+    that still contains them — the bootstrap when the price cache predates the
+    player's elimination (or doesn't exist yet)."""
+    for f in sorted(glob.glob(os.path.join(RESULTS_DIR, "wc_*_iter0.csv")), reverse=True):
+        try:
+            res = pd.read_csv(f)
+        except Exception:
+            continue
+        hit = res[res["id"] == pid]
+        if len(hit):
+            return meta_from_row(pid, hit.iloc[0])
+    return None
 
 
 # ── Settings loading ──────────────────────────────────────────────────────────
@@ -155,16 +202,35 @@ def prep_wc_data(options: dict) -> dict:
     # Every held player MUST be in the pool, or the initial_squad constraint below
     # silently omits them: the squad starts under-sized and the model fills the gap
     # as a free buy-in (num_transfers counts only transfer_out), handing out a
-    # transfer you don't have. This usually means a held player's team was
-    # eliminated and dropped from projections — run refresh_settings.py first, which
-    # backfills a zero-point placeholder row for them.
+    # transfer you don't have. A held player goes missing when their team is
+    # eliminated and build_projections drops them (and the UI rewrites
+    # projections.csv on every edit, wiping any refresh_settings backfill). Heal it
+    # in-memory: rebuild a zero-point row from the remembered price so the model
+    # holds and sells the dead asset. Only error if the price can't be recovered.
     absent = [pid for pid in options.get("initial_squad", []) if pid not in df.index]
     if absent:
-        raise ValueError(
-            f"initial_squad player id(s) {absent} are not in the projection pool. "
-            f"If their team was eliminated, run refresh_settings.py to backfill a "
-            f"held-asset row before solving."
-        )
+        cache = load_price_cache()
+        unrecovered = []
+        for pid in absent:
+            meta = cache.get(pid) or newest_results_lookup(pid)
+            if meta is None:
+                unrecovered.append(pid)
+                continue
+            row = {c: (0 if pd.api.types.is_numeric_dtype(df[c]) else "") for c in df.columns}
+            for col, key in (("name", "player"), ("position", "position"),
+                             ("price", "price"), ("team", "team"), ("abbr", "abbr")):
+                if col in df.columns:
+                    row[col] = meta[key]
+            df.loc[pid] = pd.Series(row)
+            print(f"⚠ Held player {meta['player']} ({meta['team'] or '?'}) missing from "
+                  f"projections (team eliminated) — holding as £{float(meta['price']):.1f}m "
+                  f"dead asset (0 pts); solver will plan to sell it.")
+        if unrecovered:
+            raise ValueError(
+                f"initial_squad player id(s) {unrecovered} are not in the projection pool "
+                f"and have no cached or historical price to recover. Run refresh_settings.py "
+                f"(seeds the price cache), or add them back to projections manually."
+            )
 
     # Determine starting budget (increases by £5m from R32 onwards)
     group_stage_rounds = set(options.get("group_stage_rounds", [1, 2, 3]))
