@@ -39,6 +39,7 @@ import argparse
 import json
 import os
 import re
+from pathlib import Path
 
 import pandas as pd
 from dotenv import load_dotenv
@@ -106,7 +107,7 @@ def reconcile_projections(squad_ids: list[int], projection_file: str,
     cache   = load_price_cache()
 
     for _, r in proj.iterrows():                       # (1) remember active prices
-        cache[int(r["id"])] = _meta_from_row(int(r["id"]), r)
+        cache[int(r["id"])] = meta_from_row(int(r["id"]), r)
 
     injected, unresolved = [], []
     for pid in (p for p in squad_ids if p not in present):   # (2) held but dropped
