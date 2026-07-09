@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, jsonify, Response
+from flask.json.provider import DefaultJSONProvider
 import pandas as pd
 import os
 import io
 import json
+import math
 import threading
 
 from dotenv import load_dotenv
@@ -17,7 +19,32 @@ from build_projections import (
     load_xmins_csv, normalize_xmins, load_scouting_csv,
 )
 
+def _json_nan_safe(obj):
+    """Recursively replace non-finite floats (NaN/Infinity) with None so the result
+    is spec-compliant JSON. Everything else is returned untouched."""
+    if isinstance(obj, float):
+        return obj if math.isfinite(obj) else None
+    if isinstance(obj, dict):
+        return {k: _json_nan_safe(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_json_nan_safe(v) for v in obj]
+    return obj
+
+
+class _NanSafeJSONProvider(DefaultJSONProvider):
+    """Emit spec-compliant JSON: NaN/Infinity → null.
+
+    Python's json (allow_nan=True) writes the bare tokens NaN/Infinity, which the
+    browser's JSON.parse rejects. A single NaN float in a jsonify response (e.g. an
+    unconfirmed knockout opponent's OppAbbr) would throw client-side in res.json(),
+    stranding the caller — this keeps every endpoint safely parseable.
+    """
+    def dumps(self, obj, **kwargs):
+        return super().dumps(_json_nan_safe(obj), **kwargs)
+
+
 app = Flask(__name__)
+app.json = _NanSafeJSONProvider(app)
 # A pasted /team blob is ~0.5 KB; cap request bodies so a giant paste can't be abused.
 app.config["MAX_CONTENT_LENGTH"] = 256 * 1024
 
