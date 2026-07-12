@@ -100,3 +100,4 @@ round_id,fixture_id,date,home_id,away_id,home_team,away_team,home_abbr,away_abbr
 6,98,2026-07-11T22:00:00+01:00,32,18,Norway,England,NOR,ENG
 6,100,2026-07-12T02:00:00+01:00,2,43,Argentina,Switzerland,ARG,SUI
 7,101,2026-07-14T20:00:00+01:00,19,41,France,Spain,FRA,ESP
+7,102,2026-07-15T20:00:00+01:00,18,2,England,Argentina,ENG,ARG
