@@ -654,9 +654,16 @@ def match_projections():
             for _, f in fx.iterrows():
                 rnd, a, b = int(f["round"]), f["home_abbr"], f["away_abbr"]
                 total = float(f["home_xg"]) + float(f["away_xg"])
+                # The 3rd-place play-off shares round 8 with the Final, but "advance"
+                # is meaningless for it — both teams already lost their semifinal, so
+                # their round-8 p_advance (P-champion) is 0. Feeding that into the
+                # decided/winner logic would misread the game as a finished tie won by
+                # the away side. Drive its bar from the xG share and never mark it
+                # decided (a real result would come from the results pipeline, not here).
+                is_third_place = str(f.get("stage", "")) == "3P"
                 # Bar = P(win the tie) from the knockout sim (falls back to xG share
                 # if advance probs are missing). Complementary side is 100 − a_share.
-                aw = _win_tie_share(a, rnd)
+                aw = None if is_third_place else _win_tie_share(a, rnd)
                 a_share = (round(aw * 100, 1) if aw is not None
                            else round(float(f["home_xg"]) / total * 100, 1) if total > 0 else 50.0)
                 # A played tie is decided: the sim pins the winner's advance prob to

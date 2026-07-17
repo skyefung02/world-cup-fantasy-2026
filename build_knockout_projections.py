@@ -30,6 +30,14 @@ from build_projections import win_expectancy, expected_goals, GOALS_SCALE
 # Match the tilt multiplier used in build_projections._precompute_base_state.
 TILT_K = 0.25
 
+# The 3rd-place play-off outscores what strength alone predicts: a dead rubber
+# between two elite, evenly-matched semi-final losers, which the Elo->goals curve
+# prices at its lowest per-side values. Play-offs since 1974 (n=13) averaged 3.46
+# goals at 90' vs the 2.39 this model gives the 2026 FRA-ENG tie -> 1.45x
+# (Poisson p=0.011). Calibrated against the tilt-inclusive projection, so this
+# multiplies the *final* xG and TILT_K must stay applied underneath it.
+THIRD_PLACE_XG_MULT = 1.45
+
 SQUADS_RATED_PATH = "data/processed/squads_rated.csv"
 FIXTURES_PATH     = "data/processed/fixtures.csv"
 ROUNDS_CACHE      = "cache/rounds.json"
@@ -613,9 +621,13 @@ def confirmed_knockout_fixtures():
             # the actual draw. Normalise "City, State" -> "City" to match VENUE_HOST
             # (e.g. "Houston, Texas" -> "Houston"), so host home-field is applied right.
             venue = (t.get("venueCity") or "").split(",")[0].strip()
+            stage = bracket.get(t["id"], {}).get("stage", "")
             xg_h, xg_a = _h2h_xg(teams, idx, ha, aa, venue)
+            if stage == "3P":
+                xg_h *= THIRD_PLACE_XG_MULT
+                xg_a *= THIRD_PLACE_XG_MULT
             rows.append({
-                "round": r["id"], "stage": bracket.get(t["id"], {}).get("stage", ""),
+                "round": r["id"], "stage": stage,
                 "match": t["id"], "venue": venue, "home_abbr": ha, "away_abbr": aa,
                 "home_xg": round(xg_h, 2), "away_xg": round(xg_a, 2),
                 "home_cs": round(float(np.exp(-xg_a)) * 100, 1),
