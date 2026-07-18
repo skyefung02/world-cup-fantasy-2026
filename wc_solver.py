@@ -318,8 +318,18 @@ def solve_wc(data: dict, options: dict) -> list[dict]:
 
     player_pos  = df["position"].to_dict()
     player_team = df["team"].to_dict()
+    player_abbr = df["abbr"].to_dict()
     points_pw   = {(p, r): float(df.loc[p, f"{r}_Pts"])   for p in players for r in rounds}
     mins_pw     = {(p, r): float(df.loc[p, f"{r}_xMins"]) for p in players for r in rounds}
+
+    # Per-(player, round) opponent abbreviation, used to detect two goalkeepers
+    # who face each other in the same fixture (see gk_same_game constraint).
+    opp_abbr_pw = {}
+    for r in rounds:
+        col = f"{r}_OppAbbr"
+        if col in df.columns:
+            for p in players:
+                opp_abbr_pw[(p, r)] = df.loc[p, col]
 
     # FT schedule: base allocation per round (99 = effectively unlimited). Clamped to
     # SQUAD_SIZE so the "unlimited" sentinel stays within ft_var's bounds (you can
@@ -482,6 +492,23 @@ def solve_wc(data: dict, options: dict) -> list[dict]:
                 so.expr_sum(squad[p, r] for p in players if player_team[p] == t) <= lim,
                 name=f"country_lim_{t_key}_{r}",
             )
+
+    # ── No two goalkeepers in the same fixture ───────────────────────────────
+    # Owning both keepers from one match wastes a squad slot: only one can start,
+    # and at most one keeps a clean sheet. Forbid holding two GKs who face each
+    # other in a given round (which also stops the solver transferring such a
+    # pair in). A GK pair share a fixture in round r when each is the other's
+    # listed opponent.
+    gks = [p for p in players if player_pos[p] == "GK"]
+    for r in rounds:
+        for i, p in enumerate(gks):
+            for q in gks[i + 1:]:
+                if (opp_abbr_pw.get((p, r)) == player_abbr[q]
+                        and opp_abbr_pw.get((q, r)) == player_abbr[p]):
+                    model.add_constraint(
+                        squad[p, r] + squad[q, r] <= 1,
+                        name=f"gk_same_game_{p}_{q}_{r}",
+                    )
 
     # ── Transfer continuity ───────────────────────────────────────────────────
     model.add_constraints(
